@@ -1,0 +1,41 @@
+#
+# This class was auto-generated from the API references found at
+# https://developer.globalcollect.com/documentation/api/server/
+#
+from ingenico.connect.sdk.data_object import DataObject
+from ingenico.connect.sdk.domain.token.definitions.token_non_sepa_direct_debit_payment_product705_specific_data import TokenNonSepaDirectDebitPaymentProduct705SpecificData
+from ingenico.connect.sdk.domain.token.definitions.token_non_sepa_direct_debit_payment_product707_specific_data import TokenNonSepaDirectDebitPaymentProduct707SpecificData
+
+
+class MandateNonSepaDirectDebit(DataObject):
+    """
+    Class MandateNonSepaDirectDebit
+    See also https://developer.globalcollect.com/documentation/api/server/#schema_MandateNonSepaDirectDebit
+    
+    Attributes:
+        payment_product705_specific_data:  :class:`TokenNonSepaDirectDebitPaymentProduct705SpecificData`
+        payment_product707_specific_data:  :class:`TokenNonSepaDirectDebitPaymentProduct707SpecificData`
+     """
+
+    payment_product705_specific_data = None
+    payment_product707_specific_data = None
+
+    def to_dictionary(self):
+        dictionary = super(MandateNonSepaDirectDebit, self).to_dictionary()
+        self._add_to_dictionary(dictionary, 'paymentProduct705SpecificData', self.payment_product705_specific_data)
+        self._add_to_dictionary(dictionary, 'paymentProduct707SpecificData', self.payment_product707_specific_data)
+        return dictionary
+
+    def from_dictionary(self, dictionary):
+        super(MandateNonSepaDirectDebit, self).from_dictionary(dictionary)
+        if 'paymentProduct705SpecificData' in dictionary:
+            if not isinstance(dictionary['paymentProduct705SpecificData'], dict):
+                raise TypeError('value \'{}\' is not a dictionary'.format(dictionary['paymentProduct705SpecificData']))
+            value = TokenNonSepaDirectDebitPaymentProduct705SpecificData()
+            self.payment_product705_specific_data = value.from_dictionary(dictionary['paymentProduct705SpecificData'])
+        if 'paymentProduct707SpecificData' in dictionary:
+            if not isinstance(dictionary['paymentProduct707SpecificData'], dict):
+                raise TypeError('value \'{}\' is not a dictionary'.format(dictionary['paymentProduct707SpecificData']))
+            value = TokenNonSepaDirectDebitPaymentProduct707SpecificData()
+            self.payment_product707_specific_data = value.from_dictionary(dictionary['paymentProduct707SpecificData'])
+        return self

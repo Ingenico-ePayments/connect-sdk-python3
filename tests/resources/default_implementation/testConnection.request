@@ -1,0 +1,4 @@
+Outgoing\ request\ \(requestId\=\'([-a-zA-Z0-9]+)\'\)\:\
+\ \ method\:\ \ \ \ \ \ \ \'GET\'\
+\ \ uri\:\ \ \ \ \ \ \ \ \ \ \'\/v1\/1234\/services\/testconnection\'\
+\ \ headers\:\ \ \ \ \ \ \'X\-GCS\-ServerMetaInfo\=\"[^"]*\"\,\ Date\=\"[^"]+\"\,\ Authorization\=\"\*\*\*\*\*\*\*\*\"[^']*\'

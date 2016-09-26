@@ -1,0 +1,7 @@
+Incoming\ response\ \(requestId\=\'([-a-zA-Z0-9]+)\'\,\ \d+\ ms\)\:\
+\ \ status\-code\:\ \ \'200\'\
+\ \ headers\:\ \ \ \ \ \ \'Content\-Type\=\"application\/json\"\,\ Dummy\=\"\"\,\ Date\=\"[^"]+\"[^']*\'\
+\ \ content\-type\:\ \'application\/json\'\
+\ \ body\:\ \ \ \ \ \ \ \ \ \'\{\
+\ \ \ \ \"result\"\:\ \"OK\"\
+\}\'

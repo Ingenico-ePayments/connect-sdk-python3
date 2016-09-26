@@ -1,0 +1,14 @@
+Incoming\ response\ \(requestId\=\'([-a-zA-Z0-9]+)\'\,\ \d+\ ms\)\:\
+\ \ status\-code\:\ \ \'500\'\
+\ \ headers\:\ \ \ \ \ \ \'Content\-Type\=\"application\/json\"\,\ Dummy\=\"\"\,\ Date\=\"[^"]+\"[^']*\'\
+\ \ content\-type\:\ \'application\/json\'\
+\ \ body\:\ \ \ \ \ \ \ \ \ \'\{\
+\ \ \ \ \"errorId\"\:\ \"fbff1179\-7ba4\-4894\-9021\-d8a0011d23a7\"\,\
+\ \ \ \ \"errors\"\:\ \[\
+\ \ \ \ \ \ \ \ \{\
+\ \ \ \ \ \ \ \ \ \ \ \ \"code\"\:\ \"9999\"\,\
+\ \ \ \ \ \ \ \ \ \ \ \ \"message\"\:\ \"UNKNOWN\_SERVER\_ERROR\"\,\
+\ \ \ \ \ \ \ \ \ \ \ \ \"httpStatusCode\"\:\ 500\
+\ \ \ \ \ \ \ \ \}\
+\ \ \ \ \]\
+\}\'
