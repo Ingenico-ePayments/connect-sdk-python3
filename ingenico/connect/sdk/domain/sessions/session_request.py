@@ -3,6 +3,7 @@
 # https://developer.globalcollect.com/documentation/api/server/
 #
 from ingenico.connect.sdk.data_object import DataObject
+from ingenico.connect.sdk.domain.sessions.definitions.payment_product_filters_client_session import PaymentProductFiltersClientSession
 
 
 class SessionRequest(DataObject):
@@ -11,18 +12,26 @@ class SessionRequest(DataObject):
     See also https://developer.globalcollect.com/documentation/api/server/#schema_SessionRequest
     
     Attributes:
-        tokens:  list[str]
+        payment_product_filters:  :class:`PaymentProductFiltersClientSession`
+        tokens:                   list[str]
      """
 
+    payment_product_filters = None
     tokens = None
 
     def to_dictionary(self):
         dictionary = super(SessionRequest, self).to_dictionary()
+        self._add_to_dictionary(dictionary, 'paymentProductFilters', self.payment_product_filters)
         self._add_to_dictionary(dictionary, 'tokens', self.tokens)
         return dictionary
 
     def from_dictionary(self, dictionary):
         super(SessionRequest, self).from_dictionary(dictionary)
+        if 'paymentProductFilters' in dictionary:
+            if not isinstance(dictionary['paymentProductFilters'], dict):
+                raise TypeError('value \'{}\' is not a dictionary'.format(dictionary['paymentProductFilters']))
+            value = PaymentProductFiltersClientSession()
+            self.payment_product_filters = value.from_dictionary(dictionary['paymentProductFilters'])
         if 'tokens' in dictionary:
             if not isinstance(dictionary['tokens'], list):
                 raise TypeError('value \'{}\' is not a list'.format(dictionary['tokens']))

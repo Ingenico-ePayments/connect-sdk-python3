@@ -17,6 +17,7 @@ class TokenResponse(DataObject):
     Attributes:
         card:                   :class:`TokenCard`
         e_wallet:               :class:`TokenEWallet`
+        id:                     str
         non_sepa_direct_debit:  :class:`TokenNonSepaDirectDebit`
         payment_product_id:     int
         sepa_direct_debit:      :class:`TokenSepaDirectDebit`
@@ -24,6 +25,7 @@ class TokenResponse(DataObject):
 
     card = None
     e_wallet = None
+    id = None
     non_sepa_direct_debit = None
     payment_product_id = None
     sepa_direct_debit = None
@@ -32,6 +34,7 @@ class TokenResponse(DataObject):
         dictionary = super(TokenResponse, self).to_dictionary()
         self._add_to_dictionary(dictionary, 'card', self.card)
         self._add_to_dictionary(dictionary, 'eWallet', self.e_wallet)
+        self._add_to_dictionary(dictionary, 'id', self.id)
         self._add_to_dictionary(dictionary, 'nonSepaDirectDebit', self.non_sepa_direct_debit)
         self._add_to_dictionary(dictionary, 'paymentProductId', self.payment_product_id)
         self._add_to_dictionary(dictionary, 'sepaDirectDebit', self.sepa_direct_debit)
@@ -49,6 +52,8 @@ class TokenResponse(DataObject):
                 raise TypeError('value \'{}\' is not a dictionary'.format(dictionary['eWallet']))
             value = TokenEWallet()
             self.e_wallet = value.from_dictionary(dictionary['eWallet'])
+        if 'id' in dictionary:
+            self.id = dictionary['id']
         if 'nonSepaDirectDebit' in dictionary:
             if not isinstance(dictionary['nonSepaDirectDebit'], dict):
                 raise TypeError('value \'{}\' is not a dictionary'.format(dictionary['nonSepaDirectDebit']))
