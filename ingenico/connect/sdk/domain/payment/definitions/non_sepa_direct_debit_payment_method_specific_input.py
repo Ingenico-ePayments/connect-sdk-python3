@@ -4,7 +4,6 @@
 #
 from ingenico.connect.sdk.domain.definitions.abstract_payment_method_specific_input import AbstractPaymentMethodSpecificInput
 from ingenico.connect.sdk.domain.payment.definitions.non_sepa_direct_debit_payment_product705_specific_input import NonSepaDirectDebitPaymentProduct705SpecificInput
-from ingenico.connect.sdk.domain.payment.definitions.non_sepa_direct_debit_payment_product707_specific_input import NonSepaDirectDebitPaymentProduct707SpecificInput
 
 
 class NonSepaDirectDebitPaymentMethodSpecificInput(AbstractPaymentMethodSpecificInput):
@@ -17,7 +16,6 @@ class NonSepaDirectDebitPaymentMethodSpecificInput(AbstractPaymentMethodSpecific
         direct_debit_text:                     str
         is_recurring:                          bool
         payment_product705_specific_input:     :class:`NonSepaDirectDebitPaymentProduct705SpecificInput`
-        payment_product707_specific_input:     :class:`NonSepaDirectDebitPaymentProduct707SpecificInput`
         recurring_payment_sequence_indicator:  str
         token:                                 str
      """
@@ -26,7 +24,6 @@ class NonSepaDirectDebitPaymentMethodSpecificInput(AbstractPaymentMethodSpecific
     direct_debit_text = None
     is_recurring = None
     payment_product705_specific_input = None
-    payment_product707_specific_input = None
     recurring_payment_sequence_indicator = None
     token = None
 
@@ -36,7 +33,6 @@ class NonSepaDirectDebitPaymentMethodSpecificInput(AbstractPaymentMethodSpecific
         self._add_to_dictionary(dictionary, 'directDebitText', self.direct_debit_text)
         self._add_to_dictionary(dictionary, 'isRecurring', self.is_recurring)
         self._add_to_dictionary(dictionary, 'paymentProduct705SpecificInput', self.payment_product705_specific_input)
-        self._add_to_dictionary(dictionary, 'paymentProduct707SpecificInput', self.payment_product707_specific_input)
         self._add_to_dictionary(dictionary, 'recurringPaymentSequenceIndicator', self.recurring_payment_sequence_indicator)
         self._add_to_dictionary(dictionary, 'token', self.token)
         return dictionary
@@ -54,11 +50,6 @@ class NonSepaDirectDebitPaymentMethodSpecificInput(AbstractPaymentMethodSpecific
                 raise TypeError('value \'{}\' is not a dictionary'.format(dictionary['paymentProduct705SpecificInput']))
             value = NonSepaDirectDebitPaymentProduct705SpecificInput()
             self.payment_product705_specific_input = value.from_dictionary(dictionary['paymentProduct705SpecificInput'])
-        if 'paymentProduct707SpecificInput' in dictionary:
-            if not isinstance(dictionary['paymentProduct707SpecificInput'], dict):
-                raise TypeError('value \'{}\' is not a dictionary'.format(dictionary['paymentProduct707SpecificInput']))
-            value = NonSepaDirectDebitPaymentProduct707SpecificInput()
-            self.payment_product707_specific_input = value.from_dictionary(dictionary['paymentProduct707SpecificInput'])
         if 'recurringPaymentSequenceIndicator' in dictionary:
             self.recurring_payment_sequence_indicator = dictionary['recurringPaymentSequenceIndicator']
         if 'token' in dictionary:

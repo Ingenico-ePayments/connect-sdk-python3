@@ -828,13 +828,6 @@ API Reference
     :special-members:
     :exclude-members: __dict__,__weakref__,__module__,__get__
 
-.. automodule:: ingenico.connect.sdk.domain.payment.definitions.non_sepa_direct_debit_payment_product707_specific_input
-    :members:
-    :show-inheritance:
-    :undoc-members:
-    :special-members:
-    :exclude-members: __dict__,__weakref__,__module__,__get__
-
 .. automodule:: ingenico.connect.sdk.domain.payment.definitions.order
     :members:
     :show-inheritance:
@@ -1683,13 +1676,6 @@ API Reference
     :exclude-members: __dict__,__weakref__,__module__,__get__
 
 .. automodule:: ingenico.connect.sdk.domain.token.definitions.token_non_sepa_direct_debit_payment_product705_specific_data
-    :members:
-    :show-inheritance:
-    :undoc-members:
-    :special-members:
-    :exclude-members: __dict__,__weakref__,__module__,__get__
-
-.. automodule:: ingenico.connect.sdk.domain.token.definitions.token_non_sepa_direct_debit_payment_product707_specific_data
     :members:
     :show-inheritance:
     :undoc-members:
