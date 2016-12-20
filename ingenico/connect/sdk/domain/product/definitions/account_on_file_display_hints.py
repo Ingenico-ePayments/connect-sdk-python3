@@ -9,15 +9,34 @@ from ingenico.connect.sdk.domain.product.definitions.label_template_element impo
 class AccountOnFileDisplayHints(DataObject):
     """
     Class AccountOnFileDisplayHints
-    See also https://developer.globalcollect.com/documentation/api/server/#schema_AccountOnFileDisplayHints
     
-    Attributes:
-        label_template:  list[:class:`LabelTemplateElement`]
-        logo:            str
-     """
+    See also https://developer.globalcollect.com/documentation/api/server/#schema_AccountOnFileDisplayHints
+    """
 
-    label_template = None
-    logo = None
+    __label_template = None
+    __logo = None
+
+    @property
+    def label_template(self):
+        """
+        list[:class:`LabelTemplateElement`]
+        """
+        return self.__label_template
+
+    @label_template.setter
+    def label_template(self, value):
+        self.__label_template = value
+
+    @property
+    def logo(self):
+        """
+        str
+        """
+        return self.__logo
+
+    @logo.setter
+    def logo(self, value):
+        self.__logo = value
 
     def to_dictionary(self):
         dictionary = super(AccountOnFileDisplayHints, self).to_dictionary()

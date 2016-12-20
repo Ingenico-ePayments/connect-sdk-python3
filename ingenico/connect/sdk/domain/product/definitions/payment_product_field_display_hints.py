@@ -10,29 +10,118 @@ from ingenico.connect.sdk.domain.product.definitions.payment_product_field_toolt
 class PaymentProductFieldDisplayHints(DataObject):
     """
     Class PaymentProductFieldDisplayHints
-    See also https://developer.globalcollect.com/documentation/api/server/#schema_PaymentProductFieldDisplayHints
     
-    Attributes:
-        always_show:           bool
-        display_order:         int
-        form_element:          :class:`PaymentProductFieldFormElement`
-        label:                 str
-        mask:                  str
-        obfuscate:             bool
-        placeholder_label:     str
-        preferred_input_type:  str
-        tooltip:               :class:`PaymentProductFieldTooltip`
-     """
+    See also https://developer.globalcollect.com/documentation/api/server/#schema_PaymentProductFieldDisplayHints
+    """
 
-    always_show = None
-    display_order = None
-    form_element = None
-    label = None
-    mask = None
-    obfuscate = None
-    placeholder_label = None
-    preferred_input_type = None
-    tooltip = None
+    __always_show = None
+    __display_order = None
+    __form_element = None
+    __label = None
+    __mask = None
+    __obfuscate = None
+    __placeholder_label = None
+    __preferred_input_type = None
+    __tooltip = None
+
+    @property
+    def always_show(self):
+        """
+        bool
+        """
+        return self.__always_show
+
+    @always_show.setter
+    def always_show(self, value):
+        self.__always_show = value
+
+    @property
+    def display_order(self):
+        """
+        int
+        """
+        return self.__display_order
+
+    @display_order.setter
+    def display_order(self, value):
+        self.__display_order = value
+
+    @property
+    def form_element(self):
+        """
+        :class:`PaymentProductFieldFormElement`
+        """
+        return self.__form_element
+
+    @form_element.setter
+    def form_element(self, value):
+        self.__form_element = value
+
+    @property
+    def label(self):
+        """
+        str
+        """
+        return self.__label
+
+    @label.setter
+    def label(self, value):
+        self.__label = value
+
+    @property
+    def mask(self):
+        """
+        str
+        """
+        return self.__mask
+
+    @mask.setter
+    def mask(self, value):
+        self.__mask = value
+
+    @property
+    def obfuscate(self):
+        """
+        bool
+        """
+        return self.__obfuscate
+
+    @obfuscate.setter
+    def obfuscate(self, value):
+        self.__obfuscate = value
+
+    @property
+    def placeholder_label(self):
+        """
+        str
+        """
+        return self.__placeholder_label
+
+    @placeholder_label.setter
+    def placeholder_label(self, value):
+        self.__placeholder_label = value
+
+    @property
+    def preferred_input_type(self):
+        """
+        str
+        """
+        return self.__preferred_input_type
+
+    @preferred_input_type.setter
+    def preferred_input_type(self, value):
+        self.__preferred_input_type = value
+
+    @property
+    def tooltip(self):
+        """
+        :class:`PaymentProductFieldTooltip`
+        """
+        return self.__tooltip
+
+    @tooltip.setter
+    def tooltip(self, value):
+        self.__tooltip = value
 
     def to_dictionary(self):
         dictionary = super(PaymentProductFieldDisplayHints, self).to_dictionary()

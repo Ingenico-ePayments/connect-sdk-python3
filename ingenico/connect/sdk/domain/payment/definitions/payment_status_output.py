@@ -8,15 +8,34 @@ from ingenico.connect.sdk.domain.definitions.order_status_output import OrderSta
 class PaymentStatusOutput(OrderStatusOutput):
     """
     Class PaymentStatusOutput
-    See also https://developer.globalcollect.com/documentation/api/server/#schema_PaymentStatusOutput
     
-    Attributes:
-        is_authorized:  bool
-        is_refundable:  bool
-     """
+    See also https://developer.globalcollect.com/documentation/api/server/#schema_PaymentStatusOutput
+    """
 
-    is_authorized = None
-    is_refundable = None
+    __is_authorized = None
+    __is_refundable = None
+
+    @property
+    def is_authorized(self):
+        """
+        bool
+        """
+        return self.__is_authorized
+
+    @is_authorized.setter
+    def is_authorized(self, value):
+        self.__is_authorized = value
+
+    @property
+    def is_refundable(self):
+        """
+        bool
+        """
+        return self.__is_refundable
+
+    @is_refundable.setter
+    def is_refundable(self, value):
+        self.__is_refundable = value
 
     def to_dictionary(self):
         dictionary = super(PaymentStatusOutput, self).to_dictionary()

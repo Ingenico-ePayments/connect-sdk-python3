@@ -11,17 +11,46 @@ from ingenico.connect.sdk.domain.payment.definitions.payment_product840_specific
 class RedirectPaymentMethodSpecificOutput(AbstractPaymentMethodSpecificOutput):
     """
     Class RedirectPaymentMethodSpecificOutput
-    See also https://developer.globalcollect.com/documentation/api/server/#schema_RedirectPaymentMethodSpecificOutput
     
-    Attributes:
-        bank_account_iban:                   :class:`BankAccountIban`
-        payment_product836_specific_output:  :class:`PaymentProduct836SpecificOutput`
-        payment_product840_specific_output:  :class:`PaymentProduct840SpecificOutput`
-     """
+    See also https://developer.globalcollect.com/documentation/api/server/#schema_RedirectPaymentMethodSpecificOutput
+    """
 
-    bank_account_iban = None
-    payment_product836_specific_output = None
-    payment_product840_specific_output = None
+    __bank_account_iban = None
+    __payment_product836_specific_output = None
+    __payment_product840_specific_output = None
+
+    @property
+    def bank_account_iban(self):
+        """
+        :class:`BankAccountIban`
+        """
+        return self.__bank_account_iban
+
+    @bank_account_iban.setter
+    def bank_account_iban(self, value):
+        self.__bank_account_iban = value
+
+    @property
+    def payment_product836_specific_output(self):
+        """
+        :class:`PaymentProduct836SpecificOutput`
+        """
+        return self.__payment_product836_specific_output
+
+    @payment_product836_specific_output.setter
+    def payment_product836_specific_output(self, value):
+        self.__payment_product836_specific_output = value
+
+    @property
+    def payment_product840_specific_output(self):
+        """
+        :class:`PaymentProduct840SpecificOutput`
+        """
+        return self.__payment_product840_specific_output
+
+    @payment_product840_specific_output.setter
+    def payment_product840_specific_output(self, value):
+        self.__payment_product840_specific_output = value
 
     def to_dictionary(self):
         dictionary = super(RedirectPaymentMethodSpecificOutput, self).to_dictionary()

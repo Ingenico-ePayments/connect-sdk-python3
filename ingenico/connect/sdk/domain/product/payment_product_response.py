@@ -8,8 +8,9 @@ from ingenico.connect.sdk.domain.product.definitions.payment_product import Paym
 class PaymentProductResponse(PaymentProduct):
     """
     Class PaymentProductResponse
+    
     See also https://developer.globalcollect.com/documentation/api/server/#schema_PaymentProductResponse
-     """
+    """
 
     def to_dictionary(self):
         dictionary = super(PaymentProductResponse, self).to_dictionary()

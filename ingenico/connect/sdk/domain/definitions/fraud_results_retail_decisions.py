@@ -8,17 +8,46 @@ from ingenico.connect.sdk.data_object import DataObject
 class FraudResultsRetailDecisions(DataObject):
     """
     Class FraudResultsRetailDecisions
-    See also https://developer.globalcollect.com/documentation/api/server/#schema_FraudResultsRetailDecisions
     
-    Attributes:
-        fraud_code:    str
-        fraud_neural:  str
-        fraud_rcf:     str
-     """
+    See also https://developer.globalcollect.com/documentation/api/server/#schema_FraudResultsRetailDecisions
+    """
 
-    fraud_code = None
-    fraud_neural = None
-    fraud_rcf = None
+    __fraud_code = None
+    __fraud_neural = None
+    __fraud_rcf = None
+
+    @property
+    def fraud_code(self):
+        """
+        str
+        """
+        return self.__fraud_code
+
+    @fraud_code.setter
+    def fraud_code(self, value):
+        self.__fraud_code = value
+
+    @property
+    def fraud_neural(self):
+        """
+        str
+        """
+        return self.__fraud_neural
+
+    @fraud_neural.setter
+    def fraud_neural(self, value):
+        self.__fraud_neural = value
+
+    @property
+    def fraud_rcf(self):
+        """
+        str
+        """
+        return self.__fraud_rcf
+
+    @fraud_rcf.setter
+    def fraud_rcf(self, value):
+        self.__fraud_rcf = value
 
     def to_dictionary(self):
         dictionary = super(FraudResultsRetailDecisions, self).to_dictionary()

@@ -8,8 +8,9 @@ from ingenico.connect.sdk.data_object import DataObject
 class EmptyValidator(DataObject):
     """
     Class EmptyValidator
+    
     See also https://developer.globalcollect.com/documentation/api/server/#schema_EmptyValidator
-     """
+    """
 
     def to_dictionary(self):
         dictionary = super(EmptyValidator, self).to_dictionary()

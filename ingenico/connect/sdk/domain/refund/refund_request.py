@@ -12,21 +12,70 @@ from ingenico.connect.sdk.domain.refund.definitions.refund_references import Ref
 class RefundRequest(DataObject):
     """
     Class RefundRequest
-    See also https://developer.globalcollect.com/documentation/api/server/#schema_RefundRequest
     
-    Attributes:
-        amount_of_money:                    :class:`AmountOfMoney`
-        bank_refund_method_specific_input:  :class:`BankRefundMethodSpecificInput`
-        customer:                           :class:`RefundCustomer`
-        refund_date:                        str
-        refund_references:                  :class:`RefundReferences`
-     """
+    See also https://developer.globalcollect.com/documentation/api/server/#schema_RefundRequest
+    """
 
-    amount_of_money = None
-    bank_refund_method_specific_input = None
-    customer = None
-    refund_date = None
-    refund_references = None
+    __amount_of_money = None
+    __bank_refund_method_specific_input = None
+    __customer = None
+    __refund_date = None
+    __refund_references = None
+
+    @property
+    def amount_of_money(self):
+        """
+        :class:`AmountOfMoney`
+        """
+        return self.__amount_of_money
+
+    @amount_of_money.setter
+    def amount_of_money(self, value):
+        self.__amount_of_money = value
+
+    @property
+    def bank_refund_method_specific_input(self):
+        """
+        :class:`BankRefundMethodSpecificInput`
+        """
+        return self.__bank_refund_method_specific_input
+
+    @bank_refund_method_specific_input.setter
+    def bank_refund_method_specific_input(self, value):
+        self.__bank_refund_method_specific_input = value
+
+    @property
+    def customer(self):
+        """
+        :class:`RefundCustomer`
+        """
+        return self.__customer
+
+    @customer.setter
+    def customer(self, value):
+        self.__customer = value
+
+    @property
+    def refund_date(self):
+        """
+        str
+        """
+        return self.__refund_date
+
+    @refund_date.setter
+    def refund_date(self, value):
+        self.__refund_date = value
+
+    @property
+    def refund_references(self):
+        """
+        :class:`RefundReferences`
+        """
+        return self.__refund_references
+
+    @refund_references.setter
+    def refund_references(self, value):
+        self.__refund_references = value
 
     def to_dictionary(self):
         dictionary = super(RefundRequest, self).to_dictionary()

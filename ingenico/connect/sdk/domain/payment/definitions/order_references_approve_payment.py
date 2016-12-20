@@ -8,13 +8,22 @@ from ingenico.connect.sdk.data_object import DataObject
 class OrderReferencesApprovePayment(DataObject):
     """
     Class OrderReferencesApprovePayment
-    See also https://developer.globalcollect.com/documentation/api/server/#schema_OrderReferencesApprovePayment
     
-    Attributes:
-        merchant_reference:  str
-     """
+    See also https://developer.globalcollect.com/documentation/api/server/#schema_OrderReferencesApprovePayment
+    """
 
-    merchant_reference = None
+    __merchant_reference = None
+
+    @property
+    def merchant_reference(self):
+        """
+        str
+        """
+        return self.__merchant_reference
+
+    @merchant_reference.setter
+    def merchant_reference(self, value):
+        self.__merchant_reference = value
 
     def to_dictionary(self):
         dictionary = super(OrderReferencesApprovePayment, self).to_dictionary()

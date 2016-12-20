@@ -9,17 +9,46 @@ from ingenico.connect.sdk.domain.definitions.company_information import CompanyI
 class CustomerBase(DataObject):
     """
     Class CustomerBase
-    See also https://developer.globalcollect.com/documentation/api/server/#schema_CustomerBase
     
-    Attributes:
-        company_information:   :class:`CompanyInformation`
-        merchant_customer_id:  str
-        vat_number:            str
-     """
+    See also https://developer.globalcollect.com/documentation/api/server/#schema_CustomerBase
+    """
 
-    company_information = None
-    merchant_customer_id = None
-    vat_number = None
+    __company_information = None
+    __merchant_customer_id = None
+    __vat_number = None
+
+    @property
+    def company_information(self):
+        """
+        :class:`CompanyInformation`
+        """
+        return self.__company_information
+
+    @company_information.setter
+    def company_information(self, value):
+        self.__company_information = value
+
+    @property
+    def merchant_customer_id(self):
+        """
+        str
+        """
+        return self.__merchant_customer_id
+
+    @merchant_customer_id.setter
+    def merchant_customer_id(self, value):
+        self.__merchant_customer_id = value
+
+    @property
+    def vat_number(self):
+        """
+        str
+        """
+        return self.__vat_number
+
+    @vat_number.setter
+    def vat_number(self, value):
+        self.__vat_number = value
 
     def to_dictionary(self):
         dictionary = super(CustomerBase, self).to_dictionary()

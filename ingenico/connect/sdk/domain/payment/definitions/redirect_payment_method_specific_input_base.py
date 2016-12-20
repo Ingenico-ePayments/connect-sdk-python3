@@ -8,15 +8,34 @@ from ingenico.connect.sdk.domain.definitions.abstract_payment_method_specific_in
 class RedirectPaymentMethodSpecificInputBase(AbstractPaymentMethodSpecificInput):
     """
     Class RedirectPaymentMethodSpecificInputBase
-    See also https://developer.globalcollect.com/documentation/api/server/#schema_RedirectPaymentMethodSpecificInputBase
     
-    Attributes:
-        recurring_payment_sequence_indicator:  str
-        token:                                 str
-     """
+    See also https://developer.globalcollect.com/documentation/api/server/#schema_RedirectPaymentMethodSpecificInputBase
+    """
 
-    recurring_payment_sequence_indicator = None
-    token = None
+    __recurring_payment_sequence_indicator = None
+    __token = None
+
+    @property
+    def recurring_payment_sequence_indicator(self):
+        """
+        str
+        """
+        return self.__recurring_payment_sequence_indicator
+
+    @recurring_payment_sequence_indicator.setter
+    def recurring_payment_sequence_indicator(self, value):
+        self.__recurring_payment_sequence_indicator = value
+
+    @property
+    def token(self):
+        """
+        str
+        """
+        return self.__token
+
+    @token.setter
+    def token(self, value):
+        self.__token = value
 
     def to_dictionary(self):
         dictionary = super(RedirectPaymentMethodSpecificInputBase, self).to_dictionary()

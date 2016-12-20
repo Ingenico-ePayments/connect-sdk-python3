@@ -8,21 +8,70 @@ from ingenico.connect.sdk.domain.definitions.abstract_payment_method_specific_in
 class SepaDirectDebitPaymentMethodSpecificInput(AbstractPaymentMethodSpecificInput):
     """
     Class SepaDirectDebitPaymentMethodSpecificInput
-    See also https://developer.globalcollect.com/documentation/api/server/#schema_SepaDirectDebitPaymentMethodSpecificInput
     
-    Attributes:
-        date_collect:                          str
-        direct_debit_text:                     str
-        is_recurring:                          bool
-        recurring_payment_sequence_indicator:  str
-        token:                                 str
-     """
+    See also https://developer.globalcollect.com/documentation/api/server/#schema_SepaDirectDebitPaymentMethodSpecificInput
+    """
 
-    date_collect = None
-    direct_debit_text = None
-    is_recurring = None
-    recurring_payment_sequence_indicator = None
-    token = None
+    __date_collect = None
+    __direct_debit_text = None
+    __is_recurring = None
+    __recurring_payment_sequence_indicator = None
+    __token = None
+
+    @property
+    def date_collect(self):
+        """
+        str
+        """
+        return self.__date_collect
+
+    @date_collect.setter
+    def date_collect(self, value):
+        self.__date_collect = value
+
+    @property
+    def direct_debit_text(self):
+        """
+        str
+        """
+        return self.__direct_debit_text
+
+    @direct_debit_text.setter
+    def direct_debit_text(self, value):
+        self.__direct_debit_text = value
+
+    @property
+    def is_recurring(self):
+        """
+        bool
+        """
+        return self.__is_recurring
+
+    @is_recurring.setter
+    def is_recurring(self, value):
+        self.__is_recurring = value
+
+    @property
+    def recurring_payment_sequence_indicator(self):
+        """
+        str
+        """
+        return self.__recurring_payment_sequence_indicator
+
+    @recurring_payment_sequence_indicator.setter
+    def recurring_payment_sequence_indicator(self, value):
+        self.__recurring_payment_sequence_indicator = value
+
+    @property
+    def token(self):
+        """
+        str
+        """
+        return self.__token
+
+    @token.setter
+    def token(self, value):
+        self.__token = value
 
     def to_dictionary(self):
         dictionary = super(SepaDirectDebitPaymentMethodSpecificInput, self).to_dictionary()

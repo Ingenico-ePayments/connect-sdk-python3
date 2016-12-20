@@ -9,13 +9,22 @@ from ingenico.connect.sdk.domain.product.definitions.directory_entry import Dire
 class Directory(DataObject):
     """
     Class Directory
-    See also https://developer.globalcollect.com/documentation/api/server/#schema_Directory
     
-    Attributes:
-        entries:  list[:class:`DirectoryEntry`]
-     """
+    See also https://developer.globalcollect.com/documentation/api/server/#schema_Directory
+    """
 
-    entries = None
+    __entries = None
+
+    @property
+    def entries(self):
+        """
+        list[:class:`DirectoryEntry`]
+        """
+        return self.__entries
+
+    @entries.setter
+    def entries(self, value):
+        self.__entries = value
 
     def to_dictionary(self):
         dictionary = super(Directory, self).to_dictionary()

@@ -9,17 +9,46 @@ from ingenico.connect.sdk.domain.definitions.card_without_cvv import CardWithout
 class TokenCardData(DataObject):
     """
     Class TokenCardData
-    See also https://developer.globalcollect.com/documentation/api/server/#schema_TokenCardData
     
-    Attributes:
-        card_without_cvv:        :class:`CardWithoutCvv`
-        first_transaction_date:  str
-        provider_reference:      str
-     """
+    See also https://developer.globalcollect.com/documentation/api/server/#schema_TokenCardData
+    """
 
-    card_without_cvv = None
-    first_transaction_date = None
-    provider_reference = None
+    __card_without_cvv = None
+    __first_transaction_date = None
+    __provider_reference = None
+
+    @property
+    def card_without_cvv(self):
+        """
+        :class:`CardWithoutCvv`
+        """
+        return self.__card_without_cvv
+
+    @card_without_cvv.setter
+    def card_without_cvv(self, value):
+        self.__card_without_cvv = value
+
+    @property
+    def first_transaction_date(self):
+        """
+        str
+        """
+        return self.__first_transaction_date
+
+    @first_transaction_date.setter
+    def first_transaction_date(self, value):
+        self.__first_transaction_date = value
+
+    @property
+    def provider_reference(self):
+        """
+        str
+        """
+        return self.__provider_reference
+
+    @provider_reference.setter
+    def provider_reference(self, value):
+        self.__provider_reference = value
 
     def to_dictionary(self):
         dictionary = super(TokenCardData, self).to_dictionary()

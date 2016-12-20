@@ -9,21 +9,70 @@ from ingenico.connect.sdk.domain.errors.definitions.api_error import APIError
 class OrderStatusOutput(DataObject):
     """
     Class OrderStatusOutput
-    See also https://developer.globalcollect.com/documentation/api/server/#schema_OrderStatusOutput
     
-    Attributes:
-        errors:                        list[:class:`APIError`]
-        is_cancellable:                bool
-        status_category:               str
-        status_code:                   int
-        status_code_change_date_time:  str
-     """
+    See also https://developer.globalcollect.com/documentation/api/server/#schema_OrderStatusOutput
+    """
 
-    errors = None
-    is_cancellable = None
-    status_category = None
-    status_code = None
-    status_code_change_date_time = None
+    __errors = None
+    __is_cancellable = None
+    __status_category = None
+    __status_code = None
+    __status_code_change_date_time = None
+
+    @property
+    def errors(self):
+        """
+        list[:class:`APIError`]
+        """
+        return self.__errors
+
+    @errors.setter
+    def errors(self, value):
+        self.__errors = value
+
+    @property
+    def is_cancellable(self):
+        """
+        bool
+        """
+        return self.__is_cancellable
+
+    @is_cancellable.setter
+    def is_cancellable(self, value):
+        self.__is_cancellable = value
+
+    @property
+    def status_category(self):
+        """
+        str
+        """
+        return self.__status_category
+
+    @status_category.setter
+    def status_category(self, value):
+        self.__status_category = value
+
+    @property
+    def status_code(self):
+        """
+        int
+        """
+        return self.__status_code
+
+    @status_code.setter
+    def status_code(self, value):
+        self.__status_code = value
+
+    @property
+    def status_code_change_date_time(self):
+        """
+        str
+        """
+        return self.__status_code_change_date_time
+
+    @status_code_change_date_time.setter
+    def status_code_change_date_time(self, value):
+        self.__status_code_change_date_time = value
 
     def to_dictionary(self):
         dictionary = super(OrderStatusOutput, self).to_dictionary()

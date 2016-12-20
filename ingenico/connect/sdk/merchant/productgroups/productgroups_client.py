@@ -24,7 +24,9 @@ class ProductgroupsClient(ApiResource):
     def find(self, query, context=None):
         """
         Resource /{merchantId}/productgroups
+
         Get payment product groups
+        
         See also https://developer.globalcollect.com/documentation/api/server/#__merchantId__productgroups_get
 
         :param query:    :class:`FindProductgroupsParams`
@@ -55,7 +57,9 @@ class ProductgroupsClient(ApiResource):
     def get(self, payment_product_group_id, query, context=None):
         """
         Resource /{merchantId}/productgroups/{paymentProductGroupId}
+
         Get payment product group
+        
         See also https://developer.globalcollect.com/documentation/api/server/#__merchantId__productgroups__paymentProductGroupId__get
 
         :param payment_product_group_id:  str

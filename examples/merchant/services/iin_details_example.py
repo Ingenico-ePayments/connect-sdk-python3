@@ -15,7 +15,7 @@ class IINDetailsExample(object):
             body = GetIINDetailsRequest()
             body.bin = "4567350000427977"
 
-            response = client.merchant("merchantId").services().getIINdetails(body)
+            response = client.merchant("merchantId").services().get_iin_details(body)
 
     def __get_client(self):
         api_key_id = os.getenv("connect.api.apiKeyId", "someKey")

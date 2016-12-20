@@ -8,13 +8,22 @@ from ingenico.connect.sdk.data_object import DataObject
 class ApprovePayoutRequest(DataObject):
     """
     Class ApprovePayoutRequest
-    See also https://developer.globalcollect.com/documentation/api/server/#schema_ApprovePayoutRequest
     
-    Attributes:
-        date_payout:  str
-     """
+    See also https://developer.globalcollect.com/documentation/api/server/#schema_ApprovePayoutRequest
+    """
 
-    date_payout = None
+    __date_payout = None
+
+    @property
+    def date_payout(self):
+        """
+        str
+        """
+        return self.__date_payout
+
+    @date_payout.setter
+    def date_payout(self, value):
+        self.__date_payout = value
 
     def to_dictionary(self):
         dictionary = super(ApprovePayoutRequest, self).to_dictionary()

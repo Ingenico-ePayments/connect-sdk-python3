@@ -10,19 +10,58 @@ from ingenico.connect.sdk.domain.payment.definitions.redirect_data import Redire
 class MerchantAction(DataObject):
     """
     Class MerchantAction
-    See also https://developer.globalcollect.com/documentation/api/server/#schema_MerchantAction
     
-    Attributes:
-        action_type:     str
-        redirect_data:   :class:`RedirectData`
-        rendering_data:  str
-        show_data:       list[:class:`KeyValuePair`]
-     """
+    See also https://developer.globalcollect.com/documentation/api/server/#schema_MerchantAction
+    """
 
-    action_type = None
-    redirect_data = None
-    rendering_data = None
-    show_data = None
+    __action_type = None
+    __redirect_data = None
+    __rendering_data = None
+    __show_data = None
+
+    @property
+    def action_type(self):
+        """
+        str
+        """
+        return self.__action_type
+
+    @action_type.setter
+    def action_type(self, value):
+        self.__action_type = value
+
+    @property
+    def redirect_data(self):
+        """
+        :class:`RedirectData`
+        """
+        return self.__redirect_data
+
+    @redirect_data.setter
+    def redirect_data(self, value):
+        self.__redirect_data = value
+
+    @property
+    def rendering_data(self):
+        """
+        str
+        """
+        return self.__rendering_data
+
+    @rendering_data.setter
+    def rendering_data(self, value):
+        self.__rendering_data = value
+
+    @property
+    def show_data(self):
+        """
+        list[:class:`KeyValuePair`]
+        """
+        return self.__show_data
+
+    @show_data.setter
+    def show_data(self, value):
+        self.__show_data = value
 
     def to_dictionary(self):
         dictionary = super(MerchantAction, self).to_dictionary()

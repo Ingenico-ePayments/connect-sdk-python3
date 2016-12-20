@@ -8,19 +8,58 @@ from ingenico.connect.sdk.data_object import DataObject
 class SessionResponse(DataObject):
     """
     Class SessionResponse
-    See also https://developer.globalcollect.com/documentation/api/server/#schema_SessionResponse
     
-    Attributes:
-        client_session_id:  str
-        customer_id:        str
-        invalid_tokens:     list[str]
-        region:             str
-     """
+    See also https://developer.globalcollect.com/documentation/api/server/#schema_SessionResponse
+    """
 
-    client_session_id = None
-    customer_id = None
-    invalid_tokens = None
-    region = None
+    __client_session_id = None
+    __customer_id = None
+    __invalid_tokens = None
+    __region = None
+
+    @property
+    def client_session_id(self):
+        """
+        str
+        """
+        return self.__client_session_id
+
+    @client_session_id.setter
+    def client_session_id(self, value):
+        self.__client_session_id = value
+
+    @property
+    def customer_id(self):
+        """
+        str
+        """
+        return self.__customer_id
+
+    @customer_id.setter
+    def customer_id(self, value):
+        self.__customer_id = value
+
+    @property
+    def invalid_tokens(self):
+        """
+        list[str]
+        """
+        return self.__invalid_tokens
+
+    @invalid_tokens.setter
+    def invalid_tokens(self, value):
+        self.__invalid_tokens = value
+
+    @property
+    def region(self):
+        """
+        str
+        """
+        return self.__region
+
+    @region.setter
+    def region(self, value):
+        self.__region = value
 
     def to_dictionary(self):
         dictionary = super(SessionResponse, self).to_dictionary()

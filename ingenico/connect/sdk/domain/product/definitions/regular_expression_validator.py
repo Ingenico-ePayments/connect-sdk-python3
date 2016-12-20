@@ -8,13 +8,22 @@ from ingenico.connect.sdk.data_object import DataObject
 class RegularExpressionValidator(DataObject):
     """
     Class RegularExpressionValidator
-    See also https://developer.globalcollect.com/documentation/api/server/#schema_RegularExpressionValidator
     
-    Attributes:
-        regular_expression:  str
-     """
+    See also https://developer.globalcollect.com/documentation/api/server/#schema_RegularExpressionValidator
+    """
 
-    regular_expression = None
+    __regular_expression = None
+
+    @property
+    def regular_expression(self):
+        """
+        str
+        """
+        return self.__regular_expression
+
+    @regular_expression.setter
+    def regular_expression(self, value):
+        self.__regular_expression = value
 
     def to_dictionary(self):
         dictionary = super(RegularExpressionValidator, self).to_dictionary()

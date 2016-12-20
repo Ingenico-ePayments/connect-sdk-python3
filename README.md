@@ -42,8 +42,7 @@ To install the SDK using pip, execute the following command:
 
 Alternatively, you can install the SDK from a source distribution file:
 
-1. Download the latest version of the Python SDK from the [Ingenico Connect Developer Hub](https://developer.globalcollect.com/documentation/sdk/server/) or download it from GitHub.
-    * When downloading from GitHub, choose the `connect-sdk-python3-x.y.z.zip` file from the [releases](https://github.com/Ingenico-ePayments/connect-sdk-python3/releases) page, where `x.y.z` is the version number.
+1. Download the latest version of the Python SDK from GitHub. Choose the `connect-sdk-python3-x.y.z.zip` file from the [releases](https://github.com/Ingenico-ePayments/connect-sdk-python3/releases) page, where `x.y.z` is the version number.
 2. Execute the following command in the folder where the SDK was downloaded to:
     
     ```

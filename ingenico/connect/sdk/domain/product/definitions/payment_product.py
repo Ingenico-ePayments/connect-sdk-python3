@@ -11,37 +11,166 @@ from ingenico.connect.sdk.domain.product.definitions.payment_product_field impor
 class PaymentProduct(DataObject):
     """
     Class PaymentProduct
-    See also https://developer.globalcollect.com/documentation/api/server/#schema_PaymentProduct
     
-    Attributes:
-        accounts_on_file:              list[:class:`AccountOnFile`]
-        allows_recurring:              bool
-        allows_tokenization:           bool
-        auto_tokenized:                bool
-        display_hints:                 :class:`PaymentProductDisplayHints`
-        fields:                        list[:class:`PaymentProductField`]
-        id:                            int
-        max_amount:                    int
-        min_amount:                    int
-        mobile_integration_level:      str
-        payment_method:                str
-        payment_product_group:         str
-        uses_redirection_to3rd_party:  bool
-     """
+    See also https://developer.globalcollect.com/documentation/api/server/#schema_PaymentProduct
+    """
 
-    accounts_on_file = None
-    allows_recurring = None
-    allows_tokenization = None
-    auto_tokenized = None
-    display_hints = None
-    fields = None
-    id = None
-    max_amount = None
-    min_amount = None
-    mobile_integration_level = None
-    payment_method = None
-    payment_product_group = None
-    uses_redirection_to3rd_party = None
+    __accounts_on_file = None
+    __allows_recurring = None
+    __allows_tokenization = None
+    __auto_tokenized = None
+    __display_hints = None
+    __fields = None
+    __id = None
+    __max_amount = None
+    __min_amount = None
+    __mobile_integration_level = None
+    __payment_method = None
+    __payment_product_group = None
+    __uses_redirection_to3rd_party = None
+
+    @property
+    def accounts_on_file(self):
+        """
+        list[:class:`AccountOnFile`]
+        """
+        return self.__accounts_on_file
+
+    @accounts_on_file.setter
+    def accounts_on_file(self, value):
+        self.__accounts_on_file = value
+
+    @property
+    def allows_recurring(self):
+        """
+        bool
+        """
+        return self.__allows_recurring
+
+    @allows_recurring.setter
+    def allows_recurring(self, value):
+        self.__allows_recurring = value
+
+    @property
+    def allows_tokenization(self):
+        """
+        bool
+        """
+        return self.__allows_tokenization
+
+    @allows_tokenization.setter
+    def allows_tokenization(self, value):
+        self.__allows_tokenization = value
+
+    @property
+    def auto_tokenized(self):
+        """
+        bool
+        """
+        return self.__auto_tokenized
+
+    @auto_tokenized.setter
+    def auto_tokenized(self, value):
+        self.__auto_tokenized = value
+
+    @property
+    def display_hints(self):
+        """
+        :class:`PaymentProductDisplayHints`
+        """
+        return self.__display_hints
+
+    @display_hints.setter
+    def display_hints(self, value):
+        self.__display_hints = value
+
+    @property
+    def fields(self):
+        """
+        list[:class:`PaymentProductField`]
+        """
+        return self.__fields
+
+    @fields.setter
+    def fields(self, value):
+        self.__fields = value
+
+    @property
+    def id(self):
+        """
+        int
+        """
+        return self.__id
+
+    @id.setter
+    def id(self, value):
+        self.__id = value
+
+    @property
+    def max_amount(self):
+        """
+        int
+        """
+        return self.__max_amount
+
+    @max_amount.setter
+    def max_amount(self, value):
+        self.__max_amount = value
+
+    @property
+    def min_amount(self):
+        """
+        int
+        """
+        return self.__min_amount
+
+    @min_amount.setter
+    def min_amount(self, value):
+        self.__min_amount = value
+
+    @property
+    def mobile_integration_level(self):
+        """
+        str
+        """
+        return self.__mobile_integration_level
+
+    @mobile_integration_level.setter
+    def mobile_integration_level(self, value):
+        self.__mobile_integration_level = value
+
+    @property
+    def payment_method(self):
+        """
+        str
+        """
+        return self.__payment_method
+
+    @payment_method.setter
+    def payment_method(self, value):
+        self.__payment_method = value
+
+    @property
+    def payment_product_group(self):
+        """
+        str
+        """
+        return self.__payment_product_group
+
+    @payment_product_group.setter
+    def payment_product_group(self, value):
+        self.__payment_product_group = value
+
+    @property
+    def uses_redirection_to3rd_party(self):
+        """
+        bool
+        """
+        return self.__uses_redirection_to3rd_party
+
+    @uses_redirection_to3rd_party.setter
+    def uses_redirection_to3rd_party(self, value):
+        self.__uses_redirection_to3rd_party = value
 
     def to_dictionary(self):
         dictionary = super(PaymentProduct, self).to_dictionary()

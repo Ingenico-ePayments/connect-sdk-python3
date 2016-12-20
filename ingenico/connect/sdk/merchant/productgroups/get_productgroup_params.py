@@ -8,23 +8,38 @@ from ingenico.connect.sdk.param_request import ParamRequest
 class GetProductgroupParams(ParamRequest):
     """
     Query parameters for Get payment product group
-    See also https://developer.globalcollect.com/documentation/api/server/#__merchantId__productgroups__paymentProductGroupId__get
     
-    Attributes:
-        amount:         int
-        hide:           list[str]
-        is_recurring:   bool
-        country_code:   str
-        locale:         str
-        currency_code:  str
+    See also https://developer.globalcollect.com/documentation/api/server/#__merchantId__productgroups__paymentProductGroupId__get
     """
 
-    amount = None
-    hide = None
-    is_recurring = None
-    country_code = None
-    locale = None
-    currency_code = None
+    __amount = None
+    __hide = None
+    __is_recurring = None
+    __country_code = None
+    __locale = None
+    __currency_code = None
+
+    @property
+    def amount(self):
+        """
+        int
+        """
+        return self.__amount
+
+    @amount.setter
+    def amount(self, value):
+        self.__amount = value
+
+    @property
+    def hide(self):
+        """
+        list[str]
+        """
+        return self.__hide
+
+    @hide.setter
+    def hide(self, value):
+        self.__hide = value
 
     def add_hide(self, value):
         """
@@ -33,6 +48,50 @@ class GetProductgroupParams(ParamRequest):
         if self.hide is None:
             self.hide = []
         self.hide.append(value)
+
+    @property
+    def is_recurring(self):
+        """
+        bool
+        """
+        return self.__is_recurring
+
+    @is_recurring.setter
+    def is_recurring(self, value):
+        self.__is_recurring = value
+
+    @property
+    def country_code(self):
+        """
+        str
+        """
+        return self.__country_code
+
+    @country_code.setter
+    def country_code(self, value):
+        self.__country_code = value
+
+    @property
+    def locale(self):
+        """
+        str
+        """
+        return self.__locale
+
+    @locale.setter
+    def locale(self, value):
+        self.__locale = value
+
+    @property
+    def currency_code(self):
+        """
+        str
+        """
+        return self.__currency_code
+
+    @currency_code.setter
+    def currency_code(self, value):
+        self.__currency_code = value
 
     def to_request_parameters(self):
         """

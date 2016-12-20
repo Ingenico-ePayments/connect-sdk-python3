@@ -10,15 +10,34 @@ from ingenico.connect.sdk.domain.definitions.bank_account_iban import BankAccoun
 class BankDetails(DataObject):
     """
     Class BankDetails
-    See also https://developer.globalcollect.com/documentation/api/server/#schema_BankDetails
     
-    Attributes:
-        bank_account_bban:  :class:`BankAccountBban`
-        bank_account_iban:  :class:`BankAccountIban`
-     """
+    See also https://developer.globalcollect.com/documentation/api/server/#schema_BankDetails
+    """
 
-    bank_account_bban = None
-    bank_account_iban = None
+    __bank_account_bban = None
+    __bank_account_iban = None
+
+    @property
+    def bank_account_bban(self):
+        """
+        :class:`BankAccountBban`
+        """
+        return self.__bank_account_bban
+
+    @bank_account_bban.setter
+    def bank_account_bban(self, value):
+        self.__bank_account_bban = value
+
+    @property
+    def bank_account_iban(self):
+        """
+        :class:`BankAccountIban`
+        """
+        return self.__bank_account_iban
+
+    @bank_account_iban.setter
+    def bank_account_iban(self, value):
+        self.__bank_account_iban = value
 
     def to_dictionary(self):
         dictionary = super(BankDetails, self).to_dictionary()

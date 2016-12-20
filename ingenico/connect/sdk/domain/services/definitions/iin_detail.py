@@ -8,15 +8,34 @@ from ingenico.connect.sdk.data_object import DataObject
 class IINDetail(DataObject):
     """
     Class IINDetail
-    See also https://developer.globalcollect.com/documentation/api/server/#schema_IINDetail
     
-    Attributes:
-        is_allowed_in_context:  bool
-        payment_product_id:     int
-     """
+    See also https://developer.globalcollect.com/documentation/api/server/#schema_IINDetail
+    """
 
-    is_allowed_in_context = None
-    payment_product_id = None
+    __is_allowed_in_context = None
+    __payment_product_id = None
+
+    @property
+    def is_allowed_in_context(self):
+        """
+        bool
+        """
+        return self.__is_allowed_in_context
+
+    @is_allowed_in_context.setter
+    def is_allowed_in_context(self, value):
+        self.__is_allowed_in_context = value
+
+    @property
+    def payment_product_id(self):
+        """
+        int
+        """
+        return self.__payment_product_id
+
+    @payment_product_id.setter
+    def payment_product_id(self, value):
+        self.__payment_product_id = value
 
     def to_dictionary(self):
         dictionary = super(IINDetail, self).to_dictionary()

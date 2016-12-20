@@ -10,15 +10,34 @@ from ingenico.connect.sdk.domain.token.definitions.token_card_data import TokenC
 class TokenCard(AbstractToken):
     """
     Class TokenCard
-    See also https://developer.globalcollect.com/documentation/api/server/#schema_TokenCard
     
-    Attributes:
-        customer:  :class:`CustomerToken`
-        data:      :class:`TokenCardData`
-     """
+    See also https://developer.globalcollect.com/documentation/api/server/#schema_TokenCard
+    """
 
-    customer = None
-    data = None
+    __customer = None
+    __data = None
+
+    @property
+    def customer(self):
+        """
+        :class:`CustomerToken`
+        """
+        return self.__customer
+
+    @customer.setter
+    def customer(self, value):
+        self.__customer = value
+
+    @property
+    def data(self):
+        """
+        :class:`TokenCardData`
+        """
+        return self.__data
+
+    @data.setter
+    def data(self, value):
+        self.__data = value
 
     def to_dictionary(self):
         dictionary = super(TokenCard, self).to_dictionary()

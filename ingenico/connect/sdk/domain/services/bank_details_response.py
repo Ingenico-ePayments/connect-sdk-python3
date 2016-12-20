@@ -12,19 +12,58 @@ from ingenico.connect.sdk.domain.services.definitions.swift import Swift
 class BankDetailsResponse(DataObject):
     """
     Class BankDetailsResponse
-    See also https://developer.globalcollect.com/documentation/api/server/#schema_BankDetailsResponse
     
-    Attributes:
-        bank_account_bban:  :class:`BankAccountBban`
-        bank_account_iban:  :class:`BankAccountIban`
-        bank_data:          :class:`BankData`
-        swift:              :class:`Swift`
-     """
+    See also https://developer.globalcollect.com/documentation/api/server/#schema_BankDetailsResponse
+    """
 
-    bank_account_bban = None
-    bank_account_iban = None
-    bank_data = None
-    swift = None
+    __bank_account_bban = None
+    __bank_account_iban = None
+    __bank_data = None
+    __swift = None
+
+    @property
+    def bank_account_bban(self):
+        """
+        :class:`BankAccountBban`
+        """
+        return self.__bank_account_bban
+
+    @bank_account_bban.setter
+    def bank_account_bban(self, value):
+        self.__bank_account_bban = value
+
+    @property
+    def bank_account_iban(self):
+        """
+        :class:`BankAccountIban`
+        """
+        return self.__bank_account_iban
+
+    @bank_account_iban.setter
+    def bank_account_iban(self, value):
+        self.__bank_account_iban = value
+
+    @property
+    def bank_data(self):
+        """
+        :class:`BankData`
+        """
+        return self.__bank_data
+
+    @bank_data.setter
+    def bank_data(self, value):
+        self.__bank_data = value
+
+    @property
+    def swift(self):
+        """
+        :class:`Swift`
+        """
+        return self.__swift
+
+    @swift.setter
+    def swift(self, value):
+        self.__swift = value
 
     def to_dictionary(self):
         dictionary = super(BankDetailsResponse, self).to_dictionary()

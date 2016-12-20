@@ -8,8 +8,9 @@ from ingenico.connect.sdk.domain.token.definitions.mandate_approval import Manda
 class ApproveTokenRequest(MandateApproval):
     """
     Class ApproveTokenRequest
+    
     See also https://developer.globalcollect.com/documentation/api/server/#schema_ApproveTokenRequest
-     """
+    """
 
     def to_dictionary(self):
         dictionary = super(ApproveTokenRequest, self).to_dictionary()

@@ -10,17 +10,46 @@ from ingenico.connect.sdk.domain.refund.definitions.refund_result import RefundR
 class RefundErrorResponse(DataObject):
     """
     Class RefundErrorResponse
-    See also https://developer.globalcollect.com/documentation/api/server/#schema_RefundErrorResponse
     
-    Attributes:
-        error_id:       str
-        errors:         list[:class:`APIError`]
-        refund_result:  :class:`RefundResult`
-     """
+    See also https://developer.globalcollect.com/documentation/api/server/#schema_RefundErrorResponse
+    """
 
-    error_id = None
-    errors = None
-    refund_result = None
+    __error_id = None
+    __errors = None
+    __refund_result = None
+
+    @property
+    def error_id(self):
+        """
+        str
+        """
+        return self.__error_id
+
+    @error_id.setter
+    def error_id(self, value):
+        self.__error_id = value
+
+    @property
+    def errors(self):
+        """
+        list[:class:`APIError`]
+        """
+        return self.__errors
+
+    @errors.setter
+    def errors(self, value):
+        self.__errors = value
+
+    @property
+    def refund_result(self):
+        """
+        :class:`RefundResult`
+        """
+        return self.__refund_result
+
+    @refund_result.setter
+    def refund_result(self, value):
+        self.__refund_result = value
 
     def to_dictionary(self):
         dictionary = super(RefundErrorResponse, self).to_dictionary()

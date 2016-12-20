@@ -9,13 +9,22 @@ from ingenico.connect.sdk.domain.token.definitions.token_non_sepa_direct_debit_p
 class MandateNonSepaDirectDebit(DataObject):
     """
     Class MandateNonSepaDirectDebit
-    See also https://developer.globalcollect.com/documentation/api/server/#schema_MandateNonSepaDirectDebit
     
-    Attributes:
-        payment_product705_specific_data:  :class:`TokenNonSepaDirectDebitPaymentProduct705SpecificData`
-     """
+    See also https://developer.globalcollect.com/documentation/api/server/#schema_MandateNonSepaDirectDebit
+    """
 
-    payment_product705_specific_data = None
+    __payment_product705_specific_data = None
+
+    @property
+    def payment_product705_specific_data(self):
+        """
+        :class:`TokenNonSepaDirectDebitPaymentProduct705SpecificData`
+        """
+        return self.__payment_product705_specific_data
+
+    @payment_product705_specific_data.setter
+    def payment_product705_specific_data(self, value):
+        self.__payment_product705_specific_data = value
 
     def to_dictionary(self):
         dictionary = super(MandateNonSepaDirectDebit, self).to_dictionary()

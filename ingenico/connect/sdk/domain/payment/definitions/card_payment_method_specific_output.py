@@ -11,19 +11,58 @@ from ingenico.connect.sdk.domain.payment.definitions.three_d_secure_results impo
 class CardPaymentMethodSpecificOutput(AbstractPaymentMethodSpecificOutput):
     """
     Class CardPaymentMethodSpecificOutput
-    See also https://developer.globalcollect.com/documentation/api/server/#schema_CardPaymentMethodSpecificOutput
     
-    Attributes:
-        authorisation_code:      str
-        card:                    :class:`CardEssentials`
-        fraud_results:           :class:`CardFraudResults`
-        three_d_secure_results:  :class:`ThreeDSecureResults`
-     """
+    See also https://developer.globalcollect.com/documentation/api/server/#schema_CardPaymentMethodSpecificOutput
+    """
 
-    authorisation_code = None
-    card = None
-    fraud_results = None
-    three_d_secure_results = None
+    __authorisation_code = None
+    __card = None
+    __fraud_results = None
+    __three_d_secure_results = None
+
+    @property
+    def authorisation_code(self):
+        """
+        str
+        """
+        return self.__authorisation_code
+
+    @authorisation_code.setter
+    def authorisation_code(self, value):
+        self.__authorisation_code = value
+
+    @property
+    def card(self):
+        """
+        :class:`CardEssentials`
+        """
+        return self.__card
+
+    @card.setter
+    def card(self, value):
+        self.__card = value
+
+    @property
+    def fraud_results(self):
+        """
+        :class:`CardFraudResults`
+        """
+        return self.__fraud_results
+
+    @fraud_results.setter
+    def fraud_results(self, value):
+        self.__fraud_results = value
+
+    @property
+    def three_d_secure_results(self):
+        """
+        :class:`ThreeDSecureResults`
+        """
+        return self.__three_d_secure_results
+
+    @three_d_secure_results.setter
+    def three_d_secure_results(self, value):
+        self.__three_d_secure_results = value
 
     def to_dictionary(self):
         dictionary = super(CardPaymentMethodSpecificOutput, self).to_dictionary()

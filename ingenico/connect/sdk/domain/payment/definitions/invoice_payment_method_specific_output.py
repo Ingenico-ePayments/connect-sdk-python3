@@ -8,8 +8,9 @@ from ingenico.connect.sdk.domain.payment.definitions.abstract_payment_method_spe
 class InvoicePaymentMethodSpecificOutput(AbstractPaymentMethodSpecificOutput):
     """
     Class InvoicePaymentMethodSpecificOutput
+    
     See also https://developer.globalcollect.com/documentation/api/server/#schema_InvoicePaymentMethodSpecificOutput
-     """
+    """
 
     def to_dictionary(self):
         dictionary = super(InvoicePaymentMethodSpecificOutput, self).to_dictionary()

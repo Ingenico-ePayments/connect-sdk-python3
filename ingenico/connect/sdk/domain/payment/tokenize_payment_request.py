@@ -8,13 +8,22 @@ from ingenico.connect.sdk.data_object import DataObject
 class TokenizePaymentRequest(DataObject):
     """
     Class TokenizePaymentRequest
-    See also https://developer.globalcollect.com/documentation/api/server/#schema_TokenizePaymentRequest
     
-    Attributes:
-        alias:  str
-     """
+    See also https://developer.globalcollect.com/documentation/api/server/#schema_TokenizePaymentRequest
+    """
 
-    alias = None
+    __alias = None
+
+    @property
+    def alias(self):
+        """
+        str
+        """
+        return self.__alias
+
+    @alias.setter
+    def alias(self, value):
+        self.__alias = value
 
     def to_dictionary(self):
         dictionary = super(TokenizePaymentRequest, self).to_dictionary()

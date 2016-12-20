@@ -9,13 +9,22 @@ from ingenico.connect.sdk.domain.payment.definitions.abstract_payment_method_spe
 class NonSepaDirectDebitPaymentMethodSpecificOutput(AbstractPaymentMethodSpecificOutput):
     """
     Class NonSepaDirectDebitPaymentMethodSpecificOutput
-    See also https://developer.globalcollect.com/documentation/api/server/#schema_NonSepaDirectDebitPaymentMethodSpecificOutput
     
-    Attributes:
-        fraud_results:  :class:`FraudResults`
-     """
+    See also https://developer.globalcollect.com/documentation/api/server/#schema_NonSepaDirectDebitPaymentMethodSpecificOutput
+    """
 
-    fraud_results = None
+    __fraud_results = None
+
+    @property
+    def fraud_results(self):
+        """
+        :class:`FraudResults`
+        """
+        return self.__fraud_results
+
+    @fraud_results.setter
+    def fraud_results(self, value):
+        self.__fraud_results = value
 
     def to_dictionary(self):
         dictionary = super(NonSepaDirectDebitPaymentMethodSpecificOutput, self).to_dictionary()

@@ -8,15 +8,34 @@ from ingenico.connect.sdk.domain.definitions.bank_account_bban import BankAccoun
 class BankAccountBbanRefund(BankAccountBban):
     """
     Class BankAccountBbanRefund
-    See also https://developer.globalcollect.com/documentation/api/server/#schema_BankAccountBbanRefund
     
-    Attributes:
-        bank_city:   str
-        swift_code:  str
-     """
+    See also https://developer.globalcollect.com/documentation/api/server/#schema_BankAccountBbanRefund
+    """
 
-    bank_city = None
-    swift_code = None
+    __bank_city = None
+    __swift_code = None
+
+    @property
+    def bank_city(self):
+        """
+        str
+        """
+        return self.__bank_city
+
+    @bank_city.setter
+    def bank_city(self, value):
+        self.__bank_city = value
+
+    @property
+    def swift_code(self):
+        """
+        str
+        """
+        return self.__swift_code
+
+    @swift_code.setter
+    def swift_code(self, value):
+        self.__swift_code = value
 
     def to_dictionary(self):
         dictionary = super(BankAccountBbanRefund, self).to_dictionary()

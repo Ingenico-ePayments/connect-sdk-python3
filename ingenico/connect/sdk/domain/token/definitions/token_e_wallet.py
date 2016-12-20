@@ -10,15 +10,34 @@ from ingenico.connect.sdk.domain.token.definitions.token_e_wallet_data import To
 class TokenEWallet(AbstractToken):
     """
     Class TokenEWallet
-    See also https://developer.globalcollect.com/documentation/api/server/#schema_TokenEWallet
     
-    Attributes:
-        customer:  :class:`CustomerToken`
-        data:      :class:`TokenEWalletData`
-     """
+    See also https://developer.globalcollect.com/documentation/api/server/#schema_TokenEWallet
+    """
 
-    customer = None
-    data = None
+    __customer = None
+    __data = None
+
+    @property
+    def customer(self):
+        """
+        :class:`CustomerToken`
+        """
+        return self.__customer
+
+    @customer.setter
+    def customer(self, value):
+        self.__customer = value
+
+    @property
+    def data(self):
+        """
+        :class:`TokenEWalletData`
+        """
+        return self.__data
+
+    @data.setter
+    def data(self, value):
+        self.__data = value
 
     def to_dictionary(self):
         dictionary = super(TokenEWallet, self).to_dictionary()

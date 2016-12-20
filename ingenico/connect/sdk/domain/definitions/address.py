@@ -8,27 +8,106 @@ from ingenico.connect.sdk.data_object import DataObject
 class Address(DataObject):
     """
     Class Address
-    See also https://developer.globalcollect.com/documentation/api/server/#schema_Address
     
-    Attributes:
-        additional_info:  str
-        city:             str
-        country_code:     str
-        house_number:     str
-        state:            str
-        state_code:       str
-        street:           str
-        zip:              str
-     """
+    See also https://developer.globalcollect.com/documentation/api/server/#schema_Address
+    """
 
-    additional_info = None
-    city = None
-    country_code = None
-    house_number = None
-    state = None
-    state_code = None
-    street = None
-    zip = None
+    __additional_info = None
+    __city = None
+    __country_code = None
+    __house_number = None
+    __state = None
+    __state_code = None
+    __street = None
+    __zip = None
+
+    @property
+    def additional_info(self):
+        """
+        str
+        """
+        return self.__additional_info
+
+    @additional_info.setter
+    def additional_info(self, value):
+        self.__additional_info = value
+
+    @property
+    def city(self):
+        """
+        str
+        """
+        return self.__city
+
+    @city.setter
+    def city(self, value):
+        self.__city = value
+
+    @property
+    def country_code(self):
+        """
+        str
+        """
+        return self.__country_code
+
+    @country_code.setter
+    def country_code(self, value):
+        self.__country_code = value
+
+    @property
+    def house_number(self):
+        """
+        str
+        """
+        return self.__house_number
+
+    @house_number.setter
+    def house_number(self, value):
+        self.__house_number = value
+
+    @property
+    def state(self):
+        """
+        str
+        """
+        return self.__state
+
+    @state.setter
+    def state(self, value):
+        self.__state = value
+
+    @property
+    def state_code(self):
+        """
+        str
+        """
+        return self.__state_code
+
+    @state_code.setter
+    def state_code(self, value):
+        self.__state_code = value
+
+    @property
+    def street(self):
+        """
+        str
+        """
+        return self.__street
+
+    @street.setter
+    def street(self, value):
+        self.__street = value
+
+    @property
+    def zip(self):
+        """
+        str
+        """
+        return self.__zip
+
+    @zip.setter
+    def zip(self, value):
+        self.__zip = value
 
     def to_dictionary(self):
         dictionary = super(Address, self).to_dictionary()

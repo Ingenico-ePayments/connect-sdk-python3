@@ -8,13 +8,22 @@ from ingenico.connect.sdk.domain.definitions.abstract_payment_method_specific_in
 class InvoicePaymentMethodSpecificInput(AbstractPaymentMethodSpecificInput):
     """
     Class InvoicePaymentMethodSpecificInput
-    See also https://developer.globalcollect.com/documentation/api/server/#schema_InvoicePaymentMethodSpecificInput
     
-    Attributes:
-        additional_reference:  str
-     """
+    See also https://developer.globalcollect.com/documentation/api/server/#schema_InvoicePaymentMethodSpecificInput
+    """
 
-    additional_reference = None
+    __additional_reference = None
+
+    @property
+    def additional_reference(self):
+        """
+        str
+        """
+        return self.__additional_reference
+
+    @additional_reference.setter
+    def additional_reference(self, value):
+        self.__additional_reference = value
 
     def to_dictionary(self):
         dictionary = super(InvoicePaymentMethodSpecificInput, self).to_dictionary()

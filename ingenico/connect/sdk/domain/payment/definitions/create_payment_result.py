@@ -11,17 +11,46 @@ from ingenico.connect.sdk.domain.payment.definitions.payment_creation_output imp
 class CreatePaymentResult(DataObject):
     """
     Class CreatePaymentResult
-    See also https://developer.globalcollect.com/documentation/api/server/#schema_CreatePaymentResult
     
-    Attributes:
-        creation_output:  :class:`PaymentCreationOutput`
-        merchant_action:  :class:`MerchantAction`
-        payment:          :class:`Payment`
-     """
+    See also https://developer.globalcollect.com/documentation/api/server/#schema_CreatePaymentResult
+    """
 
-    creation_output = None
-    merchant_action = None
-    payment = None
+    __creation_output = None
+    __merchant_action = None
+    __payment = None
+
+    @property
+    def creation_output(self):
+        """
+        :class:`PaymentCreationOutput`
+        """
+        return self.__creation_output
+
+    @creation_output.setter
+    def creation_output(self, value):
+        self.__creation_output = value
+
+    @property
+    def merchant_action(self):
+        """
+        :class:`MerchantAction`
+        """
+        return self.__merchant_action
+
+    @merchant_action.setter
+    def merchant_action(self, value):
+        self.__merchant_action = value
+
+    @property
+    def payment(self):
+        """
+        :class:`Payment`
+        """
+        return self.__payment
+
+    @payment.setter
+    def payment(self, value):
+        self.__payment = value
 
     def to_dictionary(self):
         dictionary = super(CreatePaymentResult, self).to_dictionary()

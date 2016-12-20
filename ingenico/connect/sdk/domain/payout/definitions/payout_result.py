@@ -10,17 +10,46 @@ from ingenico.connect.sdk.domain.payment.definitions.order_output import OrderOu
 class PayoutResult(AbstractOrderStatus):
     """
     Class PayoutResult
-    See also https://developer.globalcollect.com/documentation/api/server/#schema_PayoutResult
     
-    Attributes:
-        payout_output:  :class:`OrderOutput`
-        status:         str
-        status_output:  :class:`OrderStatusOutput`
-     """
+    See also https://developer.globalcollect.com/documentation/api/server/#schema_PayoutResult
+    """
 
-    payout_output = None
-    status = None
-    status_output = None
+    __payout_output = None
+    __status = None
+    __status_output = None
+
+    @property
+    def payout_output(self):
+        """
+        :class:`OrderOutput`
+        """
+        return self.__payout_output
+
+    @payout_output.setter
+    def payout_output(self, value):
+        self.__payout_output = value
+
+    @property
+    def status(self):
+        """
+        str
+        """
+        return self.__status
+
+    @status.setter
+    def status(self, value):
+        self.__status = value
+
+    @property
+    def status_output(self):
+        """
+        :class:`OrderStatusOutput`
+        """
+        return self.__status_output
+
+    @status_output.setter
+    def status_output(self, value):
+        self.__status_output = value
 
     def to_dictionary(self):
         dictionary = super(PayoutResult, self).to_dictionary()

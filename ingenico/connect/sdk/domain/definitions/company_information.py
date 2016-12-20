@@ -8,13 +8,22 @@ from ingenico.connect.sdk.data_object import DataObject
 class CompanyInformation(DataObject):
     """
     Class CompanyInformation
-    See also https://developer.globalcollect.com/documentation/api/server/#schema_CompanyInformation
     
-    Attributes:
-        name:  str
-     """
+    See also https://developer.globalcollect.com/documentation/api/server/#schema_CompanyInformation
+    """
 
-    name = None
+    __name = None
+
+    @property
+    def name(self):
+        """
+        str
+        """
+        return self.__name
+
+    @name.setter
+    def name(self, value):
+        self.__name = value
 
     def to_dictionary(self):
         dictionary = super(CompanyInformation, self).to_dictionary()

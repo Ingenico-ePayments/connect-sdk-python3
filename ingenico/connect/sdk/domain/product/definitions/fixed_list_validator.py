@@ -8,13 +8,22 @@ from ingenico.connect.sdk.data_object import DataObject
 class FixedListValidator(DataObject):
     """
     Class FixedListValidator
-    See also https://developer.globalcollect.com/documentation/api/server/#schema_FixedListValidator
     
-    Attributes:
-        allowed_values:  list[str]
-     """
+    See also https://developer.globalcollect.com/documentation/api/server/#schema_FixedListValidator
+    """
 
-    allowed_values = None
+    __allowed_values = None
+
+    @property
+    def allowed_values(self):
+        """
+        list[str]
+        """
+        return self.__allowed_values
+
+    @allowed_values.setter
+    def allowed_values(self, value):
+        self.__allowed_values = value
 
     def to_dictionary(self):
         dictionary = super(FixedListValidator, self).to_dictionary()

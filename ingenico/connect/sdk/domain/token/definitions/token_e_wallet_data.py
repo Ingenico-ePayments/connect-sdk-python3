@@ -8,13 +8,22 @@ from ingenico.connect.sdk.data_object import DataObject
 class TokenEWalletData(DataObject):
     """
     Class TokenEWalletData
-    See also https://developer.globalcollect.com/documentation/api/server/#schema_TokenEWalletData
     
-    Attributes:
-        billing_agreement_id:  str
-     """
+    See also https://developer.globalcollect.com/documentation/api/server/#schema_TokenEWalletData
+    """
 
-    billing_agreement_id = None
+    __billing_agreement_id = None
+
+    @property
+    def billing_agreement_id(self):
+        """
+        str
+        """
+        return self.__billing_agreement_id
+
+    @billing_agreement_id.setter
+    def billing_agreement_id(self, value):
+        self.__billing_agreement_id = value
 
     def to_dictionary(self):
         dictionary = super(TokenEWalletData, self).to_dictionary()

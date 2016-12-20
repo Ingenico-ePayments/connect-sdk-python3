@@ -10,19 +10,58 @@ from ingenico.connect.sdk.domain.definitions.validation_bank_account_output impo
 class ResultDoRiskAssessment(DataObject):
     """
     Class ResultDoRiskAssessment
-    See also https://developer.globalcollect.com/documentation/api/server/#schema_ResultDoRiskAssessment
     
-    Attributes:
-        category:                               str
-        result:                                 str
-        retaildecisions_cc_fraud_check_output:  :class:`RetailDecisionsCCFraudCheckOutput`
-        validation_bank_account_output:         :class:`ValidationBankAccountOutput`
-     """
+    See also https://developer.globalcollect.com/documentation/api/server/#schema_ResultDoRiskAssessment
+    """
 
-    category = None
-    result = None
-    retaildecisions_cc_fraud_check_output = None
-    validation_bank_account_output = None
+    __category = None
+    __result = None
+    __retaildecisions_cc_fraud_check_output = None
+    __validation_bank_account_output = None
+
+    @property
+    def category(self):
+        """
+        str
+        """
+        return self.__category
+
+    @category.setter
+    def category(self, value):
+        self.__category = value
+
+    @property
+    def result(self):
+        """
+        str
+        """
+        return self.__result
+
+    @result.setter
+    def result(self, value):
+        self.__result = value
+
+    @property
+    def retaildecisions_cc_fraud_check_output(self):
+        """
+        :class:`RetailDecisionsCCFraudCheckOutput`
+        """
+        return self.__retaildecisions_cc_fraud_check_output
+
+    @retaildecisions_cc_fraud_check_output.setter
+    def retaildecisions_cc_fraud_check_output(self, value):
+        self.__retaildecisions_cc_fraud_check_output = value
+
+    @property
+    def validation_bank_account_output(self):
+        """
+        :class:`ValidationBankAccountOutput`
+        """
+        return self.__validation_bank_account_output
+
+    @validation_bank_account_output.setter
+    def validation_bank_account_output(self, value):
+        self.__validation_bank_account_output = value
 
     def to_dictionary(self):
         dictionary = super(ResultDoRiskAssessment, self).to_dictionary()

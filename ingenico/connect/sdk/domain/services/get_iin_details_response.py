@@ -9,19 +9,58 @@ from ingenico.connect.sdk.domain.services.definitions.iin_detail import IINDetai
 class GetIINDetailsResponse(DataObject):
     """
     Class GetIINDetailsResponse
-    See also https://developer.globalcollect.com/documentation/api/server/#schema_GetIINDetailsResponse
     
-    Attributes:
-        co_brands:              list[:class:`IINDetail`]
-        country_code:           str
-        is_allowed_in_context:  bool
-        payment_product_id:     int
-     """
+    See also https://developer.globalcollect.com/documentation/api/server/#schema_GetIINDetailsResponse
+    """
 
-    co_brands = None
-    country_code = None
-    is_allowed_in_context = None
-    payment_product_id = None
+    __co_brands = None
+    __country_code = None
+    __is_allowed_in_context = None
+    __payment_product_id = None
+
+    @property
+    def co_brands(self):
+        """
+        list[:class:`IINDetail`]
+        """
+        return self.__co_brands
+
+    @co_brands.setter
+    def co_brands(self, value):
+        self.__co_brands = value
+
+    @property
+    def country_code(self):
+        """
+        str
+        """
+        return self.__country_code
+
+    @country_code.setter
+    def country_code(self, value):
+        self.__country_code = value
+
+    @property
+    def is_allowed_in_context(self):
+        """
+        bool
+        """
+        return self.__is_allowed_in_context
+
+    @is_allowed_in_context.setter
+    def is_allowed_in_context(self, value):
+        self.__is_allowed_in_context = value
+
+    @property
+    def payment_product_id(self):
+        """
+        int
+        """
+        return self.__payment_product_id
+
+    @payment_product_id.setter
+    def payment_product_id(self, value):
+        self.__payment_product_id = value
 
     def to_dictionary(self):
         dictionary = super(GetIINDetailsResponse, self).to_dictionary()

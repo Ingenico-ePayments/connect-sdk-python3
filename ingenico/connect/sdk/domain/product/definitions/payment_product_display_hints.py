@@ -8,17 +8,46 @@ from ingenico.connect.sdk.data_object import DataObject
 class PaymentProductDisplayHints(DataObject):
     """
     Class PaymentProductDisplayHints
-    See also https://developer.globalcollect.com/documentation/api/server/#schema_PaymentProductDisplayHints
     
-    Attributes:
-        display_order:  int
-        label:          str
-        logo:           str
-     """
+    See also https://developer.globalcollect.com/documentation/api/server/#schema_PaymentProductDisplayHints
+    """
 
-    display_order = None
-    label = None
-    logo = None
+    __display_order = None
+    __label = None
+    __logo = None
+
+    @property
+    def display_order(self):
+        """
+        int
+        """
+        return self.__display_order
+
+    @display_order.setter
+    def display_order(self, value):
+        self.__display_order = value
+
+    @property
+    def label(self):
+        """
+        str
+        """
+        return self.__label
+
+    @label.setter
+    def label(self, value):
+        self.__label = value
+
+    @property
+    def logo(self):
+        """
+        str
+        """
+        return self.__logo
+
+    @logo.setter
+    def logo(self, value):
+        self.__logo = value
 
     def to_dictionary(self):
         dictionary = super(PaymentProductDisplayHints, self).to_dictionary()

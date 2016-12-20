@@ -12,21 +12,70 @@ from ingenico.connect.sdk.domain.token.definitions.token_sepa_direct_debit_witho
 class CreateTokenRequest(DataObject):
     """
     Class CreateTokenRequest
-    See also https://developer.globalcollect.com/documentation/api/server/#schema_CreateTokenRequest
     
-    Attributes:
-        card:                   :class:`TokenCard`
-        e_wallet:               :class:`TokenEWallet`
-        non_sepa_direct_debit:  :class:`TokenNonSepaDirectDebit`
-        payment_product_id:     int
-        sepa_direct_debit:      :class:`TokenSepaDirectDebitWithoutCreditor`
-     """
+    See also https://developer.globalcollect.com/documentation/api/server/#schema_CreateTokenRequest
+    """
 
-    card = None
-    e_wallet = None
-    non_sepa_direct_debit = None
-    payment_product_id = None
-    sepa_direct_debit = None
+    __card = None
+    __e_wallet = None
+    __non_sepa_direct_debit = None
+    __payment_product_id = None
+    __sepa_direct_debit = None
+
+    @property
+    def card(self):
+        """
+        :class:`TokenCard`
+        """
+        return self.__card
+
+    @card.setter
+    def card(self, value):
+        self.__card = value
+
+    @property
+    def e_wallet(self):
+        """
+        :class:`TokenEWallet`
+        """
+        return self.__e_wallet
+
+    @e_wallet.setter
+    def e_wallet(self, value):
+        self.__e_wallet = value
+
+    @property
+    def non_sepa_direct_debit(self):
+        """
+        :class:`TokenNonSepaDirectDebit`
+        """
+        return self.__non_sepa_direct_debit
+
+    @non_sepa_direct_debit.setter
+    def non_sepa_direct_debit(self, value):
+        self.__non_sepa_direct_debit = value
+
+    @property
+    def payment_product_id(self):
+        """
+        int
+        """
+        return self.__payment_product_id
+
+    @payment_product_id.setter
+    def payment_product_id(self, value):
+        self.__payment_product_id = value
+
+    @property
+    def sepa_direct_debit(self):
+        """
+        :class:`TokenSepaDirectDebitWithoutCreditor`
+        """
+        return self.__sepa_direct_debit
+
+    @sepa_direct_debit.setter
+    def sepa_direct_debit(self, value):
+        self.__sepa_direct_debit = value
 
     def to_dictionary(self):
         dictionary = super(CreateTokenRequest, self).to_dictionary()

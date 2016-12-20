@@ -9,13 +9,22 @@ from ingenico.connect.sdk.domain.riskassessments.definitions.risk_assessment imp
 class RiskAssessmentCard(RiskAssessment):
     """
     Class RiskAssessmentCard
-    See also https://developer.globalcollect.com/documentation/api/server/#schema_RiskAssessmentCard
     
-    Attributes:
-        card:  :class:`Card`
-     """
+    See also https://developer.globalcollect.com/documentation/api/server/#schema_RiskAssessmentCard
+    """
 
-    card = None
+    __card = None
+
+    @property
+    def card(self):
+        """
+        :class:`Card`
+        """
+        return self.__card
+
+    @card.setter
+    def card(self, value):
+        self.__card = value
 
     def to_dictionary(self):
         dictionary = super(RiskAssessmentCard, self).to_dictionary()

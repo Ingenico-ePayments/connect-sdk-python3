@@ -8,23 +8,82 @@ from ingenico.connect.sdk.domain.definitions.bank_account import BankAccount
 class BankAccountBban(BankAccount):
     """
     Class BankAccountBban
-    See also https://developer.globalcollect.com/documentation/api/server/#schema_BankAccountBban
     
-    Attributes:
-        account_number:  str
-        bank_code:       str
-        bank_name:       str
-        branch_code:     str
-        check_digit:     str
-        country_code:    str
-     """
+    See also https://developer.globalcollect.com/documentation/api/server/#schema_BankAccountBban
+    """
 
-    account_number = None
-    bank_code = None
-    bank_name = None
-    branch_code = None
-    check_digit = None
-    country_code = None
+    __account_number = None
+    __bank_code = None
+    __bank_name = None
+    __branch_code = None
+    __check_digit = None
+    __country_code = None
+
+    @property
+    def account_number(self):
+        """
+        str
+        """
+        return self.__account_number
+
+    @account_number.setter
+    def account_number(self, value):
+        self.__account_number = value
+
+    @property
+    def bank_code(self):
+        """
+        str
+        """
+        return self.__bank_code
+
+    @bank_code.setter
+    def bank_code(self, value):
+        self.__bank_code = value
+
+    @property
+    def bank_name(self):
+        """
+        str
+        """
+        return self.__bank_name
+
+    @bank_name.setter
+    def bank_name(self, value):
+        self.__bank_name = value
+
+    @property
+    def branch_code(self):
+        """
+        str
+        """
+        return self.__branch_code
+
+    @branch_code.setter
+    def branch_code(self, value):
+        self.__branch_code = value
+
+    @property
+    def check_digit(self):
+        """
+        str
+        """
+        return self.__check_digit
+
+    @check_digit.setter
+    def check_digit(self, value):
+        self.__check_digit = value
+
+    @property
+    def country_code(self):
+        """
+        str
+        """
+        return self.__country_code
+
+    @country_code.setter
+    def country_code(self, value):
+        self.__country_code = value
 
     def to_dictionary(self):
         dictionary = super(BankAccountBban, self).to_dictionary()

@@ -8,8 +8,9 @@ from ingenico.connect.sdk.domain.refund.definitions.refund_result import RefundR
 class RefundResponse(RefundResult):
     """
     Class RefundResponse
+    
     See also https://developer.globalcollect.com/documentation/api/server/#schema_RefundResponse
-     """
+    """
 
     def to_dictionary(self):
         dictionary = super(RefundResponse, self).to_dictionary()

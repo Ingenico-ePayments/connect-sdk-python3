@@ -8,17 +8,46 @@ from ingenico.connect.sdk.data_object import DataObject
 class ThreeDSecureResults(DataObject):
     """
     Class ThreeDSecureResults
-    See also https://developer.globalcollect.com/documentation/api/server/#schema_ThreeDSecureResults
     
-    Attributes:
-        cavv:  str
-        eci:   str
-        xid:   str
-     """
+    See also https://developer.globalcollect.com/documentation/api/server/#schema_ThreeDSecureResults
+    """
 
-    cavv = None
-    eci = None
-    xid = None
+    __cavv = None
+    __eci = None
+    __xid = None
+
+    @property
+    def cavv(self):
+        """
+        str
+        """
+        return self.__cavv
+
+    @cavv.setter
+    def cavv(self, value):
+        self.__cavv = value
+
+    @property
+    def eci(self):
+        """
+        str
+        """
+        return self.__eci
+
+    @eci.setter
+    def eci(self, value):
+        self.__eci = value
+
+    @property
+    def xid(self):
+        """
+        str
+        """
+        return self.__xid
+
+    @xid.setter
+    def xid(self, value):
+        self.__xid = value
 
     def to_dictionary(self):
         dictionary = super(ThreeDSecureResults, self).to_dictionary()

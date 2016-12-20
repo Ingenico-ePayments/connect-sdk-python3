@@ -9,15 +9,34 @@ from ingenico.connect.sdk.domain.definitions.payment_product_filter import Payme
 class PaymentProductFiltersClientSession(DataObject):
     """
     Class PaymentProductFiltersClientSession
-    See also https://developer.globalcollect.com/documentation/api/server/#schema_PaymentProductFiltersClientSession
     
-    Attributes:
-        exclude:      :class:`PaymentProductFilter`
-        restrict_to:  :class:`PaymentProductFilter`
-     """
+    See also https://developer.globalcollect.com/documentation/api/server/#schema_PaymentProductFiltersClientSession
+    """
 
-    exclude = None
-    restrict_to = None
+    __exclude = None
+    __restrict_to = None
+
+    @property
+    def exclude(self):
+        """
+        :class:`PaymentProductFilter`
+        """
+        return self.__exclude
+
+    @exclude.setter
+    def exclude(self, value):
+        self.__exclude = value
+
+    @property
+    def restrict_to(self):
+        """
+        :class:`PaymentProductFilter`
+        """
+        return self.__restrict_to
+
+    @restrict_to.setter
+    def restrict_to(self, value):
+        self.__restrict_to = value
 
     def to_dictionary(self):
         dictionary = super(PaymentProductFiltersClientSession, self).to_dictionary()

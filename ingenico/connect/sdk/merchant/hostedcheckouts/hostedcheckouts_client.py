@@ -24,7 +24,9 @@ class HostedcheckoutsClient(ApiResource):
     def create(self, body, context=None):
         """
         Resource /{merchantId}/hostedcheckouts
+
         Create hosted checkout
+        
         See also https://developer.globalcollect.com/documentation/api/server/#__merchantId__hostedcheckouts_post
 
         :param body:     :class:`CreateHostedCheckoutRequest`
@@ -56,7 +58,9 @@ class HostedcheckoutsClient(ApiResource):
     def get(self, hosted_checkout_id, context=None):
         """
         Resource /{merchantId}/hostedcheckouts/{hostedCheckoutId}
+
         Get hosted checkout status
+        
         See also https://developer.globalcollect.com/documentation/api/server/#__merchantId__hostedcheckouts__hostedCheckoutId__get
 
         :param hosted_checkout_id:  str

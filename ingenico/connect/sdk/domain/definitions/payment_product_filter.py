@@ -8,15 +8,34 @@ from ingenico.connect.sdk.data_object import DataObject
 class PaymentProductFilter(DataObject):
     """
     Class PaymentProductFilter
-    See also https://developer.globalcollect.com/documentation/api/server/#schema_PaymentProductFilter
     
-    Attributes:
-        groups:    list[str]
-        products:  list[int]
-     """
+    See also https://developer.globalcollect.com/documentation/api/server/#schema_PaymentProductFilter
+    """
 
-    groups = None
-    products = None
+    __groups = None
+    __products = None
+
+    @property
+    def groups(self):
+        """
+        list[str]
+        """
+        return self.__groups
+
+    @groups.setter
+    def groups(self, value):
+        self.__groups = value
+
+    @property
+    def products(self):
+        """
+        list[int]
+        """
+        return self.__products
+
+    @products.setter
+    def products(self, value):
+        self.__products = value
 
     def to_dictionary(self):
         dictionary = super(PaymentProductFilter, self).to_dictionary()

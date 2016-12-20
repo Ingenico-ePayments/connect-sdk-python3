@@ -8,8 +8,9 @@ from ingenico.connect.sdk.domain.definitions.abstract_payment_method_specific_in
 class CashPaymentMethodSpecificInputBase(AbstractPaymentMethodSpecificInput):
     """
     Class CashPaymentMethodSpecificInputBase
+    
     See also https://developer.globalcollect.com/documentation/api/server/#schema_CashPaymentMethodSpecificInputBase
-     """
+    """
 
     def to_dictionary(self):
         dictionary = super(CashPaymentMethodSpecificInputBase, self).to_dictionary()

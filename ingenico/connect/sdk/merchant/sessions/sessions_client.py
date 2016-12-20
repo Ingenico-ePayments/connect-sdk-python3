@@ -23,7 +23,9 @@ class SessionsClient(ApiResource):
     def create(self, body, context=None):
         """
         Resource /{merchantId}/sessions
+
         Create Session
+        
         See also https://developer.globalcollect.com/documentation/api/server/#__merchantId__sessions_post
 
         :param body:     :class:`SessionRequest`

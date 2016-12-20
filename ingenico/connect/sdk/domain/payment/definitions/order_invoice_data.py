@@ -8,19 +8,58 @@ from ingenico.connect.sdk.data_object import DataObject
 class OrderInvoiceData(DataObject):
     """
     Class OrderInvoiceData
-    See also https://developer.globalcollect.com/documentation/api/server/#schema_OrderInvoiceData
     
-    Attributes:
-        additional_data:  str
-        invoice_date:     str
-        invoice_number:   str
-        text_qualifiers:  list[str]
-     """
+    See also https://developer.globalcollect.com/documentation/api/server/#schema_OrderInvoiceData
+    """
 
-    additional_data = None
-    invoice_date = None
-    invoice_number = None
-    text_qualifiers = None
+    __additional_data = None
+    __invoice_date = None
+    __invoice_number = None
+    __text_qualifiers = None
+
+    @property
+    def additional_data(self):
+        """
+        str
+        """
+        return self.__additional_data
+
+    @additional_data.setter
+    def additional_data(self, value):
+        self.__additional_data = value
+
+    @property
+    def invoice_date(self):
+        """
+        str
+        """
+        return self.__invoice_date
+
+    @invoice_date.setter
+    def invoice_date(self, value):
+        self.__invoice_date = value
+
+    @property
+    def invoice_number(self):
+        """
+        str
+        """
+        return self.__invoice_number
+
+    @invoice_number.setter
+    def invoice_number(self, value):
+        self.__invoice_number = value
+
+    @property
+    def text_qualifiers(self):
+        """
+        list[str]
+        """
+        return self.__text_qualifiers
+
+    @text_qualifiers.setter
+    def text_qualifiers(self, value):
+        self.__text_qualifiers = value
 
     def to_dictionary(self):
         dictionary = super(OrderInvoiceData, self).to_dictionary()

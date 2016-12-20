@@ -9,15 +9,34 @@ from ingenico.connect.sdk.domain.product.definitions.value_mapping_element impor
 class PaymentProductFieldFormElement(DataObject):
     """
     Class PaymentProductFieldFormElement
-    See also https://developer.globalcollect.com/documentation/api/server/#schema_PaymentProductFieldFormElement
     
-    Attributes:
-        type:           str
-        value_mapping:  list[:class:`ValueMappingElement`]
-     """
+    See also https://developer.globalcollect.com/documentation/api/server/#schema_PaymentProductFieldFormElement
+    """
 
-    type = None
-    value_mapping = None
+    __type = None
+    __value_mapping = None
+
+    @property
+    def type(self):
+        """
+        str
+        """
+        return self.__type
+
+    @type.setter
+    def type(self, value):
+        self.__type = value
+
+    @property
+    def value_mapping(self):
+        """
+        list[:class:`ValueMappingElement`]
+        """
+        return self.__value_mapping
+
+    @value_mapping.setter
+    def value_mapping(self, value):
+        self.__value_mapping = value
 
     def to_dictionary(self):
         dictionary = super(PaymentProductFieldFormElement, self).to_dictionary()

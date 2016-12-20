@@ -9,17 +9,46 @@ from ingenico.connect.sdk.domain.definitions.bank_account_bban import BankAccoun
 class NonSepaDirectDebitPaymentProduct705SpecificInput(DataObject):
     """
     Class NonSepaDirectDebitPaymentProduct705SpecificInput
-    See also https://developer.globalcollect.com/documentation/api/server/#schema_NonSepaDirectDebitPaymentProduct705SpecificInput
     
-    Attributes:
-        authorisation_id:   str
-        bank_account_bban:  :class:`BankAccountBban`
-        transaction_type:   str
-     """
+    See also https://developer.globalcollect.com/documentation/api/server/#schema_NonSepaDirectDebitPaymentProduct705SpecificInput
+    """
 
-    authorisation_id = None
-    bank_account_bban = None
-    transaction_type = None
+    __authorisation_id = None
+    __bank_account_bban = None
+    __transaction_type = None
+
+    @property
+    def authorisation_id(self):
+        """
+        str
+        """
+        return self.__authorisation_id
+
+    @authorisation_id.setter
+    def authorisation_id(self, value):
+        self.__authorisation_id = value
+
+    @property
+    def bank_account_bban(self):
+        """
+        :class:`BankAccountBban`
+        """
+        return self.__bank_account_bban
+
+    @bank_account_bban.setter
+    def bank_account_bban(self, value):
+        self.__bank_account_bban = value
+
+    @property
+    def transaction_type(self):
+        """
+        str
+        """
+        return self.__transaction_type
+
+    @transaction_type.setter
+    def transaction_type(self, value):
+        self.__transaction_type = value
 
     def to_dictionary(self):
         dictionary = super(NonSepaDirectDebitPaymentProduct705SpecificInput, self).to_dictionary()

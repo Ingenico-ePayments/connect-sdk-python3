@@ -8,13 +8,22 @@ from ingenico.connect.sdk.domain.definitions.card_without_cvv import CardWithout
 class Card(CardWithoutCvv):
     """
     Class Card
-    See also https://developer.globalcollect.com/documentation/api/server/#schema_Card
     
-    Attributes:
-        cvv:  str
-     """
+    See also https://developer.globalcollect.com/documentation/api/server/#schema_Card
+    """
 
-    cvv = None
+    __cvv = None
+
+    @property
+    def cvv(self):
+        """
+        str
+        """
+        return self.__cvv
+
+    @cvv.setter
+    def cvv(self, value):
+        self.__cvv = value
 
     def to_dictionary(self):
         dictionary = super(Card, self).to_dictionary()

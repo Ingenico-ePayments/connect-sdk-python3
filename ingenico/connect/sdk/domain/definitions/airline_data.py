@@ -9,49 +9,238 @@ from ingenico.connect.sdk.domain.definitions.airline_flight_leg import AirlineFl
 class AirlineData(DataObject):
     """
     Class AirlineData
-    See also https://developer.globalcollect.com/documentation/api/server/#schema_AirlineData
     
-    Attributes:
-        agent_numeric_code:      str
-        code:                    str
-        flight_date:             str
-        flight_legs:             list[:class:`AirlineFlightLeg`]
-        invoice_number:          str
-        is_e_ticket:             bool
-        is_registered_customer:  bool
-        is_restricted_ticket:    bool
-        is_third_party:          bool
-        issue_date:              str
-        merchant_customer_id:    str
-        name:                    str
-        passenger_name:          str
-        place_of_issue:          str
-        pnr:                     str
-        point_of_sale:           str
-        pos_city_code:           str
-        ticket_delivery_method:  str
-        ticket_number:           str
-     """
+    See also https://developer.globalcollect.com/documentation/api/server/#schema_AirlineData
+    """
 
-    agent_numeric_code = None
-    code = None
-    flight_date = None
-    flight_legs = None
-    invoice_number = None
-    is_e_ticket = None
-    is_registered_customer = None
-    is_restricted_ticket = None
-    is_third_party = None
-    issue_date = None
-    merchant_customer_id = None
-    name = None
-    passenger_name = None
-    place_of_issue = None
-    pnr = None
-    point_of_sale = None
-    pos_city_code = None
-    ticket_delivery_method = None
-    ticket_number = None
+    __agent_numeric_code = None
+    __code = None
+    __flight_date = None
+    __flight_legs = None
+    __invoice_number = None
+    __is_e_ticket = None
+    __is_registered_customer = None
+    __is_restricted_ticket = None
+    __is_third_party = None
+    __issue_date = None
+    __merchant_customer_id = None
+    __name = None
+    __passenger_name = None
+    __place_of_issue = None
+    __pnr = None
+    __point_of_sale = None
+    __pos_city_code = None
+    __ticket_delivery_method = None
+    __ticket_number = None
+
+    @property
+    def agent_numeric_code(self):
+        """
+        str
+        """
+        return self.__agent_numeric_code
+
+    @agent_numeric_code.setter
+    def agent_numeric_code(self, value):
+        self.__agent_numeric_code = value
+
+    @property
+    def code(self):
+        """
+        str
+        """
+        return self.__code
+
+    @code.setter
+    def code(self, value):
+        self.__code = value
+
+    @property
+    def flight_date(self):
+        """
+        str
+        """
+        return self.__flight_date
+
+    @flight_date.setter
+    def flight_date(self, value):
+        self.__flight_date = value
+
+    @property
+    def flight_legs(self):
+        """
+        list[:class:`AirlineFlightLeg`]
+        """
+        return self.__flight_legs
+
+    @flight_legs.setter
+    def flight_legs(self, value):
+        self.__flight_legs = value
+
+    @property
+    def invoice_number(self):
+        """
+        str
+        """
+        return self.__invoice_number
+
+    @invoice_number.setter
+    def invoice_number(self, value):
+        self.__invoice_number = value
+
+    @property
+    def is_e_ticket(self):
+        """
+        bool
+        """
+        return self.__is_e_ticket
+
+    @is_e_ticket.setter
+    def is_e_ticket(self, value):
+        self.__is_e_ticket = value
+
+    @property
+    def is_registered_customer(self):
+        """
+        bool
+        """
+        return self.__is_registered_customer
+
+    @is_registered_customer.setter
+    def is_registered_customer(self, value):
+        self.__is_registered_customer = value
+
+    @property
+    def is_restricted_ticket(self):
+        """
+        bool
+        """
+        return self.__is_restricted_ticket
+
+    @is_restricted_ticket.setter
+    def is_restricted_ticket(self, value):
+        self.__is_restricted_ticket = value
+
+    @property
+    def is_third_party(self):
+        """
+        bool
+        """
+        return self.__is_third_party
+
+    @is_third_party.setter
+    def is_third_party(self, value):
+        self.__is_third_party = value
+
+    @property
+    def issue_date(self):
+        """
+        str
+        """
+        return self.__issue_date
+
+    @issue_date.setter
+    def issue_date(self, value):
+        self.__issue_date = value
+
+    @property
+    def merchant_customer_id(self):
+        """
+        str
+        """
+        return self.__merchant_customer_id
+
+    @merchant_customer_id.setter
+    def merchant_customer_id(self, value):
+        self.__merchant_customer_id = value
+
+    @property
+    def name(self):
+        """
+        str
+        """
+        return self.__name
+
+    @name.setter
+    def name(self, value):
+        self.__name = value
+
+    @property
+    def passenger_name(self):
+        """
+        str
+        """
+        return self.__passenger_name
+
+    @passenger_name.setter
+    def passenger_name(self, value):
+        self.__passenger_name = value
+
+    @property
+    def place_of_issue(self):
+        """
+        str
+        """
+        return self.__place_of_issue
+
+    @place_of_issue.setter
+    def place_of_issue(self, value):
+        self.__place_of_issue = value
+
+    @property
+    def pnr(self):
+        """
+        str
+        """
+        return self.__pnr
+
+    @pnr.setter
+    def pnr(self, value):
+        self.__pnr = value
+
+    @property
+    def point_of_sale(self):
+        """
+        str
+        """
+        return self.__point_of_sale
+
+    @point_of_sale.setter
+    def point_of_sale(self, value):
+        self.__point_of_sale = value
+
+    @property
+    def pos_city_code(self):
+        """
+        str
+        """
+        return self.__pos_city_code
+
+    @pos_city_code.setter
+    def pos_city_code(self, value):
+        self.__pos_city_code = value
+
+    @property
+    def ticket_delivery_method(self):
+        """
+        str
+        """
+        return self.__ticket_delivery_method
+
+    @ticket_delivery_method.setter
+    def ticket_delivery_method(self, value):
+        self.__ticket_delivery_method = value
+
+    @property
+    def ticket_number(self):
+        """
+        str
+        """
+        return self.__ticket_number
+
+    @ticket_number.setter
+    def ticket_number(self, value):
+        self.__ticket_number = value
 
     def to_dictionary(self):
         dictionary = super(AirlineData, self).to_dictionary()

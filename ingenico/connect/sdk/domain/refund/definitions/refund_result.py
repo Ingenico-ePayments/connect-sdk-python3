@@ -10,17 +10,46 @@ from ingenico.connect.sdk.domain.payment.definitions.refund_output import Refund
 class RefundResult(AbstractOrderStatus):
     """
     Class RefundResult
-    See also https://developer.globalcollect.com/documentation/api/server/#schema_RefundResult
     
-    Attributes:
-        refund_output:  :class:`RefundOutput`
-        status:         str
-        status_output:  :class:`OrderStatusOutput`
-     """
+    See also https://developer.globalcollect.com/documentation/api/server/#schema_RefundResult
+    """
 
-    refund_output = None
-    status = None
-    status_output = None
+    __refund_output = None
+    __status = None
+    __status_output = None
+
+    @property
+    def refund_output(self):
+        """
+        :class:`RefundOutput`
+        """
+        return self.__refund_output
+
+    @refund_output.setter
+    def refund_output(self, value):
+        self.__refund_output = value
+
+    @property
+    def status(self):
+        """
+        str
+        """
+        return self.__status
+
+    @status.setter
+    def status(self, value):
+        self.__status = value
+
+    @property
+    def status_output(self):
+        """
+        :class:`OrderStatusOutput`
+        """
+        return self.__status_output
+
+    @status_output.setter
+    def status_output(self, value):
+        self.__status_output = value
 
     def to_dictionary(self):
         dictionary = super(RefundResult, self).to_dictionary()

@@ -8,15 +8,34 @@ from ingenico.connect.sdk.data_object import DataObject
 class RedirectData(DataObject):
     """
     Class RedirectData
-    See also https://developer.globalcollect.com/documentation/api/server/#schema_RedirectData
     
-    Attributes:
-        returnmac:     str
-        redirect_url:  str
-     """
+    See also https://developer.globalcollect.com/documentation/api/server/#schema_RedirectData
+    """
 
-    returnmac = None
-    redirect_url = None
+    __returnmac = None
+    __redirect_url = None
+
+    @property
+    def returnmac(self):
+        """
+        str
+        """
+        return self.__returnmac
+
+    @returnmac.setter
+    def returnmac(self, value):
+        self.__returnmac = value
+
+    @property
+    def redirect_url(self):
+        """
+        str
+        """
+        return self.__redirect_url
+
+    @redirect_url.setter
+    def redirect_url(self, value):
+        self.__redirect_url = value
 
     def to_dictionary(self):
         dictionary = super(RedirectData, self).to_dictionary()

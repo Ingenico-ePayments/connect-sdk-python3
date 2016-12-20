@@ -10,17 +10,46 @@ from ingenico.connect.sdk.domain.payment.definitions.payment_status_output impor
 class Payment(AbstractOrderStatus):
     """
     Class Payment
-    See also https://developer.globalcollect.com/documentation/api/server/#schema_Payment
     
-    Attributes:
-        payment_output:  :class:`PaymentOutput`
-        status:          str
-        status_output:   :class:`PaymentStatusOutput`
-     """
+    See also https://developer.globalcollect.com/documentation/api/server/#schema_Payment
+    """
 
-    payment_output = None
-    status = None
-    status_output = None
+    __payment_output = None
+    __status = None
+    __status_output = None
+
+    @property
+    def payment_output(self):
+        """
+        :class:`PaymentOutput`
+        """
+        return self.__payment_output
+
+    @payment_output.setter
+    def payment_output(self, value):
+        self.__payment_output = value
+
+    @property
+    def status(self):
+        """
+        str
+        """
+        return self.__status
+
+    @status.setter
+    def status(self, value):
+        self.__status = value
+
+    @property
+    def status_output(self):
+        """
+        :class:`PaymentStatusOutput`
+        """
+        return self.__status_output
+
+    @status_output.setter
+    def status_output(self, value):
+        self.__status_output = value
 
     def to_dictionary(self):
         dictionary = super(Payment, self).to_dictionary()

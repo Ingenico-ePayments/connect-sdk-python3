@@ -9,25 +9,94 @@ from ingenico.connect.sdk.domain.hostedcheckout.definitions.payment_product_filt
 class HostedCheckoutSpecificInput(DataObject):
     """
     Class HostedCheckoutSpecificInput
-    See also https://developer.globalcollect.com/documentation/api/server/#schema_HostedCheckoutSpecificInput
     
-    Attributes:
-        is_recurring:             bool
-        locale:                   str
-        payment_product_filters:  :class:`PaymentProductFiltersHostedCheckout`
-        return_url:               str
-        show_result_page:         bool
-        tokens:                   str
-        variant:                  str
-     """
+    See also https://developer.globalcollect.com/documentation/api/server/#schema_HostedCheckoutSpecificInput
+    """
 
-    is_recurring = None
-    locale = None
-    payment_product_filters = None
-    return_url = None
-    show_result_page = None
-    tokens = None
-    variant = None
+    __is_recurring = None
+    __locale = None
+    __payment_product_filters = None
+    __return_url = None
+    __show_result_page = None
+    __tokens = None
+    __variant = None
+
+    @property
+    def is_recurring(self):
+        """
+        bool
+        """
+        return self.__is_recurring
+
+    @is_recurring.setter
+    def is_recurring(self, value):
+        self.__is_recurring = value
+
+    @property
+    def locale(self):
+        """
+        str
+        """
+        return self.__locale
+
+    @locale.setter
+    def locale(self, value):
+        self.__locale = value
+
+    @property
+    def payment_product_filters(self):
+        """
+        :class:`PaymentProductFiltersHostedCheckout`
+        """
+        return self.__payment_product_filters
+
+    @payment_product_filters.setter
+    def payment_product_filters(self, value):
+        self.__payment_product_filters = value
+
+    @property
+    def return_url(self):
+        """
+        str
+        """
+        return self.__return_url
+
+    @return_url.setter
+    def return_url(self, value):
+        self.__return_url = value
+
+    @property
+    def show_result_page(self):
+        """
+        bool
+        """
+        return self.__show_result_page
+
+    @show_result_page.setter
+    def show_result_page(self, value):
+        self.__show_result_page = value
+
+    @property
+    def tokens(self):
+        """
+        str
+        """
+        return self.__tokens
+
+    @tokens.setter
+    def tokens(self, value):
+        self.__tokens = value
+
+    @property
+    def variant(self):
+        """
+        str
+        """
+        return self.__variant
+
+    @variant.setter
+    def variant(self, value):
+        self.__variant = value
 
     def to_dictionary(self):
         dictionary = super(HostedCheckoutSpecificInput, self).to_dictionary()

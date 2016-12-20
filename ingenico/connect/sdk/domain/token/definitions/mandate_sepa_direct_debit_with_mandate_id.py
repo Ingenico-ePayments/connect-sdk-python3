@@ -8,13 +8,22 @@ from ingenico.connect.sdk.domain.token.definitions.mandate_sepa_direct_debit_wit
 class MandateSepaDirectDebitWithMandateId(MandateSepaDirectDebitWithoutCreditor):
     """
     Class MandateSepaDirectDebitWithMandateId
-    See also https://developer.globalcollect.com/documentation/api/server/#schema_MandateSepaDirectDebitWithMandateId
     
-    Attributes:
-        mandate_id:  str
-     """
+    See also https://developer.globalcollect.com/documentation/api/server/#schema_MandateSepaDirectDebitWithMandateId
+    """
 
-    mandate_id = None
+    __mandate_id = None
+
+    @property
+    def mandate_id(self):
+        """
+        str
+        """
+        return self.__mandate_id
+
+    @mandate_id.setter
+    def mandate_id(self, value):
+        self.__mandate_id = value
 
     def to_dictionary(self):
         dictionary = super(MandateSepaDirectDebitWithMandateId, self).to_dictionary()

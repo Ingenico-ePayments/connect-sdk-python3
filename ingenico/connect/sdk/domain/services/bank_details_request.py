@@ -8,8 +8,9 @@ from ingenico.connect.sdk.domain.services.definitions.bank_details import BankDe
 class BankDetailsRequest(BankDetails):
     """
     Class BankDetailsRequest
+    
     See also https://developer.globalcollect.com/documentation/api/server/#schema_BankDetailsRequest
-     """
+    """
 
     def to_dictionary(self):
         dictionary = super(BankDetailsRequest, self).to_dictionary()

@@ -8,13 +8,22 @@ from ingenico.connect.sdk.domain.definitions.abstract_payment_method_specific_in
 class BankTransferPaymentMethodSpecificInputBase(AbstractPaymentMethodSpecificInput):
     """
     Class BankTransferPaymentMethodSpecificInputBase
-    See also https://developer.globalcollect.com/documentation/api/server/#schema_BankTransferPaymentMethodSpecificInputBase
     
-    Attributes:
-        additional_reference:  str
-     """
+    See also https://developer.globalcollect.com/documentation/api/server/#schema_BankTransferPaymentMethodSpecificInputBase
+    """
 
-    additional_reference = None
+    __additional_reference = None
+
+    @property
+    def additional_reference(self):
+        """
+        str
+        """
+        return self.__additional_reference
+
+    @additional_reference.setter
+    def additional_reference(self, value):
+        self.__additional_reference = value
 
     def to_dictionary(self):
         dictionary = super(BankTransferPaymentMethodSpecificInputBase, self).to_dictionary()

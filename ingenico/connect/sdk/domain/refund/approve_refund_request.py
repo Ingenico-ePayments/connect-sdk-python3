@@ -8,13 +8,22 @@ from ingenico.connect.sdk.data_object import DataObject
 class ApproveRefundRequest(DataObject):
     """
     Class ApproveRefundRequest
-    See also https://developer.globalcollect.com/documentation/api/server/#schema_ApproveRefundRequest
     
-    Attributes:
-        amount:  int
-     """
+    See also https://developer.globalcollect.com/documentation/api/server/#schema_ApproveRefundRequest
+    """
 
-    amount = None
+    __amount = None
+
+    @property
+    def amount(self):
+        """
+        int
+        """
+        return self.__amount
+
+    @amount.setter
+    def amount(self, value):
+        self.__amount = value
 
     def to_dictionary(self):
         dictionary = super(ApproveRefundRequest, self).to_dictionary()

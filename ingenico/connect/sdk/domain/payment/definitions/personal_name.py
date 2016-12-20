@@ -8,13 +8,22 @@ from ingenico.connect.sdk.domain.definitions.personal_name_base import PersonalN
 class PersonalName(PersonalNameBase):
     """
     Class PersonalName
-    See also https://developer.globalcollect.com/documentation/api/server/#schema_PersonalName
     
-    Attributes:
-        title:  str
-     """
+    See also https://developer.globalcollect.com/documentation/api/server/#schema_PersonalName
+    """
 
-    title = None
+    __title = None
+
+    @property
+    def title(self):
+        """
+        str
+        """
+        return self.__title
+
+    @title.setter
+    def title(self, value):
+        self.__title = value
 
     def to_dictionary(self):
         dictionary = super(PersonalName, self).to_dictionary()

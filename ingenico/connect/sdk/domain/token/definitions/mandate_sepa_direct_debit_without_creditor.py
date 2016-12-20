@@ -11,23 +11,82 @@ from ingenico.connect.sdk.domain.token.definitions.mandate_approval import Manda
 class MandateSepaDirectDebitWithoutCreditor(DataObject):
     """
     Class MandateSepaDirectDebitWithoutCreditor
-    See also https://developer.globalcollect.com/documentation/api/server/#schema_MandateSepaDirectDebitWithoutCreditor
     
-    Attributes:
-        bank_account_iban:             :class:`BankAccountIban`
-        customer_contract_identifier:  str
-        debtor:                        :class:`Debtor`
-        is_recurring:                  bool
-        mandate_approval:              :class:`MandateApproval`
-        pre_notification:              str
-     """
+    See also https://developer.globalcollect.com/documentation/api/server/#schema_MandateSepaDirectDebitWithoutCreditor
+    """
 
-    bank_account_iban = None
-    customer_contract_identifier = None
-    debtor = None
-    is_recurring = None
-    mandate_approval = None
-    pre_notification = None
+    __bank_account_iban = None
+    __customer_contract_identifier = None
+    __debtor = None
+    __is_recurring = None
+    __mandate_approval = None
+    __pre_notification = None
+
+    @property
+    def bank_account_iban(self):
+        """
+        :class:`BankAccountIban`
+        """
+        return self.__bank_account_iban
+
+    @bank_account_iban.setter
+    def bank_account_iban(self, value):
+        self.__bank_account_iban = value
+
+    @property
+    def customer_contract_identifier(self):
+        """
+        str
+        """
+        return self.__customer_contract_identifier
+
+    @customer_contract_identifier.setter
+    def customer_contract_identifier(self, value):
+        self.__customer_contract_identifier = value
+
+    @property
+    def debtor(self):
+        """
+        :class:`Debtor`
+        """
+        return self.__debtor
+
+    @debtor.setter
+    def debtor(self, value):
+        self.__debtor = value
+
+    @property
+    def is_recurring(self):
+        """
+        bool
+        """
+        return self.__is_recurring
+
+    @is_recurring.setter
+    def is_recurring(self, value):
+        self.__is_recurring = value
+
+    @property
+    def mandate_approval(self):
+        """
+        :class:`MandateApproval`
+        """
+        return self.__mandate_approval
+
+    @mandate_approval.setter
+    def mandate_approval(self, value):
+        self.__mandate_approval = value
+
+    @property
+    def pre_notification(self):
+        """
+        str
+        """
+        return self.__pre_notification
+
+    @pre_notification.setter
+    def pre_notification(self, value):
+        self.__pre_notification = value
 
     def to_dictionary(self):
         dictionary = super(MandateSepaDirectDebitWithoutCreditor, self).to_dictionary()

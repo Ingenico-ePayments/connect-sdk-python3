@@ -9,17 +9,46 @@ from ingenico.connect.sdk.domain.definitions.fraud_results_retail_decisions impo
 class CardFraudResults(FraudResults):
     """
     Class CardFraudResults
-    See also https://developer.globalcollect.com/documentation/api/server/#schema_CardFraudResults
     
-    Attributes:
-        avs_result:        str
-        cvv_result:        str
-        retail_decisions:  :class:`FraudResultsRetailDecisions`
-     """
+    See also https://developer.globalcollect.com/documentation/api/server/#schema_CardFraudResults
+    """
 
-    avs_result = None
-    cvv_result = None
-    retail_decisions = None
+    __avs_result = None
+    __cvv_result = None
+    __retail_decisions = None
+
+    @property
+    def avs_result(self):
+        """
+        str
+        """
+        return self.__avs_result
+
+    @avs_result.setter
+    def avs_result(self, value):
+        self.__avs_result = value
+
+    @property
+    def cvv_result(self):
+        """
+        str
+        """
+        return self.__cvv_result
+
+    @cvv_result.setter
+    def cvv_result(self, value):
+        self.__cvv_result = value
+
+    @property
+    def retail_decisions(self):
+        """
+        :class:`FraudResultsRetailDecisions`
+        """
+        return self.__retail_decisions
+
+    @retail_decisions.setter
+    def retail_decisions(self, value):
+        self.__retail_decisions = value
 
     def to_dictionary(self):
         dictionary = super(CardFraudResults, self).to_dictionary()

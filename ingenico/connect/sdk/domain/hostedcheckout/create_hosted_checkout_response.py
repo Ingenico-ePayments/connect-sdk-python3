@@ -8,19 +8,58 @@ from ingenico.connect.sdk.data_object import DataObject
 class CreateHostedCheckoutResponse(DataObject):
     """
     Class CreateHostedCheckoutResponse
-    See also https://developer.globalcollect.com/documentation/api/server/#schema_CreateHostedCheckoutResponse
     
-    Attributes:
-        returnmac:             str
-        hosted_checkout_id:    str
-        invalid_tokens:        list[str]
-        partial_redirect_url:  str
-     """
+    See also https://developer.globalcollect.com/documentation/api/server/#schema_CreateHostedCheckoutResponse
+    """
 
-    returnmac = None
-    hosted_checkout_id = None
-    invalid_tokens = None
-    partial_redirect_url = None
+    __returnmac = None
+    __hosted_checkout_id = None
+    __invalid_tokens = None
+    __partial_redirect_url = None
+
+    @property
+    def returnmac(self):
+        """
+        str
+        """
+        return self.__returnmac
+
+    @returnmac.setter
+    def returnmac(self, value):
+        self.__returnmac = value
+
+    @property
+    def hosted_checkout_id(self):
+        """
+        str
+        """
+        return self.__hosted_checkout_id
+
+    @hosted_checkout_id.setter
+    def hosted_checkout_id(self, value):
+        self.__hosted_checkout_id = value
+
+    @property
+    def invalid_tokens(self):
+        """
+        list[str]
+        """
+        return self.__invalid_tokens
+
+    @invalid_tokens.setter
+    def invalid_tokens(self, value):
+        self.__invalid_tokens = value
+
+    @property
+    def partial_redirect_url(self):
+        """
+        str
+        """
+        return self.__partial_redirect_url
+
+    @partial_redirect_url.setter
+    def partial_redirect_url(self, value):
+        self.__partial_redirect_url = value
 
     def to_dictionary(self):
         dictionary = super(CreateHostedCheckoutResponse, self).to_dictionary()

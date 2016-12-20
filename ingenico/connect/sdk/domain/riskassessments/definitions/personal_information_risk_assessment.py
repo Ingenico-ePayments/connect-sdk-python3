@@ -9,13 +9,22 @@ from ingenico.connect.sdk.domain.riskassessments.definitions.personal_name_risk_
 class PersonalInformationRiskAssessment(DataObject):
     """
     Class PersonalInformationRiskAssessment
-    See also https://developer.globalcollect.com/documentation/api/server/#schema_PersonalInformationRiskAssessment
     
-    Attributes:
-        name:  :class:`PersonalNameRiskAssessment`
-     """
+    See also https://developer.globalcollect.com/documentation/api/server/#schema_PersonalInformationRiskAssessment
+    """
 
-    name = None
+    __name = None
+
+    @property
+    def name(self):
+        """
+        :class:`PersonalNameRiskAssessment`
+        """
+        return self.__name
+
+    @name.setter
+    def name(self, value):
+        self.__name = value
 
     def to_dictionary(self):
         dictionary = super(PersonalInformationRiskAssessment, self).to_dictionary()

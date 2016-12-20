@@ -8,13 +8,22 @@ from ingenico.connect.sdk.data_object import DataObject
 class PaymentProduct836SpecificOutput(DataObject):
     """
     Class PaymentProduct836SpecificOutput
-    See also https://developer.globalcollect.com/documentation/api/server/#schema_PaymentProduct836SpecificOutput
     
-    Attributes:
-        security_indicator:  str
-     """
+    See also https://developer.globalcollect.com/documentation/api/server/#schema_PaymentProduct836SpecificOutput
+    """
 
-    security_indicator = None
+    __security_indicator = None
+
+    @property
+    def security_indicator(self):
+        """
+        str
+        """
+        return self.__security_indicator
+
+    @security_indicator.setter
+    def security_indicator(self, value):
+        self.__security_indicator = value
 
     def to_dictionary(self):
         dictionary = super(PaymentProduct836SpecificOutput, self).to_dictionary()

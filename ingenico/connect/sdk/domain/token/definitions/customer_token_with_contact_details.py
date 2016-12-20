@@ -9,13 +9,22 @@ from ingenico.connect.sdk.domain.token.definitions.customer_token import Custome
 class CustomerTokenWithContactDetails(CustomerToken):
     """
     Class CustomerTokenWithContactDetails
-    See also https://developer.globalcollect.com/documentation/api/server/#schema_CustomerTokenWithContactDetails
     
-    Attributes:
-        contact_details:  :class:`ContactDetailsToken`
-     """
+    See also https://developer.globalcollect.com/documentation/api/server/#schema_CustomerTokenWithContactDetails
+    """
 
-    contact_details = None
+    __contact_details = None
+
+    @property
+    def contact_details(self):
+        """
+        :class:`ContactDetailsToken`
+        """
+        return self.__contact_details
+
+    @contact_details.setter
+    def contact_details(self, value):
+        self.__contact_details = value
 
     def to_dictionary(self):
         dictionary = super(CustomerTokenWithContactDetails, self).to_dictionary()

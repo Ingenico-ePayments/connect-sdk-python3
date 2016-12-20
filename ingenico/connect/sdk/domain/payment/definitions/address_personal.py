@@ -9,13 +9,22 @@ from ingenico.connect.sdk.domain.payment.definitions.personal_name import Person
 class AddressPersonal(Address):
     """
     Class AddressPersonal
-    See also https://developer.globalcollect.com/documentation/api/server/#schema_AddressPersonal
     
-    Attributes:
-        name:  :class:`PersonalName`
-     """
+    See also https://developer.globalcollect.com/documentation/api/server/#schema_AddressPersonal
+    """
 
-    name = None
+    __name = None
+
+    @property
+    def name(self):
+        """
+        :class:`PersonalName`
+        """
+        return self.__name
+
+    @name.setter
+    def name(self, value):
+        self.__name = value
 
     def to_dictionary(self):
         dictionary = super(AddressPersonal, self).to_dictionary()

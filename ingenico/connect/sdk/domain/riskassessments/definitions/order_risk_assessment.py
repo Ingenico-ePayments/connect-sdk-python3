@@ -11,17 +11,46 @@ from ingenico.connect.sdk.domain.riskassessments.definitions.customer_risk_asses
 class OrderRiskAssessment(DataObject):
     """
     Class OrderRiskAssessment
-    See also https://developer.globalcollect.com/documentation/api/server/#schema_OrderRiskAssessment
     
-    Attributes:
-        additional_input:  :class:`AdditionalOrderInputAirlineData`
-        amount_of_money:   :class:`AmountOfMoney`
-        customer:          :class:`CustomerRiskAssessment`
-     """
+    See also https://developer.globalcollect.com/documentation/api/server/#schema_OrderRiskAssessment
+    """
 
-    additional_input = None
-    amount_of_money = None
-    customer = None
+    __additional_input = None
+    __amount_of_money = None
+    __customer = None
+
+    @property
+    def additional_input(self):
+        """
+        :class:`AdditionalOrderInputAirlineData`
+        """
+        return self.__additional_input
+
+    @additional_input.setter
+    def additional_input(self, value):
+        self.__additional_input = value
+
+    @property
+    def amount_of_money(self):
+        """
+        :class:`AmountOfMoney`
+        """
+        return self.__amount_of_money
+
+    @amount_of_money.setter
+    def amount_of_money(self, value):
+        self.__amount_of_money = value
+
+    @property
+    def customer(self):
+        """
+        :class:`CustomerRiskAssessment`
+        """
+        return self.__customer
+
+    @customer.setter
+    def customer(self, value):
+        self.__customer = value
 
     def to_dictionary(self):
         dictionary = super(OrderRiskAssessment, self).to_dictionary()

@@ -9,17 +9,46 @@ from ingenico.connect.sdk.domain.payment.definitions.personal_name import Person
 class PersonalInformation(DataObject):
     """
     Class PersonalInformation
-    See also https://developer.globalcollect.com/documentation/api/server/#schema_PersonalInformation
     
-    Attributes:
-        date_of_birth:  str
-        gender:         str
-        name:           :class:`PersonalName`
-     """
+    See also https://developer.globalcollect.com/documentation/api/server/#schema_PersonalInformation
+    """
 
-    date_of_birth = None
-    gender = None
-    name = None
+    __date_of_birth = None
+    __gender = None
+    __name = None
+
+    @property
+    def date_of_birth(self):
+        """
+        str
+        """
+        return self.__date_of_birth
+
+    @date_of_birth.setter
+    def date_of_birth(self, value):
+        self.__date_of_birth = value
+
+    @property
+    def gender(self):
+        """
+        str
+        """
+        return self.__gender
+
+    @gender.setter
+    def gender(self, value):
+        self.__gender = value
+
+    @property
+    def name(self):
+        """
+        :class:`PersonalName`
+        """
+        return self.__name
+
+    @name.setter
+    def name(self, value):
+        self.__name = value
 
     def to_dictionary(self):
         dictionary = super(PersonalInformation, self).to_dictionary()

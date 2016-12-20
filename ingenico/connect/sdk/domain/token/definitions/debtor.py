@@ -8,33 +8,142 @@ from ingenico.connect.sdk.data_object import DataObject
 class Debtor(DataObject):
     """
     Class Debtor
-    See also https://developer.globalcollect.com/documentation/api/server/#schema_Debtor
     
-    Attributes:
-        additional_address_info:  str
-        city:                     str
-        country_code:             str
-        first_name:               str
-        house_number:             str
-        state:                    str
-        state_code:               str
-        street:                   str
-        surname:                  str
-        surname_prefix:           str
-        zip:                      str
-     """
+    See also https://developer.globalcollect.com/documentation/api/server/#schema_Debtor
+    """
 
-    additional_address_info = None
-    city = None
-    country_code = None
-    first_name = None
-    house_number = None
-    state = None
-    state_code = None
-    street = None
-    surname = None
-    surname_prefix = None
-    zip = None
+    __additional_address_info = None
+    __city = None
+    __country_code = None
+    __first_name = None
+    __house_number = None
+    __state = None
+    __state_code = None
+    __street = None
+    __surname = None
+    __surname_prefix = None
+    __zip = None
+
+    @property
+    def additional_address_info(self):
+        """
+        str
+        """
+        return self.__additional_address_info
+
+    @additional_address_info.setter
+    def additional_address_info(self, value):
+        self.__additional_address_info = value
+
+    @property
+    def city(self):
+        """
+        str
+        """
+        return self.__city
+
+    @city.setter
+    def city(self, value):
+        self.__city = value
+
+    @property
+    def country_code(self):
+        """
+        str
+        """
+        return self.__country_code
+
+    @country_code.setter
+    def country_code(self, value):
+        self.__country_code = value
+
+    @property
+    def first_name(self):
+        """
+        str
+        """
+        return self.__first_name
+
+    @first_name.setter
+    def first_name(self, value):
+        self.__first_name = value
+
+    @property
+    def house_number(self):
+        """
+        str
+        """
+        return self.__house_number
+
+    @house_number.setter
+    def house_number(self, value):
+        self.__house_number = value
+
+    @property
+    def state(self):
+        """
+        str
+        """
+        return self.__state
+
+    @state.setter
+    def state(self, value):
+        self.__state = value
+
+    @property
+    def state_code(self):
+        """
+        str
+        """
+        return self.__state_code
+
+    @state_code.setter
+    def state_code(self, value):
+        self.__state_code = value
+
+    @property
+    def street(self):
+        """
+        str
+        """
+        return self.__street
+
+    @street.setter
+    def street(self, value):
+        self.__street = value
+
+    @property
+    def surname(self):
+        """
+        str
+        """
+        return self.__surname
+
+    @surname.setter
+    def surname(self, value):
+        self.__surname = value
+
+    @property
+    def surname_prefix(self):
+        """
+        str
+        """
+        return self.__surname_prefix
+
+    @surname_prefix.setter
+    def surname_prefix(self, value):
+        self.__surname_prefix = value
+
+    @property
+    def zip(self):
+        """
+        str
+        """
+        return self.__zip
+
+    @zip.setter
+    def zip(self, value):
+        self.__zip = value
 
     def to_dictionary(self):
         dictionary = super(Debtor, self).to_dictionary()

@@ -8,13 +8,22 @@ from ingenico.connect.sdk.data_object import DataObject
 class BankAccount(DataObject):
     """
     Class BankAccount
-    See also https://developer.globalcollect.com/documentation/api/server/#schema_BankAccount
     
-    Attributes:
-        account_holder_name:  str
-     """
+    See also https://developer.globalcollect.com/documentation/api/server/#schema_BankAccount
+    """
 
-    account_holder_name = None
+    __account_holder_name = None
+
+    @property
+    def account_holder_name(self):
+        """
+        str
+        """
+        return self.__account_holder_name
+
+    @account_holder_name.setter
+    def account_holder_name(self, value):
+        self.__account_holder_name = value
 
     def to_dictionary(self):
         dictionary = super(BankAccount, self).to_dictionary()

@@ -10,15 +10,34 @@ from ingenico.connect.sdk.domain.payment.definitions.payment_references import P
 class OrderOutput(DataObject):
     """
     Class OrderOutput
-    See also https://developer.globalcollect.com/documentation/api/server/#schema_OrderOutput
     
-    Attributes:
-        amount_of_money:  :class:`AmountOfMoney`
-        references:       :class:`PaymentReferences`
-     """
+    See also https://developer.globalcollect.com/documentation/api/server/#schema_OrderOutput
+    """
 
-    amount_of_money = None
-    references = None
+    __amount_of_money = None
+    __references = None
+
+    @property
+    def amount_of_money(self):
+        """
+        :class:`AmountOfMoney`
+        """
+        return self.__amount_of_money
+
+    @amount_of_money.setter
+    def amount_of_money(self, value):
+        self.__amount_of_money = value
+
+    @property
+    def references(self):
+        """
+        :class:`PaymentReferences`
+        """
+        return self.__references
+
+    @references.setter
+    def references(self, value):
+        self.__references = value
 
     def to_dictionary(self):
         dictionary = super(OrderOutput, self).to_dictionary()

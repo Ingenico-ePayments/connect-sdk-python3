@@ -13,25 +13,94 @@ from ingenico.connect.sdk.domain.product.definitions.regular_expression_validato
 class PaymentProductFieldValidators(DataObject):
     """
     Class PaymentProductFieldValidators
-    See also https://developer.globalcollect.com/documentation/api/server/#schema_PaymentProductFieldValidators
     
-    Attributes:
-        email_address:       :class:`EmptyValidator`
-        expiration_date:     :class:`EmptyValidator`
-        fixed_list:          :class:`FixedListValidator`
-        length:              :class:`LengthValidator`
-        luhn:                :class:`EmptyValidator`
-        range:               :class:`RangeValidator`
-        regular_expression:  :class:`RegularExpressionValidator`
-     """
+    See also https://developer.globalcollect.com/documentation/api/server/#schema_PaymentProductFieldValidators
+    """
 
-    email_address = None
-    expiration_date = None
-    fixed_list = None
-    length = None
-    luhn = None
-    range = None
-    regular_expression = None
+    __email_address = None
+    __expiration_date = None
+    __fixed_list = None
+    __length = None
+    __luhn = None
+    __range = None
+    __regular_expression = None
+
+    @property
+    def email_address(self):
+        """
+        :class:`EmptyValidator`
+        """
+        return self.__email_address
+
+    @email_address.setter
+    def email_address(self, value):
+        self.__email_address = value
+
+    @property
+    def expiration_date(self):
+        """
+        :class:`EmptyValidator`
+        """
+        return self.__expiration_date
+
+    @expiration_date.setter
+    def expiration_date(self, value):
+        self.__expiration_date = value
+
+    @property
+    def fixed_list(self):
+        """
+        :class:`FixedListValidator`
+        """
+        return self.__fixed_list
+
+    @fixed_list.setter
+    def fixed_list(self, value):
+        self.__fixed_list = value
+
+    @property
+    def length(self):
+        """
+        :class:`LengthValidator`
+        """
+        return self.__length
+
+    @length.setter
+    def length(self, value):
+        self.__length = value
+
+    @property
+    def luhn(self):
+        """
+        :class:`EmptyValidator`
+        """
+        return self.__luhn
+
+    @luhn.setter
+    def luhn(self, value):
+        self.__luhn = value
+
+    @property
+    def range(self):
+        """
+        :class:`RangeValidator`
+        """
+        return self.__range
+
+    @range.setter
+    def range(self, value):
+        self.__range = value
+
+    @property
+    def regular_expression(self):
+        """
+        :class:`RegularExpressionValidator`
+        """
+        return self.__regular_expression
+
+    @regular_expression.setter
+    def regular_expression(self, value):
+        self.__regular_expression = value
 
     def to_dictionary(self):
         dictionary = super(PaymentProductFieldValidators, self).to_dictionary()

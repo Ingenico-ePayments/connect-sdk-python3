@@ -11,21 +11,70 @@ from ingenico.connect.sdk.domain.payment.definitions.redirect_payment_product882
 class RedirectPaymentMethodSpecificInput(RedirectPaymentMethodSpecificInputBase):
     """
     Class RedirectPaymentMethodSpecificInput
-    See also https://developer.globalcollect.com/documentation/api/server/#schema_RedirectPaymentMethodSpecificInput
     
-    Attributes:
-        is_recurring:                       bool
-        payment_product809_specific_input:  :class:`RedirectPaymentProduct809SpecificInput`
-        payment_product816_specific_input:  :class:`RedirectPaymentProduct816SpecificInput`
-        payment_product882_specific_input:  :class:`RedirectPaymentProduct882SpecificInput`
-        return_url:                         str
-     """
+    See also https://developer.globalcollect.com/documentation/api/server/#schema_RedirectPaymentMethodSpecificInput
+    """
 
-    is_recurring = None
-    payment_product809_specific_input = None
-    payment_product816_specific_input = None
-    payment_product882_specific_input = None
-    return_url = None
+    __is_recurring = None
+    __payment_product809_specific_input = None
+    __payment_product816_specific_input = None
+    __payment_product882_specific_input = None
+    __return_url = None
+
+    @property
+    def is_recurring(self):
+        """
+        bool
+        """
+        return self.__is_recurring
+
+    @is_recurring.setter
+    def is_recurring(self, value):
+        self.__is_recurring = value
+
+    @property
+    def payment_product809_specific_input(self):
+        """
+        :class:`RedirectPaymentProduct809SpecificInput`
+        """
+        return self.__payment_product809_specific_input
+
+    @payment_product809_specific_input.setter
+    def payment_product809_specific_input(self, value):
+        self.__payment_product809_specific_input = value
+
+    @property
+    def payment_product816_specific_input(self):
+        """
+        :class:`RedirectPaymentProduct816SpecificInput`
+        """
+        return self.__payment_product816_specific_input
+
+    @payment_product816_specific_input.setter
+    def payment_product816_specific_input(self, value):
+        self.__payment_product816_specific_input = value
+
+    @property
+    def payment_product882_specific_input(self):
+        """
+        :class:`RedirectPaymentProduct882SpecificInput`
+        """
+        return self.__payment_product882_specific_input
+
+    @payment_product882_specific_input.setter
+    def payment_product882_specific_input(self, value):
+        self.__payment_product882_specific_input = value
+
+    @property
+    def return_url(self):
+        """
+        str
+        """
+        return self.__return_url
+
+    @return_url.setter
+    def return_url(self, value):
+        self.__return_url = value
 
     def to_dictionary(self):
         dictionary = super(RedirectPaymentMethodSpecificInput, self).to_dictionary()

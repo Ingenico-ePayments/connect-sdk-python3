@@ -8,17 +8,46 @@ from ingenico.connect.sdk.data_object import DataObject
 class RefundPaymentProduct840CustomerAccount(DataObject):
     """
     Class RefundPaymentProduct840CustomerAccount
-    See also https://developer.globalcollect.com/documentation/api/server/#schema_RefundPaymentProduct840CustomerAccount
     
-    Attributes:
-        customer_account_status:  str
-        customer_address_status:  str
-        payer_id:                 str
-     """
+    See also https://developer.globalcollect.com/documentation/api/server/#schema_RefundPaymentProduct840CustomerAccount
+    """
 
-    customer_account_status = None
-    customer_address_status = None
-    payer_id = None
+    __customer_account_status = None
+    __customer_address_status = None
+    __payer_id = None
+
+    @property
+    def customer_account_status(self):
+        """
+        str
+        """
+        return self.__customer_account_status
+
+    @customer_account_status.setter
+    def customer_account_status(self, value):
+        self.__customer_account_status = value
+
+    @property
+    def customer_address_status(self):
+        """
+        str
+        """
+        return self.__customer_address_status
+
+    @customer_address_status.setter
+    def customer_address_status(self, value):
+        self.__customer_address_status = value
+
+    @property
+    def payer_id(self):
+        """
+        str
+        """
+        return self.__payer_id
+
+    @payer_id.setter
+    def payer_id(self, value):
+        self.__payer_id = value
 
     def to_dictionary(self):
         dictionary = super(RefundPaymentProduct840CustomerAccount, self).to_dictionary()

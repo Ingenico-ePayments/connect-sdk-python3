@@ -8,21 +8,70 @@ from ingenico.connect.sdk.data_object import DataObject
 class APIError(DataObject):
     """
     Class APIError
-    See also https://developer.globalcollect.com/documentation/api/server/#schema_APIError
     
-    Attributes:
-        code:              str
-        http_status_code:  int
-        message:           str
-        property_name:     str
-        request_id:        str
-     """
+    See also https://developer.globalcollect.com/documentation/api/server/#schema_APIError
+    """
 
-    code = None
-    http_status_code = None
-    message = None
-    property_name = None
-    request_id = None
+    __code = None
+    __http_status_code = None
+    __message = None
+    __property_name = None
+    __request_id = None
+
+    @property
+    def code(self):
+        """
+        str
+        """
+        return self.__code
+
+    @code.setter
+    def code(self, value):
+        self.__code = value
+
+    @property
+    def http_status_code(self):
+        """
+        int
+        """
+        return self.__http_status_code
+
+    @http_status_code.setter
+    def http_status_code(self, value):
+        self.__http_status_code = value
+
+    @property
+    def message(self):
+        """
+        str
+        """
+        return self.__message
+
+    @message.setter
+    def message(self, value):
+        self.__message = value
+
+    @property
+    def property_name(self):
+        """
+        str
+        """
+        return self.__property_name
+
+    @property_name.setter
+    def property_name(self, value):
+        self.__property_name = value
+
+    @property
+    def request_id(self):
+        """
+        str
+        """
+        return self.__request_id
+
+    @request_id.setter
+    def request_id(self, value):
+        self.__request_id = value
 
     def to_dictionary(self):
         dictionary = super(APIError, self).to_dictionary()

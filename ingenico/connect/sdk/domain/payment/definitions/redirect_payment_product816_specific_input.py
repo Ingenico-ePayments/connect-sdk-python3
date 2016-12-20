@@ -9,13 +9,22 @@ from ingenico.connect.sdk.domain.definitions.bank_account_iban import BankAccoun
 class RedirectPaymentProduct816SpecificInput(DataObject):
     """
     Class RedirectPaymentProduct816SpecificInput
-    See also https://developer.globalcollect.com/documentation/api/server/#schema_RedirectPaymentProduct816SpecificInput
     
-    Attributes:
-        bank_account_iban:  :class:`BankAccountIban`
-     """
+    See also https://developer.globalcollect.com/documentation/api/server/#schema_RedirectPaymentProduct816SpecificInput
+    """
 
-    bank_account_iban = None
+    __bank_account_iban = None
+
+    @property
+    def bank_account_iban(self):
+        """
+        :class:`BankAccountIban`
+        """
+        return self.__bank_account_iban
+
+    @bank_account_iban.setter
+    def bank_account_iban(self, value):
+        self.__bank_account_iban = value
 
     def to_dictionary(self):
         dictionary = super(RedirectPaymentProduct816SpecificInput, self).to_dictionary()

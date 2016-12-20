@@ -11,19 +11,58 @@ from ingenico.connect.sdk.domain.product.definitions.payment_product_field impor
 class PaymentProductGroup(DataObject):
     """
     Class PaymentProductGroup
-    See also https://developer.globalcollect.com/documentation/api/server/#schema_PaymentProductGroup
     
-    Attributes:
-        accounts_on_file:  list[:class:`AccountOnFile`]
-        display_hints:     :class:`PaymentProductDisplayHints`
-        fields:            list[:class:`PaymentProductField`]
-        id:                str
-     """
+    See also https://developer.globalcollect.com/documentation/api/server/#schema_PaymentProductGroup
+    """
 
-    accounts_on_file = None
-    display_hints = None
-    fields = None
-    id = None
+    __accounts_on_file = None
+    __display_hints = None
+    __fields = None
+    __id = None
+
+    @property
+    def accounts_on_file(self):
+        """
+        list[:class:`AccountOnFile`]
+        """
+        return self.__accounts_on_file
+
+    @accounts_on_file.setter
+    def accounts_on_file(self, value):
+        self.__accounts_on_file = value
+
+    @property
+    def display_hints(self):
+        """
+        :class:`PaymentProductDisplayHints`
+        """
+        return self.__display_hints
+
+    @display_hints.setter
+    def display_hints(self, value):
+        self.__display_hints = value
+
+    @property
+    def fields(self):
+        """
+        list[:class:`PaymentProductField`]
+        """
+        return self.__fields
+
+    @fields.setter
+    def fields(self, value):
+        self.__fields = value
+
+    @property
+    def id(self):
+        """
+        str
+        """
+        return self.__id
+
+    @id.setter
+    def id(self, value):
+        self.__id = value
 
     def to_dictionary(self):
         dictionary = super(PaymentProductGroup, self).to_dictionary()

@@ -8,13 +8,22 @@ from ingenico.connect.sdk.data_object import DataObject
 class AbstractPaymentMethodSpecificOutput(DataObject):
     """
     Class AbstractPaymentMethodSpecificOutput
-    See also https://developer.globalcollect.com/documentation/api/server/#schema_AbstractPaymentMethodSpecificOutput
     
-    Attributes:
-        payment_product_id:  int
-     """
+    See also https://developer.globalcollect.com/documentation/api/server/#schema_AbstractPaymentMethodSpecificOutput
+    """
 
-    payment_product_id = None
+    __payment_product_id = None
+
+    @property
+    def payment_product_id(self):
+        """
+        int
+        """
+        return self.__payment_product_id
+
+    @payment_product_id.setter
+    def payment_product_id(self, value):
+        self.__payment_product_id = value
 
     def to_dictionary(self):
         dictionary = super(AbstractPaymentMethodSpecificOutput, self).to_dictionary()

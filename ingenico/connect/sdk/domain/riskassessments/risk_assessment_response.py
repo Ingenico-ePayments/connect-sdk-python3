@@ -9,13 +9,22 @@ from ingenico.connect.sdk.domain.definitions.result_do_risk_assessment import Re
 class RiskAssessmentResponse(DataObject):
     """
     Class RiskAssessmentResponse
-    See also https://developer.globalcollect.com/documentation/api/server/#schema_RiskAssessmentResponse
     
-    Attributes:
-        results:  list[:class:`ResultDoRiskAssessment`]
-     """
+    See also https://developer.globalcollect.com/documentation/api/server/#schema_RiskAssessmentResponse
+    """
 
-    results = None
+    __results = None
+
+    @property
+    def results(self):
+        """
+        list[:class:`ResultDoRiskAssessment`]
+        """
+        return self.__results
+
+    @results.setter
+    def results(self, value):
+        self.__results = value
 
     def to_dictionary(self):
         dictionary = super(RiskAssessmentResponse, self).to_dictionary()

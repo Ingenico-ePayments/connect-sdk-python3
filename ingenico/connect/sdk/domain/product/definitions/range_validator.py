@@ -8,15 +8,34 @@ from ingenico.connect.sdk.data_object import DataObject
 class RangeValidator(DataObject):
     """
     Class RangeValidator
-    See also https://developer.globalcollect.com/documentation/api/server/#schema_RangeValidator
     
-    Attributes:
-        max_value:  int
-        min_value:  int
-     """
+    See also https://developer.globalcollect.com/documentation/api/server/#schema_RangeValidator
+    """
 
-    max_value = None
-    min_value = None
+    __max_value = None
+    __min_value = None
+
+    @property
+    def max_value(self):
+        """
+        int
+        """
+        return self.__max_value
+
+    @max_value.setter
+    def max_value(self, value):
+        self.__max_value = value
+
+    @property
+    def min_value(self):
+        """
+        int
+        """
+        return self.__min_value
+
+    @min_value.setter
+    def min_value(self, value):
+        self.__min_value = value
 
     def to_dictionary(self):
         dictionary = super(RangeValidator, self).to_dictionary()

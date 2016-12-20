@@ -11,19 +11,58 @@ from ingenico.connect.sdk.domain.payment.definitions.order_approve_payment impor
 class ApprovePaymentRequest(DataObject):
     """
     Class ApprovePaymentRequest
-    See also https://developer.globalcollect.com/documentation/api/server/#schema_ApprovePaymentRequest
     
-    Attributes:
-        amount:                                           int
-        direct_debit_payment_method_specific_input:       :class:`ApprovePaymentNonSepaDirectDebitPaymentMethodSpecificInput`
-        order:                                            :class:`OrderApprovePayment`
-        sepa_direct_debit_payment_method_specific_input:  :class:`ApprovePaymentSepaDirectDebitPaymentMethodSpecificInput`
-     """
+    See also https://developer.globalcollect.com/documentation/api/server/#schema_ApprovePaymentRequest
+    """
 
-    amount = None
-    direct_debit_payment_method_specific_input = None
-    order = None
-    sepa_direct_debit_payment_method_specific_input = None
+    __amount = None
+    __direct_debit_payment_method_specific_input = None
+    __order = None
+    __sepa_direct_debit_payment_method_specific_input = None
+
+    @property
+    def amount(self):
+        """
+        int
+        """
+        return self.__amount
+
+    @amount.setter
+    def amount(self, value):
+        self.__amount = value
+
+    @property
+    def direct_debit_payment_method_specific_input(self):
+        """
+        :class:`ApprovePaymentNonSepaDirectDebitPaymentMethodSpecificInput`
+        """
+        return self.__direct_debit_payment_method_specific_input
+
+    @direct_debit_payment_method_specific_input.setter
+    def direct_debit_payment_method_specific_input(self, value):
+        self.__direct_debit_payment_method_specific_input = value
+
+    @property
+    def order(self):
+        """
+        :class:`OrderApprovePayment`
+        """
+        return self.__order
+
+    @order.setter
+    def order(self, value):
+        self.__order = value
+
+    @property
+    def sepa_direct_debit_payment_method_specific_input(self):
+        """
+        :class:`ApprovePaymentSepaDirectDebitPaymentMethodSpecificInput`
+        """
+        return self.__sepa_direct_debit_payment_method_specific_input
+
+    @sepa_direct_debit_payment_method_specific_input.setter
+    def sepa_direct_debit_payment_method_specific_input(self, value):
+        self.__sepa_direct_debit_payment_method_specific_input = value
 
     def to_dictionary(self):
         dictionary = super(ApprovePaymentRequest, self).to_dictionary()

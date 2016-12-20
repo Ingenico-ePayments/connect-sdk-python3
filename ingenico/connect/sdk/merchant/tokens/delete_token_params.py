@@ -8,13 +8,22 @@ from ingenico.connect.sdk.param_request import ParamRequest
 class DeleteTokenParams(ParamRequest):
     """
     Query parameters for Delete token
-    See also https://developer.globalcollect.com/documentation/api/server/#__merchantId__tokens__tokenId__delete
     
-    Attributes:
-        mandate_cancel_date:  str
+    See also https://developer.globalcollect.com/documentation/api/server/#__merchantId__tokens__tokenId__delete
     """
 
-    mandate_cancel_date = None
+    __mandate_cancel_date = None
+
+    @property
+    def mandate_cancel_date(self):
+        """
+        str
+        """
+        return self.__mandate_cancel_date
+
+    @mandate_cancel_date.setter
+    def mandate_cancel_date(self, value):
+        self.__mandate_cancel_date = value
 
     def to_request_parameters(self):
         """

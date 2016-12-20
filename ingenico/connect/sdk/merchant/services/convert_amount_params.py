@@ -8,17 +8,46 @@ from ingenico.connect.sdk.param_request import ParamRequest
 class ConvertAmountParams(ParamRequest):
     """
     Query parameters for Convert amount
-    See also https://developer.globalcollect.com/documentation/api/server/#__merchantId__services_convert_amount_get
     
-    Attributes:
-        source:  str
-        amount:  int
-        target:  str
+    See also https://developer.globalcollect.com/documentation/api/server/#__merchantId__services_convert_amount_get
     """
 
-    source = None
-    amount = None
-    target = None
+    __source = None
+    __amount = None
+    __target = None
+
+    @property
+    def source(self):
+        """
+        str
+        """
+        return self.__source
+
+    @source.setter
+    def source(self, value):
+        self.__source = value
+
+    @property
+    def amount(self):
+        """
+        int
+        """
+        return self.__amount
+
+    @amount.setter
+    def amount(self, value):
+        self.__amount = value
+
+    @property
+    def target(self):
+        """
+        str
+        """
+        return self.__target
+
+    @target.setter
+    def target(self, value):
+        self.__target = value
 
     def to_request_parameters(self):
         """

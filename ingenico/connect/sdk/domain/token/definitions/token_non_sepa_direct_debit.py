@@ -10,15 +10,34 @@ from ingenico.connect.sdk.domain.token.definitions.mandate_non_sepa_direct_debit
 class TokenNonSepaDirectDebit(AbstractToken):
     """
     Class TokenNonSepaDirectDebit
-    See also https://developer.globalcollect.com/documentation/api/server/#schema_TokenNonSepaDirectDebit
     
-    Attributes:
-        customer:  :class:`CustomerToken`
-        mandate:   :class:`MandateNonSepaDirectDebit`
-     """
+    See also https://developer.globalcollect.com/documentation/api/server/#schema_TokenNonSepaDirectDebit
+    """
 
-    customer = None
-    mandate = None
+    __customer = None
+    __mandate = None
+
+    @property
+    def customer(self):
+        """
+        :class:`CustomerToken`
+        """
+        return self.__customer
+
+    @customer.setter
+    def customer(self, value):
+        self.__customer = value
+
+    @property
+    def mandate(self):
+        """
+        :class:`MandateNonSepaDirectDebit`
+        """
+        return self.__mandate
+
+    @mandate.setter
+    def mandate(self, value):
+        self.__mandate = value
 
     def to_dictionary(self):
         dictionary = super(TokenNonSepaDirectDebit, self).to_dictionary()

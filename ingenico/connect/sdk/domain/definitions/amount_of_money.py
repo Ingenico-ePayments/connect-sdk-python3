@@ -8,15 +8,34 @@ from ingenico.connect.sdk.data_object import DataObject
 class AmountOfMoney(DataObject):
     """
     Class AmountOfMoney
-    See also https://developer.globalcollect.com/documentation/api/server/#schema_AmountOfMoney
     
-    Attributes:
-        amount:         int
-        currency_code:  str
-     """
+    See also https://developer.globalcollect.com/documentation/api/server/#schema_AmountOfMoney
+    """
 
-    amount = None
-    currency_code = None
+    __amount = None
+    __currency_code = None
+
+    @property
+    def amount(self):
+        """
+        int
+        """
+        return self.__amount
+
+    @amount.setter
+    def amount(self, value):
+        self.__amount = value
+
+    @property
+    def currency_code(self):
+        """
+        str
+        """
+        return self.__currency_code
+
+    @currency_code.setter
+    def currency_code(self, value):
+        self.__currency_code = value
 
     def to_dictionary(self):
         dictionary = super(AmountOfMoney, self).to_dictionary()

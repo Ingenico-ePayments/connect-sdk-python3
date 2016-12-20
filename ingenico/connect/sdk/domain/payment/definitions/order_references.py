@@ -9,19 +9,58 @@ from ingenico.connect.sdk.domain.payment.definitions.order_invoice_data import O
 class OrderReferences(DataObject):
     """
     Class OrderReferences
-    See also https://developer.globalcollect.com/documentation/api/server/#schema_OrderReferences
     
-    Attributes:
-        descriptor:          str
-        invoice_data:        :class:`OrderInvoiceData`
-        merchant_order_id:   int
-        merchant_reference:  str
-     """
+    See also https://developer.globalcollect.com/documentation/api/server/#schema_OrderReferences
+    """
 
-    descriptor = None
-    invoice_data = None
-    merchant_order_id = None
-    merchant_reference = None
+    __descriptor = None
+    __invoice_data = None
+    __merchant_order_id = None
+    __merchant_reference = None
+
+    @property
+    def descriptor(self):
+        """
+        str
+        """
+        return self.__descriptor
+
+    @descriptor.setter
+    def descriptor(self, value):
+        self.__descriptor = value
+
+    @property
+    def invoice_data(self):
+        """
+        :class:`OrderInvoiceData`
+        """
+        return self.__invoice_data
+
+    @invoice_data.setter
+    def invoice_data(self, value):
+        self.__invoice_data = value
+
+    @property
+    def merchant_order_id(self):
+        """
+        int
+        """
+        return self.__merchant_order_id
+
+    @merchant_order_id.setter
+    def merchant_order_id(self, value):
+        self.__merchant_order_id = value
+
+    @property
+    def merchant_reference(self):
+        """
+        str
+        """
+        return self.__merchant_reference
+
+    @merchant_reference.setter
+    def merchant_reference(self, value):
+        self.__merchant_reference = value
 
     def to_dictionary(self):
         dictionary = super(OrderReferences, self).to_dictionary()

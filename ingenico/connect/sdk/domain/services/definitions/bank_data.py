@@ -8,19 +8,58 @@ from ingenico.connect.sdk.data_object import DataObject
 class BankData(DataObject):
     """
     Class BankData
-    See also https://developer.globalcollect.com/documentation/api/server/#schema_BankData
     
-    Attributes:
-        new_bank_name:               str
-        reformatted_account_number:  str
-        reformatted_bank_code:       str
-        reformatted_branch_code:     str
-     """
+    See also https://developer.globalcollect.com/documentation/api/server/#schema_BankData
+    """
 
-    new_bank_name = None
-    reformatted_account_number = None
-    reformatted_bank_code = None
-    reformatted_branch_code = None
+    __new_bank_name = None
+    __reformatted_account_number = None
+    __reformatted_bank_code = None
+    __reformatted_branch_code = None
+
+    @property
+    def new_bank_name(self):
+        """
+        str
+        """
+        return self.__new_bank_name
+
+    @new_bank_name.setter
+    def new_bank_name(self, value):
+        self.__new_bank_name = value
+
+    @property
+    def reformatted_account_number(self):
+        """
+        str
+        """
+        return self.__reformatted_account_number
+
+    @reformatted_account_number.setter
+    def reformatted_account_number(self, value):
+        self.__reformatted_account_number = value
+
+    @property
+    def reformatted_bank_code(self):
+        """
+        str
+        """
+        return self.__reformatted_bank_code
+
+    @reformatted_bank_code.setter
+    def reformatted_bank_code(self, value):
+        self.__reformatted_bank_code = value
+
+    @property
+    def reformatted_branch_code(self):
+        """
+        str
+        """
+        return self.__reformatted_branch_code
+
+    @reformatted_branch_code.setter
+    def reformatted_branch_code(self, value):
+        self.__reformatted_branch_code = value
 
     def to_dictionary(self):
         dictionary = super(BankData, self).to_dictionary()

@@ -8,15 +8,34 @@ from ingenico.connect.sdk.data_object import DataObject
 class CreateTokenResponse(DataObject):
     """
     Class CreateTokenResponse
-    See also https://developer.globalcollect.com/documentation/api/server/#schema_CreateTokenResponse
     
-    Attributes:
-        is_new_token:  bool
-        token:         str
-     """
+    See also https://developer.globalcollect.com/documentation/api/server/#schema_CreateTokenResponse
+    """
 
-    is_new_token = None
-    token = None
+    __is_new_token = None
+    __token = None
+
+    @property
+    def is_new_token(self):
+        """
+        bool
+        """
+        return self.__is_new_token
+
+    @is_new_token.setter
+    def is_new_token(self, value):
+        self.__is_new_token = value
+
+    @property
+    def token(self):
+        """
+        str
+        """
+        return self.__token
+
+    @token.setter
+    def token(self, value):
+        self.__token = value
 
     def to_dictionary(self):
         dictionary = super(CreateTokenResponse, self).to_dictionary()

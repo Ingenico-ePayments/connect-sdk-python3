@@ -8,15 +8,34 @@ from ingenico.connect.sdk.data_object import DataObject
 class LengthValidator(DataObject):
     """
     Class LengthValidator
-    See also https://developer.globalcollect.com/documentation/api/server/#schema_LengthValidator
     
-    Attributes:
-        max_length:  int
-        min_length:  int
-     """
+    See also https://developer.globalcollect.com/documentation/api/server/#schema_LengthValidator
+    """
 
-    max_length = None
-    min_length = None
+    __max_length = None
+    __min_length = None
+
+    @property
+    def max_length(self):
+        """
+        int
+        """
+        return self.__max_length
+
+    @max_length.setter
+    def max_length(self, value):
+        self.__max_length = value
+
+    @property
+    def min_length(self):
+        """
+        int
+        """
+        return self.__min_length
+
+    @min_length.setter
+    def min_length(self, value):
+        self.__min_length = value
 
     def to_dictionary(self):
         dictionary = super(LengthValidator, self).to_dictionary()

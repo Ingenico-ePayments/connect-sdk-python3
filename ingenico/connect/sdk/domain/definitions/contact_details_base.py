@@ -8,15 +8,34 @@ from ingenico.connect.sdk.data_object import DataObject
 class ContactDetailsBase(DataObject):
     """
     Class ContactDetailsBase
-    See also https://developer.globalcollect.com/documentation/api/server/#schema_ContactDetailsBase
     
-    Attributes:
-        email_address:       str
-        email_message_type:  str
-     """
+    See also https://developer.globalcollect.com/documentation/api/server/#schema_ContactDetailsBase
+    """
 
-    email_address = None
-    email_message_type = None
+    __email_address = None
+    __email_message_type = None
+
+    @property
+    def email_address(self):
+        """
+        str
+        """
+        return self.__email_address
+
+    @email_address.setter
+    def email_address(self, value):
+        self.__email_address = value
+
+    @property
+    def email_message_type(self):
+        """
+        str
+        """
+        return self.__email_message_type
+
+    @email_message_type.setter
+    def email_message_type(self, value):
+        self.__email_message_type = value
 
     def to_dictionary(self):
         dictionary = super(ContactDetailsBase, self).to_dictionary()

@@ -81,7 +81,7 @@ class ClientTest(unittest.TestCase):
         function_mock.assert_called_once_with(timedelta(seconds=5))
 
     def test_close_expired_connections_not_pooled(self):
-        """Tests that the setting to close an expired connection in a client propagates to the connection
+        """Tests that the setting to close an expired connection in a client does not propagate to the connection
         for an unpooled connection
         """
         mock = MagicMock(spec=Connection(), autospec=True)

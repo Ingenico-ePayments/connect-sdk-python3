@@ -8,8 +8,9 @@ from ingenico.connect.sdk.domain.payment.definitions.refund_method_specific_outp
 class RefundBankMethodSpecificOutput(RefundMethodSpecificOutput):
     """
     Class RefundBankMethodSpecificOutput
+    
     See also https://developer.globalcollect.com/documentation/api/server/#schema_RefundBankMethodSpecificOutput
-     """
+    """
 
     def to_dictionary(self):
         dictionary = super(RefundBankMethodSpecificOutput, self).to_dictionary()

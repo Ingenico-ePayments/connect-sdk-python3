@@ -9,15 +9,34 @@ from ingenico.connect.sdk.domain.definitions.bank_account_bban import BankAccoun
 class TokenNonSepaDirectDebitPaymentProduct705SpecificData(DataObject):
     """
     Class TokenNonSepaDirectDebitPaymentProduct705SpecificData
-    See also https://developer.globalcollect.com/documentation/api/server/#schema_TokenNonSepaDirectDebitPaymentProduct705SpecificData
     
-    Attributes:
-        authorisation_id:   str
-        bank_account_bban:  :class:`BankAccountBban`
-     """
+    See also https://developer.globalcollect.com/documentation/api/server/#schema_TokenNonSepaDirectDebitPaymentProduct705SpecificData
+    """
 
-    authorisation_id = None
-    bank_account_bban = None
+    __authorisation_id = None
+    __bank_account_bban = None
+
+    @property
+    def authorisation_id(self):
+        """
+        str
+        """
+        return self.__authorisation_id
+
+    @authorisation_id.setter
+    def authorisation_id(self, value):
+        self.__authorisation_id = value
+
+    @property
+    def bank_account_bban(self):
+        """
+        :class:`BankAccountBban`
+        """
+        return self.__bank_account_bban
+
+    @bank_account_bban.setter
+    def bank_account_bban(self, value):
+        self.__bank_account_bban = value
 
     def to_dictionary(self):
         dictionary = super(TokenNonSepaDirectDebitPaymentProduct705SpecificData, self).to_dictionary()

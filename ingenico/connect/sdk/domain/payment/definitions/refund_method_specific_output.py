@@ -8,15 +8,34 @@ from ingenico.connect.sdk.data_object import DataObject
 class RefundMethodSpecificOutput(DataObject):
     """
     Class RefundMethodSpecificOutput
-    See also https://developer.globalcollect.com/documentation/api/server/#schema_RefundMethodSpecificOutput
     
-    Attributes:
-        total_amount_paid:      int
-        total_amount_refunded:  int
-     """
+    See also https://developer.globalcollect.com/documentation/api/server/#schema_RefundMethodSpecificOutput
+    """
 
-    total_amount_paid = None
-    total_amount_refunded = None
+    __total_amount_paid = None
+    __total_amount_refunded = None
+
+    @property
+    def total_amount_paid(self):
+        """
+        int
+        """
+        return self.__total_amount_paid
+
+    @total_amount_paid.setter
+    def total_amount_paid(self, value):
+        self.__total_amount_paid = value
+
+    @property
+    def total_amount_refunded(self):
+        """
+        int
+        """
+        return self.__total_amount_refunded
+
+    @total_amount_refunded.setter
+    def total_amount_refunded(self, value):
+        self.__total_amount_refunded = value
 
     def to_dictionary(self):
         dictionary = super(RefundMethodSpecificOutput, self).to_dictionary()

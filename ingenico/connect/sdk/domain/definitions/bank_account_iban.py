@@ -8,13 +8,22 @@ from ingenico.connect.sdk.domain.definitions.bank_account import BankAccount
 class BankAccountIban(BankAccount):
     """
     Class BankAccountIban
-    See also https://developer.globalcollect.com/documentation/api/server/#schema_BankAccountIban
     
-    Attributes:
-        iban:  str
-     """
+    See also https://developer.globalcollect.com/documentation/api/server/#schema_BankAccountIban
+    """
 
-    iban = None
+    __iban = None
+
+    @property
+    def iban(self):
+        """
+        str
+        """
+        return self.__iban
+
+    @iban.setter
+    def iban(self, value):
+        self.__iban = value
 
     def to_dictionary(self):
         dictionary = super(BankAccountIban, self).to_dictionary()

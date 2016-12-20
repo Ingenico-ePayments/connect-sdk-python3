@@ -8,15 +8,34 @@ from ingenico.connect.sdk.domain.definitions.key_value_pair import KeyValuePair
 class AccountOnFileAttribute(KeyValuePair):
     """
     Class AccountOnFileAttribute
-    See also https://developer.globalcollect.com/documentation/api/server/#schema_AccountOnFileAttribute
     
-    Attributes:
-        must_write_reason:  str
-        status:             str
-     """
+    See also https://developer.globalcollect.com/documentation/api/server/#schema_AccountOnFileAttribute
+    """
 
-    must_write_reason = None
-    status = None
+    __must_write_reason = None
+    __status = None
+
+    @property
+    def must_write_reason(self):
+        """
+        str
+        """
+        return self.__must_write_reason
+
+    @must_write_reason.setter
+    def must_write_reason(self, value):
+        self.__must_write_reason = value
+
+    @property
+    def status(self):
+        """
+        str
+        """
+        return self.__status
+
+    @status.setter
+    def status(self, value):
+        self.__status = value
 
     def to_dictionary(self):
         dictionary = super(AccountOnFileAttribute, self).to_dictionary()

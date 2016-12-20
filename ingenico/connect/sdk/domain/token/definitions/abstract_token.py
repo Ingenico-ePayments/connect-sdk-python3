@@ -8,13 +8,22 @@ from ingenico.connect.sdk.data_object import DataObject
 class AbstractToken(DataObject):
     """
     Class AbstractToken
-    See also https://developer.globalcollect.com/documentation/api/server/#schema_AbstractToken
     
-    Attributes:
-        alias:  str
-     """
+    See also https://developer.globalcollect.com/documentation/api/server/#schema_AbstractToken
+    """
 
-    alias = None
+    __alias = None
+
+    @property
+    def alias(self):
+        """
+        str
+        """
+        return self.__alias
+
+    @alias.setter
+    def alias(self, value):
+        self.__alias = value
 
     def to_dictionary(self):
         dictionary = super(AbstractToken, self).to_dictionary()

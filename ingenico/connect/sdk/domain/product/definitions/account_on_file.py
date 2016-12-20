@@ -10,19 +10,58 @@ from ingenico.connect.sdk.domain.product.definitions.account_on_file_display_hin
 class AccountOnFile(DataObject):
     """
     Class AccountOnFile
-    See also https://developer.globalcollect.com/documentation/api/server/#schema_AccountOnFile
     
-    Attributes:
-        attributes:          list[:class:`AccountOnFileAttribute`]
-        display_hints:       :class:`AccountOnFileDisplayHints`
-        id:                  int
-        payment_product_id:  int
-     """
+    See also https://developer.globalcollect.com/documentation/api/server/#schema_AccountOnFile
+    """
 
-    attributes = None
-    display_hints = None
-    id = None
-    payment_product_id = None
+    __attributes = None
+    __display_hints = None
+    __id = None
+    __payment_product_id = None
+
+    @property
+    def attributes(self):
+        """
+        list[:class:`AccountOnFileAttribute`]
+        """
+        return self.__attributes
+
+    @attributes.setter
+    def attributes(self, value):
+        self.__attributes = value
+
+    @property
+    def display_hints(self):
+        """
+        :class:`AccountOnFileDisplayHints`
+        """
+        return self.__display_hints
+
+    @display_hints.setter
+    def display_hints(self, value):
+        self.__display_hints = value
+
+    @property
+    def id(self):
+        """
+        int
+        """
+        return self.__id
+
+    @id.setter
+    def id(self, value):
+        self.__id = value
+
+    @property
+    def payment_product_id(self):
+        """
+        int
+        """
+        return self.__payment_product_id
+
+    @payment_product_id.setter
+    def payment_product_id(self, value):
+        self.__payment_product_id = value
 
     def to_dictionary(self):
         dictionary = super(AccountOnFile, self).to_dictionary()

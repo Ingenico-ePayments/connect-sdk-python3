@@ -8,21 +8,70 @@ from ingenico.connect.sdk.data_object import DataObject
 class ExternalCardholderAuthenticationData(DataObject):
     """
     Class ExternalCardholderAuthenticationData
-    See also https://developer.globalcollect.com/documentation/api/server/#schema_ExternalCardholderAuthenticationData
     
-    Attributes:
-        cavv:               str
-        cavv_algorithm:     str
-        eci:                int
-        validation_result:  str
-        xid:                str
-     """
+    See also https://developer.globalcollect.com/documentation/api/server/#schema_ExternalCardholderAuthenticationData
+    """
 
-    cavv = None
-    cavv_algorithm = None
-    eci = None
-    validation_result = None
-    xid = None
+    __cavv = None
+    __cavv_algorithm = None
+    __eci = None
+    __validation_result = None
+    __xid = None
+
+    @property
+    def cavv(self):
+        """
+        str
+        """
+        return self.__cavv
+
+    @cavv.setter
+    def cavv(self, value):
+        self.__cavv = value
+
+    @property
+    def cavv_algorithm(self):
+        """
+        str
+        """
+        return self.__cavv_algorithm
+
+    @cavv_algorithm.setter
+    def cavv_algorithm(self, value):
+        self.__cavv_algorithm = value
+
+    @property
+    def eci(self):
+        """
+        int
+        """
+        return self.__eci
+
+    @eci.setter
+    def eci(self, value):
+        self.__eci = value
+
+    @property
+    def validation_result(self):
+        """
+        str
+        """
+        return self.__validation_result
+
+    @validation_result.setter
+    def validation_result(self, value):
+        self.__validation_result = value
+
+    @property
+    def xid(self):
+        """
+        str
+        """
+        return self.__xid
+
+    @xid.setter
+    def xid(self, value):
+        self.__xid = value
 
     def to_dictionary(self):
         dictionary = super(ExternalCardholderAuthenticationData, self).to_dictionary()

@@ -10,17 +10,46 @@ from ingenico.connect.sdk.domain.refund.definitions.bank_account_bban_refund imp
 class BankRefundMethodSpecificInput(DataObject):
     """
     Class BankRefundMethodSpecificInput
-    See also https://developer.globalcollect.com/documentation/api/server/#schema_BankRefundMethodSpecificInput
     
-    Attributes:
-        bank_account_bban:  :class:`BankAccountBbanRefund`
-        bank_account_iban:  :class:`BankAccountIban`
-        country_code:       str
-     """
+    See also https://developer.globalcollect.com/documentation/api/server/#schema_BankRefundMethodSpecificInput
+    """
 
-    bank_account_bban = None
-    bank_account_iban = None
-    country_code = None
+    __bank_account_bban = None
+    __bank_account_iban = None
+    __country_code = None
+
+    @property
+    def bank_account_bban(self):
+        """
+        :class:`BankAccountBbanRefund`
+        """
+        return self.__bank_account_bban
+
+    @bank_account_bban.setter
+    def bank_account_bban(self, value):
+        self.__bank_account_bban = value
+
+    @property
+    def bank_account_iban(self):
+        """
+        :class:`BankAccountIban`
+        """
+        return self.__bank_account_iban
+
+    @bank_account_iban.setter
+    def bank_account_iban(self, value):
+        self.__bank_account_iban = value
+
+    @property
+    def country_code(self):
+        """
+        str
+        """
+        return self.__country_code
+
+    @country_code.setter
+    def country_code(self, value):
+        self.__country_code = value
 
     def to_dictionary(self):
         dictionary = super(BankRefundMethodSpecificInput, self).to_dictionary()

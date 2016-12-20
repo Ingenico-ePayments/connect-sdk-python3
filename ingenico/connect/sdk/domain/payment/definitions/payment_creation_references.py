@@ -8,15 +8,34 @@ from ingenico.connect.sdk.data_object import DataObject
 class PaymentCreationReferences(DataObject):
     """
     Class PaymentCreationReferences
-    See also https://developer.globalcollect.com/documentation/api/server/#schema_PaymentCreationReferences
     
-    Attributes:
-        additional_reference:  str
-        external_reference:    str
-     """
+    See also https://developer.globalcollect.com/documentation/api/server/#schema_PaymentCreationReferences
+    """
 
-    additional_reference = None
-    external_reference = None
+    __additional_reference = None
+    __external_reference = None
+
+    @property
+    def additional_reference(self):
+        """
+        str
+        """
+        return self.__additional_reference
+
+    @additional_reference.setter
+    def additional_reference(self, value):
+        self.__additional_reference = value
+
+    @property
+    def external_reference(self):
+        """
+        str
+        """
+        return self.__external_reference
+
+    @external_reference.setter
+    def external_reference(self, value):
+        self.__external_reference = value
 
     def to_dictionary(self):
         dictionary = super(PaymentCreationReferences, self).to_dictionary()

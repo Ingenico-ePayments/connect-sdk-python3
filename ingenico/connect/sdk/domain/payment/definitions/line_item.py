@@ -11,17 +11,46 @@ from ingenico.connect.sdk.domain.payment.definitions.line_item_level3_interchang
 class LineItem(DataObject):
     """
     Class LineItem
-    See also https://developer.globalcollect.com/documentation/api/server/#schema_LineItem
     
-    Attributes:
-        amount_of_money:                 :class:`AmountOfMoney`
-        invoice_data:                    :class:`LineItemInvoiceData`
-        level3_interchange_information:  :class:`LineItemLevel3InterchangeInformation`
-     """
+    See also https://developer.globalcollect.com/documentation/api/server/#schema_LineItem
+    """
 
-    amount_of_money = None
-    invoice_data = None
-    level3_interchange_information = None
+    __amount_of_money = None
+    __invoice_data = None
+    __level3_interchange_information = None
+
+    @property
+    def amount_of_money(self):
+        """
+        :class:`AmountOfMoney`
+        """
+        return self.__amount_of_money
+
+    @amount_of_money.setter
+    def amount_of_money(self, value):
+        self.__amount_of_money = value
+
+    @property
+    def invoice_data(self):
+        """
+        :class:`LineItemInvoiceData`
+        """
+        return self.__invoice_data
+
+    @invoice_data.setter
+    def invoice_data(self, value):
+        self.__invoice_data = value
+
+    @property
+    def level3_interchange_information(self):
+        """
+        :class:`LineItemLevel3InterchangeInformation`
+        """
+        return self.__level3_interchange_information
+
+    @level3_interchange_information.setter
+    def level3_interchange_information(self, value):
+        self.__level3_interchange_information = value
 
     def to_dictionary(self):
         dictionary = super(LineItem, self).to_dictionary()

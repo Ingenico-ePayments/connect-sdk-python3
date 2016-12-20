@@ -8,13 +8,22 @@ from ingenico.connect.sdk.data_object import DataObject
 class AbstractOrderStatus(DataObject):
     """
     Class AbstractOrderStatus
-    See also https://developer.globalcollect.com/documentation/api/server/#schema_AbstractOrderStatus
     
-    Attributes:
-        id:  str
-     """
+    See also https://developer.globalcollect.com/documentation/api/server/#schema_AbstractOrderStatus
+    """
 
-    id = None
+    __id = None
+
+    @property
+    def id(self):
+        """
+        str
+        """
+        return self.__id
+
+    @id.setter
+    def id(self, value):
+        self.__id = value
 
     def to_dictionary(self):
         dictionary = super(AbstractOrderStatus, self).to_dictionary()

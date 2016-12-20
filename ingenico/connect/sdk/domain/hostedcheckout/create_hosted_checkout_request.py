@@ -15,25 +15,94 @@ from ingenico.connect.sdk.domain.payment.definitions.redirect_payment_method_spe
 class CreateHostedCheckoutRequest(DataObject):
     """
     Class CreateHostedCheckoutRequest
-    See also https://developer.globalcollect.com/documentation/api/server/#schema_CreateHostedCheckoutRequest
     
-    Attributes:
-        bank_transfer_payment_method_specific_input:  :class:`BankTransferPaymentMethodSpecificInputBase`
-        card_payment_method_specific_input:           :class:`CardPaymentMethodSpecificInputBase`
-        cash_payment_method_specific_input:           :class:`CashPaymentMethodSpecificInputBase`
-        fraud_fields:                                 :class:`FraudFields`
-        hosted_checkout_specific_input:               :class:`HostedCheckoutSpecificInput`
-        order:                                        :class:`Order`
-        redirect_payment_method_specific_input:       :class:`RedirectPaymentMethodSpecificInputBase`
-     """
+    See also https://developer.globalcollect.com/documentation/api/server/#schema_CreateHostedCheckoutRequest
+    """
 
-    bank_transfer_payment_method_specific_input = None
-    card_payment_method_specific_input = None
-    cash_payment_method_specific_input = None
-    fraud_fields = None
-    hosted_checkout_specific_input = None
-    order = None
-    redirect_payment_method_specific_input = None
+    __bank_transfer_payment_method_specific_input = None
+    __card_payment_method_specific_input = None
+    __cash_payment_method_specific_input = None
+    __fraud_fields = None
+    __hosted_checkout_specific_input = None
+    __order = None
+    __redirect_payment_method_specific_input = None
+
+    @property
+    def bank_transfer_payment_method_specific_input(self):
+        """
+        :class:`BankTransferPaymentMethodSpecificInputBase`
+        """
+        return self.__bank_transfer_payment_method_specific_input
+
+    @bank_transfer_payment_method_specific_input.setter
+    def bank_transfer_payment_method_specific_input(self, value):
+        self.__bank_transfer_payment_method_specific_input = value
+
+    @property
+    def card_payment_method_specific_input(self):
+        """
+        :class:`CardPaymentMethodSpecificInputBase`
+        """
+        return self.__card_payment_method_specific_input
+
+    @card_payment_method_specific_input.setter
+    def card_payment_method_specific_input(self, value):
+        self.__card_payment_method_specific_input = value
+
+    @property
+    def cash_payment_method_specific_input(self):
+        """
+        :class:`CashPaymentMethodSpecificInputBase`
+        """
+        return self.__cash_payment_method_specific_input
+
+    @cash_payment_method_specific_input.setter
+    def cash_payment_method_specific_input(self, value):
+        self.__cash_payment_method_specific_input = value
+
+    @property
+    def fraud_fields(self):
+        """
+        :class:`FraudFields`
+        """
+        return self.__fraud_fields
+
+    @fraud_fields.setter
+    def fraud_fields(self, value):
+        self.__fraud_fields = value
+
+    @property
+    def hosted_checkout_specific_input(self):
+        """
+        :class:`HostedCheckoutSpecificInput`
+        """
+        return self.__hosted_checkout_specific_input
+
+    @hosted_checkout_specific_input.setter
+    def hosted_checkout_specific_input(self, value):
+        self.__hosted_checkout_specific_input = value
+
+    @property
+    def order(self):
+        """
+        :class:`Order`
+        """
+        return self.__order
+
+    @order.setter
+    def order(self, value):
+        self.__order = value
+
+    @property
+    def redirect_payment_method_specific_input(self):
+        """
+        :class:`RedirectPaymentMethodSpecificInputBase`
+        """
+        return self.__redirect_payment_method_specific_input
+
+    @redirect_payment_method_specific_input.setter
+    def redirect_payment_method_specific_input(self, value):
+        self.__redirect_payment_method_specific_input = value
 
     def to_dictionary(self):
         dictionary = super(CreateHostedCheckoutRequest, self).to_dictionary()

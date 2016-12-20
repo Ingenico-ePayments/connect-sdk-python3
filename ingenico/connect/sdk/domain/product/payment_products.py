@@ -9,13 +9,22 @@ from ingenico.connect.sdk.domain.product.definitions.payment_product import Paym
 class PaymentProducts(DataObject):
     """
     Class PaymentProducts
-    See also https://developer.globalcollect.com/documentation/api/server/#schema_PaymentProducts
     
-    Attributes:
-        payment_products:  list[:class:`PaymentProduct`]
-     """
+    See also https://developer.globalcollect.com/documentation/api/server/#schema_PaymentProducts
+    """
 
-    payment_products = None
+    __payment_products = None
+
+    @property
+    def payment_products(self):
+        """
+        list[:class:`PaymentProduct`]
+        """
+        return self.__payment_products
+
+    @payment_products.setter
+    def payment_products(self, value):
+        self.__payment_products = value
 
     def to_dictionary(self):
         dictionary = super(PaymentProducts, self).to_dictionary()

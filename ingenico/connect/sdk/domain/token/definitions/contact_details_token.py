@@ -8,8 +8,9 @@ from ingenico.connect.sdk.domain.definitions.contact_details_base import Contact
 class ContactDetailsToken(ContactDetailsBase):
     """
     Class ContactDetailsToken
+    
     See also https://developer.globalcollect.com/documentation/api/server/#schema_ContactDetailsToken
-     """
+    """
 
     def to_dictionary(self):
         dictionary = super(ContactDetailsToken, self).to_dictionary()

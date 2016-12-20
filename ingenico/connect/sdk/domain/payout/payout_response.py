@@ -8,8 +8,9 @@ from ingenico.connect.sdk.domain.payout.definitions.payout_result import PayoutR
 class PayoutResponse(PayoutResult):
     """
     Class PayoutResponse
+    
     See also https://developer.globalcollect.com/documentation/api/server/#schema_PayoutResponse
-     """
+    """
 
     def to_dictionary(self):
         dictionary = super(PayoutResponse, self).to_dictionary()

@@ -10,19 +10,58 @@ from ingenico.connect.sdk.domain.payment.definitions.external_cardholder_authent
 class CardPaymentMethodSpecificInput(CardPaymentMethodSpecificInputBase):
     """
     Class CardPaymentMethodSpecificInput
-    See also https://developer.globalcollect.com/documentation/api/server/#schema_CardPaymentMethodSpecificInput
     
-    Attributes:
-        card:                                     :class:`Card`
-        external_cardholder_authentication_data:  :class:`ExternalCardholderAuthenticationData`
-        is_recurring:                             bool
-        return_url:                               str
-     """
+    See also https://developer.globalcollect.com/documentation/api/server/#schema_CardPaymentMethodSpecificInput
+    """
 
-    card = None
-    external_cardholder_authentication_data = None
-    is_recurring = None
-    return_url = None
+    __card = None
+    __external_cardholder_authentication_data = None
+    __is_recurring = None
+    __return_url = None
+
+    @property
+    def card(self):
+        """
+        :class:`Card`
+        """
+        return self.__card
+
+    @card.setter
+    def card(self, value):
+        self.__card = value
+
+    @property
+    def external_cardholder_authentication_data(self):
+        """
+        :class:`ExternalCardholderAuthenticationData`
+        """
+        return self.__external_cardholder_authentication_data
+
+    @external_cardholder_authentication_data.setter
+    def external_cardholder_authentication_data(self, value):
+        self.__external_cardholder_authentication_data = value
+
+    @property
+    def is_recurring(self):
+        """
+        bool
+        """
+        return self.__is_recurring
+
+    @is_recurring.setter
+    def is_recurring(self, value):
+        self.__is_recurring = value
+
+    @property
+    def return_url(self):
+        """
+        str
+        """
+        return self.__return_url
+
+    @return_url.setter
+    def return_url(self, value):
+        self.__return_url = value
 
     def to_dictionary(self):
         dictionary = super(CardPaymentMethodSpecificInput, self).to_dictionary()

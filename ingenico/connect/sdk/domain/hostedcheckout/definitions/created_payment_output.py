@@ -11,21 +11,70 @@ from ingenico.connect.sdk.domain.payment.definitions.payment_creation_references
 class CreatedPaymentOutput(DataObject):
     """
     Class CreatedPaymentOutput
-    See also https://developer.globalcollect.com/documentation/api/server/#schema_CreatedPaymentOutput
     
-    Attributes:
-        displayed_data:               :class:`DisplayedData`
-        payment:                      :class:`Payment`
-        payment_creation_references:  :class:`PaymentCreationReferences`
-        payment_status_category:      str
-        tokens:                       str
-     """
+    See also https://developer.globalcollect.com/documentation/api/server/#schema_CreatedPaymentOutput
+    """
 
-    displayed_data = None
-    payment = None
-    payment_creation_references = None
-    payment_status_category = None
-    tokens = None
+    __displayed_data = None
+    __payment = None
+    __payment_creation_references = None
+    __payment_status_category = None
+    __tokens = None
+
+    @property
+    def displayed_data(self):
+        """
+        :class:`DisplayedData`
+        """
+        return self.__displayed_data
+
+    @displayed_data.setter
+    def displayed_data(self, value):
+        self.__displayed_data = value
+
+    @property
+    def payment(self):
+        """
+        :class:`Payment`
+        """
+        return self.__payment
+
+    @payment.setter
+    def payment(self, value):
+        self.__payment = value
+
+    @property
+    def payment_creation_references(self):
+        """
+        :class:`PaymentCreationReferences`
+        """
+        return self.__payment_creation_references
+
+    @payment_creation_references.setter
+    def payment_creation_references(self, value):
+        self.__payment_creation_references = value
+
+    @property
+    def payment_status_category(self):
+        """
+        str
+        """
+        return self.__payment_status_category
+
+    @payment_status_category.setter
+    def payment_status_category(self, value):
+        self.__payment_status_category = value
+
+    @property
+    def tokens(self):
+        """
+        str
+        """
+        return self.__tokens
+
+    @tokens.setter
+    def tokens(self, value):
+        self.__tokens = value
 
     def to_dictionary(self):
         dictionary = super(CreatedPaymentOutput, self).to_dictionary()

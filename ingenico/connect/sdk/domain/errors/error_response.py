@@ -9,15 +9,34 @@ from ingenico.connect.sdk.domain.errors.definitions.api_error import APIError
 class ErrorResponse(DataObject):
     """
     Class ErrorResponse
-    See also https://developer.globalcollect.com/documentation/api/server/#schema_ErrorResponse
     
-    Attributes:
-        error_id:  str
-        errors:    list[:class:`APIError`]
-     """
+    See also https://developer.globalcollect.com/documentation/api/server/#schema_ErrorResponse
+    """
 
-    error_id = None
-    errors = None
+    __error_id = None
+    __errors = None
+
+    @property
+    def error_id(self):
+        """
+        str
+        """
+        return self.__error_id
+
+    @error_id.setter
+    def error_id(self, value):
+        self.__error_id = value
+
+    @property
+    def errors(self):
+        """
+        list[:class:`APIError`]
+        """
+        return self.__errors
+
+    @errors.setter
+    def errors(self, value):
+        self.__errors = value
 
     def to_dictionary(self):
         dictionary = super(ErrorResponse, self).to_dictionary()

@@ -10,17 +10,46 @@ from ingenico.connect.sdk.domain.payout.definitions.payout_result import PayoutR
 class PayoutErrorResponse(DataObject):
     """
     Class PayoutErrorResponse
-    See also https://developer.globalcollect.com/documentation/api/server/#schema_PayoutErrorResponse
     
-    Attributes:
-        error_id:       str
-        errors:         list[:class:`APIError`]
-        payout_result:  :class:`PayoutResult`
-     """
+    See also https://developer.globalcollect.com/documentation/api/server/#schema_PayoutErrorResponse
+    """
 
-    error_id = None
-    errors = None
-    payout_result = None
+    __error_id = None
+    __errors = None
+    __payout_result = None
+
+    @property
+    def error_id(self):
+        """
+        str
+        """
+        return self.__error_id
+
+    @error_id.setter
+    def error_id(self, value):
+        self.__error_id = value
+
+    @property
+    def errors(self):
+        """
+        list[:class:`APIError`]
+        """
+        return self.__errors
+
+    @errors.setter
+    def errors(self, value):
+        self.__errors = value
+
+    @property
+    def payout_result(self):
+        """
+        :class:`PayoutResult`
+        """
+        return self.__payout_result
+
+    @payout_result.setter
+    def payout_result(self, value):
+        self.__payout_result = value
 
     def to_dictionary(self):
         dictionary = super(PayoutErrorResponse, self).to_dictionary()

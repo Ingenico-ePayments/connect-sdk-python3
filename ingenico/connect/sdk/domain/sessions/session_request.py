@@ -9,15 +9,34 @@ from ingenico.connect.sdk.domain.sessions.definitions.payment_product_filters_cl
 class SessionRequest(DataObject):
     """
     Class SessionRequest
-    See also https://developer.globalcollect.com/documentation/api/server/#schema_SessionRequest
     
-    Attributes:
-        payment_product_filters:  :class:`PaymentProductFiltersClientSession`
-        tokens:                   list[str]
-     """
+    See also https://developer.globalcollect.com/documentation/api/server/#schema_SessionRequest
+    """
 
-    payment_product_filters = None
-    tokens = None
+    __payment_product_filters = None
+    __tokens = None
+
+    @property
+    def payment_product_filters(self):
+        """
+        :class:`PaymentProductFiltersClientSession`
+        """
+        return self.__payment_product_filters
+
+    @payment_product_filters.setter
+    def payment_product_filters(self, value):
+        self.__payment_product_filters = value
+
+    @property
+    def tokens(self):
+        """
+        list[str]
+        """
+        return self.__tokens
+
+    @tokens.setter
+    def tokens(self, value):
+        self.__tokens = value
 
     def to_dictionary(self):
         dictionary = super(SessionRequest, self).to_dictionary()

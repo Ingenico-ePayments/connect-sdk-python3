@@ -8,8 +8,9 @@ from ingenico.connect.sdk.domain.payment.definitions.bank_transfer_payment_metho
 class BankTransferPaymentMethodSpecificInput(BankTransferPaymentMethodSpecificInputBase):
     """
     Class BankTransferPaymentMethodSpecificInput
+    
     See also https://developer.globalcollect.com/documentation/api/server/#schema_BankTransferPaymentMethodSpecificInput
-     """
+    """
 
     def to_dictionary(self):
         dictionary = super(BankTransferPaymentMethodSpecificInput, self).to_dictionary()

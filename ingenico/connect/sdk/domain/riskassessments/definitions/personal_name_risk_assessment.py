@@ -8,8 +8,9 @@ from ingenico.connect.sdk.domain.definitions.personal_name_base import PersonalN
 class PersonalNameRiskAssessment(PersonalNameBase):
     """
     Class PersonalNameRiskAssessment
+    
     See also https://developer.globalcollect.com/documentation/api/server/#schema_PersonalNameRiskAssessment
-     """
+    """
 
     def to_dictionary(self):
         dictionary = super(PersonalNameRiskAssessment, self).to_dictionary()

@@ -9,17 +9,46 @@ from ingenico.connect.sdk.domain.definitions.payment_product_filter import Payme
 class PaymentProductFiltersHostedCheckout(DataObject):
     """
     Class PaymentProductFiltersHostedCheckout
-    See also https://developer.globalcollect.com/documentation/api/server/#schema_PaymentProductFiltersHostedCheckout
     
-    Attributes:
-        exclude:      :class:`PaymentProductFilter`
-        restrict_to:  :class:`PaymentProductFilter`
-        tokens_only:  bool
-     """
+    See also https://developer.globalcollect.com/documentation/api/server/#schema_PaymentProductFiltersHostedCheckout
+    """
 
-    exclude = None
-    restrict_to = None
-    tokens_only = None
+    __exclude = None
+    __restrict_to = None
+    __tokens_only = None
+
+    @property
+    def exclude(self):
+        """
+        :class:`PaymentProductFilter`
+        """
+        return self.__exclude
+
+    @exclude.setter
+    def exclude(self, value):
+        self.__exclude = value
+
+    @property
+    def restrict_to(self):
+        """
+        :class:`PaymentProductFilter`
+        """
+        return self.__restrict_to
+
+    @restrict_to.setter
+    def restrict_to(self, value):
+        self.__restrict_to = value
+
+    @property
+    def tokens_only(self):
+        """
+        bool
+        """
+        return self.__tokens_only
+
+    @tokens_only.setter
+    def tokens_only(self, value):
+        self.__tokens_only = value
 
     def to_dictionary(self):
         dictionary = super(PaymentProductFiltersHostedCheckout, self).to_dictionary()

@@ -10,17 +10,46 @@ from ingenico.connect.sdk.domain.payment.definitions.create_payment_result impor
 class PaymentErrorResponse(DataObject):
     """
     Class PaymentErrorResponse
-    See also https://developer.globalcollect.com/documentation/api/server/#schema_PaymentErrorResponse
     
-    Attributes:
-        error_id:        str
-        errors:          list[:class:`APIError`]
-        payment_result:  :class:`CreatePaymentResult`
-     """
+    See also https://developer.globalcollect.com/documentation/api/server/#schema_PaymentErrorResponse
+    """
 
-    error_id = None
-    errors = None
-    payment_result = None
+    __error_id = None
+    __errors = None
+    __payment_result = None
+
+    @property
+    def error_id(self):
+        """
+        str
+        """
+        return self.__error_id
+
+    @error_id.setter
+    def error_id(self, value):
+        self.__error_id = value
+
+    @property
+    def errors(self):
+        """
+        list[:class:`APIError`]
+        """
+        return self.__errors
+
+    @errors.setter
+    def errors(self, value):
+        self.__errors = value
+
+    @property
+    def payment_result(self):
+        """
+        :class:`CreatePaymentResult`
+        """
+        return self.__payment_result
+
+    @payment_result.setter
+    def payment_result(self, value):
+        self.__payment_result = value
 
     def to_dictionary(self):
         dictionary = super(PaymentErrorResponse, self).to_dictionary()

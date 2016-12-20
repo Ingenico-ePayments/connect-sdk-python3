@@ -8,6 +8,7 @@ from ingenico.connect.sdk.domain.payment.definitions.bank_transfer_payment_metho
 from ingenico.connect.sdk.domain.payment.definitions.card_payment_method_specific_input import CardPaymentMethodSpecificInput
 from ingenico.connect.sdk.domain.payment.definitions.cash_payment_method_specific_input import CashPaymentMethodSpecificInput
 from ingenico.connect.sdk.domain.payment.definitions.invoice_payment_method_specific_input import InvoicePaymentMethodSpecificInput
+from ingenico.connect.sdk.domain.payment.definitions.mobile_payment_method_specific_input import MobilePaymentMethodSpecificInput
 from ingenico.connect.sdk.domain.payment.definitions.non_sepa_direct_debit_payment_method_specific_input import NonSepaDirectDebitPaymentMethodSpecificInput
 from ingenico.connect.sdk.domain.payment.definitions.order import Order
 from ingenico.connect.sdk.domain.payment.definitions.redirect_payment_method_specific_input import RedirectPaymentMethodSpecificInput
@@ -17,31 +18,142 @@ from ingenico.connect.sdk.domain.payment.definitions.sepa_direct_debit_payment_m
 class CreatePaymentRequest(DataObject):
     """
     Class CreatePaymentRequest
-    See also https://developer.globalcollect.com/documentation/api/server/#schema_CreatePaymentRequest
     
-    Attributes:
-        bank_transfer_payment_method_specific_input:      :class:`BankTransferPaymentMethodSpecificInput`
-        card_payment_method_specific_input:               :class:`CardPaymentMethodSpecificInput`
-        cash_payment_method_specific_input:               :class:`CashPaymentMethodSpecificInput`
-        direct_debit_payment_method_specific_input:       :class:`NonSepaDirectDebitPaymentMethodSpecificInput`
-        encrypted_customer_input:                         str
-        fraud_fields:                                     :class:`FraudFields`
-        invoice_payment_method_specific_input:            :class:`InvoicePaymentMethodSpecificInput`
-        order:                                            :class:`Order`
-        redirect_payment_method_specific_input:           :class:`RedirectPaymentMethodSpecificInput`
-        sepa_direct_debit_payment_method_specific_input:  :class:`SepaDirectDebitPaymentMethodSpecificInput`
-     """
+    See also https://developer.globalcollect.com/documentation/api/server/#schema_CreatePaymentRequest
+    """
 
-    bank_transfer_payment_method_specific_input = None
-    card_payment_method_specific_input = None
-    cash_payment_method_specific_input = None
-    direct_debit_payment_method_specific_input = None
-    encrypted_customer_input = None
-    fraud_fields = None
-    invoice_payment_method_specific_input = None
-    order = None
-    redirect_payment_method_specific_input = None
-    sepa_direct_debit_payment_method_specific_input = None
+    __bank_transfer_payment_method_specific_input = None
+    __card_payment_method_specific_input = None
+    __cash_payment_method_specific_input = None
+    __direct_debit_payment_method_specific_input = None
+    __encrypted_customer_input = None
+    __fraud_fields = None
+    __invoice_payment_method_specific_input = None
+    __mobile_payment_method_specific_input = None
+    __order = None
+    __redirect_payment_method_specific_input = None
+    __sepa_direct_debit_payment_method_specific_input = None
+
+    @property
+    def bank_transfer_payment_method_specific_input(self):
+        """
+        :class:`BankTransferPaymentMethodSpecificInput`
+        """
+        return self.__bank_transfer_payment_method_specific_input
+
+    @bank_transfer_payment_method_specific_input.setter
+    def bank_transfer_payment_method_specific_input(self, value):
+        self.__bank_transfer_payment_method_specific_input = value
+
+    @property
+    def card_payment_method_specific_input(self):
+        """
+        :class:`CardPaymentMethodSpecificInput`
+        """
+        return self.__card_payment_method_specific_input
+
+    @card_payment_method_specific_input.setter
+    def card_payment_method_specific_input(self, value):
+        self.__card_payment_method_specific_input = value
+
+    @property
+    def cash_payment_method_specific_input(self):
+        """
+        :class:`CashPaymentMethodSpecificInput`
+        """
+        return self.__cash_payment_method_specific_input
+
+    @cash_payment_method_specific_input.setter
+    def cash_payment_method_specific_input(self, value):
+        self.__cash_payment_method_specific_input = value
+
+    @property
+    def direct_debit_payment_method_specific_input(self):
+        """
+        :class:`NonSepaDirectDebitPaymentMethodSpecificInput`
+        """
+        return self.__direct_debit_payment_method_specific_input
+
+    @direct_debit_payment_method_specific_input.setter
+    def direct_debit_payment_method_specific_input(self, value):
+        self.__direct_debit_payment_method_specific_input = value
+
+    @property
+    def encrypted_customer_input(self):
+        """
+        str
+        """
+        return self.__encrypted_customer_input
+
+    @encrypted_customer_input.setter
+    def encrypted_customer_input(self, value):
+        self.__encrypted_customer_input = value
+
+    @property
+    def fraud_fields(self):
+        """
+        :class:`FraudFields`
+        """
+        return self.__fraud_fields
+
+    @fraud_fields.setter
+    def fraud_fields(self, value):
+        self.__fraud_fields = value
+
+    @property
+    def invoice_payment_method_specific_input(self):
+        """
+        :class:`InvoicePaymentMethodSpecificInput`
+        """
+        return self.__invoice_payment_method_specific_input
+
+    @invoice_payment_method_specific_input.setter
+    def invoice_payment_method_specific_input(self, value):
+        self.__invoice_payment_method_specific_input = value
+
+    @property
+    def mobile_payment_method_specific_input(self):
+        """
+        :class:`MobilePaymentMethodSpecificInput`
+        """
+        return self.__mobile_payment_method_specific_input
+
+    @mobile_payment_method_specific_input.setter
+    def mobile_payment_method_specific_input(self, value):
+        self.__mobile_payment_method_specific_input = value
+
+    @property
+    def order(self):
+        """
+        :class:`Order`
+        """
+        return self.__order
+
+    @order.setter
+    def order(self, value):
+        self.__order = value
+
+    @property
+    def redirect_payment_method_specific_input(self):
+        """
+        :class:`RedirectPaymentMethodSpecificInput`
+        """
+        return self.__redirect_payment_method_specific_input
+
+    @redirect_payment_method_specific_input.setter
+    def redirect_payment_method_specific_input(self, value):
+        self.__redirect_payment_method_specific_input = value
+
+    @property
+    def sepa_direct_debit_payment_method_specific_input(self):
+        """
+        :class:`SepaDirectDebitPaymentMethodSpecificInput`
+        """
+        return self.__sepa_direct_debit_payment_method_specific_input
+
+    @sepa_direct_debit_payment_method_specific_input.setter
+    def sepa_direct_debit_payment_method_specific_input(self, value):
+        self.__sepa_direct_debit_payment_method_specific_input = value
 
     def to_dictionary(self):
         dictionary = super(CreatePaymentRequest, self).to_dictionary()
@@ -52,6 +164,7 @@ class CreatePaymentRequest(DataObject):
         self._add_to_dictionary(dictionary, 'encryptedCustomerInput', self.encrypted_customer_input)
         self._add_to_dictionary(dictionary, 'fraudFields', self.fraud_fields)
         self._add_to_dictionary(dictionary, 'invoicePaymentMethodSpecificInput', self.invoice_payment_method_specific_input)
+        self._add_to_dictionary(dictionary, 'mobilePaymentMethodSpecificInput', self.mobile_payment_method_specific_input)
         self._add_to_dictionary(dictionary, 'order', self.order)
         self._add_to_dictionary(dictionary, 'redirectPaymentMethodSpecificInput', self.redirect_payment_method_specific_input)
         self._add_to_dictionary(dictionary, 'sepaDirectDebitPaymentMethodSpecificInput', self.sepa_direct_debit_payment_method_specific_input)
@@ -91,6 +204,11 @@ class CreatePaymentRequest(DataObject):
                 raise TypeError('value \'{}\' is not a dictionary'.format(dictionary['invoicePaymentMethodSpecificInput']))
             value = InvoicePaymentMethodSpecificInput()
             self.invoice_payment_method_specific_input = value.from_dictionary(dictionary['invoicePaymentMethodSpecificInput'])
+        if 'mobilePaymentMethodSpecificInput' in dictionary:
+            if not isinstance(dictionary['mobilePaymentMethodSpecificInput'], dict):
+                raise TypeError('value \'{}\' is not a dictionary'.format(dictionary['mobilePaymentMethodSpecificInput']))
+            value = MobilePaymentMethodSpecificInput()
+            self.mobile_payment_method_specific_input = value.from_dictionary(dictionary['mobilePaymentMethodSpecificInput'])
         if 'order' in dictionary:
             if not isinstance(dictionary['order'], dict):
                 raise TypeError('value \'{}\' is not a dictionary'.format(dictionary['order']))

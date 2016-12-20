@@ -8,13 +8,22 @@ from ingenico.connect.sdk.data_object import DataObject
 class ApprovePaymentCardPaymentMethodSpecificOutput(DataObject):
     """
     Class ApprovePaymentCardPaymentMethodSpecificOutput
-    See also https://developer.globalcollect.com/documentation/api/server/#schema_ApprovePaymentCardPaymentMethodSpecificOutput
     
-    Attributes:
-        void_response_id:  str
-     """
+    See also https://developer.globalcollect.com/documentation/api/server/#schema_ApprovePaymentCardPaymentMethodSpecificOutput
+    """
 
-    void_response_id = None
+    __void_response_id = None
+
+    @property
+    def void_response_id(self):
+        """
+        str
+        """
+        return self.__void_response_id
+
+    @void_response_id.setter
+    def void_response_id(self, value):
+        self.__void_response_id = value
 
     def to_dictionary(self):
         dictionary = super(ApprovePaymentCardPaymentMethodSpecificOutput, self).to_dictionary()

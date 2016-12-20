@@ -13,21 +13,70 @@ from ingenico.connect.sdk.domain.payment.definitions.order_references import Ord
 class Order(DataObject):
     """
     Class Order
-    See also https://developer.globalcollect.com/documentation/api/server/#schema_Order
     
-    Attributes:
-        additional_input:  :class:`AdditionalOrderInput`
-        amount_of_money:   :class:`AmountOfMoney`
-        customer:          :class:`Customer`
-        items:             list[:class:`LineItem`]
-        references:        :class:`OrderReferences`
-     """
+    See also https://developer.globalcollect.com/documentation/api/server/#schema_Order
+    """
 
-    additional_input = None
-    amount_of_money = None
-    customer = None
-    items = None
-    references = None
+    __additional_input = None
+    __amount_of_money = None
+    __customer = None
+    __items = None
+    __references = None
+
+    @property
+    def additional_input(self):
+        """
+        :class:`AdditionalOrderInput`
+        """
+        return self.__additional_input
+
+    @additional_input.setter
+    def additional_input(self, value):
+        self.__additional_input = value
+
+    @property
+    def amount_of_money(self):
+        """
+        :class:`AmountOfMoney`
+        """
+        return self.__amount_of_money
+
+    @amount_of_money.setter
+    def amount_of_money(self, value):
+        self.__amount_of_money = value
+
+    @property
+    def customer(self):
+        """
+        :class:`Customer`
+        """
+        return self.__customer
+
+    @customer.setter
+    def customer(self, value):
+        self.__customer = value
+
+    @property
+    def items(self):
+        """
+        list[:class:`LineItem`]
+        """
+        return self.__items
+
+    @items.setter
+    def items(self, value):
+        self.__items = value
+
+    @property
+    def references(self):
+        """
+        :class:`OrderReferences`
+        """
+        return self.__references
+
+    @references.setter
+    def references(self, value):
+        self.__references = value
 
     def to_dictionary(self):
         dictionary = super(Order, self).to_dictionary()

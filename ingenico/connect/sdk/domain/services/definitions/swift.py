@@ -8,31 +8,130 @@ from ingenico.connect.sdk.data_object import DataObject
 class Swift(DataObject):
     """
     Class Swift
-    See also https://developer.globalcollect.com/documentation/api/server/#schema_Swift
     
-    Attributes:
-        bic:              str
-        category:         str
-        chips_uid:        str
-        extra_info:       str
-        po_box_country:   str
-        po_box_location:  str
-        po_box_number:    str
-        po_box_zip:       str
-        routing_bic:      str
-        services:         str
-     """
+    See also https://developer.globalcollect.com/documentation/api/server/#schema_Swift
+    """
 
-    bic = None
-    category = None
-    chips_uid = None
-    extra_info = None
-    po_box_country = None
-    po_box_location = None
-    po_box_number = None
-    po_box_zip = None
-    routing_bic = None
-    services = None
+    __bic = None
+    __category = None
+    __chips_uid = None
+    __extra_info = None
+    __po_box_country = None
+    __po_box_location = None
+    __po_box_number = None
+    __po_box_zip = None
+    __routing_bic = None
+    __services = None
+
+    @property
+    def bic(self):
+        """
+        str
+        """
+        return self.__bic
+
+    @bic.setter
+    def bic(self, value):
+        self.__bic = value
+
+    @property
+    def category(self):
+        """
+        str
+        """
+        return self.__category
+
+    @category.setter
+    def category(self, value):
+        self.__category = value
+
+    @property
+    def chips_uid(self):
+        """
+        str
+        """
+        return self.__chips_uid
+
+    @chips_uid.setter
+    def chips_uid(self, value):
+        self.__chips_uid = value
+
+    @property
+    def extra_info(self):
+        """
+        str
+        """
+        return self.__extra_info
+
+    @extra_info.setter
+    def extra_info(self, value):
+        self.__extra_info = value
+
+    @property
+    def po_box_country(self):
+        """
+        str
+        """
+        return self.__po_box_country
+
+    @po_box_country.setter
+    def po_box_country(self, value):
+        self.__po_box_country = value
+
+    @property
+    def po_box_location(self):
+        """
+        str
+        """
+        return self.__po_box_location
+
+    @po_box_location.setter
+    def po_box_location(self, value):
+        self.__po_box_location = value
+
+    @property
+    def po_box_number(self):
+        """
+        str
+        """
+        return self.__po_box_number
+
+    @po_box_number.setter
+    def po_box_number(self, value):
+        self.__po_box_number = value
+
+    @property
+    def po_box_zip(self):
+        """
+        str
+        """
+        return self.__po_box_zip
+
+    @po_box_zip.setter
+    def po_box_zip(self, value):
+        self.__po_box_zip = value
+
+    @property
+    def routing_bic(self):
+        """
+        str
+        """
+        return self.__routing_bic
+
+    @routing_bic.setter
+    def routing_bic(self, value):
+        self.__routing_bic = value
+
+    @property
+    def services(self):
+        """
+        str
+        """
+        return self.__services
+
+    @services.setter
+    def services(self, value):
+        self.__services = value
 
     def to_dictionary(self):
         dictionary = super(Swift, self).to_dictionary()

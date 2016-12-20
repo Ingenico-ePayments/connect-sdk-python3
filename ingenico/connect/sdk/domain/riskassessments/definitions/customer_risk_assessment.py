@@ -11,19 +11,58 @@ from ingenico.connect.sdk.domain.riskassessments.definitions.personal_informatio
 class CustomerRiskAssessment(DataObject):
     """
     Class CustomerRiskAssessment
-    See also https://developer.globalcollect.com/documentation/api/server/#schema_CustomerRiskAssessment
     
-    Attributes:
-        billing_address:       :class:`Address`
-        locale:                str
-        personal_information:  :class:`PersonalInformationRiskAssessment`
-        shipping_address:      :class:`AddressPersonal`
-     """
+    See also https://developer.globalcollect.com/documentation/api/server/#schema_CustomerRiskAssessment
+    """
 
-    billing_address = None
-    locale = None
-    personal_information = None
-    shipping_address = None
+    __billing_address = None
+    __locale = None
+    __personal_information = None
+    __shipping_address = None
+
+    @property
+    def billing_address(self):
+        """
+        :class:`Address`
+        """
+        return self.__billing_address
+
+    @billing_address.setter
+    def billing_address(self, value):
+        self.__billing_address = value
+
+    @property
+    def locale(self):
+        """
+        str
+        """
+        return self.__locale
+
+    @locale.setter
+    def locale(self, value):
+        self.__locale = value
+
+    @property
+    def personal_information(self):
+        """
+        :class:`PersonalInformationRiskAssessment`
+        """
+        return self.__personal_information
+
+    @personal_information.setter
+    def personal_information(self, value):
+        self.__personal_information = value
+
+    @property
+    def shipping_address(self):
+        """
+        :class:`AddressPersonal`
+        """
+        return self.__shipping_address
+
+    @shipping_address.setter
+    def shipping_address(self, value):
+        self.__shipping_address = value
 
     def to_dictionary(self):
         dictionary = super(CustomerRiskAssessment, self).to_dictionary()

@@ -9,13 +9,22 @@ from ingenico.connect.sdk.domain.payment.definitions.refund_payment_product840_s
 class RefundEWalletMethodSpecificOutput(RefundMethodSpecificOutput):
     """
     Class RefundEWalletMethodSpecificOutput
-    See also https://developer.globalcollect.com/documentation/api/server/#schema_RefundEWalletMethodSpecificOutput
     
-    Attributes:
-        payment_product840_specific_output:  :class:`RefundPaymentProduct840SpecificOutput`
-     """
+    See also https://developer.globalcollect.com/documentation/api/server/#schema_RefundEWalletMethodSpecificOutput
+    """
 
-    payment_product840_specific_output = None
+    __payment_product840_specific_output = None
+
+    @property
+    def payment_product840_specific_output(self):
+        """
+        :class:`RefundPaymentProduct840SpecificOutput`
+        """
+        return self.__payment_product840_specific_output
+
+    @payment_product840_specific_output.setter
+    def payment_product840_specific_output(self, value):
+        self.__payment_product840_specific_output = value
 
     def to_dictionary(self):
         dictionary = super(RefundEWalletMethodSpecificOutput, self).to_dictionary()

@@ -9,13 +9,22 @@ from ingenico.connect.sdk.domain.product.definitions.payment_product_group impor
 class PaymentProductGroups(DataObject):
     """
     Class PaymentProductGroups
-    See also https://developer.globalcollect.com/documentation/api/server/#schema_PaymentProductGroups
     
-    Attributes:
-        payment_product_groups:  list[:class:`PaymentProductGroup`]
-     """
+    See also https://developer.globalcollect.com/documentation/api/server/#schema_PaymentProductGroups
+    """
 
-    payment_product_groups = None
+    __payment_product_groups = None
+
+    @property
+    def payment_product_groups(self):
+        """
+        list[:class:`PaymentProductGroup`]
+        """
+        return self.__payment_product_groups
+
+    @payment_product_groups.setter
+    def payment_product_groups(self, value):
+        self.__payment_product_groups = value
 
     def to_dictionary(self):
         dictionary = super(PaymentProductGroups, self).to_dictionary()

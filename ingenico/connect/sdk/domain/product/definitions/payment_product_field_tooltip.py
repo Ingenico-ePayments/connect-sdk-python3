@@ -8,15 +8,34 @@ from ingenico.connect.sdk.data_object import DataObject
 class PaymentProductFieldTooltip(DataObject):
     """
     Class PaymentProductFieldTooltip
-    See also https://developer.globalcollect.com/documentation/api/server/#schema_PaymentProductFieldTooltip
     
-    Attributes:
-        image:  str
-        label:  str
-     """
+    See also https://developer.globalcollect.com/documentation/api/server/#schema_PaymentProductFieldTooltip
+    """
 
-    image = None
-    label = None
+    __image = None
+    __label = None
+
+    @property
+    def image(self):
+        """
+        str
+        """
+        return self.__image
+
+    @image.setter
+    def image(self, value):
+        self.__image = value
+
+    @property
+    def label(self):
+        """
+        str
+        """
+        return self.__label
+
+    @label.setter
+    def label(self, value):
+        self.__label = value
 
     def to_dictionary(self):
         dictionary = super(PaymentProductFieldTooltip, self).to_dictionary()

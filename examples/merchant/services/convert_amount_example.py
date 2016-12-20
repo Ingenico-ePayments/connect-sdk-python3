@@ -17,7 +17,7 @@ class ConvertAmountExample(object):
             query.amount = 100
             query.target = "USD"
 
-            response = client.merchant("merchantId").services().convertAmount(query)
+            response = client.merchant("merchantId").services().convert_amount(query)
 
     def __get_client(self):
         api_key_id = os.getenv("connect.api.apiKeyId", "someKey")

@@ -9,13 +9,22 @@ from ingenico.connect.sdk.domain.payment.definitions.payment import Payment
 class CancelApprovalPaymentResponse(DataObject):
     """
     Class CancelApprovalPaymentResponse
-    See also https://developer.globalcollect.com/documentation/api/server/#schema_CancelApprovalPaymentResponse
     
-    Attributes:
-        payment:  :class:`Payment`
-     """
+    See also https://developer.globalcollect.com/documentation/api/server/#schema_CancelApprovalPaymentResponse
+    """
 
-    payment = None
+    __payment = None
+
+    @property
+    def payment(self):
+        """
+        :class:`Payment`
+        """
+        return self.__payment
+
+    @payment.setter
+    def payment(self, value):
+        self.__payment = value
 
     def to_dictionary(self):
         dictionary = super(CancelApprovalPaymentResponse, self).to_dictionary()

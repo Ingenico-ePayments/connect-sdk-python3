@@ -8,13 +8,22 @@ from ingenico.connect.sdk.data_object import DataObject
 class TestConnection(DataObject):
     """
     Class TestConnection
-    See also https://developer.globalcollect.com/documentation/api/server/#schema_TestConnection
     
-    Attributes:
-        result:  str
-     """
+    See also https://developer.globalcollect.com/documentation/api/server/#schema_TestConnection
+    """
 
-    result = None
+    __result = None
+
+    @property
+    def result(self):
+        """
+        str
+        """
+        return self.__result
+
+    @result.setter
+    def result(self, value):
+        self.__result = value
 
     def to_dictionary(self):
         dictionary = super(TestConnection, self).to_dictionary()

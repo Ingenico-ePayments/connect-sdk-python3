@@ -9,13 +9,22 @@ from ingenico.connect.sdk.domain.payment.definitions.abstract_payment_method_spe
 class SepaDirectDebitPaymentMethodSpecificOutput(AbstractPaymentMethodSpecificOutput):
     """
     Class SepaDirectDebitPaymentMethodSpecificOutput
-    See also https://developer.globalcollect.com/documentation/api/server/#schema_SepaDirectDebitPaymentMethodSpecificOutput
     
-    Attributes:
-        fraud_results:  :class:`FraudResults`
-     """
+    See also https://developer.globalcollect.com/documentation/api/server/#schema_SepaDirectDebitPaymentMethodSpecificOutput
+    """
 
-    fraud_results = None
+    __fraud_results = None
+
+    @property
+    def fraud_results(self):
+        """
+        :class:`FraudResults`
+        """
+        return self.__fraud_results
+
+    @fraud_results.setter
+    def fraud_results(self, value):
+        self.__fraud_results = value
 
     def to_dictionary(self):
         dictionary = super(SepaDirectDebitPaymentMethodSpecificOutput, self).to_dictionary()

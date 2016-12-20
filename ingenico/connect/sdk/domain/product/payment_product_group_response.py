@@ -8,8 +8,9 @@ from ingenico.connect.sdk.domain.product.definitions.payment_product_group impor
 class PaymentProductGroupResponse(PaymentProductGroup):
     """
     Class PaymentProductGroupResponse
+    
     See also https://developer.globalcollect.com/documentation/api/server/#schema_PaymentProductGroupResponse
-     """
+    """
 
     def to_dictionary(self):
         dictionary = super(PaymentProductGroupResponse, self).to_dictionary()

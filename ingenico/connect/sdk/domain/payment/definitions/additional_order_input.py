@@ -11,21 +11,70 @@ from ingenico.connect.sdk.domain.payment.definitions.order_type_information impo
 class AdditionalOrderInput(DataObject):
     """
     Class AdditionalOrderInput
-    See also https://developer.globalcollect.com/documentation/api/server/#schema_AdditionalOrderInput
     
-    Attributes:
-        airline_data:            :class:`AirlineData`
-        level3_summary_data:     :class:`Level3SummaryData`
-        number_of_installments:  int
-        order_date:              str
-        type_information:        :class:`OrderTypeInformation`
-     """
+    See also https://developer.globalcollect.com/documentation/api/server/#schema_AdditionalOrderInput
+    """
 
-    airline_data = None
-    level3_summary_data = None
-    number_of_installments = None
-    order_date = None
-    type_information = None
+    __airline_data = None
+    __level3_summary_data = None
+    __number_of_installments = None
+    __order_date = None
+    __type_information = None
+
+    @property
+    def airline_data(self):
+        """
+        :class:`AirlineData`
+        """
+        return self.__airline_data
+
+    @airline_data.setter
+    def airline_data(self, value):
+        self.__airline_data = value
+
+    @property
+    def level3_summary_data(self):
+        """
+        :class:`Level3SummaryData`
+        """
+        return self.__level3_summary_data
+
+    @level3_summary_data.setter
+    def level3_summary_data(self, value):
+        self.__level3_summary_data = value
+
+    @property
+    def number_of_installments(self):
+        """
+        int
+        """
+        return self.__number_of_installments
+
+    @number_of_installments.setter
+    def number_of_installments(self, value):
+        self.__number_of_installments = value
+
+    @property
+    def order_date(self):
+        """
+        str
+        """
+        return self.__order_date
+
+    @order_date.setter
+    def order_date(self, value):
+        self.__order_date = value
+
+    @property
+    def type_information(self):
+        """
+        :class:`OrderTypeInformation`
+        """
+        return self.__type_information
+
+    @type_information.setter
+    def type_information(self, value):
+        self.__type_information = value
 
     def to_dictionary(self):
         dictionary = super(AdditionalOrderInput, self).to_dictionary()

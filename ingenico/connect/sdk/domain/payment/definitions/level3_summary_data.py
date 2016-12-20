@@ -8,17 +8,46 @@ from ingenico.connect.sdk.data_object import DataObject
 class Level3SummaryData(DataObject):
     """
     Class Level3SummaryData
-    See also https://developer.globalcollect.com/documentation/api/server/#schema_Level3SummaryData
     
-    Attributes:
-        discount_amount:  int
-        duty_amount:      int
-        shipping_amount:  int
-     """
+    See also https://developer.globalcollect.com/documentation/api/server/#schema_Level3SummaryData
+    """
 
-    discount_amount = None
-    duty_amount = None
-    shipping_amount = None
+    __discount_amount = None
+    __duty_amount = None
+    __shipping_amount = None
+
+    @property
+    def discount_amount(self):
+        """
+        int
+        """
+        return self.__discount_amount
+
+    @discount_amount.setter
+    def discount_amount(self, value):
+        self.__discount_amount = value
+
+    @property
+    def duty_amount(self):
+        """
+        int
+        """
+        return self.__duty_amount
+
+    @duty_amount.setter
+    def duty_amount(self, value):
+        self.__duty_amount = value
+
+    @property
+    def shipping_amount(self):
+        """
+        int
+        """
+        return self.__shipping_amount
+
+    @shipping_amount.setter
+    def shipping_amount(self, value):
+        self.__shipping_amount = value
 
     def to_dictionary(self):
         dictionary = super(Level3SummaryData, self).to_dictionary()

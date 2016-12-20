@@ -8,27 +8,106 @@ from ingenico.connect.sdk.data_object import DataObject
 class LineItemLevel3InterchangeInformation(DataObject):
     """
     Class LineItemLevel3InterchangeInformation
-    See also https://developer.globalcollect.com/documentation/api/server/#schema_LineItemLevel3InterchangeInformation
     
-    Attributes:
-        discount_amount:    int
-        line_amount_total:  int
-        product_code:       str
-        product_price:      int
-        product_type:       str
-        quantity:           int
-        tax_amount:         int
-        unit:               str
-     """
+    See also https://developer.globalcollect.com/documentation/api/server/#schema_LineItemLevel3InterchangeInformation
+    """
 
-    discount_amount = None
-    line_amount_total = None
-    product_code = None
-    product_price = None
-    product_type = None
-    quantity = None
-    tax_amount = None
-    unit = None
+    __discount_amount = None
+    __line_amount_total = None
+    __product_code = None
+    __product_price = None
+    __product_type = None
+    __quantity = None
+    __tax_amount = None
+    __unit = None
+
+    @property
+    def discount_amount(self):
+        """
+        int
+        """
+        return self.__discount_amount
+
+    @discount_amount.setter
+    def discount_amount(self, value):
+        self.__discount_amount = value
+
+    @property
+    def line_amount_total(self):
+        """
+        int
+        """
+        return self.__line_amount_total
+
+    @line_amount_total.setter
+    def line_amount_total(self, value):
+        self.__line_amount_total = value
+
+    @property
+    def product_code(self):
+        """
+        str
+        """
+        return self.__product_code
+
+    @product_code.setter
+    def product_code(self, value):
+        self.__product_code = value
+
+    @property
+    def product_price(self):
+        """
+        int
+        """
+        return self.__product_price
+
+    @product_price.setter
+    def product_price(self, value):
+        self.__product_price = value
+
+    @property
+    def product_type(self):
+        """
+        str
+        """
+        return self.__product_type
+
+    @product_type.setter
+    def product_type(self, value):
+        self.__product_type = value
+
+    @property
+    def quantity(self):
+        """
+        int
+        """
+        return self.__quantity
+
+    @quantity.setter
+    def quantity(self, value):
+        self.__quantity = value
+
+    @property
+    def tax_amount(self):
+        """
+        int
+        """
+        return self.__tax_amount
+
+    @tax_amount.setter
+    def tax_amount(self, value):
+        self.__tax_amount = value
+
+    @property
+    def unit(self):
+        """
+        str
+        """
+        return self.__unit
+
+    @unit.setter
+    def unit(self, value):
+        self.__unit = value
 
     def to_dictionary(self):
         dictionary = super(LineItemLevel3InterchangeInformation, self).to_dictionary()

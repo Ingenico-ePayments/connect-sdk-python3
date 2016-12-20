@@ -10,15 +10,34 @@ from ingenico.connect.sdk.domain.token.definitions.mandate_sepa_direct_debit_wit
 class TokenSepaDirectDebitWithoutCreditor(AbstractToken):
     """
     Class TokenSepaDirectDebitWithoutCreditor
-    See also https://developer.globalcollect.com/documentation/api/server/#schema_TokenSepaDirectDebitWithoutCreditor
     
-    Attributes:
-        customer:  :class:`CustomerTokenWithContactDetails`
-        mandate:   :class:`MandateSepaDirectDebitWithoutCreditor`
-     """
+    See also https://developer.globalcollect.com/documentation/api/server/#schema_TokenSepaDirectDebitWithoutCreditor
+    """
 
-    customer = None
-    mandate = None
+    __customer = None
+    __mandate = None
+
+    @property
+    def customer(self):
+        """
+        :class:`CustomerTokenWithContactDetails`
+        """
+        return self.__customer
+
+    @customer.setter
+    def customer(self, value):
+        self.__customer = value
+
+    @property
+    def mandate(self):
+        """
+        :class:`MandateSepaDirectDebitWithoutCreditor`
+        """
+        return self.__mandate
+
+    @mandate.setter
+    def mandate(self, value):
+        self.__mandate = value
 
     def to_dictionary(self):
         dictionary = super(TokenSepaDirectDebitWithoutCreditor, self).to_dictionary()

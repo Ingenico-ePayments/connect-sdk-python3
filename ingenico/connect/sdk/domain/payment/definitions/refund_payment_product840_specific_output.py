@@ -9,13 +9,22 @@ from ingenico.connect.sdk.domain.payment.definitions.refund_payment_product840_c
 class RefundPaymentProduct840SpecificOutput(DataObject):
     """
     Class RefundPaymentProduct840SpecificOutput
-    See also https://developer.globalcollect.com/documentation/api/server/#schema_RefundPaymentProduct840SpecificOutput
     
-    Attributes:
-        customer_account:  :class:`RefundPaymentProduct840CustomerAccount`
-     """
+    See also https://developer.globalcollect.com/documentation/api/server/#schema_RefundPaymentProduct840SpecificOutput
+    """
 
-    customer_account = None
+    __customer_account = None
+
+    @property
+    def customer_account(self):
+        """
+        :class:`RefundPaymentProduct840CustomerAccount`
+        """
+        return self.__customer_account
+
+    @customer_account.setter
+    def customer_account(self, value):
+        self.__customer_account = value
 
     def to_dictionary(self):
         dictionary = super(RefundPaymentProduct840SpecificOutput, self).to_dictionary()

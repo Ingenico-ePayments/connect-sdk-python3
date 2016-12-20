@@ -8,13 +8,22 @@ from ingenico.connect.sdk.data_object import DataObject
 class ConvertAmount(DataObject):
     """
     Class ConvertAmount
-    See also https://developer.globalcollect.com/documentation/api/server/#schema_ConvertAmount
     
-    Attributes:
-        converted_amount:  int
-     """
+    See also https://developer.globalcollect.com/documentation/api/server/#schema_ConvertAmount
+    """
 
-    converted_amount = None
+    __converted_amount = None
+
+    @property
+    def converted_amount(self):
+        """
+        int
+        """
+        return self.__converted_amount
+
+    @converted_amount.setter
+    def converted_amount(self, value):
+        self.__converted_amount = value
 
     def to_dictionary(self):
         dictionary = super(ConvertAmount, self).to_dictionary()

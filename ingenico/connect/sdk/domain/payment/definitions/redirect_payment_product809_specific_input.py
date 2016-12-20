@@ -8,15 +8,34 @@ from ingenico.connect.sdk.data_object import DataObject
 class RedirectPaymentProduct809SpecificInput(DataObject):
     """
     Class RedirectPaymentProduct809SpecificInput
-    See also https://developer.globalcollect.com/documentation/api/server/#schema_RedirectPaymentProduct809SpecificInput
     
-    Attributes:
-        expiration_period:  str
-        issuer_id:          str
-     """
+    See also https://developer.globalcollect.com/documentation/api/server/#schema_RedirectPaymentProduct809SpecificInput
+    """
 
-    expiration_period = None
-    issuer_id = None
+    __expiration_period = None
+    __issuer_id = None
+
+    @property
+    def expiration_period(self):
+        """
+        str
+        """
+        return self.__expiration_period
+
+    @expiration_period.setter
+    def expiration_period(self, value):
+        self.__expiration_period = value
+
+    @property
+    def issuer_id(self):
+        """
+        str
+        """
+        return self.__issuer_id
+
+    @issuer_id.setter
+    def issuer_id(self, value):
+        self.__issuer_id = value
 
     def to_dictionary(self):
         dictionary = super(RedirectPaymentProduct809SpecificInput, self).to_dictionary()

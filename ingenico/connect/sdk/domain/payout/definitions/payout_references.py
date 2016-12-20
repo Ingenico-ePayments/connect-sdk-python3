@@ -8,17 +8,46 @@ from ingenico.connect.sdk.data_object import DataObject
 class PayoutReferences(DataObject):
     """
     Class PayoutReferences
-    See also https://developer.globalcollect.com/documentation/api/server/#schema_PayoutReferences
     
-    Attributes:
-        invoice_number:      str
-        merchant_order_id:   int
-        merchant_reference:  str
-     """
+    See also https://developer.globalcollect.com/documentation/api/server/#schema_PayoutReferences
+    """
 
-    invoice_number = None
-    merchant_order_id = None
-    merchant_reference = None
+    __invoice_number = None
+    __merchant_order_id = None
+    __merchant_reference = None
+
+    @property
+    def invoice_number(self):
+        """
+        str
+        """
+        return self.__invoice_number
+
+    @invoice_number.setter
+    def invoice_number(self, value):
+        self.__invoice_number = value
+
+    @property
+    def merchant_order_id(self):
+        """
+        int
+        """
+        return self.__merchant_order_id
+
+    @merchant_order_id.setter
+    def merchant_order_id(self, value):
+        self.__merchant_order_id = value
+
+    @property
+    def merchant_reference(self):
+        """
+        str
+        """
+        return self.__merchant_reference
+
+    @merchant_reference.setter
+    def merchant_reference(self, value):
+        self.__merchant_reference = value
 
     def to_dictionary(self):
         dictionary = super(PayoutReferences, self).to_dictionary()

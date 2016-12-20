@@ -10,15 +10,34 @@ from ingenico.connect.sdk.domain.payment.definitions.payment_product840_customer
 class PaymentProduct840SpecificOutput(DataObject):
     """
     Class PaymentProduct840SpecificOutput
-    See also https://developer.globalcollect.com/documentation/api/server/#schema_PaymentProduct840SpecificOutput
     
-    Attributes:
-        customer_account:  :class:`PaymentProduct840CustomerAccount`
-        customer_address:  :class:`Address`
-     """
+    See also https://developer.globalcollect.com/documentation/api/server/#schema_PaymentProduct840SpecificOutput
+    """
 
-    customer_account = None
-    customer_address = None
+    __customer_account = None
+    __customer_address = None
+
+    @property
+    def customer_account(self):
+        """
+        :class:`PaymentProduct840CustomerAccount`
+        """
+        return self.__customer_account
+
+    @customer_account.setter
+    def customer_account(self, value):
+        self.__customer_account = value
+
+    @property
+    def customer_address(self):
+        """
+        :class:`Address`
+        """
+        return self.__customer_address
+
+    @customer_address.setter
+    def customer_address(self, value):
+        self.__customer_address = value
 
     def to_dictionary(self):
         dictionary = super(PaymentProduct840SpecificOutput, self).to_dictionary()

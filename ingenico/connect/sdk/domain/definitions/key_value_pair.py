@@ -8,15 +8,34 @@ from ingenico.connect.sdk.data_object import DataObject
 class KeyValuePair(DataObject):
     """
     Class KeyValuePair
-    See also https://developer.globalcollect.com/documentation/api/server/#schema_KeyValuePair
     
-    Attributes:
-        key:    str
-        value:  str
-     """
+    See also https://developer.globalcollect.com/documentation/api/server/#schema_KeyValuePair
+    """
 
-    key = None
-    value = None
+    __key = None
+    __value = None
+
+    @property
+    def key(self):
+        """
+        str
+        """
+        return self.__key
+
+    @key.setter
+    def key(self, value):
+        self.__key = value
+
+    @property
+    def value(self):
+        """
+        str
+        """
+        return self.__value
+
+    @value.setter
+    def value(self, value):
+        self.__value = value
 
     def to_dictionary(self):
         dictionary = super(KeyValuePair, self).to_dictionary()

@@ -8,13 +8,22 @@ from ingenico.connect.sdk.data_object import DataObject
 class CashPaymentProduct1503SpecificInput(DataObject):
     """
     Class CashPaymentProduct1503SpecificInput
-    See also https://developer.globalcollect.com/documentation/api/server/#schema_CashPaymentProduct1503SpecificInput
     
-    Attributes:
-        return_url:  str
-     """
+    See also https://developer.globalcollect.com/documentation/api/server/#schema_CashPaymentProduct1503SpecificInput
+    """
 
-    return_url = None
+    __return_url = None
+
+    @property
+    def return_url(self):
+        """
+        str
+        """
+        return self.__return_url
+
+    @return_url.setter
+    def return_url(self, value):
+        self.__return_url = value
 
     def to_dictionary(self):
         dictionary = super(CashPaymentProduct1503SpecificInput, self).to_dictionary()

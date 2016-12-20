@@ -8,15 +8,34 @@ from ingenico.connect.sdk.data_object import DataObject
 class ApprovePaymentPaymentMethodSpecificInput(DataObject):
     """
     Class ApprovePaymentPaymentMethodSpecificInput
-    See also https://developer.globalcollect.com/documentation/api/server/#schema_ApprovePaymentPaymentMethodSpecificInput
     
-    Attributes:
-        date_collect:  str
-        token:         str
-     """
+    See also https://developer.globalcollect.com/documentation/api/server/#schema_ApprovePaymentPaymentMethodSpecificInput
+    """
 
-    date_collect = None
-    token = None
+    __date_collect = None
+    __token = None
+
+    @property
+    def date_collect(self):
+        """
+        str
+        """
+        return self.__date_collect
+
+    @date_collect.setter
+    def date_collect(self, value):
+        self.__date_collect = value
+
+    @property
+    def token(self):
+        """
+        str
+        """
+        return self.__token
+
+    @token.setter
+    def token(self, value):
+        self.__token = value
 
     def to_dictionary(self):
         dictionary = super(ApprovePaymentPaymentMethodSpecificInput, self).to_dictionary()

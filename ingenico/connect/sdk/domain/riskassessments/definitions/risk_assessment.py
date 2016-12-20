@@ -10,17 +10,46 @@ from ingenico.connect.sdk.domain.riskassessments.definitions.order_risk_assessme
 class RiskAssessment(DataObject):
     """
     Class RiskAssessment
-    See also https://developer.globalcollect.com/documentation/api/server/#schema_RiskAssessment
     
-    Attributes:
-        fraud_fields:        :class:`FraudFields`
-        order:               :class:`OrderRiskAssessment`
-        payment_product_id:  int
-     """
+    See also https://developer.globalcollect.com/documentation/api/server/#schema_RiskAssessment
+    """
 
-    fraud_fields = None
-    order = None
-    payment_product_id = None
+    __fraud_fields = None
+    __order = None
+    __payment_product_id = None
+
+    @property
+    def fraud_fields(self):
+        """
+        :class:`FraudFields`
+        """
+        return self.__fraud_fields
+
+    @fraud_fields.setter
+    def fraud_fields(self, value):
+        self.__fraud_fields = value
+
+    @property
+    def order(self):
+        """
+        :class:`OrderRiskAssessment`
+        """
+        return self.__order
+
+    @order.setter
+    def order(self, value):
+        self.__order = value
+
+    @property
+    def payment_product_id(self):
+        """
+        int
+        """
+        return self.__payment_product_id
+
+    @payment_product_id.setter
+    def payment_product_id(self, value):
+        self.__payment_product_id = value
 
     def to_dictionary(self):
         dictionary = super(RiskAssessment, self).to_dictionary()

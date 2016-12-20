@@ -8,8 +8,9 @@ from ingenico.connect.sdk.domain.payment.definitions.approve_payment_payment_met
 class ApprovePaymentSepaDirectDebitPaymentMethodSpecificInput(ApprovePaymentPaymentMethodSpecificInput):
     """
     Class ApprovePaymentSepaDirectDebitPaymentMethodSpecificInput
+    
     See also https://developer.globalcollect.com/documentation/api/server/#schema_ApprovePaymentSepaDirectDebitPaymentMethodSpecificInput
-     """
+    """
 
     def to_dictionary(self):
         dictionary = super(ApprovePaymentSepaDirectDebitPaymentMethodSpecificInput, self).to_dictionary()

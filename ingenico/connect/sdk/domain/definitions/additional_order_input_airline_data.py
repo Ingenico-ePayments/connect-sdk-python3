@@ -9,13 +9,22 @@ from ingenico.connect.sdk.domain.definitions.airline_data import AirlineData
 class AdditionalOrderInputAirlineData(DataObject):
     """
     Class AdditionalOrderInputAirlineData
-    See also https://developer.globalcollect.com/documentation/api/server/#schema_AdditionalOrderInputAirlineData
     
-    Attributes:
-        airline_data:  :class:`AirlineData`
-     """
+    See also https://developer.globalcollect.com/documentation/api/server/#schema_AdditionalOrderInputAirlineData
+    """
 
-    airline_data = None
+    __airline_data = None
+
+    @property
+    def airline_data(self):
+        """
+        :class:`AirlineData`
+        """
+        return self.__airline_data
+
+    @airline_data.setter
+    def airline_data(self, value):
+        self.__airline_data = value
 
     def to_dictionary(self):
         dictionary = super(AdditionalOrderInputAirlineData, self).to_dictionary()

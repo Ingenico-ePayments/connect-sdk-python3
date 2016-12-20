@@ -9,15 +9,34 @@ from ingenico.connect.sdk.domain.services.definitions.payment_context import Pay
 class GetIINDetailsRequest(DataObject):
     """
     Class GetIINDetailsRequest
-    See also https://developer.globalcollect.com/documentation/api/server/#schema_GetIINDetailsRequest
     
-    Attributes:
-        bin:              str
-        payment_context:  :class:`PaymentContext`
-     """
+    See also https://developer.globalcollect.com/documentation/api/server/#schema_GetIINDetailsRequest
+    """
 
-    bin = None
-    payment_context = None
+    __bin = None
+    __payment_context = None
+
+    @property
+    def bin(self):
+        """
+        str
+        """
+        return self.__bin
+
+    @bin.setter
+    def bin(self, value):
+        self.__bin = value
+
+    @property
+    def payment_context(self):
+        """
+        :class:`PaymentContext`
+        """
+        return self.__payment_context
+
+    @payment_context.setter
+    def payment_context(self, value):
+        self.__payment_context = value
 
     def to_dictionary(self):
         dictionary = super(GetIINDetailsRequest, self).to_dictionary()

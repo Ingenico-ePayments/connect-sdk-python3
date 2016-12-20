@@ -9,15 +9,34 @@ from ingenico.connect.sdk.domain.hostedcheckout.definitions.created_payment_outp
 class GetHostedCheckoutResponse(DataObject):
     """
     Class GetHostedCheckoutResponse
-    See also https://developer.globalcollect.com/documentation/api/server/#schema_GetHostedCheckoutResponse
     
-    Attributes:
-        created_payment_output:  :class:`CreatedPaymentOutput`
-        status:                  str
-     """
+    See also https://developer.globalcollect.com/documentation/api/server/#schema_GetHostedCheckoutResponse
+    """
 
-    created_payment_output = None
-    status = None
+    __created_payment_output = None
+    __status = None
+
+    @property
+    def created_payment_output(self):
+        """
+        :class:`CreatedPaymentOutput`
+        """
+        return self.__created_payment_output
+
+    @created_payment_output.setter
+    def created_payment_output(self, value):
+        self.__created_payment_output = value
+
+    @property
+    def status(self):
+        """
+        str
+        """
+        return self.__status
+
+    @status.setter
+    def status(self, value):
+        self.__status = value
 
     def to_dictionary(self):
         dictionary = super(GetHostedCheckoutResponse, self).to_dictionary()

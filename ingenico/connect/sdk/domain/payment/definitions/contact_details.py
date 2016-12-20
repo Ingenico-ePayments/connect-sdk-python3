@@ -8,15 +8,34 @@ from ingenico.connect.sdk.domain.definitions.contact_details_base import Contact
 class ContactDetails(ContactDetailsBase):
     """
     Class ContactDetails
-    See also https://developer.globalcollect.com/documentation/api/server/#schema_ContactDetails
     
-    Attributes:
-        fax_number:    str
-        phone_number:  str
-     """
+    See also https://developer.globalcollect.com/documentation/api/server/#schema_ContactDetails
+    """
 
-    fax_number = None
-    phone_number = None
+    __fax_number = None
+    __phone_number = None
+
+    @property
+    def fax_number(self):
+        """
+        str
+        """
+        return self.__fax_number
+
+    @fax_number.setter
+    def fax_number(self, value):
+        self.__fax_number = value
+
+    @property
+    def phone_number(self):
+        """
+        str
+        """
+        return self.__phone_number
+
+    @phone_number.setter
+    def phone_number(self, value):
+        self.__phone_number = value
 
     def to_dictionary(self):
         dictionary = super(ContactDetails, self).to_dictionary()

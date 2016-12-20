@@ -8,13 +8,22 @@ from ingenico.connect.sdk.data_object import DataObject
 class FraudResults(DataObject):
     """
     Class FraudResults
-    See also https://developer.globalcollect.com/documentation/api/server/#schema_FraudResults
     
-    Attributes:
-        fraud_service_result:  str
-     """
+    See also https://developer.globalcollect.com/documentation/api/server/#schema_FraudResults
+    """
 
-    fraud_service_result = None
+    __fraud_service_result = None
+
+    @property
+    def fraud_service_result(self):
+        """
+        str
+        """
+        return self.__fraud_service_result
+
+    @fraud_service_result.setter
+    def fraud_service_result(self, value):
+        self.__fraud_service_result = value
 
     def to_dictionary(self):
         dictionary = super(FraudResults, self).to_dictionary()

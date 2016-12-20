@@ -10,15 +10,34 @@ from ingenico.connect.sdk.domain.payment.definitions.cash_payment_product1504_sp
 class CashPaymentMethodSpecificInput(CashPaymentMethodSpecificInputBase):
     """
     Class CashPaymentMethodSpecificInput
-    See also https://developer.globalcollect.com/documentation/api/server/#schema_CashPaymentMethodSpecificInput
     
-    Attributes:
-        payment_product1503_specific_input:  :class:`CashPaymentProduct1503SpecificInput`
-        payment_product1504_specific_input:  :class:`CashPaymentProduct1504SpecificInput`
-     """
+    See also https://developer.globalcollect.com/documentation/api/server/#schema_CashPaymentMethodSpecificInput
+    """
 
-    payment_product1503_specific_input = None
-    payment_product1504_specific_input = None
+    __payment_product1503_specific_input = None
+    __payment_product1504_specific_input = None
+
+    @property
+    def payment_product1503_specific_input(self):
+        """
+        :class:`CashPaymentProduct1503SpecificInput`
+        """
+        return self.__payment_product1503_specific_input
+
+    @payment_product1503_specific_input.setter
+    def payment_product1503_specific_input(self, value):
+        self.__payment_product1503_specific_input = value
+
+    @property
+    def payment_product1504_specific_input(self):
+        """
+        :class:`CashPaymentProduct1504SpecificInput`
+        """
+        return self.__payment_product1504_specific_input
+
+    @payment_product1504_specific_input.setter
+    def payment_product1504_specific_input(self, value):
+        self.__payment_product1504_specific_input = value
 
     def to_dictionary(self):
         dictionary = super(CashPaymentMethodSpecificInput, self).to_dictionary()

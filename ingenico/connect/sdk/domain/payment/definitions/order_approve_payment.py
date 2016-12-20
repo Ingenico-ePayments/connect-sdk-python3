@@ -10,15 +10,34 @@ from ingenico.connect.sdk.domain.payment.definitions.order_references_approve_pa
 class OrderApprovePayment(DataObject):
     """
     Class OrderApprovePayment
-    See also https://developer.globalcollect.com/documentation/api/server/#schema_OrderApprovePayment
     
-    Attributes:
-        additional_input:  :class:`AdditionalOrderInputAirlineData`
-        references:        :class:`OrderReferencesApprovePayment`
-     """
+    See also https://developer.globalcollect.com/documentation/api/server/#schema_OrderApprovePayment
+    """
 
-    additional_input = None
-    references = None
+    __additional_input = None
+    __references = None
+
+    @property
+    def additional_input(self):
+        """
+        :class:`AdditionalOrderInputAirlineData`
+        """
+        return self.__additional_input
+
+    @additional_input.setter
+    def additional_input(self, value):
+        self.__additional_input = value
+
+    @property
+    def references(self):
+        """
+        :class:`OrderReferencesApprovePayment`
+        """
+        return self.__references
+
+    @references.setter
+    def references(self, value):
+        self.__references = value
 
     def to_dictionary(self):
         dictionary = super(OrderApprovePayment, self).to_dictionary()

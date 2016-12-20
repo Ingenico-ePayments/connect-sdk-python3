@@ -27,27 +27,90 @@ class MerchantClient(ApiResource):
         """
         super(MerchantClient, self).__init__(parent, path_context)
 
+    def hostedcheckouts(self):
+        """
+        Resource /{merchantId}/hostedcheckouts
+
+        Create new hosted checkout
+
+        :return: :class:`HostedcheckoutsClient`
+        """
+        return HostedcheckoutsClient(self, None)
+
+    def payments(self):
+        """
+        Resource /{merchantId}/payments
+
+        Create, cancel and approve payments
+
+        :return: :class:`PaymentsClient`
+        """
+        return PaymentsClient(self, None)
+
     def payouts(self):
         """
         Resource /{merchantId}/payouts
+
         Create, cancel and approve payouts
 
         :return: :class:`PayoutsClient`
         """
         return PayoutsClient(self, None)
 
+    def productgroups(self):
+        """
+        Resource /{merchantId}/productgroups
+
+        Get information about payment product groups
+
+        :return: :class:`ProductgroupsClient`
+        """
+        return ProductgroupsClient(self, None)
+
+    def products(self):
+        """
+        Resource /{merchantId}/products
+
+        Get information about payment products
+
+        :return: :class:`ProductsClient`
+        """
+        return ProductsClient(self, None)
+
     def refunds(self):
         """
         Resource /{merchantId}/refunds
+
         Create, cancel and approve refunds
 
         :return: :class:`RefundsClient`
         """
         return RefundsClient(self, None)
 
+    def riskassessments(self):
+        """
+        Resource /{merchantId}/riskassessments
+
+        Perform risk assessments on your customer data
+
+        :return: :class:`RiskassessmentsClient`
+        """
+        return RiskassessmentsClient(self, None)
+
+    def services(self):
+        """
+        Resource /{merchantId}/services
+
+        Several services to help you
+
+        :return: :class:`ServicesClient`
+        """
+        return ServicesClient(self, None)
+
     def sessions(self):
         """
         Resource /{merchantId}/sessions
+
         Create new Session for Client2Server API calls
 
         :return: :class:`SessionsClient`
@@ -57,62 +120,9 @@ class MerchantClient(ApiResource):
     def tokens(self):
         """
         Resource /{merchantId}/tokens
+
         Create, delete and update tokens
 
         :return: :class:`TokensClient`
         """
         return TokensClient(self, None)
-
-    def services(self):
-        """
-        Resource /{merchantId}/services
-        Several services to help you
-
-        :return: :class:`ServicesClient`
-        """
-        return ServicesClient(self, None)
-
-    def hostedcheckouts(self):
-        """
-        Resource /{merchantId}/hostedcheckouts
-        Create new hosted checkout
-
-        :return: :class:`HostedcheckoutsClient`
-        """
-        return HostedcheckoutsClient(self, None)
-
-    def products(self):
-        """
-        Resource /{merchantId}/products
-        Get information about payment products
-
-        :return: :class:`ProductsClient`
-        """
-        return ProductsClient(self, None)
-
-    def payments(self):
-        """
-        Resource /{merchantId}/payments
-        Create, cancel and approve payments
-
-        :return: :class:`PaymentsClient`
-        """
-        return PaymentsClient(self, None)
-
-    def productgroups(self):
-        """
-        Resource /{merchantId}/productgroups
-        Get information about payment product groups
-
-        :return: :class:`ProductgroupsClient`
-        """
-        return ProductgroupsClient(self, None)
-
-    def riskassessments(self):
-        """
-        Resource /{merchantId}/riskassessments
-        Perform risk assessments on your customer data
-
-        :return: :class:`RiskassessmentsClient`
-        """
-        return RiskassessmentsClient(self, None)

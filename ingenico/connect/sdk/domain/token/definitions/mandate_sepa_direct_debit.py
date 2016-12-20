@@ -9,13 +9,22 @@ from ingenico.connect.sdk.domain.token.definitions.mandate_sepa_direct_debit_wit
 class MandateSepaDirectDebit(MandateSepaDirectDebitWithMandateId):
     """
     Class MandateSepaDirectDebit
-    See also https://developer.globalcollect.com/documentation/api/server/#schema_MandateSepaDirectDebit
     
-    Attributes:
-        creditor:  :class:`Creditor`
-     """
+    See also https://developer.globalcollect.com/documentation/api/server/#schema_MandateSepaDirectDebit
+    """
 
-    creditor = None
+    __creditor = None
+
+    @property
+    def creditor(self):
+        """
+        :class:`Creditor`
+        """
+        return self.__creditor
+
+    @creditor.setter
+    def creditor(self, value):
+        self.__creditor = value
 
     def to_dictionary(self):
         dictionary = super(MandateSepaDirectDebit, self).to_dictionary()

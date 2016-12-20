@@ -9,13 +9,22 @@ from ingenico.connect.sdk.domain.token.definitions.personal_name_token import Pe
 class PersonalInformationToken(DataObject):
     """
     Class PersonalInformationToken
-    See also https://developer.globalcollect.com/documentation/api/server/#schema_PersonalInformationToken
     
-    Attributes:
-        name:  :class:`PersonalNameToken`
-     """
+    See also https://developer.globalcollect.com/documentation/api/server/#schema_PersonalInformationToken
+    """
 
-    name = None
+    __name = None
+
+    @property
+    def name(self):
+        """
+        :class:`PersonalNameToken`
+        """
+        return self.__name
+
+    @name.setter
+    def name(self, value):
+        self.__name = value
 
     def to_dictionary(self):
         dictionary = super(PersonalInformationToken, self).to_dictionary()

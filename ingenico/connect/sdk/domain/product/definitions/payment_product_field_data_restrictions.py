@@ -9,15 +9,34 @@ from ingenico.connect.sdk.domain.product.definitions.payment_product_field_valid
 class PaymentProductFieldDataRestrictions(DataObject):
     """
     Class PaymentProductFieldDataRestrictions
-    See also https://developer.globalcollect.com/documentation/api/server/#schema_PaymentProductFieldDataRestrictions
     
-    Attributes:
-        is_required:  bool
-        validators:   :class:`PaymentProductFieldValidators`
-     """
+    See also https://developer.globalcollect.com/documentation/api/server/#schema_PaymentProductFieldDataRestrictions
+    """
 
-    is_required = None
-    validators = None
+    __is_required = None
+    __validators = None
+
+    @property
+    def is_required(self):
+        """
+        bool
+        """
+        return self.__is_required
+
+    @is_required.setter
+    def is_required(self, value):
+        self.__is_required = value
+
+    @property
+    def validators(self):
+        """
+        :class:`PaymentProductFieldValidators`
+        """
+        return self.__validators
+
+    @validators.setter
+    def validators(self, value):
+        self.__validators = value
 
     def to_dictionary(self):
         dictionary = super(PaymentProductFieldDataRestrictions, self).to_dictionary()
