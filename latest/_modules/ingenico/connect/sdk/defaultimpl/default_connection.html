@@ -1,0 +1,324 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>ingenico.connect.sdk.defaultimpl.default_connection &#8212; connect-sdk-python3 1.0.0 documentation</title>
+    
+    <link rel="stylesheet" href="../../../../../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../../../',
+        VERSION:     '1.0.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../../../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../../../_static/doctools.js"></script>
+    <link rel="index" title="Index" href="../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../search.html" />
+   
+  <link rel="stylesheet" href="../../../../../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head>
+  <body role="document">
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <h1>Source code for ingenico.connect.sdk.defaultimpl.default_connection</h1><div class="highlight"><pre>
+<span></span><span class="kn">import</span> <span class="nn">time</span>
+<span class="kn">import</span> <span class="nn">uuid</span>
+<span class="kn">from</span> <span class="nn">urllib.parse</span> <span class="k">import</span> <span class="n">urlparse</span>
+
+<span class="kn">import</span> <span class="nn">requests</span>
+<span class="kn">from</span> <span class="nn">requests.adapters</span> <span class="k">import</span> <span class="n">HTTPAdapter</span>
+<span class="kn">from</span> <span class="nn">requests.exceptions</span> <span class="k">import</span> <span class="n">RequestException</span><span class="p">,</span> <span class="n">Timeout</span>
+
+<span class="kn">from</span> <span class="nn">ingenico.connect.sdk.communication_exception</span> <span class="k">import</span> <span class="n">CommunicationException</span>
+<span class="kn">from</span> <span class="nn">ingenico.connect.sdk.endpoint_configuration</span> <span class="k">import</span> <span class="n">EndpointConfiguration</span>
+<span class="kn">from</span> <span class="nn">ingenico.connect.sdk.log.request_log_message</span> <span class="k">import</span> <span class="n">RequestLogMessage</span>
+<span class="kn">from</span> <span class="nn">ingenico.connect.sdk.log.response_log_message</span> <span class="k">import</span> <span class="n">ResponseLogMessage</span>
+<span class="kn">from</span> <span class="nn">ingenico.connect.sdk.pooled_connection</span> <span class="k">import</span> <span class="n">PooledConnection</span>
+<span class="kn">from</span> <span class="nn">ingenico.connect.sdk.response</span> <span class="k">import</span> <span class="n">Response</span>
+
+<span class="n">CHARSET</span> <span class="o">=</span> <span class="s2">&quot;UTF-8&quot;</span>
+
+
+<div class="viewcode-block" id="DefaultConnection"><a class="viewcode-back" href="../../../../../index.html#ingenico.connect.sdk.defaultimpl.default_connection.DefaultConnection">[docs]</a><span class="k">class</span> <span class="nc">DefaultConnection</span><span class="p">(</span><span class="n">PooledConnection</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Provides an HTTP request interface, threadsafe</span>
+
+<span class="sd">    :param connect_timeout: timeout in seconds before a pending connection is dropped</span>
+<span class="sd">    :param socket_timeout: timeout in seconds before dropping an established connection</span>
+<span class="sd">            This is the time the server is allowed for a response</span>
+<span class="sd">    :param max_connections: the maximum number of connections in the connection pool</span>
+<span class="sd">    :param proxy_configuration: ProxyConfiguration object that contains data about proxy settings if present.</span>
+<span class="sd">            It should be writeable as string and have a scheme attribute.</span>
+
+<span class="sd">    Use the methods get, delete, post and put to perform the corresponding HTTP request.</span>
+<span class="sd">    Alternatively you can use request with the request method as the first parameter</span>
+
+<span class="sd">    URI, headers and body should be given on a per-request basis</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">connect_timeout</span><span class="p">,</span>
+                 <span class="n">socket_timeout</span><span class="p">,</span>
+                 <span class="n">max_connections</span><span class="o">=</span><span class="n">EndpointConfiguration</span><span class="o">.</span><span class="n">DEFAULT_MAX_CONNECTIONS</span><span class="p">,</span>
+                 <span class="n">proxy_configuration</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">logger</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">__requests_session</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">session</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">__requests_session</span><span class="o">.</span><span class="n">mount</span><span class="p">(</span><span class="s2">&quot;http://&quot;</span><span class="p">,</span> <span class="n">HTTPAdapter</span><span class="p">(</span>
+            <span class="n">pool_maxsize</span><span class="o">=</span><span class="n">max_connections</span><span class="p">,</span> <span class="n">pool_connections</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">__requests_session</span><span class="o">.</span><span class="n">mount</span><span class="p">(</span><span class="s2">&quot;https://&quot;</span><span class="p">,</span> <span class="n">HTTPAdapter</span><span class="p">(</span>
+            <span class="n">pool_maxsize</span><span class="o">=</span><span class="n">max_connections</span><span class="p">,</span> <span class="n">pool_connections</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span>
+        <span class="c1"># request timeouts are in seconds</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">__connect_timeout</span> <span class="o">=</span> <span class="n">connect_timeout</span> <span class="k">if</span> <span class="n">connect_timeout</span> <span class="o">&gt;=</span> <span class="mi">0</span> <span class="k">else</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">__socket_timeout</span> <span class="o">=</span> <span class="n">socket_timeout</span> <span class="k">if</span> <span class="n">socket_timeout</span> <span class="o">&gt;=</span> <span class="mi">0</span> <span class="k">else</span> <span class="kc">None</span>
+        <span class="k">if</span> <span class="n">proxy_configuration</span><span class="p">:</span>
+            <span class="n">proxy</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;http&quot;</span><span class="p">:</span> <span class="nb">str</span><span class="p">(</span><span class="n">proxy_configuration</span><span class="p">),</span>
+                     <span class="s2">&quot;https&quot;</span><span class="p">:</span> <span class="nb">str</span><span class="p">(</span><span class="n">proxy_configuration</span><span class="p">)}</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">__requests_session</span><span class="o">.</span><span class="n">proxies</span> <span class="o">=</span> <span class="n">proxy</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">connect_timeout</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Connection timeout in seconds&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__connect_timeout</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">socket_timeout</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Socket timeout in seconds&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__socket_timeout</span>
+
+<div class="viewcode-block" id="DefaultConnection.get"><a class="viewcode-back" href="../../../../../index.html#ingenico.connect.sdk.defaultimpl.default_connection.DefaultConnection.get">[docs]</a>    <span class="k">def</span> <span class="nf">get</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">url</span><span class="p">,</span> <span class="n">request_headers</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Perform a request to the server given by url</span>
+
+<span class="sd">        :param url: the url to the server, given as a parsed url</span>
+<span class="sd">        :param request_headers: a list containing RequestHeader objects</span>
+<span class="sd">         representing the request headers</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_request</span><span class="p">(</span><span class="s1">&#39;get&#39;</span><span class="p">,</span> <span class="n">url</span><span class="p">,</span> <span class="n">request_headers</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="DefaultConnection.delete"><a class="viewcode-back" href="../../../../../index.html#ingenico.connect.sdk.defaultimpl.default_connection.DefaultConnection.delete">[docs]</a>    <span class="k">def</span> <span class="nf">delete</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">url</span><span class="p">,</span> <span class="n">request_headers</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Perform a request to the server given by url</span>
+
+<span class="sd">        :param url: the url to the server, given as a parsed url</span>
+<span class="sd">        :param request_headers: a list containing RequestHeader objects</span>
+<span class="sd">         representing the request headers</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_request</span><span class="p">(</span><span class="s1">&#39;delete&#39;</span><span class="p">,</span> <span class="n">url</span><span class="p">,</span> <span class="n">request_headers</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="DefaultConnection.post"><a class="viewcode-back" href="../../../../../index.html#ingenico.connect.sdk.defaultimpl.default_connection.DefaultConnection.post">[docs]</a>    <span class="k">def</span> <span class="nf">post</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">url</span><span class="p">,</span> <span class="n">request_headers</span><span class="p">,</span> <span class="n">body</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Perform a request to the server given by url</span>
+
+<span class="sd">        :param url: the url to the server, given as a parsed url</span>
+<span class="sd">        :param request_headers: a list containing RequestHeader objects</span>
+<span class="sd">         representing the request headers</span>
+<span class="sd">        :param body: the request body</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_request</span><span class="p">(</span><span class="s1">&#39;post&#39;</span><span class="p">,</span> <span class="n">url</span><span class="p">,</span> <span class="n">request_headers</span><span class="p">,</span> <span class="n">body</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="DefaultConnection.put"><a class="viewcode-back" href="../../../../../index.html#ingenico.connect.sdk.defaultimpl.default_connection.DefaultConnection.put">[docs]</a>    <span class="k">def</span> <span class="nf">put</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">url</span><span class="p">,</span> <span class="n">request_headers</span><span class="p">,</span> <span class="n">body</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Perform a request to the server given by url</span>
+
+<span class="sd">        :param url: the url to the server, given as a parsed url</span>
+<span class="sd">        :param request_headers: a list containing RequestHeader objects</span>
+<span class="sd">         representing the request headers</span>
+<span class="sd">        :param body: the request body</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_request</span><span class="p">(</span><span class="s1">&#39;put&#39;</span><span class="p">,</span> <span class="n">url</span><span class="p">,</span> <span class="n">request_headers</span><span class="p">,</span> <span class="n">body</span><span class="p">)</span></div>
+
+    <span class="k">def</span> <span class="nf">_request</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">method</span><span class="p">,</span> <span class="n">url</span><span class="p">,</span> <span class="n">headers</span><span class="p">,</span> <span class="n">body</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Perform a request to the server given by url</span>
+
+<span class="sd">        :param url: the url to the server, given as a parsed url</span>
+<span class="sd">        :param headers: a list containing RequestHeader objects representing</span>
+<span class="sd">         the request headers</span>
+<span class="sd">        :param body: the request body</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">headers</span> <span class="o">=</span> <span class="p">{}</span> <span class="k">if</span> <span class="ow">not</span> <span class="n">headers</span> <span class="k">else</span> <span class="n">headers</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+            <span class="n">url</span> <span class="o">=</span> <span class="n">url</span><span class="o">.</span><span class="n">geturl</span><span class="p">()</span>
+
+        <span class="c1"># convert the list of RequestParam objects to a dictionary of key:value pairs if neccecary</span>
+        <span class="k">if</span> <span class="n">headers</span> <span class="ow">and</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">headers</span><span class="p">,</span> <span class="nb">dict</span><span class="p">):</span>
+            <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span><span class="n">param</span><span class="o">.</span><span class="n">name</span><span class="p">:</span> <span class="n">param</span><span class="o">.</span><span class="n">value</span> <span class="k">for</span> <span class="n">param</span> <span class="ow">in</span> <span class="n">headers</span><span class="p">}</span>
+
+        <span class="c1"># send request with all parameters not declared in session and with callback for logging response</span>
+        <span class="n">request</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">Request</span><span class="p">(</span><span class="n">method</span><span class="p">,</span> <span class="n">url</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">body</span><span class="p">,</span>
+                                   <span class="n">hooks</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;response&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">_log_response</span><span class="p">})</span>
+        <span class="n">prepped_request</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__requests_session</span><span class="o">.</span><span class="n">prepare_request</span><span class="p">(</span><span class="n">request</span><span class="p">)</span>
+        <span class="n">prepped_request</span><span class="o">.</span><span class="n">timestamp</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">clock</span><span class="p">()</span>  <span class="c1"># add timestamp to request for later reference</span>
+        <span class="n">_id</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">uuid</span><span class="o">.</span><span class="n">uuid4</span><span class="p">())</span>
+        <span class="n">prepped_request</span><span class="o">.</span><span class="n">id</span> <span class="o">=</span> <span class="n">_id</span>  <span class="c1"># store random id in request so it can be matched with its response in logging</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_log_request</span><span class="p">(</span><span class="n">prepped_request</span><span class="p">)</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">requests_response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__requests_session</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="n">prepped_request</span><span class="p">,</span>
+                                                             <span class="n">timeout</span><span class="o">=</span><span class="p">(</span>
+                                                                 <span class="bp">self</span><span class="o">.</span><span class="n">__connect_timeout</span><span class="p">,</span>
+                                                                 <span class="bp">self</span><span class="o">.</span><span class="n">__socket_timeout</span><span class="p">))</span>
+        <span class="k">except</span> <span class="n">Timeout</span> <span class="k">as</span> <span class="n">timeout</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_log_error</span><span class="p">(</span><span class="n">prepped_request</span><span class="o">.</span><span class="n">id</span><span class="p">,</span> <span class="n">timeout</span><span class="p">,</span>
+                            <span class="n">prepped_request</span><span class="o">.</span><span class="n">timestamp</span><span class="p">)</span>
+            <span class="k">raise</span> <span class="n">CommunicationException</span><span class="p">(</span><span class="n">timeout</span><span class="p">)</span>
+        <span class="k">except</span> <span class="n">RequestException</span> <span class="k">as</span> <span class="n">exception</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_log_error</span><span class="p">(</span><span class="n">prepped_request</span><span class="o">.</span><span class="n">id</span><span class="p">,</span> <span class="n">exception</span><span class="p">,</span>
+                            <span class="n">prepped_request</span><span class="o">.</span><span class="n">timestamp</span><span class="p">)</span>
+            <span class="k">raise</span> <span class="n">CommunicationException</span><span class="p">(</span><span class="n">exception</span><span class="p">)</span>
+        <span class="k">except</span> <span class="ne">RuntimeError</span> <span class="k">as</span> <span class="n">exception</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_log_error</span><span class="p">(</span><span class="n">prepped_request</span><span class="o">.</span><span class="n">id</span><span class="p">,</span> <span class="n">exception</span><span class="p">,</span>
+                            <span class="n">prepped_request</span><span class="o">.</span><span class="n">timestamp</span><span class="p">)</span>
+            <span class="k">raise</span>
+
+        <span class="c1"># Read body in as text, if it is json it will be unmarshalled later</span>
+        <span class="n">ingenico_response</span> <span class="o">=</span> <span class="n">Response</span><span class="p">(</span><span class="n">body</span><span class="o">=</span><span class="n">requests_response</span><span class="o">.</span><span class="n">text</span><span class="p">,</span>
+                                     <span class="n">headers</span><span class="o">=</span><span class="n">requests_response</span><span class="o">.</span><span class="n">headers</span><span class="p">,</span>
+                                     <span class="n">status_code</span><span class="o">=</span><span class="n">requests_response</span><span class="o">.</span><span class="n">status_code</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">ingenico_response</span>
+
+    <span class="k">def</span> <span class="nf">_log_request</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">request</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Log parameter request if logging is enabled at the moment of logging.</span>
+<span class="sd">        Also adds a timestamp to the request for response logging&quot;&quot;&quot;</span>
+        <span class="n">logger</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">logger</span>
+        <span class="k">if</span> <span class="n">logger</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">return</span>
+        <span class="n">method</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">method</span>
+        <span class="n">url</span> <span class="o">=</span> <span class="n">urlparse</span><span class="p">(</span><span class="n">request</span><span class="o">.</span><span class="n">url</span><span class="p">)</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">url</span><span class="o">.</span><span class="n">query</span><span class="p">):</span>
+            <span class="n">localpath</span> <span class="o">=</span> <span class="n">url</span><span class="o">.</span><span class="n">path</span> <span class="o">+</span> <span class="s2">&quot;?&quot;</span> <span class="o">+</span> <span class="n">url</span><span class="o">.</span><span class="n">query</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">localpath</span> <span class="o">=</span> <span class="n">url</span><span class="o">.</span><span class="n">path</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">message</span> <span class="o">=</span> <span class="n">RequestLogMessage</span><span class="p">(</span><span class="n">request_id</span><span class="o">=</span><span class="n">request</span><span class="o">.</span><span class="n">id</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="n">method</span><span class="p">,</span>
+                                        <span class="n">uri</span><span class="o">=</span><span class="n">localpath</span><span class="p">)</span>
+            <span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">request</span><span class="o">.</span><span class="n">headers</span><span class="p">:</span>
+                <span class="n">message</span><span class="o">.</span><span class="n">add_header</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">request</span><span class="o">.</span><span class="n">headers</span><span class="p">[</span><span class="n">name</span><span class="p">])</span>
+            <span class="n">body</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">body</span>
+            <span class="k">if</span> <span class="n">body</span><span class="p">:</span>
+                <span class="n">content</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">headers</span><span class="p">[</span><span class="s1">&#39;Content-Type&#39;</span><span class="p">]</span>
+                <span class="k">if</span> <span class="n">content</span> <span class="o">!=</span> <span class="s2">&quot;application/json&quot;</span><span class="p">:</span>
+                    <span class="n">message</span><span class="o">.</span><span class="n">set_body</span><span class="p">(</span><span class="n">body</span><span class="p">,</span> <span class="n">content</span><span class="p">,</span> <span class="n">CHARSET</span><span class="p">)</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">message</span><span class="o">.</span><span class="n">set_body</span><span class="p">(</span><span class="n">body</span><span class="p">,</span> <span class="n">content</span><span class="p">)</span>
+            <span class="n">logger</span><span class="o">.</span><span class="n">log_request</span><span class="p">(</span><span class="n">message</span><span class="p">)</span>
+        <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+            <span class="n">logger</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="s2">&quot;An error occurred trying to log request &#39;</span><span class="si">{}</span><span class="s2">&#39;&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+                <span class="n">request</span><span class="o">.</span><span class="n">id</span><span class="p">),</span> <span class="n">e</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">_log_response</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">response</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Log parameter response if logging is enabled at the moment of logging&quot;&quot;&quot;</span>
+        <span class="n">logger</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">logger</span>
+        <span class="k">if</span> <span class="n">logger</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">return</span>
+        <span class="n">request</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">request</span>
+        <span class="n">_id</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">id</span>
+        <span class="n">duration</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">clock</span><span class="p">()</span> <span class="o">-</span> <span class="n">request</span><span class="o">.</span><span class="n">timestamp</span>
+        <span class="n">status_code</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">status_code</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">message</span> <span class="o">=</span> <span class="n">ResponseLogMessage</span><span class="p">(</span><span class="n">request_id</span><span class="o">=</span><span class="n">_id</span><span class="p">,</span>
+                                         <span class="n">status_code</span><span class="o">=</span><span class="n">status_code</span><span class="p">,</span>
+                                         <span class="n">duration</span><span class="o">=</span><span class="n">duration</span><span class="p">)</span>
+            <span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">response</span><span class="o">.</span><span class="n">headers</span><span class="p">:</span>
+                <span class="n">message</span><span class="o">.</span><span class="n">add_header</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">response</span><span class="o">.</span><span class="n">headers</span><span class="p">[</span><span class="n">name</span><span class="p">])</span>
+            <span class="n">body</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">text</span>
+            <span class="k">if</span> <span class="n">body</span><span class="p">:</span>
+                <span class="n">content</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">headers</span><span class="p">[</span><span class="s1">&#39;Content-Type&#39;</span><span class="p">]</span>
+                <span class="c1"># if content != &quot;application/json&quot;:</span>
+                <span class="c1">#     message.set_body(body, content, CHARSET)</span>
+                <span class="c1"># else:</span>
+                <span class="n">message</span><span class="o">.</span><span class="n">set_body</span><span class="p">(</span><span class="n">body</span><span class="p">,</span> <span class="n">content</span><span class="p">)</span>
+            <span class="n">logger</span><span class="o">.</span><span class="n">log_response</span><span class="p">(</span><span class="n">message</span><span class="p">)</span>
+        <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+            <span class="n">logger</span><span class="o">.</span><span class="n">log</span><span class="p">(</span>
+                <span class="s2">&quot;An error occurred trying to log response &#39;</span><span class="si">{}</span><span class="s2">&#39;&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">_id</span><span class="p">),</span> <span class="n">e</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">_log_error</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">request_id</span><span class="p">,</span> <span class="n">error</span><span class="p">,</span> <span class="n">start_time</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Log communication errors when logging is enabled&quot;&quot;&quot;</span>
+        <span class="n">logger</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">logger</span>
+        <span class="k">if</span> <span class="n">logger</span><span class="p">:</span>
+            <span class="n">end_time</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">clock</span><span class="p">()</span>
+            <span class="n">duration</span> <span class="o">=</span> <span class="n">end_time</span> <span class="o">-</span> <span class="n">start_time</span>
+            <span class="n">logger</span><span class="o">.</span><span class="n">log</span><span class="p">(</span>
+                <span class="s2">&quot;Error occurred for outgoing request (requestId=&#39;</span><span class="si">{}</span><span class="s2">&#39;, </span><span class="si">{}</span><span class="s2"> s)&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+                    <span class="n">request_id</span><span class="p">,</span> <span class="n">duration</span><span class="p">),</span> <span class="n">error</span><span class="p">)</span>
+
+<div class="viewcode-block" id="DefaultConnection.enable_logging"><a class="viewcode-back" href="../../../../../index.html#ingenico.connect.sdk.defaultimpl.default_connection.DefaultConnection.enable_logging">[docs]</a>    <span class="k">def</span> <span class="nf">enable_logging</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">communicator_logger</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">logger</span> <span class="o">=</span> <span class="n">communicator_logger</span></div>
+
+<div class="viewcode-block" id="DefaultConnection.disable_logging"><a class="viewcode-back" href="../../../../../index.html#ingenico.connect.sdk.defaultimpl.default_connection.DefaultConnection.disable_logging">[docs]</a>    <span class="k">def</span> <span class="nf">disable_logging</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">logger</span> <span class="o">=</span> <span class="kc">None</span></div>
+
+<div class="viewcode-block" id="DefaultConnection.close_idle_connections"><a class="viewcode-back" href="../../../../../index.html#ingenico.connect.sdk.defaultimpl.default_connection.DefaultConnection.close_idle_connections">[docs]</a>    <span class="k">def</span> <span class="nf">close_idle_connections</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">idle_time</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        :param idle_time: a datetime.timedelta object indicating the idle time</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">pass</span></div>
+
+<div class="viewcode-block" id="DefaultConnection.close_expired_connections"><a class="viewcode-back" href="../../../../../index.html#ingenico.connect.sdk.defaultimpl.default_connection.DefaultConnection.close_expired_connections">[docs]</a>    <span class="k">def</span> <span class="nf">close_expired_connections</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">pass</span></div>
+
+<div class="viewcode-block" id="DefaultConnection.__enter__"><a class="viewcode-back" href="../../../../../index.html#ingenico.connect.sdk.defaultimpl.default_connection.DefaultConnection.__enter__">[docs]</a>    <span class="k">def</span> <span class="nf">__enter__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span></div>
+
+<div class="viewcode-block" id="DefaultConnection.__exit__"><a class="viewcode-back" href="../../../../../index.html#ingenico.connect.sdk.defaultimpl.default_connection.DefaultConnection.__exit__">[docs]</a>    <span class="k">def</span> <span class="nf">__exit__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">exc_type</span><span class="p">,</span> <span class="n">exc_val</span><span class="p">,</span> <span class="n">exc_tb</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">close</span><span class="p">()</span></div>
+
+<div class="viewcode-block" id="DefaultConnection.close"><a class="viewcode-back" href="../../../../../index.html#ingenico.connect.sdk.defaultimpl.default_connection.DefaultConnection.close">[docs]</a>    <span class="k">def</span> <span class="nf">close</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">__requests_session</span><span class="o">.</span><span class="n">close</span><span class="p">()</span></div></div>
+</pre></div>
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper"><div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../../../../../index.html">Documentation overview</a><ul>
+  <li><a href="../../../../index.html">Module code</a><ul>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="../../../../../search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;Copyright (c) 2016 Global Collect Services B.V..
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.5.2</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.9</a>
+      
+    </div>
+
+    
+
+    
+  </body>
+</html>
