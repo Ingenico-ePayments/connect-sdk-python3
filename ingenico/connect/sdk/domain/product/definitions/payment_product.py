@@ -19,6 +19,7 @@ class PaymentProduct(DataObject):
     __allows_recurring = None
     __allows_tokenization = None
     __auto_tokenized = None
+    __can_be_iframed = None
     __display_hints = None
     __fields = None
     __id = None
@@ -72,6 +73,17 @@ class PaymentProduct(DataObject):
     @auto_tokenized.setter
     def auto_tokenized(self, value):
         self.__auto_tokenized = value
+
+    @property
+    def can_be_iframed(self):
+        """
+        bool
+        """
+        return self.__can_be_iframed
+
+    @can_be_iframed.setter
+    def can_be_iframed(self, value):
+        self.__can_be_iframed = value
 
     @property
     def display_hints(self):
@@ -178,6 +190,7 @@ class PaymentProduct(DataObject):
         self._add_to_dictionary(dictionary, 'allowsRecurring', self.allows_recurring)
         self._add_to_dictionary(dictionary, 'allowsTokenization', self.allows_tokenization)
         self._add_to_dictionary(dictionary, 'autoTokenized', self.auto_tokenized)
+        self._add_to_dictionary(dictionary, 'canBeIframed', self.can_be_iframed)
         self._add_to_dictionary(dictionary, 'displayHints', self.display_hints)
         self._add_to_dictionary(dictionary, 'fields', self.fields)
         self._add_to_dictionary(dictionary, 'id', self.id)
@@ -204,6 +217,8 @@ class PaymentProduct(DataObject):
             self.allows_tokenization = dictionary['allowsTokenization']
         if 'autoTokenized' in dictionary:
             self.auto_tokenized = dictionary['autoTokenized']
+        if 'canBeIframed' in dictionary:
+            self.can_be_iframed = dictionary['canBeIframed']
         if 'displayHints' in dictionary:
             if not isinstance(dictionary['displayHints'], dict):
                 raise TypeError('value \'{}\' is not a dictionary'.format(dictionary['displayHints']))

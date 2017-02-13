@@ -120,7 +120,7 @@ class CreatePaymentExample(object):
             item2_amount_of_money.currency_code = "EUR"
 
             item2_invoice_data = LineItemInvoiceData()
-            item2_invoice_data.description = "Asperin"
+            item2_invoice_data.description = "Aspirin"
             item2_invoice_data.nr_of_items = "12"
             item2_invoice_data.price_per_item = 40
 
