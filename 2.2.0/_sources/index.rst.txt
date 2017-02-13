@@ -4,7 +4,7 @@
 .. toctree::
    :maxdepth: 10
 
-.. include:: readme.rst
+.. include:: README.rst
 
 API Reference
 =============
