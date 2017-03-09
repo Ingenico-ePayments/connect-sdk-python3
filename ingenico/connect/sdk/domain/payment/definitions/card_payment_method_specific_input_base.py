@@ -19,6 +19,7 @@ class CardPaymentMethodSpecificInputBase(AbstractPaymentMethodSpecificInput):
     __skip_authentication = None
     __skip_fraud_service = None
     __token = None
+    __tokenize = None
 
     @property
     def authorization_mode(self):
@@ -97,6 +98,17 @@ class CardPaymentMethodSpecificInputBase(AbstractPaymentMethodSpecificInput):
     def token(self, value):
         self.__token = value
 
+    @property
+    def tokenize(self):
+        """
+        bool
+        """
+        return self.__tokenize
+
+    @tokenize.setter
+    def tokenize(self, value):
+        self.__tokenize = value
+
     def to_dictionary(self):
         dictionary = super(CardPaymentMethodSpecificInputBase, self).to_dictionary()
         self._add_to_dictionary(dictionary, 'authorizationMode', self.authorization_mode)
@@ -106,6 +118,7 @@ class CardPaymentMethodSpecificInputBase(AbstractPaymentMethodSpecificInput):
         self._add_to_dictionary(dictionary, 'skipAuthentication', self.skip_authentication)
         self._add_to_dictionary(dictionary, 'skipFraudService', self.skip_fraud_service)
         self._add_to_dictionary(dictionary, 'token', self.token)
+        self._add_to_dictionary(dictionary, 'tokenize', self.tokenize)
         return dictionary
 
     def from_dictionary(self, dictionary):
@@ -124,4 +137,6 @@ class CardPaymentMethodSpecificInputBase(AbstractPaymentMethodSpecificInput):
             self.skip_fraud_service = dictionary['skipFraudService']
         if 'token' in dictionary:
             self.token = dictionary['token']
+        if 'tokenize' in dictionary:
+            self.tokenize = dictionary['tokenize']
         return self

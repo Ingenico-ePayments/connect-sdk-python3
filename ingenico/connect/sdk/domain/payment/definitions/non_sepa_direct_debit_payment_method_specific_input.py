@@ -19,6 +19,7 @@ class NonSepaDirectDebitPaymentMethodSpecificInput(AbstractPaymentMethodSpecific
     __payment_product705_specific_input = None
     __recurring_payment_sequence_indicator = None
     __token = None
+    __tokenize = None
 
     @property
     def date_collect(self):
@@ -86,6 +87,17 @@ class NonSepaDirectDebitPaymentMethodSpecificInput(AbstractPaymentMethodSpecific
     def token(self, value):
         self.__token = value
 
+    @property
+    def tokenize(self):
+        """
+        bool
+        """
+        return self.__tokenize
+
+    @tokenize.setter
+    def tokenize(self, value):
+        self.__tokenize = value
+
     def to_dictionary(self):
         dictionary = super(NonSepaDirectDebitPaymentMethodSpecificInput, self).to_dictionary()
         self._add_to_dictionary(dictionary, 'dateCollect', self.date_collect)
@@ -94,6 +106,7 @@ class NonSepaDirectDebitPaymentMethodSpecificInput(AbstractPaymentMethodSpecific
         self._add_to_dictionary(dictionary, 'paymentProduct705SpecificInput', self.payment_product705_specific_input)
         self._add_to_dictionary(dictionary, 'recurringPaymentSequenceIndicator', self.recurring_payment_sequence_indicator)
         self._add_to_dictionary(dictionary, 'token', self.token)
+        self._add_to_dictionary(dictionary, 'tokenize', self.tokenize)
         return dictionary
 
     def from_dictionary(self, dictionary):
@@ -113,4 +126,6 @@ class NonSepaDirectDebitPaymentMethodSpecificInput(AbstractPaymentMethodSpecific
             self.recurring_payment_sequence_indicator = dictionary['recurringPaymentSequenceIndicator']
         if 'token' in dictionary:
             self.token = dictionary['token']
+        if 'tokenize' in dictionary:
+            self.tokenize = dictionary['tokenize']
         return self

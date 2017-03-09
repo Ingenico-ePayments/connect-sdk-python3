@@ -54,7 +54,6 @@ class Session(object):
     @property
     def meta_data_provider(self):
         """
-        :return: The MetaDataProvider object associated with this session. Never
-        None.
+        :return: The MetaDataProvider object associated with this session. Never None.
         """
         return self.__meta_data_provider
