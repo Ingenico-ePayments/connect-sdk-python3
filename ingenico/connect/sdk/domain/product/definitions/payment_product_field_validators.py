@@ -3,6 +3,7 @@
 # https://developer.globalcollect.com/documentation/api/server/
 #
 from ingenico.connect.sdk.data_object import DataObject
+from ingenico.connect.sdk.domain.product.definitions.boleto_bancario_requiredness_validator import BoletoBancarioRequirednessValidator
 from ingenico.connect.sdk.domain.product.definitions.empty_validator import EmptyValidator
 from ingenico.connect.sdk.domain.product.definitions.fixed_list_validator import FixedListValidator
 from ingenico.connect.sdk.domain.product.definitions.length_validator import LengthValidator
@@ -17,6 +18,7 @@ class PaymentProductFieldValidators(DataObject):
     See also https://developer.globalcollect.com/documentation/api/server/#schema_PaymentProductFieldValidators
     """
 
+    __boleto_bancario_requiredness = None
     __email_address = None
     __expiration_date = None
     __fixed_list = None
@@ -24,6 +26,17 @@ class PaymentProductFieldValidators(DataObject):
     __luhn = None
     __range = None
     __regular_expression = None
+
+    @property
+    def boleto_bancario_requiredness(self):
+        """
+        :class:`BoletoBancarioRequirednessValidator`
+        """
+        return self.__boleto_bancario_requiredness
+
+    @boleto_bancario_requiredness.setter
+    def boleto_bancario_requiredness(self, value):
+        self.__boleto_bancario_requiredness = value
 
     @property
     def email_address(self):
@@ -104,6 +117,7 @@ class PaymentProductFieldValidators(DataObject):
 
     def to_dictionary(self):
         dictionary = super(PaymentProductFieldValidators, self).to_dictionary()
+        self._add_to_dictionary(dictionary, 'boletoBancarioRequiredness', self.boleto_bancario_requiredness)
         self._add_to_dictionary(dictionary, 'emailAddress', self.email_address)
         self._add_to_dictionary(dictionary, 'expirationDate', self.expiration_date)
         self._add_to_dictionary(dictionary, 'fixedList', self.fixed_list)
@@ -115,6 +129,11 @@ class PaymentProductFieldValidators(DataObject):
 
     def from_dictionary(self, dictionary):
         super(PaymentProductFieldValidators, self).from_dictionary(dictionary)
+        if 'boletoBancarioRequiredness' in dictionary:
+            if not isinstance(dictionary['boletoBancarioRequiredness'], dict):
+                raise TypeError('value \'{}\' is not a dictionary'.format(dictionary['boletoBancarioRequiredness']))
+            value = BoletoBancarioRequirednessValidator()
+            self.boleto_bancario_requiredness = value.from_dictionary(dictionary['boletoBancarioRequiredness'])
         if 'emailAddress' in dictionary:
             if not isinstance(dictionary['emailAddress'], dict):
                 raise TypeError('value \'{}\' is not a dictionary'.format(dictionary['emailAddress']))
