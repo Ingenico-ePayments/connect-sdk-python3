@@ -12,8 +12,20 @@ class RedirectPaymentMethodSpecificInputBase(AbstractPaymentMethodSpecificInput)
     See also https://developer.globalcollect.com/documentation/api/server/#schema_RedirectPaymentMethodSpecificInputBase
     """
 
+    __expiration_period = None
     __recurring_payment_sequence_indicator = None
     __token = None
+
+    @property
+    def expiration_period(self):
+        """
+        int
+        """
+        return self.__expiration_period
+
+    @expiration_period.setter
+    def expiration_period(self, value):
+        self.__expiration_period = value
 
     @property
     def recurring_payment_sequence_indicator(self):
@@ -39,12 +51,15 @@ class RedirectPaymentMethodSpecificInputBase(AbstractPaymentMethodSpecificInput)
 
     def to_dictionary(self):
         dictionary = super(RedirectPaymentMethodSpecificInputBase, self).to_dictionary()
+        self._add_to_dictionary(dictionary, 'expirationPeriod', self.expiration_period)
         self._add_to_dictionary(dictionary, 'recurringPaymentSequenceIndicator', self.recurring_payment_sequence_indicator)
         self._add_to_dictionary(dictionary, 'token', self.token)
         return dictionary
 
     def from_dictionary(self, dictionary):
         super(RedirectPaymentMethodSpecificInputBase, self).from_dictionary(dictionary)
+        if 'expirationPeriod' in dictionary:
+            self.expiration_period = dictionary['expirationPeriod']
         if 'recurringPaymentSequenceIndicator' in dictionary:
             self.recurring_payment_sequence_indicator = dictionary['recurringPaymentSequenceIndicator']
         if 'token' in dictionary:

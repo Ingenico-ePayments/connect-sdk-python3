@@ -36,6 +36,8 @@ class AdditionalOrderInput(DataObject):
     def level3_summary_data(self):
         """
         :class:`Level3SummaryData`
+        
+        Deprecated; Use Order.shoppingCart instead
         """
         return self.__level3_summary_data
 

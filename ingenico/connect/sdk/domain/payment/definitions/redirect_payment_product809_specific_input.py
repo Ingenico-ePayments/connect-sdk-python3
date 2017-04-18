@@ -19,6 +19,8 @@ class RedirectPaymentProduct809SpecificInput(DataObject):
     def expiration_period(self):
         """
         str
+        
+        Deprecated; Use RedirectPaymentMethodSpecificInput.expirationPeriod instead
         """
         return self.__expiration_period
 

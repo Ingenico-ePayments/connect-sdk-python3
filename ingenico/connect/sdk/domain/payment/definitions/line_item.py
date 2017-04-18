@@ -6,6 +6,7 @@ from ingenico.connect.sdk.data_object import DataObject
 from ingenico.connect.sdk.domain.definitions.amount_of_money import AmountOfMoney
 from ingenico.connect.sdk.domain.payment.definitions.line_item_invoice_data import LineItemInvoiceData
 from ingenico.connect.sdk.domain.payment.definitions.line_item_level3_interchange_information import LineItemLevel3InterchangeInformation
+from ingenico.connect.sdk.domain.payment.definitions.order_line_details import OrderLineDetails
 
 
 class LineItem(DataObject):
@@ -18,6 +19,7 @@ class LineItem(DataObject):
     __amount_of_money = None
     __invoice_data = None
     __level3_interchange_information = None
+    __order_line_details = None
 
     @property
     def amount_of_money(self):
@@ -45,6 +47,8 @@ class LineItem(DataObject):
     def level3_interchange_information(self):
         """
         :class:`LineItemLevel3InterchangeInformation`
+        
+        Deprecated; Use orderLineDetails instead
         """
         return self.__level3_interchange_information
 
@@ -52,11 +56,23 @@ class LineItem(DataObject):
     def level3_interchange_information(self, value):
         self.__level3_interchange_information = value
 
+    @property
+    def order_line_details(self):
+        """
+        :class:`OrderLineDetails`
+        """
+        return self.__order_line_details
+
+    @order_line_details.setter
+    def order_line_details(self, value):
+        self.__order_line_details = value
+
     def to_dictionary(self):
         dictionary = super(LineItem, self).to_dictionary()
         self._add_to_dictionary(dictionary, 'amountOfMoney', self.amount_of_money)
         self._add_to_dictionary(dictionary, 'invoiceData', self.invoice_data)
         self._add_to_dictionary(dictionary, 'level3InterchangeInformation', self.level3_interchange_information)
+        self._add_to_dictionary(dictionary, 'orderLineDetails', self.order_line_details)
         return dictionary
 
     def from_dictionary(self, dictionary):
@@ -76,4 +92,9 @@ class LineItem(DataObject):
                 raise TypeError('value \'{}\' is not a dictionary'.format(dictionary['level3InterchangeInformation']))
             value = LineItemLevel3InterchangeInformation()
             self.level3_interchange_information = value.from_dictionary(dictionary['level3InterchangeInformation'])
+        if 'orderLineDetails' in dictionary:
+            if not isinstance(dictionary['orderLineDetails'], dict):
+                raise TypeError('value \'{}\' is not a dictionary'.format(dictionary['orderLineDetails']))
+            value = OrderLineDetails()
+            self.order_line_details = value.from_dictionary(dictionary['orderLineDetails'])
         return self

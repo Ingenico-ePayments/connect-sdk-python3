@@ -10,6 +10,8 @@ class Level3SummaryData(DataObject):
     Class Level3SummaryData
     
     See also https://developer.globalcollect.com/documentation/api/server/#schema_Level3SummaryData
+    
+    Deprecated; Use ShoppingCart instead
     """
 
     __discount_amount = None
@@ -20,6 +22,8 @@ class Level3SummaryData(DataObject):
     def discount_amount(self):
         """
         int
+        
+        Deprecated; Use ShoppingCart.discountAmount instead
         """
         return self.__discount_amount
 
@@ -31,6 +35,8 @@ class Level3SummaryData(DataObject):
     def duty_amount(self):
         """
         int
+        
+        Deprecated; Use ShoppingCart.dutyAmount instead
         """
         return self.__duty_amount
 
@@ -42,6 +48,8 @@ class Level3SummaryData(DataObject):
     def shipping_amount(self):
         """
         int
+        
+        Deprecated; Use ShoppingCart.shippingAmount instead
         """
         return self.__shipping_amount
 

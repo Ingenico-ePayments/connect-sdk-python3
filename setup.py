@@ -21,7 +21,7 @@ def test_collector():
 
 setup(
     name="connect-sdk-python3",
-    version="2.4.0",
+    version="2.5.0",
     author="Ingenico ePayments",
     author_email="github@epay.ingenico.com",
     description="SDK to communicate with the GlobalCollect platform using the Ingenico Connect Server API",
