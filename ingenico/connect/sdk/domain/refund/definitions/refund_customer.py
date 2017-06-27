@@ -1,6 +1,7 @@
+# -*- coding: utf-8 -*-
 #
 # This class was auto-generated from the API references found at
-# https://developer.globalcollect.com/documentation/api/server/
+# https://epayments-api.developer-ingenico.com/s2sapi/v1/
 #
 from ingenico.connect.sdk.data_object import DataObject
 from ingenico.connect.sdk.domain.definitions.company_information import CompanyInformation
@@ -9,11 +10,6 @@ from ingenico.connect.sdk.domain.payment.definitions.address_personal import Add
 
 
 class RefundCustomer(DataObject):
-    """
-    Class RefundCustomer
-    
-    See also https://developer.globalcollect.com/documentation/api/server/#schema_RefundCustomer
-    """
 
     __address = None
     __company_information = None
@@ -22,7 +18,9 @@ class RefundCustomer(DataObject):
     @property
     def address(self):
         """
-        :class:`AddressPersonal`
+        | Object containing address details
+        
+        Type: :class:`ingenico.connect.sdk.domain.payment.definitions.address_personal.AddressPersonal`
         """
         return self.__address
 
@@ -33,7 +31,9 @@ class RefundCustomer(DataObject):
     @property
     def company_information(self):
         """
-        :class:`CompanyInformation`
+        | Object containing company information
+        
+        Type: :class:`ingenico.connect.sdk.domain.definitions.company_information.CompanyInformation`
         """
         return self.__company_information
 
@@ -44,7 +44,9 @@ class RefundCustomer(DataObject):
     @property
     def contact_details(self):
         """
-        :class:`ContactDetailsBase`
+        | Object containing contact details like email address and phone number
+        
+        Type: :class:`ingenico.connect.sdk.domain.definitions.contact_details_base.ContactDetailsBase`
         """
         return self.__contact_details
 

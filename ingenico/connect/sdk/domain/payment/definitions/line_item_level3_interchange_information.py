@@ -1,16 +1,12 @@
+# -*- coding: utf-8 -*-
 #
 # This class was auto-generated from the API references found at
-# https://developer.globalcollect.com/documentation/api/server/
+# https://epayments-api.developer-ingenico.com/s2sapi/v1/
 #
 from ingenico.connect.sdk.data_object import DataObject
 
 
 class LineItemLevel3InterchangeInformation(DataObject):
-    """
-    Class LineItemLevel3InterchangeInformation
-    
-    See also https://developer.globalcollect.com/documentation/api/server/#schema_LineItemLevel3InterchangeInformation
-    """
 
     __discount_amount = None
     __line_amount_total = None
@@ -24,7 +20,9 @@ class LineItemLevel3InterchangeInformation(DataObject):
     @property
     def discount_amount(self):
         """
-        int
+        | Discount on the line item, with the last two digits are implied decimal places
+        
+        Type: int
         """
         return self.__discount_amount
 
@@ -35,7 +33,9 @@ class LineItemLevel3InterchangeInformation(DataObject):
     @property
     def line_amount_total(self):
         """
-        int
+        | Total amount for the line item
+        
+        Type: int
         """
         return self.__line_amount_total
 
@@ -46,7 +46,10 @@ class LineItemLevel3InterchangeInformation(DataObject):
     @property
     def product_code(self):
         """
-        str
+        | Product or UPC Code, left justified
+        | Note: Must not be all spaces or all zeros
+        
+        Type: str
         """
         return self.__product_code
 
@@ -57,7 +60,9 @@ class LineItemLevel3InterchangeInformation(DataObject):
     @property
     def product_price(self):
         """
-        int
+        | The price of one unit of the product, the value should be zero or greater
+        
+        Type: int
         """
         return self.__product_price
 
@@ -68,7 +73,10 @@ class LineItemLevel3InterchangeInformation(DataObject):
     @property
     def product_type(self):
         """
-        str
+        | Code used to classify items that are purchased
+        | Note: Must not be all spaces or all zeros
+        
+        Type: str
         """
         return self.__product_type
 
@@ -79,7 +87,10 @@ class LineItemLevel3InterchangeInformation(DataObject):
     @property
     def quantity(self):
         """
-        int
+        | Quantity of the units being purchased, should be greater than zero
+        | Note: Must not be all spaces or all zeros
+        
+        Type: int
         """
         return self.__quantity
 
@@ -90,7 +101,9 @@ class LineItemLevel3InterchangeInformation(DataObject):
     @property
     def tax_amount(self):
         """
-        int
+        | Tax on the line item, with the last two digits are implied decimal places
+        
+        Type: int
         """
         return self.__tax_amount
 
@@ -101,7 +114,9 @@ class LineItemLevel3InterchangeInformation(DataObject):
     @property
     def unit(self):
         """
-        str
+        | Indicates the line item unit of measure; for example: each, kit, pair, gallon, month, etc.
+        
+        Type: str
         """
         return self.__unit
 

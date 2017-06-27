@@ -1,16 +1,12 @@
+# -*- coding: utf-8 -*-
 #
 # This class was auto-generated from the API references found at
-# https://developer.globalcollect.com/documentation/api/server/
+# https://epayments-api.developer-ingenico.com/s2sapi/v1/
 #
 from ingenico.connect.sdk.data_object import DataObject
 
 
 class MandateApproval(DataObject):
-    """
-    Class MandateApproval
-    
-    See also https://developer.globalcollect.com/documentation/api/server/#schema_MandateApproval
-    """
 
     __mandate_signature_date = None
     __mandate_signature_place = None
@@ -19,7 +15,10 @@ class MandateApproval(DataObject):
     @property
     def mandate_signature_date(self):
         """
-        str
+        | The date when the mandate was signed
+        | Format: YYYYMMDD
+        
+        Type: str
         """
         return self.__mandate_signature_date
 
@@ -30,7 +29,9 @@ class MandateApproval(DataObject):
     @property
     def mandate_signature_place(self):
         """
-        str
+        | The city where the mandate was signed
+        
+        Type: str
         """
         return self.__mandate_signature_place
 
@@ -41,7 +42,10 @@ class MandateApproval(DataObject):
     @property
     def mandate_signed(self):
         """
-        bool
+        * true = Mandate is signed
+        * false = Mandate is not signed
+        
+        Type: bool
         """
         return self.__mandate_signed
 

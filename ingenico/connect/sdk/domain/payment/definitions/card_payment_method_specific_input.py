@@ -1,6 +1,7 @@
+# -*- coding: utf-8 -*-
 #
 # This class was auto-generated from the API references found at
-# https://developer.globalcollect.com/documentation/api/server/
+# https://epayments-api.developer-ingenico.com/s2sapi/v1/
 #
 from ingenico.connect.sdk.domain.definitions.card import Card
 from ingenico.connect.sdk.domain.payment.definitions.card_payment_method_specific_input_base import CardPaymentMethodSpecificInputBase
@@ -8,11 +9,6 @@ from ingenico.connect.sdk.domain.payment.definitions.external_cardholder_authent
 
 
 class CardPaymentMethodSpecificInput(CardPaymentMethodSpecificInputBase):
-    """
-    Class CardPaymentMethodSpecificInput
-    
-    See also https://developer.globalcollect.com/documentation/api/server/#schema_CardPaymentMethodSpecificInput
-    """
 
     __card = None
     __external_cardholder_authentication_data = None
@@ -22,7 +18,9 @@ class CardPaymentMethodSpecificInput(CardPaymentMethodSpecificInputBase):
     @property
     def card(self):
         """
-        :class:`Card`
+        | Object containing card details
+        
+        Type: :class:`ingenico.connect.sdk.domain.definitions.card.Card`
         """
         return self.__card
 
@@ -33,7 +31,9 @@ class CardPaymentMethodSpecificInput(CardPaymentMethodSpecificInputBase):
     @property
     def external_cardholder_authentication_data(self):
         """
-        :class:`ExternalCardholderAuthenticationData`
+        | Object containing 3D secure details.
+        
+        Type: :class:`ingenico.connect.sdk.domain.payment.definitions.external_cardholder_authentication_data.ExternalCardholderAuthenticationData`
         """
         return self.__external_cardholder_authentication_data
 
@@ -44,7 +44,12 @@ class CardPaymentMethodSpecificInput(CardPaymentMethodSpecificInputBase):
     @property
     def is_recurring(self):
         """
-        bool
+        | Indicates if this transaction is of a one-off or a recurring type
+        
+        * true - This is recurring
+        * false - This is one-off
+        
+        Type: bool
         """
         return self.__is_recurring
 
@@ -55,7 +60,11 @@ class CardPaymentMethodSpecificInput(CardPaymentMethodSpecificInputBase):
     @property
     def return_url(self):
         """
-        str
+        | The URL that the consumer is redirect to after the payment flow has finished. You can add any number of key value pairs in the query string that, for instance help you to identify the consumer when they return to your site. Please note that we will also append some additional key value pairs that will also help you with this identification process.
+        | Note: The provided URL should be absolute and contain the protocol to use, e.g. http:// or https://. For use on mobile devices a custom protocol can be used in the form of *protocol*://. This protocol must be registered on the device first.
+        | URLs without a protocol will be rejected.
+        
+        Type: str
         """
         return self.__return_url
 

@@ -1,17 +1,13 @@
+# -*- coding: utf-8 -*-
 #
 # This class was auto-generated from the API references found at
-# https://developer.globalcollect.com/documentation/api/server/
+# https://epayments-api.developer-ingenico.com/s2sapi/v1/
 #
 from ingenico.connect.sdk.data_object import DataObject
 from ingenico.connect.sdk.domain.definitions.airline_flight_leg import AirlineFlightLeg
 
 
 class AirlineData(DataObject):
-    """
-    Class AirlineData
-    
-    See also https://developer.globalcollect.com/documentation/api/server/#schema_AirlineData
-    """
 
     __agent_numeric_code = None
     __code = None
@@ -36,7 +32,9 @@ class AirlineData(DataObject):
     @property
     def agent_numeric_code(self):
         """
-        str
+        | Numeric code identifying the agent
+        
+        Type: str
         """
         return self.__agent_numeric_code
 
@@ -47,7 +45,9 @@ class AirlineData(DataObject):
     @property
     def code(self):
         """
-        str
+        | Airline numeric code
+        
+        Type: str
         """
         return self.__code
 
@@ -58,7 +58,10 @@ class AirlineData(DataObject):
     @property
     def flight_date(self):
         """
-        str
+        | Date of the Flight
+        | Format: YYYYMMDD
+        
+        Type: str
         """
         return self.__flight_date
 
@@ -69,7 +72,9 @@ class AirlineData(DataObject):
     @property
     def flight_legs(self):
         """
-        list[:class:`AirlineFlightLeg`]
+        | Object that holds the data on the individual legs of the ticket
+        
+        Type: list[:class:`ingenico.connect.sdk.domain.definitions.airline_flight_leg.AirlineFlightLeg`]
         """
         return self.__flight_legs
 
@@ -80,7 +85,9 @@ class AirlineData(DataObject):
     @property
     def invoice_number(self):
         """
-        str
+        | Airline tracing number
+        
+        Type: str
         """
         return self.__invoice_number
 
@@ -91,7 +98,10 @@ class AirlineData(DataObject):
     @property
     def is_e_ticket(self):
         """
-        bool
+        * true = The ticket is an E-Ticket
+        * false = the ticket is not an E-Ticket
+        
+        Type: bool
         """
         return self.__is_e_ticket
 
@@ -102,7 +112,10 @@ class AirlineData(DataObject):
     @property
     def is_registered_customer(self):
         """
-        bool
+        * true = a registered known consumer
+        * false = unknown consumer
+        
+        Type: bool
         """
         return self.__is_registered_customer
 
@@ -113,7 +126,10 @@ class AirlineData(DataObject):
     @property
     def is_restricted_ticket(self):
         """
-        bool
+        * true - Restricted, the ticket is non-refundable
+        * false - No restrictions, the ticket is (partially) refundable
+        
+        Type: bool
         """
         return self.__is_restricted_ticket
 
@@ -124,7 +140,10 @@ class AirlineData(DataObject):
     @property
     def is_third_party(self):
         """
-        bool
+        * true - The payer is the ticket holder
+        * false - The payer is not the ticket holder
+        
+        Type: bool
         """
         return self.__is_third_party
 
@@ -135,7 +154,10 @@ class AirlineData(DataObject):
     @property
     def issue_date(self):
         """
-        str
+        | This is the date of issue recorded in the airline systemIn a case of multiple issuances of the same ticket to a cardholder, you should use the last ticket date.
+        | Format: YYYYMMDD
+        
+        Type: str
         """
         return self.__issue_date
 
@@ -146,7 +168,9 @@ class AirlineData(DataObject):
     @property
     def merchant_customer_id(self):
         """
-        str
+        | Your ID of the consumer in the context of the airline data
+        
+        Type: str
         """
         return self.__merchant_customer_id
 
@@ -157,7 +181,9 @@ class AirlineData(DataObject):
     @property
     def name(self):
         """
-        str
+        | Name of the airline
+        
+        Type: str
         """
         return self.__name
 
@@ -168,7 +194,9 @@ class AirlineData(DataObject):
     @property
     def passenger_name(self):
         """
-        str
+        | Name of passenger
+        
+        Type: str
         """
         return self.__passenger_name
 
@@ -179,7 +207,10 @@ class AirlineData(DataObject):
     @property
     def place_of_issue(self):
         """
-        str
+        | Place of issue
+        | For sales in the US the last two characters (pos 14-15) must be the US state code.
+        
+        Type: str
         """
         return self.__place_of_issue
 
@@ -190,7 +221,9 @@ class AirlineData(DataObject):
     @property
     def pnr(self):
         """
-        str
+        | Passenger name record
+        
+        Type: str
         """
         return self.__pnr
 
@@ -201,7 +234,9 @@ class AirlineData(DataObject):
     @property
     def point_of_sale(self):
         """
-        str
+        | IATA point of sale name
+        
+        Type: str
         """
         return self.__point_of_sale
 
@@ -212,7 +247,9 @@ class AirlineData(DataObject):
     @property
     def pos_city_code(self):
         """
-        str
+        | city code of the point of sale
+        
+        Type: str
         """
         return self.__pos_city_code
 
@@ -223,7 +260,15 @@ class AirlineData(DataObject):
     @property
     def ticket_delivery_method(self):
         """
-        str
+        | Possible values:
+        
+        * e-ticket
+        * city-ticket-office
+        * airport-ticket-office
+        * ticket-by-mail
+        * ticket-on-departure
+        
+        Type: str
         """
         return self.__ticket_delivery_method
 
@@ -234,7 +279,14 @@ class AirlineData(DataObject):
     @property
     def ticket_number(self):
         """
-        str
+        | The ticket or document number contains:
+        
+        * Airline code: 3-digit airline code number
+        * Form code: A maximum of 3 digits indicating the type of document, the source of issue and the number of coupons it contains
+        * Serial number: A maximum of 8 digits allocated on a sequential basis, provided that the total number of digits allocated to the form code and serial number shall not exceed ten
+        * TICKETNUMBER can be replaced with PNR if the ticket number is unavailable
+        
+        Type: str
         """
         return self.__ticket_number
 

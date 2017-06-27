@@ -1,23 +1,21 @@
+# -*- coding: utf-8 -*-
 #
 # This class was auto-generated from the API references found at
-# https://developer.globalcollect.com/documentation/api/server/
+# https://epayments-api.developer-ingenico.com/s2sapi/v1/
 #
 from ingenico.connect.sdk.domain.definitions.bank_account import BankAccount
 
 
 class BankAccountIban(BankAccount):
-    """
-    Class BankAccountIban
-    
-    See also https://developer.globalcollect.com/documentation/api/server/#schema_BankAccountIban
-    """
 
     __iban = None
 
     @property
     def iban(self):
         """
-        str
+        | The IBAN is the International Bank Account Number. It is an internationally agreed format for the BBAN and includes the ISO country code and two check digits.
+        
+        Type: str
         """
         return self.__iban
 

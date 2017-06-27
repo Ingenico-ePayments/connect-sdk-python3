@@ -1,6 +1,6 @@
 #
 # This class was auto-generated from the API references found at
-# https://developer.globalcollect.com/documentation/api/server/
+# https://epayments-api.developer-ingenico.com/s2sapi/v1/
 #
 from ingenico.connect.sdk.api_resource import ApiResource
 from ingenico.connect.sdk.response_exception import ResponseException
@@ -16,7 +16,7 @@ class ProductgroupsClient(ApiResource):
 
     def __init__(self, parent, path_context):
         """
-        :param parent:       :class:`ApiResource`
+        :param parent:       :class:`ingenico.connect.sdk.api_resource.ApiResource`
         :param path_context: dict[str, str]
         """
         super(ProductgroupsClient, self).__init__(parent, path_context)
@@ -25,12 +25,13 @@ class ProductgroupsClient(ApiResource):
         """
         Resource /{merchantId}/productgroups
 
-        Get payment product groups
+        | Get payment product groups
         
-        See also https://developer.globalcollect.com/documentation/api/server/#__merchantId__productgroups_get
+        See also https://epayments-api.developer-ingenico.com/s2sapi/v1/en_US/python/productgroups/find.html
 
-        :param query:    :class:`FindProductgroupsParams`
-        :return: :class:`PaymentProductGroups`
+        :param query:    :class:`ingenico.connect.sdk.merchant.productgroups.find_productgroups_params.FindProductgroupsParams`
+        :param context:  :class:`ingenico.connect.sdk.call_context.CallContext`
+        :return: :class:`ingenico.connect.sdk.domain.product.payment_product_groups.PaymentProductGroups`
         :raise: ValidationException if the request was not correct and couldn't be processed (HTTP status code 400)
         :raise: AuthorizationException if the request was not allowed (HTTP status code 403)
         :raise: ReferenceException if an object was attempted to be referenced that doesn't exist or has been removed,
@@ -58,13 +59,14 @@ class ProductgroupsClient(ApiResource):
         """
         Resource /{merchantId}/productgroups/{paymentProductGroupId}
 
-        Get payment product group
+        | Get payment product group
         
-        See also https://developer.globalcollect.com/documentation/api/server/#__merchantId__productgroups__paymentProductGroupId__get
+        See also https://epayments-api.developer-ingenico.com/s2sapi/v1/en_US/python/productgroups/get.html
 
         :param payment_product_group_id:  str
-        :param query:                     :class:`GetProductgroupParams`
-        :return: :class:`PaymentProductGroupResponse`
+        :param query:                     :class:`ingenico.connect.sdk.merchant.productgroups.get_productgroup_params.GetProductgroupParams`
+        :param context:                   :class:`ingenico.connect.sdk.call_context.CallContext`
+        :return: :class:`ingenico.connect.sdk.domain.product.payment_product_group_response.PaymentProductGroupResponse`
         :raise: ValidationException if the request was not correct and couldn't be processed (HTTP status code 400)
         :raise: AuthorizationException if the request was not allowed (HTTP status code 403)
         :raise: ReferenceException if an object was attempted to be referenced that doesn't exist or has been removed,
@@ -87,8 +89,6 @@ class ProductgroupsClient(ApiResource):
                     context)
 
         except ResponseException as e:
-            error_type = {
-                404: ErrorResponse,
-            }.get(e.status_code, ErrorResponse)
+            error_type = ErrorResponse
             error_object = self._communicator.marshaller.unmarshal(e.body, error_type)
             raise self._create_exception(e.status_code, e.body, error_object, context)

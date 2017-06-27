@@ -1,23 +1,22 @@
+# -*- coding: utf-8 -*-
 #
 # This class was auto-generated from the API references found at
-# https://developer.globalcollect.com/documentation/api/server/
+# https://epayments-api.developer-ingenico.com/s2sapi/v1/
 #
 from ingenico.connect.sdk.data_object import DataObject
 
 
 class AbstractPaymentMethodSpecificInput(DataObject):
-    """
-    Class AbstractPaymentMethodSpecificInput
-    
-    See also https://developer.globalcollect.com/documentation/api/server/#schema_AbstractPaymentMethodSpecificInput
-    """
 
     __payment_product_id = None
 
     @property
     def payment_product_id(self):
         """
-        int
+        | Payment product identifier
+        | Please see payment products <https://epayments-api.developer-ingenico.com/s2sapi/v1/en_US/python/paymentproducts.html> for a full overview of possible values.
+        
+        Type: int
         """
         return self.__payment_product_id
 

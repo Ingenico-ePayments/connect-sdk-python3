@@ -1,24 +1,22 @@
+# -*- coding: utf-8 -*-
 #
 # This class was auto-generated from the API references found at
-# https://developer.globalcollect.com/documentation/api/server/
+# https://epayments-api.developer-ingenico.com/s2sapi/v1/
 #
 from ingenico.connect.sdk.data_object import DataObject
 from ingenico.connect.sdk.domain.token.definitions.token_non_sepa_direct_debit_payment_product705_specific_data import TokenNonSepaDirectDebitPaymentProduct705SpecificData
 
 
 class MandateNonSepaDirectDebit(DataObject):
-    """
-    Class MandateNonSepaDirectDebit
-    
-    See also https://developer.globalcollect.com/documentation/api/server/#schema_MandateNonSepaDirectDebit
-    """
 
     __payment_product705_specific_data = None
 
     @property
     def payment_product705_specific_data(self):
         """
-        :class:`TokenNonSepaDirectDebitPaymentProduct705SpecificData`
+        | Object containing specific data for Direct Debit UK
+        
+        Type: :class:`ingenico.connect.sdk.domain.token.definitions.token_non_sepa_direct_debit_payment_product705_specific_data.TokenNonSepaDirectDebitPaymentProduct705SpecificData`
         """
         return self.__payment_product705_specific_data
 

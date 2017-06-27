@@ -1,17 +1,13 @@
+# -*- coding: utf-8 -*-
 #
 # This class was auto-generated from the API references found at
-# https://developer.globalcollect.com/documentation/api/server/
+# https://epayments-api.developer-ingenico.com/s2sapi/v1/
 #
 from ingenico.connect.sdk.data_object import DataObject
 from ingenico.connect.sdk.domain.errors.definitions.api_error import APIError
 
 
 class OrderStatusOutput(DataObject):
-    """
-    Class OrderStatusOutput
-    
-    See also https://developer.globalcollect.com/documentation/api/server/#schema_OrderStatusOutput
-    """
 
     __errors = None
     __is_cancellable = None
@@ -22,7 +18,9 @@ class OrderStatusOutput(DataObject):
     @property
     def errors(self):
         """
-        list[:class:`APIError`]
+        | Custom object contains the set of errors
+        
+        Type: list[:class:`ingenico.connect.sdk.domain.errors.definitions.api_error.APIError`]
         """
         return self.__errors
 
@@ -33,7 +31,12 @@ class OrderStatusOutput(DataObject):
     @property
     def is_cancellable(self):
         """
-        bool
+        | Flag indicating if the payment can be cancelled
+        
+        * true
+        * false
+        
+        Type: bool
         """
         return self.__is_cancellable
 
@@ -44,7 +47,69 @@ class OrderStatusOutput(DataObject):
     @property
     def status_category(self):
         """
-        str
+        | Highlevel status of the payment, payout or refund with the following possible values:
+        
+        * CREATED - The transaction has been created. This is the initial state once a new payment, payout or refund is created. This category groups the following statuses:
+        
+        * CREATED
+        
+        
+        * PENDING_PAYMENT: The payment is waiting on consumer action. This category groups the following statuses:
+        
+        * PENDING_PAYMENT
+        * REDIRECTED
+        
+        
+        * ACCOUNT_VERIFIED: The account has been verified. This category groups the following statuses:
+        
+        * ACCOUNT_VERIFIED
+        
+        
+        * PENDING_MERCHANT: The transaction is awaiting approval to proceed with the payment, payout or refund. This category groups the following statuses:
+        
+        * PENDING_APPROVAL
+        * PENDING_FRAUD_APPROVAL
+        
+        
+        * PENDING_CONNECT_OR_3RD_PARTY: The transaction is in the queue to be processed. This category groups the following statuses:
+        
+        * AUTHORIZATION_REQUESTED
+        * CAPTURE_REQUESTED
+        * PAYOUT_REQUESTED
+        * REFUND_REQUESTED
+        
+        
+        * COMPLETED: The transaction has completed. This category groups the following statuses:
+        
+        * CAPTURED
+        * PAID
+        * ACCOUNT_CREDITED
+        
+        
+        * REVERSED: The transaction has been reversed. This category groups the following statuses:
+        
+        * CHARGEBACKED
+        * REVERSED
+        
+        
+        * REFUNDED: The transaction has been refunded. This category groups the following statuses:
+        
+        * REFUNDED
+        
+        
+        * UNSUCCESSFUL: The transaction has been rejected or is in such a state that it will never become successful. This category groups the following statuses:
+        
+        * CANCELLED
+        * REJECTED
+        * REJECTED_CAPTURE
+        * REJECTED_CREDIT
+        
+        
+        
+        
+        | Please see Statuses <https://epayments-api.developer-ingenico.com/s2sapi/v1/en_US/python/statuses.html> for a full overview of possible values.
+        
+        Type: str
         """
         return self.__status_category
 
@@ -55,7 +120,9 @@ class OrderStatusOutput(DataObject):
     @property
     def status_code(self):
         """
-        int
+        | Numeric status code that is returned by either Ingenico's Global Collect Payment Platform or Ingenico's Ogone Payment Platform. It is returned to ease the migration from the local APIs to Ingenico Connect. You should not write new business logic based on this field as it will be deprecated in a future version of the API. The value can also be found in the Global Collect Payment Console, in the Global Collect report files and the Ogone BackOffice and report files.
+        
+        Type: int
         """
         return self.__status_code
 
@@ -66,7 +133,10 @@ class OrderStatusOutput(DataObject):
     @property
     def status_code_change_date_time(self):
         """
-        str
+        | Date and time of payment
+        | Format: YYYYMMDDHH24MISS
+        
+        Type: str
         """
         return self.__status_code_change_date_time
 

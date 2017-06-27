@@ -1,6 +1,6 @@
 #
 # This class was auto-generated from the API references found at
-# https://developer.globalcollect.com/documentation/api/server/
+# https://epayments-api.developer-ingenico.com/s2sapi/v1/
 #
 import os
 
@@ -14,8 +14,8 @@ class ConvertAmountExample(object):
         with self.__get_client() as client:
             query = ConvertAmountParams()
             query.source = "EUR"
-            query.amount = 100
             query.target = "USD"
+            query.amount = 100
 
             response = client.merchant("merchantId").services().convert_amount(query)
 

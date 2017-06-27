@@ -1,6 +1,7 @@
+# -*- coding: utf-8 -*-
 #
 # This class was auto-generated from the API references found at
-# https://developer.globalcollect.com/documentation/api/server/
+# https://epayments-api.developer-ingenico.com/s2sapi/v1/
 #
 from ingenico.connect.sdk.data_object import DataObject
 from ingenico.connect.sdk.domain.definitions.fraud_fields import FraudFields
@@ -8,11 +9,6 @@ from ingenico.connect.sdk.domain.riskassessments.definitions.order_risk_assessme
 
 
 class RiskAssessment(DataObject):
-    """
-    Class RiskAssessment
-    
-    See also https://developer.globalcollect.com/documentation/api/server/#schema_RiskAssessment
-    """
 
     __fraud_fields = None
     __order = None
@@ -21,7 +17,9 @@ class RiskAssessment(DataObject):
     @property
     def fraud_fields(self):
         """
-        :class:`FraudFields`
+        | Object containing additional data that will be used to assess the risk of fraud
+        
+        Type: :class:`ingenico.connect.sdk.domain.definitions.fraud_fields.FraudFields`
         """
         return self.__fraud_fields
 
@@ -32,7 +30,7 @@ class RiskAssessment(DataObject):
     @property
     def order(self):
         """
-        :class:`OrderRiskAssessment`
+        Type: :class:`ingenico.connect.sdk.domain.riskassessments.definitions.order_risk_assessment.OrderRiskAssessment`
         """
         return self.__order
 
@@ -43,7 +41,10 @@ class RiskAssessment(DataObject):
     @property
     def payment_product_id(self):
         """
-        int
+        | Payment product identifier
+        | Please see payment products <https://epayments-api.developer-ingenico.com/s2sapi/v1/en_US/python/paymentproducts.html> for a full overview of possible values.
+        
+        Type: int
         """
         return self.__payment_product_id
 

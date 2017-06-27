@@ -1,8 +1,9 @@
 #
 # This class was auto-generated from the API references found at
-# https://developer.globalcollect.com/documentation/api/server/
+# https://epayments-api.developer-ingenico.com/s2sapi/v1/
 #
 from ingenico.connect.sdk.api_resource import ApiResource
+from ingenico.connect.sdk.merchant.captures.captures_client import CapturesClient
 from ingenico.connect.sdk.merchant.hostedcheckouts.hostedcheckouts_client import HostedcheckoutsClient
 from ingenico.connect.sdk.merchant.payments.payments_client import PaymentsClient
 from ingenico.connect.sdk.merchant.payouts.payouts_client import PayoutsClient
@@ -22,20 +23,10 @@ class MerchantClient(ApiResource):
 
     def __init__(self, parent, path_context):
         """
-        :param parent:       :class:`ApiResource`
+        :param parent:       :class:`ingenico.connect.sdk.api_resource.ApiResource`
         :param path_context: dict[str, str]
         """
         super(MerchantClient, self).__init__(parent, path_context)
-
-    def hostedcheckouts(self):
-        """
-        Resource /{merchantId}/hostedcheckouts
-
-        Create new hosted checkout
-
-        :return: :class:`HostedcheckoutsClient`
-        """
-        return HostedcheckoutsClient(self, None)
 
     def payments(self):
         """
@@ -43,9 +34,19 @@ class MerchantClient(ApiResource):
 
         Create, cancel and approve payments
 
-        :return: :class:`PaymentsClient`
+        :return: :class:`ingenico.connect.sdk.merchant.payments.payments_client.PaymentsClient`
         """
         return PaymentsClient(self, None)
+
+    def captures(self):
+        """
+        Resource /{merchantId}/captures
+
+        Get capture
+
+        :return: :class:`ingenico.connect.sdk.merchant.captures.captures_client.CapturesClient`
+        """
+        return CapturesClient(self, None)
 
     def payouts(self):
         """
@@ -53,19 +54,9 @@ class MerchantClient(ApiResource):
 
         Create, cancel and approve payouts
 
-        :return: :class:`PayoutsClient`
+        :return: :class:`ingenico.connect.sdk.merchant.payouts.payouts_client.PayoutsClient`
         """
         return PayoutsClient(self, None)
-
-    def productgroups(self):
-        """
-        Resource /{merchantId}/productgroups
-
-        Get information about payment product groups
-
-        :return: :class:`ProductgroupsClient`
-        """
-        return ProductgroupsClient(self, None)
 
     def products(self):
         """
@@ -73,9 +64,19 @@ class MerchantClient(ApiResource):
 
         Get information about payment products
 
-        :return: :class:`ProductsClient`
+        :return: :class:`ingenico.connect.sdk.merchant.products.products_client.ProductsClient`
         """
         return ProductsClient(self, None)
+
+    def productgroups(self):
+        """
+        Resource /{merchantId}/productgroups
+
+        Get information about payment product groups
+
+        :return: :class:`ingenico.connect.sdk.merchant.productgroups.productgroups_client.ProductgroupsClient`
+        """
+        return ProductgroupsClient(self, None)
 
     def refunds(self):
         """
@@ -83,7 +84,7 @@ class MerchantClient(ApiResource):
 
         Create, cancel and approve refunds
 
-        :return: :class:`RefundsClient`
+        :return: :class:`ingenico.connect.sdk.merchant.refunds.refunds_client.RefundsClient`
         """
         return RefundsClient(self, None)
 
@@ -93,7 +94,7 @@ class MerchantClient(ApiResource):
 
         Perform risk assessments on your customer data
 
-        :return: :class:`RiskassessmentsClient`
+        :return: :class:`ingenico.connect.sdk.merchant.riskassessments.riskassessments_client.RiskassessmentsClient`
         """
         return RiskassessmentsClient(self, None)
 
@@ -103,7 +104,7 @@ class MerchantClient(ApiResource):
 
         Several services to help you
 
-        :return: :class:`ServicesClient`
+        :return: :class:`ingenico.connect.sdk.merchant.services.services_client.ServicesClient`
         """
         return ServicesClient(self, None)
 
@@ -113,7 +114,7 @@ class MerchantClient(ApiResource):
 
         Create new Session for Client2Server API calls
 
-        :return: :class:`SessionsClient`
+        :return: :class:`ingenico.connect.sdk.merchant.sessions.sessions_client.SessionsClient`
         """
         return SessionsClient(self, None)
 
@@ -123,6 +124,16 @@ class MerchantClient(ApiResource):
 
         Create, delete and update tokens
 
-        :return: :class:`TokensClient`
+        :return: :class:`ingenico.connect.sdk.merchant.tokens.tokens_client.TokensClient`
         """
         return TokensClient(self, None)
+
+    def hostedcheckouts(self):
+        """
+        Resource /{merchantId}/hostedcheckouts
+
+        Create new hosted checkout
+
+        :return: :class:`ingenico.connect.sdk.merchant.hostedcheckouts.hostedcheckouts_client.HostedcheckoutsClient`
+        """
+        return HostedcheckoutsClient(self, None)

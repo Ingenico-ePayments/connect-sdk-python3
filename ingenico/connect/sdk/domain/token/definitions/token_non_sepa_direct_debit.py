@@ -1,6 +1,7 @@
+# -*- coding: utf-8 -*-
 #
 # This class was auto-generated from the API references found at
-# https://developer.globalcollect.com/documentation/api/server/
+# https://epayments-api.developer-ingenico.com/s2sapi/v1/
 #
 from ingenico.connect.sdk.domain.token.definitions.abstract_token import AbstractToken
 from ingenico.connect.sdk.domain.token.definitions.customer_token import CustomerToken
@@ -8,11 +9,6 @@ from ingenico.connect.sdk.domain.token.definitions.mandate_non_sepa_direct_debit
 
 
 class TokenNonSepaDirectDebit(AbstractToken):
-    """
-    Class TokenNonSepaDirectDebit
-    
-    See also https://developer.globalcollect.com/documentation/api/server/#schema_TokenNonSepaDirectDebit
-    """
 
     __customer = None
     __mandate = None
@@ -20,7 +16,9 @@ class TokenNonSepaDirectDebit(AbstractToken):
     @property
     def customer(self):
         """
-        :class:`CustomerToken`
+        | Object containing the details of the consumer
+        
+        Type: :class:`ingenico.connect.sdk.domain.token.definitions.customer_token.CustomerToken`
         """
         return self.__customer
 
@@ -31,7 +29,9 @@ class TokenNonSepaDirectDebit(AbstractToken):
     @property
     def mandate(self):
         """
-        :class:`MandateNonSepaDirectDebit`
+        | Object containing the mandate details
+        
+        Type: :class:`ingenico.connect.sdk.domain.token.definitions.mandate_non_sepa_direct_debit.MandateNonSepaDirectDebit`
         """
         return self.__mandate
 

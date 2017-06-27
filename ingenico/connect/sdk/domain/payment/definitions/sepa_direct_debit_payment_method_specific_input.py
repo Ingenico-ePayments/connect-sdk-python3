@@ -1,16 +1,12 @@
+# -*- coding: utf-8 -*-
 #
 # This class was auto-generated from the API references found at
-# https://developer.globalcollect.com/documentation/api/server/
+# https://epayments-api.developer-ingenico.com/s2sapi/v1/
 #
 from ingenico.connect.sdk.domain.definitions.abstract_payment_method_specific_input import AbstractPaymentMethodSpecificInput
 
 
 class SepaDirectDebitPaymentMethodSpecificInput(AbstractPaymentMethodSpecificInput):
-    """
-    Class SepaDirectDebitPaymentMethodSpecificInput
-    
-    See also https://developer.globalcollect.com/documentation/api/server/#schema_SepaDirectDebitPaymentMethodSpecificInput
-    """
 
     __date_collect = None
     __direct_debit_text = None
@@ -22,7 +18,10 @@ class SepaDirectDebitPaymentMethodSpecificInput(AbstractPaymentMethodSpecificInp
     @property
     def date_collect(self):
         """
-        str
+        | Changed date for direct debit collection
+        | Format: YYYYMMDD
+        
+        Type: str
         """
         return self.__date_collect
 
@@ -33,7 +32,9 @@ class SepaDirectDebitPaymentMethodSpecificInput(AbstractPaymentMethodSpecificInp
     @property
     def direct_debit_text(self):
         """
-        str
+        | Description of the transaction that will appear on the consumer bank statement to aid the consumer in recognizing the transaction
+        
+        Type: str
         """
         return self.__direct_debit_text
 
@@ -44,7 +45,12 @@ class SepaDirectDebitPaymentMethodSpecificInput(AbstractPaymentMethodSpecificInp
     @property
     def is_recurring(self):
         """
-        bool
+        | Indicates if this transaction is of a one-off or a recurring type
+        
+        * true - This is recurring
+        * false - This is one-off
+        
+        Type: bool
         """
         return self.__is_recurring
 
@@ -55,7 +61,11 @@ class SepaDirectDebitPaymentMethodSpecificInput(AbstractPaymentMethodSpecificInp
     @property
     def recurring_payment_sequence_indicator(self):
         """
-        str
+        * first = This transaction is the first of a series of recurring transactions
+        * recurring = This transaction is a subsequent transaction in a series of recurring transactions
+        * last = This transaction is the last transaction of a series of recurring transactions
+        
+        Type: str
         """
         return self.__recurring_payment_sequence_indicator
 
@@ -66,7 +76,9 @@ class SepaDirectDebitPaymentMethodSpecificInput(AbstractPaymentMethodSpecificInp
     @property
     def token(self):
         """
-        str
+        | ID of the token that holds previously stored SEPA Direct Debit account and mandate data
+        
+        Type: str
         """
         return self.__token
 
@@ -77,7 +89,12 @@ class SepaDirectDebitPaymentMethodSpecificInput(AbstractPaymentMethodSpecificInp
     @property
     def tokenize(self):
         """
-        bool
+        | Indicates if this transaction should be tokenized
+        
+        * true - Tokenize the transaction
+        * false - Do not tokenize the transaction, unless it would be tokenized by other means such as auto-tokenization of recurring payments.
+        
+        Type: bool
         """
         return self.__tokenize
 

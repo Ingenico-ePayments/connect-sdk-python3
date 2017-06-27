@@ -1,23 +1,21 @@
+# -*- coding: utf-8 -*-
 #
 # This class was auto-generated from the API references found at
-# https://developer.globalcollect.com/documentation/api/server/
+# https://epayments-api.developer-ingenico.com/s2sapi/v1/
 #
 from ingenico.connect.sdk.data_object import DataObject
 
 
 class TestConnection(DataObject):
-    """
-    Class TestConnection
-    
-    See also https://developer.globalcollect.com/documentation/api/server/#schema_TestConnection
-    """
 
     __result = None
 
     @property
     def result(self):
         """
-        str
+        | OK result on the connection to GC
+        
+        Type: str
         """
         return self.__result
 

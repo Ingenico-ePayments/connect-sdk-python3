@@ -1,6 +1,7 @@
+# -*- coding: utf-8 -*-
 #
 # This class was auto-generated from the API references found at
-# https://developer.globalcollect.com/documentation/api/server/
+# https://epayments-api.developer-ingenico.com/s2sapi/v1/
 #
 from ingenico.connect.sdk.data_object import DataObject
 from ingenico.connect.sdk.domain.definitions.fraud_fields import FraudFields
@@ -13,11 +14,6 @@ from ingenico.connect.sdk.domain.payment.definitions.redirect_payment_method_spe
 
 
 class CreateHostedCheckoutRequest(DataObject):
-    """
-    Class CreateHostedCheckoutRequest
-    
-    See also https://developer.globalcollect.com/documentation/api/server/#schema_CreateHostedCheckoutRequest
-    """
 
     __bank_transfer_payment_method_specific_input = None
     __card_payment_method_specific_input = None
@@ -30,7 +26,9 @@ class CreateHostedCheckoutRequest(DataObject):
     @property
     def bank_transfer_payment_method_specific_input(self):
         """
-        :class:`BankTransferPaymentMethodSpecificInputBase`
+        | Object containing the specific input details for bank transfer payments
+        
+        Type: :class:`ingenico.connect.sdk.domain.payment.definitions.bank_transfer_payment_method_specific_input_base.BankTransferPaymentMethodSpecificInputBase`
         """
         return self.__bank_transfer_payment_method_specific_input
 
@@ -41,7 +39,9 @@ class CreateHostedCheckoutRequest(DataObject):
     @property
     def card_payment_method_specific_input(self):
         """
-        :class:`CardPaymentMethodSpecificInputBase`
+        | Object containing the specific input details for card payments
+        
+        Type: :class:`ingenico.connect.sdk.domain.payment.definitions.card_payment_method_specific_input_base.CardPaymentMethodSpecificInputBase`
         """
         return self.__card_payment_method_specific_input
 
@@ -52,7 +52,9 @@ class CreateHostedCheckoutRequest(DataObject):
     @property
     def cash_payment_method_specific_input(self):
         """
-        :class:`CashPaymentMethodSpecificInputBase`
+        | Object containing the specific input details for cash payments
+        
+        Type: :class:`ingenico.connect.sdk.domain.payment.definitions.cash_payment_method_specific_input_base.CashPaymentMethodSpecificInputBase`
         """
         return self.__cash_payment_method_specific_input
 
@@ -63,7 +65,9 @@ class CreateHostedCheckoutRequest(DataObject):
     @property
     def fraud_fields(self):
         """
-        :class:`FraudFields`
+        | Object containing additional data that will be used to assess the risk of fraud
+        
+        Type: :class:`ingenico.connect.sdk.domain.definitions.fraud_fields.FraudFields`
         """
         return self.__fraud_fields
 
@@ -74,7 +78,9 @@ class CreateHostedCheckoutRequest(DataObject):
     @property
     def hosted_checkout_specific_input(self):
         """
-        :class:`HostedCheckoutSpecificInput`
+        | Object containing hosted checkout specific data
+        
+        Type: :class:`ingenico.connect.sdk.domain.hostedcheckout.definitions.hosted_checkout_specific_input.HostedCheckoutSpecificInput`
         """
         return self.__hosted_checkout_specific_input
 
@@ -85,7 +91,9 @@ class CreateHostedCheckoutRequest(DataObject):
     @property
     def order(self):
         """
-        :class:`Order`
+        | Order object containing order related data
+        
+        Type: :class:`ingenico.connect.sdk.domain.payment.definitions.order.Order`
         """
         return self.__order
 
@@ -96,7 +104,9 @@ class CreateHostedCheckoutRequest(DataObject):
     @property
     def redirect_payment_method_specific_input(self):
         """
-        :class:`RedirectPaymentMethodSpecificInputBase`
+        | Object containing the specific input details for payments that involve redirects to 3rd parties to complete, like iDeal and PayPal
+        
+        Type: :class:`ingenico.connect.sdk.domain.payment.definitions.redirect_payment_method_specific_input_base.RedirectPaymentMethodSpecificInputBase`
         """
         return self.__redirect_payment_method_specific_input
 

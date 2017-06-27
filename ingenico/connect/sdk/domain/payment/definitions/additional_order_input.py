@@ -1,6 +1,7 @@
+# -*- coding: utf-8 -*-
 #
 # This class was auto-generated from the API references found at
-# https://developer.globalcollect.com/documentation/api/server/
+# https://epayments-api.developer-ingenico.com/s2sapi/v1/
 #
 from ingenico.connect.sdk.data_object import DataObject
 from ingenico.connect.sdk.domain.definitions.airline_data import AirlineData
@@ -9,11 +10,6 @@ from ingenico.connect.sdk.domain.payment.definitions.order_type_information impo
 
 
 class AdditionalOrderInput(DataObject):
-    """
-    Class AdditionalOrderInput
-    
-    See also https://developer.globalcollect.com/documentation/api/server/#schema_AdditionalOrderInput
-    """
 
     __airline_data = None
     __level3_summary_data = None
@@ -24,7 +20,9 @@ class AdditionalOrderInput(DataObject):
     @property
     def airline_data(self):
         """
-        :class:`AirlineData`
+        | Object that holds airline specific data
+        
+        Type: :class:`ingenico.connect.sdk.domain.definitions.airline_data.AirlineData`
         """
         return self.__airline_data
 
@@ -35,9 +33,11 @@ class AdditionalOrderInput(DataObject):
     @property
     def level3_summary_data(self):
         """
-        :class:`Level3SummaryData`
+        | Object that holds Level3 summary data
         
-        Deprecated; Use Order.shoppingCart instead
+        Type: :class:`ingenico.connect.sdk.domain.payment.definitions.level3_summary_data.Level3SummaryData`
+        
+        Deprecated; | Use Order.shoppingCart instead
         """
         return self.__level3_summary_data
 
@@ -48,7 +48,9 @@ class AdditionalOrderInput(DataObject):
     @property
     def number_of_installments(self):
         """
-        int
+        | The number of installments
+        
+        Type: int
         """
         return self.__number_of_installments
 
@@ -59,7 +61,10 @@ class AdditionalOrderInput(DataObject):
     @property
     def order_date(self):
         """
-        str
+        | Date and time of order
+        | Format: YYYYMMDDHH24MISS
+        
+        Type: str
         """
         return self.__order_date
 
@@ -70,7 +75,9 @@ class AdditionalOrderInput(DataObject):
     @property
     def type_information(self):
         """
-        :class:`OrderTypeInformation`
+        | Object that holds the purchase and usage type indicators
+        
+        Type: :class:`ingenico.connect.sdk.domain.payment.definitions.order_type_information.OrderTypeInformation`
         """
         return self.__type_information
 

@@ -1,6 +1,6 @@
 #
 # This class was auto-generated from the API references found at
-# https://developer.globalcollect.com/documentation/api/server/
+# https://epayments-api.developer-ingenico.com/s2sapi/v1/
 #
 from ingenico.connect.sdk.api_resource import ApiResource
 from ingenico.connect.sdk.response_exception import ResponseException
@@ -16,7 +16,7 @@ class PayoutsClient(ApiResource):
 
     def __init__(self, parent, path_context):
         """
-        :param parent:       :class:`ApiResource`
+        :param parent:       :class:`ingenico.connect.sdk.api_resource.ApiResource`
         :param path_context: dict[str, str]
         """
         super(PayoutsClient, self).__init__(parent, path_context)
@@ -25,12 +25,13 @@ class PayoutsClient(ApiResource):
         """
         Resource /{merchantId}/payouts
 
-        Create payout
+        | Create payout
         
-        See also https://developer.globalcollect.com/documentation/api/server/#__merchantId__payouts_post
+        See also https://epayments-api.developer-ingenico.com/s2sapi/v1/en_US/python/payouts/create.html
 
-        :param body:     :class:`CreatePayoutRequest`
-        :return: :class:`PayoutResponse`
+        :param body:     :class:`ingenico.connect.sdk.domain.payout.create_payout_request.CreatePayoutRequest`
+        :param context:  :class:`ingenico.connect.sdk.call_context.CallContext`
+        :return: :class:`ingenico.connect.sdk.domain.payout.payout_response.PayoutResponse`
         :raise: DeclinedPayoutException if the GlobalCollect platform declined / rejected the payout. The payout result will be available from the exception.
         :raise: ValidationException if the request was not correct and couldn't be processed (HTTP status code 400)
         :raise: AuthorizationException if the request was not allowed (HTTP status code 403)
@@ -62,12 +63,13 @@ class PayoutsClient(ApiResource):
         """
         Resource /{merchantId}/payouts/{payoutId}
 
-        Get payout
+        | Get payout
         
-        See also https://developer.globalcollect.com/documentation/api/server/#__merchantId__payouts__payoutId__get
+        See also https://epayments-api.developer-ingenico.com/s2sapi/v1/en_US/python/payouts/get.html
 
         :param payout_id:  str
-        :return: :class:`PayoutResponse`
+        :param context:    :class:`ingenico.connect.sdk.call_context.CallContext`
+        :return: :class:`ingenico.connect.sdk.domain.payout.payout_response.PayoutResponse`
         :raise: ValidationException if the request was not correct and couldn't be processed (HTTP status code 400)
         :raise: AuthorizationException if the request was not allowed (HTTP status code 403)
         :raise: ReferenceException if an object was attempted to be referenced that doesn't exist or has been removed,
@@ -90,9 +92,7 @@ class PayoutsClient(ApiResource):
                     context)
 
         except ResponseException as e:
-            error_type = {
-                404: ErrorResponse,
-            }.get(e.status_code, ErrorResponse)
+            error_type = ErrorResponse
             error_object = self._communicator.marshaller.unmarshal(e.body, error_type)
             raise self._create_exception(e.status_code, e.body, error_object, context)
 
@@ -100,13 +100,14 @@ class PayoutsClient(ApiResource):
         """
         Resource /{merchantId}/payouts/{payoutId}/approve
 
-        Approve payout
+        | Approve payout
         
-        See also https://developer.globalcollect.com/documentation/api/server/#__merchantId__payouts__payoutId__approve_post
+        See also https://epayments-api.developer-ingenico.com/s2sapi/v1/en_US/python/payouts/approve.html
 
         :param payout_id:  str
-        :param body:       :class:`ApprovePayoutRequest`
-        :return: :class:`PayoutResponse`
+        :param body:       :class:`ingenico.connect.sdk.domain.payout.approve_payout_request.ApprovePayoutRequest`
+        :param context:    :class:`ingenico.connect.sdk.call_context.CallContext`
+        :return: :class:`ingenico.connect.sdk.domain.payout.payout_response.PayoutResponse`
         :raise: ValidationException if the request was not correct and couldn't be processed (HTTP status code 400)
         :raise: AuthorizationException if the request was not allowed (HTTP status code 403)
         :raise: ReferenceException if an object was attempted to be referenced that doesn't exist or has been removed,
@@ -130,9 +131,7 @@ class PayoutsClient(ApiResource):
                     context)
 
         except ResponseException as e:
-            error_type = {
-                402: ErrorResponse,
-            }.get(e.status_code, ErrorResponse)
+            error_type = ErrorResponse
             error_object = self._communicator.marshaller.unmarshal(e.body, error_type)
             raise self._create_exception(e.status_code, e.body, error_object, context)
 
@@ -140,11 +139,12 @@ class PayoutsClient(ApiResource):
         """
         Resource /{merchantId}/payouts/{payoutId}/cancel
 
-        Cancel payout
+        | Cancel payout
         
-        See also https://developer.globalcollect.com/documentation/api/server/#__merchantId__payouts__payoutId__cancel_post
+        See also https://epayments-api.developer-ingenico.com/s2sapi/v1/en_US/python/payouts/cancel.html
 
         :param payout_id:  str
+        :param context:    :class:`ingenico.connect.sdk.call_context.CallContext`
         :return: None
         :raise: ValidationException if the request was not correct and couldn't be processed (HTTP status code 400)
         :raise: AuthorizationException if the request was not allowed (HTTP status code 403)
@@ -169,9 +169,7 @@ class PayoutsClient(ApiResource):
                     context)
 
         except ResponseException as e:
-            error_type = {
-                402: ErrorResponse,
-            }.get(e.status_code, ErrorResponse)
+            error_type = ErrorResponse
             error_object = self._communicator.marshaller.unmarshal(e.body, error_type)
             raise self._create_exception(e.status_code, e.body, error_object, context)
 
@@ -179,11 +177,12 @@ class PayoutsClient(ApiResource):
         """
         Resource /{merchantId}/payouts/{payoutId}/cancelapproval
 
-        Undo approve payout
+        | Undo approve payout
         
-        See also https://developer.globalcollect.com/documentation/api/server/#__merchantId__payouts__payoutId__cancelapproval_post
+        See also https://epayments-api.developer-ingenico.com/s2sapi/v1/en_US/python/payouts/cancelapproval.html
 
         :param payout_id:  str
+        :param context:    :class:`ingenico.connect.sdk.call_context.CallContext`
         :return: None
         :raise: ValidationException if the request was not correct and couldn't be processed (HTTP status code 400)
         :raise: AuthorizationException if the request was not allowed (HTTP status code 403)
@@ -208,8 +207,6 @@ class PayoutsClient(ApiResource):
                     context)
 
         except ResponseException as e:
-            error_type = {
-                405: ErrorResponse,
-            }.get(e.status_code, ErrorResponse)
+            error_type = ErrorResponse
             error_object = self._communicator.marshaller.unmarshal(e.body, error_type)
             raise self._create_exception(e.status_code, e.body, error_object, context)

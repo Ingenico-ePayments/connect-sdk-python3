@@ -1,16 +1,12 @@
+# -*- coding: utf-8 -*-
 #
 # This class was auto-generated from the API references found at
-# https://developer.globalcollect.com/documentation/api/server/
+# https://epayments-api.developer-ingenico.com/s2sapi/v1/
 #
 from ingenico.connect.sdk.data_object import DataObject
 
 
 class APIError(DataObject):
-    """
-    Class APIError
-    
-    See also https://developer.globalcollect.com/documentation/api/server/#schema_APIError
-    """
 
     __category = None
     __code = None
@@ -23,7 +19,13 @@ class APIError(DataObject):
     @property
     def category(self):
         """
-        str
+        | Category the error belongs to. The category should give an indication of the type of error you are dealing with.Possible values:
+        
+        * CONNECT_PLATFORM_ERROR - indicating that a functional error has occurred in the Connect platform.
+        * PAYMENT_PLATFORM_ERROR - indicating that a functional error has occurred in the Payment platform.
+        * IO_ERROR - indicating that a technical error has occurred within the Connect platform or between Connect and any of the payment platforms or third party systems.
+        
+        Type: str
         """
         return self.__category
 
@@ -34,7 +36,9 @@ class APIError(DataObject):
     @property
     def code(self):
         """
-        str
+        | Error code
+        
+        Type: str
         """
         return self.__code
 
@@ -45,7 +49,9 @@ class APIError(DataObject):
     @property
     def http_status_code(self):
         """
-        int
+        | HTTP status code for this error that can be used to determine the type of error
+        
+        Type: int
         """
         return self.__http_status_code
 
@@ -56,7 +62,9 @@ class APIError(DataObject):
     @property
     def id(self):
         """
-        str
+        | ID of the error. This is a short human-readable message that briefly describes the error.
+        
+        Type: str
         """
         return self.__id
 
@@ -67,7 +75,9 @@ class APIError(DataObject):
     @property
     def message(self):
         """
-        str
+        | Human-readable error message that is not meant to be relayed to consumer as it might tip off people who are trying to commit fraud
+        
+        Type: str
         """
         return self.__message
 
@@ -78,7 +88,9 @@ class APIError(DataObject):
     @property
     def property_name(self):
         """
-        str
+        | In case the error was in relation to a property that was missing or not correct the name of the property in question is returned
+        
+        Type: str
         """
         return self.__property_name
 
@@ -89,7 +101,9 @@ class APIError(DataObject):
     @property
     def request_id(self):
         """
-        str
+        | ID of the request that can be used for debugging purposes
+        
+        Type: str
         """
         return self.__request_id
 

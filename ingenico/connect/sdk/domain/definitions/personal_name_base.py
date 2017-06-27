@@ -1,16 +1,12 @@
+# -*- coding: utf-8 -*-
 #
 # This class was auto-generated from the API references found at
-# https://developer.globalcollect.com/documentation/api/server/
+# https://epayments-api.developer-ingenico.com/s2sapi/v1/
 #
 from ingenico.connect.sdk.data_object import DataObject
 
 
 class PersonalNameBase(DataObject):
-    """
-    Class PersonalNameBase
-    
-    See also https://developer.globalcollect.com/documentation/api/server/#schema_PersonalNameBase
-    """
 
     __first_name = None
     __surname = None
@@ -19,7 +15,9 @@ class PersonalNameBase(DataObject):
     @property
     def first_name(self):
         """
-        str
+        | Given name(s) or first name(s) of the consumer
+        
+        Type: str
         """
         return self.__first_name
 
@@ -30,7 +28,7 @@ class PersonalNameBase(DataObject):
     @property
     def surname(self):
         """
-        str
+        Type: str
         """
         return self.__surname
 
@@ -41,7 +39,9 @@ class PersonalNameBase(DataObject):
     @property
     def surname_prefix(self):
         """
-        str
+        | Middle name - In between first name and surname - of the consumer
+        
+        Type: str
         """
         return self.__surname_prefix
 

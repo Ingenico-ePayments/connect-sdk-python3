@@ -1,6 +1,6 @@
 #
 # This class was auto-generated from the API references found at
-# https://developer.globalcollect.com/documentation/api/server/
+# https://epayments-api.developer-ingenico.com/s2sapi/v1/
 #
 import os
 
@@ -13,11 +13,11 @@ class GetPaymentProductExample(object):
     def example(self):
         with self.__get_client() as client:
             query = GetProductParams()
+            query.country_code = "US"
+            query.currency_code = "USD"
+            query.locale = "en_US"
             query.amount = 1000
             query.is_recurring = True
-            query.country_code = "US"
-            query.locale = "en_US"
-            query.currency_code = "USD"
             query.add_hide("fields")
 
             response = client.merchant("merchantId").products().get(1, query)

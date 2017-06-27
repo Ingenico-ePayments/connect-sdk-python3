@@ -1,17 +1,13 @@
+# -*- coding: utf-8 -*-
 #
 # This class was auto-generated from the API references found at
-# https://developer.globalcollect.com/documentation/api/server/
+# https://epayments-api.developer-ingenico.com/s2sapi/v1/
 #
 from ingenico.connect.sdk.data_object import DataObject
 from ingenico.connect.sdk.domain.product.definitions.payment_product_field_validators import PaymentProductFieldValidators
 
 
 class PaymentProductFieldDataRestrictions(DataObject):
-    """
-    Class PaymentProductFieldDataRestrictions
-    
-    See also https://developer.globalcollect.com/documentation/api/server/#schema_PaymentProductFieldDataRestrictions
-    """
 
     __is_required = None
     __validators = None
@@ -19,7 +15,10 @@ class PaymentProductFieldDataRestrictions(DataObject):
     @property
     def is_required(self):
         """
-        bool
+        * true - Indicates that this field is required
+        * false - Indicates that this field is optional
+        
+        Type: bool
         """
         return self.__is_required
 
@@ -30,7 +29,9 @@ class PaymentProductFieldDataRestrictions(DataObject):
     @property
     def validators(self):
         """
-        :class:`PaymentProductFieldValidators`
+        | Object containing the details of the validations on the field
+        
+        Type: :class:`ingenico.connect.sdk.domain.product.definitions.payment_product_field_validators.PaymentProductFieldValidators`
         """
         return self.__validators
 

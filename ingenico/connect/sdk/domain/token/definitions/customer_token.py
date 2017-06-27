@@ -1,6 +1,7 @@
+# -*- coding: utf-8 -*-
 #
 # This class was auto-generated from the API references found at
-# https://developer.globalcollect.com/documentation/api/server/
+# https://epayments-api.developer-ingenico.com/s2sapi/v1/
 #
 from ingenico.connect.sdk.domain.definitions.address import Address
 from ingenico.connect.sdk.domain.definitions.customer_base import CustomerBase
@@ -8,11 +9,6 @@ from ingenico.connect.sdk.domain.token.definitions.personal_information_token im
 
 
 class CustomerToken(CustomerBase):
-    """
-    Class CustomerToken
-    
-    See also https://developer.globalcollect.com/documentation/api/server/#schema_CustomerToken
-    """
 
     __billing_address = None
     __personal_information = None
@@ -20,7 +16,9 @@ class CustomerToken(CustomerBase):
     @property
     def billing_address(self):
         """
-        :class:`Address`
+        | Object containing the billing address details
+        
+        Type: :class:`ingenico.connect.sdk.domain.definitions.address.Address`
         """
         return self.__billing_address
 
@@ -31,7 +29,9 @@ class CustomerToken(CustomerBase):
     @property
     def personal_information(self):
         """
-        :class:`PersonalInformationToken`
+        | Object containing personal information of the consumer
+        
+        Type: :class:`ingenico.connect.sdk.domain.token.definitions.personal_information_token.PersonalInformationToken`
         """
         return self.__personal_information
 

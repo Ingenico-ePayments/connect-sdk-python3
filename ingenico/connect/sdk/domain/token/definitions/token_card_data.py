@@ -1,17 +1,13 @@
+# -*- coding: utf-8 -*-
 #
 # This class was auto-generated from the API references found at
-# https://developer.globalcollect.com/documentation/api/server/
+# https://epayments-api.developer-ingenico.com/s2sapi/v1/
 #
 from ingenico.connect.sdk.data_object import DataObject
 from ingenico.connect.sdk.domain.definitions.card_without_cvv import CardWithoutCvv
 
 
 class TokenCardData(DataObject):
-    """
-    Class TokenCardData
-    
-    See also https://developer.globalcollect.com/documentation/api/server/#schema_TokenCardData
-    """
 
     __card_without_cvv = None
     __first_transaction_date = None
@@ -20,7 +16,9 @@ class TokenCardData(DataObject):
     @property
     def card_without_cvv(self):
         """
-        :class:`CardWithoutCvv`
+        | Object containing the card details (without CVV)
+        
+        Type: :class:`ingenico.connect.sdk.domain.definitions.card_without_cvv.CardWithoutCvv`
         """
         return self.__card_without_cvv
 
@@ -31,7 +29,10 @@ class TokenCardData(DataObject):
     @property
     def first_transaction_date(self):
         """
-        str
+        | Date of the first transaction (for ATOS)
+        | Format: YYYYMMDD
+        
+        Type: str
         """
         return self.__first_transaction_date
 
@@ -42,7 +43,9 @@ class TokenCardData(DataObject):
     @property
     def provider_reference(self):
         """
-        str
+        | Reference of the provider (of the first transaction) - used to store the ATOS Transaction Certificate
+        
+        Type: str
         """
         return self.__provider_reference
 

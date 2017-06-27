@@ -1,23 +1,21 @@
+# -*- coding: utf-8 -*-
 #
 # This class was auto-generated from the API references found at
-# https://developer.globalcollect.com/documentation/api/server/
+# https://epayments-api.developer-ingenico.com/s2sapi/v1/
 #
 from ingenico.connect.sdk.data_object import DataObject
 
 
 class RegularExpressionValidator(DataObject):
-    """
-    Class RegularExpressionValidator
-    
-    See also https://developer.globalcollect.com/documentation/api/server/#schema_RegularExpressionValidator
-    """
 
     __regular_expression = None
 
     @property
     def regular_expression(self):
         """
-        str
+        | Contains the regular expression that the value of the field needs to be validated against
+        
+        Type: str
         """
         return self.__regular_expression
 

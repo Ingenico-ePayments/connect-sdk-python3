@@ -1,6 +1,7 @@
+# -*- coding: utf-8 -*-
 #
 # This class was auto-generated from the API references found at
-# https://developer.globalcollect.com/documentation/api/server/
+# https://epayments-api.developer-ingenico.com/s2sapi/v1/
 #
 from ingenico.connect.sdk.domain.payment.definitions.order_output import OrderOutput
 from ingenico.connect.sdk.domain.payment.definitions.refund_bank_method_specific_output import RefundBankMethodSpecificOutput
@@ -10,11 +11,6 @@ from ingenico.connect.sdk.domain.payment.definitions.refund_mobile_method_specif
 
 
 class RefundOutput(OrderOutput):
-    """
-    Class RefundOutput
-    
-    See also https://developer.globalcollect.com/documentation/api/server/#schema_RefundOutput
-    """
 
     __amount_paid = None
     __bank_refund_method_specific_output = None
@@ -26,7 +22,9 @@ class RefundOutput(OrderOutput):
     @property
     def amount_paid(self):
         """
-        int
+        | Amount paid
+        
+        Type: int
         """
         return self.__amount_paid
 
@@ -37,7 +35,9 @@ class RefundOutput(OrderOutput):
     @property
     def bank_refund_method_specific_output(self):
         """
-        :class:`RefundBankMethodSpecificOutput`
+        | Object containing specific bank refund details
+        
+        Type: :class:`ingenico.connect.sdk.domain.payment.definitions.refund_bank_method_specific_output.RefundBankMethodSpecificOutput`
         """
         return self.__bank_refund_method_specific_output
 
@@ -48,7 +48,9 @@ class RefundOutput(OrderOutput):
     @property
     def card_refund_method_specific_output(self):
         """
-        :class:`RefundCardMethodSpecificOutput`
+        | Object containing specific card refund details
+        
+        Type: :class:`ingenico.connect.sdk.domain.payment.definitions.refund_card_method_specific_output.RefundCardMethodSpecificOutput`
         """
         return self.__card_refund_method_specific_output
 
@@ -59,7 +61,9 @@ class RefundOutput(OrderOutput):
     @property
     def e_wallet_refund_method_specific_output(self):
         """
-        :class:`RefundEWalletMethodSpecificOutput`
+        | Object containing specific eWallet refund details
+        
+        Type: :class:`ingenico.connect.sdk.domain.payment.definitions.refund_e_wallet_method_specific_output.RefundEWalletMethodSpecificOutput`
         """
         return self.__e_wallet_refund_method_specific_output
 
@@ -70,7 +74,9 @@ class RefundOutput(OrderOutput):
     @property
     def mobile_refund_method_specific_output(self):
         """
-        :class:`RefundMobileMethodSpecificOutput`
+        | Object containing specific mobile refund details
+        
+        Type: :class:`ingenico.connect.sdk.domain.payment.definitions.refund_mobile_method_specific_output.RefundMobileMethodSpecificOutput`
         """
         return self.__mobile_refund_method_specific_output
 
@@ -81,7 +87,17 @@ class RefundOutput(OrderOutput):
     @property
     def payment_method(self):
         """
-        str
+        | Payment method identifier used by the our payment engine with the following possible values:
+        
+        * card
+        * directDebit
+        * invoice
+        * bankTransfer
+        * redirect
+        * cash
+        * bankRefund
+        
+        Type: str
         """
         return self.__payment_method
 

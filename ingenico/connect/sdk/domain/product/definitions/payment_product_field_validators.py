@@ -1,6 +1,7 @@
+# -*- coding: utf-8 -*-
 #
 # This class was auto-generated from the API references found at
-# https://developer.globalcollect.com/documentation/api/server/
+# https://epayments-api.developer-ingenico.com/s2sapi/v1/
 #
 from ingenico.connect.sdk.data_object import DataObject
 from ingenico.connect.sdk.domain.product.definitions.boleto_bancario_requiredness_validator import BoletoBancarioRequirednessValidator
@@ -12,11 +13,6 @@ from ingenico.connect.sdk.domain.product.definitions.regular_expression_validato
 
 
 class PaymentProductFieldValidators(DataObject):
-    """
-    Class PaymentProductFieldValidators
-    
-    See also https://developer.globalcollect.com/documentation/api/server/#schema_PaymentProductFieldValidators
-    """
 
     __boleto_bancario_requiredness = None
     __email_address = None
@@ -30,7 +26,9 @@ class PaymentProductFieldValidators(DataObject):
     @property
     def boleto_bancario_requiredness(self):
         """
-        :class:`BoletoBancarioRequirednessValidator`
+        | Indicates the requiredness of the field based on the fiscalnumber for Boleto Bancario
+        
+        Type: :class:`ingenico.connect.sdk.domain.product.definitions.boleto_bancario_requiredness_validator.BoletoBancarioRequirednessValidator`
         """
         return self.__boleto_bancario_requiredness
 
@@ -41,7 +39,9 @@ class PaymentProductFieldValidators(DataObject):
     @property
     def email_address(self):
         """
-        :class:`EmptyValidator`
+        | Indicates that the content should be validated against the rules for an email address
+        
+        Type: :class:`ingenico.connect.sdk.domain.product.definitions.empty_validator.EmptyValidator`
         """
         return self.__email_address
 
@@ -52,7 +52,9 @@ class PaymentProductFieldValidators(DataObject):
     @property
     def expiration_date(self):
         """
-        :class:`EmptyValidator`
+        | Indicates that the content should be validated against the rules for an expiration date (it should be in the future)
+        
+        Type: :class:`ingenico.connect.sdk.domain.product.definitions.empty_validator.EmptyValidator`
         """
         return self.__expiration_date
 
@@ -63,7 +65,9 @@ class PaymentProductFieldValidators(DataObject):
     @property
     def fixed_list(self):
         """
-        :class:`FixedListValidator`
+        | Indicates that content should be one of the, in this object, listed items
+        
+        Type: :class:`ingenico.connect.sdk.domain.product.definitions.fixed_list_validator.FixedListValidator`
         """
         return self.__fixed_list
 
@@ -74,7 +78,9 @@ class PaymentProductFieldValidators(DataObject):
     @property
     def length(self):
         """
-        :class:`LengthValidator`
+        | Indicates that the content needs to be validated against length criteria defined in this object
+        
+        Type: :class:`ingenico.connect.sdk.domain.product.definitions.length_validator.LengthValidator`
         """
         return self.__length
 
@@ -85,7 +91,9 @@ class PaymentProductFieldValidators(DataObject):
     @property
     def luhn(self):
         """
-        :class:`EmptyValidator`
+        | Indicates that the content needs to be validated using a LUHN check
+        
+        Type: :class:`ingenico.connect.sdk.domain.product.definitions.empty_validator.EmptyValidator`
         """
         return self.__luhn
 
@@ -96,7 +104,9 @@ class PaymentProductFieldValidators(DataObject):
     @property
     def range(self):
         """
-        :class:`RangeValidator`
+        | Indicates that the content needs to be validated against a, in this object, defined range
+        
+        Type: :class:`ingenico.connect.sdk.domain.product.definitions.range_validator.RangeValidator`
         """
         return self.__range
 
@@ -107,7 +117,9 @@ class PaymentProductFieldValidators(DataObject):
     @property
     def regular_expression(self):
         """
-        :class:`RegularExpressionValidator`
+        | A string representing the regular expression to check
+        
+        Type: :class:`ingenico.connect.sdk.domain.product.definitions.regular_expression_validator.RegularExpressionValidator`
         """
         return self.__regular_expression
 

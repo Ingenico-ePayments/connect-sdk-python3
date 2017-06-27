@@ -1,23 +1,21 @@
+# -*- coding: utf-8 -*-
 #
 # This class was auto-generated from the API references found at
-# https://developer.globalcollect.com/documentation/api/server/
+# https://epayments-api.developer-ingenico.com/s2sapi/v1/
 #
 from ingenico.connect.sdk.data_object import DataObject
 
 
 class ApproveRefundRequest(DataObject):
-    """
-    Class ApproveRefundRequest
-    
-    See also https://developer.globalcollect.com/documentation/api/server/#schema_ApproveRefundRequest
-    """
 
     __amount = None
 
     @property
     def amount(self):
         """
-        int
+        | Refund amount to be approved
+        
+        Type: int
         """
         return self.__amount
 

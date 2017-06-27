@@ -1,16 +1,12 @@
+# -*- coding: utf-8 -*-
 #
 # This class was auto-generated from the API references found at
-# https://developer.globalcollect.com/documentation/api/server/
+# https://epayments-api.developer-ingenico.com/s2sapi/v1/
 #
 from ingenico.connect.sdk.data_object import DataObject
 
 
 class OrderInvoiceData(DataObject):
-    """
-    Class OrderInvoiceData
-    
-    See also https://developer.globalcollect.com/documentation/api/server/#schema_OrderInvoiceData
-    """
 
     __additional_data = None
     __invoice_date = None
@@ -20,7 +16,9 @@ class OrderInvoiceData(DataObject):
     @property
     def additional_data(self):
         """
-        str
+        | Additional data for printed invoices
+        
+        Type: str
         """
         return self.__additional_data
 
@@ -31,7 +29,10 @@ class OrderInvoiceData(DataObject):
     @property
     def invoice_date(self):
         """
-        str
+        | Date and time on invoice
+        | Format: YYYYMMDDHH24MISS
+        
+        Type: str
         """
         return self.__invoice_date
 
@@ -42,7 +43,9 @@ class OrderInvoiceData(DataObject):
     @property
     def invoice_number(self):
         """
-        str
+        | Your invoice number (on printed invoice) that is also returned in our report files
+        
+        Type: str
         """
         return self.__invoice_number
 
@@ -53,7 +56,9 @@ class OrderInvoiceData(DataObject):
     @property
     def text_qualifiers(self):
         """
-        list[str]
+        | Array of 3 text qualifiers, each with a max length of 10 characters
+        
+        Type: list[str]
         """
         return self.__text_qualifiers
 

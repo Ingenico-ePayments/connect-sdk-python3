@@ -1,16 +1,12 @@
+# -*- coding: utf-8 -*-
 #
 # This class was auto-generated from the API references found at
-# https://developer.globalcollect.com/documentation/api/server/
+# https://epayments-api.developer-ingenico.com/s2sapi/v1/
 #
 from ingenico.connect.sdk.data_object import DataObject
 
 
 class AmountOfMoney(DataObject):
-    """
-    Class AmountOfMoney
-    
-    See also https://developer.globalcollect.com/documentation/api/server/#schema_AmountOfMoney
-    """
 
     __amount = None
     __currency_code = None
@@ -18,7 +14,9 @@ class AmountOfMoney(DataObject):
     @property
     def amount(self):
         """
-        int
+        | Amount in cents and always having 2 decimals
+        
+        Type: int
         """
         return self.__amount
 
@@ -29,7 +27,9 @@ class AmountOfMoney(DataObject):
     @property
     def currency_code(self):
         """
-        str
+        | Three-letter ISO currency code representing the currency for the amount
+        
+        Type: str
         """
         return self.__currency_code
 

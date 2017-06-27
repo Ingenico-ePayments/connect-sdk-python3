@@ -1,15 +1,14 @@
+# -*- coding: utf-8 -*-
 #
 # This class was auto-generated from the API references found at
-# https://developer.globalcollect.com/documentation/api/server/
+# https://epayments-api.developer-ingenico.com/s2sapi/v1/
 #
 from ingenico.connect.sdk.data_object import DataObject
 
 
 class RefundPaymentProduct840CustomerAccount(DataObject):
     """
-    Class RefundPaymentProduct840CustomerAccount
-    
-    See also https://developer.globalcollect.com/documentation/api/server/#schema_RefundPaymentProduct840CustomerAccount
+    | PayPal account details
     """
 
     __customer_account_status = None
@@ -19,7 +18,13 @@ class RefundPaymentProduct840CustomerAccount(DataObject):
     @property
     def customer_account_status(self):
         """
-        str
+        | Status of the PayPal account.
+        | Possible values are:
+        
+        * verified - PayPal has verified the funding means for this account
+        * unverified - PayPal has not verified the funding means for this account
+        
+        Type: str
         """
         return self.__customer_account_status
 
@@ -30,7 +35,14 @@ class RefundPaymentProduct840CustomerAccount(DataObject):
     @property
     def customer_address_status(self):
         """
-        str
+        | Status of the consumer's shipping address as registered by PayPal
+        | Possible values are:
+        
+        * none - Status is unknown at PayPal
+        * confirmed - The address has been confirmed
+        * unconfirmed - The address has not been confirmed
+        
+        Type: str
         """
         return self.__customer_address_status
 
@@ -41,7 +53,9 @@ class RefundPaymentProduct840CustomerAccount(DataObject):
     @property
     def payer_id(self):
         """
-        str
+        | The unique identifier of a PayPal account and will never change in the life cycle of a PayPal account
+        
+        Type: str
         """
         return self.__payer_id
 

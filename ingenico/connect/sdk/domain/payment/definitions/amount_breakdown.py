@@ -1,16 +1,12 @@
+# -*- coding: utf-8 -*-
 #
 # This class was auto-generated from the API references found at
-# https://developer.globalcollect.com/documentation/api/server/
+# https://epayments-api.developer-ingenico.com/s2sapi/v1/
 #
 from ingenico.connect.sdk.data_object import DataObject
 
 
 class AmountBreakdown(DataObject):
-    """
-    Class AmountBreakdown
-    
-    See also https://developer.globalcollect.com/documentation/api/server/#schema_AmountBreakdown
-    """
 
     __amount = None
     __type = None
@@ -18,7 +14,9 @@ class AmountBreakdown(DataObject):
     @property
     def amount(self):
         """
-        int
+        | Amount in cents and always having 2 decimals
+        
+        Type: int
         """
         return self.__amount
 
@@ -29,7 +27,16 @@ class AmountBreakdown(DataObject):
     @property
     def type(self):
         """
-        str
+        | Type of the amount. Each type is only allowed to be provided once. Allowed values:
+        
+        * AIRPORT_TAX - The amount of tax paid for the airport, with the last 2 digits implied as decimal places.
+        * CONSUMPTION_TAX - The amount of consumption tax paid by the customer, with the last 2 digits implied as decimal places.
+        * DISCOUNT - Discount on the entire transaction, with the last 2 digits implied as decimal places.
+        * DUTY - Duty on the entire transaction, with the last 2 digits implied as decimal places.
+        * SHIPPING - Shipping cost on the entire transaction, with the last 2 digits implied as decimal places.
+        * VAT - Total amount of VAT paid on the transaction, with the last 2 digits implied as decimal places.
+        
+        Type: str
         """
         return self.__type
 

@@ -1,6 +1,7 @@
+# -*- coding: utf-8 -*-
 #
 # This class was auto-generated from the API references found at
-# https://developer.globalcollect.com/documentation/api/server/
+# https://epayments-api.developer-ingenico.com/s2sapi/v1/
 #
 from ingenico.connect.sdk.data_object import DataObject
 from ingenico.connect.sdk.domain.product.definitions.account_on_file_attribute import AccountOnFileAttribute
@@ -9,9 +10,7 @@ from ingenico.connect.sdk.domain.product.definitions.account_on_file_display_hin
 
 class AccountOnFile(DataObject):
     """
-    Class AccountOnFile
-    
-    See also https://developer.globalcollect.com/documentation/api/server/#schema_AccountOnFile
+    | Elements from the AccountsOnFile array
     """
 
     __attributes = None
@@ -22,7 +21,9 @@ class AccountOnFile(DataObject):
     @property
     def attributes(self):
         """
-        list[:class:`AccountOnFileAttribute`]
+        | Array containing the details of the stored token
+        
+        Type: list[:class:`ingenico.connect.sdk.domain.product.definitions.account_on_file_attribute.AccountOnFileAttribute`]
         """
         return self.__attributes
 
@@ -33,7 +34,9 @@ class AccountOnFile(DataObject):
     @property
     def display_hints(self):
         """
-        :class:`AccountOnFileDisplayHints`
+        | Object containing information for the client on how best to display this field
+        
+        Type: :class:`ingenico.connect.sdk.domain.product.definitions.account_on_file_display_hints.AccountOnFileDisplayHints`
         """
         return self.__display_hints
 
@@ -44,7 +47,9 @@ class AccountOnFile(DataObject):
     @property
     def id(self):
         """
-        int
+        | ID of the account on file record
+        
+        Type: int
         """
         return self.__id
 
@@ -55,7 +60,10 @@ class AccountOnFile(DataObject):
     @property
     def payment_product_id(self):
         """
-        int
+        | Payment product identifier
+        | Please see payment products <https://epayments-api.developer-ingenico.com/s2sapi/v1/en_US/python/paymentproducts.html> for a full overview of possible values.
+        
+        Type: int
         """
         return self.__payment_product_id
 

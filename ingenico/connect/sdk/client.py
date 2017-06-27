@@ -1,6 +1,6 @@
 #
 # This class was auto-generated from the API references found at
-# https://developer.globalcollect.com/documentation/api/server/
+# https://epayments-api.developer-ingenico.com/s2sapi/v1/
 #
 from base64 import b64encode
 from ingenico.connect.sdk.api_resource import ApiResource
@@ -24,7 +24,7 @@ class Client(ApiResource, LoggingCapable):
 
     def __init__(self, communicator, client_meta_info=None):
         """
-        :param communicator:      :class:`Communicator`
+        :param communicator:      :class:`ingenico.connect.sdk.communicator.Communicator`
         :param client_meta_info:  str
         """
         super(Client, self).__init__(communicator, {"apiVersion": Client.API_VERSION()}, client_meta_info)
@@ -82,13 +82,12 @@ class Client(ApiResource, LoggingCapable):
     def __exit__(self, exc_type, exc_val, exc_tb):
         self.close()
 
-
     def merchant(self, merchant_id):
         """
         Resource /{merchantId}
 
         :param merchant_id:  str
-        :return: :class:`MerchantClient`
+        :return: :class:`ingenico.connect.sdk.merchant.merchant_client.MerchantClient`
         """
         sub_context = {
             "merchantId": merchant_id,

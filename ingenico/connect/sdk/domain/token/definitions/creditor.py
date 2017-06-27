@@ -1,16 +1,12 @@
+# -*- coding: utf-8 -*-
 #
 # This class was auto-generated from the API references found at
-# https://developer.globalcollect.com/documentation/api/server/
+# https://epayments-api.developer-ingenico.com/s2sapi/v1/
 #
 from ingenico.connect.sdk.data_object import DataObject
 
 
 class Creditor(DataObject):
-    """
-    Class Creditor
-    
-    See also https://developer.globalcollect.com/documentation/api/server/#schema_Creditor
-    """
 
     __additional_address_info = None
     __city = None
@@ -27,7 +23,9 @@ class Creditor(DataObject):
     @property
     def additional_address_info(self):
         """
-        str
+        | Additional information about the creditor's address, like Suite II, Apartment 2a
+        
+        Type: str
         """
         return self.__additional_address_info
 
@@ -38,7 +36,9 @@ class Creditor(DataObject):
     @property
     def city(self):
         """
-        str
+        | City of the creditor address
+        
+        Type: str
         """
         return self.__city
 
@@ -49,7 +49,9 @@ class Creditor(DataObject):
     @property
     def country_code(self):
         """
-        str
+        | ISO 3166-1 alpha-2 country code
+        
+        Type: str
         """
         return self.__country_code
 
@@ -60,7 +62,9 @@ class Creditor(DataObject):
     @property
     def house_number(self):
         """
-        str
+        | House number of the creditor address
+        
+        Type: str
         """
         return self.__house_number
 
@@ -71,7 +75,10 @@ class Creditor(DataObject):
     @property
     def iban(self):
         """
-        str
+        | Creditor IBAN number
+        | The IBAN is the International Bank Account Number. It is an internationally agreed format for the bank account number and includes the ISO country code and two check digits.
+        
+        Type: str
         """
         return self.__iban
 
@@ -82,7 +89,9 @@ class Creditor(DataObject):
     @property
     def id(self):
         """
-        str
+        | Creditor identifier
+        
+        Type: str
         """
         return self.__id
 
@@ -93,7 +102,9 @@ class Creditor(DataObject):
     @property
     def name(self):
         """
-        str
+        | Name of the collecting creditor
+        
+        Type: str
         """
         return self.__name
 
@@ -104,7 +115,9 @@ class Creditor(DataObject):
     @property
     def reference_party(self):
         """
-        str
+        | Creditor type of the legal reference of the collecting entity
+        
+        Type: str
         """
         return self.__reference_party
 
@@ -115,7 +128,9 @@ class Creditor(DataObject):
     @property
     def reference_party_id(self):
         """
-        str
+        | Legal reference of the collecting creditor
+        
+        Type: str
         """
         return self.__reference_party_id
 
@@ -126,7 +141,9 @@ class Creditor(DataObject):
     @property
     def street(self):
         """
-        str
+        | Street of the creditor address
+        
+        Type: str
         """
         return self.__street
 
@@ -137,7 +154,9 @@ class Creditor(DataObject):
     @property
     def zip(self):
         """
-        str
+        | ZIP code of the creditor address
+        
+        Type: str
         """
         return self.__zip
 

@@ -1,16 +1,12 @@
+# -*- coding: utf-8 -*-
 #
 # This class was auto-generated from the API references found at
-# https://developer.globalcollect.com/documentation/api/server/
+# https://epayments-api.developer-ingenico.com/s2sapi/v1/
 #
 from ingenico.connect.sdk.data_object import DataObject
 
 
 class LabelTemplateElement(DataObject):
-    """
-    Class LabelTemplateElement
-    
-    See also https://developer.globalcollect.com/documentation/api/server/#schema_LabelTemplateElement
-    """
 
     __attribute_key = None
     __mask = None
@@ -18,7 +14,9 @@ class LabelTemplateElement(DataObject):
     @property
     def attribute_key(self):
         """
-        str
+        | Name of the attribute that is shown to the consumer on selection pages or screens
+        
+        Type: str
         """
         return self.__attribute_key
 
@@ -29,7 +27,10 @@ class LabelTemplateElement(DataObject):
     @property
     def mask(self):
         """
-        str
+        | Regular mask for the attributeKey
+        | Note: The mask is optional as not every field has a mask
+        
+        Type: str
         """
         return self.__mask
 

@@ -1,15 +1,16 @@
+# -*- coding: utf-8 -*-
 #
 # This class was auto-generated from the API references found at
-# https://developer.globalcollect.com/documentation/api/server/
+# https://epayments-api.developer-ingenico.com/s2sapi/v1/
 #
 from ingenico.connect.sdk.param_request import ParamRequest
 
 
 class DeleteTokenParams(ParamRequest):
     """
-    Query parameters for Delete token
+    Query parameters for | Delete token
     
-    See also https://developer.globalcollect.com/documentation/api/server/#__merchantId__tokens__tokenId__delete
+    See also https://epayments-api.developer-ingenico.com/s2sapi/v1/en_US/python/tokens/delete.html
     """
 
     __mandate_cancel_date = None
@@ -17,7 +18,10 @@ class DeleteTokenParams(ParamRequest):
     @property
     def mandate_cancel_date(self):
         """
-        str
+        | Date of the mandate cancellation
+        | Format: YYYYMMDD
+        
+        Type: str
         """
         return self.__mandate_cancel_date
 

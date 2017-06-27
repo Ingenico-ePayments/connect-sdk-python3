@@ -1,17 +1,13 @@
+# -*- coding: utf-8 -*-
 #
 # This class was auto-generated from the API references found at
-# https://developer.globalcollect.com/documentation/api/server/
+# https://epayments-api.developer-ingenico.com/s2sapi/v1/
 #
 from ingenico.connect.sdk.data_object import DataObject
 from ingenico.connect.sdk.domain.hostedcheckout.definitions.payment_product_filters_hosted_checkout import PaymentProductFiltersHostedCheckout
 
 
 class HostedCheckoutSpecificInput(DataObject):
-    """
-    Class HostedCheckoutSpecificInput
-    
-    See also https://developer.globalcollect.com/documentation/api/server/#schema_HostedCheckoutSpecificInput
-    """
 
     __is_recurring = None
     __locale = None
@@ -24,7 +20,12 @@ class HostedCheckoutSpecificInput(DataObject):
     @property
     def is_recurring(self):
         """
-        bool
+        * true - Only payment products that support recurring payments will be shown. Any transactions created will also be tagged as being a first of a recurring sequence.
+        * false - Only payment products that support one-off payments will be shown.
+        
+        | The default value for this field is false.
+        
+        Type: bool
         """
         return self.__is_recurring
 
@@ -35,7 +36,9 @@ class HostedCheckoutSpecificInput(DataObject):
     @property
     def locale(self):
         """
-        str
+        | Locale to use to present the MyCheckout payment pages to the consumer. Please make sure that a language pack is configured for the locale you are submitting. If you submit a locale that is not setup on your account we will use the default language pack for your account. You can easily upload additional language packs and set the default language pack in the Configuration Center.
+        
+        Type: str
         """
         return self.__locale
 
@@ -46,7 +49,9 @@ class HostedCheckoutSpecificInput(DataObject):
     @property
     def payment_product_filters(self):
         """
-        :class:`PaymentProductFiltersHostedCheckout`
+        | Contains the payment product ids and payment product groups that will be used for manipulating the payment products available for the payment to the consumer.
+        
+        Type: :class:`ingenico.connect.sdk.domain.hostedcheckout.definitions.payment_product_filters_hosted_checkout.PaymentProductFiltersHostedCheckout`
         """
         return self.__payment_product_filters
 
@@ -57,7 +62,11 @@ class HostedCheckoutSpecificInput(DataObject):
     @property
     def return_url(self):
         """
-        str
+        | The URL that the consumer is redirect to after the payment flow has finished. You can add any number of key value pairs in the query string that, for instance help you to identify the consumer when they return to your site. Please note that we will also append some additional key value pairs that will also help you with this identification process.
+        | Note: The provided URL should be absolute and contain the protocol to use, e.g. http:// or https://. For use on mobile devices a custom protocol can be used in the form of *protocol*://. This protocol must be registered on the device first.
+        | URLs without a protocol will be rejected.
+        
+        Type: str
         """
         return self.__return_url
 
@@ -68,7 +77,12 @@ class HostedCheckoutSpecificInput(DataObject):
     @property
     def show_result_page(self):
         """
-        bool
+        * true - MyCheckout will show a result page to the consumer when applicable. Default.
+        * false - MyCheckout will redirect the consumer back to the provided returnUrl when this is possible.
+        
+        | The default value for this field is true.
+        
+        Type: bool
         """
         return self.__show_result_page
 
@@ -79,7 +93,9 @@ class HostedCheckoutSpecificInput(DataObject):
     @property
     def tokens(self):
         """
-        str
+        | String containing comma separated tokens (no spaces) associated with the consumer of this hosted checkout. Valid tokens will be used to present the consumer the option to re-use previously used payment details. This means the consumer for instance does not have to re-enter their card details again, which a big plus when the consumer is using his/her mobile phone to complete the checkout.
+        
+        Type: str
         """
         return self.__tokens
 
@@ -90,7 +106,9 @@ class HostedCheckoutSpecificInput(DataObject):
     @property
     def variant(self):
         """
-        str
+        | Using the Configuration Center it is possible to create multiple variations of your MyCheckout payment pages. By specifying a specific variant you can force the use of another variant then the default. This allows you to test out the effect of certain changes to your MyCheckout payment pages in a controlled manner. Please note that you need to specify the ID of the variant.
+        
+        Type: str
         """
         return self.__variant
 

@@ -1,6 +1,7 @@
+# -*- coding: utf-8 -*-
 #
 # This class was auto-generated from the API references found at
-# https://developer.globalcollect.com/documentation/api/server/
+# https://epayments-api.developer-ingenico.com/s2sapi/v1/
 #
 from ingenico.connect.sdk.domain.definitions.abstract_order_status import AbstractOrderStatus
 from ingenico.connect.sdk.domain.definitions.order_status_output import OrderStatusOutput
@@ -8,11 +9,6 @@ from ingenico.connect.sdk.domain.payment.definitions.order_output import OrderOu
 
 
 class PayoutResult(AbstractOrderStatus):
-    """
-    Class PayoutResult
-    
-    See also https://developer.globalcollect.com/documentation/api/server/#schema_PayoutResult
-    """
 
     __payout_output = None
     __status = None
@@ -21,7 +17,9 @@ class PayoutResult(AbstractOrderStatus):
     @property
     def payout_output(self):
         """
-        :class:`OrderOutput`
+        | Object containing payout details
+        
+        Type: :class:`ingenico.connect.sdk.domain.payment.definitions.order_output.OrderOutput`
         """
         return self.__payout_output
 
@@ -32,7 +30,21 @@ class PayoutResult(AbstractOrderStatus):
     @property
     def status(self):
         """
-        str
+        | Current high-level status of the payouts in a human-readable form. Possible values are :
+        
+        * CREATED - The transaction has been created. This is the initial state once a new payout is created.
+        * PENDING_APPROVAL - The transaction is awaiting approval from you to proceed with the paying out of the funds
+        * REJECTED - The transaction has been rejected
+        * PAYOUT_REQUESTED - The transaction is in the queue to be payed out to the consumer
+        * ACCOUNT_CREDITED - We have successfully credited the consumer
+        * REJECTED_CREDIT - The credit to the account of the consumer was rejected by the bank
+        * CANCELLED - You have cancelled the transaction
+        * REVERSED - The payout has been reversed and the money is returned to your balance
+        
+        
+        | Please see Statuses <https://epayments-api.developer-ingenico.com/s2sapi/v1/en_US/python/statuses.html> for a full overview of possible values.
+        
+        Type: str
         """
         return self.__status
 
@@ -43,7 +55,10 @@ class PayoutResult(AbstractOrderStatus):
     @property
     def status_output(self):
         """
-        :class:`OrderStatusOutput`
+        | This object has the numeric representation of the current payout status, timestamp of last status change and performable action on the current payout resource.
+        | In case of a rejected payout, detailed error information is listed.
+        
+        Type: :class:`ingenico.connect.sdk.domain.definitions.order_status_output.OrderStatusOutput`
         """
         return self.__status_output
 

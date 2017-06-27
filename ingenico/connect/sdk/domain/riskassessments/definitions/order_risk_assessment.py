@@ -1,6 +1,7 @@
+# -*- coding: utf-8 -*-
 #
 # This class was auto-generated from the API references found at
-# https://developer.globalcollect.com/documentation/api/server/
+# https://epayments-api.developer-ingenico.com/s2sapi/v1/
 #
 from ingenico.connect.sdk.data_object import DataObject
 from ingenico.connect.sdk.domain.definitions.additional_order_input_airline_data import AdditionalOrderInputAirlineData
@@ -9,11 +10,6 @@ from ingenico.connect.sdk.domain.riskassessments.definitions.customer_risk_asses
 
 
 class OrderRiskAssessment(DataObject):
-    """
-    Class OrderRiskAssessment
-    
-    See also https://developer.globalcollect.com/documentation/api/server/#schema_OrderRiskAssessment
-    """
 
     __additional_input = None
     __amount_of_money = None
@@ -22,7 +18,9 @@ class OrderRiskAssessment(DataObject):
     @property
     def additional_input(self):
         """
-        :class:`AdditionalOrderInputAirlineData`
+        | Object containing additional input on the order
+        
+        Type: :class:`ingenico.connect.sdk.domain.definitions.additional_order_input_airline_data.AdditionalOrderInputAirlineData`
         """
         return self.__additional_input
 
@@ -33,7 +31,9 @@ class OrderRiskAssessment(DataObject):
     @property
     def amount_of_money(self):
         """
-        :class:`AmountOfMoney`
+        | Object containing amount and ISO currency code attributes
+        
+        Type: :class:`ingenico.connect.sdk.domain.definitions.amount_of_money.AmountOfMoney`
         """
         return self.__amount_of_money
 
@@ -44,7 +44,9 @@ class OrderRiskAssessment(DataObject):
     @property
     def customer(self):
         """
-        :class:`CustomerRiskAssessment`
+        | Object containing the details of the consumer
+        
+        Type: :class:`ingenico.connect.sdk.domain.riskassessments.definitions.customer_risk_assessment.CustomerRiskAssessment`
         """
         return self.__customer
 

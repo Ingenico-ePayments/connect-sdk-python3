@@ -1,23 +1,21 @@
+# -*- coding: utf-8 -*-
 #
 # This class was auto-generated from the API references found at
-# https://developer.globalcollect.com/documentation/api/server/
+# https://epayments-api.developer-ingenico.com/s2sapi/v1/
 #
 from ingenico.connect.sdk.data_object import DataObject
 
 
 class FixedListValidator(DataObject):
-    """
-    Class FixedListValidator
-    
-    See also https://developer.globalcollect.com/documentation/api/server/#schema_FixedListValidator
-    """
 
     __allowed_values = None
 
     @property
     def allowed_values(self):
         """
-        list[str]
+        | List of the allowed values that the field will be validated against
+        
+        Type: list[str]
         """
         return self.__allowed_values
 

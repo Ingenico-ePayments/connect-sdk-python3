@@ -1,6 +1,7 @@
+# -*- coding: utf-8 -*-
 #
 # This class was auto-generated from the API references found at
-# https://developer.globalcollect.com/documentation/api/server/
+# https://epayments-api.developer-ingenico.com/s2sapi/v1/
 #
 from ingenico.connect.sdk.domain.payment.definitions.bank_transfer_payment_method_specific_output import BankTransferPaymentMethodSpecificOutput
 from ingenico.connect.sdk.domain.payment.definitions.card_payment_method_specific_output import CardPaymentMethodSpecificOutput
@@ -14,11 +15,6 @@ from ingenico.connect.sdk.domain.payment.definitions.sepa_direct_debit_payment_m
 
 
 class PaymentOutput(OrderOutput):
-    """
-    Class PaymentOutput
-    
-    See also https://developer.globalcollect.com/documentation/api/server/#schema_PaymentOutput
-    """
 
     __amount_paid = None
     __bank_transfer_payment_method_specific_output = None
@@ -34,7 +30,9 @@ class PaymentOutput(OrderOutput):
     @property
     def amount_paid(self):
         """
-        int
+        | Amount that has been paid
+        
+        Type: int
         """
         return self.__amount_paid
 
@@ -45,7 +43,9 @@ class PaymentOutput(OrderOutput):
     @property
     def bank_transfer_payment_method_specific_output(self):
         """
-        :class:`BankTransferPaymentMethodSpecificOutput`
+        | Object containing the bank transfer payment method details
+        
+        Type: :class:`ingenico.connect.sdk.domain.payment.definitions.bank_transfer_payment_method_specific_output.BankTransferPaymentMethodSpecificOutput`
         """
         return self.__bank_transfer_payment_method_specific_output
 
@@ -56,7 +56,9 @@ class PaymentOutput(OrderOutput):
     @property
     def card_payment_method_specific_output(self):
         """
-        :class:`CardPaymentMethodSpecificOutput`
+        | Object containing the card payment method details
+        
+        Type: :class:`ingenico.connect.sdk.domain.payment.definitions.card_payment_method_specific_output.CardPaymentMethodSpecificOutput`
         """
         return self.__card_payment_method_specific_output
 
@@ -67,7 +69,9 @@ class PaymentOutput(OrderOutput):
     @property
     def cash_payment_method_specific_output(self):
         """
-        :class:`CashPaymentMethodSpecificOutput`
+        | Object containing the cash payment method details
+        
+        Type: :class:`ingenico.connect.sdk.domain.payment.definitions.cash_payment_method_specific_output.CashPaymentMethodSpecificOutput`
         """
         return self.__cash_payment_method_specific_output
 
@@ -78,7 +82,9 @@ class PaymentOutput(OrderOutput):
     @property
     def direct_debit_payment_method_specific_output(self):
         """
-        :class:`NonSepaDirectDebitPaymentMethodSpecificOutput`
+        | Object containing the non SEPA direct debit payment method details
+        
+        Type: :class:`ingenico.connect.sdk.domain.payment.definitions.non_sepa_direct_debit_payment_method_specific_output.NonSepaDirectDebitPaymentMethodSpecificOutput`
         """
         return self.__direct_debit_payment_method_specific_output
 
@@ -89,7 +95,9 @@ class PaymentOutput(OrderOutput):
     @property
     def invoice_payment_method_specific_output(self):
         """
-        :class:`InvoicePaymentMethodSpecificOutput`
+        | Object containing the invoice payment method details
+        
+        Type: :class:`ingenico.connect.sdk.domain.payment.definitions.invoice_payment_method_specific_output.InvoicePaymentMethodSpecificOutput`
         """
         return self.__invoice_payment_method_specific_output
 
@@ -100,7 +108,9 @@ class PaymentOutput(OrderOutput):
     @property
     def mobile_payment_method_specific_output(self):
         """
-        :class:`MobilePaymentMethodSpecificOutput`
+        | Object containing the mobile payment method details
+        
+        Type: :class:`ingenico.connect.sdk.domain.payment.definitions.mobile_payment_method_specific_output.MobilePaymentMethodSpecificOutput`
         """
         return self.__mobile_payment_method_specific_output
 
@@ -111,7 +121,17 @@ class PaymentOutput(OrderOutput):
     @property
     def payment_method(self):
         """
-        str
+        | Payment method identifier used by the our payment engine with the following possible values:
+        
+        * card
+        * directDebit
+        * invoice
+        * bankTransfer
+        * redirect
+        * cash
+        * bankRefund
+        
+        Type: str
         """
         return self.__payment_method
 
@@ -122,7 +142,9 @@ class PaymentOutput(OrderOutput):
     @property
     def redirect_payment_method_specific_output(self):
         """
-        :class:`RedirectPaymentMethodSpecificOutput`
+        | Object containing the redirect payment product details
+        
+        Type: :class:`ingenico.connect.sdk.domain.payment.definitions.redirect_payment_method_specific_output.RedirectPaymentMethodSpecificOutput`
         """
         return self.__redirect_payment_method_specific_output
 
@@ -133,7 +155,9 @@ class PaymentOutput(OrderOutput):
     @property
     def sepa_direct_debit_payment_method_specific_output(self):
         """
-        :class:`SepaDirectDebitPaymentMethodSpecificOutput`
+        | Object containing the SEPA direct debit details
+        
+        Type: :class:`ingenico.connect.sdk.domain.payment.definitions.sepa_direct_debit_payment_method_specific_output.SepaDirectDebitPaymentMethodSpecificOutput`
         """
         return self.__sepa_direct_debit_payment_method_specific_output
 

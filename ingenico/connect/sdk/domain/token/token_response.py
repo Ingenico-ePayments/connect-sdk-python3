@@ -1,6 +1,7 @@
+# -*- coding: utf-8 -*-
 #
 # This class was auto-generated from the API references found at
-# https://developer.globalcollect.com/documentation/api/server/
+# https://epayments-api.developer-ingenico.com/s2sapi/v1/
 #
 from ingenico.connect.sdk.data_object import DataObject
 from ingenico.connect.sdk.domain.token.definitions.token_card import TokenCard
@@ -10,11 +11,6 @@ from ingenico.connect.sdk.domain.token.definitions.token_sepa_direct_debit impor
 
 
 class TokenResponse(DataObject):
-    """
-    Class TokenResponse
-    
-    See also https://developer.globalcollect.com/documentation/api/server/#schema_TokenResponse
-    """
 
     __card = None
     __e_wallet = None
@@ -26,7 +22,9 @@ class TokenResponse(DataObject):
     @property
     def card(self):
         """
-        :class:`TokenCard`
+        | Object containing card details
+        
+        Type: :class:`ingenico.connect.sdk.domain.token.definitions.token_card.TokenCard`
         """
         return self.__card
 
@@ -37,7 +35,9 @@ class TokenResponse(DataObject):
     @property
     def e_wallet(self):
         """
-        :class:`TokenEWallet`
+        | Object containing eWallet details
+        
+        Type: :class:`ingenico.connect.sdk.domain.token.definitions.token_e_wallet.TokenEWallet`
         """
         return self.__e_wallet
 
@@ -48,7 +48,9 @@ class TokenResponse(DataObject):
     @property
     def id(self):
         """
-        str
+        | ID of the token
+        
+        Type: str
         """
         return self.__id
 
@@ -59,7 +61,9 @@ class TokenResponse(DataObject):
     @property
     def non_sepa_direct_debit(self):
         """
-        :class:`TokenNonSepaDirectDebit`
+        | Object containing the non SEPA Direct Debit details
+        
+        Type: :class:`ingenico.connect.sdk.domain.token.definitions.token_non_sepa_direct_debit.TokenNonSepaDirectDebit`
         """
         return self.__non_sepa_direct_debit
 
@@ -70,7 +74,10 @@ class TokenResponse(DataObject):
     @property
     def payment_product_id(self):
         """
-        int
+        | Payment product identifier
+        | Please see payment products <https://epayments-api.developer-ingenico.com/s2sapi/v1/en_US/python/paymentproducts.html> for a full overview of possible values.
+        
+        Type: int
         """
         return self.__payment_product_id
 
@@ -81,7 +88,9 @@ class TokenResponse(DataObject):
     @property
     def sepa_direct_debit(self):
         """
-        :class:`TokenSepaDirectDebit`
+        | Object containing the SEPA Direct Debit details
+        
+        Type: :class:`ingenico.connect.sdk.domain.token.definitions.token_sepa_direct_debit.TokenSepaDirectDebit`
         """
         return self.__sepa_direct_debit
 

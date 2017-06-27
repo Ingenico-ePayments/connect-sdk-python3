@@ -1,16 +1,12 @@
+# -*- coding: utf-8 -*-
 #
 # This class was auto-generated from the API references found at
-# https://developer.globalcollect.com/documentation/api/server/
+# https://epayments-api.developer-ingenico.com/s2sapi/v1/
 #
 from ingenico.connect.sdk.data_object import DataObject
 
 
 class AirlineFlightLeg(DataObject):
-    """
-    Class AirlineFlightLeg
-    
-    See also https://developer.globalcollect.com/documentation/api/server/#schema_AirlineFlightLeg
-    """
 
     __airline_class = None
     __arrival_airport = None
@@ -27,7 +23,9 @@ class AirlineFlightLeg(DataObject):
     @property
     def airline_class(self):
         """
-        str
+        | Reservation Booking Designator
+        
+        Type: str
         """
         return self.__airline_class
 
@@ -38,7 +36,9 @@ class AirlineFlightLeg(DataObject):
     @property
     def arrival_airport(self):
         """
-        str
+        | Arrival airport/city code
+        
+        Type: str
         """
         return self.__arrival_airport
 
@@ -49,7 +49,9 @@ class AirlineFlightLeg(DataObject):
     @property
     def carrier_code(self):
         """
-        str
+        | IATA carrier code
+        
+        Type: str
         """
         return self.__carrier_code
 
@@ -60,7 +62,10 @@ class AirlineFlightLeg(DataObject):
     @property
     def date(self):
         """
-        str
+        | Date of the leg
+        | Format: YYYYMMDD
+        
+        Type: str
         """
         return self.__date
 
@@ -71,7 +76,10 @@ class AirlineFlightLeg(DataObject):
     @property
     def departure_time(self):
         """
-        str
+        | The departure time in the local time at the departure airport
+        | Format: HH:MM
+        
+        Type: str
         """
         return self.__departure_time
 
@@ -82,7 +90,9 @@ class AirlineFlightLeg(DataObject):
     @property
     def fare(self):
         """
-        str
+        | Fare of this leg
+        
+        Type: str
         """
         return self.__fare
 
@@ -93,7 +103,9 @@ class AirlineFlightLeg(DataObject):
     @property
     def fare_basis(self):
         """
-        str
+        | Fare Basis/Ticket Designator
+        
+        Type: str
         """
         return self.__fare_basis
 
@@ -104,7 +116,10 @@ class AirlineFlightLeg(DataObject):
     @property
     def flight_number(self):
         """
-        str
+        | The flight number assigned by the airline carrier with no leading spaces
+        | Should be a numeric string
+        
+        Type: str
         """
         return self.__flight_number
 
@@ -115,7 +130,9 @@ class AirlineFlightLeg(DataObject):
     @property
     def number(self):
         """
-        int
+        | Sequence number of the flight leg
+        
+        Type: int
         """
         return self.__number
 
@@ -126,7 +143,9 @@ class AirlineFlightLeg(DataObject):
     @property
     def origin_airport(self):
         """
-        str
+        | Origin airport/city code
+        
+        Type: str
         """
         return self.__origin_airport
 
@@ -137,7 +156,12 @@ class AirlineFlightLeg(DataObject):
     @property
     def stopover_code(self):
         """
-        str
+        | Possible values are:
+        
+        * permitted = Stopover permitted
+        * non-permitted = Stopover not permitted
+        
+        Type: str
         """
         return self.__stopover_code
 

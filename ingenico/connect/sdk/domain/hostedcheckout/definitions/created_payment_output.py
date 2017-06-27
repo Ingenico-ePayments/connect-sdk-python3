@@ -1,6 +1,7 @@
+# -*- coding: utf-8 -*-
 #
 # This class was auto-generated from the API references found at
-# https://developer.globalcollect.com/documentation/api/server/
+# https://epayments-api.developer-ingenico.com/s2sapi/v1/
 #
 from ingenico.connect.sdk.data_object import DataObject
 from ingenico.connect.sdk.domain.hostedcheckout.definitions.displayed_data import DisplayedData
@@ -10,9 +11,7 @@ from ingenico.connect.sdk.domain.payment.definitions.payment_creation_references
 
 class CreatedPaymentOutput(DataObject):
     """
-    Class CreatedPaymentOutput
-    
-    See also https://developer.globalcollect.com/documentation/api/server/#schema_CreatedPaymentOutput
+    | This object is used when a payment was created during a HostedCheckout. It is part of the response of a GET HostedCheckout object and contains the details of the created payment object.
     """
 
     __displayed_data = None
@@ -24,7 +23,9 @@ class CreatedPaymentOutput(DataObject):
     @property
     def displayed_data(self):
         """
-        :class:`DisplayedData`
+        | Object that contains the action, including the needed data, that you should perform next, like showing instruction, showing the transaction results or redirect to a third party to complete the payment
+        
+        Type: :class:`ingenico.connect.sdk.domain.hostedcheckout.definitions.displayed_data.DisplayedData`
         """
         return self.__displayed_data
 
@@ -35,7 +36,9 @@ class CreatedPaymentOutput(DataObject):
     @property
     def payment(self):
         """
-        :class:`Payment`
+        | Object that holds the payment data
+        
+        Type: :class:`ingenico.connect.sdk.domain.payment.definitions.payment.Payment`
         """
         return self.__payment
 
@@ -46,7 +49,9 @@ class CreatedPaymentOutput(DataObject):
     @property
     def payment_creation_references(self):
         """
-        :class:`PaymentCreationReferences`
+        | Object containing the created references
+        
+        Type: :class:`ingenico.connect.sdk.domain.payment.definitions.payment_creation_references.PaymentCreationReferences`
         """
         return self.__payment_creation_references
 
@@ -57,7 +62,46 @@ class CreatedPaymentOutput(DataObject):
     @property
     def payment_status_category(self):
         """
-        str
+        | Highlevel status of the payment with the following possible values:
+        
+        * REJECTED - The payment has been rejected or is in such a state that it will never become successful. This category groups the following statuses:
+        
+        * CREATED
+        * REJECTED
+        * REJECTED CAPTURE
+        * REJECTED REFUND
+        * REJECTED PAYOUT
+        * CANCELLED
+        
+        
+        * SUCCESSFUL - The payment was successful. This category groups the following statuses:
+        
+        * PENDING PAYMENT
+        * ACCOUNT VERIFIED
+        * PENDING FRAUD APPROVAL
+        * PENDING APPROVAL
+        * AUTHORIZATION REQUESTED
+        * CAPTURE REQUESTED
+        * REFUND REQUESTED
+        * PAYOUT REQUESTED
+        * CAPTURED
+        * PAID
+        * ACCOUNT CREDITED
+        * REVERSED
+        * CHARGEBACKED
+        * REFUNDED
+        
+        
+        * STATUS_UNKNOWN - The status of the payment is unknown at this moment. This category groups the following statuses:
+        
+        * REDIRECTED
+        
+        
+        
+        
+        | Please see Statuses <https://epayments-api.developer-ingenico.com/s2sapi/v1/en_US/python/statuses.html> for a full overview of possible values.
+        
+        Type: str
         """
         return self.__payment_status_category
 
@@ -68,7 +112,9 @@ class CreatedPaymentOutput(DataObject):
     @property
     def tokens(self):
         """
-        str
+        | This field contains the tokens that are associated with the hosted checkout session/consumer. You can use the tokens listed in this list for a future checkout of the same consumer.
+        
+        Type: str
         """
         return self.__tokens
 

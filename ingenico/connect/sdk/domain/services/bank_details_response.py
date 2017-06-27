@@ -1,6 +1,7 @@
+# -*- coding: utf-8 -*-
 #
 # This class was auto-generated from the API references found at
-# https://developer.globalcollect.com/documentation/api/server/
+# https://epayments-api.developer-ingenico.com/s2sapi/v1/
 #
 from ingenico.connect.sdk.data_object import DataObject
 from ingenico.connect.sdk.domain.definitions.bank_account_bban import BankAccountBban
@@ -10,11 +11,6 @@ from ingenico.connect.sdk.domain.services.definitions.swift import Swift
 
 
 class BankDetailsResponse(DataObject):
-    """
-    Class BankDetailsResponse
-    
-    See also https://developer.globalcollect.com/documentation/api/server/#schema_BankDetailsResponse
-    """
 
     __bank_account_bban = None
     __bank_account_iban = None
@@ -24,7 +20,9 @@ class BankDetailsResponse(DataObject):
     @property
     def bank_account_bban(self):
         """
-        :class:`BankAccountBban`
+        | Object that holds the Basic Bank Account Number (BBAN) data
+        
+        Type: :class:`ingenico.connect.sdk.domain.definitions.bank_account_bban.BankAccountBban`
         """
         return self.__bank_account_bban
 
@@ -35,7 +33,9 @@ class BankDetailsResponse(DataObject):
     @property
     def bank_account_iban(self):
         """
-        :class:`BankAccountIban`
+        | Object that holds the International Bank Account Number (IBAN) data
+        
+        Type: :class:`ingenico.connect.sdk.domain.definitions.bank_account_iban.BankAccountIban`
         """
         return self.__bank_account_iban
 
@@ -46,7 +46,9 @@ class BankDetailsResponse(DataObject):
     @property
     def bank_data(self):
         """
-        :class:`BankData`
+        | Object that holds the reformatted bank account data
+        
+        Type: :class:`ingenico.connect.sdk.domain.services.definitions.bank_data.BankData`
         """
         return self.__bank_data
 
@@ -57,7 +59,9 @@ class BankDetailsResponse(DataObject):
     @property
     def swift(self):
         """
-        :class:`Swift`
+        | Object that holds all the SWIFT routing information
+        
+        Type: :class:`ingenico.connect.sdk.domain.services.definitions.swift.Swift`
         """
         return self.__swift
 

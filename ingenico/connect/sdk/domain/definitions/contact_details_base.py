@@ -1,16 +1,12 @@
+# -*- coding: utf-8 -*-
 #
 # This class was auto-generated from the API references found at
-# https://developer.globalcollect.com/documentation/api/server/
+# https://epayments-api.developer-ingenico.com/s2sapi/v1/
 #
 from ingenico.connect.sdk.data_object import DataObject
 
 
 class ContactDetailsBase(DataObject):
-    """
-    Class ContactDetailsBase
-    
-    See also https://developer.globalcollect.com/documentation/api/server/#schema_ContactDetailsBase
-    """
 
     __email_address = None
     __email_message_type = None
@@ -18,7 +14,9 @@ class ContactDetailsBase(DataObject):
     @property
     def email_address(self):
         """
-        str
+        | Email address of the consumer
+        
+        Type: str
         """
         return self.__email_address
 
@@ -29,7 +27,12 @@ class ContactDetailsBase(DataObject):
     @property
     def email_message_type(self):
         """
-        str
+        | Preference for the type of email message markup
+        
+        * plain-text
+        * html
+        
+        Type: str
         """
         return self.__email_message_type
 

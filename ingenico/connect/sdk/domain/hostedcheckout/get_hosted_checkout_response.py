@@ -1,17 +1,13 @@
+# -*- coding: utf-8 -*-
 #
 # This class was auto-generated from the API references found at
-# https://developer.globalcollect.com/documentation/api/server/
+# https://epayments-api.developer-ingenico.com/s2sapi/v1/
 #
 from ingenico.connect.sdk.data_object import DataObject
 from ingenico.connect.sdk.domain.hostedcheckout.definitions.created_payment_output import CreatedPaymentOutput
 
 
 class GetHostedCheckoutResponse(DataObject):
-    """
-    Class GetHostedCheckoutResponse
-    
-    See also https://developer.globalcollect.com/documentation/api/server/#schema_GetHostedCheckoutResponse
-    """
 
     __created_payment_output = None
     __status = None
@@ -19,7 +15,9 @@ class GetHostedCheckoutResponse(DataObject):
     @property
     def created_payment_output(self):
         """
-        :class:`CreatedPaymentOutput`
+        | When a payment has been created during the hosted checkout session this object will return the details.
+        
+        Type: :class:`ingenico.connect.sdk.domain.hostedcheckout.definitions.created_payment_output.CreatedPaymentOutput`
         """
         return self.__created_payment_output
 
@@ -30,7 +28,15 @@ class GetHostedCheckoutResponse(DataObject):
     @property
     def status(self):
         """
-        str
+        | This is the status of the hosted checkout. Possible values are:
+        
+        * IN_PROGRESS - The checkout is still in progress and has not finished yet
+        * PAYMENT_CREATED - A payment has been created
+        
+        
+        | Please see Statuses <https://epayments-api.developer-ingenico.com/s2sapi/v1/en_US/python/statuses.html> for a full overview of possible values.
+        
+        Type: str
         """
         return self.__status
 

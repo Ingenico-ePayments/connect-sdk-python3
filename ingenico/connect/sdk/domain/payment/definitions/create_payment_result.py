@@ -1,6 +1,7 @@
+# -*- coding: utf-8 -*-
 #
 # This class was auto-generated from the API references found at
-# https://developer.globalcollect.com/documentation/api/server/
+# https://epayments-api.developer-ingenico.com/s2sapi/v1/
 #
 from ingenico.connect.sdk.data_object import DataObject
 from ingenico.connect.sdk.domain.payment.definitions.merchant_action import MerchantAction
@@ -9,11 +10,6 @@ from ingenico.connect.sdk.domain.payment.definitions.payment_creation_output imp
 
 
 class CreatePaymentResult(DataObject):
-    """
-    Class CreatePaymentResult
-    
-    See also https://developer.globalcollect.com/documentation/api/server/#schema_CreatePaymentResult
-    """
 
     __creation_output = None
     __merchant_action = None
@@ -22,7 +18,9 @@ class CreatePaymentResult(DataObject):
     @property
     def creation_output(self):
         """
-        :class:`PaymentCreationOutput`
+        | Object containing the details of the created payment
+        
+        Type: :class:`ingenico.connect.sdk.domain.payment.definitions.payment_creation_output.PaymentCreationOutput`
         """
         return self.__creation_output
 
@@ -33,7 +31,9 @@ class CreatePaymentResult(DataObject):
     @property
     def merchant_action(self):
         """
-        :class:`MerchantAction`
+        | Object that contains the action, including the needed data, that you should perform next, like showing instruction, showing the transaction results or redirect to a third party to complete the payment
+        
+        Type: :class:`ingenico.connect.sdk.domain.payment.definitions.merchant_action.MerchantAction`
         """
         return self.__merchant_action
 
@@ -44,7 +44,9 @@ class CreatePaymentResult(DataObject):
     @property
     def payment(self):
         """
-        :class:`Payment`
+        | Object that holds the payment related fields
+        
+        Type: :class:`ingenico.connect.sdk.domain.payment.definitions.payment.Payment`
         """
         return self.__payment
 

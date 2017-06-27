@@ -1,24 +1,22 @@
+# -*- coding: utf-8 -*-
 #
 # This class was auto-generated from the API references found at
-# https://developer.globalcollect.com/documentation/api/server/
+# https://epayments-api.developer-ingenico.com/s2sapi/v1/
 #
 from ingenico.connect.sdk.domain.payment.definitions.refund_method_specific_output import RefundMethodSpecificOutput
 from ingenico.connect.sdk.domain.payment.definitions.refund_payment_product840_specific_output import RefundPaymentProduct840SpecificOutput
 
 
 class RefundEWalletMethodSpecificOutput(RefundMethodSpecificOutput):
-    """
-    Class RefundEWalletMethodSpecificOutput
-    
-    See also https://developer.globalcollect.com/documentation/api/server/#schema_RefundEWalletMethodSpecificOutput
-    """
 
     __payment_product840_specific_output = None
 
     @property
     def payment_product840_specific_output(self):
         """
-        :class:`RefundPaymentProduct840SpecificOutput`
+        | PayPal (payment product 840) specific details
+        
+        Type: :class:`ingenico.connect.sdk.domain.payment.definitions.refund_payment_product840_specific_output.RefundPaymentProduct840SpecificOutput`
         """
         return self.__payment_product840_specific_output
 

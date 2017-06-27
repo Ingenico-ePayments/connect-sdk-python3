@@ -1,16 +1,12 @@
+# -*- coding: utf-8 -*-
 #
 # This class was auto-generated from the API references found at
-# https://developer.globalcollect.com/documentation/api/server/
+# https://epayments-api.developer-ingenico.com/s2sapi/v1/
 #
 from ingenico.connect.sdk.data_object import DataObject
 
 
 class Address(DataObject):
-    """
-    Class Address
-    
-    See also https://developer.globalcollect.com/documentation/api/server/#schema_Address
-    """
 
     __additional_info = None
     __city = None
@@ -24,7 +20,9 @@ class Address(DataObject):
     @property
     def additional_info(self):
         """
-        str
+        | Additional address information
+        
+        Type: str
         """
         return self.__additional_info
 
@@ -35,7 +33,9 @@ class Address(DataObject):
     @property
     def city(self):
         """
-        str
+        | City
+        
+        Type: str
         """
         return self.__city
 
@@ -46,7 +46,9 @@ class Address(DataObject):
     @property
     def country_code(self):
         """
-        str
+        | ISO 3166-1 alpha-2 country code
+        
+        Type: str
         """
         return self.__country_code
 
@@ -57,7 +59,9 @@ class Address(DataObject):
     @property
     def house_number(self):
         """
-        str
+        | House number
+        
+        Type: str
         """
         return self.__house_number
 
@@ -68,7 +72,9 @@ class Address(DataObject):
     @property
     def state(self):
         """
-        str
+        | Full name of the state or province
+        
+        Type: str
         """
         return self.__state
 
@@ -79,7 +85,9 @@ class Address(DataObject):
     @property
     def state_code(self):
         """
-        str
+        | State code
+        
+        Type: str
         """
         return self.__state_code
 
@@ -90,7 +98,9 @@ class Address(DataObject):
     @property
     def street(self):
         """
-        str
+        | Streetname
+        
+        Type: str
         """
         return self.__street
 
@@ -101,7 +111,9 @@ class Address(DataObject):
     @property
     def zip(self):
         """
-        str
+        | Zip code
+        
+        Type: str
         """
         return self.__zip
 

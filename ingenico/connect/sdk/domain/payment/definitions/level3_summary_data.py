@@ -1,17 +1,14 @@
+# -*- coding: utf-8 -*-
 #
 # This class was auto-generated from the API references found at
-# https://developer.globalcollect.com/documentation/api/server/
+# https://epayments-api.developer-ingenico.com/s2sapi/v1/
 #
 from ingenico.connect.sdk.data_object import DataObject
 
 
 class Level3SummaryData(DataObject):
     """
-    Class Level3SummaryData
-    
-    See also https://developer.globalcollect.com/documentation/api/server/#schema_Level3SummaryData
-    
-    Deprecated; Use ShoppingCart instead
+    Deprecated; | Use Order.shoppingCart instead
     """
 
     __discount_amount = None
@@ -21,9 +18,11 @@ class Level3SummaryData(DataObject):
     @property
     def discount_amount(self):
         """
-        int
+        | Discount on the entire transaction, with the last 2 digits are implied decimal places
         
-        Deprecated; Use ShoppingCart.discountAmount instead
+        Type: int
+        
+        Deprecated; | Use ShoppingCart.amountbreakdown with type DISCOUNT instead
         """
         return self.__discount_amount
 
@@ -34,9 +33,11 @@ class Level3SummaryData(DataObject):
     @property
     def duty_amount(self):
         """
-        int
+        | Duty on the entire transaction, with the last 2 digits are implied decimal places
         
-        Deprecated; Use ShoppingCart.dutyAmount instead
+        Type: int
+        
+        Deprecated; | Use ShoppingCart.amountbreakdown with type DUTY instead
         """
         return self.__duty_amount
 
@@ -47,9 +48,11 @@ class Level3SummaryData(DataObject):
     @property
     def shipping_amount(self):
         """
-        int
+        | Shippingcost on the entire transaction, with the last 2 digits are implied decimal places
         
-        Deprecated; Use ShoppingCart.shippingAmount instead
+        Type: int
+        
+        Deprecated; | Use ShoppingCart.amountbreakdown with type SHIPPING instead
         """
         return self.__shipping_amount
 

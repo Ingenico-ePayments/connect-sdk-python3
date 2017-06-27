@@ -1,6 +1,7 @@
+# -*- coding: utf-8 -*-
 #
 # This class was auto-generated from the API references found at
-# https://developer.globalcollect.com/documentation/api/server/
+# https://epayments-api.developer-ingenico.com/s2sapi/v1/
 #
 from ingenico.connect.sdk.data_object import DataObject
 from ingenico.connect.sdk.domain.payment.definitions.approve_payment_non_sepa_direct_debit_payment_method_specific_input import ApprovePaymentNonSepaDirectDebitPaymentMethodSpecificInput
@@ -9,11 +10,6 @@ from ingenico.connect.sdk.domain.payment.definitions.order_approve_payment impor
 
 
 class ApprovePaymentRequest(DataObject):
-    """
-    Class ApprovePaymentRequest
-    
-    See also https://developer.globalcollect.com/documentation/api/server/#schema_ApprovePaymentRequest
-    """
 
     __amount = None
     __direct_debit_payment_method_specific_input = None
@@ -23,7 +19,9 @@ class ApprovePaymentRequest(DataObject):
     @property
     def amount(self):
         """
-        int
+        | In case you want to approve the capture of a different lower amount you can specify this here (specified in cents, where single digit currencies are presumed to have 2 digits)
+        
+        Type: int
         """
         return self.__amount
 
@@ -34,7 +32,9 @@ class ApprovePaymentRequest(DataObject):
     @property
     def direct_debit_payment_method_specific_input(self):
         """
-        :class:`ApprovePaymentNonSepaDirectDebitPaymentMethodSpecificInput`
+        | Object that holds non-SEPA Direct Debit specific input data
+        
+        Type: :class:`ingenico.connect.sdk.domain.payment.definitions.approve_payment_non_sepa_direct_debit_payment_method_specific_input.ApprovePaymentNonSepaDirectDebitPaymentMethodSpecificInput`
         """
         return self.__direct_debit_payment_method_specific_input
 
@@ -45,7 +45,9 @@ class ApprovePaymentRequest(DataObject):
     @property
     def order(self):
         """
-        :class:`OrderApprovePayment`
+        | Object that holds the order data
+        
+        Type: :class:`ingenico.connect.sdk.domain.payment.definitions.order_approve_payment.OrderApprovePayment`
         """
         return self.__order
 
@@ -56,7 +58,9 @@ class ApprovePaymentRequest(DataObject):
     @property
     def sepa_direct_debit_payment_method_specific_input(self):
         """
-        :class:`ApprovePaymentSepaDirectDebitPaymentMethodSpecificInput`
+        | Object that holds SEPA Direct Debit specific input data
+        
+        Type: :class:`ingenico.connect.sdk.domain.payment.definitions.approve_payment_sepa_direct_debit_payment_method_specific_input.ApprovePaymentSepaDirectDebitPaymentMethodSpecificInput`
         """
         return self.__sepa_direct_debit_payment_method_specific_input
 

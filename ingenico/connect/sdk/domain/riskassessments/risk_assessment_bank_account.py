@@ -1,6 +1,7 @@
+# -*- coding: utf-8 -*-
 #
 # This class was auto-generated from the API references found at
-# https://developer.globalcollect.com/documentation/api/server/
+# https://epayments-api.developer-ingenico.com/s2sapi/v1/
 #
 from ingenico.connect.sdk.domain.definitions.bank_account_bban import BankAccountBban
 from ingenico.connect.sdk.domain.definitions.bank_account_iban import BankAccountIban
@@ -8,11 +9,6 @@ from ingenico.connect.sdk.domain.riskassessments.definitions.risk_assessment imp
 
 
 class RiskAssessmentBankAccount(RiskAssessment):
-    """
-    Class RiskAssessmentBankAccount
-    
-    See also https://developer.globalcollect.com/documentation/api/server/#schema_RiskAssessmentBankAccount
-    """
 
     __bank_account_bban = None
     __bank_account_iban = None
@@ -20,7 +16,9 @@ class RiskAssessmentBankAccount(RiskAssessment):
     @property
     def bank_account_bban(self):
         """
-        :class:`BankAccountBban`
+        | Object containing account holder name and bank account information
+        
+        Type: :class:`ingenico.connect.sdk.domain.definitions.bank_account_bban.BankAccountBban`
         """
         return self.__bank_account_bban
 
@@ -31,7 +29,9 @@ class RiskAssessmentBankAccount(RiskAssessment):
     @property
     def bank_account_iban(self):
         """
-        :class:`BankAccountIban`
+        | Object containing account holder name and IBAN information
+        
+        Type: :class:`ingenico.connect.sdk.domain.definitions.bank_account_iban.BankAccountIban`
         """
         return self.__bank_account_iban
 

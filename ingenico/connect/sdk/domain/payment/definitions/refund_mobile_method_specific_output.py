@@ -1,23 +1,21 @@
+# -*- coding: utf-8 -*-
 #
 # This class was auto-generated from the API references found at
-# https://developer.globalcollect.com/documentation/api/server/
+# https://epayments-api.developer-ingenico.com/s2sapi/v1/
 #
 from ingenico.connect.sdk.domain.payment.definitions.refund_method_specific_output import RefundMethodSpecificOutput
 
 
 class RefundMobileMethodSpecificOutput(RefundMethodSpecificOutput):
-    """
-    Class RefundMobileMethodSpecificOutput
-    
-    See also https://developer.globalcollect.com/documentation/api/server/#schema_RefundMobileMethodSpecificOutput
-    """
 
     __network = None
 
     @property
     def network(self):
         """
-        str
+        | The network that was used for the refund. The string that represents the network is identical to the strings that the payment product vendors use in their documentation.For instance: "Visa" for Android Pay <https://developer.apple.com/reference/passkit/pkpaymentnetwork>.
+        
+        Type: str
         """
         return self.__network
 

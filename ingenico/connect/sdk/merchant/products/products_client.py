@@ -1,6 +1,6 @@
 #
 # This class was auto-generated from the API references found at
-# https://developer.globalcollect.com/documentation/api/server/
+# https://epayments-api.developer-ingenico.com/s2sapi/v1/
 #
 from ingenico.connect.sdk.api_resource import ApiResource
 from ingenico.connect.sdk.response_exception import ResponseException
@@ -19,7 +19,7 @@ class ProductsClient(ApiResource):
 
     def __init__(self, parent, path_context):
         """
-        :param parent:       :class:`ApiResource`
+        :param parent:       :class:`ingenico.connect.sdk.api_resource.ApiResource`
         :param path_context: dict[str, str]
         """
         super(ProductsClient, self).__init__(parent, path_context)
@@ -28,12 +28,13 @@ class ProductsClient(ApiResource):
         """
         Resource /{merchantId}/products
 
-        Get payment products
+        | Get payment products
         
-        See also https://developer.globalcollect.com/documentation/api/server/#__merchantId__products_get
+        See also https://epayments-api.developer-ingenico.com/s2sapi/v1/en_US/python/products/find.html
 
-        :param query:    :class:`FindProductsParams`
-        :return: :class:`PaymentProducts`
+        :param query:    :class:`ingenico.connect.sdk.merchant.products.find_products_params.FindProductsParams`
+        :param context:  :class:`ingenico.connect.sdk.call_context.CallContext`
+        :return: :class:`ingenico.connect.sdk.domain.product.payment_products.PaymentProducts`
         :raise: ValidationException if the request was not correct and couldn't be processed (HTTP status code 400)
         :raise: AuthorizationException if the request was not allowed (HTTP status code 403)
         :raise: ReferenceException if an object was attempted to be referenced that doesn't exist or has been removed,
@@ -61,13 +62,14 @@ class ProductsClient(ApiResource):
         """
         Resource /{merchantId}/products/{paymentProductId}
 
-        Get payment product
+        | Get payment product
         
-        See also https://developer.globalcollect.com/documentation/api/server/#__merchantId__products__paymentProductId__get
+        See also https://epayments-api.developer-ingenico.com/s2sapi/v1/en_US/python/products/get.html
 
         :param payment_product_id:  int
-        :param query:               :class:`GetProductParams`
-        :return: :class:`PaymentProductResponse`
+        :param query:               :class:`ingenico.connect.sdk.merchant.products.get_product_params.GetProductParams`
+        :param context:             :class:`ingenico.connect.sdk.call_context.CallContext`
+        :return: :class:`ingenico.connect.sdk.domain.product.payment_product_response.PaymentProductResponse`
         :raise: ValidationException if the request was not correct and couldn't be processed (HTTP status code 400)
         :raise: AuthorizationException if the request was not allowed (HTTP status code 403)
         :raise: ReferenceException if an object was attempted to be referenced that doesn't exist or has been removed,
@@ -98,13 +100,14 @@ class ProductsClient(ApiResource):
         """
         Resource /{merchantId}/products/{paymentProductId}/directory
 
-        Get payment product directory
+        | Get payment product directory
         
-        See also https://developer.globalcollect.com/documentation/api/server/#__merchantId__products__paymentProductId__directory_get
+        See also https://epayments-api.developer-ingenico.com/s2sapi/v1/en_US/python/products/directory.html
 
         :param payment_product_id:  int
-        :param query:               :class:`DirectoryParams`
-        :return: :class:`Directory`
+        :param query:               :class:`ingenico.connect.sdk.merchant.products.directory_params.DirectoryParams`
+        :param context:             :class:`ingenico.connect.sdk.call_context.CallContext`
+        :return: :class:`ingenico.connect.sdk.domain.product.directory.Directory`
         :raise: ValidationException if the request was not correct and couldn't be processed (HTTP status code 400)
         :raise: AuthorizationException if the request was not allowed (HTTP status code 403)
         :raise: ReferenceException if an object was attempted to be referenced that doesn't exist or has been removed,
@@ -127,9 +130,7 @@ class ProductsClient(ApiResource):
                     context)
 
         except ResponseException as e:
-            error_type = {
-                404: ErrorResponse,
-            }.get(e.status_code, ErrorResponse)
+            error_type = ErrorResponse
             error_object = self._communicator.marshaller.unmarshal(e.body, error_type)
             raise self._create_exception(e.status_code, e.body, error_object, context)
 
@@ -137,13 +138,14 @@ class ProductsClient(ApiResource):
         """
         Resource /{merchantId}/products/{paymentProductId}/networks
 
-        Get payment product networks
+        | Get payment product networks
         
-        See also https://developer.globalcollect.com/documentation/api/server/#__merchantId__products__paymentProductId__networks_get
+        See also https://epayments-api.developer-ingenico.com/s2sapi/v1/en_US/python/products/networks.html
 
         :param payment_product_id:  int
-        :param query:               :class:`NetworksParams`
-        :return: :class:`PaymentProductNetworksResponse`
+        :param query:               :class:`ingenico.connect.sdk.merchant.products.networks_params.NetworksParams`
+        :param context:             :class:`ingenico.connect.sdk.call_context.CallContext`
+        :return: :class:`ingenico.connect.sdk.domain.product.payment_product_networks_response.PaymentProductNetworksResponse`
         :raise: ValidationException if the request was not correct and couldn't be processed (HTTP status code 400)
         :raise: AuthorizationException if the request was not allowed (HTTP status code 403)
         :raise: ReferenceException if an object was attempted to be referenced that doesn't exist or has been removed,
@@ -166,9 +168,7 @@ class ProductsClient(ApiResource):
                     context)
 
         except ResponseException as e:
-            error_type = {
-                404: ErrorResponse,
-            }.get(e.status_code, ErrorResponse)
+            error_type = ErrorResponse
             error_object = self._communicator.marshaller.unmarshal(e.body, error_type)
             raise self._create_exception(e.status_code, e.body, error_object, context)
 
@@ -176,12 +176,13 @@ class ProductsClient(ApiResource):
         """
         Resource /{merchantId}/products/{paymentProductId}/publicKey
 
-        Get payment product specific public key
+        | Get payment product specific public key
         
-        See also https://developer.globalcollect.com/documentation/api/server/#__merchantId__products__paymentProductId__publicKey_get
+        See also https://epayments-api.developer-ingenico.com/s2sapi/v1/en_US/python/products/publicKey.html
 
         :param payment_product_id:  int
-        :return: :class:`PublicKey`
+        :param context:             :class:`ingenico.connect.sdk.call_context.CallContext`
+        :return: :class:`ingenico.connect.sdk.domain.publickey.public_key.PublicKey`
         :raise: ValidationException if the request was not correct and couldn't be processed (HTTP status code 400)
         :raise: AuthorizationException if the request was not allowed (HTTP status code 403)
         :raise: ReferenceException if an object was attempted to be referenced that doesn't exist or has been removed,
@@ -204,8 +205,6 @@ class ProductsClient(ApiResource):
                     context)
 
         except ResponseException as e:
-            error_type = {
-                404: ErrorResponse,
-            }.get(e.status_code, ErrorResponse)
+            error_type = ErrorResponse
             error_object = self._communicator.marshaller.unmarshal(e.body, error_type)
             raise self._create_exception(e.status_code, e.body, error_object, context)

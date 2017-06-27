@@ -1,6 +1,7 @@
+# -*- coding: utf-8 -*-
 #
 # This class was auto-generated from the API references found at
-# https://developer.globalcollect.com/documentation/api/server/
+# https://epayments-api.developer-ingenico.com/s2sapi/v1/
 #
 from ingenico.connect.sdk.data_object import DataObject
 from ingenico.connect.sdk.domain.definitions.address import Address
@@ -8,11 +9,6 @@ from ingenico.connect.sdk.domain.payment.definitions.payment_product840_customer
 
 
 class PaymentProduct840SpecificOutput(DataObject):
-    """
-    Class PaymentProduct840SpecificOutput
-    
-    See also https://developer.globalcollect.com/documentation/api/server/#schema_PaymentProduct840SpecificOutput
-    """
 
     __customer_account = None
     __customer_address = None
@@ -20,7 +16,9 @@ class PaymentProduct840SpecificOutput(DataObject):
     @property
     def customer_account(self):
         """
-        :class:`PaymentProduct840CustomerAccount`
+        | Object containing the details of the PayPal account
+        
+        Type: :class:`ingenico.connect.sdk.domain.payment.definitions.payment_product840_customer_account.PaymentProduct840CustomerAccount`
         """
         return self.__customer_account
 
@@ -31,7 +29,9 @@ class PaymentProduct840SpecificOutput(DataObject):
     @property
     def customer_address(self):
         """
-        :class:`Address`
+        | Object containing the address details of the consumer
+        
+        Type: :class:`ingenico.connect.sdk.domain.definitions.address.Address`
         """
         return self.__customer_address
 

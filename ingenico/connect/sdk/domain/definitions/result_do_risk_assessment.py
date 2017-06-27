@@ -1,6 +1,7 @@
+# -*- coding: utf-8 -*-
 #
 # This class was auto-generated from the API references found at
-# https://developer.globalcollect.com/documentation/api/server/
+# https://epayments-api.developer-ingenico.com/s2sapi/v1/
 #
 from ingenico.connect.sdk.data_object import DataObject
 from ingenico.connect.sdk.domain.definitions.retail_decisions_cc_fraud_check_output import RetailDecisionsCCFraudCheckOutput
@@ -8,11 +9,6 @@ from ingenico.connect.sdk.domain.definitions.validation_bank_account_output impo
 
 
 class ResultDoRiskAssessment(DataObject):
-    """
-    Class ResultDoRiskAssessment
-    
-    See also https://developer.globalcollect.com/documentation/api/server/#schema_ResultDoRiskAssessment
-    """
 
     __category = None
     __result = None
@@ -22,7 +18,16 @@ class ResultDoRiskAssessment(DataObject):
     @property
     def category(self):
         """
-        str
+        | The Risk Services category with the following possible values:
+        
+        * retaildecisionsCCFraudCheck - checks performed by Retail Decisions
+        * globalcollectBlacklistCheckCC - Checked against the blacklist on the GlobalCollect platform
+        * authorizationCheck - 0$ auth card account validation check
+        * ddFraudCheck - Check performed for German market via InterCard
+        * validationbankAccount - Bank account details are algorithmically checked if they could exist
+        * globalcollectBlacklistCheckDD - Checked against the blacklist on the GlobalCollect platform
+        
+        Type: str
         """
         return self.__category
 
@@ -33,7 +38,15 @@ class ResultDoRiskAssessment(DataObject):
     @property
     def result(self):
         """
-        str
+        | Risk service result with the following possible results:
+        
+        * accepted - Based on the checks performed the transaction can be accepted
+        * challenged - Based on the checks performed the transaction should be manually reviewed
+        * denied - Based on the checks performed the transaction should be rejected
+        * no-advice - No fraud check was requested/performed
+        * error - The fraud check resulted in an error and the fraud check was thus not performed
+        
+        Type: str
         """
         return self.__result
 
@@ -44,7 +57,9 @@ class ResultDoRiskAssessment(DataObject):
     @property
     def retaildecisions_cc_fraud_check_output(self):
         """
-        :class:`RetailDecisionsCCFraudCheckOutput`
+        | Object containing the results of the fraud checks performed by Retail Decisions
+        
+        Type: :class:`ingenico.connect.sdk.domain.definitions.retail_decisions_cc_fraud_check_output.RetailDecisionsCCFraudCheckOutput`
         """
         return self.__retaildecisions_cc_fraud_check_output
 
@@ -55,7 +70,9 @@ class ResultDoRiskAssessment(DataObject):
     @property
     def validation_bank_account_output(self):
         """
-        :class:`ValidationBankAccountOutput`
+        | Object containing the results of the fraud checks performed on the bank account data
+        
+        Type: :class:`ingenico.connect.sdk.domain.definitions.validation_bank_account_output.ValidationBankAccountOutput`
         """
         return self.__validation_bank_account_output
 

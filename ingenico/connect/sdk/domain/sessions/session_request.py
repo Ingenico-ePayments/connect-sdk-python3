@@ -1,17 +1,13 @@
+# -*- coding: utf-8 -*-
 #
 # This class was auto-generated from the API references found at
-# https://developer.globalcollect.com/documentation/api/server/
+# https://epayments-api.developer-ingenico.com/s2sapi/v1/
 #
 from ingenico.connect.sdk.data_object import DataObject
 from ingenico.connect.sdk.domain.sessions.definitions.payment_product_filters_client_session import PaymentProductFiltersClientSession
 
 
 class SessionRequest(DataObject):
-    """
-    Class SessionRequest
-    
-    See also https://developer.globalcollect.com/documentation/api/server/#schema_SessionRequest
-    """
 
     __payment_product_filters = None
     __tokens = None
@@ -19,7 +15,9 @@ class SessionRequest(DataObject):
     @property
     def payment_product_filters(self):
         """
-        :class:`PaymentProductFiltersClientSession`
+        | Restrict the payment products available for payment completion by restricting to and excluding certain payment products and payment product groups.
+        
+        Type: :class:`ingenico.connect.sdk.domain.sessions.definitions.payment_product_filters_client_session.PaymentProductFiltersClientSession`
         """
         return self.__payment_product_filters
 
@@ -30,7 +28,9 @@ class SessionRequest(DataObject):
     @property
     def tokens(self):
         """
-        list[str]
+        | List of previously stored tokens linked to the consumer that wants to checkout.
+        
+        Type: list[str]
         """
         return self.__tokens
 

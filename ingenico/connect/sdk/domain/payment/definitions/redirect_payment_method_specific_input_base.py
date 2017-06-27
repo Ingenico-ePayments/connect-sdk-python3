@@ -1,16 +1,12 @@
+# -*- coding: utf-8 -*-
 #
 # This class was auto-generated from the API references found at
-# https://developer.globalcollect.com/documentation/api/server/
+# https://epayments-api.developer-ingenico.com/s2sapi/v1/
 #
 from ingenico.connect.sdk.domain.definitions.abstract_payment_method_specific_input import AbstractPaymentMethodSpecificInput
 
 
 class RedirectPaymentMethodSpecificInputBase(AbstractPaymentMethodSpecificInput):
-    """
-    Class RedirectPaymentMethodSpecificInputBase
-    
-    See also https://developer.globalcollect.com/documentation/api/server/#schema_RedirectPaymentMethodSpecificInputBase
-    """
 
     __expiration_period = None
     __recurring_payment_sequence_indicator = None
@@ -19,7 +15,14 @@ class RedirectPaymentMethodSpecificInputBase(AbstractPaymentMethodSpecificInput)
     @property
     def expiration_period(self):
         """
-        int
+        | This sets the maximum amount of minutes a consumer has to complete the payment at the bank. After this period has expired it is impossible for the consumer to make a payment and in case no payment has been made the transaction will be marked as unsuccessful and expired by the bank. Setting the expirationPeriod is convenient if you want to maximise the time a consumer has to complete the payment. Please note that it is normal for a consumer to take up to 5 minutes to complete a payment. Setting this value below 10 minutes is not advised.
+        | You can set this value in minutes with a maximum value of 60 minutes. If no input is provided the default value of 60 is used for the transaction.
+        | This value can be set for the following payment products
+        
+        * 809 - iDeal
+        * 402 - eCard Poland
+        
+        Type: int
         """
         return self.__expiration_period
 
@@ -30,7 +33,13 @@ class RedirectPaymentMethodSpecificInputBase(AbstractPaymentMethodSpecificInput)
     @property
     def recurring_payment_sequence_indicator(self):
         """
-        str
+        * first = This transaction is the first of a series of recurring transactions
+        * recurring = This transaction is a subsequent transaction in a series of recurring transactions
+        
+        | Note: Will default to first when isRecurring is set to true, with the following exception that it is set to recurring when the consumer is making the payment using a PayPal token.
+        | Note: For any first of a recurring the system will automatically create a token as you will need to use a token for any subsequent recurring transactions. In case a token already exists this is indicated in the response with a value of False for the isNewToken property in the response.
+        
+        Type: str
         """
         return self.__recurring_payment_sequence_indicator
 
@@ -41,7 +50,9 @@ class RedirectPaymentMethodSpecificInputBase(AbstractPaymentMethodSpecificInput)
     @property
     def token(self):
         """
-        str
+        | ID of the token
+        
+        Type: str
         """
         return self.__token
 

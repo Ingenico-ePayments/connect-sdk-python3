@@ -1,16 +1,12 @@
+# -*- coding: utf-8 -*-
 #
 # This class was auto-generated from the API references found at
-# https://developer.globalcollect.com/documentation/api/server/
+# https://epayments-api.developer-ingenico.com/s2sapi/v1/
 #
 from ingenico.connect.sdk.data_object import DataObject
 
 
 class ValidationBankAccountCheck(DataObject):
-    """
-    Class ValidationBankAccountCheck
-    
-    See also https://developer.globalcollect.com/documentation/api/server/#schema_ValidationBankAccountCheck
-    """
 
     __code = None
     __description = None
@@ -19,7 +15,9 @@ class ValidationBankAccountCheck(DataObject):
     @property
     def code(self):
         """
-        str
+        | Code of the bank account validation check
+        
+        Type: str
         """
         return self.__code
 
@@ -30,7 +28,9 @@ class ValidationBankAccountCheck(DataObject):
     @property
     def description(self):
         """
-        str
+        | Description of check performed
+        
+        Type: str
         """
         return self.__description
 
@@ -41,7 +41,14 @@ class ValidationBankAccountCheck(DataObject):
     @property
     def result(self):
         """
-        str
+        | Result of the bank account validation check performed, with the following possible results:
+        
+        * PASSED - The check passed
+        * ERROR - The check did not pass
+        * WARNING - Depending on your needs this either needs to be treated as a passed or error response. It depends on your business logic and for what purpose you want to use the validated bank account details.
+        * NOTCHECKED - This check was not performed, usually because one of the earlier checks already caused an error response to be triggered
+        
+        Type: str
         """
         return self.__result
 

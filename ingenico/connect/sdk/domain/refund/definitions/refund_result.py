@@ -1,6 +1,7 @@
+# -*- coding: utf-8 -*-
 #
 # This class was auto-generated from the API references found at
-# https://developer.globalcollect.com/documentation/api/server/
+# https://epayments-api.developer-ingenico.com/s2sapi/v1/
 #
 from ingenico.connect.sdk.domain.definitions.abstract_order_status import AbstractOrderStatus
 from ingenico.connect.sdk.domain.definitions.order_status_output import OrderStatusOutput
@@ -8,11 +9,6 @@ from ingenico.connect.sdk.domain.payment.definitions.refund_output import Refund
 
 
 class RefundResult(AbstractOrderStatus):
-    """
-    Class RefundResult
-    
-    See also https://developer.globalcollect.com/documentation/api/server/#schema_RefundResult
-    """
 
     __refund_output = None
     __status = None
@@ -21,7 +17,9 @@ class RefundResult(AbstractOrderStatus):
     @property
     def refund_output(self):
         """
-        :class:`RefundOutput`
+        | Object containing refund details
+        
+        Type: :class:`ingenico.connect.sdk.domain.payment.definitions.refund_output.RefundOutput`
         """
         return self.__refund_output
 
@@ -32,7 +30,20 @@ class RefundResult(AbstractOrderStatus):
     @property
     def status(self):
         """
-        str
+        | Current high-level status of the refund in a human-readable form. Possible values are:
+        
+        * CREATED - The transaction has been created. This is the initial state once a new refund is created.
+        * PENDING_APPROVAL - The transaction is awaiting approval from you to proceed with the processing of the refund
+        * REJECTED - The refund has been rejected
+        * REFUND_REQUESTED - The transaction is in the queue to be refunded
+        * REFUNDED - We have successfully refunded the consumer
+        * REJECTED_CAPTURE - The refund was rejected by the bank or us during processing
+        * CANCELLED - You have cancelled the transaction
+        
+        
+        | Please see Statuses <https://epayments-api.developer-ingenico.com/s2sapi/v1/en_US/python/statuses.html> for a full overview of possible values.
+        
+        Type: str
         """
         return self.__status
 
@@ -43,7 +54,10 @@ class RefundResult(AbstractOrderStatus):
     @property
     def status_output(self):
         """
-        :class:`OrderStatusOutput`
+        | This object has the numeric representation of the current refund status, timestamp of last status change and performable action on the current refund resource.
+        | In case of a rejected refund, detailed error information is listed.
+        
+        Type: :class:`ingenico.connect.sdk.domain.definitions.order_status_output.OrderStatusOutput`
         """
         return self.__status_output
 

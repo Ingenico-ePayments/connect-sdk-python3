@@ -1,6 +1,7 @@
+# -*- coding: utf-8 -*-
 #
 # This class was auto-generated from the API references found at
-# https://developer.globalcollect.com/documentation/api/server/
+# https://epayments-api.developer-ingenico.com/s2sapi/v1/
 #
 from ingenico.connect.sdk.domain.definitions.bank_account_iban import BankAccountIban
 from ingenico.connect.sdk.domain.payment.definitions.abstract_payment_method_specific_output import AbstractPaymentMethodSpecificOutput
@@ -9,11 +10,6 @@ from ingenico.connect.sdk.domain.payment.definitions.payment_product840_specific
 
 
 class RedirectPaymentMethodSpecificOutput(AbstractPaymentMethodSpecificOutput):
-    """
-    Class RedirectPaymentMethodSpecificOutput
-    
-    See also https://developer.globalcollect.com/documentation/api/server/#schema_RedirectPaymentMethodSpecificOutput
-    """
 
     __bank_account_iban = None
     __payment_product836_specific_output = None
@@ -22,7 +18,9 @@ class RedirectPaymentMethodSpecificOutput(AbstractPaymentMethodSpecificOutput):
     @property
     def bank_account_iban(self):
         """
-        :class:`BankAccountIban`
+        | Object containing account holder name and IBAN information
+        
+        Type: :class:`ingenico.connect.sdk.domain.definitions.bank_account_iban.BankAccountIban`
         """
         return self.__bank_account_iban
 
@@ -33,7 +31,9 @@ class RedirectPaymentMethodSpecificOutput(AbstractPaymentMethodSpecificOutput):
     @property
     def payment_product836_specific_output(self):
         """
-        :class:`PaymentProduct836SpecificOutput`
+        | SofortBanking (payment product 836) specific details
+        
+        Type: :class:`ingenico.connect.sdk.domain.payment.definitions.payment_product836_specific_output.PaymentProduct836SpecificOutput`
         """
         return self.__payment_product836_specific_output
 
@@ -44,7 +44,9 @@ class RedirectPaymentMethodSpecificOutput(AbstractPaymentMethodSpecificOutput):
     @property
     def payment_product840_specific_output(self):
         """
-        :class:`PaymentProduct840SpecificOutput`
+        | PayPal (payment product 840) specific details
+        
+        Type: :class:`ingenico.connect.sdk.domain.payment.definitions.payment_product840_specific_output.PaymentProduct840SpecificOutput`
         """
         return self.__payment_product840_specific_output
 

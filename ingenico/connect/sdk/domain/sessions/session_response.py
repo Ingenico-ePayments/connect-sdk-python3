@@ -1,16 +1,12 @@
+# -*- coding: utf-8 -*-
 #
 # This class was auto-generated from the API references found at
-# https://developer.globalcollect.com/documentation/api/server/
+# https://epayments-api.developer-ingenico.com/s2sapi/v1/
 #
 from ingenico.connect.sdk.data_object import DataObject
 
 
 class SessionResponse(DataObject):
-    """
-    Class SessionResponse
-    
-    See also https://developer.globalcollect.com/documentation/api/server/#schema_SessionResponse
-    """
 
     __client_session_id = None
     __customer_id = None
@@ -20,7 +16,9 @@ class SessionResponse(DataObject):
     @property
     def client_session_id(self):
         """
-        str
+        | The identifier of the session that has been created.
+        
+        Type: str
         """
         return self.__client_session_id
 
@@ -31,7 +29,9 @@ class SessionResponse(DataObject):
     @property
     def customer_id(self):
         """
-        str
+        | The session is build up around the consumer in the form of the customerId. All of the Client APIs use this customerId in the URI to identify the consumer.
+        
+        Type: str
         """
         return self.__customer_id
 
@@ -42,7 +42,9 @@ class SessionResponse(DataObject):
     @property
     def invalid_tokens(self):
         """
-        list[str]
+        | Tokens that are submitted in the request are validated. In case any of the tokens can't be used anymore they are returned in this array. You should most likely remove those tokens from your system.
+        
+        Type: list[str]
         """
         return self.__invalid_tokens
 
@@ -53,7 +55,14 @@ class SessionResponse(DataObject):
     @property
     def region(self):
         """
-        str
+        | Possible values:
+        
+        * EU - datacenter located in Amsterdam
+        * US - datacenter located in Miami
+        
+        | When a session is created it is created in a specific datacenter. Any subsequent calls using the Client API need to be datacenter specific. The region is identified either by EU (datacenter located in Amsterdam) or US (datacenter located in Miami). This value needs to be passed to the a Client SDK to make sure that the client software connects to the right datacenter.
+        
+        Type: str
         """
         return self.__region
 

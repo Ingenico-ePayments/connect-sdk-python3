@@ -1,16 +1,12 @@
+# -*- coding: utf-8 -*-
 #
 # This class was auto-generated from the API references found at
-# https://developer.globalcollect.com/documentation/api/server/
+# https://epayments-api.developer-ingenico.com/s2sapi/v1/
 #
 from ingenico.connect.sdk.data_object import DataObject
 
 
 class KeyValuePair(DataObject):
-    """
-    Class KeyValuePair
-    
-    See also https://developer.globalcollect.com/documentation/api/server/#schema_KeyValuePair
-    """
 
     __key = None
     __value = None
@@ -18,7 +14,9 @@ class KeyValuePair(DataObject):
     @property
     def key(self):
         """
-        str
+        | Name of the key or field
+        
+        Type: str
         """
         return self.__key
 
@@ -29,7 +27,9 @@ class KeyValuePair(DataObject):
     @property
     def value(self):
         """
-        str
+        | Value of the key or field
+        
+        Type: str
         """
         return self.__value
 

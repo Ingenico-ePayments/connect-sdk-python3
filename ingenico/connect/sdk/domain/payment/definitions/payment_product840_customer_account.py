@@ -1,15 +1,14 @@
+# -*- coding: utf-8 -*-
 #
 # This class was auto-generated from the API references found at
-# https://developer.globalcollect.com/documentation/api/server/
+# https://epayments-api.developer-ingenico.com/s2sapi/v1/
 #
 from ingenico.connect.sdk.data_object import DataObject
 
 
 class PaymentProduct840CustomerAccount(DataObject):
     """
-    Class PaymentProduct840CustomerAccount
-    
-    See also https://developer.globalcollect.com/documentation/api/server/#schema_PaymentProduct840CustomerAccount
+    | PayPal account details as returned by PayPal
     """
 
     __account_id = None
@@ -25,7 +24,9 @@ class PaymentProduct840CustomerAccount(DataObject):
     @property
     def account_id(self):
         """
-        str
+        | Username with which the PayPal account holder has registered at PayPal
+        
+        Type: str
         """
         return self.__account_id
 
@@ -36,7 +37,9 @@ class PaymentProduct840CustomerAccount(DataObject):
     @property
     def billing_agreement_id(self):
         """
-        str
+        | Identification of the PayPal recurring billing agreement
+        
+        Type: str
         """
         return self.__billing_agreement_id
 
@@ -47,7 +50,9 @@ class PaymentProduct840CustomerAccount(DataObject):
     @property
     def company_name(self):
         """
-        str
+        | Name of the company in case the PayPal account is owned by a business
+        
+        Type: str
         """
         return self.__company_name
 
@@ -58,7 +63,9 @@ class PaymentProduct840CustomerAccount(DataObject):
     @property
     def country_code(self):
         """
-        str
+        | Country where the PayPal account is located
+        
+        Type: str
         """
         return self.__country_code
 
@@ -69,7 +76,13 @@ class PaymentProduct840CustomerAccount(DataObject):
     @property
     def customer_account_status(self):
         """
-        str
+        | Status of the PayPal account.
+        | Possible values are:
+        
+        * verified - PayPal has verified the funding means for this account
+        * unverified - PayPal has not verified the funding means for this account
+        
+        Type: str
         """
         return self.__customer_account_status
 
@@ -80,7 +93,14 @@ class PaymentProduct840CustomerAccount(DataObject):
     @property
     def customer_address_status(self):
         """
-        str
+        | Status of the consumer's shipping address as registered by PayPal
+        | Possible values are:
+        
+        * none - Status is unknown at PayPal
+        * confirmed - The address has been confirmed
+        * unconfirmed - The address has not been confirmed
+        
+        Type: str
         """
         return self.__customer_address_status
 
@@ -91,7 +111,9 @@ class PaymentProduct840CustomerAccount(DataObject):
     @property
     def first_name(self):
         """
-        str
+        | First name of the PayPal account holder
+        
+        Type: str
         """
         return self.__first_name
 
@@ -102,7 +124,9 @@ class PaymentProduct840CustomerAccount(DataObject):
     @property
     def payer_id(self):
         """
-        str
+        | The unique identifier of a PayPal account and will never change in the life cycle of a PayPal account
+        
+        Type: str
         """
         return self.__payer_id
 
@@ -113,7 +137,9 @@ class PaymentProduct840CustomerAccount(DataObject):
     @property
     def surname(self):
         """
-        str
+        | Surname of the PayPal account holder
+        
+        Type: str
         """
         return self.__surname
 

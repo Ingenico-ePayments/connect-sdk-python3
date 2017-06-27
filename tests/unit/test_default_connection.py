@@ -2,6 +2,8 @@ import unittest
 import warnings
 
 from ingenico.connect.sdk.communicator_configuration import CommunicatorConfiguration
+from ingenico.connect.sdk.log.response_log_message import ResponseLogMessage
+from ingenico.connect.sdk.log.sys_out_communicator_logger import SysOutCommunicatorLogger
 from ingenico.connect.sdk.defaultimpl.default_connection import DefaultConnection
 from ingenico.connect.sdk.proxy_configuration import ProxyConfiguration
 
@@ -13,6 +15,29 @@ MAX_CONNECTIONS = 100
 # noinspection PyTypeChecker
 class DefaultConnectionTest(unittest.TestCase):
     """Tests that a DefaultConnection can be constructed with a multitude of settings"""
+
+    def test_log_unicode_2(self):
+        """Tests if requests can be logged correctly"""
+        logger = SysOutCommunicatorLogger()
+        message = ResponseLogMessage(request_id="aaa",
+                                     status_code=2345,
+                                     duration=45.32)
+        body = u"Schr\xf6der"
+        content = "JSON"
+        message.set_body(body, content)
+        logger.log_response(message)
+
+    def test_log_unicode(self):
+        """Tests if requests can be logged correctly"""
+        logger = SysOutCommunicatorLogger()
+        message = ResponseLogMessage(request_id="aaa",
+                                     status_code=2345,
+                                     duration=45.32)
+        body = u"Schr\u0e23\u0e16der"
+        content = "JSON"
+        message.set_body(body, content)
+        logger.log_response(message)
+
 
     def test_construct_without_proxy(self):
         """Tests construction of a DefaultConnection without using a proxy"""

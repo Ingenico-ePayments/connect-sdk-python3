@@ -1,24 +1,22 @@
+# -*- coding: utf-8 -*-
 #
 # This class was auto-generated from the API references found at
-# https://developer.globalcollect.com/documentation/api/server/
+# https://epayments-api.developer-ingenico.com/s2sapi/v1/
 #
 from ingenico.connect.sdk.domain.token.definitions.creditor import Creditor
 from ingenico.connect.sdk.domain.token.definitions.mandate_sepa_direct_debit_with_mandate_id import MandateSepaDirectDebitWithMandateId
 
 
 class MandateSepaDirectDebit(MandateSepaDirectDebitWithMandateId):
-    """
-    Class MandateSepaDirectDebit
-    
-    See also https://developer.globalcollect.com/documentation/api/server/#schema_MandateSepaDirectDebit
-    """
 
     __creditor = None
 
     @property
     def creditor(self):
         """
-        :class:`Creditor`
+        | Object containing information on the creditor
+        
+        Type: :class:`ingenico.connect.sdk.domain.token.definitions.creditor.Creditor`
         """
         return self.__creditor
 

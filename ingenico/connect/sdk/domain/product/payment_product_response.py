@@ -1,16 +1,12 @@
+# -*- coding: utf-8 -*-
 #
 # This class was auto-generated from the API references found at
-# https://developer.globalcollect.com/documentation/api/server/
+# https://epayments-api.developer-ingenico.com/s2sapi/v1/
 #
 from ingenico.connect.sdk.domain.product.definitions.payment_product import PaymentProduct
 
 
 class PaymentProductResponse(PaymentProduct):
-    """
-    Class PaymentProductResponse
-    
-    See also https://developer.globalcollect.com/documentation/api/server/#schema_PaymentProductResponse
-    """
 
     def to_dictionary(self):
         dictionary = super(PaymentProductResponse, self).to_dictionary()

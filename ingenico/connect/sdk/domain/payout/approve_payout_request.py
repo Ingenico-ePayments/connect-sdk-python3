@@ -1,23 +1,22 @@
+# -*- coding: utf-8 -*-
 #
 # This class was auto-generated from the API references found at
-# https://developer.globalcollect.com/documentation/api/server/
+# https://epayments-api.developer-ingenico.com/s2sapi/v1/
 #
 from ingenico.connect.sdk.data_object import DataObject
 
 
 class ApprovePayoutRequest(DataObject):
-    """
-    Class ApprovePayoutRequest
-    
-    See also https://developer.globalcollect.com/documentation/api/server/#schema_ApprovePayoutRequest
-    """
 
     __date_payout = None
 
     @property
     def date_payout(self):
         """
-        str
+        | The desired date for the payout
+        | Format: YYYYMMDD
+        
+        Type: str
         """
         return self.__date_payout
 

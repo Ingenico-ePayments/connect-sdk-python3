@@ -1,6 +1,7 @@
+# -*- coding: utf-8 -*-
 #
 # This class was auto-generated from the API references found at
-# https://developer.globalcollect.com/documentation/api/server/
+# https://epayments-api.developer-ingenico.com/s2sapi/v1/
 #
 from ingenico.connect.sdk.data_object import DataObject
 from ingenico.connect.sdk.domain.definitions.amount_of_money import AmountOfMoney
@@ -10,11 +11,6 @@ from ingenico.connect.sdk.domain.refund.definitions.refund_references import Ref
 
 
 class RefundRequest(DataObject):
-    """
-    Class RefundRequest
-    
-    See also https://developer.globalcollect.com/documentation/api/server/#schema_RefundRequest
-    """
 
     __amount_of_money = None
     __bank_refund_method_specific_input = None
@@ -25,7 +21,9 @@ class RefundRequest(DataObject):
     @property
     def amount_of_money(self):
         """
-        :class:`AmountOfMoney`
+        | Object containing amount and ISO currency code attributes
+        
+        Type: :class:`ingenico.connect.sdk.domain.definitions.amount_of_money.AmountOfMoney`
         """
         return self.__amount_of_money
 
@@ -36,7 +34,9 @@ class RefundRequest(DataObject):
     @property
     def bank_refund_method_specific_input(self):
         """
-        :class:`BankRefundMethodSpecificInput`
+        | Object containing the specific input details for a bank refund
+        
+        Type: :class:`ingenico.connect.sdk.domain.refund.definitions.bank_refund_method_specific_input.BankRefundMethodSpecificInput`
         """
         return self.__bank_refund_method_specific_input
 
@@ -47,7 +47,9 @@ class RefundRequest(DataObject):
     @property
     def customer(self):
         """
-        :class:`RefundCustomer`
+        | Object containing the details of the consumer
+        
+        Type: :class:`ingenico.connect.sdk.domain.refund.definitions.refund_customer.RefundCustomer`
         """
         return self.__customer
 
@@ -58,7 +60,10 @@ class RefundRequest(DataObject):
     @property
     def refund_date(self):
         """
-        str
+        | Refund date
+        | Format: YYYYMMDD
+        
+        Type: str
         """
         return self.__refund_date
 
@@ -69,7 +74,9 @@ class RefundRequest(DataObject):
     @property
     def refund_references(self):
         """
-        :class:`RefundReferences`
+        | Object that holds all reference fields that are linked to this refund
+        
+        Type: :class:`ingenico.connect.sdk.domain.refund.definitions.refund_references.RefundReferences`
         """
         return self.__refund_references
 

@@ -1,23 +1,21 @@
+# -*- coding: utf-8 -*-
 #
 # This class was auto-generated from the API references found at
-# https://developer.globalcollect.com/documentation/api/server/
+# https://epayments-api.developer-ingenico.com/s2sapi/v1/
 #
 from ingenico.connect.sdk.data_object import DataObject
 
 
 class BankAccount(DataObject):
-    """
-    Class BankAccount
-    
-    See also https://developer.globalcollect.com/documentation/api/server/#schema_BankAccount
-    """
 
     __account_holder_name = None
 
     @property
     def account_holder_name(self):
         """
-        str
+        | Name in which the account is held.
+        
+        Type: str
         """
         return self.__account_holder_name
 

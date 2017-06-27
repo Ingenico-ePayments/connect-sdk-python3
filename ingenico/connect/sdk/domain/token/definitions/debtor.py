@@ -1,15 +1,14 @@
+# -*- coding: utf-8 -*-
 #
 # This class was auto-generated from the API references found at
-# https://developer.globalcollect.com/documentation/api/server/
+# https://epayments-api.developer-ingenico.com/s2sapi/v1/
 #
 from ingenico.connect.sdk.data_object import DataObject
 
 
 class Debtor(DataObject):
     """
-    Class Debtor
-    
-    See also https://developer.globalcollect.com/documentation/api/server/#schema_Debtor
+    | This object describes the the consumer (or company) that will be debited and it is part of a SEPA Direct Debit Mandate
     """
 
     __additional_address_info = None
@@ -27,7 +26,9 @@ class Debtor(DataObject):
     @property
     def additional_address_info(self):
         """
-        str
+        | Additional information about the debtor's address, like Suite II, Apartment 2a
+        
+        Type: str
         """
         return self.__additional_address_info
 
@@ -38,7 +39,9 @@ class Debtor(DataObject):
     @property
     def city(self):
         """
-        str
+        | City of the debtor's address
+        
+        Type: str
         """
         return self.__city
 
@@ -49,7 +52,9 @@ class Debtor(DataObject):
     @property
     def country_code(self):
         """
-        str
+        | ISO 3166-1 alpha-2 country code of the debtor's address
+        
+        Type: str
         """
         return self.__country_code
 
@@ -60,7 +65,9 @@ class Debtor(DataObject):
     @property
     def first_name(self):
         """
-        str
+        | Debtor first name
+        
+        Type: str
         """
         return self.__first_name
 
@@ -71,7 +78,9 @@ class Debtor(DataObject):
     @property
     def house_number(self):
         """
-        str
+        | House number of the debtor's address
+        
+        Type: str
         """
         return self.__house_number
 
@@ -82,7 +91,9 @@ class Debtor(DataObject):
     @property
     def state(self):
         """
-        str
+        | State of debtor address
+        
+        Type: str
         """
         return self.__state
 
@@ -93,7 +104,9 @@ class Debtor(DataObject):
     @property
     def state_code(self):
         """
-        str
+        | State Code of the debtor's address
+        
+        Type: str
         """
         return self.__state_code
 
@@ -104,7 +117,9 @@ class Debtor(DataObject):
     @property
     def street(self):
         """
-        str
+        | Street of debtor's address
+        
+        Type: str
         """
         return self.__street
 
@@ -115,7 +130,9 @@ class Debtor(DataObject):
     @property
     def surname(self):
         """
-        str
+        | Debtor's last name
+        
+        Type: str
         """
         return self.__surname
 
@@ -126,7 +143,9 @@ class Debtor(DataObject):
     @property
     def surname_prefix(self):
         """
-        str
+        | Prefix of the debtor's last name
+        
+        Type: str
         """
         return self.__surname_prefix
 
@@ -137,7 +156,9 @@ class Debtor(DataObject):
     @property
     def zip(self):
         """
-        str
+        | ZIP code of the debtor's address
+        
+        Type: str
         """
         return self.__zip
 

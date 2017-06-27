@@ -1,6 +1,6 @@
 #
 # This class was auto-generated from the API references found at
-# https://developer.globalcollect.com/documentation/api/server/
+# https://epayments-api.developer-ingenico.com/s2sapi/v1/
 #
 from ingenico.connect.sdk.api_resource import ApiResource
 from ingenico.connect.sdk.response_exception import ResponseException
@@ -16,7 +16,7 @@ class HostedcheckoutsClient(ApiResource):
 
     def __init__(self, parent, path_context):
         """
-        :param parent:       :class:`ApiResource`
+        :param parent:       :class:`ingenico.connect.sdk.api_resource.ApiResource`
         :param path_context: dict[str, str]
         """
         super(HostedcheckoutsClient, self).__init__(parent, path_context)
@@ -25,12 +25,13 @@ class HostedcheckoutsClient(ApiResource):
         """
         Resource /{merchantId}/hostedcheckouts
 
-        Create hosted checkout
+        | Create hosted checkout
         
-        See also https://developer.globalcollect.com/documentation/api/server/#__merchantId__hostedcheckouts_post
+        See also https://epayments-api.developer-ingenico.com/s2sapi/v1/en_US/python/hostedcheckouts/create.html
 
-        :param body:     :class:`CreateHostedCheckoutRequest`
-        :return: :class:`CreateHostedCheckoutResponse`
+        :param body:     :class:`ingenico.connect.sdk.domain.hostedcheckout.create_hosted_checkout_request.CreateHostedCheckoutRequest`
+        :param context:  :class:`ingenico.connect.sdk.call_context.CallContext`
+        :return: :class:`ingenico.connect.sdk.domain.hostedcheckout.create_hosted_checkout_response.CreateHostedCheckoutResponse`
         :raise: ValidationException if the request was not correct and couldn't be processed (HTTP status code 400)
         :raise: AuthorizationException if the request was not allowed (HTTP status code 403)
         :raise: ReferenceException if an object was attempted to be referenced that doesn't exist or has been removed,
@@ -59,12 +60,13 @@ class HostedcheckoutsClient(ApiResource):
         """
         Resource /{merchantId}/hostedcheckouts/{hostedCheckoutId}
 
-        Get hosted checkout status
+        | Get hosted checkout status
         
-        See also https://developer.globalcollect.com/documentation/api/server/#__merchantId__hostedcheckouts__hostedCheckoutId__get
+        See also https://epayments-api.developer-ingenico.com/s2sapi/v1/en_US/python/hostedcheckouts/get.html
 
         :param hosted_checkout_id:  str
-        :return: :class:`GetHostedCheckoutResponse`
+        :param context:             :class:`ingenico.connect.sdk.call_context.CallContext`
+        :return: :class:`ingenico.connect.sdk.domain.hostedcheckout.get_hosted_checkout_response.GetHostedCheckoutResponse`
         :raise: ValidationException if the request was not correct and couldn't be processed (HTTP status code 400)
         :raise: AuthorizationException if the request was not allowed (HTTP status code 403)
         :raise: ReferenceException if an object was attempted to be referenced that doesn't exist or has been removed,

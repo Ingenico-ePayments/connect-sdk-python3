@@ -1,16 +1,12 @@
+# -*- coding: utf-8 -*-
 #
 # This class was auto-generated from the API references found at
-# https://developer.globalcollect.com/documentation/api/server/
+# https://epayments-api.developer-ingenico.com/s2sapi/v1/
 #
 from ingenico.connect.sdk.data_object import DataObject
 
 
 class ApprovePaymentPaymentMethodSpecificInput(DataObject):
-    """
-    Class ApprovePaymentPaymentMethodSpecificInput
-    
-    See also https://developer.globalcollect.com/documentation/api/server/#schema_ApprovePaymentPaymentMethodSpecificInput
-    """
 
     __date_collect = None
     __token = None
@@ -18,7 +14,10 @@ class ApprovePaymentPaymentMethodSpecificInput(DataObject):
     @property
     def date_collect(self):
         """
-        str
+        | The desired date for the collection
+        | Format: YYYYMMDD
+        
+        Type: str
         """
         return self.__date_collect
 
@@ -29,7 +28,9 @@ class ApprovePaymentPaymentMethodSpecificInput(DataObject):
     @property
     def token(self):
         """
-        str
+        | Token containing tokenized bank account details
+        
+        Type: str
         """
         return self.__token
 

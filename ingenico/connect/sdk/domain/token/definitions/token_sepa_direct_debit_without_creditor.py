@@ -1,6 +1,7 @@
+# -*- coding: utf-8 -*-
 #
 # This class was auto-generated from the API references found at
-# https://developer.globalcollect.com/documentation/api/server/
+# https://epayments-api.developer-ingenico.com/s2sapi/v1/
 #
 from ingenico.connect.sdk.domain.token.definitions.abstract_token import AbstractToken
 from ingenico.connect.sdk.domain.token.definitions.customer_token_with_contact_details import CustomerTokenWithContactDetails
@@ -8,11 +9,6 @@ from ingenico.connect.sdk.domain.token.definitions.mandate_sepa_direct_debit_wit
 
 
 class TokenSepaDirectDebitWithoutCreditor(AbstractToken):
-    """
-    Class TokenSepaDirectDebitWithoutCreditor
-    
-    See also https://developer.globalcollect.com/documentation/api/server/#schema_TokenSepaDirectDebitWithoutCreditor
-    """
 
     __customer = None
     __mandate = None
@@ -20,7 +16,9 @@ class TokenSepaDirectDebitWithoutCreditor(AbstractToken):
     @property
     def customer(self):
         """
-        :class:`CustomerTokenWithContactDetails`
+        | Object containing the details of the consumer
+        
+        Type: :class:`ingenico.connect.sdk.domain.token.definitions.customer_token_with_contact_details.CustomerTokenWithContactDetails`
         """
         return self.__customer
 
@@ -31,7 +29,9 @@ class TokenSepaDirectDebitWithoutCreditor(AbstractToken):
     @property
     def mandate(self):
         """
-        :class:`MandateSepaDirectDebitWithoutCreditor`
+        | Object containing the mandate details
+        
+        Type: :class:`ingenico.connect.sdk.domain.token.definitions.mandate_sepa_direct_debit_without_creditor.MandateSepaDirectDebitWithoutCreditor`
         """
         return self.__mandate
 

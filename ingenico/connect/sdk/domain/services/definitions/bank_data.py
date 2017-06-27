@@ -1,16 +1,12 @@
+# -*- coding: utf-8 -*-
 #
 # This class was auto-generated from the API references found at
-# https://developer.globalcollect.com/documentation/api/server/
+# https://epayments-api.developer-ingenico.com/s2sapi/v1/
 #
 from ingenico.connect.sdk.data_object import DataObject
 
 
 class BankData(DataObject):
-    """
-    Class BankData
-    
-    See also https://developer.globalcollect.com/documentation/api/server/#schema_BankData
-    """
 
     __new_bank_name = None
     __reformatted_account_number = None
@@ -20,7 +16,9 @@ class BankData(DataObject):
     @property
     def new_bank_name(self):
         """
-        str
+        | Bank name, matching the bank code of the request
+        
+        Type: str
         """
         return self.__new_bank_name
 
@@ -31,7 +29,9 @@ class BankData(DataObject):
     @property
     def reformatted_account_number(self):
         """
-        str
+        | Reformatted account number according to local clearing rules
+        
+        Type: str
         """
         return self.__reformatted_account_number
 
@@ -42,7 +42,9 @@ class BankData(DataObject):
     @property
     def reformatted_bank_code(self):
         """
-        str
+        | Reformatted bank code according to local clearing rules
+        
+        Type: str
         """
         return self.__reformatted_bank_code
 
@@ -53,7 +55,9 @@ class BankData(DataObject):
     @property
     def reformatted_branch_code(self):
         """
-        str
+        | Reformatted branch code according to local clearing rules
+        
+        Type: str
         """
         return self.__reformatted_branch_code
 

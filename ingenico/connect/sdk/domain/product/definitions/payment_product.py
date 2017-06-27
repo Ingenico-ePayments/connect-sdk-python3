@@ -1,6 +1,7 @@
+# -*- coding: utf-8 -*-
 #
 # This class was auto-generated from the API references found at
-# https://developer.globalcollect.com/documentation/api/server/
+# https://epayments-api.developer-ingenico.com/s2sapi/v1/
 #
 from ingenico.connect.sdk.data_object import DataObject
 from ingenico.connect.sdk.domain.product.definitions.account_on_file import AccountOnFile
@@ -9,11 +10,6 @@ from ingenico.connect.sdk.domain.product.definitions.payment_product_field impor
 
 
 class PaymentProduct(DataObject):
-    """
-    Class PaymentProduct
-    
-    See also https://developer.globalcollect.com/documentation/api/server/#schema_PaymentProduct
-    """
 
     __accounts_on_file = None
     __allows_recurring = None
@@ -33,7 +29,9 @@ class PaymentProduct(DataObject):
     @property
     def accounts_on_file(self):
         """
-        list[:class:`AccountOnFile`]
+        | List of tokens for that payment product
+        
+        Type: list[:class:`ingenico.connect.sdk.domain.product.definitions.account_on_file.AccountOnFile`]
         """
         return self.__accounts_on_file
 
@@ -44,7 +42,12 @@ class PaymentProduct(DataObject):
     @property
     def allows_recurring(self):
         """
-        bool
+        | Indicates if the product supports recurring payments
+        
+        * true - This payment product supports recurring payments
+        * false - This payment product does not support recurring transactions and can only be used for one-off payments
+        
+        Type: bool
         """
         return self.__allows_recurring
 
@@ -55,7 +58,12 @@ class PaymentProduct(DataObject):
     @property
     def allows_tokenization(self):
         """
-        bool
+        | Indicates if the payment details can be tokenized for future re-use
+        
+        * true - Payment details from payments done with this payment product can be tokenized for future re-use
+        * false - Payment details from payments done with this payment product can not be tokenized
+        
+        Type: bool
         """
         return self.__allows_tokenization
 
@@ -66,7 +74,12 @@ class PaymentProduct(DataObject):
     @property
     def auto_tokenized(self):
         """
-        bool
+        | Indicates if the payment details can be automatically tokenized for future re-use
+        
+        * true - Payment details from payments done with this payment product can be automatically tokenized for future re-use
+        * false - Payment details from payments done with this payment product can not be automatically tokenized
+        
+        Type: bool
         """
         return self.__auto_tokenized
 
@@ -77,7 +90,12 @@ class PaymentProduct(DataObject):
     @property
     def can_be_iframed(self):
         """
-        bool
+        | This field is only relevant for payment products that use third party redirects. This field indicates if the third party disallows their payment pages to be embedded in an iframe using the X-Frame-Options header.
+        
+        * true - the third party allows their payment pages to be embedded in an iframe.
+        * false - the third party disallows their payment pages to be embedded in an iframe.
+        
+        Type: bool
         """
         return self.__can_be_iframed
 
@@ -88,7 +106,9 @@ class PaymentProduct(DataObject):
     @property
     def display_hints(self):
         """
-        :class:`PaymentProductDisplayHints`
+        | Object containing display hints like the order in which the product should be shown, the name of the product and the logo
+        
+        Type: :class:`ingenico.connect.sdk.domain.product.definitions.payment_product_display_hints.PaymentProductDisplayHints`
         """
         return self.__display_hints
 
@@ -99,7 +119,9 @@ class PaymentProduct(DataObject):
     @property
     def fields(self):
         """
-        list[:class:`PaymentProductField`]
+        | Object containing all the fields and their details that are associated with this payment product. If you are not interested in the data on the fields you should have us filter them our (using filter=fields in the query-string)
+        
+        Type: list[:class:`ingenico.connect.sdk.domain.product.definitions.payment_product_field.PaymentProductField`]
         """
         return self.__fields
 
@@ -110,7 +132,9 @@ class PaymentProduct(DataObject):
     @property
     def id(self):
         """
-        int
+        | The ID of the payment product in our system
+        
+        Type: int
         """
         return self.__id
 
@@ -121,7 +145,9 @@ class PaymentProduct(DataObject):
     @property
     def max_amount(self):
         """
-        int
+        | Maximum amount in EUR cents (using 2 decimals, so 1 EUR becomes 100 cents) for transactions done with this payment product
+        
+        Type: int
         """
         return self.__max_amount
 
@@ -132,7 +158,9 @@ class PaymentProduct(DataObject):
     @property
     def min_amount(self):
         """
-        int
+        | Minimum amount in EUR cents (using 2 decimals, so 1 EUR becomes 100 cents) for transactions done with this payment product
+        
+        Type: int
         """
         return self.__min_amount
 
@@ -143,7 +171,12 @@ class PaymentProduct(DataObject):
     @property
     def mobile_integration_level(self):
         """
-        str
+        | This provides insight into the level of support for payments using a device with a smaller screen size. You can for instance use this to rank payment products differently on devices with a smaller screen. Possible values are:
+        
+        * BASIC_SUPPORT - The payment product has not optimized its user experience for devices with smaller screens
+        * OPTIMIZED_SUPPORT - The payment product offers a user experience that has been optimized for devices with smaller screens
+        
+        Type: str
         """
         return self.__mobile_integration_level
 
@@ -154,7 +187,17 @@ class PaymentProduct(DataObject):
     @property
     def payment_method(self):
         """
-        str
+        | Indicates which payment method will be used for this payment product. Payment method is one of:
+        
+        * card
+        * directDebit
+        * onlineBankTransfer
+        * invoice
+        * bankTransfer
+        * redirect
+        * cash
+        
+        Type: str
         """
         return self.__payment_method
 
@@ -165,7 +208,11 @@ class PaymentProduct(DataObject):
     @property
     def payment_product_group(self):
         """
-        str
+        | The payment product group that has this payment product, if there is any. Not populated otherwise. Currently only one payment product group is supported:
+        
+        * cards
+        
+        Type: str
         """
         return self.__payment_product_group
 
@@ -176,7 +223,12 @@ class PaymentProduct(DataObject):
     @property
     def uses_redirection_to3rd_party(self):
         """
-        bool
+        | Indicates whether the payment product requires redirection to a third party to complete the payment. You can use this to filter out products that require a redirect if you don't want to support that.
+        
+        * true - Redirection is required
+        * false - No redirection is required
+        
+        Type: bool
         """
         return self.__uses_redirection_to3rd_party
 

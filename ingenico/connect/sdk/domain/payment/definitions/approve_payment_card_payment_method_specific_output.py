@@ -1,23 +1,28 @@
+# -*- coding: utf-8 -*-
 #
 # This class was auto-generated from the API references found at
-# https://developer.globalcollect.com/documentation/api/server/
+# https://epayments-api.developer-ingenico.com/s2sapi/v1/
 #
 from ingenico.connect.sdk.data_object import DataObject
 
 
 class ApprovePaymentCardPaymentMethodSpecificOutput(DataObject):
-    """
-    Class ApprovePaymentCardPaymentMethodSpecificOutput
-    
-    See also https://developer.globalcollect.com/documentation/api/server/#schema_ApprovePaymentCardPaymentMethodSpecificOutput
-    """
 
     __void_response_id = None
 
     @property
     def void_response_id(self):
         """
-        str
+        | Result of the authorization reversal request
+        
+        | Possible values are:
+        
+        * 00 - Successful reversal
+        * 0, 8 or 11 - Reversal request submitted
+        * 5 or 55 - Reversal request declined or referred
+        * empty or 98 - The provider did not provide a response
+        
+        Type: str
         """
         return self.__void_response_id
 

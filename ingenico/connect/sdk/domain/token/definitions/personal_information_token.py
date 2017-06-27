@@ -1,24 +1,22 @@
+# -*- coding: utf-8 -*-
 #
 # This class was auto-generated from the API references found at
-# https://developer.globalcollect.com/documentation/api/server/
+# https://epayments-api.developer-ingenico.com/s2sapi/v1/
 #
 from ingenico.connect.sdk.data_object import DataObject
 from ingenico.connect.sdk.domain.token.definitions.personal_name_token import PersonalNameToken
 
 
 class PersonalInformationToken(DataObject):
-    """
-    Class PersonalInformationToken
-    
-    See also https://developer.globalcollect.com/documentation/api/server/#schema_PersonalInformationToken
-    """
 
     __name = None
 
     @property
     def name(self):
         """
-        :class:`PersonalNameToken`
+        | Given name(s) or first name(s) of the consumer
+        
+        Type: :class:`ingenico.connect.sdk.domain.token.definitions.personal_name_token.PersonalNameToken`
         """
         return self.__name
 

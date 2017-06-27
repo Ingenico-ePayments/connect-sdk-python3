@@ -1,16 +1,12 @@
+# -*- coding: utf-8 -*-
 #
 # This class was auto-generated from the API references found at
-# https://developer.globalcollect.com/documentation/api/server/
+# https://epayments-api.developer-ingenico.com/s2sapi/v1/
 #
 from ingenico.connect.sdk.data_object import DataObject
 
 
 class RangeValidator(DataObject):
-    """
-    Class RangeValidator
-    
-    See also https://developer.globalcollect.com/documentation/api/server/#schema_RangeValidator
-    """
 
     __max_value = None
     __min_value = None
@@ -18,7 +14,9 @@ class RangeValidator(DataObject):
     @property
     def max_value(self):
         """
-        int
+        | Upper value of the range that is still valid
+        
+        Type: int
         """
         return self.__max_value
 
@@ -29,7 +27,9 @@ class RangeValidator(DataObject):
     @property
     def min_value(self):
         """
-        int
+        | Lower value of the range that is still valid
+        
+        Type: int
         """
         return self.__min_value
 

@@ -1,16 +1,12 @@
+# -*- coding: utf-8 -*-
 #
 # This class was auto-generated from the API references found at
-# https://developer.globalcollect.com/documentation/api/server/
+# https://epayments-api.developer-ingenico.com/s2sapi/v1/
 #
 from ingenico.connect.sdk.domain.definitions.bank_account import BankAccount
 
 
 class BankAccountBban(BankAccount):
-    """
-    Class BankAccountBban
-    
-    See also https://developer.globalcollect.com/documentation/api/server/#schema_BankAccountBban
-    """
 
     __account_number = None
     __bank_code = None
@@ -22,7 +18,9 @@ class BankAccountBban(BankAccount):
     @property
     def account_number(self):
         """
-        str
+        | Bank account number
+        
+        Type: str
         """
         return self.__account_number
 
@@ -33,7 +31,9 @@ class BankAccountBban(BankAccount):
     @property
     def bank_code(self):
         """
-        str
+        | Bank code
+        
+        Type: str
         """
         return self.__bank_code
 
@@ -44,7 +44,9 @@ class BankAccountBban(BankAccount):
     @property
     def bank_name(self):
         """
-        str
+        | Name of the bank
+        
+        Type: str
         """
         return self.__bank_name
 
@@ -55,7 +57,9 @@ class BankAccountBban(BankAccount):
     @property
     def branch_code(self):
         """
-        str
+        | Branch code
+        
+        Type: str
         """
         return self.__branch_code
 
@@ -66,7 +70,9 @@ class BankAccountBban(BankAccount):
     @property
     def check_digit(self):
         """
-        str
+        | Bank check digit
+        
+        Type: str
         """
         return self.__check_digit
 
@@ -77,7 +83,10 @@ class BankAccountBban(BankAccount):
     @property
     def country_code(self):
         """
-        str
+        | ISO 3166-1 alpha-2 country code of the country where the bank account is held
+        | For UK payouts this value is automatically set to GB as only payouts to UK accounts are supported.
+        
+        Type: str
         """
         return self.__country_code
 

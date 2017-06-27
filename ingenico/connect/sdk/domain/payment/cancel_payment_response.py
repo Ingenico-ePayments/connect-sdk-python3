@@ -1,6 +1,7 @@
+# -*- coding: utf-8 -*-
 #
 # This class was auto-generated from the API references found at
-# https://developer.globalcollect.com/documentation/api/server/
+# https://epayments-api.developer-ingenico.com/s2sapi/v1/
 #
 from ingenico.connect.sdk.data_object import DataObject
 from ingenico.connect.sdk.domain.payment.definitions.cancel_payment_card_payment_method_specific_output import CancelPaymentCardPaymentMethodSpecificOutput
@@ -10,9 +11,7 @@ from ingenico.connect.sdk.domain.payment.definitions.payment import Payment
 
 class CancelPaymentResponse(DataObject):
     """
-    Class CancelPaymentResponse
-    
-    See also https://developer.globalcollect.com/documentation/api/server/#schema_CancelPaymentResponse
+    | Response to the cancelation of a payment
     """
 
     __card_payment_method_specific_output = None
@@ -22,7 +21,9 @@ class CancelPaymentResponse(DataObject):
     @property
     def card_payment_method_specific_output(self):
         """
-        :class:`CancelPaymentCardPaymentMethodSpecificOutput`
+        | Object that holds specific information on cancelled card payments
+        
+        Type: :class:`ingenico.connect.sdk.domain.payment.definitions.cancel_payment_card_payment_method_specific_output.CancelPaymentCardPaymentMethodSpecificOutput`
         """
         return self.__card_payment_method_specific_output
 
@@ -33,7 +34,9 @@ class CancelPaymentResponse(DataObject):
     @property
     def mobile_payment_method_specific_output(self):
         """
-        :class:`CancelPaymentMobilePaymentMethodSpecificOutput`
+        | Object that holds specific information on cancelled mobile payments
+        
+        Type: :class:`ingenico.connect.sdk.domain.payment.definitions.cancel_payment_mobile_payment_method_specific_output.CancelPaymentMobilePaymentMethodSpecificOutput`
         """
         return self.__mobile_payment_method_specific_output
 
@@ -44,7 +47,9 @@ class CancelPaymentResponse(DataObject):
     @property
     def payment(self):
         """
-        :class:`Payment`
+        | Object that holds the payment related fields
+        
+        Type: :class:`ingenico.connect.sdk.domain.payment.definitions.payment.Payment`
         """
         return self.__payment
 

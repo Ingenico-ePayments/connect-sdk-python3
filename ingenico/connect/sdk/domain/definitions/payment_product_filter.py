@@ -1,16 +1,12 @@
+# -*- coding: utf-8 -*-
 #
 # This class was auto-generated from the API references found at
-# https://developer.globalcollect.com/documentation/api/server/
+# https://epayments-api.developer-ingenico.com/s2sapi/v1/
 #
 from ingenico.connect.sdk.data_object import DataObject
 
 
 class PaymentProductFilter(DataObject):
-    """
-    Class PaymentProductFilter
-    
-    See also https://developer.globalcollect.com/documentation/api/server/#schema_PaymentProductFilter
-    """
 
     __groups = None
     __products = None
@@ -18,7 +14,9 @@ class PaymentProductFilter(DataObject):
     @property
     def groups(self):
         """
-        list[str]
+        | List containing all payment product groups that should either be restricted to in or excluded from the payment context.
+        
+        Type: list[str]
         """
         return self.__groups
 
@@ -29,7 +27,9 @@ class PaymentProductFilter(DataObject):
     @property
     def products(self):
         """
-        list[int]
+        | List containing all payment product ids that should either be restricted to in or excluded from the payment context.
+        
+        Type: list[int]
         """
         return self.__products
 

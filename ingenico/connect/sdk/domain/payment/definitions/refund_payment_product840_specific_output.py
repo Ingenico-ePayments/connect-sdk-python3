@@ -1,6 +1,7 @@
+# -*- coding: utf-8 -*-
 #
 # This class was auto-generated from the API references found at
-# https://developer.globalcollect.com/documentation/api/server/
+# https://epayments-api.developer-ingenico.com/s2sapi/v1/
 #
 from ingenico.connect.sdk.data_object import DataObject
 from ingenico.connect.sdk.domain.payment.definitions.refund_payment_product840_customer_account import RefundPaymentProduct840CustomerAccount
@@ -8,9 +9,7 @@ from ingenico.connect.sdk.domain.payment.definitions.refund_payment_product840_c
 
 class RefundPaymentProduct840SpecificOutput(DataObject):
     """
-    Class RefundPaymentProduct840SpecificOutput
-    
-    See also https://developer.globalcollect.com/documentation/api/server/#schema_RefundPaymentProduct840SpecificOutput
+    | PayPal refund details
     """
 
     __customer_account = None
@@ -18,7 +17,9 @@ class RefundPaymentProduct840SpecificOutput(DataObject):
     @property
     def customer_account(self):
         """
-        :class:`RefundPaymentProduct840CustomerAccount`
+        | Object containing the PayPal account details
+        
+        Type: :class:`ingenico.connect.sdk.domain.payment.definitions.refund_payment_product840_customer_account.RefundPaymentProduct840CustomerAccount`
         """
         return self.__customer_account
 

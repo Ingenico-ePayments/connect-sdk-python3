@@ -1,16 +1,12 @@
+# -*- coding: utf-8 -*-
 #
 # This class was auto-generated from the API references found at
-# https://developer.globalcollect.com/documentation/api/server/
+# https://epayments-api.developer-ingenico.com/s2sapi/v1/
 #
 from ingenico.connect.sdk.domain.definitions.bank_account_bban import BankAccountBban
 
 
 class BankAccountBbanRefund(BankAccountBban):
-    """
-    Class BankAccountBbanRefund
-    
-    See also https://developer.globalcollect.com/documentation/api/server/#schema_BankAccountBbanRefund
-    """
 
     __bank_city = None
     __swift_code = None
@@ -18,7 +14,9 @@ class BankAccountBbanRefund(BankAccountBban):
     @property
     def bank_city(self):
         """
-        str
+        | City of the bank to refund to
+        
+        Type: str
         """
         return self.__bank_city
 
@@ -29,7 +27,9 @@ class BankAccountBbanRefund(BankAccountBban):
     @property
     def swift_code(self):
         """
-        str
+        | The BIC is the Business Identifier Code, also known as SWIFT or Bank Identifier code. It is a code with an internationally agreed format to Identify a specific bank. The BIC contains 8 or 11 positions: the first 4 contain the bank code, followed by the country code and location code.
+        
+        Type: str
         """
         return self.__swift_code
 

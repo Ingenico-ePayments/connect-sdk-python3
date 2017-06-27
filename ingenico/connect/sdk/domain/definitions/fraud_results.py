@@ -1,23 +1,27 @@
+# -*- coding: utf-8 -*-
 #
 # This class was auto-generated from the API references found at
-# https://developer.globalcollect.com/documentation/api/server/
+# https://epayments-api.developer-ingenico.com/s2sapi/v1/
 #
 from ingenico.connect.sdk.data_object import DataObject
 
 
 class FraudResults(DataObject):
-    """
-    Class FraudResults
-    
-    See also https://developer.globalcollect.com/documentation/api/server/#schema_FraudResults
-    """
 
     __fraud_service_result = None
 
     @property
     def fraud_service_result(self):
         """
-        str
+        | Results from the fraud prevention check. Possible values are:
+        
+        * accepted - Based on the checks performed the transaction can be accepted
+        * challenged - Based on the checks performed the transaction should be manually reviewed
+        * denied - Based on the checks performed the transaction should be rejected
+        * no-advice - No fraud check was requested/performed
+        * error - The fraud check resulted in an error and the fraud check was thus not performed
+        
+        Type: str
         """
         return self.__fraud_service_result
 

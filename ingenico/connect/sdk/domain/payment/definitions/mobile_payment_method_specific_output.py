@@ -1,6 +1,7 @@
+# -*- coding: utf-8 -*-
 #
 # This class was auto-generated from the API references found at
-# https://developer.globalcollect.com/documentation/api/server/
+# https://epayments-api.developer-ingenico.com/s2sapi/v1/
 #
 from ingenico.connect.sdk.domain.definitions.card_fraud_results import CardFraudResults
 from ingenico.connect.sdk.domain.payment.definitions.abstract_payment_method_specific_output import AbstractPaymentMethodSpecificOutput
@@ -9,11 +10,6 @@ from ingenico.connect.sdk.domain.payment.definitions.three_d_secure_results impo
 
 
 class MobilePaymentMethodSpecificOutput(AbstractPaymentMethodSpecificOutput):
-    """
-    Class MobilePaymentMethodSpecificOutput
-    
-    See also https://developer.globalcollect.com/documentation/api/server/#schema_MobilePaymentMethodSpecificOutput
-    """
 
     __authorisation_code = None
     __fraud_results = None
@@ -24,7 +20,9 @@ class MobilePaymentMethodSpecificOutput(AbstractPaymentMethodSpecificOutput):
     @property
     def authorisation_code(self):
         """
-        str
+        | Card Authorization code as returned by the acquirer
+        
+        Type: str
         """
         return self.__authorisation_code
 
@@ -35,7 +33,9 @@ class MobilePaymentMethodSpecificOutput(AbstractPaymentMethodSpecificOutput):
     @property
     def fraud_results(self):
         """
-        :class:`CardFraudResults`
+        | Fraud results contained in the CardFraudResults object
+        
+        Type: :class:`ingenico.connect.sdk.domain.definitions.card_fraud_results.CardFraudResults`
         """
         return self.__fraud_results
 
@@ -46,7 +46,9 @@ class MobilePaymentMethodSpecificOutput(AbstractPaymentMethodSpecificOutput):
     @property
     def network(self):
         """
-        str
+        | The network that was used for the refund
+        
+        Type: str
         """
         return self.__network
 
@@ -57,7 +59,9 @@ class MobilePaymentMethodSpecificOutput(AbstractPaymentMethodSpecificOutput):
     @property
     def payment_data(self):
         """
-        :class:`MobilePaymentData`
+        | Object containing payment details
+        
+        Type: :class:`ingenico.connect.sdk.domain.payment.definitions.mobile_payment_data.MobilePaymentData`
         """
         return self.__payment_data
 
@@ -68,7 +72,9 @@ class MobilePaymentMethodSpecificOutput(AbstractPaymentMethodSpecificOutput):
     @property
     def three_d_secure_results(self):
         """
-        :class:`ThreeDSecureResults`
+        | 3D Secure results object
+        
+        Type: :class:`ingenico.connect.sdk.domain.payment.definitions.three_d_secure_results.ThreeDSecureResults`
         """
         return self.__three_d_secure_results
 

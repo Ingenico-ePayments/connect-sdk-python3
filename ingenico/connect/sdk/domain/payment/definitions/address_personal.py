@@ -1,24 +1,22 @@
+# -*- coding: utf-8 -*-
 #
 # This class was auto-generated from the API references found at
-# https://developer.globalcollect.com/documentation/api/server/
+# https://epayments-api.developer-ingenico.com/s2sapi/v1/
 #
 from ingenico.connect.sdk.domain.definitions.address import Address
 from ingenico.connect.sdk.domain.payment.definitions.personal_name import PersonalName
 
 
 class AddressPersonal(Address):
-    """
-    Class AddressPersonal
-    
-    See also https://developer.globalcollect.com/documentation/api/server/#schema_AddressPersonal
-    """
 
     __name = None
 
     @property
     def name(self):
         """
-        :class:`PersonalName`
+        | Object that holds the name elements
+        
+        Type: :class:`ingenico.connect.sdk.domain.payment.definitions.personal_name.PersonalName`
         """
         return self.__name
 

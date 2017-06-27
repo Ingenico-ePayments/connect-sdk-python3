@@ -1,15 +1,14 @@
+# -*- coding: utf-8 -*-
 #
 # This class was auto-generated from the API references found at
-# https://developer.globalcollect.com/documentation/api/server/
+# https://epayments-api.developer-ingenico.com/s2sapi/v1/
 #
 from ingenico.connect.sdk.data_object import DataObject
 
 
 class RedirectPaymentProduct882SpecificInput(DataObject):
     """
-    Class RedirectPaymentProduct882SpecificInput
-    
-    See also https://developer.globalcollect.com/documentation/api/server/#schema_RedirectPaymentProduct882SpecificInput
+    | Please find below specific input fields for payment product 882 (Net Banking)
     """
 
     __issuer_id = None
@@ -17,7 +16,9 @@ class RedirectPaymentProduct882SpecificInput(DataObject):
     @property
     def issuer_id(self):
         """
-        str
+        | ID of the issuing bank of the consumer. A list of available issuerIDs can be obtained by using the retrieve payment product directory API.
+        
+        Type: str
         """
         return self.__issuer_id
 

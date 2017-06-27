@@ -1,16 +1,12 @@
+# -*- coding: utf-8 -*-
 #
 # This class was auto-generated from the API references found at
-# https://developer.globalcollect.com/documentation/api/server/
+# https://epayments-api.developer-ingenico.com/s2sapi/v1/
 #
 from ingenico.connect.sdk.data_object import DataObject
 
 
 class RetailDecisionsCCFraudCheckOutput(DataObject):
-    """
-    Class RetailDecisionsCCFraudCheckOutput
-    
-    See also https://developer.globalcollect.com/documentation/api/server/#schema_RetailDecisionsCCFraudCheckOutput
-    """
 
     __fraud_code = None
     __fraud_neural = None
@@ -19,7 +15,9 @@ class RetailDecisionsCCFraudCheckOutput(DataObject):
     @property
     def fraud_code(self):
         """
-        str
+        | Provides additional information about the fraud result
+        
+        Type: str
         """
         return self.__fraud_code
 
@@ -30,7 +28,9 @@ class RetailDecisionsCCFraudCheckOutput(DataObject):
     @property
     def fraud_neural(self):
         """
-        str
+        | The raw score returned by the Neural check returned by the evaluation of the transaction
+        
+        Type: str
         """
         return self.__fraud_neural
 
@@ -41,7 +41,9 @@ class RetailDecisionsCCFraudCheckOutput(DataObject):
     @property
     def fraud_rcf(self):
         """
-        str
+        | List of RuleCategoryFlags as setup in the Retail Decisions system that lead to the result
+        
+        Type: str
         """
         return self.__fraud_rcf
 

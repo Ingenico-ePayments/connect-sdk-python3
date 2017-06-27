@@ -1,6 +1,7 @@
+# -*- coding: utf-8 -*-
 #
 # This class was auto-generated from the API references found at
-# https://developer.globalcollect.com/documentation/api/server/
+# https://epayments-api.developer-ingenico.com/s2sapi/v1/
 #
 from ingenico.connect.sdk.data_object import DataObject
 from ingenico.connect.sdk.domain.errors.definitions.api_error import APIError
@@ -8,11 +9,6 @@ from ingenico.connect.sdk.domain.payment.definitions.create_payment_result impor
 
 
 class PaymentErrorResponse(DataObject):
-    """
-    Class PaymentErrorResponse
-    
-    See also https://developer.globalcollect.com/documentation/api/server/#schema_PaymentErrorResponse
-    """
 
     __error_id = None
     __errors = None
@@ -21,7 +17,9 @@ class PaymentErrorResponse(DataObject):
     @property
     def error_id(self):
         """
-        str
+        | Unique reference, for debugging purposes, of this error response
+        
+        Type: str
         """
         return self.__error_id
 
@@ -32,7 +30,9 @@ class PaymentErrorResponse(DataObject):
     @property
     def errors(self):
         """
-        list[:class:`APIError`]
+        | List of one or more errors
+        
+        Type: list[:class:`ingenico.connect.sdk.domain.errors.definitions.api_error.APIError`]
         """
         return self.__errors
 
@@ -43,7 +43,9 @@ class PaymentErrorResponse(DataObject):
     @property
     def payment_result(self):
         """
-        :class:`CreatePaymentResult`
+        | Object that contains details on the created payment in case one has been created
+        
+        Type: :class:`ingenico.connect.sdk.domain.payment.definitions.create_payment_result.CreatePaymentResult`
         """
         return self.__payment_result
 

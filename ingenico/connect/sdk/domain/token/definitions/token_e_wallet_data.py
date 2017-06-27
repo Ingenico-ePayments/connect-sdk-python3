@@ -1,23 +1,21 @@
+# -*- coding: utf-8 -*-
 #
 # This class was auto-generated from the API references found at
-# https://developer.globalcollect.com/documentation/api/server/
+# https://epayments-api.developer-ingenico.com/s2sapi/v1/
 #
 from ingenico.connect.sdk.data_object import DataObject
 
 
 class TokenEWalletData(DataObject):
-    """
-    Class TokenEWalletData
-    
-    See also https://developer.globalcollect.com/documentation/api/server/#schema_TokenEWalletData
-    """
 
     __billing_agreement_id = None
 
     @property
     def billing_agreement_id(self):
         """
-        str
+        | Identification of the PayPal recurring billing agreement
+        
+        Type: str
         """
         return self.__billing_agreement_id
 

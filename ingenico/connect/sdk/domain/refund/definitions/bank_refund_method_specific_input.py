@@ -1,6 +1,7 @@
+# -*- coding: utf-8 -*-
 #
 # This class was auto-generated from the API references found at
-# https://developer.globalcollect.com/documentation/api/server/
+# https://epayments-api.developer-ingenico.com/s2sapi/v1/
 #
 from ingenico.connect.sdk.data_object import DataObject
 from ingenico.connect.sdk.domain.definitions.bank_account_iban import BankAccountIban
@@ -8,11 +9,6 @@ from ingenico.connect.sdk.domain.refund.definitions.bank_account_bban_refund imp
 
 
 class BankRefundMethodSpecificInput(DataObject):
-    """
-    Class BankRefundMethodSpecificInput
-    
-    See also https://developer.globalcollect.com/documentation/api/server/#schema_BankRefundMethodSpecificInput
-    """
 
     __bank_account_bban = None
     __bank_account_iban = None
@@ -21,7 +17,9 @@ class BankRefundMethodSpecificInput(DataObject):
     @property
     def bank_account_bban(self):
         """
-        :class:`BankAccountBbanRefund`
+        | Object that holds the Basic Bank Account Number (BBAN) data
+        
+        Type: :class:`ingenico.connect.sdk.domain.refund.definitions.bank_account_bban_refund.BankAccountBbanRefund`
         """
         return self.__bank_account_bban
 
@@ -32,7 +30,9 @@ class BankRefundMethodSpecificInput(DataObject):
     @property
     def bank_account_iban(self):
         """
-        :class:`BankAccountIban`
+        | Object that holds the International Bank Account Number (IBAN) data
+        
+        Type: :class:`ingenico.connect.sdk.domain.definitions.bank_account_iban.BankAccountIban`
         """
         return self.__bank_account_iban
 
@@ -43,7 +43,9 @@ class BankRefundMethodSpecificInput(DataObject):
     @property
     def country_code(self):
         """
-        str
+        | ISO 3166-1 alpha-2 country code of the country where money will be refunded to
+        
+        Type: str
         """
         return self.__country_code
 

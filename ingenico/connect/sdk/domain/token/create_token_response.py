@@ -1,16 +1,12 @@
+# -*- coding: utf-8 -*-
 #
 # This class was auto-generated from the API references found at
-# https://developer.globalcollect.com/documentation/api/server/
+# https://epayments-api.developer-ingenico.com/s2sapi/v1/
 #
 from ingenico.connect.sdk.data_object import DataObject
 
 
 class CreateTokenResponse(DataObject):
-    """
-    Class CreateTokenResponse
-    
-    See also https://developer.globalcollect.com/documentation/api/server/#schema_CreateTokenResponse
-    """
 
     __is_new_token = None
     __token = None
@@ -18,7 +14,12 @@ class CreateTokenResponse(DataObject):
     @property
     def is_new_token(self):
         """
-        bool
+        | Indicates if a new token was created
+        
+        * true - A new token was created
+        * false - A token with the same card number already exists and is returned. Please note that the existing token has not been updated. When you want to update other data then the card number, you need to use the update API call, as data is never updated during the creation of a token.
+        
+        Type: bool
         """
         return self.__is_new_token
 
@@ -29,7 +30,9 @@ class CreateTokenResponse(DataObject):
     @property
     def token(self):
         """
-        str
+        | ID of the token
+        
+        Type: str
         """
         return self.__token
 

@@ -1,16 +1,12 @@
+# -*- coding: utf-8 -*-
 #
 # This class was auto-generated from the API references found at
-# https://developer.globalcollect.com/documentation/api/server/
+# https://epayments-api.developer-ingenico.com/s2sapi/v1/
 #
 from ingenico.connect.sdk.domain.definitions.order_status_output import OrderStatusOutput
 
 
 class PaymentStatusOutput(OrderStatusOutput):
-    """
-    Class PaymentStatusOutput
-    
-    See also https://developer.globalcollect.com/documentation/api/server/#schema_PaymentStatusOutput
-    """
 
     __is_authorized = None
     __is_refundable = None
@@ -18,7 +14,12 @@ class PaymentStatusOutput(OrderStatusOutput):
     @property
     def is_authorized(self):
         """
-        bool
+        | Indicates if the transaction has been authorized
+        
+        * true
+        * false
+        
+        Type: bool
         """
         return self.__is_authorized
 
@@ -29,7 +30,12 @@ class PaymentStatusOutput(OrderStatusOutput):
     @property
     def is_refundable(self):
         """
-        bool
+        | Flag indicating if the payment can be refunded
+        
+        * true
+        * false
+        
+        Type: bool
         """
         return self.__is_refundable
 

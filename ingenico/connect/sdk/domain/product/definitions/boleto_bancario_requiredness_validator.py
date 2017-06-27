@@ -1,23 +1,22 @@
+# -*- coding: utf-8 -*-
 #
 # This class was auto-generated from the API references found at
-# https://developer.globalcollect.com/documentation/api/server/
+# https://epayments-api.developer-ingenico.com/s2sapi/v1/
 #
 from ingenico.connect.sdk.data_object import DataObject
 
 
 class BoletoBancarioRequirednessValidator(DataObject):
-    """
-    Class BoletoBancarioRequirednessValidator
-    
-    See also https://developer.globalcollect.com/documentation/api/server/#schema_BoletoBancarioRequirednessValidator
-    """
 
     __fiscal_number_length = None
 
     @property
     def fiscal_number_length(self):
         """
-        int
+        | When performing a payment with Boleto Bancario, some values are only required when the fiscalnumber has a specific length. The length the fiscalnumber has to have to make the field required is defined here.
+        | For example the CompanyName is required when the fiscalnumber is a CNPJ. The firstname and surname are required when the fiscalnumber is a CPF.
+        
+        Type: int
         """
         return self.__fiscal_number_length
 

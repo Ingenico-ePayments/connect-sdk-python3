@@ -1,16 +1,12 @@
+# -*- coding: utf-8 -*-
 #
 # This class was auto-generated from the API references found at
-# https://developer.globalcollect.com/documentation/api/server/
+# https://epayments-api.developer-ingenico.com/s2sapi/v1/
 #
 from ingenico.connect.sdk.domain.definitions.contact_details_base import ContactDetailsBase
 
 
 class ContactDetailsToken(ContactDetailsBase):
-    """
-    Class ContactDetailsToken
-    
-    See also https://developer.globalcollect.com/documentation/api/server/#schema_ContactDetailsToken
-    """
 
     def to_dictionary(self):
         dictionary = super(ContactDetailsToken, self).to_dictionary()

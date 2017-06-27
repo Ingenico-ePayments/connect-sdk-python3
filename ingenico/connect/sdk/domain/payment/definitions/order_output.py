@@ -1,6 +1,7 @@
+# -*- coding: utf-8 -*-
 #
 # This class was auto-generated from the API references found at
-# https://developer.globalcollect.com/documentation/api/server/
+# https://epayments-api.developer-ingenico.com/s2sapi/v1/
 #
 from ingenico.connect.sdk.data_object import DataObject
 from ingenico.connect.sdk.domain.definitions.amount_of_money import AmountOfMoney
@@ -8,11 +9,6 @@ from ingenico.connect.sdk.domain.payment.definitions.payment_references import P
 
 
 class OrderOutput(DataObject):
-    """
-    Class OrderOutput
-    
-    See also https://developer.globalcollect.com/documentation/api/server/#schema_OrderOutput
-    """
 
     __amount_of_money = None
     __references = None
@@ -20,7 +16,9 @@ class OrderOutput(DataObject):
     @property
     def amount_of_money(self):
         """
-        :class:`AmountOfMoney`
+        | Object containing amount and ISO currency code attributes
+        
+        Type: :class:`ingenico.connect.sdk.domain.definitions.amount_of_money.AmountOfMoney`
         """
         return self.__amount_of_money
 
@@ -31,7 +29,9 @@ class OrderOutput(DataObject):
     @property
     def references(self):
         """
-        :class:`PaymentReferences`
+        | Object that holds all reference fields that are linked to this transaction
+        
+        Type: :class:`ingenico.connect.sdk.domain.payment.definitions.payment_references.PaymentReferences`
         """
         return self.__references
 

@@ -1,6 +1,7 @@
+# -*- coding: utf-8 -*-
 #
 # This class was auto-generated from the API references found at
-# https://developer.globalcollect.com/documentation/api/server/
+# https://epayments-api.developer-ingenico.com/s2sapi/v1/
 #
 from ingenico.connect.sdk.data_object import DataObject
 from ingenico.connect.sdk.domain.errors.definitions.api_error import APIError
@@ -8,11 +9,6 @@ from ingenico.connect.sdk.domain.refund.definitions.refund_result import RefundR
 
 
 class RefundErrorResponse(DataObject):
-    """
-    Class RefundErrorResponse
-    
-    See also https://developer.globalcollect.com/documentation/api/server/#schema_RefundErrorResponse
-    """
 
     __error_id = None
     __errors = None
@@ -21,7 +17,9 @@ class RefundErrorResponse(DataObject):
     @property
     def error_id(self):
         """
-        str
+        | Unique reference, for debugging purposes, of this error response
+        
+        Type: str
         """
         return self.__error_id
 
@@ -32,7 +30,9 @@ class RefundErrorResponse(DataObject):
     @property
     def errors(self):
         """
-        list[:class:`APIError`]
+        | List of one or more errors
+        
+        Type: list[:class:`ingenico.connect.sdk.domain.errors.definitions.api_error.APIError`]
         """
         return self.__errors
 
@@ -43,7 +43,9 @@ class RefundErrorResponse(DataObject):
     @property
     def refund_result(self):
         """
-        :class:`RefundResult`
+        | Object that contains details on the created refund in case one has been created
+        
+        Type: :class:`ingenico.connect.sdk.domain.refund.definitions.refund_result.RefundResult`
         """
         return self.__refund_result
 

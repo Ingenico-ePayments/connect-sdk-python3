@@ -1,15 +1,14 @@
+# -*- coding: utf-8 -*-
 #
 # This class was auto-generated from the API references found at
-# https://developer.globalcollect.com/documentation/api/server/
+# https://epayments-api.developer-ingenico.com/s2sapi/v1/
 #
 from ingenico.connect.sdk.data_object import DataObject
 
 
 class MobilePaymentProduct320SpecificInput(DataObject):
     """
-    Class MobilePaymentProduct320SpecificInput
-    
-    See also https://developer.globalcollect.com/documentation/api/server/#schema_MobilePaymentProduct320SpecificInput
+    | Please find below specific input fields for payment product 320 (Android Pay)
     """
 
     __key_id = None
@@ -17,7 +16,9 @@ class MobilePaymentProduct320SpecificInput(DataObject):
     @property
     def key_id(self):
         """
-        str
+        | The identifier of the public key that is used to create the vendor's encrypted payment data
+        
+        Type: str
         """
         return self.__key_id
 

@@ -1,16 +1,12 @@
+# -*- coding: utf-8 -*-
 #
 # This class was auto-generated from the API references found at
-# https://developer.globalcollect.com/documentation/api/server/
+# https://epayments-api.developer-ingenico.com/s2sapi/v1/
 #
 from ingenico.connect.sdk.data_object import DataObject
 
 
 class CardEssentials(DataObject):
-    """
-    Class CardEssentials
-    
-    See also https://developer.globalcollect.com/documentation/api/server/#schema_CardEssentials
-    """
 
     __card_number = None
     __expiry_date = None
@@ -18,7 +14,9 @@ class CardEssentials(DataObject):
     @property
     def card_number(self):
         """
-        str
+        | The complete credit/debit card number
+        
+        Type: str
         """
         return self.__card_number
 
@@ -29,7 +27,10 @@ class CardEssentials(DataObject):
     @property
     def expiry_date(self):
         """
-        str
+        | Expiry date of the card
+        | Format: MMYY
+        
+        Type: str
         """
         return self.__expiry_date
 

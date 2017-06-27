@@ -1,6 +1,7 @@
+# -*- coding: utf-8 -*-
 #
 # This class was auto-generated from the API references found at
-# https://developer.globalcollect.com/documentation/api/server/
+# https://epayments-api.developer-ingenico.com/s2sapi/v1/
 #
 from ingenico.connect.sdk.domain.definitions.address import Address
 from ingenico.connect.sdk.domain.definitions.customer_base import CustomerBase
@@ -11,9 +12,7 @@ from ingenico.connect.sdk.domain.payment.definitions.personal_information import
 
 class Customer(CustomerBase):
     """
-    Class Customer
-    
-    See also https://developer.globalcollect.com/documentation/api/server/#schema_Customer
+    | This object contains information about the consumer
     """
 
     __billing_address = None
@@ -26,7 +25,9 @@ class Customer(CustomerBase):
     @property
     def billing_address(self):
         """
-        :class:`Address`
+        | Object containing billing address details
+        
+        Type: :class:`ingenico.connect.sdk.domain.definitions.address.Address`
         """
         return self.__billing_address
 
@@ -37,7 +38,9 @@ class Customer(CustomerBase):
     @property
     def contact_details(self):
         """
-        :class:`ContactDetails`
+        | Object containing contact details like email address and phone number
+        
+        Type: :class:`ingenico.connect.sdk.domain.payment.definitions.contact_details.ContactDetails`
         """
         return self.__contact_details
 
@@ -48,7 +51,9 @@ class Customer(CustomerBase):
     @property
     def fiscal_number(self):
         """
-        str
+        | Fiscal registration number of the consumer (CPF) with a length of 11 or the tax registration number of the company for a business consumer (CNPJ) with a length of 14. 
+        
+        Type: str
         """
         return self.__fiscal_number
 
@@ -59,7 +64,9 @@ class Customer(CustomerBase):
     @property
     def locale(self):
         """
-        str
+        | The locale that the consumer should be addressed in (for 3rd parties). Note that some 3rd party providers only support the languageCode part of the locale, in those cases we will only use part of the locale provided.
+        
+        Type: str
         """
         return self.__locale
 
@@ -70,7 +77,9 @@ class Customer(CustomerBase):
     @property
     def personal_information(self):
         """
-        :class:`PersonalInformation`
+        | Object containing personal information like name, date of birth and gender.
+        
+        Type: :class:`ingenico.connect.sdk.domain.payment.definitions.personal_information.PersonalInformation`
         """
         return self.__personal_information
 
@@ -81,7 +90,9 @@ class Customer(CustomerBase):
     @property
     def shipping_address(self):
         """
-        :class:`AddressPersonal`
+        | Object containing shipping address details
+        
+        Type: :class:`ingenico.connect.sdk.domain.payment.definitions.address_personal.AddressPersonal`
         """
         return self.__shipping_address
 

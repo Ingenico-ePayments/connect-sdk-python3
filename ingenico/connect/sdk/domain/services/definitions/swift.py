@@ -1,16 +1,12 @@
+# -*- coding: utf-8 -*-
 #
 # This class was auto-generated from the API references found at
-# https://developer.globalcollect.com/documentation/api/server/
+# https://epayments-api.developer-ingenico.com/s2sapi/v1/
 #
 from ingenico.connect.sdk.data_object import DataObject
 
 
 class Swift(DataObject):
-    """
-    Class Swift
-    
-    See also https://developer.globalcollect.com/documentation/api/server/#schema_Swift
-    """
 
     __bic = None
     __category = None
@@ -26,7 +22,9 @@ class Swift(DataObject):
     @property
     def bic(self):
         """
-        str
+        | The BIC is the Business Identifier Code, also known as SWIFT or Bank Identifier code. It is a code with an internationally agreed format to Identify a specific bank or even branch. The BIC contains 8 or 11 positions: the first 4 contain the bank code, followed by the country code and location code.
+        
+        Type: str
         """
         return self.__bic
 
@@ -37,7 +35,9 @@ class Swift(DataObject):
     @property
     def category(self):
         """
-        str
+        | SWIFT category
+        
+        Type: str
         """
         return self.__category
 
@@ -48,7 +48,10 @@ class Swift(DataObject):
     @property
     def chips_uid(self):
         """
-        str
+        | Clearing House Interbank Payments System (CHIPS) UID
+        | CHIPS is one half of the primary US network of large-value domestic and international payments.
+        
+        Type: str
         """
         return self.__chips_uid
 
@@ -59,7 +62,9 @@ class Swift(DataObject):
     @property
     def extra_info(self):
         """
-        str
+        | SWIFT extra information
+        
+        Type: str
         """
         return self.__extra_info
 
@@ -70,7 +75,9 @@ class Swift(DataObject):
     @property
     def po_box_country(self):
         """
-        str
+        | Institution PO Box country
+        
+        Type: str
         """
         return self.__po_box_country
 
@@ -81,7 +88,9 @@ class Swift(DataObject):
     @property
     def po_box_location(self):
         """
-        str
+        | Institution PO Box location
+        
+        Type: str
         """
         return self.__po_box_location
 
@@ -92,7 +101,9 @@ class Swift(DataObject):
     @property
     def po_box_number(self):
         """
-        str
+        | Institution PO Box number
+        
+        Type: str
         """
         return self.__po_box_number
 
@@ -103,7 +114,9 @@ class Swift(DataObject):
     @property
     def po_box_zip(self):
         """
-        str
+        | Institution PO Box ZIP
+        
+        Type: str
         """
         return self.__po_box_zip
 
@@ -114,7 +127,9 @@ class Swift(DataObject):
     @property
     def routing_bic(self):
         """
-        str
+        | Payment routing BIC
+        
+        Type: str
         """
         return self.__routing_bic
 
@@ -125,7 +140,9 @@ class Swift(DataObject):
     @property
     def services(self):
         """
-        str
+        | SWIFT services
+        
+        Type: str
         """
         return self.__services
 

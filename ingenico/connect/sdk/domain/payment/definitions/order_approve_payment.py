@@ -1,6 +1,7 @@
+# -*- coding: utf-8 -*-
 #
 # This class was auto-generated from the API references found at
-# https://developer.globalcollect.com/documentation/api/server/
+# https://epayments-api.developer-ingenico.com/s2sapi/v1/
 #
 from ingenico.connect.sdk.data_object import DataObject
 from ingenico.connect.sdk.domain.definitions.additional_order_input_airline_data import AdditionalOrderInputAirlineData
@@ -8,11 +9,6 @@ from ingenico.connect.sdk.domain.payment.definitions.order_references_approve_pa
 
 
 class OrderApprovePayment(DataObject):
-    """
-    Class OrderApprovePayment
-    
-    See also https://developer.globalcollect.com/documentation/api/server/#schema_OrderApprovePayment
-    """
 
     __additional_input = None
     __references = None
@@ -20,7 +16,9 @@ class OrderApprovePayment(DataObject):
     @property
     def additional_input(self):
         """
-        :class:`AdditionalOrderInputAirlineData`
+        | Object containing additional input on the order
+        
+        Type: :class:`ingenico.connect.sdk.domain.definitions.additional_order_input_airline_data.AdditionalOrderInputAirlineData`
         """
         return self.__additional_input
 
@@ -31,7 +29,9 @@ class OrderApprovePayment(DataObject):
     @property
     def references(self):
         """
-        :class:`OrderReferencesApprovePayment`
+        | Object that holds all reference fields that are linked to this transaction
+        
+        Type: :class:`ingenico.connect.sdk.domain.payment.definitions.order_references_approve_payment.OrderReferencesApprovePayment`
         """
         return self.__references
 

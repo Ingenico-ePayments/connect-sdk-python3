@@ -1,6 +1,7 @@
+# -*- coding: utf-8 -*-
 #
 # This class was auto-generated from the API references found at
-# https://developer.globalcollect.com/documentation/api/server/
+# https://epayments-api.developer-ingenico.com/s2sapi/v1/
 #
 from ingenico.connect.sdk.data_object import DataObject
 from ingenico.connect.sdk.domain.definitions.company_information import CompanyInformation
@@ -8,9 +9,7 @@ from ingenico.connect.sdk.domain.definitions.company_information import CompanyI
 
 class CustomerBase(DataObject):
     """
-    Class CustomerBase
-    
-    See also https://developer.globalcollect.com/documentation/api/server/#schema_CustomerBase
+    | Basic information of a consumer
     """
 
     __company_information = None
@@ -20,7 +19,9 @@ class CustomerBase(DataObject):
     @property
     def company_information(self):
         """
-        :class:`CompanyInformation`
+        | Object containing company information
+        
+        Type: :class:`ingenico.connect.sdk.domain.definitions.company_information.CompanyInformation`
         """
         return self.__company_information
 
@@ -31,7 +32,9 @@ class CustomerBase(DataObject):
     @property
     def merchant_customer_id(self):
         """
-        str
+        | Your identifier for the consumer that can be used as a search criteria in the Global Collect Payment Console and is also included in the Global Collect report files. For Ingenco's Ogone Payment Platform this field is used in the fraud-screening process.
+        
+        Type: str
         """
         return self.__merchant_customer_id
 
@@ -42,7 +45,9 @@ class CustomerBase(DataObject):
     @property
     def vat_number(self):
         """
-        str
+        | Local VAT number of the consumer
+        
+        Type: str
         """
         return self.__vat_number
 

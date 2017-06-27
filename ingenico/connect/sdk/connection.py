@@ -13,7 +13,7 @@ class Connection(LoggingCapable):
 
         :param uri: The URI to call, including any necessary query parameters.
         :param request_headers: An optional list of request headers.
-        :return: :class:`Response`
+        :return: :class:`ingenico.connect.sdk.response.Response`
         :raise: CommunicationException when an exception occurred communicating
          with the GlobalCollect platform
         """
@@ -25,7 +25,7 @@ class Connection(LoggingCapable):
 
         :param uri: The URI to call, including any necessary query parameters.
         :param request_headers: An optional list of request headers.
-        :return: :class:`Response`
+        :return: :class:`ingenico.connect.sdk.response.Response`
         :raise: CommunicationException when an exception occurred communicating
          with the GlobalCollect platform
         """
@@ -38,7 +38,7 @@ class Connection(LoggingCapable):
         :param uri: The URI to call, including any necessary query parameters.
         :param request_headers: An optional list of request headers.
         :param body: The optional body to send.
-        :return: :class:`Response`
+        :return: :class:`ingenico.connect.sdk.response.Response`
         :raise: CommunicationException when an exception occurred communicating
          with the GlobalCollect platform
         """
@@ -51,7 +51,7 @@ class Connection(LoggingCapable):
         :param uri: The URI to call, including any necessary query parameters.
         :param request_headers: An optional list of request headers.
         :param body: The optional body to send.
-        :return: :class:`Response`
+        :return: :class:`ingenico.connect.sdk.response.Response`
         :raise: CommunicationException when an exception occurred communicating
          with the GlobalCollect platform
         """

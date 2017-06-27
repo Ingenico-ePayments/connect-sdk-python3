@@ -1,6 +1,7 @@
+# -*- coding: utf-8 -*-
 #
 # This class was auto-generated from the API references found at
-# https://developer.globalcollect.com/documentation/api/server/
+# https://epayments-api.developer-ingenico.com/s2sapi/v1/
 #
 from ingenico.connect.sdk.data_object import DataObject
 from ingenico.connect.sdk.domain.definitions.address import Address
@@ -9,11 +10,6 @@ from ingenico.connect.sdk.domain.riskassessments.definitions.personal_informatio
 
 
 class CustomerRiskAssessment(DataObject):
-    """
-    Class CustomerRiskAssessment
-    
-    See also https://developer.globalcollect.com/documentation/api/server/#schema_CustomerRiskAssessment
-    """
 
     __billing_address = None
     __locale = None
@@ -23,7 +19,9 @@ class CustomerRiskAssessment(DataObject):
     @property
     def billing_address(self):
         """
-        :class:`Address`
+        | Object containing billing address details
+        
+        Type: :class:`ingenico.connect.sdk.domain.definitions.address.Address`
         """
         return self.__billing_address
 
@@ -34,7 +32,9 @@ class CustomerRiskAssessment(DataObject):
     @property
     def locale(self):
         """
-        str
+        | The locale that the consumer should be addressed in (for 3rd parties). Note that some 3rd party providers only support the languageCode part of the locale, in those cases we will only use part of the locale provided.
+        
+        Type: str
         """
         return self.__locale
 
@@ -45,7 +45,9 @@ class CustomerRiskAssessment(DataObject):
     @property
     def personal_information(self):
         """
-        :class:`PersonalInformationRiskAssessment`
+        | Object containing personal information like name, date of birth and gender
+        
+        Type: :class:`ingenico.connect.sdk.domain.riskassessments.definitions.personal_information_risk_assessment.PersonalInformationRiskAssessment`
         """
         return self.__personal_information
 
@@ -56,7 +58,9 @@ class CustomerRiskAssessment(DataObject):
     @property
     def shipping_address(self):
         """
-        :class:`AddressPersonal`
+        | Object containing shipping address details
+        
+        Type: :class:`ingenico.connect.sdk.domain.payment.definitions.address_personal.AddressPersonal`
         """
         return self.__shipping_address
 

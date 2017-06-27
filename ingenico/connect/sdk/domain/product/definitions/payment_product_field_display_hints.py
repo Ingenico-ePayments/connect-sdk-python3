@@ -1,6 +1,7 @@
+# -*- coding: utf-8 -*-
 #
 # This class was auto-generated from the API references found at
-# https://developer.globalcollect.com/documentation/api/server/
+# https://epayments-api.developer-ingenico.com/s2sapi/v1/
 #
 from ingenico.connect.sdk.data_object import DataObject
 from ingenico.connect.sdk.domain.product.definitions.payment_product_field_form_element import PaymentProductFieldFormElement
@@ -8,11 +9,6 @@ from ingenico.connect.sdk.domain.product.definitions.payment_product_field_toolt
 
 
 class PaymentProductFieldDisplayHints(DataObject):
-    """
-    Class PaymentProductFieldDisplayHints
-    
-    See also https://developer.globalcollect.com/documentation/api/server/#schema_PaymentProductFieldDisplayHints
-    """
 
     __always_show = None
     __display_order = None
@@ -27,7 +23,10 @@ class PaymentProductFieldDisplayHints(DataObject):
     @property
     def always_show(self):
         """
-        bool
+        * true - Indicates that this field is advised to be captured to increase the success rates even-though it isn't marked as required. Please note that making the field required could hurt the success rates negatively. This boolean only indicates our advise to always show this field to the consumer.
+        * false - Indicates that this field is not to be shown unless it is a required field.
+        
+        Type: bool
         """
         return self.__always_show
 
@@ -38,7 +37,9 @@ class PaymentProductFieldDisplayHints(DataObject):
     @property
     def display_order(self):
         """
-        int
+        | The order in which the fields should be shown (ascending)
+        
+        Type: int
         """
         return self.__display_order
 
@@ -49,7 +50,9 @@ class PaymentProductFieldDisplayHints(DataObject):
     @property
     def form_element(self):
         """
-        :class:`PaymentProductFieldFormElement`
+        | Object detailing the type of form element that should be used to present the field
+        
+        Type: :class:`ingenico.connect.sdk.domain.product.definitions.payment_product_field_form_element.PaymentProductFieldFormElement`
         """
         return self.__form_element
 
@@ -60,7 +63,9 @@ class PaymentProductFieldDisplayHints(DataObject):
     @property
     def label(self):
         """
-        str
+        | Label/Name of the field to used in the user interface
+        
+        Type: str
         """
         return self.__label
 
@@ -71,7 +76,12 @@ class PaymentProductFieldDisplayHints(DataObject):
     @property
     def mask(self):
         """
-        str
+        | A mask that can be used in the input field. You can use it to inject additional characters to provide a better user experience and to restrict the accepted character set (illegal characters to be ignored during typing).
+        | * is used for wildcards (and also chars)
+        | 9 is used for numbers
+        | Everything outside {{ and }} is used as-is.
+        
+        Type: str
         """
         return self.__mask
 
@@ -82,7 +92,10 @@ class PaymentProductFieldDisplayHints(DataObject):
     @property
     def obfuscate(self):
         """
-        bool
+        * true - The data in this field should be obfuscated as it is entered, just like a password field
+        * false - The data in this field does not need to be obfuscated
+        
+        Type: bool
         """
         return self.__obfuscate
 
@@ -93,7 +106,9 @@ class PaymentProductFieldDisplayHints(DataObject):
     @property
     def placeholder_label(self):
         """
-        str
+        | A placeholder value for the form element
+        
+        Type: str
         """
         return self.__placeholder_label
 
@@ -104,7 +119,14 @@ class PaymentProductFieldDisplayHints(DataObject):
     @property
     def preferred_input_type(self):
         """
-        str
+        | The type of keyboard that can best be used to fill out the value of this field. Possible values are:
+        
+        * PhoneNumberKeyboard - Keyboard that is normally used to enter phone numbers
+        * StringKeyboard - Keyboard that is used to enter strings
+        * IntegerKeyboard - Keyboard that is used to enter only numerical values
+        * EmailAddressKeyboard - Keyboard that allows easier entry of email addresses
+        
+        Type: str
         """
         return self.__preferred_input_type
 
@@ -115,7 +137,9 @@ class PaymentProductFieldDisplayHints(DataObject):
     @property
     def tooltip(self):
         """
-        :class:`PaymentProductFieldTooltip`
+        | Object that contains an optional tooltip to assist the consumer
+        
+        Type: :class:`ingenico.connect.sdk.domain.product.definitions.payment_product_field_tooltip.PaymentProductFieldTooltip`
         """
         return self.__tooltip
 

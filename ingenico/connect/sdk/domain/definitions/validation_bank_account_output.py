@@ -1,17 +1,13 @@
+# -*- coding: utf-8 -*-
 #
 # This class was auto-generated from the API references found at
-# https://developer.globalcollect.com/documentation/api/server/
+# https://epayments-api.developer-ingenico.com/s2sapi/v1/
 #
 from ingenico.connect.sdk.data_object import DataObject
 from ingenico.connect.sdk.domain.definitions.validation_bank_account_check import ValidationBankAccountCheck
 
 
 class ValidationBankAccountOutput(DataObject):
-    """
-    Class ValidationBankAccountOutput
-    
-    See also https://developer.globalcollect.com/documentation/api/server/#schema_ValidationBankAccountOutput
-    """
 
     __checks = None
     __new_bank_name = None
@@ -22,7 +18,9 @@ class ValidationBankAccountOutput(DataObject):
     @property
     def checks(self):
         """
-        list[:class:`ValidationBankAccountCheck`]
+        | Array of checks performed with the results of each check
+        
+        Type: list[:class:`ingenico.connect.sdk.domain.definitions.validation_bank_account_check.ValidationBankAccountCheck`]
         """
         return self.__checks
 
@@ -33,7 +31,9 @@ class ValidationBankAccountOutput(DataObject):
     @property
     def new_bank_name(self):
         """
-        str
+        | Bank name, matching the bank code of the request
+        
+        Type: str
         """
         return self.__new_bank_name
 
@@ -44,7 +44,9 @@ class ValidationBankAccountOutput(DataObject):
     @property
     def reformatted_account_number(self):
         """
-        str
+        | Reformatted account number according to local clearing rules
+        
+        Type: str
         """
         return self.__reformatted_account_number
 
@@ -55,7 +57,9 @@ class ValidationBankAccountOutput(DataObject):
     @property
     def reformatted_bank_code(self):
         """
-        str
+        | Reformatted bank code according to local clearing rules
+        
+        Type: str
         """
         return self.__reformatted_bank_code
 
@@ -66,7 +70,9 @@ class ValidationBankAccountOutput(DataObject):
     @property
     def reformatted_branch_code(self):
         """
-        str
+        | Reformatted branch code according to local clearing rules
+        
+        Type: str
         """
         return self.__reformatted_branch_code
 

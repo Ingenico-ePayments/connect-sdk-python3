@@ -1,24 +1,22 @@
+# -*- coding: utf-8 -*-
 #
 # This class was auto-generated from the API references found at
-# https://developer.globalcollect.com/documentation/api/server/
+# https://epayments-api.developer-ingenico.com/s2sapi/v1/
 #
 from ingenico.connect.sdk.data_object import DataObject
 from ingenico.connect.sdk.domain.definitions.result_do_risk_assessment import ResultDoRiskAssessment
 
 
 class RiskAssessmentResponse(DataObject):
-    """
-    Class RiskAssessmentResponse
-    
-    See also https://developer.globalcollect.com/documentation/api/server/#schema_RiskAssessmentResponse
-    """
 
     __results = None
 
     @property
     def results(self):
         """
-        list[:class:`ResultDoRiskAssessment`]
+        | Object that contains the results of the performed fraudchecks
+        
+        Type: list[:class:`ingenico.connect.sdk.domain.definitions.result_do_risk_assessment.ResultDoRiskAssessment`]
         """
         return self.__results
 

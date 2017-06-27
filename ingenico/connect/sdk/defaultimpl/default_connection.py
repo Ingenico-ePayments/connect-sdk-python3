@@ -140,6 +140,10 @@ class DefaultConnection(PooledConnection):
                             prepped_request.timestamp)
             raise
 
+        # The response is always encoded UTF8
+        # When this is not specified anywhere, the response body will be encoded in the wrong way
+        requests_response.encoding = 'utf8'
+
         # Read body in as text, if it is json it will be unmarshalled later
         ingenico_response = Response(body=requests_response.text,
                                      headers=requests_response.headers,

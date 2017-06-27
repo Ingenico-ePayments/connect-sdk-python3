@@ -1,6 +1,7 @@
+# -*- coding: utf-8 -*-
 #
 # This class was auto-generated from the API references found at
-# https://developer.globalcollect.com/documentation/api/server/
+# https://epayments-api.developer-ingenico.com/s2sapi/v1/
 #
 from ingenico.connect.sdk.data_object import DataObject
 from ingenico.connect.sdk.domain.definitions.fraud_fields import FraudFields
@@ -16,11 +17,6 @@ from ingenico.connect.sdk.domain.payment.definitions.sepa_direct_debit_payment_m
 
 
 class CreatePaymentRequest(DataObject):
-    """
-    Class CreatePaymentRequest
-    
-    See also https://developer.globalcollect.com/documentation/api/server/#schema_CreatePaymentRequest
-    """
 
     __bank_transfer_payment_method_specific_input = None
     __card_payment_method_specific_input = None
@@ -37,7 +33,9 @@ class CreatePaymentRequest(DataObject):
     @property
     def bank_transfer_payment_method_specific_input(self):
         """
-        :class:`BankTransferPaymentMethodSpecificInput`
+        | Object containing the specific input details for bank transfer payments
+        
+        Type: :class:`ingenico.connect.sdk.domain.payment.definitions.bank_transfer_payment_method_specific_input.BankTransferPaymentMethodSpecificInput`
         """
         return self.__bank_transfer_payment_method_specific_input
 
@@ -48,7 +46,9 @@ class CreatePaymentRequest(DataObject):
     @property
     def card_payment_method_specific_input(self):
         """
-        :class:`CardPaymentMethodSpecificInput`
+        | Object containing the specific input details for card payments
+        
+        Type: :class:`ingenico.connect.sdk.domain.payment.definitions.card_payment_method_specific_input.CardPaymentMethodSpecificInput`
         """
         return self.__card_payment_method_specific_input
 
@@ -59,7 +59,9 @@ class CreatePaymentRequest(DataObject):
     @property
     def cash_payment_method_specific_input(self):
         """
-        :class:`CashPaymentMethodSpecificInput`
+        | Object containing the specific input details for cash payments
+        
+        Type: :class:`ingenico.connect.sdk.domain.payment.definitions.cash_payment_method_specific_input.CashPaymentMethodSpecificInput`
         """
         return self.__cash_payment_method_specific_input
 
@@ -70,7 +72,9 @@ class CreatePaymentRequest(DataObject):
     @property
     def direct_debit_payment_method_specific_input(self):
         """
-        :class:`NonSepaDirectDebitPaymentMethodSpecificInput`
+        | Object containing the specific input details for direct debit payments
+        
+        Type: :class:`ingenico.connect.sdk.domain.payment.definitions.non_sepa_direct_debit_payment_method_specific_input.NonSepaDirectDebitPaymentMethodSpecificInput`
         """
         return self.__direct_debit_payment_method_specific_input
 
@@ -81,7 +85,10 @@ class CreatePaymentRequest(DataObject):
     @property
     def encrypted_customer_input(self):
         """
-        str
+        | Data that was encrypted client side containing all consumer entered data elements like card data.
+        | Note: Because this data can only be submitted once to our system and contains encrypted card data you should not store it. As the data was captured within the context of a client session you also need to submit it to us before the session has expired.
+        
+        Type: str
         """
         return self.__encrypted_customer_input
 
@@ -92,7 +99,9 @@ class CreatePaymentRequest(DataObject):
     @property
     def fraud_fields(self):
         """
-        :class:`FraudFields`
+        | Object containing additional data that will be used to assess the risk of fraud
+        
+        Type: :class:`ingenico.connect.sdk.domain.definitions.fraud_fields.FraudFields`
         """
         return self.__fraud_fields
 
@@ -103,7 +112,9 @@ class CreatePaymentRequest(DataObject):
     @property
     def invoice_payment_method_specific_input(self):
         """
-        :class:`InvoicePaymentMethodSpecificInput`
+        | Object containing the specific input details for invoice payments
+        
+        Type: :class:`ingenico.connect.sdk.domain.payment.definitions.invoice_payment_method_specific_input.InvoicePaymentMethodSpecificInput`
         """
         return self.__invoice_payment_method_specific_input
 
@@ -114,7 +125,9 @@ class CreatePaymentRequest(DataObject):
     @property
     def mobile_payment_method_specific_input(self):
         """
-        :class:`MobilePaymentMethodSpecificInput`
+        | Object containing the specific input details for mobile payments
+        
+        Type: :class:`ingenico.connect.sdk.domain.payment.definitions.mobile_payment_method_specific_input.MobilePaymentMethodSpecificInput`
         """
         return self.__mobile_payment_method_specific_input
 
@@ -125,7 +138,10 @@ class CreatePaymentRequest(DataObject):
     @property
     def order(self):
         """
-        :class:`Order`
+        | Order object containing order related data
+        | Please note that this object is required to be able to submit the amount.
+        
+        Type: :class:`ingenico.connect.sdk.domain.payment.definitions.order.Order`
         """
         return self.__order
 
@@ -136,7 +152,9 @@ class CreatePaymentRequest(DataObject):
     @property
     def redirect_payment_method_specific_input(self):
         """
-        :class:`RedirectPaymentMethodSpecificInput`
+        | Object containing the specific input details for payments that involve redirects to 3rd parties to complete, like iDeal and PayPal
+        
+        Type: :class:`ingenico.connect.sdk.domain.payment.definitions.redirect_payment_method_specific_input.RedirectPaymentMethodSpecificInput`
         """
         return self.__redirect_payment_method_specific_input
 
@@ -147,7 +165,9 @@ class CreatePaymentRequest(DataObject):
     @property
     def sepa_direct_debit_payment_method_specific_input(self):
         """
-        :class:`SepaDirectDebitPaymentMethodSpecificInput`
+        | Object containing the specific input details for SEPA direct debit payments
+        
+        Type: :class:`ingenico.connect.sdk.domain.payment.definitions.sepa_direct_debit_payment_method_specific_input.SepaDirectDebitPaymentMethodSpecificInput`
         """
         return self.__sepa_direct_debit_payment_method_specific_input
 

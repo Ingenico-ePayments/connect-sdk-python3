@@ -1,16 +1,12 @@
+# -*- coding: utf-8 -*-
 #
 # This class was auto-generated from the API references found at
-# https://developer.globalcollect.com/documentation/api/server/
+# https://epayments-api.developer-ingenico.com/s2sapi/v1/
 #
 from ingenico.connect.sdk.data_object import DataObject
 
 
 class FraudResultsRetailDecisions(DataObject):
-    """
-    Class FraudResultsRetailDecisions
-    
-    See also https://developer.globalcollect.com/documentation/api/server/#schema_FraudResultsRetailDecisions
-    """
 
     __fraud_code = None
     __fraud_neural = None
@@ -19,7 +15,10 @@ class FraudResultsRetailDecisions(DataObject):
     @property
     def fraud_code(self):
         """
-        str
+        | Result of the fraud service.
+        | Provides additional information about the fraud result
+        
+        Type: str
         """
         return self.__fraud_code
 
@@ -30,7 +29,9 @@ class FraudResultsRetailDecisions(DataObject):
     @property
     def fraud_neural(self):
         """
-        str
+        | Returns the raw score of the neural
+        
+        Type: str
         """
         return self.__fraud_neural
 
@@ -41,7 +42,10 @@ class FraudResultsRetailDecisions(DataObject):
     @property
     def fraud_rcf(self):
         """
-        str
+        | Result of the fraud service
+        | Represent sets of fraud rules returned during the evaluation of the transaction
+        
+        Type: str
         """
         return self.__fraud_rcf
 

@@ -1,16 +1,12 @@
+# -*- coding: utf-8 -*-
 #
 # This class was auto-generated from the API references found at
-# https://developer.globalcollect.com/documentation/api/server/
+# https://epayments-api.developer-ingenico.com/s2sapi/v1/
 #
 from ingenico.connect.sdk.data_object import DataObject
 
 
 class MobilePaymentData(DataObject):
-    """
-    Class MobilePaymentData
-    
-    See also https://developer.globalcollect.com/documentation/api/server/#schema_MobilePaymentData
-    """
 
     __dpan = None
     __expiry_date = None
@@ -18,7 +14,9 @@ class MobilePaymentData(DataObject):
     @property
     def dpan(self):
         """
-        str
+        | The obfuscated DPAN. Only the last four digits are visible.
+        
+        Type: str
         """
         return self.__dpan
 
@@ -29,7 +27,10 @@ class MobilePaymentData(DataObject):
     @property
     def expiry_date(self):
         """
-        str
+        | Expiry date of the tokenized card
+        | Format: MMYY
+        
+        Type: str
         """
         return self.__expiry_date
 

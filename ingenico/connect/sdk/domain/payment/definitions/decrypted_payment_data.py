@@ -1,16 +1,12 @@
+# -*- coding: utf-8 -*-
 #
 # This class was auto-generated from the API references found at
-# https://developer.globalcollect.com/documentation/api/server/
+# https://epayments-api.developer-ingenico.com/s2sapi/v1/
 #
 from ingenico.connect.sdk.data_object import DataObject
 
 
 class DecryptedPaymentData(DataObject):
-    """
-    Class DecryptedPaymentData
-    
-    See also https://developer.globalcollect.com/documentation/api/server/#schema_DecryptedPaymentData
-    """
 
     __cardholder_name = None
     __cryptogram = None
@@ -21,7 +17,12 @@ class DecryptedPaymentData(DataObject):
     @property
     def cardholder_name(self):
         """
-        str
+        | Card holder's name on the card. This maps to the following field in the vendor's encrypted payment data:
+        
+        * Apple Pay: PKPayment.token.paymentData.data.cardholderName
+        * Android Pay: Not Available
+        
+        Type: str
         """
         return self.__cardholder_name
 
@@ -32,7 +33,12 @@ class DecryptedPaymentData(DataObject):
     @property
     def cryptogram(self):
         """
-        str
+        | The 3D secure online payment cryptogram. This maps to the following field in the vendor's encrypted payment data:
+        
+        * Apple Pay: PKPayment.token.paymentData.data.paymentData.onlinePaymentCryptogram
+        * Android Pay: FullWallet.paymentMethodToken.token.encryptedMessage.3dsCryptogram
+        
+        Type: str
         """
         return self.__cryptogram
 
@@ -43,7 +49,12 @@ class DecryptedPaymentData(DataObject):
     @property
     def dpan(self):
         """
-        str
+        | The device specific PAN. This maps to the following field in the vendor's encrypted payment data:
+        
+        * Apple Pay: PKPayment.token.paymentData.data.applicationPrimaryAccountNumber
+        * Android Pay: FullWallet.paymentMethodToken.token.encryptedMessage.dpan
+        
+        Type: str
         """
         return self.__dpan
 
@@ -54,7 +65,12 @@ class DecryptedPaymentData(DataObject):
     @property
     def eci(self):
         """
-        int
+        | Electronic Commerce Indicator. This maps to the following field in the vendor's encrypted payment data:
+        
+        * Apple Pay: PKPayment.token.paymentData.data.paymentData.eciIndicator
+        * Android Pay: FullWallet.paymentMethodToken.token.encryptedMessage.3dsEciIndicator
+        
+        Type: int
         """
         return self.__eci
 
@@ -65,7 +81,13 @@ class DecryptedPaymentData(DataObject):
     @property
     def expiry_date(self):
         """
-        str
+        | Expiry date of the card
+        | Format: MMYY. This maps to the following field in the vendor's encrypted payment data:
+        
+        * Apple Pay: PKPayment.token.paymentData.data.applicationExpirationDate
+        * Android Pay:FullWallet.paymentMethodToken.token.encryptedMessage.expirationMonth and FullWallet.paymentMethodToken.token.encryptedMessage.expirationYear
+        
+        Type: str
         """
         return self.__expiry_date
 

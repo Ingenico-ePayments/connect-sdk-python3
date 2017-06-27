@@ -1,16 +1,12 @@
+# -*- coding: utf-8 -*-
 #
 # This class was auto-generated from the API references found at
-# https://developer.globalcollect.com/documentation/api/server/
+# https://epayments-api.developer-ingenico.com/s2sapi/v1/
 #
 from ingenico.connect.sdk.data_object import DataObject
 
 
 class PublicKey(DataObject):
-    """
-    Class PublicKey
-    
-    See also https://developer.globalcollect.com/documentation/api/server/#schema_PublicKey
-    """
 
     __key_id = None
     __public_key = None
@@ -18,7 +14,9 @@ class PublicKey(DataObject):
     @property
     def key_id(self):
         """
-        str
+        | The identifier of the key that is used to encrypt sensitive data
+        
+        Type: str
         """
         return self.__key_id
 
@@ -29,7 +27,9 @@ class PublicKey(DataObject):
     @property
     def public_key(self):
         """
-        str
+        | The public key that is used to encrypt the sensitive data with. Only we have the private key and will be able to decrypt the encrypted payment details.
+        
+        Type: str
         """
         return self.__public_key
 

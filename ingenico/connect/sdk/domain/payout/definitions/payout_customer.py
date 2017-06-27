@@ -1,6 +1,7 @@
+# -*- coding: utf-8 -*-
 #
 # This class was auto-generated from the API references found at
-# https://developer.globalcollect.com/documentation/api/server/
+# https://epayments-api.developer-ingenico.com/s2sapi/v1/
 #
 from ingenico.connect.sdk.data_object import DataObject
 from ingenico.connect.sdk.domain.definitions.address import Address
@@ -10,11 +11,6 @@ from ingenico.connect.sdk.domain.payment.definitions.personal_name import Person
 
 
 class PayoutCustomer(DataObject):
-    """
-    Class PayoutCustomer
-    
-    See also https://developer.globalcollect.com/documentation/api/server/#schema_PayoutCustomer
-    """
 
     __address = None
     __company_information = None
@@ -25,7 +21,9 @@ class PayoutCustomer(DataObject):
     @property
     def address(self):
         """
-        :class:`Address`
+        | Object containing address details
+        
+        Type: :class:`ingenico.connect.sdk.domain.definitions.address.Address`
         """
         return self.__address
 
@@ -36,7 +34,9 @@ class PayoutCustomer(DataObject):
     @property
     def company_information(self):
         """
-        :class:`CompanyInformation`
+        | Object containing company information
+        
+        Type: :class:`ingenico.connect.sdk.domain.definitions.company_information.CompanyInformation`
         """
         return self.__company_information
 
@@ -47,7 +47,9 @@ class PayoutCustomer(DataObject):
     @property
     def contact_details(self):
         """
-        :class:`ContactDetailsBase`
+        | Object containing contact details like email address and phone number
+        
+        Type: :class:`ingenico.connect.sdk.domain.definitions.contact_details_base.ContactDetailsBase`
         """
         return self.__contact_details
 
@@ -58,7 +60,9 @@ class PayoutCustomer(DataObject):
     @property
     def merchant_customer_id(self):
         """
-        str
+        | Your identifier for the consumer that can be used as a search criteria in the Global Collect Payment Console and is also included in the Global Collect report files. For Ingenco's Ogone Payment Platform this field is used in the fraud-screening process.
+        
+        Type: str
         """
         return self.__merchant_customer_id
 
@@ -69,7 +73,9 @@ class PayoutCustomer(DataObject):
     @property
     def name(self):
         """
-        :class:`PersonalName`
+        | Object containing PersonalName object
+        
+        Type: :class:`ingenico.connect.sdk.domain.payment.definitions.personal_name.PersonalName`
         """
         return self.__name
 

@@ -1,24 +1,22 @@
+# -*- coding: utf-8 -*-
 #
 # This class was auto-generated from the API references found at
-# https://developer.globalcollect.com/documentation/api/server/
+# https://epayments-api.developer-ingenico.com/s2sapi/v1/
 #
 from ingenico.connect.sdk.data_object import DataObject
 from ingenico.connect.sdk.domain.definitions.airline_data import AirlineData
 
 
 class AdditionalOrderInputAirlineData(DataObject):
-    """
-    Class AdditionalOrderInputAirlineData
-    
-    See also https://developer.globalcollect.com/documentation/api/server/#schema_AdditionalOrderInputAirlineData
-    """
 
     __airline_data = None
 
     @property
     def airline_data(self):
         """
-        :class:`AirlineData`
+        | Object that holds airline specific data
+        
+        Type: :class:`ingenico.connect.sdk.domain.definitions.airline_data.AirlineData`
         """
         return self.__airline_data
 

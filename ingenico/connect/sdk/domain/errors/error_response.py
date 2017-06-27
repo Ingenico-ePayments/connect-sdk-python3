@@ -1,17 +1,13 @@
+# -*- coding: utf-8 -*-
 #
 # This class was auto-generated from the API references found at
-# https://developer.globalcollect.com/documentation/api/server/
+# https://epayments-api.developer-ingenico.com/s2sapi/v1/
 #
 from ingenico.connect.sdk.data_object import DataObject
 from ingenico.connect.sdk.domain.errors.definitions.api_error import APIError
 
 
 class ErrorResponse(DataObject):
-    """
-    Class ErrorResponse
-    
-    See also https://developer.globalcollect.com/documentation/api/server/#schema_ErrorResponse
-    """
 
     __error_id = None
     __errors = None
@@ -19,7 +15,9 @@ class ErrorResponse(DataObject):
     @property
     def error_id(self):
         """
-        str
+        | Unique reference, for debugging purposes, of this error response
+        
+        Type: str
         """
         return self.__error_id
 
@@ -30,7 +28,9 @@ class ErrorResponse(DataObject):
     @property
     def errors(self):
         """
-        list[:class:`APIError`]
+        | List of one or more errors
+        
+        Type: list[:class:`ingenico.connect.sdk.domain.errors.definitions.api_error.APIError`]
         """
         return self.__errors
 

@@ -1,6 +1,7 @@
+# -*- coding: utf-8 -*-
 #
 # This class was auto-generated from the API references found at
-# https://developer.globalcollect.com/documentation/api/server/
+# https://epayments-api.developer-ingenico.com/s2sapi/v1/
 #
 from ingenico.connect.sdk.data_object import DataObject
 from ingenico.connect.sdk.domain.payment.definitions.approve_payment_card_payment_method_specific_output import ApprovePaymentCardPaymentMethodSpecificOutput
@@ -9,11 +10,6 @@ from ingenico.connect.sdk.domain.payment.definitions.payment import Payment
 
 
 class PaymentApprovalResponse(DataObject):
-    """
-    Class PaymentApprovalResponse
-    
-    See also https://developer.globalcollect.com/documentation/api/server/#schema_PaymentApprovalResponse
-    """
 
     __card_payment_method_specific_output = None
     __mobile_payment_method_specific_output = None
@@ -23,7 +19,9 @@ class PaymentApprovalResponse(DataObject):
     @property
     def card_payment_method_specific_output(self):
         """
-        :class:`ApprovePaymentCardPaymentMethodSpecificOutput`
+        | Object containing additional card payment method specific details
+        
+        Type: :class:`ingenico.connect.sdk.domain.payment.definitions.approve_payment_card_payment_method_specific_output.ApprovePaymentCardPaymentMethodSpecificOutput`
         """
         return self.__card_payment_method_specific_output
 
@@ -34,7 +32,9 @@ class PaymentApprovalResponse(DataObject):
     @property
     def mobile_payment_method_specific_output(self):
         """
-        :class:`ApprovePaymentMobilePaymentMethodSpecificOutput`
+        | Object containing additional mobile payment method specific details
+        
+        Type: :class:`ingenico.connect.sdk.domain.payment.definitions.approve_payment_mobile_payment_method_specific_output.ApprovePaymentMobilePaymentMethodSpecificOutput`
         """
         return self.__mobile_payment_method_specific_output
 
@@ -45,7 +45,9 @@ class PaymentApprovalResponse(DataObject):
     @property
     def payment(self):
         """
-        :class:`Payment`
+        | Object that holds the payment data
+        
+        Type: :class:`ingenico.connect.sdk.domain.payment.definitions.payment.Payment`
         """
         return self.__payment
 
@@ -56,9 +58,12 @@ class PaymentApprovalResponse(DataObject):
     @property
     def payment_method_specific_output(self):
         """
-        :class:`ApprovePaymentCardPaymentMethodSpecificOutput`
+        | Object containing additional payment method specific details
+        | Deprecated: this field does not support different outputs for payment methods other than cards. Please use cardPaymentMethodSpecificOutput instead.
         
-        Deprecated; Use cardPaymentMethodSpecificOutput instead
+        Type: :class:`ingenico.connect.sdk.domain.payment.definitions.approve_payment_card_payment_method_specific_output.ApprovePaymentCardPaymentMethodSpecificOutput`
+        
+        Deprecated; | Use cardPaymentMethodSpecificOutput instead
         """
         return self.__payment_method_specific_output
 

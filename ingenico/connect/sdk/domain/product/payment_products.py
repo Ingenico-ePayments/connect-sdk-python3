@@ -1,24 +1,22 @@
+# -*- coding: utf-8 -*-
 #
 # This class was auto-generated from the API references found at
-# https://developer.globalcollect.com/documentation/api/server/
+# https://epayments-api.developer-ingenico.com/s2sapi/v1/
 #
 from ingenico.connect.sdk.data_object import DataObject
 from ingenico.connect.sdk.domain.product.definitions.payment_product import PaymentProduct
 
 
 class PaymentProducts(DataObject):
-    """
-    Class PaymentProducts
-    
-    See also https://developer.globalcollect.com/documentation/api/server/#schema_PaymentProducts
-    """
 
     __payment_products = None
 
     @property
     def payment_products(self):
         """
-        list[:class:`PaymentProduct`]
+        | Array containing payment products and their characteristics
+        
+        Type: list[:class:`ingenico.connect.sdk.domain.product.definitions.payment_product.PaymentProduct`]
         """
         return self.__payment_products
 

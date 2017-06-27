@@ -1,24 +1,22 @@
+# -*- coding: utf-8 -*-
 #
 # This class was auto-generated from the API references found at
-# https://developer.globalcollect.com/documentation/api/server/
+# https://epayments-api.developer-ingenico.com/s2sapi/v1/
 #
 from ingenico.connect.sdk.data_object import DataObject
 from ingenico.connect.sdk.domain.payment.definitions.amount_breakdown import AmountBreakdown
 
 
 class ShoppingCart(DataObject):
-    """
-    Class ShoppingCart
-    
-    See also https://developer.globalcollect.com/documentation/api/server/#schema_ShoppingCart
-    """
 
     __amount_breakdown = None
 
     @property
     def amount_breakdown(self):
         """
-        list[:class:`AmountBreakdown`]
+        | Determines the type of the amount.
+        
+        Type: list[:class:`ingenico.connect.sdk.domain.payment.definitions.amount_breakdown.AmountBreakdown`]
         """
         return self.__amount_breakdown
 

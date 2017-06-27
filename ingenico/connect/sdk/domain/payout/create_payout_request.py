@@ -1,25 +1,25 @@
+# -*- coding: utf-8 -*-
 #
 # This class was auto-generated from the API references found at
-# https://developer.globalcollect.com/documentation/api/server/
+# https://epayments-api.developer-ingenico.com/s2sapi/v1/
 #
 from ingenico.connect.sdk.data_object import DataObject
 from ingenico.connect.sdk.domain.definitions.amount_of_money import AmountOfMoney
 from ingenico.connect.sdk.domain.definitions.bank_account_bban import BankAccountBban
 from ingenico.connect.sdk.domain.definitions.bank_account_iban import BankAccountIban
+from ingenico.connect.sdk.domain.payout.definitions.bank_transfer_payout_method_specific_input import BankTransferPayoutMethodSpecificInput
+from ingenico.connect.sdk.domain.payout.definitions.card_payout_method_specific_input import CardPayoutMethodSpecificInput
 from ingenico.connect.sdk.domain.payout.definitions.payout_customer import PayoutCustomer
 from ingenico.connect.sdk.domain.payout.definitions.payout_references import PayoutReferences
 
 
 class CreatePayoutRequest(DataObject):
-    """
-    Class CreatePayoutRequest
-    
-    See also https://developer.globalcollect.com/documentation/api/server/#schema_CreatePayoutRequest
-    """
 
     __amount_of_money = None
     __bank_account_bban = None
     __bank_account_iban = None
+    __bank_transfer_payout_method_specific_input = None
+    __card_payout_method_specific_input = None
     __customer = None
     __payout_date = None
     __payout_text = None
@@ -29,7 +29,9 @@ class CreatePayoutRequest(DataObject):
     @property
     def amount_of_money(self):
         """
-        :class:`AmountOfMoney`
+        | Object containing amount and ISO currency code attributes
+        
+        Type: :class:`ingenico.connect.sdk.domain.definitions.amount_of_money.AmountOfMoney`
         """
         return self.__amount_of_money
 
@@ -40,7 +42,11 @@ class CreatePayoutRequest(DataObject):
     @property
     def bank_account_bban(self):
         """
-        :class:`BankAccountBban`
+        | Object containing account holder name and bank account information. This field can only be used for payouts in the UK. Either a BBAN account or an IBAN account should be provided, but not both
+        
+        Type: :class:`ingenico.connect.sdk.domain.definitions.bank_account_bban.BankAccountBban`
+        
+        Deprecated; | Use bankTransferPayoutMethodSpecificInput.bankAccountBban instead
         """
         return self.__bank_account_bban
 
@@ -51,7 +57,11 @@ class CreatePayoutRequest(DataObject):
     @property
     def bank_account_iban(self):
         """
-        :class:`BankAccountIban`
+        | Object containing account holder and IBAN information. Either a BBAN account or an IBAN account should be provided, but not both
+        
+        Type: :class:`ingenico.connect.sdk.domain.definitions.bank_account_iban.BankAccountIban`
+        
+        Deprecated; | Use bankTransferPayoutMethodSpecificInput.bankAccountIban instead
         """
         return self.__bank_account_iban
 
@@ -60,9 +70,39 @@ class CreatePayoutRequest(DataObject):
         self.__bank_account_iban = value
 
     @property
+    def bank_transfer_payout_method_specific_input(self):
+        """
+        | Object containing the specific input details for bank transfer payouts.
+        
+        Type: :class:`ingenico.connect.sdk.domain.payout.definitions.bank_transfer_payout_method_specific_input.BankTransferPayoutMethodSpecificInput`
+        """
+        return self.__bank_transfer_payout_method_specific_input
+
+    @bank_transfer_payout_method_specific_input.setter
+    def bank_transfer_payout_method_specific_input(self, value):
+        self.__bank_transfer_payout_method_specific_input = value
+
+    @property
+    def card_payout_method_specific_input(self):
+        """
+        | Object containing the specific input details for card payouts.
+        
+        Type: :class:`ingenico.connect.sdk.domain.payout.definitions.card_payout_method_specific_input.CardPayoutMethodSpecificInput`
+        """
+        return self.__card_payout_method_specific_input
+
+    @card_payout_method_specific_input.setter
+    def card_payout_method_specific_input(self, value):
+        self.__card_payout_method_specific_input = value
+
+    @property
     def customer(self):
         """
-        :class:`PayoutCustomer`
+        | Object containing the details of the consumer. 
+        
+        Type: :class:`ingenico.connect.sdk.domain.payout.definitions.payout_customer.PayoutCustomer`
+        
+        Deprecated; | Use bankTransferPayoutMethodSpecificInput.customer instead
         """
         return self.__customer
 
@@ -73,7 +113,12 @@ class CreatePayoutRequest(DataObject):
     @property
     def payout_date(self):
         """
-        str
+        | Date of the payout sent to the bank by us
+        | Format: YYYYMMDD
+        
+        Type: str
+        
+        Deprecated; | Use bankTransferPayoutMethodSpecificInput.payoutDate instead
         """
         return self.__payout_date
 
@@ -84,7 +129,11 @@ class CreatePayoutRequest(DataObject):
     @property
     def payout_text(self):
         """
-        str
+        | Text to be printed on the bank account statement of the beneficiary. The maximum allowed length might differ per country. The data will be automatically truncated to the maximum allowed length.
+        
+        Type: str
+        
+        Deprecated; | Use bankTransferPayoutMethodSpecificInput.payoutText instead
         """
         return self.__payout_text
 
@@ -95,7 +144,9 @@ class CreatePayoutRequest(DataObject):
     @property
     def references(self):
         """
-        :class:`PayoutReferences`
+        | Object that holds all reference fields that are linked to this transaction
+        
+        Type: :class:`ingenico.connect.sdk.domain.payout.definitions.payout_references.PayoutReferences`
         """
         return self.__references
 
@@ -106,7 +157,11 @@ class CreatePayoutRequest(DataObject):
     @property
     def swift_code(self):
         """
-        str
+        | The BIC is the Business Identifier Code, also known as SWIFT or Bank Identifier code. It is a code with an internationally agreed format to Identify a specific bank. The BIC contains 8 or 11 positions: the first 4 contain the bank code, followed by the country code and location code.
+        
+        Type: str
+        
+        Deprecated; | Use bankTransferPayoutMethodSpecificInput.swiftCode instead
         """
         return self.__swift_code
 
@@ -119,6 +174,8 @@ class CreatePayoutRequest(DataObject):
         self._add_to_dictionary(dictionary, 'amountOfMoney', self.amount_of_money)
         self._add_to_dictionary(dictionary, 'bankAccountBban', self.bank_account_bban)
         self._add_to_dictionary(dictionary, 'bankAccountIban', self.bank_account_iban)
+        self._add_to_dictionary(dictionary, 'bankTransferPayoutMethodSpecificInput', self.bank_transfer_payout_method_specific_input)
+        self._add_to_dictionary(dictionary, 'cardPayoutMethodSpecificInput', self.card_payout_method_specific_input)
         self._add_to_dictionary(dictionary, 'customer', self.customer)
         self._add_to_dictionary(dictionary, 'payoutDate', self.payout_date)
         self._add_to_dictionary(dictionary, 'payoutText', self.payout_text)
@@ -143,6 +200,16 @@ class CreatePayoutRequest(DataObject):
                 raise TypeError('value \'{}\' is not a dictionary'.format(dictionary['bankAccountIban']))
             value = BankAccountIban()
             self.bank_account_iban = value.from_dictionary(dictionary['bankAccountIban'])
+        if 'bankTransferPayoutMethodSpecificInput' in dictionary:
+            if not isinstance(dictionary['bankTransferPayoutMethodSpecificInput'], dict):
+                raise TypeError('value \'{}\' is not a dictionary'.format(dictionary['bankTransferPayoutMethodSpecificInput']))
+            value = BankTransferPayoutMethodSpecificInput()
+            self.bank_transfer_payout_method_specific_input = value.from_dictionary(dictionary['bankTransferPayoutMethodSpecificInput'])
+        if 'cardPayoutMethodSpecificInput' in dictionary:
+            if not isinstance(dictionary['cardPayoutMethodSpecificInput'], dict):
+                raise TypeError('value \'{}\' is not a dictionary'.format(dictionary['cardPayoutMethodSpecificInput']))
+            value = CardPayoutMethodSpecificInput()
+            self.card_payout_method_specific_input = value.from_dictionary(dictionary['cardPayoutMethodSpecificInput'])
         if 'customer' in dictionary:
             if not isinstance(dictionary['customer'], dict):
                 raise TypeError('value \'{}\' is not a dictionary'.format(dictionary['customer']))

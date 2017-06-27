@@ -1,16 +1,12 @@
+# -*- coding: utf-8 -*-
 #
 # This class was auto-generated from the API references found at
-# https://developer.globalcollect.com/documentation/api/server/
+# https://epayments-api.developer-ingenico.com/s2sapi/v1/
 #
 from ingenico.connect.sdk.data_object import DataObject
 
 
 class LineItemInvoiceData(DataObject):
-    """
-    Class LineItemInvoiceData
-    
-    See also https://developer.globalcollect.com/documentation/api/server/#schema_LineItemInvoiceData
-    """
 
     __description = None
     __merchant_linenumber = None
@@ -21,7 +17,9 @@ class LineItemInvoiceData(DataObject):
     @property
     def description(self):
         """
-        str
+        | Shopping cart item description
+        
+        Type: str
         """
         return self.__description
 
@@ -32,7 +30,10 @@ class LineItemInvoiceData(DataObject):
     @property
     def merchant_linenumber(self):
         """
-        str
+        | Line number for printed invoice or order of items in the cart
+        | Should be a numeric string
+        
+        Type: str
         """
         return self.__merchant_linenumber
 
@@ -43,7 +44,10 @@ class LineItemInvoiceData(DataObject):
     @property
     def merchant_pagenumber(self):
         """
-        str
+        | Page number for printed invoice
+        | Should be a numeric string
+        
+        Type: str
         """
         return self.__merchant_pagenumber
 
@@ -54,7 +58,9 @@ class LineItemInvoiceData(DataObject):
     @property
     def nr_of_items(self):
         """
-        str
+        | Quantity of the item
+        
+        Type: str
         """
         return self.__nr_of_items
 
@@ -65,7 +71,9 @@ class LineItemInvoiceData(DataObject):
     @property
     def price_per_item(self):
         """
-        int
+        | Price per item
+        
+        Type: int
         """
         return self.__price_per_item
 

@@ -1,24 +1,22 @@
+# -*- coding: utf-8 -*-
 #
 # This class was auto-generated from the API references found at
-# https://developer.globalcollect.com/documentation/api/server/
+# https://epayments-api.developer-ingenico.com/s2sapi/v1/
 #
 from ingenico.connect.sdk.data_object import DataObject
 from ingenico.connect.sdk.domain.riskassessments.definitions.personal_name_risk_assessment import PersonalNameRiskAssessment
 
 
 class PersonalInformationRiskAssessment(DataObject):
-    """
-    Class PersonalInformationRiskAssessment
-    
-    See also https://developer.globalcollect.com/documentation/api/server/#schema_PersonalInformationRiskAssessment
-    """
 
     __name = None
 
     @property
     def name(self):
         """
-        :class:`PersonalNameRiskAssessment`
+        | Object containing the name details of the consumer
+        
+        Type: :class:`ingenico.connect.sdk.domain.riskassessments.definitions.personal_name_risk_assessment.PersonalNameRiskAssessment`
         """
         return self.__name
 

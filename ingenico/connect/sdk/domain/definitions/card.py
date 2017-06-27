@@ -1,23 +1,21 @@
+# -*- coding: utf-8 -*-
 #
 # This class was auto-generated from the API references found at
-# https://developer.globalcollect.com/documentation/api/server/
+# https://epayments-api.developer-ingenico.com/s2sapi/v1/
 #
 from ingenico.connect.sdk.domain.definitions.card_without_cvv import CardWithoutCvv
 
 
 class Card(CardWithoutCvv):
-    """
-    Class Card
-    
-    See also https://developer.globalcollect.com/documentation/api/server/#schema_Card
-    """
 
     __cvv = None
 
     @property
     def cvv(self):
         """
-        str
+        | Card Verification Value, a 3 or 4 digit code used as an additional security feature for card not present transactions. 
+        
+        Type: str
         """
         return self.__cvv
 

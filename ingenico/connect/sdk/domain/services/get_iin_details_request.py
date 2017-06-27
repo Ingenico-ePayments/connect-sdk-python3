@@ -1,6 +1,7 @@
+# -*- coding: utf-8 -*-
 #
 # This class was auto-generated from the API references found at
-# https://developer.globalcollect.com/documentation/api/server/
+# https://epayments-api.developer-ingenico.com/s2sapi/v1/
 #
 from ingenico.connect.sdk.data_object import DataObject
 from ingenico.connect.sdk.domain.services.definitions.payment_context import PaymentContext
@@ -8,9 +9,7 @@ from ingenico.connect.sdk.domain.services.definitions.payment_context import Pay
 
 class GetIINDetailsRequest(DataObject):
     """
-    Class GetIINDetailsRequest
-    
-    See also https://developer.globalcollect.com/documentation/api/server/#schema_GetIINDetailsRequest
+    | Input for the retrieval of the IIN details request.
     """
 
     __bin = None
@@ -19,7 +18,9 @@ class GetIINDetailsRequest(DataObject):
     @property
     def bin(self):
         """
-        str
+        | The first digits of the credit card number from left to right with a minimum of 6 digits, or the full credit card number.
+        
+        Type: str
         """
         return self.__bin
 
@@ -30,7 +31,9 @@ class GetIINDetailsRequest(DataObject):
     @property
     def payment_context(self):
         """
-        :class:`PaymentContext`
+        | Optional payment context to refine the IIN lookup to filter out payment products not applicable to your payment.
+        
+        Type: :class:`ingenico.connect.sdk.domain.services.definitions.payment_context.PaymentContext`
         """
         return self.__payment_context
 

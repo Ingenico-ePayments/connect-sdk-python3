@@ -1,23 +1,23 @@
+# -*- coding: utf-8 -*-
 #
 # This class was auto-generated from the API references found at
-# https://developer.globalcollect.com/documentation/api/server/
+# https://epayments-api.developer-ingenico.com/s2sapi/v1/
 #
 from ingenico.connect.sdk.data_object import DataObject
 
 
 class AbstractToken(DataObject):
-    """
-    Class AbstractToken
-    
-    See also https://developer.globalcollect.com/documentation/api/server/#schema_AbstractToken
-    """
 
     __alias = None
 
     @property
     def alias(self):
         """
-        str
+        | An alias for the token. This can be used to visually represent the token.
+        | If no alias is given in Create token calls, a payment product specific default is used, e.g. the obfuscated card number for card payment products.
+        | Do not include any unobfuscated sensitive data in the alias.
+        
+        Type: str
         """
         return self.__alias
 

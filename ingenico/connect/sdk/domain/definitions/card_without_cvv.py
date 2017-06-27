@@ -1,16 +1,12 @@
+# -*- coding: utf-8 -*-
 #
 # This class was auto-generated from the API references found at
-# https://developer.globalcollect.com/documentation/api/server/
+# https://epayments-api.developer-ingenico.com/s2sapi/v1/
 #
 from ingenico.connect.sdk.domain.definitions.card_essentials import CardEssentials
 
 
 class CardWithoutCvv(CardEssentials):
-    """
-    Class CardWithoutCvv
-    
-    See also https://developer.globalcollect.com/documentation/api/server/#schema_CardWithoutCvv
-    """
 
     __cardholder_name = None
     __issue_number = None
@@ -18,7 +14,9 @@ class CardWithoutCvv(CardEssentials):
     @property
     def cardholder_name(self):
         """
-        str
+        | Card holder's name on the card
+        
+        Type: str
         """
         return self.__cardholder_name
 
@@ -29,7 +27,9 @@ class CardWithoutCvv(CardEssentials):
     @property
     def issue_number(self):
         """
-        str
+        | Issue number on the card (if applicable)
+        
+        Type: str
         """
         return self.__issue_number
 

@@ -1,6 +1,7 @@
+# -*- coding: utf-8 -*-
 #
 # This class was auto-generated from the API references found at
-# https://developer.globalcollect.com/documentation/api/server/
+# https://epayments-api.developer-ingenico.com/s2sapi/v1/
 #
 from ingenico.connect.sdk.domain.token.definitions.abstract_token import AbstractToken
 from ingenico.connect.sdk.domain.token.definitions.customer_token import CustomerToken
@@ -8,11 +9,6 @@ from ingenico.connect.sdk.domain.token.definitions.token_e_wallet_data import To
 
 
 class TokenEWallet(AbstractToken):
-    """
-    Class TokenEWallet
-    
-    See also https://developer.globalcollect.com/documentation/api/server/#schema_TokenEWallet
-    """
 
     __customer = None
     __data = None
@@ -20,7 +16,9 @@ class TokenEWallet(AbstractToken):
     @property
     def customer(self):
         """
-        :class:`CustomerToken`
+        | Object containing the details of the consumer
+        
+        Type: :class:`ingenico.connect.sdk.domain.token.definitions.customer_token.CustomerToken`
         """
         return self.__customer
 
@@ -31,7 +29,9 @@ class TokenEWallet(AbstractToken):
     @property
     def data(self):
         """
-        :class:`TokenEWalletData`
+        | Object containing the eWallet tokenizable data
+        
+        Type: :class:`ingenico.connect.sdk.domain.token.definitions.token_e_wallet_data.TokenEWalletData`
         """
         return self.__data
 

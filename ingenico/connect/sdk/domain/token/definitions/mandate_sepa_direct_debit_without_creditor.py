@@ -1,6 +1,7 @@
+# -*- coding: utf-8 -*-
 #
 # This class was auto-generated from the API references found at
-# https://developer.globalcollect.com/documentation/api/server/
+# https://epayments-api.developer-ingenico.com/s2sapi/v1/
 #
 from ingenico.connect.sdk.data_object import DataObject
 from ingenico.connect.sdk.domain.definitions.bank_account_iban import BankAccountIban
@@ -9,11 +10,6 @@ from ingenico.connect.sdk.domain.token.definitions.mandate_approval import Manda
 
 
 class MandateSepaDirectDebitWithoutCreditor(DataObject):
-    """
-    Class MandateSepaDirectDebitWithoutCreditor
-    
-    See also https://developer.globalcollect.com/documentation/api/server/#schema_MandateSepaDirectDebitWithoutCreditor
-    """
 
     __bank_account_iban = None
     __customer_contract_identifier = None
@@ -25,7 +21,9 @@ class MandateSepaDirectDebitWithoutCreditor(DataObject):
     @property
     def bank_account_iban(self):
         """
-        :class:`BankAccountIban`
+        | Object containing Account holder and IBAN information
+        
+        Type: :class:`ingenico.connect.sdk.domain.definitions.bank_account_iban.BankAccountIban`
         """
         return self.__bank_account_iban
 
@@ -36,7 +34,9 @@ class MandateSepaDirectDebitWithoutCreditor(DataObject):
     @property
     def customer_contract_identifier(self):
         """
-        str
+        | Identifies the contract between consumer and merchant
+        
+        Type: str
         """
         return self.__customer_contract_identifier
 
@@ -47,7 +47,9 @@ class MandateSepaDirectDebitWithoutCreditor(DataObject):
     @property
     def debtor(self):
         """
-        :class:`Debtor`
+        | Object containing information on the debtor
+        
+        Type: :class:`ingenico.connect.sdk.domain.token.definitions.debtor.Debtor`
         """
         return self.__debtor
 
@@ -58,7 +60,10 @@ class MandateSepaDirectDebitWithoutCreditor(DataObject):
     @property
     def is_recurring(self):
         """
-        bool
+        * true
+        * false
+        
+        Type: bool
         """
         return self.__is_recurring
 
@@ -69,7 +74,9 @@ class MandateSepaDirectDebitWithoutCreditor(DataObject):
     @property
     def mandate_approval(self):
         """
-        :class:`MandateApproval`
+        | Object containing the details of the mandate approval
+        
+        Type: :class:`ingenico.connect.sdk.domain.token.definitions.mandate_approval.MandateApproval`
         """
         return self.__mandate_approval
 
@@ -80,7 +87,12 @@ class MandateSepaDirectDebitWithoutCreditor(DataObject):
     @property
     def pre_notification(self):
         """
-        str
+        | Indicates whether a pre-notification should be sent to the consumer.
+        
+        * do-not-send - Do not send a pre-notification
+        * send-on-first-collection - Send a pre-notification
+        
+        Type: str
         """
         return self.__pre_notification
 

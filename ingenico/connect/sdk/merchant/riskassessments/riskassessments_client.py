@@ -1,6 +1,6 @@
 #
 # This class was auto-generated from the API references found at
-# https://developer.globalcollect.com/documentation/api/server/
+# https://epayments-api.developer-ingenico.com/s2sapi/v1/
 #
 from ingenico.connect.sdk.api_resource import ApiResource
 from ingenico.connect.sdk.response_exception import ResponseException
@@ -15,7 +15,7 @@ class RiskassessmentsClient(ApiResource):
 
     def __init__(self, parent, path_context):
         """
-        :param parent:       :class:`ApiResource`
+        :param parent:       :class:`ingenico.connect.sdk.api_resource.ApiResource`
         :param path_context: dict[str, str]
         """
         super(RiskassessmentsClient, self).__init__(parent, path_context)
@@ -24,12 +24,13 @@ class RiskassessmentsClient(ApiResource):
         """
         Resource /{merchantId}/riskassessments/bankaccounts
 
-        Risk-assess bank account
+        | Risk-assess bankaccount
         
-        See also https://developer.globalcollect.com/documentation/api/server/#__merchantId__riskassessments_bankaccounts_post
+        See also https://epayments-api.developer-ingenico.com/s2sapi/v1/en_US/python/riskassessments/bankaccounts.html
 
-        :param body:     :class:`RiskAssessmentBankAccount`
-        :return: :class:`RiskAssessmentResponse`
+        :param body:     :class:`ingenico.connect.sdk.domain.riskassessments.risk_assessment_bank_account.RiskAssessmentBankAccount`
+        :param context:  :class:`ingenico.connect.sdk.call_context.CallContext`
+        :return: :class:`ingenico.connect.sdk.domain.riskassessments.risk_assessment_response.RiskAssessmentResponse`
         :raise: ValidationException if the request was not correct and couldn't be processed (HTTP status code 400)
         :raise: AuthorizationException if the request was not allowed (HTTP status code 403)
         :raise: ReferenceException if an object was attempted to be referenced that doesn't exist or has been removed,
@@ -58,12 +59,13 @@ class RiskassessmentsClient(ApiResource):
         """
         Resource /{merchantId}/riskassessments/cards
 
-        Risk-assess card
+        | Risk-assess card
         
-        See also https://developer.globalcollect.com/documentation/api/server/#__merchantId__riskassessments_cards_post
+        See also https://epayments-api.developer-ingenico.com/s2sapi/v1/en_US/python/riskassessments/cards.html
 
-        :param body:     :class:`RiskAssessmentCard`
-        :return: :class:`RiskAssessmentResponse`
+        :param body:     :class:`ingenico.connect.sdk.domain.riskassessments.risk_assessment_card.RiskAssessmentCard`
+        :param context:  :class:`ingenico.connect.sdk.call_context.CallContext`
+        :return: :class:`ingenico.connect.sdk.domain.riskassessments.risk_assessment_response.RiskAssessmentResponse`
         :raise: ValidationException if the request was not correct and couldn't be processed (HTTP status code 400)
         :raise: AuthorizationException if the request was not allowed (HTTP status code 403)
         :raise: ReferenceException if an object was attempted to be referenced that doesn't exist or has been removed,

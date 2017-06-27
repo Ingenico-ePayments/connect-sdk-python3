@@ -1,16 +1,12 @@
+# -*- coding: utf-8 -*-
 #
 # This class was auto-generated from the API references found at
-# https://developer.globalcollect.com/documentation/api/server/
+# https://epayments-api.developer-ingenico.com/s2sapi/v1/
 #
 from ingenico.connect.sdk.domain.payment.definitions.payment_creation_references import PaymentCreationReferences
 
 
 class PaymentCreationOutput(PaymentCreationReferences):
-    """
-    Class PaymentCreationOutput
-    
-    See also https://developer.globalcollect.com/documentation/api/server/#schema_PaymentCreationOutput
-    """
 
     __is_new_token = None
     __token = None
@@ -18,7 +14,12 @@ class PaymentCreationOutput(PaymentCreationReferences):
     @property
     def is_new_token(self):
         """
-        bool
+        | Indicates if a new token was created
+        
+        * true - A new token was created
+        * false - A token with the same card number already exists and is returned. Please note that the existing token has not been updated. When you want to update other data then the card number, you need to update data stored in the token explicitly, as data is never updated during the creation of a token.
+        
+        Type: bool
         """
         return self.__is_new_token
 
@@ -29,7 +30,9 @@ class PaymentCreationOutput(PaymentCreationReferences):
     @property
     def token(self):
         """
-        str
+        | ID of the token
+        
+        Type: str
         """
         return self.__token
 

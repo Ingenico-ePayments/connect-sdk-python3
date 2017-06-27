@@ -1,16 +1,12 @@
+# -*- coding: utf-8 -*-
 #
 # This class was auto-generated from the API references found at
-# https://developer.globalcollect.com/documentation/api/server/
+# https://epayments-api.developer-ingenico.com/s2sapi/v1/
 #
 from ingenico.connect.sdk.data_object import DataObject
 
 
 class PaymentCreationReferences(DataObject):
-    """
-    Class PaymentCreationReferences
-    
-    See also https://developer.globalcollect.com/documentation/api/server/#schema_PaymentCreationReferences
-    """
 
     __additional_reference = None
     __external_reference = None
@@ -18,7 +14,9 @@ class PaymentCreationReferences(DataObject):
     @property
     def additional_reference(self):
         """
-        str
+        | The additional reference identifier for this transaction. Data in this field will also be returned in our report files, allowing you to reconcile them.
+        
+        Type: str
         """
         return self.__additional_reference
 
@@ -29,7 +27,9 @@ class PaymentCreationReferences(DataObject):
     @property
     def external_reference(self):
         """
-        str
+        | The external reference identifier for this transaction. Data in this field will also be returned in our report files, allowing you to reconcile them.
+        
+        Type: str
         """
         return self.__external_reference
 

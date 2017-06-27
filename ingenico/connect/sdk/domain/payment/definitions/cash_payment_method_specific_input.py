@@ -1,6 +1,7 @@
+# -*- coding: utf-8 -*-
 #
 # This class was auto-generated from the API references found at
-# https://developer.globalcollect.com/documentation/api/server/
+# https://epayments-api.developer-ingenico.com/s2sapi/v1/
 #
 from ingenico.connect.sdk.domain.payment.definitions.cash_payment_method_specific_input_base import CashPaymentMethodSpecificInputBase
 from ingenico.connect.sdk.domain.payment.definitions.cash_payment_product1503_specific_input import CashPaymentProduct1503SpecificInput
@@ -8,11 +9,6 @@ from ingenico.connect.sdk.domain.payment.definitions.cash_payment_product1504_sp
 
 
 class CashPaymentMethodSpecificInput(CashPaymentMethodSpecificInputBase):
-    """
-    Class CashPaymentMethodSpecificInput
-    
-    See also https://developer.globalcollect.com/documentation/api/server/#schema_CashPaymentMethodSpecificInput
-    """
 
     __payment_product1503_specific_input = None
     __payment_product1504_specific_input = None
@@ -20,7 +16,9 @@ class CashPaymentMethodSpecificInput(CashPaymentMethodSpecificInputBase):
     @property
     def payment_product1503_specific_input(self):
         """
-        :class:`CashPaymentProduct1503SpecificInput`
+        | Object that holds the specific data for Boleto Banc?rio in Brazil (payment product 1503)
+        
+        Type: :class:`ingenico.connect.sdk.domain.payment.definitions.cash_payment_product1503_specific_input.CashPaymentProduct1503SpecificInput`
         """
         return self.__payment_product1503_specific_input
 
@@ -31,7 +29,9 @@ class CashPaymentMethodSpecificInput(CashPaymentMethodSpecificInputBase):
     @property
     def payment_product1504_specific_input(self):
         """
-        :class:`CashPaymentProduct1504SpecificInput`
+        | Object that holds the specific data for Konbini in Japan (payment product 1504)
+        
+        Type: :class:`ingenico.connect.sdk.domain.payment.definitions.cash_payment_product1504_specific_input.CashPaymentProduct1504SpecificInput`
         """
         return self.__payment_product1504_specific_input
 

@@ -1,6 +1,7 @@
+# -*- coding: utf-8 -*-
 #
 # This class was auto-generated from the API references found at
-# https://developer.globalcollect.com/documentation/api/server/
+# https://epayments-api.developer-ingenico.com/s2sapi/v1/
 #
 from ingenico.connect.sdk.data_object import DataObject
 from ingenico.connect.sdk.domain.services.definitions.iin_detail import IINDetail
@@ -8,9 +9,7 @@ from ingenico.connect.sdk.domain.services.definitions.iin_detail import IINDetai
 
 class GetIINDetailsResponse(DataObject):
     """
-    Class GetIINDetailsResponse
-    
-    See also https://developer.globalcollect.com/documentation/api/server/#schema_GetIINDetailsResponse
+    | Output of the retrieval of the IIN details request
     """
 
     __co_brands = None
@@ -21,7 +20,10 @@ class GetIINDetailsResponse(DataObject):
     @property
     def co_brands(self):
         """
-        list[:class:`IINDetail`]
+        | Populated only if the card has multiple brands.
+        | A list with for every brand of the card, the payment product identifier associated with that brand, and if you submitted a payment context, whether that payment product is allowed in the context.
+        
+        Type: list[:class:`ingenico.connect.sdk.domain.services.definitions.iin_detail.IINDetail`]
         """
         return self.__co_brands
 
@@ -32,7 +34,9 @@ class GetIINDetailsResponse(DataObject):
     @property
     def country_code(self):
         """
-        str
+        | The ISO 3166-1 alpha-2 country code of the country where the card was issued. If we don't know where the card was issued, then the countryCode will return the value '99'.
+        
+        Type: str
         """
         return self.__country_code
 
@@ -43,7 +47,12 @@ class GetIINDetailsResponse(DataObject):
     @property
     def is_allowed_in_context(self):
         """
-        bool
+        | Populated only if you submitted a payment context.
+        
+        * true - The payment product is allowed in the submitted context.
+        * false - The payment product is not allowed in the submitted context. Note that in this case, none of the brands of the card will be allowed in the submitted context.
+        
+        Type: bool
         """
         return self.__is_allowed_in_context
 
@@ -54,7 +63,10 @@ class GetIINDetailsResponse(DataObject):
     @property
     def payment_product_id(self):
         """
-        int
+        | The payment product identifier associated with the card. If the card has multiple brands, then we select the most appropriate payment product based on your configuration and the payment context, if you submitted one.
+        | Please see payment products <https://epayments-api.developer-ingenico.com/s2sapi/v1/en_US/python/paymentproducts.html> for a full overview of possible values
+        
+        Type: int
         """
         return self.__payment_product_id
 

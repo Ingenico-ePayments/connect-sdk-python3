@@ -1,23 +1,21 @@
+# -*- coding: utf-8 -*-
 #
 # This class was auto-generated from the API references found at
-# https://developer.globalcollect.com/documentation/api/server/
+# https://epayments-api.developer-ingenico.com/s2sapi/v1/
 #
 from ingenico.connect.sdk.data_object import DataObject
 
 
 class RefundReferences(DataObject):
-    """
-    Class RefundReferences
-    
-    See also https://developer.globalcollect.com/documentation/api/server/#schema_RefundReferences
-    """
 
     __merchant_reference = None
 
     @property
     def merchant_reference(self):
         """
-        str
+        | Your unique reference of the transaction that is also returned in our report files. This is almost always used for your reconciliation of our report files.
+        
+        Type: str
         """
         return self.__merchant_reference
 

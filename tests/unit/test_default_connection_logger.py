@@ -98,6 +98,34 @@ class DefaultConnectionLoggerTest(unittest.TestCase):
         self.assertEqual(test_path, self.request_path, 'Request has arrived at the wrong path')
         self.assertLogsRequestAndResponse(logger, "deleteToken")
 
+    def test_create_payment_unicode(self):
+        """Tests if the body is encoded correctly"""
+        test_path = "/v1/1234/payments"  # relative url through which the request should be sent
+        logger = TestLogger()
+
+        request = create_payment_request()
+
+        response_body = read_resource("createPayment.unicode.json")
+
+        handler = self.create_handler(response_code=201, body=response_body,
+                                      additional_headers=(("Content-Type", "application/json"),
+                                                          ("Location",
+                                                           "http://localhost/v1/1234/payments/000000123410000595980000100001"
+                                                           )))
+        with create_server_listening(handler) as address:  # start server to listen to request
+            with create_client(address) as client:  # create client under test
+                client.enable_logging(logger)
+                response = client.merchant("1234").payments().create(request)
+
+        self.assertIsNotNone(response)
+        self.assertIsNotNone(response.payment)
+        self.assertIsNotNone(response.payment.id)
+        self.assertEqual(response.payment.payment_output.redirect_payment_method_specific_output.payment_product840_specific_output.customer_account.surname, u"Schr\xf6der")
+        self.assertEqual(test_path, self.request_path,
+                         'Request has arrived at "{1}" while it should have been delivered to "{0}"'.format(
+                             test_path, self.request_path))
+        self.assertLogsRequestAndResponse(logger, "createPayment_unicode")
+
     def test_create_payment(self):
         """Test that a POST service with 201 response can connect to a server and is logged appropriately"""
         test_path = "/v1/1234/payments"  # relative url through which the request should be sent
@@ -535,7 +563,7 @@ def read_resource(file_name): return file_utils.read_file(os.path.join("default_
 
 def convertAmount_request(request, test):
     test.assertEqual(request.method, "GET")
-    test.assertEqual(request.uri, '/v1/1234/services/convert/amount?source=EUR&amount=1000&target=USD')
+    test.assertEqual(request.uri, '/v1/1234/services/convert/amount?source=EUR&target=USD&amount=1000')
 
     headers = request.get_header_list()
     test.assertHeaderIn(('Authorization', '"********"'), headers)
@@ -644,6 +672,37 @@ def createPayment_request(request, test):
     test.assertTrue(len(request.body))
 
     return request.request_id, False
+
+def createPayment_unicode_request(request, test):
+    test.assertEqual(request.method, "POST")
+    test.assertEqual(request.uri, '/v1/1234/payments')
+
+    headers = request.get_header_list()
+    test.assertHeaderIn(('Authorization', '"********"'), headers)
+    test.assertTrue(len(list(filter((lambda header: header[0] == 'Date'), headers))))
+    test.assertTrue(len(list(filter((lambda header: header[0] == 'X-GCS-ServerMetaInfo'), headers))))
+    test.assertHeaderIn(('Content-Type', '"application/json"'), headers)
+
+    # Note: originaly 'application/json; charset=UTF-8', but I think that was a Java specific thing
+    test.assertEqual(request.content_type, 'application/json')
+
+    test.assertIsNotNone(request.body)
+    test.assertTrue(len(request.body))
+
+    return request.request_id, False
+
+def createPayment_unicode_response(response, test):
+    test.assertIsNotNone(response.get_duration())
+    test.assertEqual(response.get_status_code(), 201)
+    #test.assertEqual(response.content_type, 'application/json')
+    headers = response.get_header_list()
+    test.assertTrue(len(list(filter((lambda header: header[0] == 'Date'), headers))))
+    test.assertHeaderIn(('Content-Type', '"application/json"'), headers)
+    test.assertHeaderIn(('Dummy', '""'), headers)
+    test.assertHeaderIn(('Location', '"http://localhost/v1/1234/payments/000000123410000595980000100001"'), headers)
+    test.assertIsNotNone(response.body)
+    test.assertTrue(len(response.body))
+    return response.request_id, False
 
 def createPayment_response(response, test):
     test.assertIsNotNone(response.get_duration())

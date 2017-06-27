@@ -1,16 +1,12 @@
+# -*- coding: utf-8 -*-
 #
 # This class was auto-generated from the API references found at
-# https://developer.globalcollect.com/documentation/api/server/
+# https://epayments-api.developer-ingenico.com/s2sapi/v1/
 #
 from ingenico.connect.sdk.data_object import DataObject
 
 
 class RefundMethodSpecificOutput(DataObject):
-    """
-    Class RefundMethodSpecificOutput
-    
-    See also https://developer.globalcollect.com/documentation/api/server/#schema_RefundMethodSpecificOutput
-    """
 
     __total_amount_paid = None
     __total_amount_refunded = None
@@ -18,7 +14,9 @@ class RefundMethodSpecificOutput(DataObject):
     @property
     def total_amount_paid(self):
         """
-        int
+        | Total paid amount (in cents and always with 2 decimals)
+        
+        Type: int
         """
         return self.__total_amount_paid
 
@@ -29,7 +27,7 @@ class RefundMethodSpecificOutput(DataObject):
     @property
     def total_amount_refunded(self):
         """
-        int
+        Type: int
         """
         return self.__total_amount_refunded
 

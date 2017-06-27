@@ -1,24 +1,22 @@
+# -*- coding: utf-8 -*-
 #
 # This class was auto-generated from the API references found at
-# https://developer.globalcollect.com/documentation/api/server/
+# https://epayments-api.developer-ingenico.com/s2sapi/v1/
 #
 from ingenico.connect.sdk.domain.definitions.card import Card
 from ingenico.connect.sdk.domain.riskassessments.definitions.risk_assessment import RiskAssessment
 
 
 class RiskAssessmentCard(RiskAssessment):
-    """
-    Class RiskAssessmentCard
-    
-    See also https://developer.globalcollect.com/documentation/api/server/#schema_RiskAssessmentCard
-    """
 
     __card = None
 
     @property
     def card(self):
         """
-        :class:`Card`
+        | Object containing Card object
+        
+        Type: :class:`ingenico.connect.sdk.domain.definitions.card.Card`
         """
         return self.__card
 

@@ -1,16 +1,12 @@
+# -*- coding: utf-8 -*-
 #
 # This class was auto-generated from the API references found at
-# https://developer.globalcollect.com/documentation/api/server/
+# https://epayments-api.developer-ingenico.com/s2sapi/v1/
 #
 from ingenico.connect.sdk.domain.definitions.abstract_payment_method_specific_input import AbstractPaymentMethodSpecificInput
 
 
 class CardPaymentMethodSpecificInputBase(AbstractPaymentMethodSpecificInput):
-    """
-    Class CardPaymentMethodSpecificInputBase
-    
-    See also https://developer.globalcollect.com/documentation/api/server/#schema_CardPaymentMethodSpecificInputBase
-    """
 
     __authorization_mode = None
     __customer_reference = None
@@ -20,11 +16,19 @@ class CardPaymentMethodSpecificInputBase(AbstractPaymentMethodSpecificInput):
     __skip_fraud_service = None
     __token = None
     __tokenize = None
+    __transaction_channel = None
 
     @property
     def authorization_mode(self):
         """
-        str
+        | Determines the type of the authorization that will be used. Allowed values:
+        
+        * FINAL_AUTHORISATION - The payment creation results in an authorization that is ready for capture. Final authorizations can't be reversed and need to be captured for the full amount within 7 days.
+        * PRE_AUTHORISATION - The payment creation results in a pre-authorisation that is ready for capture. Pre-authortizations can be reversed and can be captured within 30 days. The capture amount can be lower than the authorized amount.
+        
+        | Only used with some acquirers, ingnored for acquirers that don't support this. In case the acquirer doesn't allow this to be specified the authorizationMode is 'unspecified', which behaves similar to a final authorization.
+        
+        Type: str
         """
         return self.__authorization_mode
 
@@ -35,7 +39,9 @@ class CardPaymentMethodSpecificInputBase(AbstractPaymentMethodSpecificInput):
     @property
     def customer_reference(self):
         """
-        str
+        | Reference of the consumer for the payment (purchase order #, etc.) Only used with some acquirers.
+        
+        Type: str
         """
         return self.__customer_reference
 
@@ -46,7 +52,13 @@ class CardPaymentMethodSpecificInputBase(AbstractPaymentMethodSpecificInput):
     @property
     def recurring_payment_sequence_indicator(self):
         """
-        str
+        * first = This transaction is the first of a series of recurring transactions
+        * recurring = This transaction is a subsequent transaction in a series of recurring transactions
+        
+        | Note: This field will default to first when isRecurring is set to true.
+        | Note: For any first of a recurring the system will automatically create a token as you will need to use a token for any subsequent recurring transactions. In case a token already exists this is indicated in the response with a value of False for the isNewToken property in the response.
+        
+        Type: str
         """
         return self.__recurring_payment_sequence_indicator
 
@@ -57,7 +69,12 @@ class CardPaymentMethodSpecificInputBase(AbstractPaymentMethodSpecificInput):
     @property
     def requires_approval(self):
         """
-        bool
+        * true = the payment requires approval before the funds will be captured
+        * false = the payment does not require approval, and the funds will be captured automatically
+        
+        | If true, payments with status PENDING_APPROVAL can be captured with the Capture payment <https://epayments-api.developer-ingenico.com/s2sapi/v1/en_US/python/payments/approve.html> API
+        
+        Type: bool
         """
         return self.__requires_approval
 
@@ -68,7 +85,12 @@ class CardPaymentMethodSpecificInputBase(AbstractPaymentMethodSpecificInput):
     @property
     def skip_authentication(self):
         """
-        bool
+        * true = 3D Secure Authentication will be skipped for this transaction. This setting should be used when isRecurring is set to true and recurringPaymentSequenceIndicator is set to recurring.
+        * false = 3D Secure Authentication will not be skipped for this transaction.
+        
+        | Note: This is only possible if your account in our system is setup for 3D Secure authentication and if your configuration in our system allows you to override it per transaction.
+        
+        Type: bool
         """
         return self.__skip_authentication
 
@@ -79,7 +101,12 @@ class CardPaymentMethodSpecificInputBase(AbstractPaymentMethodSpecificInput):
     @property
     def skip_fraud_service(self):
         """
-        bool
+        * true = Fraud scoring will be skipped for this transaction
+        * false = Fraud scoring will not be skipped for this transaction
+        
+        | Note: This is only possible if your account in our system is setup for Fraud scoring and if your configuration in our system allows you to override it per transaction.
+        
+        Type: bool
         """
         return self.__skip_fraud_service
 
@@ -90,7 +117,9 @@ class CardPaymentMethodSpecificInputBase(AbstractPaymentMethodSpecificInput):
     @property
     def token(self):
         """
-        str
+        | ID of the token that holds previously stored card data
+        
+        Type: str
         """
         return self.__token
 
@@ -101,13 +130,34 @@ class CardPaymentMethodSpecificInputBase(AbstractPaymentMethodSpecificInput):
     @property
     def tokenize(self):
         """
-        bool
+        | Indicates if this transaction should be tokenized
+        
+        * true - Tokenize the transaction
+        * false - Do not tokenize the transaction, unless it would be tokenized by other means such as auto-tokenization of recurring payments.
+        
+        Type: bool
         """
         return self.__tokenize
 
     @tokenize.setter
     def tokenize(self, value):
         self.__tokenize = value
+
+    @property
+    def transaction_channel(self):
+        """
+        | Indicates the channel via which the payment is created. Allowed values:
+        
+        * ECOMMERCE - The transaction is a regular E-Commerce transaction.
+        * MOTO - The transaction is a Mail Order/Telephone Order.
+        
+        Type: str
+        """
+        return self.__transaction_channel
+
+    @transaction_channel.setter
+    def transaction_channel(self, value):
+        self.__transaction_channel = value
 
     def to_dictionary(self):
         dictionary = super(CardPaymentMethodSpecificInputBase, self).to_dictionary()
@@ -119,6 +169,7 @@ class CardPaymentMethodSpecificInputBase(AbstractPaymentMethodSpecificInput):
         self._add_to_dictionary(dictionary, 'skipFraudService', self.skip_fraud_service)
         self._add_to_dictionary(dictionary, 'token', self.token)
         self._add_to_dictionary(dictionary, 'tokenize', self.tokenize)
+        self._add_to_dictionary(dictionary, 'transactionChannel', self.transaction_channel)
         return dictionary
 
     def from_dictionary(self, dictionary):
@@ -139,4 +190,6 @@ class CardPaymentMethodSpecificInputBase(AbstractPaymentMethodSpecificInput):
             self.token = dictionary['token']
         if 'tokenize' in dictionary:
             self.tokenize = dictionary['tokenize']
+        if 'transactionChannel' in dictionary:
+            self.transaction_channel = dictionary['transactionChannel']
         return self

@@ -1,6 +1,7 @@
+# -*- coding: utf-8 -*-
 #
 # This class was auto-generated from the API references found at
-# https://developer.globalcollect.com/documentation/api/server/
+# https://epayments-api.developer-ingenico.com/s2sapi/v1/
 #
 from ingenico.connect.sdk.domain.payment.definitions.redirect_payment_method_specific_input_base import RedirectPaymentMethodSpecificInputBase
 from ingenico.connect.sdk.domain.payment.definitions.redirect_payment_product809_specific_input import RedirectPaymentProduct809SpecificInput
@@ -9,11 +10,6 @@ from ingenico.connect.sdk.domain.payment.definitions.redirect_payment_product882
 
 
 class RedirectPaymentMethodSpecificInput(RedirectPaymentMethodSpecificInputBase):
-    """
-    Class RedirectPaymentMethodSpecificInput
-    
-    See also https://developer.globalcollect.com/documentation/api/server/#schema_RedirectPaymentMethodSpecificInput
-    """
 
     __is_recurring = None
     __payment_product809_specific_input = None
@@ -24,7 +20,10 @@ class RedirectPaymentMethodSpecificInput(RedirectPaymentMethodSpecificInputBase)
     @property
     def is_recurring(self):
         """
-        bool
+        * true
+        * false
+        
+        Type: bool
         """
         return self.__is_recurring
 
@@ -35,7 +34,9 @@ class RedirectPaymentMethodSpecificInput(RedirectPaymentMethodSpecificInputBase)
     @property
     def payment_product809_specific_input(self):
         """
-        :class:`RedirectPaymentProduct809SpecificInput`
+        | Object containing specific input required for Dutch iDeal payments (Payment product ID 809)
+        
+        Type: :class:`ingenico.connect.sdk.domain.payment.definitions.redirect_payment_product809_specific_input.RedirectPaymentProduct809SpecificInput`
         """
         return self.__payment_product809_specific_input
 
@@ -46,7 +47,9 @@ class RedirectPaymentMethodSpecificInput(RedirectPaymentMethodSpecificInputBase)
     @property
     def payment_product816_specific_input(self):
         """
-        :class:`RedirectPaymentProduct816SpecificInput`
+        | Object containing specific input required for German giropay payments (Payment product ID 816)
+        
+        Type: :class:`ingenico.connect.sdk.domain.payment.definitions.redirect_payment_product816_specific_input.RedirectPaymentProduct816SpecificInput`
         """
         return self.__payment_product816_specific_input
 
@@ -57,7 +60,9 @@ class RedirectPaymentMethodSpecificInput(RedirectPaymentMethodSpecificInputBase)
     @property
     def payment_product882_specific_input(self):
         """
-        :class:`RedirectPaymentProduct882SpecificInput`
+        | Object containing specific input required for Indian Net Banking payments (Payment product ID 882)
+        
+        Type: :class:`ingenico.connect.sdk.domain.payment.definitions.redirect_payment_product882_specific_input.RedirectPaymentProduct882SpecificInput`
         """
         return self.__payment_product882_specific_input
 
@@ -68,7 +73,11 @@ class RedirectPaymentMethodSpecificInput(RedirectPaymentMethodSpecificInputBase)
     @property
     def return_url(self):
         """
-        str
+        | The URL that the consumer is redirect to after the payment flow has finished. You can add any number of key value pairs in the query string that, for instance help you to identify the consumer when they return to your site. Please note that we will also append some additional key value pairs that will also help you with this identification process.
+        | Note: The provided URL should be absolute and contain the protocol to use, e.g. http:// or https://. For use on mobile devices a custom protocol can be used in the form of *protocol*://. This protocol must be registered on the device first.
+        | URLs without a protocol will be rejected.
+        
+        Type: str
         """
         return self.__return_url
 

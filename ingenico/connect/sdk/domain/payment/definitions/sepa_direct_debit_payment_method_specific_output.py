@@ -1,24 +1,22 @@
+# -*- coding: utf-8 -*-
 #
 # This class was auto-generated from the API references found at
-# https://developer.globalcollect.com/documentation/api/server/
+# https://epayments-api.developer-ingenico.com/s2sapi/v1/
 #
 from ingenico.connect.sdk.domain.definitions.fraud_results import FraudResults
 from ingenico.connect.sdk.domain.payment.definitions.abstract_payment_method_specific_output import AbstractPaymentMethodSpecificOutput
 
 
 class SepaDirectDebitPaymentMethodSpecificOutput(AbstractPaymentMethodSpecificOutput):
-    """
-    Class SepaDirectDebitPaymentMethodSpecificOutput
-    
-    See also https://developer.globalcollect.com/documentation/api/server/#schema_SepaDirectDebitPaymentMethodSpecificOutput
-    """
 
     __fraud_results = None
 
     @property
     def fraud_results(self):
         """
-        :class:`FraudResults`
+        | Object containing the results of the fraud screening
+        
+        Type: :class:`ingenico.connect.sdk.domain.definitions.fraud_results.FraudResults`
         """
         return self.__fraud_results
 

@@ -1,23 +1,21 @@
+# -*- coding: utf-8 -*-
 #
 # This class was auto-generated from the API references found at
-# https://developer.globalcollect.com/documentation/api/server/
+# https://epayments-api.developer-ingenico.com/s2sapi/v1/
 #
 from ingenico.connect.sdk.domain.definitions.abstract_payment_method_specific_input import AbstractPaymentMethodSpecificInput
 
 
 class BankTransferPaymentMethodSpecificInputBase(AbstractPaymentMethodSpecificInput):
-    """
-    Class BankTransferPaymentMethodSpecificInputBase
-    
-    See also https://developer.globalcollect.com/documentation/api/server/#schema_BankTransferPaymentMethodSpecificInputBase
-    """
 
     __additional_reference = None
 
     @property
     def additional_reference(self):
         """
-        str
+        | Your additional reference identifier for this transaction. Data supplied in this field will also be returned in our report files, allowing you to reconcile the incoming funds.
+        
+        Type: str
         """
         return self.__additional_reference
 

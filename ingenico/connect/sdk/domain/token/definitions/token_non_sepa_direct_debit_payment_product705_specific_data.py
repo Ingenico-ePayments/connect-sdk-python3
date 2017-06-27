@@ -1,17 +1,13 @@
+# -*- coding: utf-8 -*-
 #
 # This class was auto-generated from the API references found at
-# https://developer.globalcollect.com/documentation/api/server/
+# https://epayments-api.developer-ingenico.com/s2sapi/v1/
 #
 from ingenico.connect.sdk.data_object import DataObject
 from ingenico.connect.sdk.domain.definitions.bank_account_bban import BankAccountBban
 
 
 class TokenNonSepaDirectDebitPaymentProduct705SpecificData(DataObject):
-    """
-    Class TokenNonSepaDirectDebitPaymentProduct705SpecificData
-    
-    See also https://developer.globalcollect.com/documentation/api/server/#schema_TokenNonSepaDirectDebitPaymentProduct705SpecificData
-    """
 
     __authorisation_id = None
     __bank_account_bban = None
@@ -19,7 +15,9 @@ class TokenNonSepaDirectDebitPaymentProduct705SpecificData(DataObject):
     @property
     def authorisation_id(self):
         """
-        str
+        | Core reference number for the direct debit instruction in UK
+        
+        Type: str
         """
         return self.__authorisation_id
 
@@ -30,7 +28,9 @@ class TokenNonSepaDirectDebitPaymentProduct705SpecificData(DataObject):
     @property
     def bank_account_bban(self):
         """
-        :class:`BankAccountBban`
+        | Object containing account holder name and bank account information
+        
+        Type: :class:`ingenico.connect.sdk.domain.definitions.bank_account_bban.BankAccountBban`
         """
         return self.__bank_account_bban
 

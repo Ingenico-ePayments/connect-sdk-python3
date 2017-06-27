@@ -1,17 +1,13 @@
+# -*- coding: utf-8 -*-
 #
 # This class was auto-generated from the API references found at
-# https://developer.globalcollect.com/documentation/api/server/
+# https://epayments-api.developer-ingenico.com/s2sapi/v1/
 #
 from ingenico.connect.sdk.data_object import DataObject
 from ingenico.connect.sdk.domain.payment.definitions.personal_name import PersonalName
 
 
 class PersonalInformation(DataObject):
-    """
-    Class PersonalInformation
-    
-    See also https://developer.globalcollect.com/documentation/api/server/#schema_PersonalInformation
-    """
 
     __date_of_birth = None
     __gender = None
@@ -20,7 +16,10 @@ class PersonalInformation(DataObject):
     @property
     def date_of_birth(self):
         """
-        str
+        | The date of birth of the consumer
+        | Format: YYYYMMDD
+        
+        Type: str
         """
         return self.__date_of_birth
 
@@ -31,7 +30,13 @@ class PersonalInformation(DataObject):
     @property
     def gender(self):
         """
-        str
+        | The gender of the consumer, possible values are:
+        
+        * male
+        * female
+        * unknown or empty
+        
+        Type: str
         """
         return self.__gender
 
@@ -42,7 +47,9 @@ class PersonalInformation(DataObject):
     @property
     def name(self):
         """
-        :class:`PersonalName`
+        | Object containing the name details of the consumer
+        
+        Type: :class:`ingenico.connect.sdk.domain.payment.definitions.personal_name.PersonalName`
         """
         return self.__name
 

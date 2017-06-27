@@ -1,16 +1,12 @@
+# -*- coding: utf-8 -*-
 #
 # This class was auto-generated from the API references found at
-# https://developer.globalcollect.com/documentation/api/server/
+# https://epayments-api.developer-ingenico.com/s2sapi/v1/
 #
 from ingenico.connect.sdk.data_object import DataObject
 
 
 class ValueMappingElement(DataObject):
-    """
-    Class ValueMappingElement
-    
-    See also https://developer.globalcollect.com/documentation/api/server/#schema_ValueMappingElement
-    """
 
     __display_name = None
     __value = None
@@ -18,7 +14,9 @@ class ValueMappingElement(DataObject):
     @property
     def display_name(self):
         """
-        str
+        | Key name
+        
+        Type: str
         """
         return self.__display_name
 
@@ -29,7 +27,9 @@ class ValueMappingElement(DataObject):
     @property
     def value(self):
         """
-        str
+        | Value corresponding to the key
+        
+        Type: str
         """
         return self.__value
 

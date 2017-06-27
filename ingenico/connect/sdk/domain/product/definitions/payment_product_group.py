@@ -1,6 +1,7 @@
+# -*- coding: utf-8 -*-
 #
 # This class was auto-generated from the API references found at
-# https://developer.globalcollect.com/documentation/api/server/
+# https://epayments-api.developer-ingenico.com/s2sapi/v1/
 #
 from ingenico.connect.sdk.data_object import DataObject
 from ingenico.connect.sdk.domain.product.definitions.account_on_file import AccountOnFile
@@ -10,9 +11,7 @@ from ingenico.connect.sdk.domain.product.definitions.payment_product_field impor
 
 class PaymentProductGroup(DataObject):
     """
-    Class PaymentProductGroup
-    
-    See also https://developer.globalcollect.com/documentation/api/server/#schema_PaymentProductGroup
+    | Definition of the details of a single payment product group
     """
 
     __accounts_on_file = None
@@ -23,7 +22,9 @@ class PaymentProductGroup(DataObject):
     @property
     def accounts_on_file(self):
         """
-        list[:class:`AccountOnFile`]
+        | Only populated in the Client API
+        
+        Type: list[:class:`ingenico.connect.sdk.domain.product.definitions.account_on_file.AccountOnFile`]
         """
         return self.__accounts_on_file
 
@@ -34,7 +35,9 @@ class PaymentProductGroup(DataObject):
     @property
     def display_hints(self):
         """
-        :class:`PaymentProductDisplayHints`
+        | Object containing display hints like the order of the group when shown in a list, the name of the group and the logo. Note that the order of the group is the lowest order among the payment products that belong to the group.
+        
+        Type: :class:`ingenico.connect.sdk.domain.product.definitions.payment_product_display_hints.PaymentProductDisplayHints`
         """
         return self.__display_hints
 
@@ -45,7 +48,9 @@ class PaymentProductGroup(DataObject):
     @property
     def fields(self):
         """
-        list[:class:`PaymentProductField`]
+        | Object containing all the fields and their details that are associated with this payment product group. If you are not interested in the these fields you can have us filter them our (using hide=fields in the query-string)
+        
+        Type: list[:class:`ingenico.connect.sdk.domain.product.definitions.payment_product_field.PaymentProductField`]
         """
         return self.__fields
 
@@ -56,7 +61,9 @@ class PaymentProductGroup(DataObject):
     @property
     def id(self):
         """
-        str
+        | The ID of the payment product group in our system
+        
+        Type: str
         """
         return self.__id
 

@@ -1,6 +1,7 @@
+# -*- coding: utf-8 -*-
 #
 # This class was auto-generated from the API references found at
-# https://developer.globalcollect.com/documentation/api/server/
+# https://epayments-api.developer-ingenico.com/s2sapi/v1/
 #
 from ingenico.connect.sdk.data_object import DataObject
 from ingenico.connect.sdk.domain.definitions.amount_of_money import AmountOfMoney
@@ -12,11 +13,6 @@ from ingenico.connect.sdk.domain.payment.definitions.shopping_cart import Shoppi
 
 
 class Order(DataObject):
-    """
-    Class Order
-    
-    See also https://developer.globalcollect.com/documentation/api/server/#schema_Order
-    """
 
     __additional_input = None
     __amount_of_money = None
@@ -28,7 +24,9 @@ class Order(DataObject):
     @property
     def additional_input(self):
         """
-        :class:`AdditionalOrderInput`
+        | Object containing additional input on the order
+        
+        Type: :class:`ingenico.connect.sdk.domain.payment.definitions.additional_order_input.AdditionalOrderInput`
         """
         return self.__additional_input
 
@@ -39,7 +37,9 @@ class Order(DataObject):
     @property
     def amount_of_money(self):
         """
-        :class:`AmountOfMoney`
+        | Object containing amount and ISO currency code attributes
+        
+        Type: :class:`ingenico.connect.sdk.domain.definitions.amount_of_money.AmountOfMoney`
         """
         return self.__amount_of_money
 
@@ -50,7 +50,9 @@ class Order(DataObject):
     @property
     def customer(self):
         """
-        :class:`Customer`
+        | Object containing the details of the consumer
+        
+        Type: :class:`ingenico.connect.sdk.domain.payment.definitions.customer.Customer`
         """
         return self.__customer
 
@@ -61,7 +63,9 @@ class Order(DataObject):
     @property
     def items(self):
         """
-        list[:class:`LineItem`]
+        | Shopping cart data
+        
+        Type: list[:class:`ingenico.connect.sdk.domain.payment.definitions.line_item.LineItem`]
         """
         return self.__items
 
@@ -72,7 +76,9 @@ class Order(DataObject):
     @property
     def references(self):
         """
-        :class:`OrderReferences`
+        | Object that holds all reference fields that are linked to this transaction
+        
+        Type: :class:`ingenico.connect.sdk.domain.payment.definitions.order_references.OrderReferences`
         """
         return self.__references
 
@@ -83,7 +89,9 @@ class Order(DataObject):
     @property
     def shopping_cart(self):
         """
-        :class:`ShoppingCart`
+        | Shopping cart data, including items and specific amounts.
+        
+        Type: :class:`ingenico.connect.sdk.domain.payment.definitions.shopping_cart.ShoppingCart`
         """
         return self.__shopping_cart
 

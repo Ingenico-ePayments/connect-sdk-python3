@@ -1,24 +1,22 @@
+# -*- coding: utf-8 -*-
 #
 # This class was auto-generated from the API references found at
-# https://developer.globalcollect.com/documentation/api/server/
+# https://epayments-api.developer-ingenico.com/s2sapi/v1/
 #
 from ingenico.connect.sdk.domain.token.definitions.contact_details_token import ContactDetailsToken
 from ingenico.connect.sdk.domain.token.definitions.customer_token import CustomerToken
 
 
 class CustomerTokenWithContactDetails(CustomerToken):
-    """
-    Class CustomerTokenWithContactDetails
-    
-    See also https://developer.globalcollect.com/documentation/api/server/#schema_CustomerTokenWithContactDetails
-    """
 
     __contact_details = None
 
     @property
     def contact_details(self):
         """
-        :class:`ContactDetailsToken`
+        | Object containing contact details like email address and phone number
+        
+        Type: :class:`ingenico.connect.sdk.domain.token.definitions.contact_details_token.ContactDetailsToken`
         """
         return self.__contact_details
 

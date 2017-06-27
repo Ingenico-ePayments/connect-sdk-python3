@@ -1,24 +1,22 @@
+# -*- coding: utf-8 -*-
 #
 # This class was auto-generated from the API references found at
-# https://developer.globalcollect.com/documentation/api/server/
+# https://epayments-api.developer-ingenico.com/s2sapi/v1/
 #
 from ingenico.connect.sdk.data_object import DataObject
 from ingenico.connect.sdk.domain.product.definitions.directory_entry import DirectoryEntry
 
 
 class Directory(DataObject):
-    """
-    Class Directory
-    
-    See also https://developer.globalcollect.com/documentation/api/server/#schema_Directory
-    """
 
     __entries = None
 
     @property
     def entries(self):
         """
-        list[:class:`DirectoryEntry`]
+        | List of entries in the directory
+        
+        Type: list[:class:`ingenico.connect.sdk.domain.product.definitions.directory_entry.DirectoryEntry`]
         """
         return self.__entries
 

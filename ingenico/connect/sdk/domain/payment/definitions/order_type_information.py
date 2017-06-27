@@ -1,16 +1,12 @@
+# -*- coding: utf-8 -*-
 #
 # This class was auto-generated from the API references found at
-# https://developer.globalcollect.com/documentation/api/server/
+# https://epayments-api.developer-ingenico.com/s2sapi/v1/
 #
 from ingenico.connect.sdk.data_object import DataObject
 
 
 class OrderTypeInformation(DataObject):
-    """
-    Class OrderTypeInformation
-    
-    See also https://developer.globalcollect.com/documentation/api/server/#schema_OrderTypeInformation
-    """
 
     __purchase_type = None
     __usage_type = None
@@ -18,7 +14,12 @@ class OrderTypeInformation(DataObject):
     @property
     def purchase_type(self):
         """
-        str
+        | Possible values are:
+        
+        * good
+        * service
+        
+        Type: str
         """
         return self.__purchase_type
 
@@ -29,7 +30,12 @@ class OrderTypeInformation(DataObject):
     @property
     def usage_type(self):
         """
-        str
+        | Possible values are:
+        
+        * private
+        * commercial
+        
+        Type: str
         """
         return self.__usage_type
 

@@ -1,16 +1,12 @@
+# -*- coding: utf-8 -*-
 #
 # This class was auto-generated from the API references found at
-# https://developer.globalcollect.com/documentation/api/server/
+# https://epayments-api.developer-ingenico.com/s2sapi/v1/
 #
 from ingenico.connect.sdk.data_object import DataObject
 
 
 class LengthValidator(DataObject):
-    """
-    Class LengthValidator
-    
-    See also https://developer.globalcollect.com/documentation/api/server/#schema_LengthValidator
-    """
 
     __max_length = None
     __min_length = None
@@ -18,7 +14,9 @@ class LengthValidator(DataObject):
     @property
     def max_length(self):
         """
-        int
+        | The maximum allowed length
+        
+        Type: int
         """
         return self.__max_length
 
@@ -29,7 +27,9 @@ class LengthValidator(DataObject):
     @property
     def min_length(self):
         """
-        int
+        | The minimum allowed length
+        
+        Type: int
         """
         return self.__min_length
 

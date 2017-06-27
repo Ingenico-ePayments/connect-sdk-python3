@@ -1,6 +1,6 @@
 #
 # This class was auto-generated from the API references found at
-# https://developer.globalcollect.com/documentation/api/server/
+# https://epayments-api.developer-ingenico.com/s2sapi/v1/
 #
 from ingenico.connect.sdk.api_resource import ApiResource
 from ingenico.connect.sdk.response_exception import ResponseException
@@ -15,7 +15,7 @@ class RefundsClient(ApiResource):
 
     def __init__(self, parent, path_context):
         """
-        :param parent:       :class:`ApiResource`
+        :param parent:       :class:`ingenico.connect.sdk.api_resource.ApiResource`
         :param path_context: dict[str, str]
         """
         super(RefundsClient, self).__init__(parent, path_context)
@@ -24,12 +24,13 @@ class RefundsClient(ApiResource):
         """
         Resource /{merchantId}/refunds/{refundId}
 
-        Get refund
+        | Get refund
         
-        See also https://developer.globalcollect.com/documentation/api/server/#__merchantId__refunds__refundId__get
+        See also https://epayments-api.developer-ingenico.com/s2sapi/v1/en_US/python/refunds/get.html
 
         :param refund_id:  str
-        :return: :class:`RefundResponse`
+        :param context:    :class:`ingenico.connect.sdk.call_context.CallContext`
+        :return: :class:`ingenico.connect.sdk.domain.refund.refund_response.RefundResponse`
         :raise: ValidationException if the request was not correct and couldn't be processed (HTTP status code 400)
         :raise: AuthorizationException if the request was not allowed (HTTP status code 403)
         :raise: ReferenceException if an object was attempted to be referenced that doesn't exist or has been removed,
@@ -60,12 +61,13 @@ class RefundsClient(ApiResource):
         """
         Resource /{merchantId}/refunds/{refundId}/approve
 
-        Approve refund
+        | Approve refund
         
-        See also https://developer.globalcollect.com/documentation/api/server/#__merchantId__refunds__refundId__approve_post
+        See also https://epayments-api.developer-ingenico.com/s2sapi/v1/en_US/python/refunds/approve.html
 
         :param refund_id:  str
-        :param body:       :class:`ApproveRefundRequest`
+        :param body:       :class:`ingenico.connect.sdk.domain.refund.approve_refund_request.ApproveRefundRequest`
+        :param context:    :class:`ingenico.connect.sdk.call_context.CallContext`
         :return: None
         :raise: ValidationException if the request was not correct and couldn't be processed (HTTP status code 400)
         :raise: AuthorizationException if the request was not allowed (HTTP status code 403)
@@ -98,11 +100,12 @@ class RefundsClient(ApiResource):
         """
         Resource /{merchantId}/refunds/{refundId}/cancel
 
-        Cancel refund
+        | Cancel refund
         
-        See also https://developer.globalcollect.com/documentation/api/server/#__merchantId__refunds__refundId__cancel_post
+        See also https://epayments-api.developer-ingenico.com/s2sapi/v1/en_US/python/refunds/cancel.html
 
         :param refund_id:  str
+        :param context:    :class:`ingenico.connect.sdk.call_context.CallContext`
         :return: None
         :raise: ValidationException if the request was not correct and couldn't be processed (HTTP status code 400)
         :raise: AuthorizationException if the request was not allowed (HTTP status code 403)
@@ -135,11 +138,12 @@ class RefundsClient(ApiResource):
         """
         Resource /{merchantId}/refunds/{refundId}/cancelapproval
 
-        Undo approve refund
+        | Undo approve refund
         
-        See also https://developer.globalcollect.com/documentation/api/server/#__merchantId__refunds__refundId__cancelapproval_post
+        See also https://epayments-api.developer-ingenico.com/s2sapi/v1/en_US/python/refunds/cancelapproval.html
 
         :param refund_id:  str
+        :param context:    :class:`ingenico.connect.sdk.call_context.CallContext`
         :return: None
         :raise: ValidationException if the request was not correct and couldn't be processed (HTTP status code 400)
         :raise: AuthorizationException if the request was not allowed (HTTP status code 403)

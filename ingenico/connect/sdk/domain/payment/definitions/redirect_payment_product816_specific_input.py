@@ -1,6 +1,7 @@
+# -*- coding: utf-8 -*-
 #
 # This class was auto-generated from the API references found at
-# https://developer.globalcollect.com/documentation/api/server/
+# https://epayments-api.developer-ingenico.com/s2sapi/v1/
 #
 from ingenico.connect.sdk.data_object import DataObject
 from ingenico.connect.sdk.domain.definitions.bank_account_iban import BankAccountIban
@@ -8,9 +9,7 @@ from ingenico.connect.sdk.domain.definitions.bank_account_iban import BankAccoun
 
 class RedirectPaymentProduct816SpecificInput(DataObject):
     """
-    Class RedirectPaymentProduct816SpecificInput
-    
-    See also https://developer.globalcollect.com/documentation/api/server/#schema_RedirectPaymentProduct816SpecificInput
+    | Please find below specific input fields for payment product 816 (giropay)
     """
 
     __bank_account_iban = None
@@ -18,7 +17,9 @@ class RedirectPaymentProduct816SpecificInput(DataObject):
     @property
     def bank_account_iban(self):
         """
-        :class:`BankAccountIban`
+        | Object containing the bank account details of the consumer
+        
+        Type: :class:`ingenico.connect.sdk.domain.definitions.bank_account_iban.BankAccountIban`
         """
         return self.__bank_account_iban
 

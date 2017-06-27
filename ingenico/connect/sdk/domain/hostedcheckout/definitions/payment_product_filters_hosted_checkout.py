@@ -1,17 +1,13 @@
+# -*- coding: utf-8 -*-
 #
 # This class was auto-generated from the API references found at
-# https://developer.globalcollect.com/documentation/api/server/
+# https://epayments-api.developer-ingenico.com/s2sapi/v1/
 #
 from ingenico.connect.sdk.data_object import DataObject
 from ingenico.connect.sdk.domain.definitions.payment_product_filter import PaymentProductFilter
 
 
 class PaymentProductFiltersHostedCheckout(DataObject):
-    """
-    Class PaymentProductFiltersHostedCheckout
-    
-    See also https://developer.globalcollect.com/documentation/api/server/#schema_PaymentProductFiltersHostedCheckout
-    """
 
     __exclude = None
     __restrict_to = None
@@ -20,7 +16,9 @@ class PaymentProductFiltersHostedCheckout(DataObject):
     @property
     def exclude(self):
         """
-        :class:`PaymentProductFilter`
+        | Contains the payment product ids and payment product groups that should be excluded from the payment products available for the payment. Note that excluding a payment product will ensure exclusion, even if the payment product is also present in the restrictTo filter, and that excluding a payment product group will exclude all payment products that are a part of that group, even if one or more of them are present in the restrictTo filters.
+        
+        Type: :class:`ingenico.connect.sdk.domain.definitions.payment_product_filter.PaymentProductFilter`
         """
         return self.__exclude
 
@@ -31,7 +29,9 @@ class PaymentProductFiltersHostedCheckout(DataObject):
     @property
     def restrict_to(self):
         """
-        :class:`PaymentProductFilter`
+        | Contains the payment product ids and payment product groups that should be at most contained in the payment products available for completing the payment. Note that the list of payment products available for completing the payment will only contain payment products present in these filters, but not all payment products in these filters might be present in the list. Some of them might not be allowed in context or they might be present in the exclude filters.
+        
+        Type: :class:`ingenico.connect.sdk.domain.definitions.payment_product_filter.PaymentProductFilter`
         """
         return self.__restrict_to
 
@@ -42,7 +42,12 @@ class PaymentProductFiltersHostedCheckout(DataObject):
     @property
     def tokens_only(self):
         """
-        bool
+        * true - The consumer may only complete the payment using one of the provided accounts on file.
+        * false -The consumer can complete the payment using any way they like, as long as it is allowed in the payment context. Default.
+        
+        | Note that the request must contain at least one valid account on file with an allowed payment product (not excluded and allowed in context) if this field is set to true, else the request will fail.
+        
+        Type: bool
         """
         return self.__tokens_only
 

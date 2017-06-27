@@ -1,15 +1,16 @@
+# -*- coding: utf-8 -*-
 #
 # This class was auto-generated from the API references found at
-# https://developer.globalcollect.com/documentation/api/server/
+# https://epayments-api.developer-ingenico.com/s2sapi/v1/
 #
 from ingenico.connect.sdk.param_request import ParamRequest
 
 
 class NetworksParams(ParamRequest):
     """
-    Query parameters for Get payment product networks
+    Query parameters for | Get payment product networks
     
-    See also https://developer.globalcollect.com/documentation/api/server/#__merchantId__products__paymentProductId__networks_get
+    See also https://epayments-api.developer-ingenico.com/s2sapi/v1/en_US/python/products/networks.html
     """
 
     __country_code = None
@@ -20,7 +21,9 @@ class NetworksParams(ParamRequest):
     @property
     def country_code(self):
         """
-        str
+        | ISO 3166-1 alpha-2 country code
+        
+        Type: str
         """
         return self.__country_code
 
@@ -31,7 +34,9 @@ class NetworksParams(ParamRequest):
     @property
     def currency_code(self):
         """
-        str
+        | Three-letter ISO currency code representing the currency for the amount
+        
+        Type: str
         """
         return self.__currency_code
 
@@ -42,7 +47,9 @@ class NetworksParams(ParamRequest):
     @property
     def amount(self):
         """
-        int
+        | Amount in cents and always having 2 decimals
+        
+        Type: int
         """
         return self.__amount
 
@@ -53,7 +60,12 @@ class NetworksParams(ParamRequest):
     @property
     def is_recurring(self):
         """
-        bool
+        | This allows you to filter networks based on their support for recurring or not
+        
+        * true
+        * false
+        
+        Type: bool
         """
         return self.__is_recurring
 

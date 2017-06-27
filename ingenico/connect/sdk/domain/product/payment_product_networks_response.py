@@ -1,23 +1,21 @@
+# -*- coding: utf-8 -*-
 #
 # This class was auto-generated from the API references found at
-# https://developer.globalcollect.com/documentation/api/server/
+# https://epayments-api.developer-ingenico.com/s2sapi/v1/
 #
 from ingenico.connect.sdk.data_object import DataObject
 
 
 class PaymentProductNetworksResponse(DataObject):
-    """
-    Class PaymentProductNetworksResponse
-    
-    See also https://developer.globalcollect.com/documentation/api/server/#schema_PaymentProductNetworksResponse
-    """
 
     __networks = None
 
     @property
     def networks(self):
         """
-        list[str]
+        | Array containing network entries for a payment product. The strings that represent the networks in the array are identical to the strings that the payment product vendors use in their documentation.For instance: "Visa" for Android Pay <https://developer.apple.com/reference/passkit/pkpaymentnetwork>.
+        
+        Type: list[str]
         """
         return self.__networks
 

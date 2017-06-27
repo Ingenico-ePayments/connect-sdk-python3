@@ -1,23 +1,21 @@
+# -*- coding: utf-8 -*-
 #
 # This class was auto-generated from the API references found at
-# https://developer.globalcollect.com/documentation/api/server/
+# https://epayments-api.developer-ingenico.com/s2sapi/v1/
 #
 from ingenico.connect.sdk.data_object import DataObject
 
 
 class OrderReferencesApprovePayment(DataObject):
-    """
-    Class OrderReferencesApprovePayment
-    
-    See also https://developer.globalcollect.com/documentation/api/server/#schema_OrderReferencesApprovePayment
-    """
 
     __merchant_reference = None
 
     @property
     def merchant_reference(self):
         """
-        str
+        | Your (unique) reference for the transaction that you can use to reconcile our report files
+        
+        Type: str
         """
         return self.__merchant_reference
 

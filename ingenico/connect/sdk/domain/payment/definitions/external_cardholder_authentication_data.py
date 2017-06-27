@@ -1,16 +1,12 @@
+# -*- coding: utf-8 -*-
 #
 # This class was auto-generated from the API references found at
-# https://developer.globalcollect.com/documentation/api/server/
+# https://epayments-api.developer-ingenico.com/s2sapi/v1/
 #
 from ingenico.connect.sdk.data_object import DataObject
 
 
 class ExternalCardholderAuthenticationData(DataObject):
-    """
-    Class ExternalCardholderAuthenticationData
-    
-    See also https://developer.globalcollect.com/documentation/api/server/#schema_ExternalCardholderAuthenticationData
-    """
 
     __cavv = None
     __cavv_algorithm = None
@@ -21,7 +17,9 @@ class ExternalCardholderAuthenticationData(DataObject):
     @property
     def cavv(self):
         """
-        str
+        | The CAVV (cardholder authentication verification value) or AAV (accountholder authentication value) provides an authentication validation value.
+        
+        Type: str
         """
         return self.__cavv
 
@@ -32,7 +30,9 @@ class ExternalCardholderAuthenticationData(DataObject):
     @property
     def cavv_algorithm(self):
         """
-        str
+        | The algorithm, from your 3D Secure provider, used to generate the authentication CAVV.
+        
+        Type: str
         """
         return self.__cavv_algorithm
 
@@ -43,7 +43,17 @@ class ExternalCardholderAuthenticationData(DataObject):
     @property
     def eci(self):
         """
-        int
+        | Electronic Commerce Indicator provides authentication validation results returned after AUTHENTICATIONVALIDATION
+        
+        * 0 = No authentication, Internet (no liability shift, not a 3D Secure transaction)
+        * 1 = Authentication attempted (MasterCard)
+        * 2 = Successful authentication (MasterCard)
+        * 5 = Successful authentication (Visa, Diners Club, Amex)
+        * 6 = Authentication attempted (Visa, Diners Club, Amex)
+        * 7 = No authentication, Internet (no liability shift, not a 3D Secure transaction)
+        * (empty) = Not checked or not enrolled
+        
+        Type: int
         """
         return self.__eci
 
@@ -54,7 +64,9 @@ class ExternalCardholderAuthenticationData(DataObject):
     @property
     def validation_result(self):
         """
-        str
+        | The 3D Secure authentication result from your 3D Secure provider.
+        
+        Type: str
         """
         return self.__validation_result
 
@@ -65,7 +77,9 @@ class ExternalCardholderAuthenticationData(DataObject):
     @property
     def xid(self):
         """
-        str
+        | The transaction ID that is used for the 3D Authentication
+        
+        Type: str
         """
         return self.__xid
 

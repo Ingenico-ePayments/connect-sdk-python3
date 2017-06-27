@@ -1,6 +1,7 @@
+# -*- coding: utf-8 -*-
 #
 # This class was auto-generated from the API references found at
-# https://developer.globalcollect.com/documentation/api/server/
+# https://epayments-api.developer-ingenico.com/s2sapi/v1/
 #
 from ingenico.connect.sdk.data_object import DataObject
 from ingenico.connect.sdk.domain.definitions.bank_account_bban import BankAccountBban
@@ -8,9 +9,7 @@ from ingenico.connect.sdk.domain.definitions.bank_account_bban import BankAccoun
 
 class NonSepaDirectDebitPaymentProduct705SpecificInput(DataObject):
     """
-    Class NonSepaDirectDebitPaymentProduct705SpecificInput
-    
-    See also https://developer.globalcollect.com/documentation/api/server/#schema_NonSepaDirectDebitPaymentProduct705SpecificInput
+    | UK Direct Debit specific input fields
     """
 
     __authorisation_id = None
@@ -20,7 +19,9 @@ class NonSepaDirectDebitPaymentProduct705SpecificInput(DataObject):
     @property
     def authorisation_id(self):
         """
-        str
+        | Core reference number for the direct debit instruction in UK
+        
+        Type: str
         """
         return self.__authorisation_id
 
@@ -31,7 +32,9 @@ class NonSepaDirectDebitPaymentProduct705SpecificInput(DataObject):
     @property
     def bank_account_bban(self):
         """
-        :class:`BankAccountBban`
+        | Object containing account holder name and bank account information
+        
+        Type: :class:`ingenico.connect.sdk.domain.definitions.bank_account_bban.BankAccountBban`
         """
         return self.__bank_account_bban
 
@@ -42,7 +45,15 @@ class NonSepaDirectDebitPaymentProduct705SpecificInput(DataObject):
     @property
     def transaction_type(self):
         """
-        str
+        * first-payment - First payment direct debit
+        * nth-payment - Direct Debit (n-th payment)
+        * re-presented - Re-presented direct debit (after failed attempt)
+        * final-payment - Final payment direct debit
+        * new-or-reinstated - (zero N) New or reinstated direct debit instruction
+        * cancellation - (zero C) Cancellation of direct debit instruction
+        * conversion-of-paper-DDI-to-electronic-DDI - (zero S) Conversion of paper DDI to electronic DDI (only used once, when migrating from traditional direct debit to AUDDIS
+        
+        Type: str
         """
         return self.__transaction_type
 

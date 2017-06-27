@@ -1,6 +1,7 @@
+# -*- coding: utf-8 -*-
 #
 # This class was auto-generated from the API references found at
-# https://developer.globalcollect.com/documentation/api/server/
+# https://epayments-api.developer-ingenico.com/s2sapi/v1/
 #
 from ingenico.connect.sdk.data_object import DataObject
 from ingenico.connect.sdk.domain.definitions.amount_of_money import AmountOfMoney
@@ -8,9 +9,7 @@ from ingenico.connect.sdk.domain.definitions.amount_of_money import AmountOfMone
 
 class PaymentContext(DataObject):
     """
-    Class PaymentContext
-    
-    See also https://developer.globalcollect.com/documentation/api/server/#schema_PaymentContext
+    | Values that can optionally be set to refine an IIN Lookup
     """
 
     __amount_of_money = None
@@ -20,7 +19,9 @@ class PaymentContext(DataObject):
     @property
     def amount_of_money(self):
         """
-        :class:`AmountOfMoney`
+        | The payment amount
+        
+        Type: :class:`ingenico.connect.sdk.domain.definitions.amount_of_money.AmountOfMoney`
         """
         return self.__amount_of_money
 
@@ -31,7 +32,9 @@ class PaymentContext(DataObject):
     @property
     def country_code(self):
         """
-        str
+        | The country the payment takes place in
+        
+        Type: str
         """
         return self.__country_code
 
@@ -42,7 +45,9 @@ class PaymentContext(DataObject):
     @property
     def is_recurring(self):
         """
-        bool
+        | True if the payment is recurring
+        
+        Type: bool
         """
         return self.__is_recurring
 
