@@ -132,6 +132,7 @@ class CommunicatorConfigurationTest(unittest.TestCase):
         self.config.set("ConnectSDK", "connect.api.shoppingCartExtension.creator", "Ingenico.Creator")
         self.config.set("ConnectSDK", "connect.api.shoppingCartExtension.name", "Ingenico.ShoppingCarts")
         self.config.set("ConnectSDK", "connect.api.shoppingCartExtension.version", "1.0")
+        self.config.set("ConnectSDK", "connect.api.shoppingCartExtension.extensionId", "ExtensionId")
 
         communicator_config = CommunicatorConfiguration(self.config)
 
@@ -144,6 +145,7 @@ class CommunicatorConfigurationTest(unittest.TestCase):
         self.assertEqual("Ingenico.Creator", communicator_config.shopping_cart_extension.creator)
         self.assertEqual("Ingenico.ShoppingCarts", communicator_config.shopping_cart_extension.name)
         self.assertEqual("1.0", communicator_config.shopping_cart_extension.version)
+        self.assertEqual("ExtensionId", communicator_config.shopping_cart_extension.extension_id)
 
 
 if __name__ == '__main__':

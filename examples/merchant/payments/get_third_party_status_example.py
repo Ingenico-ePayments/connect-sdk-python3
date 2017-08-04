@@ -5,23 +5,13 @@
 import os
 
 from ingenico.connect.sdk.factory import Factory
-from ingenico.connect.sdk.merchant.products.get_product_params import GetProductParams
 
 
-class GetPaymentProductExample(object):
+class GetThirdPartyStatusExample(object):
 
     def example(self):
         with self.__get_client() as client:
-            query = GetProductParams()
-            query.country_code = "US"
-            query.currency_code = "USD"
-            query.locale = "en_US"
-            query.amount = 1000
-            query.is_recurring = True
-            query.force_basic_flow = False
-            query.add_hide("fields")
-
-            response = client.merchant("merchantId").products().get(1, query)
+            response = client.merchant("merchantId").payments().third_party_status("paymentId")
 
     def __get_client(self):
         api_key_id = os.getenv("connect.api.apiKeyId", "someKey")

@@ -2,7 +2,7 @@ from ingenico.connect.sdk.data_object import DataObject
 
 
 class ShoppingCartExtension(DataObject):
-    def __init__(self, creator, name, version):
+    def __init__(self, creator, name, version, extension_id=None):
         if not creator:
             raise ValueError("creator is required")
         if not name:
@@ -12,12 +12,14 @@ class ShoppingCartExtension(DataObject):
         self.__creator = creator
         self.__name = name
         self.__version = version
+        self.__extension_id = extension_id
 
     def to_dictionary(self):
         dictionary = super(ShoppingCartExtension, self).to_dictionary()
         self._add_to_dictionary(dictionary, "creator", self.__creator)
         self._add_to_dictionary(dictionary, "name", self.__name)
         self._add_to_dictionary(dictionary, "version", self.__version)
+        self._add_to_dictionary(dictionary, "extensionId", self.__extension_id)
         return dictionary
 
     def from_dictionary(self, dictionary):
@@ -28,6 +30,8 @@ class ShoppingCartExtension(DataObject):
             self.__name = dictionary['name']
         if 'version' in dictionary:
             self.__version = dictionary['version']
+        if 'extensionId' in dictionary:
+            self.__extension_id = dictionary['extensionId']
         return self
 
     @staticmethod
@@ -44,7 +48,11 @@ class ShoppingCartExtension(DataObject):
             version = dictionary['version']
         else:
             raise ValueError("version is required")
-        return ShoppingCartExtension(creator, name, version)
+        if 'extensionId' in dictionary:
+            extension_id = dictionary['extensionId']
+        else:
+            extension_id = None
+        return ShoppingCartExtension(creator, name, version, extension_id)
 
     @property
     def creator(self):
@@ -57,3 +65,7 @@ class ShoppingCartExtension(DataObject):
     @property
     def version(self):
         return self.__version
+
+    @property
+    def extension_id(self):
+        return self.__extension_id

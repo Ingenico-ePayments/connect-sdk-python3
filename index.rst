@@ -268,14 +268,14 @@ API Reference
     :special-members:
     :exclude-members: __dict__,__weakref__,__module__,__get__
 
-.. automodule:: ingenico.connect.sdk.domain.capture.captures_response
+.. automodule:: ingenico.connect.sdk.domain.capture.capture_response
     :members:
     :show-inheritance:
     :undoc-members:
     :special-members:
     :exclude-members: __dict__,__weakref__,__module__,__get__
 
-.. automodule:: ingenico.connect.sdk.domain.capture.capture_response
+.. automodule:: ingenico.connect.sdk.domain.capture.captures_response
     :members:
     :show-inheritance:
     :undoc-members:
@@ -604,6 +604,20 @@ API Reference
     :special-members:
     :exclude-members: __dict__,__weakref__,__module__,__get__
 
+.. automodule:: ingenico.connect.sdk.domain.payment.complete_payment_request
+    :members:
+    :show-inheritance:
+    :undoc-members:
+    :special-members:
+    :exclude-members: __dict__,__weakref__,__module__,__get__
+
+.. automodule:: ingenico.connect.sdk.domain.payment.complete_payment_response
+    :members:
+    :show-inheritance:
+    :undoc-members:
+    :special-members:
+    :exclude-members: __dict__,__weakref__,__module__,__get__
+
 .. automodule:: ingenico.connect.sdk.domain.payment.create_payment_request
     :members:
     :show-inheritance:
@@ -633,6 +647,13 @@ API Reference
     :exclude-members: __dict__,__weakref__,__module__,__get__
 
 .. automodule:: ingenico.connect.sdk.domain.payment.payment_response
+    :members:
+    :show-inheritance:
+    :undoc-members:
+    :special-members:
+    :exclude-members: __dict__,__weakref__,__module__,__get__
+
+.. automodule:: ingenico.connect.sdk.domain.payment.third_party_status_response
     :members:
     :show-inheritance:
     :undoc-members:
@@ -794,6 +815,13 @@ API Reference
     :exclude-members: __dict__,__weakref__,__module__,__get__
 
 .. automodule:: ingenico.connect.sdk.domain.payment.definitions.cash_payment_product1504_specific_input
+    :members:
+    :show-inheritance:
+    :undoc-members:
+    :special-members:
+    :exclude-members: __dict__,__weakref__,__module__,__get__
+
+.. automodule:: ingenico.connect.sdk.domain.payment.definitions.complete_payment_card_payment_method_specific_input
     :members:
     :show-inheritance:
     :undoc-members:
@@ -1276,7 +1304,7 @@ API Reference
     :special-members:
     :exclude-members: __dict__,__weakref__,__module__,__get__
 
-.. automodule:: ingenico.connect.sdk.domain.product.payment_products
+.. automodule:: ingenico.connect.sdk.domain.product.payment_product_group_response
     :members:
     :show-inheritance:
     :undoc-members:
@@ -1284,13 +1312,6 @@ API Reference
     :exclude-members: __dict__,__weakref__,__module__,__get__
 
 .. automodule:: ingenico.connect.sdk.domain.product.payment_product_groups
-    :members:
-    :show-inheritance:
-    :undoc-members:
-    :special-members:
-    :exclude-members: __dict__,__weakref__,__module__,__get__
-
-.. automodule:: ingenico.connect.sdk.domain.product.payment_product_group_response
     :members:
     :show-inheritance:
     :undoc-members:
@@ -1305,6 +1326,13 @@ API Reference
     :exclude-members: __dict__,__weakref__,__module__,__get__
 
 .. automodule:: ingenico.connect.sdk.domain.product.payment_product_response
+    :members:
+    :show-inheritance:
+    :undoc-members:
+    :special-members:
+    :exclude-members: __dict__,__weakref__,__module__,__get__
+
+.. automodule:: ingenico.connect.sdk.domain.product.payment_products
     :members:
     :show-inheritance:
     :undoc-members:
@@ -1780,14 +1808,14 @@ API Reference
     :special-members:
     :exclude-members: __dict__,__weakref__,__module__,__get__
 
-.. automodule:: ingenico.connect.sdk.domain.token.definitions.mandate_sepa_direct_debit_without_creditor
+.. automodule:: ingenico.connect.sdk.domain.token.definitions.mandate_sepa_direct_debit_with_mandate_id
     :members:
     :show-inheritance:
     :undoc-members:
     :special-members:
     :exclude-members: __dict__,__weakref__,__module__,__get__
 
-.. automodule:: ingenico.connect.sdk.domain.token.definitions.mandate_sepa_direct_debit_with_mandate_id
+.. automodule:: ingenico.connect.sdk.domain.token.definitions.mandate_sepa_direct_debit_without_creditor
     :members:
     :show-inheritance:
     :undoc-members:
@@ -1871,6 +1899,13 @@ API Reference
     :special-members:
     :exclude-members: __dict__,__weakref__,__module__,__get__
 
+.. automodule:: ingenico.connect.sdk.log.log_message
+    :members:
+    :show-inheritance:
+    :undoc-members:
+    :special-members:
+    :exclude-members: __dict__,__weakref__,__module__,__get__
+
 .. automodule:: ingenico.connect.sdk.log.logging_capable
     :members:
     :show-inheritance:
@@ -1879,13 +1914,6 @@ API Reference
     :exclude-members: __dict__,__weakref__,__module__,__get__
 
 .. automodule:: ingenico.connect.sdk.log.logging_util
-    :members:
-    :show-inheritance:
-    :undoc-members:
-    :special-members:
-    :exclude-members: __dict__,__weakref__,__module__,__get__
-
-.. automodule:: ingenico.connect.sdk.log.log_message
     :members:
     :show-inheritance:
     :undoc-members:

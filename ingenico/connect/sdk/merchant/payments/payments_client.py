@@ -9,10 +9,12 @@ from ingenico.connect.sdk.domain.capture.captures_response import CapturesRespon
 from ingenico.connect.sdk.domain.errors.error_response import ErrorResponse
 from ingenico.connect.sdk.domain.payment.cancel_approval_payment_response import CancelApprovalPaymentResponse
 from ingenico.connect.sdk.domain.payment.cancel_payment_response import CancelPaymentResponse
+from ingenico.connect.sdk.domain.payment.complete_payment_response import CompletePaymentResponse
 from ingenico.connect.sdk.domain.payment.create_payment_response import CreatePaymentResponse
 from ingenico.connect.sdk.domain.payment.payment_approval_response import PaymentApprovalResponse
 from ingenico.connect.sdk.domain.payment.payment_error_response import PaymentErrorResponse
 from ingenico.connect.sdk.domain.payment.payment_response import PaymentResponse
+from ingenico.connect.sdk.domain.payment.third_party_status_response import ThirdPartyStatusResponse
 from ingenico.connect.sdk.domain.refund.refund_error_response import RefundErrorResponse
 from ingenico.connect.sdk.domain.refund.refund_response import RefundResponse
 from ingenico.connect.sdk.domain.token.create_token_response import CreateTokenResponse
@@ -224,6 +226,82 @@ class PaymentsClient(ApiResource):
             error_object = self._communicator.marshaller.unmarshal(e.body, error_type)
             raise self._create_exception(e.status_code, e.body, error_object, context)
 
+    def complete(self, payment_id, body, context=None):
+        """
+        Resource /{merchantId}/payments/{paymentId}/complete
+
+        | Complete payment
+        
+        See also https://epayments-api.developer-ingenico.com/s2sapi/v1/en_US/python/payments/complete.html
+
+        :param payment_id:  str
+        :param body:        :class:`ingenico.connect.sdk.domain.payment.complete_payment_request.CompletePaymentRequest`
+        :param context:     :class:`ingenico.connect.sdk.call_context.CallContext`
+        :return: :class:`ingenico.connect.sdk.domain.payment.complete_payment_response.CompletePaymentResponse`
+        :raise: ValidationException if the request was not correct and couldn't be processed (HTTP status code 400)
+        :raise: AuthorizationException if the request was not allowed (HTTP status code 403)
+        :raise: ReferenceException if an object was attempted to be referenced that doesn't exist or has been removed,
+                   or there was a conflict (HTTP status code 404, 409 or 410)
+        :raise: GlobalCollectException if something went wrong at the GlobalCollect platform,
+                   the GlobalCollect platform was unable to process a message from a downstream partner/acquirer,
+                   or the service that you're trying to reach is temporary unavailable (HTTP status code 500, 502 or 503)
+        :raise: ApiException if the GlobalCollect platform returned any other error
+        """
+        path_context = {
+            "paymentId": payment_id,
+        }
+        uri = self._instantiate_uri("/{apiVersion}/{merchantId}/payments/{paymentId}/complete", path_context)
+        try:
+            return self._communicator.post(
+                    uri,
+                    self._client_headers,
+                    None,
+                    body,
+                    CompletePaymentResponse,
+                    context)
+
+        except ResponseException as e:
+            error_type = ErrorResponse
+            error_object = self._communicator.marshaller.unmarshal(e.body, error_type)
+            raise self._create_exception(e.status_code, e.body, error_object, context)
+
+    def third_party_status(self, payment_id, context=None):
+        """
+        Resource /{merchantId}/payments/{paymentId}/thirdpartystatus
+
+        | Third party status poll
+        
+        See also https://epayments-api.developer-ingenico.com/s2sapi/v1/en_US/python/payments/thirdPartyStatus.html
+
+        :param payment_id:  str
+        :param context:     :class:`ingenico.connect.sdk.call_context.CallContext`
+        :return: :class:`ingenico.connect.sdk.domain.payment.third_party_status_response.ThirdPartyStatusResponse`
+        :raise: ValidationException if the request was not correct and couldn't be processed (HTTP status code 400)
+        :raise: AuthorizationException if the request was not allowed (HTTP status code 403)
+        :raise: ReferenceException if an object was attempted to be referenced that doesn't exist or has been removed,
+                   or there was a conflict (HTTP status code 404, 409 or 410)
+        :raise: GlobalCollectException if something went wrong at the GlobalCollect platform,
+                   the GlobalCollect platform was unable to process a message from a downstream partner/acquirer,
+                   or the service that you're trying to reach is temporary unavailable (HTTP status code 500, 502 or 503)
+        :raise: ApiException if the GlobalCollect platform returned any other error
+        """
+        path_context = {
+            "paymentId": payment_id,
+        }
+        uri = self._instantiate_uri("/{apiVersion}/{merchantId}/payments/{paymentId}/thirdpartystatus", path_context)
+        try:
+            return self._communicator.get(
+                    uri,
+                    self._client_headers,
+                    None,
+                    ThirdPartyStatusResponse,
+                    context)
+
+        except ResponseException as e:
+            error_type = ErrorResponse
+            error_object = self._communicator.marshaller.unmarshal(e.body, error_type)
+            raise self._create_exception(e.status_code, e.body, error_object, context)
+
     def cancel(self, payment_id, context=None):
         """
         Resource /{merchantId}/payments/{paymentId}/cancel
@@ -266,7 +344,7 @@ class PaymentsClient(ApiResource):
         """
         Resource /{merchantId}/payments/{paymentId}/cancelapproval
 
-        | Undo capture payment request
+        | Undo capture payment
         
         See also https://epayments-api.developer-ingenico.com/s2sapi/v1/en_US/python/payments/cancelapproval.html
 

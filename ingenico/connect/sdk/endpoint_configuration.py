@@ -121,12 +121,15 @@ class EndpointConfiguration(object):
                                      prefix + ".shoppingCartExtension.version")
         except NoOptionError:
             version = None
-        if creator is None and name is None and version is None:
+        try:
+            extension_id = properties.get("ConnectSDK",
+                                          prefix + ".shoppingCartExtension.extensionId")
+        except NoOptionError:
+            extension_id = None
+        if creator is None and name is None and version is None and extension_id is None:
             return None
-        elif creator is not None and name is not None and version is not None:
-            return ShoppingCartExtension(creator, name, version)
         else:
-            raise ValueError(" All three shopping cart options options should be present or none at all")
+            return ShoppingCartExtension(creator, name, version, extension_id)
 
     @property
     def _endpoint(self):

@@ -14,6 +14,15 @@ class MetaDataProviderTest(unittest.TestCase):
     """
     def test_server_meta_data_headers_full(self):
         """Tests that the MetaDataProvider can construct meta_data_headers when supplied with a full shopping cart"""
+        shopping_cart_extension = ShoppingCartExtension("Ingenico.creator", "Extension", "1.0", "ExtensionId")
+        meta_data_provider = MetaDataProvider("Ingenico", shopping_cart_extension)
+
+        request_headers = meta_data_provider.meta_data_headers
+        self.assertEqual(1, len(request_headers))
+        self.assertServerMetaInfo(meta_data_provider, "Ingenico", shopping_cart_extension, request_headers[0])
+
+    def test_server_meta_data_headers_full_no_shopping_cart_extension_id(self):
+        """Tests that the MetaDataProvider can construct meta_data_headers when supplied with a full shopping cart"""
         shopping_cart_extension = ShoppingCartExtension("Ingenico.creator", "Extension", "1.0")
         meta_data_provider = MetaDataProvider("Ingenico", shopping_cart_extension)
 
@@ -73,6 +82,7 @@ class MetaDataProviderTest(unittest.TestCase):
             self.assertEqual(shopping_cart_extension.creator, server_meta_info.shopping_cart_extension.creator)
             self.assertEqual(shopping_cart_extension.name, server_meta_info.shopping_cart_extension.name)
             self.assertEqual(shopping_cart_extension.version, server_meta_info.shopping_cart_extension.version)
+            self.assertEqual(shopping_cart_extension.extension_id, server_meta_info.shopping_cart_extension.extension_id)
 
 
 if __name__ == '__main__':

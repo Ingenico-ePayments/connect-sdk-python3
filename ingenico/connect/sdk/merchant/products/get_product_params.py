@@ -19,6 +19,7 @@ class GetProductParams(ParamRequest):
     __amount = None
     __is_recurring = None
     __hide = None
+    __force_basic_flow = None
 
     @property
     def country_code(self):
@@ -113,6 +114,19 @@ class GetProductParams(ParamRequest):
             self.hide = []
         self.hide.append(value)
 
+    @property
+    def force_basic_flow(self):
+        """
+        | Relevant only for payment product 3004 (Bancontact). A boolean that indicates if you want to force the response to return the fields of the basic flow. This can be useful in corner cases where you have enabled the enhanced flow which supports payment with the Bancontact app, but need access to the product fields without creating a payment first.
+        
+        Type: bool
+        """
+        return self.__force_basic_flow
+
+    @force_basic_flow.setter
+    def force_basic_flow(self, value):
+        self.__force_basic_flow = value
+
     def to_request_parameters(self):
         """
         :return: list[RequestParam]
@@ -124,4 +138,5 @@ class GetProductParams(ParamRequest):
         self._add_parameter(result, "amount", self.amount)
         self._add_parameter(result, "isRecurring", self.is_recurring)
         self._add_parameter(result, "hide", self.hide)
+        self._add_parameter(result, "forceBasicFlow", self.force_basic_flow)
         return result

@@ -6,11 +6,13 @@
 from ingenico.connect.sdk.data_object import DataObject
 from ingenico.connect.sdk.domain.definitions.key_value_pair import KeyValuePair
 from ingenico.connect.sdk.domain.payment.definitions.redirect_data import RedirectData
+from ingenico.connect.sdk.domain.product.definitions.payment_product_field import PaymentProductField
 
 
 class MerchantAction(DataObject):
 
     __action_type = None
+    __form_fields = None
     __redirect_data = None
     __rendering_data = None
     __show_data = None
@@ -21,6 +23,7 @@ class MerchantAction(DataObject):
         | Action merchants needs to take in the online payment process. Possible values are:
         
         * REDIRECT - The consumer needs to be redirected using the details found in redirectData
+        * SHOW_FORM - The consumer needs to be shown a form with the fields found in formFields. You can submit the data entered by the user in a Complete payment <https://epayments-api.developer-ingenico.com/s2sapi/v1/en_US/python/payments/complete.html> request
         * SHOW_INSTRUCTIONS - The consumer needs to be shown payment instruction using the details found in showData. Alternatively the instructions can be rendered by us using the instructionsRenderingData
         * SHOW_TRANSACTION_RESULTS - The consumer needs to be shown the transaction results using the details found in showData. Alternatively the instructions can be rendered by us using the instructionsRenderingData
         
@@ -31,6 +34,19 @@ class MerchantAction(DataObject):
     @action_type.setter
     def action_type(self, value):
         self.__action_type = value
+
+    @property
+    def form_fields(self):
+        """
+        | Populated only when the actionType of the merchantAction is SHOW_FORM. In this case, this field contains the list of fields to render, in the format that is also used in the response of Get payment product <https://epayments-api.developer-ingenico.com/s2sapi/v1/en_US/python/products/get.html>.
+        
+        Type: list[:class:`ingenico.connect.sdk.domain.product.definitions.payment_product_field.PaymentProductField`]
+        """
+        return self.__form_fields
+
+    @form_fields.setter
+    def form_fields(self, value):
+        self.__form_fields = value
 
     @property
     def redirect_data(self):
@@ -87,6 +103,7 @@ class MerchantAction(DataObject):
     def to_dictionary(self):
         dictionary = super(MerchantAction, self).to_dictionary()
         self._add_to_dictionary(dictionary, 'actionType', self.action_type)
+        self._add_to_dictionary(dictionary, 'formFields', self.form_fields)
         self._add_to_dictionary(dictionary, 'redirectData', self.redirect_data)
         self._add_to_dictionary(dictionary, 'renderingData', self.rendering_data)
         self._add_to_dictionary(dictionary, 'showData', self.show_data)
@@ -96,6 +113,13 @@ class MerchantAction(DataObject):
         super(MerchantAction, self).from_dictionary(dictionary)
         if 'actionType' in dictionary:
             self.action_type = dictionary['actionType']
+        if 'formFields' in dictionary:
+            if not isinstance(dictionary['formFields'], list):
+                raise TypeError('value \'{}\' is not a list'.format(dictionary['formFields']))
+            self.form_fields = []
+            for formFields_element in dictionary['formFields']:
+                formFields_value = PaymentProductField()
+                self.form_fields.append(formFields_value.from_dictionary(formFields_element))
         if 'redirectData' in dictionary:
             if not isinstance(dictionary['redirectData'], dict):
                 raise TypeError('value \'{}\' is not a dictionary'.format(dictionary['redirectData']))
