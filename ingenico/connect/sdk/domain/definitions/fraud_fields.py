@@ -31,6 +31,8 @@ class FraudFields(DataObject):
     @property
     def addresses_are_identical(self):
         """
+        | Indicates that invoice and shipping addresses are equal.
+        
         Type: bool
         """
         return self.__addresses_are_identical

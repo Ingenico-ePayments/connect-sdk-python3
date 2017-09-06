@@ -59,8 +59,10 @@ class SessionResponse(DataObject):
         
         * EU - datacenter located in Amsterdam
         * US - datacenter located in Miami
+        * AMS - datacenter located in Amsterdam
+        * PAR - datacenter located in Paris
         
-        | When a session is created it is created in a specific datacenter. Any subsequent calls using the Client API need to be datacenter specific. The region is identified either by EU (datacenter located in Amsterdam) or US (datacenter located in Miami). This value needs to be passed to the a Client SDK to make sure that the client software connects to the right datacenter.
+        | When a session is created it is created in a specific datacenter. Any subsequent calls using the Client API need to be datacenter specific. The region is identified by EU or AMS (datacenter located in Amsterdam), US (datacenter located in Miami) or PAR (datacenter located in Paris). This value needs to be passed to the a Client SDK to make sure that the client software connects to the right datacenter.
         
         Type: str
         """

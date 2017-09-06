@@ -31,7 +31,7 @@ class DeclinedPayoutException(DeclinedTransactionException):
         if payout is not None:
             return "declined payout '" + payout.id + "' with status '" + payout.status + "'"
         else:
-            return "the GlobalCollect platform returned a declined payout response"
+            return "the Ingenico ePayments platform returned a declined payout response"
 
     @property
     def payout_result(self):

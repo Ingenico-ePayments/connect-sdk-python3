@@ -21,7 +21,7 @@ from .validation_exception import ValidationException
 
 class ApiResource(object):
     """
-    Base class of all GlobalCollect platform API resources.
+    Base class of all Ingenico ePayments platform API resources.
     """
 
     def __init__(self, arg, path_context, client_meta_info=None):

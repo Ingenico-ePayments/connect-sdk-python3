@@ -30,7 +30,7 @@ class DeclinedPaymentException(DeclinedTransactionException):
         if payment is not None:
             return "declined payment '" + payment.id + "' with status '" + payment.status + "'"
         else:
-            return "the GlobalCollect platform returned a declined payment response"
+            return "the Ingenico ePayments platform returned a declined payment response"
 
     @property
     def create_payment_result(self):

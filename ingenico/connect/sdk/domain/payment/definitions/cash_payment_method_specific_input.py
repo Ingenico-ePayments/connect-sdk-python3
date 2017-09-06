@@ -16,7 +16,7 @@ class CashPaymentMethodSpecificInput(CashPaymentMethodSpecificInputBase):
     @property
     def payment_product1503_specific_input(self):
         """
-        | Object that holds the specific data for Boleto Banc?rio in Brazil (payment product 1503)
+        | Object that holds the specific data for Boleto Bancario in Brazil (payment product 1503)
         
         Type: :class:`ingenico.connect.sdk.domain.payment.definitions.cash_payment_product1503_specific_input.CashPaymentProduct1503SpecificInput`
         """

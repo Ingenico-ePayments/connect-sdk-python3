@@ -1,25 +1,25 @@
 class ResponseException(RuntimeError):
     """
-    Thrown when a response was received from the GlobalCollect platform which
+    Thrown when a response was received from the Ingenico ePayments platform which
     indicates an error.
     """
 
     def __init__(self, response):
         super(ResponseException, self).__init__(
-            "the GlobalCollect platform returned an error response")
+            "the Ingenico ePayments platform returned an error response")
         self.__response = response
 
     @property
     def response(self):
         """
-        :return: The response that was returned by the GlobalCollect platform.
+        :return: The response that was returned by the Ingenico ePayments platform.
         """
         return self.__response
 
     @property
     def status_code(self):
         """
-        :return: The HTTP status code that was returned by the GlobalCollect
+        :return: The HTTP status code that was returned by the Ingenico ePayments
          platform.
         """
         return self.__response.status_code
@@ -27,7 +27,7 @@ class ResponseException(RuntimeError):
     @property
     def body(self):
         """
-        :return: The raw response body that was returned by the GlobalCollect
+        :return: The raw response body that was returned by the Ingenico ePayments
          platform.
         """
         return self.__response.body
@@ -35,7 +35,7 @@ class ResponseException(RuntimeError):
     @property
     def headers(self):
         """
-        :return: The headers that were returned by the GlobalCollect platform.
+        :return: The headers that were returned by the Ingenico ePayments platform.
          Never None.
         """
         return self.__response.headers

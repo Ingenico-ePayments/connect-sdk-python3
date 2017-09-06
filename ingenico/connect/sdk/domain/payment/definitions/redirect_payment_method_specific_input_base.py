@@ -10,7 +10,9 @@ class RedirectPaymentMethodSpecificInputBase(AbstractPaymentMethodSpecificInput)
 
     __expiration_period = None
     __recurring_payment_sequence_indicator = None
+    __requires_approval = None
     __token = None
+    __tokenize = None
 
     @property
     def expiration_period(self):
@@ -48,6 +50,20 @@ class RedirectPaymentMethodSpecificInputBase(AbstractPaymentMethodSpecificInput)
         self.__recurring_payment_sequence_indicator = value
 
     @property
+    def requires_approval(self):
+        """
+        * true = the payment requires approval before the funds will be captured using the Capture payment <https://epayments-api.developer-ingenico.com/s2sapi/v1/en_US/python/payments/approve.html> API
+        * false = the payment does not require approval, and the funds will be captured automatically
+        
+        Type: bool
+        """
+        return self.__requires_approval
+
+    @requires_approval.setter
+    def requires_approval(self, value):
+        self.__requires_approval = value
+
+    @property
     def token(self):
         """
         | ID of the token
@@ -60,11 +76,29 @@ class RedirectPaymentMethodSpecificInputBase(AbstractPaymentMethodSpecificInput)
     def token(self, value):
         self.__token = value
 
+    @property
+    def tokenize(self):
+        """
+        | Indicates if this transaction should be tokenized
+        
+        * true - Tokenize the transaction
+        * false - Do not tokenize the transaction, unless it would be tokenized by other means such as auto-tokenization of recurring payments.
+        
+        Type: bool
+        """
+        return self.__tokenize
+
+    @tokenize.setter
+    def tokenize(self, value):
+        self.__tokenize = value
+
     def to_dictionary(self):
         dictionary = super(RedirectPaymentMethodSpecificInputBase, self).to_dictionary()
         self._add_to_dictionary(dictionary, 'expirationPeriod', self.expiration_period)
         self._add_to_dictionary(dictionary, 'recurringPaymentSequenceIndicator', self.recurring_payment_sequence_indicator)
+        self._add_to_dictionary(dictionary, 'requiresApproval', self.requires_approval)
         self._add_to_dictionary(dictionary, 'token', self.token)
+        self._add_to_dictionary(dictionary, 'tokenize', self.tokenize)
         return dictionary
 
     def from_dictionary(self, dictionary):
@@ -73,6 +107,10 @@ class RedirectPaymentMethodSpecificInputBase(AbstractPaymentMethodSpecificInput)
             self.expiration_period = dictionary['expirationPeriod']
         if 'recurringPaymentSequenceIndicator' in dictionary:
             self.recurring_payment_sequence_indicator = dictionary['recurringPaymentSequenceIndicator']
+        if 'requiresApproval' in dictionary:
+            self.requires_approval = dictionary['requiresApproval']
         if 'token' in dictionary:
             self.token = dictionary['token']
+        if 'tokenize' in dictionary:
+            self.tokenize = dictionary['tokenize']
         return self

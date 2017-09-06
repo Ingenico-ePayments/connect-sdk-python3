@@ -15,7 +15,7 @@ from .session import Session
 
 class Factory:
     """
-    GlobalCollect platform factory for several SDK components.
+    Ingenico ePayments platform factory for several SDK components.
     """
 
     def __init__(self):

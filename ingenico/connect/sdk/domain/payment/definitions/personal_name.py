@@ -13,6 +13,8 @@ class PersonalName(PersonalNameBase):
     @property
     def title(self):
         """
+        | Title of consumer
+        
         Type: str
         """
         return self.__title

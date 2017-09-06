@@ -4,7 +4,7 @@ from .connection import Connection
 # noinspection PyAbstractClass
 class PooledConnection(Connection):
     """
-    Represents a pooled connection to the GlobalCollect platform server.
+    Represents a pooled connection to the Ingenico ePayments platform server.
     Instead of setting up a new HTTP connection for each request, this
     connection uses a pool of HTTP connections.
     """

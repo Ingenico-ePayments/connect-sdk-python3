@@ -5,6 +5,7 @@
 #
 from ingenico.connect.sdk.data_object import DataObject
 from ingenico.connect.sdk.domain.product.definitions.account_on_file import AccountOnFile
+from ingenico.connect.sdk.domain.product.definitions.authentication_indicator import AuthenticationIndicator
 from ingenico.connect.sdk.domain.product.definitions.payment_product_display_hints import PaymentProductDisplayHints
 from ingenico.connect.sdk.domain.product.definitions.payment_product_field import PaymentProductField
 
@@ -14,6 +15,7 @@ class PaymentProduct(DataObject):
     __accounts_on_file = None
     __allows_recurring = None
     __allows_tokenization = None
+    __authentication_indicator = None
     __auto_tokenized = None
     __can_be_iframed = None
     __display_hints = None
@@ -70,6 +72,19 @@ class PaymentProduct(DataObject):
     @allows_tokenization.setter
     def allows_tokenization(self, value):
         self.__allows_tokenization = value
+
+    @property
+    def authentication_indicator(self):
+        """
+        | Indicates if the payment product supports 3D Security (mandatory, optional or not needed).
+        
+        Type: :class:`ingenico.connect.sdk.domain.product.definitions.authentication_indicator.AuthenticationIndicator`
+        """
+        return self.__authentication_indicator
+
+    @authentication_indicator.setter
+    def authentication_indicator(self, value):
+        self.__authentication_indicator = value
 
     @property
     def auto_tokenized(self):
@@ -241,6 +256,7 @@ class PaymentProduct(DataObject):
         self._add_to_dictionary(dictionary, 'accountsOnFile', self.accounts_on_file)
         self._add_to_dictionary(dictionary, 'allowsRecurring', self.allows_recurring)
         self._add_to_dictionary(dictionary, 'allowsTokenization', self.allows_tokenization)
+        self._add_to_dictionary(dictionary, 'authenticationIndicator', self.authentication_indicator)
         self._add_to_dictionary(dictionary, 'autoTokenized', self.auto_tokenized)
         self._add_to_dictionary(dictionary, 'canBeIframed', self.can_be_iframed)
         self._add_to_dictionary(dictionary, 'displayHints', self.display_hints)
@@ -267,6 +283,11 @@ class PaymentProduct(DataObject):
             self.allows_recurring = dictionary['allowsRecurring']
         if 'allowsTokenization' in dictionary:
             self.allows_tokenization = dictionary['allowsTokenization']
+        if 'authenticationIndicator' in dictionary:
+            if not isinstance(dictionary['authenticationIndicator'], dict):
+                raise TypeError('value \'{}\' is not a dictionary'.format(dictionary['authenticationIndicator']))
+            value = AuthenticationIndicator()
+            self.authentication_indicator = value.from_dictionary(dictionary['authenticationIndicator'])
         if 'autoTokenized' in dictionary:
             self.auto_tokenized = dictionary['autoTokenized']
         if 'canBeIframed' in dictionary:

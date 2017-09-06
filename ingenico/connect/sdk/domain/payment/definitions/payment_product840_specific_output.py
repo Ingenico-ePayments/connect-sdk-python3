@@ -6,12 +6,14 @@
 from ingenico.connect.sdk.data_object import DataObject
 from ingenico.connect.sdk.domain.definitions.address import Address
 from ingenico.connect.sdk.domain.payment.definitions.payment_product840_customer_account import PaymentProduct840CustomerAccount
+from ingenico.connect.sdk.domain.payment.definitions.protection_eligibility import ProtectionEligibility
 
 
 class PaymentProduct840SpecificOutput(DataObject):
 
     __customer_account = None
     __customer_address = None
+    __protection_eligibility = None
 
     @property
     def customer_account(self):
@@ -39,10 +41,24 @@ class PaymentProduct840SpecificOutput(DataObject):
     def customer_address(self, value):
         self.__customer_address = value
 
+    @property
+    def protection_eligibility(self):
+        """
+        | Protection Eligibility data of the PayPal customer
+        
+        Type: :class:`ingenico.connect.sdk.domain.payment.definitions.protection_eligibility.ProtectionEligibility`
+        """
+        return self.__protection_eligibility
+
+    @protection_eligibility.setter
+    def protection_eligibility(self, value):
+        self.__protection_eligibility = value
+
     def to_dictionary(self):
         dictionary = super(PaymentProduct840SpecificOutput, self).to_dictionary()
         self._add_to_dictionary(dictionary, 'customerAccount', self.customer_account)
         self._add_to_dictionary(dictionary, 'customerAddress', self.customer_address)
+        self._add_to_dictionary(dictionary, 'protectionEligibility', self.protection_eligibility)
         return dictionary
 
     def from_dictionary(self, dictionary):
@@ -57,4 +73,9 @@ class PaymentProduct840SpecificOutput(DataObject):
                 raise TypeError('value \'{}\' is not a dictionary'.format(dictionary['customerAddress']))
             value = Address()
             self.customer_address = value.from_dictionary(dictionary['customerAddress'])
+        if 'protectionEligibility' in dictionary:
+            if not isinstance(dictionary['protectionEligibility'], dict):
+                raise TypeError('value \'{}\' is not a dictionary'.format(dictionary['protectionEligibility']))
+            value = ProtectionEligibility()
+            self.protection_eligibility = value.from_dictionary(dictionary['protectionEligibility'])
         return self

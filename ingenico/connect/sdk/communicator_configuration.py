@@ -52,7 +52,7 @@ class CommunicatorConfiguration(EndpointConfiguration):
     @property
     def api_endpoint(self):
         """
-        The GlobalCollect platform API endpoint URI.
+        The Ingenico ePayments platform API endpoint URI.
         """
         return super(CommunicatorConfiguration, self)._endpoint
 

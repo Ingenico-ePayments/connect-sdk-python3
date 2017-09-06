@@ -32,15 +32,15 @@ class PayoutsClient(ApiResource):
         :param body:     :class:`ingenico.connect.sdk.domain.payout.create_payout_request.CreatePayoutRequest`
         :param context:  :class:`ingenico.connect.sdk.call_context.CallContext`
         :return: :class:`ingenico.connect.sdk.domain.payout.payout_response.PayoutResponse`
-        :raise: DeclinedPayoutException if the GlobalCollect platform declined / rejected the payout. The payout result will be available from the exception.
+        :raise: DeclinedPayoutException if the Ingenico ePayments platform declined / rejected the payout. The payout result will be available from the exception.
         :raise: ValidationException if the request was not correct and couldn't be processed (HTTP status code 400)
         :raise: AuthorizationException if the request was not allowed (HTTP status code 403)
         :raise: ReferenceException if an object was attempted to be referenced that doesn't exist or has been removed,
                    or there was a conflict (HTTP status code 404, 409 or 410)
-        :raise: GlobalCollectException if something went wrong at the GlobalCollect platform,
-                   the GlobalCollect platform was unable to process a message from a downstream partner/acquirer,
+        :raise: GlobalCollectException if something went wrong at the Ingenico ePayments platform,
+                   the Ingenico ePayments platform was unable to process a message from a downstream partner/acquirer,
                    or the service that you're trying to reach is temporary unavailable (HTTP status code 500, 502 or 503)
-        :raise: ApiException if the GlobalCollect platform returned any other error
+        :raise: ApiException if the Ingenico ePayments platform returned any other error
         """
         uri = self._instantiate_uri("/{apiVersion}/{merchantId}/payouts", None)
         try:
@@ -74,10 +74,10 @@ class PayoutsClient(ApiResource):
         :raise: AuthorizationException if the request was not allowed (HTTP status code 403)
         :raise: ReferenceException if an object was attempted to be referenced that doesn't exist or has been removed,
                    or there was a conflict (HTTP status code 404, 409 or 410)
-        :raise: GlobalCollectException if something went wrong at the GlobalCollect platform,
-                   the GlobalCollect platform was unable to process a message from a downstream partner/acquirer,
+        :raise: GlobalCollectException if something went wrong at the Ingenico ePayments platform,
+                   the Ingenico ePayments platform was unable to process a message from a downstream partner/acquirer,
                    or the service that you're trying to reach is temporary unavailable (HTTP status code 500, 502 or 503)
-        :raise: ApiException if the GlobalCollect platform returned any other error
+        :raise: ApiException if the Ingenico ePayments platform returned any other error
         """
         path_context = {
             "payoutId": payout_id,
@@ -112,10 +112,10 @@ class PayoutsClient(ApiResource):
         :raise: AuthorizationException if the request was not allowed (HTTP status code 403)
         :raise: ReferenceException if an object was attempted to be referenced that doesn't exist or has been removed,
                    or there was a conflict (HTTP status code 404, 409 or 410)
-        :raise: GlobalCollectException if something went wrong at the GlobalCollect platform,
-                   the GlobalCollect platform was unable to process a message from a downstream partner/acquirer,
+        :raise: GlobalCollectException if something went wrong at the Ingenico ePayments platform,
+                   the Ingenico ePayments platform was unable to process a message from a downstream partner/acquirer,
                    or the service that you're trying to reach is temporary unavailable (HTTP status code 500, 502 or 503)
-        :raise: ApiException if the GlobalCollect platform returned any other error
+        :raise: ApiException if the Ingenico ePayments platform returned any other error
         """
         path_context = {
             "payoutId": payout_id,
@@ -150,10 +150,10 @@ class PayoutsClient(ApiResource):
         :raise: AuthorizationException if the request was not allowed (HTTP status code 403)
         :raise: ReferenceException if an object was attempted to be referenced that doesn't exist or has been removed,
                    or there was a conflict (HTTP status code 404, 409 or 410)
-        :raise: GlobalCollectException if something went wrong at the GlobalCollect platform,
-                   the GlobalCollect platform was unable to process a message from a downstream partner/acquirer,
+        :raise: GlobalCollectException if something went wrong at the Ingenico ePayments platform,
+                   the Ingenico ePayments platform was unable to process a message from a downstream partner/acquirer,
                    or the service that you're trying to reach is temporary unavailable (HTTP status code 500, 502 or 503)
-        :raise: ApiException if the GlobalCollect platform returned any other error
+        :raise: ApiException if the Ingenico ePayments platform returned any other error
         """
         path_context = {
             "payoutId": payout_id,
@@ -188,10 +188,10 @@ class PayoutsClient(ApiResource):
         :raise: AuthorizationException if the request was not allowed (HTTP status code 403)
         :raise: ReferenceException if an object was attempted to be referenced that doesn't exist or has been removed,
                    or there was a conflict (HTTP status code 404, 409 or 410)
-        :raise: GlobalCollectException if something went wrong at the GlobalCollect platform,
-                   the GlobalCollect platform was unable to process a message from a downstream partner/acquirer,
+        :raise: GlobalCollectException if something went wrong at the Ingenico ePayments platform,
+                   the Ingenico ePayments platform was unable to process a message from a downstream partner/acquirer,
                    or the service that you're trying to reach is temporary unavailable (HTTP status code 500, 502 or 503)
-        :raise: ApiException if the GlobalCollect platform returned any other error
+        :raise: ApiException if the Ingenico ePayments platform returned any other error
         """
         path_context = {
             "payoutId": payout_id,

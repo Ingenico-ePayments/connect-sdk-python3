@@ -3,7 +3,7 @@ from urllib.parse import urlparse
 
 class Session(object):
     """
-    Contains the components needed to communicate with the GlobalCollect platform.
+    Contains the components needed to communicate with the Ingenico ePayments platform.
 
     :param api_endpoint: the address of the target server as a string or ParseResult object
     """
@@ -32,7 +32,7 @@ class Session(object):
     @property
     def api_endpoint(self):
         """
-        :return: The GlobalCollect platform API endpoint URI. This URI's path
+        :return: The Ingenico ePayments platform API endpoint URI. This URI's path
          will be None or empty.
         """
         return self.__api_endpoint

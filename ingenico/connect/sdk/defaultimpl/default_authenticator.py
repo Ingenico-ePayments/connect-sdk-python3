@@ -15,7 +15,7 @@ class DefaultAuthenticator(Authenticator):
 
     def __init__(self, authorization_type, api_id_key, secret_api_key):
         """
-        :param authorization_type: Based on this value both the GlobalCollect
+        :param authorization_type: Based on this value both the Ingenico ePayments
          platform and the merchant know which security implementation is used.
          A version number is used for backward compatibility in the future.
         :param api_id_key: An identifier for the secret API key. The api_key_id

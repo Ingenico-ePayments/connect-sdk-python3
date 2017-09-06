@@ -1,6 +1,6 @@
 class Response(object):
     """
-    Thrown when a response was received from the GlobalCollect platform which indicates an error.
+    Thrown when a response was received from the Ingenico ePayments platform which indicates an error.
     """
     def __init__(self, status_code, body, headers):
         self.__status_code = status_code
@@ -13,7 +13,7 @@ class Response(object):
     @property
     def status_code(self):
         """
-        :return: The HTTP status code that was returned by the GlobalCollect
+        :return: The HTTP status code that was returned by the Ingenico ePayments
          platform.
         """
         return self.__status_code
@@ -21,7 +21,7 @@ class Response(object):
     @property
     def body(self):
         """
-        :return: The raw response body that was returned by the GlobalCollect
+        :return: The raw response body that was returned by the Ingenico ePayments
          platform.
         """
         return self.__body
@@ -29,7 +29,7 @@ class Response(object):
     @property
     def headers(self):
         """
-        :return: The headers that were returned by the GlobalCollect platform.
+        :return: The headers that were returned by the Ingenico ePayments platform.
          Never None.
         """
         return self.__headers

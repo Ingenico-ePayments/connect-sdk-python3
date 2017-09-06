@@ -1,6 +1,6 @@
 class Authenticator:
     """
-    Used to sign requests to the GlobalCollect platform.
+    Used to sign requests to the Ingenico ePayments platform.
     """
 
     def __init__(self):

@@ -23,6 +23,7 @@ from ingenico.connect.sdk.domain.payment.definitions.order_invoice_data import O
 from ingenico.connect.sdk.domain.payment.definitions.order_references import OrderReferences
 from ingenico.connect.sdk.domain.payment.definitions.personal_information import PersonalInformation
 from ingenico.connect.sdk.domain.payment.definitions.personal_name import PersonalName
+from ingenico.connect.sdk.domain.payment.definitions.shopping_cart import ShoppingCart
 
 
 class CreatePaymentExample(object):
@@ -98,6 +99,16 @@ class CreatePaymentExample(object):
             customer.shipping_address = shipping_address
             customer.vat_number = "1234AB5678CD"
 
+            invoice_data = OrderInvoiceData()
+            invoice_data.invoice_date = "20140306191500"
+            invoice_data.invoice_number = "000000123"
+
+            references = OrderReferences()
+            references.descriptor = "Fast and Furry-ous"
+            references.invoice_data = invoice_data
+            references.merchant_order_id = 123456
+            references.merchant_reference = "AcmeOrder0001"
+
             items = []
 
             item1_amount_of_money = AmountOfMoney()
@@ -130,21 +141,14 @@ class CreatePaymentExample(object):
 
             items.append(item2)
 
-            invoice_data = OrderInvoiceData()
-            invoice_data.invoice_date = "20140306191500"
-            invoice_data.invoice_number = "000000123"
-
-            references = OrderReferences()
-            references.descriptor = "Fast and Furry-ous"
-            references.invoice_data = invoice_data
-            references.merchant_order_id = 123456
-            references.merchant_reference = "AcmeOrder0001"
+            shopping_cart = ShoppingCart()
+            shopping_cart.items = items
 
             order = Order()
             order.amount_of_money = amount_of_money
             order.customer = customer
-            order.items = items
             order.references = references
+            order.shopping_cart = shopping_cart
 
             body = CreatePaymentRequest()
             body.card_payment_method_specific_input = card_payment_method_specific_input

@@ -21,7 +21,7 @@ Its use is demonstrated by an example for each possible call. The
 examples execute a call using the provided API keys.
 
 See the `Ingenico Connect Developer
-Hub <https://developer.globalcollect.com/documentation/sdk/server/python/>`__
+Hub <https://epayments.developer-ingenico.com/documentation/sdk/server/python/>`__
 for more information on how to use the SDK.
 
 Structure of this repository

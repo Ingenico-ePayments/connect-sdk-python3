@@ -14,6 +14,7 @@ from ingenico.connect.sdk.domain.definitions.company_information import CompanyI
 from ingenico.connect.sdk.domain.definitions.contact_details_base import ContactDetailsBase
 from ingenico.connect.sdk.domain.payment.definitions.personal_name import PersonalName
 from ingenico.connect.sdk.domain.payout.create_payout_request import CreatePayoutRequest
+from ingenico.connect.sdk.domain.payout.definitions.bank_transfer_payout_method_specific_input import BankTransferPayoutMethodSpecificInput
 from ingenico.connect.sdk.domain.payout.definitions.payout_customer import PayoutCustomer
 from ingenico.connect.sdk.domain.payout.definitions.payout_references import PayoutReferences
 
@@ -56,17 +57,20 @@ class CreatePayoutExample(object):
             customer.contact_details = contact_details
             customer.name = name
 
+            bank_transfer_payout_method_specific_input = BankTransferPayoutMethodSpecificInput()
+            bank_transfer_payout_method_specific_input.bank_account_iban = bank_account_iban
+            bank_transfer_payout_method_specific_input.customer = customer
+            bank_transfer_payout_method_specific_input.payout_date = "20150102"
+            bank_transfer_payout_method_specific_input.payout_text = "Payout Acme"
+            bank_transfer_payout_method_specific_input.swift_code = "swift"
+
             references = PayoutReferences()
             references.merchant_reference = "AcmeOrder001"
 
             body = CreatePayoutRequest()
             body.amount_of_money = amount_of_money
-            body.bank_account_iban = bank_account_iban
-            body.customer = customer
-            body.payout_date = "20150102"
-            body.payout_text = "Payout Acme"
+            body.bank_transfer_payout_method_specific_input = bank_transfer_payout_method_specific_input
             body.references = references
-            body.swift_code = "swift"
 
             try:
                 response = client.merchant("merchantId").payouts().create(body)

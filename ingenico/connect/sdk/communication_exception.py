@@ -1,6 +1,6 @@
 class CommunicationException(RuntimeError):
     """
-    Indicates an exception regarding the communication with the GlobalCollect
+    Indicates an exception regarding the communication with the Ingenico ePayments
     platform such as a connection exception.
     """
 

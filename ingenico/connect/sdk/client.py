@@ -10,7 +10,7 @@ from ingenico.connect.sdk.merchant.merchant_client import MerchantClient
 
 class Client(ApiResource, LoggingCapable):
     """
-    GlobalCollect platform client.
+    Ingenico ePayments platform client.
     
     This client and all its child clients are bound to one specific value for the X-GCS-ClientMetaInfo header.
     To get a new client with a different header value, use with_client_meta_info.

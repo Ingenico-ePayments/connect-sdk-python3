@@ -62,7 +62,7 @@ class CreatedPaymentOutput(DataObject):
     @property
     def payment_status_category(self):
         """
-        | Highlevel status of the payment with the following possible values:
+        | Highlevel indication of the payment status with the following possible values:
         
         * REJECTED - The payment has been rejected or is in such a state that it will never become successful. This category groups the following statuses:
         
@@ -74,7 +74,7 @@ class CreatedPaymentOutput(DataObject):
         * CANCELLED
         
         
-        * SUCCESSFUL - The payment was successful. This category groups the following statuses:
+        * SUCCESSFUL - The payment was not (yet) rejected. Use the payment statuses to determine if it was completed, see Statuses <https://epayments-api.developer-ingenico.com/s2sapi/v1/en_US/python/statuses.html>. This category groups the following statuses:
         
         * PENDING PAYMENT
         * ACCOUNT VERIFIED

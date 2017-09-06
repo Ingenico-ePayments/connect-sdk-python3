@@ -1,6 +1,6 @@
 class Marshaller(object):
     """
-    Used to marshal and unmarshal GlobalCollect platform request and response
+    Used to marshal and unmarshal Ingenico ePayments platform request and response
     objects to and from JSON.
     """
 

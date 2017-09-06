@@ -31,7 +31,7 @@ class DeclinedRefundException(DeclinedTransactionException):
         if refund is not None:
             return "declined refund '" + refund.id + "' with status '" + refund.status + "'"
         else:
-            return "the GlobalCollect platform returned a declined refund response"
+            return "the Ingenico ePayments platform returned a declined refund response"
 
     @property
     def refund_result(self):

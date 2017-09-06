@@ -66,6 +66,8 @@ class Order(DataObject):
         | Shopping cart data
         
         Type: list[:class:`ingenico.connect.sdk.domain.payment.definitions.line_item.LineItem`]
+        
+        Deprecated; | Use ShoppingCart.items instead
         """
         return self.__items
 
