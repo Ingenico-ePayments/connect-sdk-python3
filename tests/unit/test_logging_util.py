@@ -16,7 +16,7 @@ class LoggingUtilTest(unittest.TestCase):
         self.assertIsNone(obfuscated_body)
 
     def test_obfuscate_body_empty(self):
-        """Tests if the log util is capable of obfuscating an empty body"""
+        """Tests if the logging util is capable of obfuscating an empty body"""
         body = ""
 
         obfuscated_body = LoggingUtil.obfuscate_body(body)

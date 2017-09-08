@@ -103,12 +103,13 @@ and password should be set in the
 ``tests/resources/configuration.proxy.ini`` file.
 
 In order to run the unit and integration tests, the
-`mock <https://pypi.python.org/pypi/mock>`__ backport is required. This
+`mock <https://pypi.python.org/pypi/mock>`__ backport and
+`mockito <https://pypi.python.org/pypi/mockito>`__ are required. This
 can be installed using the following command:
 
 ::
 
-    pip install mock
+    pip install mock mockito
 
 The following commands can now be executed from the ``tests`` directory
 to execute the tests:

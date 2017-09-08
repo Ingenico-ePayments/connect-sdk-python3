@@ -702,6 +702,13 @@ API Reference
     :special-members:
     :exclude-members: __dict__,__weakref__,__module__,__get__
 
+.. automodule:: ingenico.connect.sdk.domain.payment.definitions.approve_payment_direct_debit_payment_method_specific_input
+    :members:
+    :show-inheritance:
+    :undoc-members:
+    :special-members:
+    :exclude-members: __dict__,__weakref__,__module__,__get__
+
 .. automodule:: ingenico.connect.sdk.domain.payment.definitions.approve_payment_mobile_payment_method_specific_output
     :members:
     :show-inheritance:
@@ -1094,6 +1101,13 @@ API Reference
     :special-members:
     :exclude-members: __dict__,__weakref__,__module__,__get__
 
+.. automodule:: ingenico.connect.sdk.domain.payment.definitions.protection_eligibility
+    :members:
+    :show-inheritance:
+    :undoc-members:
+    :special-members:
+    :exclude-members: __dict__,__weakref__,__module__,__get__
+
 .. automodule:: ingenico.connect.sdk.domain.payment.definitions.redirect_data
     :members:
     :show-inheritance:
@@ -1130,6 +1144,13 @@ API Reference
     :exclude-members: __dict__,__weakref__,__module__,__get__
 
 .. automodule:: ingenico.connect.sdk.domain.payment.definitions.redirect_payment_product816_specific_input
+    :members:
+    :show-inheritance:
+    :undoc-members:
+    :special-members:
+    :exclude-members: __dict__,__weakref__,__module__,__get__
+
+.. automodule:: ingenico.connect.sdk.domain.payment.definitions.redirect_payment_product840_specific_input
     :members:
     :show-inheritance:
     :undoc-members:
@@ -1339,6 +1360,13 @@ API Reference
     :special-members:
     :exclude-members: __dict__,__weakref__,__module__,__get__
 
+.. automodule:: ingenico.connect.sdk.domain.product.definitions.abstract_indicator
+    :members:
+    :show-inheritance:
+    :undoc-members:
+    :special-members:
+    :exclude-members: __dict__,__weakref__,__module__,__get__
+
 .. automodule:: ingenico.connect.sdk.domain.product.definitions.account_on_file
     :members:
     :show-inheritance:
@@ -1354,6 +1382,13 @@ API Reference
     :exclude-members: __dict__,__weakref__,__module__,__get__
 
 .. automodule:: ingenico.connect.sdk.domain.product.definitions.account_on_file_display_hints
+    :members:
+    :show-inheritance:
+    :undoc-members:
+    :special-members:
+    :exclude-members: __dict__,__weakref__,__module__,__get__
+
+.. automodule:: ingenico.connect.sdk.domain.product.definitions.authentication_indicator
     :members:
     :show-inheritance:
     :undoc-members:
@@ -1892,6 +1927,13 @@ API Reference
     :special-members:
     :exclude-members: __dict__,__weakref__,__module__,__get__
 
+.. automodule:: ingenico.connect.sdk.domain.webhooks.web_hooks_event
+    :members:
+    :show-inheritance:
+    :undoc-members:
+    :special-members:
+    :exclude-members: __dict__,__weakref__,__module__,__get__
+
 .. automodule:: ingenico.connect.sdk.log.communicator_logger
     :members:
     :show-inheritance:
@@ -2082,6 +2124,62 @@ API Reference
     :exclude-members: __dict__,__weakref__,__module__,__get__
 
 .. automodule:: ingenico.connect.sdk.merchant.tokens.tokens_client
+    :members:
+    :show-inheritance:
+    :undoc-members:
+    :special-members:
+    :exclude-members: __dict__,__weakref__,__module__,__get__
+
+.. automodule:: ingenico.connect.sdk.webhooks.api_version_mismatch_exception
+    :members:
+    :show-inheritance:
+    :undoc-members:
+    :special-members:
+    :exclude-members: __dict__,__weakref__,__module__,__get__
+
+.. automodule:: ingenico.connect.sdk.webhooks.in_memory_secret_key_store
+    :members:
+    :show-inheritance:
+    :undoc-members:
+    :special-members:
+    :exclude-members: __dict__,__weakref__,__module__,__get__
+
+.. automodule:: ingenico.connect.sdk.webhooks.secret_key_not_available_exception
+    :members:
+    :show-inheritance:
+    :undoc-members:
+    :special-members:
+    :exclude-members: __dict__,__weakref__,__module__,__get__
+
+.. automodule:: ingenico.connect.sdk.webhooks.secret_key_store
+    :members:
+    :show-inheritance:
+    :undoc-members:
+    :special-members:
+    :exclude-members: __dict__,__weakref__,__module__,__get__
+
+.. automodule:: ingenico.connect.sdk.webhooks.signature_validation_exception
+    :members:
+    :show-inheritance:
+    :undoc-members:
+    :special-members:
+    :exclude-members: __dict__,__weakref__,__module__,__get__
+
+.. automodule:: ingenico.connect.sdk.webhooks.web_hooks
+    :members:
+    :show-inheritance:
+    :undoc-members:
+    :special-members:
+    :exclude-members: __dict__,__weakref__,__module__,__get__
+
+.. automodule:: ingenico.connect.sdk.webhooks.web_hooks_helper
+    :members:
+    :show-inheritance:
+    :undoc-members:
+    :special-members:
+    :exclude-members: __dict__,__weakref__,__module__,__get__
+
+.. automodule:: ingenico.connect.sdk.webhooks.web_hooks_helper_builder
     :members:
     :show-inheritance:
     :undoc-members:

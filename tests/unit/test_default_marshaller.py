@@ -85,7 +85,7 @@ class JsonMiniMiniDummy(DataObject):
         super(JsonMiniMiniDummy, self).from_dictionary(dictionary)
         if 'foo' in dictionary:
             self.foo = dictionary['foo']
-        return  self
+        return self
 
 
 class JsonMiniDummy(DataObject):
@@ -141,7 +141,7 @@ class JsonDummy(DataObject):
 
 class JsonDummyExtended(JsonDummy):
     extra_field = "something something"
-    
+
     def to_dictionary(self):
         dictionary = super(JsonDummyExtended, self).to_dictionary()
         self._add_to_dictionary(dictionary, 'extraField', self.extra_field)
