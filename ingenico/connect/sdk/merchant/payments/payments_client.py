@@ -11,6 +11,7 @@ from ingenico.connect.sdk.domain.payment.cancel_approval_payment_response import
 from ingenico.connect.sdk.domain.payment.cancel_payment_response import CancelPaymentResponse
 from ingenico.connect.sdk.domain.payment.complete_payment_response import CompletePaymentResponse
 from ingenico.connect.sdk.domain.payment.create_payment_response import CreatePaymentResponse
+from ingenico.connect.sdk.domain.payment.find_payments_response import FindPaymentsResponse
 from ingenico.connect.sdk.domain.payment.payment_approval_response import PaymentApprovalResponse
 from ingenico.connect.sdk.domain.payment.payment_error_response import PaymentErrorResponse
 from ingenico.connect.sdk.domain.payment.payment_response import PaymentResponse
@@ -31,6 +32,40 @@ class PaymentsClient(ApiResource):
         :param path_context: dict[str, str]
         """
         super(PaymentsClient, self).__init__(parent, path_context)
+
+    def find(self, query, context=None):
+        """
+        Resource /{merchantId}/payments
+
+        | Find payments
+        
+        See also https://epayments-api.developer-ingenico.com/s2sapi/v1/en_US/python/payments/find.html
+
+        :param query:    :class:`ingenico.connect.sdk.merchant.payments.find_payments_params.FindPaymentsParams`
+        :param context:  :class:`ingenico.connect.sdk.call_context.CallContext`
+        :return: :class:`ingenico.connect.sdk.domain.payment.find_payments_response.FindPaymentsResponse`
+        :raise: ValidationException if the request was not correct and couldn't be processed (HTTP status code 400)
+        :raise: AuthorizationException if the request was not allowed (HTTP status code 403)
+        :raise: ReferenceException if an object was attempted to be referenced that doesn't exist or has been removed,
+                   or there was a conflict (HTTP status code 404, 409 or 410)
+        :raise: GlobalCollectException if something went wrong at the Ingenico ePayments platform,
+                   the Ingenico ePayments platform was unable to process a message from a downstream partner/acquirer,
+                   or the service that you're trying to reach is temporary unavailable (HTTP status code 500, 502 or 503)
+        :raise: ApiException if the Ingenico ePayments platform returned any other error
+        """
+        uri = self._instantiate_uri("/{apiVersion}/{merchantId}/payments", None)
+        try:
+            return self._communicator.get(
+                    uri,
+                    self._client_headers,
+                    query,
+                    FindPaymentsResponse,
+                    context)
+
+        except ResponseException as e:
+            error_type = ErrorResponse
+            error_object = self._communicator.marshaller.unmarshal(e.body, error_type)
+            raise self._create_exception(e.status_code, e.body, error_object, context)
 
     def create(self, body, context=None):
         """
