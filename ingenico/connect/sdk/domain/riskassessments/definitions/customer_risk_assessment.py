@@ -6,12 +6,14 @@
 from ingenico.connect.sdk.data_object import DataObject
 from ingenico.connect.sdk.domain.definitions.address import Address
 from ingenico.connect.sdk.domain.payment.definitions.address_personal import AddressPersonal
+from ingenico.connect.sdk.domain.riskassessments.definitions.contact_details_risk_assessment import ContactDetailsRiskAssessment
 from ingenico.connect.sdk.domain.riskassessments.definitions.personal_information_risk_assessment import PersonalInformationRiskAssessment
 
 
 class CustomerRiskAssessment(DataObject):
 
     __billing_address = None
+    __contact_details = None
     __locale = None
     __personal_information = None
     __shipping_address = None
@@ -28,6 +30,19 @@ class CustomerRiskAssessment(DataObject):
     @billing_address.setter
     def billing_address(self, value):
         self.__billing_address = value
+
+    @property
+    def contact_details(self):
+        """
+        | Object containing contact details like email address
+        
+        Type: :class:`ingenico.connect.sdk.domain.riskassessments.definitions.contact_details_risk_assessment.ContactDetailsRiskAssessment`
+        """
+        return self.__contact_details
+
+    @contact_details.setter
+    def contact_details(self, value):
+        self.__contact_details = value
 
     @property
     def locale(self):
@@ -71,6 +86,7 @@ class CustomerRiskAssessment(DataObject):
     def to_dictionary(self):
         dictionary = super(CustomerRiskAssessment, self).to_dictionary()
         self._add_to_dictionary(dictionary, 'billingAddress', self.billing_address)
+        self._add_to_dictionary(dictionary, 'contactDetails', self.contact_details)
         self._add_to_dictionary(dictionary, 'locale', self.locale)
         self._add_to_dictionary(dictionary, 'personalInformation', self.personal_information)
         self._add_to_dictionary(dictionary, 'shippingAddress', self.shipping_address)
@@ -83,6 +99,11 @@ class CustomerRiskAssessment(DataObject):
                 raise TypeError('value \'{}\' is not a dictionary'.format(dictionary['billingAddress']))
             value = Address()
             self.billing_address = value.from_dictionary(dictionary['billingAddress'])
+        if 'contactDetails' in dictionary:
+            if not isinstance(dictionary['contactDetails'], dict):
+                raise TypeError('value \'{}\' is not a dictionary'.format(dictionary['contactDetails']))
+            value = ContactDetailsRiskAssessment()
+            self.contact_details = value.from_dictionary(dictionary['contactDetails'])
         if 'locale' in dictionary:
             self.locale = dictionary['locale']
         if 'personalInformation' in dictionary:

@@ -1633,6 +1633,13 @@ API Reference
     :special-members:
     :exclude-members: __dict__,__weakref__,__module__,__get__
 
+.. automodule:: ingenico.connect.sdk.domain.riskassessments.definitions.contact_details_risk_assessment
+    :members:
+    :show-inheritance:
+    :undoc-members:
+    :special-members:
+    :exclude-members: __dict__,__weakref__,__module__,__get__
+
 .. automodule:: ingenico.connect.sdk.domain.riskassessments.definitions.customer_risk_assessment
     :members:
     :show-inheritance:
