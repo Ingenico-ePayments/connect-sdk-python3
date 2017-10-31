@@ -14,6 +14,7 @@ class PaymentProductField(DataObject):
     __display_hints = None
     __id = None
     __type = None
+    __used_for_lookup = None
 
     @property
     def data_restrictions(self):
@@ -59,11 +60,12 @@ class PaymentProductField(DataObject):
         """
         | The type of field, possible values are:
         
-        * string - Any UTF-8 chracter
+        * string - Any UTF-8 chracters
         * numericstring - A string that consisting only of numbers. Note that you should strip out anything that is not a digit, but leading zeros are allowed
         * date - Date in the format DDMMYYYY
         * expirydate - Expiration date in the format MMYY
         * integer - An integer
+        * boolean - A boolean
         
         Type: str
         """
@@ -73,12 +75,26 @@ class PaymentProductField(DataObject):
     def type(self, value):
         self.__type = value
 
+    @property
+    def used_for_lookup(self):
+        """
+        | Indicates that the product can be used in a get customer details <https://epayments-api.developer-ingenico.com/s2sapi/v1/en_US/python/products/customerDetails.html> call and that when that call is done the field should be supplied as (one of the) key(s) with a valid value.
+        
+        Type: bool
+        """
+        return self.__used_for_lookup
+
+    @used_for_lookup.setter
+    def used_for_lookup(self, value):
+        self.__used_for_lookup = value
+
     def to_dictionary(self):
         dictionary = super(PaymentProductField, self).to_dictionary()
         self._add_to_dictionary(dictionary, 'dataRestrictions', self.data_restrictions)
         self._add_to_dictionary(dictionary, 'displayHints', self.display_hints)
         self._add_to_dictionary(dictionary, 'id', self.id)
         self._add_to_dictionary(dictionary, 'type', self.type)
+        self._add_to_dictionary(dictionary, 'usedForLookup', self.used_for_lookup)
         return dictionary
 
     def from_dictionary(self, dictionary):
@@ -97,4 +113,6 @@ class PaymentProductField(DataObject):
             self.id = dictionary['id']
         if 'type' in dictionary:
             self.type = dictionary['type']
+        if 'usedForLookup' in dictionary:
+            self.used_for_lookup = dictionary['usedForLookup']
         return self

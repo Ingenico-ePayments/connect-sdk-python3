@@ -6,6 +6,7 @@
 from ingenico.connect.sdk.domain.payment.definitions.bank_transfer_payment_method_specific_output import BankTransferPaymentMethodSpecificOutput
 from ingenico.connect.sdk.domain.payment.definitions.card_payment_method_specific_output import CardPaymentMethodSpecificOutput
 from ingenico.connect.sdk.domain.payment.definitions.cash_payment_method_specific_output import CashPaymentMethodSpecificOutput
+from ingenico.connect.sdk.domain.payment.definitions.e_invoice_payment_method_specific_output import EInvoicePaymentMethodSpecificOutput
 from ingenico.connect.sdk.domain.payment.definitions.invoice_payment_method_specific_output import InvoicePaymentMethodSpecificOutput
 from ingenico.connect.sdk.domain.payment.definitions.mobile_payment_method_specific_output import MobilePaymentMethodSpecificOutput
 from ingenico.connect.sdk.domain.payment.definitions.non_sepa_direct_debit_payment_method_specific_output import NonSepaDirectDebitPaymentMethodSpecificOutput
@@ -21,6 +22,7 @@ class PaymentOutput(OrderOutput):
     __card_payment_method_specific_output = None
     __cash_payment_method_specific_output = None
     __direct_debit_payment_method_specific_output = None
+    __e_invoice_payment_method_specific_output = None
     __invoice_payment_method_specific_output = None
     __mobile_payment_method_specific_output = None
     __payment_method = None
@@ -91,6 +93,19 @@ class PaymentOutput(OrderOutput):
     @direct_debit_payment_method_specific_output.setter
     def direct_debit_payment_method_specific_output(self, value):
         self.__direct_debit_payment_method_specific_output = value
+
+    @property
+    def e_invoice_payment_method_specific_output(self):
+        """
+        | Object containing the e-invoice payment method details
+        
+        Type: :class:`ingenico.connect.sdk.domain.payment.definitions.e_invoice_payment_method_specific_output.EInvoicePaymentMethodSpecificOutput`
+        """
+        return self.__e_invoice_payment_method_specific_output
+
+    @e_invoice_payment_method_specific_output.setter
+    def e_invoice_payment_method_specific_output(self, value):
+        self.__e_invoice_payment_method_specific_output = value
 
     @property
     def invoice_payment_method_specific_output(self):
@@ -172,6 +187,7 @@ class PaymentOutput(OrderOutput):
         self._add_to_dictionary(dictionary, 'cardPaymentMethodSpecificOutput', self.card_payment_method_specific_output)
         self._add_to_dictionary(dictionary, 'cashPaymentMethodSpecificOutput', self.cash_payment_method_specific_output)
         self._add_to_dictionary(dictionary, 'directDebitPaymentMethodSpecificOutput', self.direct_debit_payment_method_specific_output)
+        self._add_to_dictionary(dictionary, 'eInvoicePaymentMethodSpecificOutput', self.e_invoice_payment_method_specific_output)
         self._add_to_dictionary(dictionary, 'invoicePaymentMethodSpecificOutput', self.invoice_payment_method_specific_output)
         self._add_to_dictionary(dictionary, 'mobilePaymentMethodSpecificOutput', self.mobile_payment_method_specific_output)
         self._add_to_dictionary(dictionary, 'paymentMethod', self.payment_method)
@@ -203,6 +219,11 @@ class PaymentOutput(OrderOutput):
                 raise TypeError('value \'{}\' is not a dictionary'.format(dictionary['directDebitPaymentMethodSpecificOutput']))
             value = NonSepaDirectDebitPaymentMethodSpecificOutput()
             self.direct_debit_payment_method_specific_output = value.from_dictionary(dictionary['directDebitPaymentMethodSpecificOutput'])
+        if 'eInvoicePaymentMethodSpecificOutput' in dictionary:
+            if not isinstance(dictionary['eInvoicePaymentMethodSpecificOutput'], dict):
+                raise TypeError('value \'{}\' is not a dictionary'.format(dictionary['eInvoicePaymentMethodSpecificOutput']))
+            value = EInvoicePaymentMethodSpecificOutput()
+            self.e_invoice_payment_method_specific_output = value.from_dictionary(dictionary['eInvoicePaymentMethodSpecificOutput'])
         if 'invoicePaymentMethodSpecificOutput' in dictionary:
             if not isinstance(dictionary['invoicePaymentMethodSpecificOutput'], dict):
                 raise TypeError('value \'{}\' is not a dictionary'.format(dictionary['invoicePaymentMethodSpecificOutput']))

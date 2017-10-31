@@ -16,8 +16,8 @@ class OrderTypeInformation(DataObject):
         """
         | Possible values are:
         
-        * good
-        * service
+        * physical
+        * digital
         
         Type: str
         """

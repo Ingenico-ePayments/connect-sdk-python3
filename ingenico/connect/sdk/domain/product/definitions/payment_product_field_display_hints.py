@@ -14,6 +14,7 @@ class PaymentProductFieldDisplayHints(DataObject):
     __display_order = None
     __form_element = None
     __label = None
+    __link = None
     __mask = None
     __obfuscate = None
     __placeholder_label = None
@@ -63,7 +64,7 @@ class PaymentProductFieldDisplayHints(DataObject):
     @property
     def label(self):
         """
-        | Label/Name of the field to used in the user interface
+        | Label/Name of the field to be used in the user interface
         
         Type: str
         """
@@ -72,6 +73,19 @@ class PaymentProductFieldDisplayHints(DataObject):
     @label.setter
     def label(self, value):
         self.__label = value
+
+    @property
+    def link(self):
+        """
+        | Link that should be used to replace the '{link}' variable in the label.
+        
+        Type: str
+        """
+        return self.__link
+
+    @link.setter
+    def link(self, value):
+        self.__link = value
 
     @property
     def mask(self):
@@ -153,6 +167,7 @@ class PaymentProductFieldDisplayHints(DataObject):
         self._add_to_dictionary(dictionary, 'displayOrder', self.display_order)
         self._add_to_dictionary(dictionary, 'formElement', self.form_element)
         self._add_to_dictionary(dictionary, 'label', self.label)
+        self._add_to_dictionary(dictionary, 'link', self.link)
         self._add_to_dictionary(dictionary, 'mask', self.mask)
         self._add_to_dictionary(dictionary, 'obfuscate', self.obfuscate)
         self._add_to_dictionary(dictionary, 'placeholderLabel', self.placeholder_label)
@@ -173,6 +188,8 @@ class PaymentProductFieldDisplayHints(DataObject):
             self.form_element = value.from_dictionary(dictionary['formElement'])
         if 'label' in dictionary:
             self.label = dictionary['label']
+        if 'link' in dictionary:
+            self.link = dictionary['link']
         if 'mask' in dictionary:
             self.mask = dictionary['mask']
         if 'obfuscate' in dictionary:

@@ -20,6 +20,7 @@ class PaymentProduct(DataObject):
     __can_be_iframed = None
     __display_hints = None
     __fields = None
+    __fields_warning = None
     __id = None
     __max_amount = None
     __min_amount = None
@@ -145,6 +146,19 @@ class PaymentProduct(DataObject):
         self.__fields = value
 
     @property
+    def fields_warning(self):
+        """
+        | If one or more of the payment product fields could not be constructed, no payment product fields will be returned and a message will be present in this field stating why.
+        
+        Type: str
+        """
+        return self.__fields_warning
+
+    @fields_warning.setter
+    def fields_warning(self, value):
+        self.__fields_warning = value
+
+    @property
     def id(self):
         """
         | The ID of the payment product in our system
@@ -261,6 +275,7 @@ class PaymentProduct(DataObject):
         self._add_to_dictionary(dictionary, 'canBeIframed', self.can_be_iframed)
         self._add_to_dictionary(dictionary, 'displayHints', self.display_hints)
         self._add_to_dictionary(dictionary, 'fields', self.fields)
+        self._add_to_dictionary(dictionary, 'fieldsWarning', self.fields_warning)
         self._add_to_dictionary(dictionary, 'id', self.id)
         self._add_to_dictionary(dictionary, 'maxAmount', self.max_amount)
         self._add_to_dictionary(dictionary, 'minAmount', self.min_amount)
@@ -304,6 +319,8 @@ class PaymentProduct(DataObject):
             for fields_element in dictionary['fields']:
                 fields_value = PaymentProductField()
                 self.fields.append(fields_value.from_dictionary(fields_element))
+        if 'fieldsWarning' in dictionary:
+            self.fields_warning = dictionary['fieldsWarning']
         if 'id' in dictionary:
             self.id = dictionary['id']
         if 'maxAmount' in dictionary:

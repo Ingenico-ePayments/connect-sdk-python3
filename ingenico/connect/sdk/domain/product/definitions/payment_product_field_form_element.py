@@ -18,8 +18,10 @@ class PaymentProductFieldFormElement(DataObject):
         | Type of form element to be used. The following types can be returned:
         
         * text - A normal text input field
-        * list - A list of values that the consumer needs to choose from is detailed in the valueMapping array
+        * list - A list of values that the consumer needs to choose from, is detailed in the valueMapping array
         * currency - Currency fields should be split into two fields, with the second one being specifically for the cents
+        * boolean - Boolean fields should offer the consumer a choice, like accepting the terms and conditions of a product.
+        * date - let the consumer pick a date.
         
         Type: str
         """

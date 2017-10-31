@@ -8,6 +8,7 @@ from ingenico.connect.sdk.domain.definitions.fraud_fields import FraudFields
 from ingenico.connect.sdk.domain.payment.definitions.bank_transfer_payment_method_specific_input import BankTransferPaymentMethodSpecificInput
 from ingenico.connect.sdk.domain.payment.definitions.card_payment_method_specific_input import CardPaymentMethodSpecificInput
 from ingenico.connect.sdk.domain.payment.definitions.cash_payment_method_specific_input import CashPaymentMethodSpecificInput
+from ingenico.connect.sdk.domain.payment.definitions.e_invoice_payment_method_specific_input import EInvoicePaymentMethodSpecificInput
 from ingenico.connect.sdk.domain.payment.definitions.invoice_payment_method_specific_input import InvoicePaymentMethodSpecificInput
 from ingenico.connect.sdk.domain.payment.definitions.mobile_payment_method_specific_input import MobilePaymentMethodSpecificInput
 from ingenico.connect.sdk.domain.payment.definitions.non_sepa_direct_debit_payment_method_specific_input import NonSepaDirectDebitPaymentMethodSpecificInput
@@ -22,6 +23,7 @@ class CreatePaymentRequest(DataObject):
     __card_payment_method_specific_input = None
     __cash_payment_method_specific_input = None
     __direct_debit_payment_method_specific_input = None
+    __e_invoice_payment_method_specific_input = None
     __encrypted_customer_input = None
     __fraud_fields = None
     __invoice_payment_method_specific_input = None
@@ -81,6 +83,19 @@ class CreatePaymentRequest(DataObject):
     @direct_debit_payment_method_specific_input.setter
     def direct_debit_payment_method_specific_input(self, value):
         self.__direct_debit_payment_method_specific_input = value
+
+    @property
+    def e_invoice_payment_method_specific_input(self):
+        """
+        | Object containing the specific input details for e-invoice payments.
+        
+        Type: :class:`ingenico.connect.sdk.domain.payment.definitions.e_invoice_payment_method_specific_input.EInvoicePaymentMethodSpecificInput`
+        """
+        return self.__e_invoice_payment_method_specific_input
+
+    @e_invoice_payment_method_specific_input.setter
+    def e_invoice_payment_method_specific_input(self, value):
+        self.__e_invoice_payment_method_specific_input = value
 
     @property
     def encrypted_customer_input(self):
@@ -181,6 +196,7 @@ class CreatePaymentRequest(DataObject):
         self._add_to_dictionary(dictionary, 'cardPaymentMethodSpecificInput', self.card_payment_method_specific_input)
         self._add_to_dictionary(dictionary, 'cashPaymentMethodSpecificInput', self.cash_payment_method_specific_input)
         self._add_to_dictionary(dictionary, 'directDebitPaymentMethodSpecificInput', self.direct_debit_payment_method_specific_input)
+        self._add_to_dictionary(dictionary, 'eInvoicePaymentMethodSpecificInput', self.e_invoice_payment_method_specific_input)
         self._add_to_dictionary(dictionary, 'encryptedCustomerInput', self.encrypted_customer_input)
         self._add_to_dictionary(dictionary, 'fraudFields', self.fraud_fields)
         self._add_to_dictionary(dictionary, 'invoicePaymentMethodSpecificInput', self.invoice_payment_method_specific_input)
@@ -212,6 +228,11 @@ class CreatePaymentRequest(DataObject):
                 raise TypeError('value \'{}\' is not a dictionary'.format(dictionary['directDebitPaymentMethodSpecificInput']))
             value = NonSepaDirectDebitPaymentMethodSpecificInput()
             self.direct_debit_payment_method_specific_input = value.from_dictionary(dictionary['directDebitPaymentMethodSpecificInput'])
+        if 'eInvoicePaymentMethodSpecificInput' in dictionary:
+            if not isinstance(dictionary['eInvoicePaymentMethodSpecificInput'], dict):
+                raise TypeError('value \'{}\' is not a dictionary'.format(dictionary['eInvoicePaymentMethodSpecificInput']))
+            value = EInvoicePaymentMethodSpecificInput()
+            self.e_invoice_payment_method_specific_input = value.from_dictionary(dictionary['eInvoicePaymentMethodSpecificInput'])
         if 'encryptedCustomerInput' in dictionary:
             self.encrypted_customer_input = dictionary['encryptedCustomerInput']
         if 'fraudFields' in dictionary:

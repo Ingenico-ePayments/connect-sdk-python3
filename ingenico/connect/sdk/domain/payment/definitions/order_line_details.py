@@ -9,8 +9,10 @@ from ingenico.connect.sdk.data_object import DataObject
 class OrderLineDetails(DataObject):
 
     __discount_amount = None
+    __google_product_category_id = None
     __line_amount_total = None
     __product_code = None
+    __product_name = None
     __product_price = None
     __product_type = None
     __quantity = None
@@ -29,6 +31,19 @@ class OrderLineDetails(DataObject):
     @discount_amount.setter
     def discount_amount(self, value):
         self.__discount_amount = value
+
+    @property
+    def google_product_category_id(self):
+        """
+        | The Google product category ID for the item.
+        
+        Type: int
+        """
+        return self.__google_product_category_id
+
+    @google_product_category_id.setter
+    def google_product_category_id(self, value):
+        self.__google_product_category_id = value
 
     @property
     def line_amount_total(self):
@@ -56,6 +71,19 @@ class OrderLineDetails(DataObject):
     @product_code.setter
     def product_code(self, value):
         self.__product_code = value
+
+    @property
+    def product_name(self):
+        """
+        | The name of the product.
+        
+        Type: str
+        """
+        return self.__product_name
+
+    @product_name.setter
+    def product_name(self, value):
+        self.__product_name = value
 
     @property
     def product_price(self):
@@ -127,8 +155,10 @@ class OrderLineDetails(DataObject):
     def to_dictionary(self):
         dictionary = super(OrderLineDetails, self).to_dictionary()
         self._add_to_dictionary(dictionary, 'discountAmount', self.discount_amount)
+        self._add_to_dictionary(dictionary, 'googleProductCategoryId', self.google_product_category_id)
         self._add_to_dictionary(dictionary, 'lineAmountTotal', self.line_amount_total)
         self._add_to_dictionary(dictionary, 'productCode', self.product_code)
+        self._add_to_dictionary(dictionary, 'productName', self.product_name)
         self._add_to_dictionary(dictionary, 'productPrice', self.product_price)
         self._add_to_dictionary(dictionary, 'productType', self.product_type)
         self._add_to_dictionary(dictionary, 'quantity', self.quantity)
@@ -140,10 +170,14 @@ class OrderLineDetails(DataObject):
         super(OrderLineDetails, self).from_dictionary(dictionary)
         if 'discountAmount' in dictionary:
             self.discount_amount = dictionary['discountAmount']
+        if 'googleProductCategoryId' in dictionary:
+            self.google_product_category_id = dictionary['googleProductCategoryId']
         if 'lineAmountTotal' in dictionary:
             self.line_amount_total = dictionary['lineAmountTotal']
         if 'productCode' in dictionary:
             self.product_code = dictionary['productCode']
+        if 'productName' in dictionary:
+            self.product_name = dictionary['productName']
         if 'productPrice' in dictionary:
             self.product_price = dictionary['productPrice']
         if 'productType' in dictionary:
