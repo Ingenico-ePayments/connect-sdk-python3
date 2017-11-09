@@ -3,15 +3,14 @@
 # This class was auto-generated from the API references found at
 # https://epayments-api.developer-ingenico.com/s2sapi/v1/
 #
-from ingenico.connect.sdk.domain.definitions.abstract_payment_method_specific_input import AbstractPaymentMethodSpecificInput
+from ingenico.connect.sdk.domain.payment.definitions.e_invoice_payment_method_specific_input_base import EInvoicePaymentMethodSpecificInputBase
 from ingenico.connect.sdk.domain.payment.definitions.e_invoice_payment_product9000_specific_input import EInvoicePaymentProduct9000SpecificInput
 
 
-class EInvoicePaymentMethodSpecificInput(AbstractPaymentMethodSpecificInput):
+class EInvoicePaymentMethodSpecificInput(EInvoicePaymentMethodSpecificInputBase):
 
     __accepted_terms_and_conditions = None
     __payment_product9000_specific_input = None
-    __requires_approval = None
 
     @property
     def accepted_terms_and_conditions(self):
@@ -39,25 +38,10 @@ class EInvoicePaymentMethodSpecificInput(AbstractPaymentMethodSpecificInput):
     def payment_product9000_specific_input(self, value):
         self.__payment_product9000_specific_input = value
 
-    @property
-    def requires_approval(self):
-        """
-        * true = the payment requires approval before the funds will be captured using the Capture payment <https://epayments-api.developer-ingenico.com/s2sapi/v1/en_US/python/payments/approve.html> API
-        * false = the payment does not require approval, and the funds will be captured automatically
-        
-        Type: bool
-        """
-        return self.__requires_approval
-
-    @requires_approval.setter
-    def requires_approval(self, value):
-        self.__requires_approval = value
-
     def to_dictionary(self):
         dictionary = super(EInvoicePaymentMethodSpecificInput, self).to_dictionary()
         self._add_to_dictionary(dictionary, 'acceptedTermsAndConditions', self.accepted_terms_and_conditions)
         self._add_to_dictionary(dictionary, 'paymentProduct9000SpecificInput', self.payment_product9000_specific_input)
-        self._add_to_dictionary(dictionary, 'requiresApproval', self.requires_approval)
         return dictionary
 
     def from_dictionary(self, dictionary):
@@ -69,6 +53,4 @@ class EInvoicePaymentMethodSpecificInput(AbstractPaymentMethodSpecificInput):
                 raise TypeError('value \'{}\' is not a dictionary'.format(dictionary['paymentProduct9000SpecificInput']))
             value = EInvoicePaymentProduct9000SpecificInput()
             self.payment_product9000_specific_input = value.from_dictionary(dictionary['paymentProduct9000SpecificInput'])
-        if 'requiresApproval' in dictionary:
-            self.requires_approval = dictionary['requiresApproval']
         return self

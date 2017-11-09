@@ -9,8 +9,10 @@ from ingenico.connect.sdk.domain.hostedcheckout.definitions.hosted_checkout_spec
 from ingenico.connect.sdk.domain.payment.definitions.bank_transfer_payment_method_specific_input_base import BankTransferPaymentMethodSpecificInputBase
 from ingenico.connect.sdk.domain.payment.definitions.card_payment_method_specific_input_base import CardPaymentMethodSpecificInputBase
 from ingenico.connect.sdk.domain.payment.definitions.cash_payment_method_specific_input_base import CashPaymentMethodSpecificInputBase
+from ingenico.connect.sdk.domain.payment.definitions.e_invoice_payment_method_specific_input_base import EInvoicePaymentMethodSpecificInputBase
 from ingenico.connect.sdk.domain.payment.definitions.order import Order
 from ingenico.connect.sdk.domain.payment.definitions.redirect_payment_method_specific_input_base import RedirectPaymentMethodSpecificInputBase
+from ingenico.connect.sdk.domain.payment.definitions.sepa_direct_debit_payment_method_specific_input_base import SepaDirectDebitPaymentMethodSpecificInputBase
 
 
 class CreateHostedCheckoutRequest(DataObject):
@@ -18,10 +20,12 @@ class CreateHostedCheckoutRequest(DataObject):
     __bank_transfer_payment_method_specific_input = None
     __card_payment_method_specific_input = None
     __cash_payment_method_specific_input = None
+    __e_invoice_payment_method_specific_input = None
     __fraud_fields = None
     __hosted_checkout_specific_input = None
     __order = None
     __redirect_payment_method_specific_input = None
+    __sepa_direct_debit_payment_method_specific_input = None
 
     @property
     def bank_transfer_payment_method_specific_input(self):
@@ -61,6 +65,19 @@ class CreateHostedCheckoutRequest(DataObject):
     @cash_payment_method_specific_input.setter
     def cash_payment_method_specific_input(self, value):
         self.__cash_payment_method_specific_input = value
+
+    @property
+    def e_invoice_payment_method_specific_input(self):
+        """
+        | Object containing the specific input details for eInvoice payments
+        
+        Type: :class:`ingenico.connect.sdk.domain.payment.definitions.e_invoice_payment_method_specific_input_base.EInvoicePaymentMethodSpecificInputBase`
+        """
+        return self.__e_invoice_payment_method_specific_input
+
+    @e_invoice_payment_method_specific_input.setter
+    def e_invoice_payment_method_specific_input(self, value):
+        self.__e_invoice_payment_method_specific_input = value
 
     @property
     def fraud_fields(self):
@@ -114,15 +131,30 @@ class CreateHostedCheckoutRequest(DataObject):
     def redirect_payment_method_specific_input(self, value):
         self.__redirect_payment_method_specific_input = value
 
+    @property
+    def sepa_direct_debit_payment_method_specific_input(self):
+        """
+        | Object containing the specific input details for SEPA direct debit payments
+        
+        Type: :class:`ingenico.connect.sdk.domain.payment.definitions.sepa_direct_debit_payment_method_specific_input_base.SepaDirectDebitPaymentMethodSpecificInputBase`
+        """
+        return self.__sepa_direct_debit_payment_method_specific_input
+
+    @sepa_direct_debit_payment_method_specific_input.setter
+    def sepa_direct_debit_payment_method_specific_input(self, value):
+        self.__sepa_direct_debit_payment_method_specific_input = value
+
     def to_dictionary(self):
         dictionary = super(CreateHostedCheckoutRequest, self).to_dictionary()
         self._add_to_dictionary(dictionary, 'bankTransferPaymentMethodSpecificInput', self.bank_transfer_payment_method_specific_input)
         self._add_to_dictionary(dictionary, 'cardPaymentMethodSpecificInput', self.card_payment_method_specific_input)
         self._add_to_dictionary(dictionary, 'cashPaymentMethodSpecificInput', self.cash_payment_method_specific_input)
+        self._add_to_dictionary(dictionary, 'eInvoicePaymentMethodSpecificInput', self.e_invoice_payment_method_specific_input)
         self._add_to_dictionary(dictionary, 'fraudFields', self.fraud_fields)
         self._add_to_dictionary(dictionary, 'hostedCheckoutSpecificInput', self.hosted_checkout_specific_input)
         self._add_to_dictionary(dictionary, 'order', self.order)
         self._add_to_dictionary(dictionary, 'redirectPaymentMethodSpecificInput', self.redirect_payment_method_specific_input)
+        self._add_to_dictionary(dictionary, 'sepaDirectDebitPaymentMethodSpecificInput', self.sepa_direct_debit_payment_method_specific_input)
         return dictionary
 
     def from_dictionary(self, dictionary):
@@ -142,6 +174,11 @@ class CreateHostedCheckoutRequest(DataObject):
                 raise TypeError('value \'{}\' is not a dictionary'.format(dictionary['cashPaymentMethodSpecificInput']))
             value = CashPaymentMethodSpecificInputBase()
             self.cash_payment_method_specific_input = value.from_dictionary(dictionary['cashPaymentMethodSpecificInput'])
+        if 'eInvoicePaymentMethodSpecificInput' in dictionary:
+            if not isinstance(dictionary['eInvoicePaymentMethodSpecificInput'], dict):
+                raise TypeError('value \'{}\' is not a dictionary'.format(dictionary['eInvoicePaymentMethodSpecificInput']))
+            value = EInvoicePaymentMethodSpecificInputBase()
+            self.e_invoice_payment_method_specific_input = value.from_dictionary(dictionary['eInvoicePaymentMethodSpecificInput'])
         if 'fraudFields' in dictionary:
             if not isinstance(dictionary['fraudFields'], dict):
                 raise TypeError('value \'{}\' is not a dictionary'.format(dictionary['fraudFields']))
@@ -162,4 +199,9 @@ class CreateHostedCheckoutRequest(DataObject):
                 raise TypeError('value \'{}\' is not a dictionary'.format(dictionary['redirectPaymentMethodSpecificInput']))
             value = RedirectPaymentMethodSpecificInputBase()
             self.redirect_payment_method_specific_input = value.from_dictionary(dictionary['redirectPaymentMethodSpecificInput'])
+        if 'sepaDirectDebitPaymentMethodSpecificInput' in dictionary:
+            if not isinstance(dictionary['sepaDirectDebitPaymentMethodSpecificInput'], dict):
+                raise TypeError('value \'{}\' is not a dictionary'.format(dictionary['sepaDirectDebitPaymentMethodSpecificInput']))
+            value = SepaDirectDebitPaymentMethodSpecificInputBase()
+            self.sepa_direct_debit_payment_method_specific_input = value.from_dictionary(dictionary['sepaDirectDebitPaymentMethodSpecificInput'])
         return self

@@ -5,27 +5,13 @@
 import os
 
 from ingenico.connect.sdk.factory import Factory
-from ingenico.connect.sdk.domain.definitions.key_value_pair import KeyValuePair
-from ingenico.connect.sdk.domain.product.get_customer_details_request import GetCustomerDetailsRequest
 
 
-class GetCustomerDetailsExample(object):
+class RevokeMandateExample(object):
 
     def example(self):
         with self.__get_client() as client:
-            values = []
-
-            value1 = KeyValuePair()
-            value1.key = "fiscalNumber"
-            value1.value = "01234567890"
-
-            values.append(value1)
-
-            body = GetCustomerDetailsRequest()
-            body.country_code = "SE"
-            body.values = values
-
-            response = client.merchant("merchantId").products().customer_details(9000, body)
+            response = client.merchant("merchantId").mandates().revoke("42268d8067df43e18a50a2ebf4bdb729")
 
     def __get_client(self):
         api_key_id = os.getenv("connect.api.apiKeyId", "someKey")

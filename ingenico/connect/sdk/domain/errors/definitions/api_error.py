@@ -88,7 +88,13 @@ class APIError(DataObject):
     @property
     def property_name(self):
         """
-        | In case the error was in relation to a property that was missing or not correct the name of the property in question is returned
+        | Returned only if the error relates to a value that was missing or incorrect.
+        | Contains a location path to the value as a JSonata query <http://docs.jsonata.org/basic.html>.
+        | Some common examples:
+        
+        * a.b selects the value of property b of root property a,
+        * a[1] selects the first element of the array in root property a,
+        * a[b='some value'] selects all elements of the array in root property a that have a property b with value 'some value'.
         
         Type: str
         """

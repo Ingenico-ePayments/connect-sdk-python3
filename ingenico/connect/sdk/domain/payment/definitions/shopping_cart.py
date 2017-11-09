@@ -29,6 +29,8 @@ class ShoppingCart(DataObject):
     @property
     def items(self):
         """
+        | Shopping cart data
+        
         Type: list[:class:`ingenico.connect.sdk.domain.payment.definitions.line_item.LineItem`]
         """
         return self.__items

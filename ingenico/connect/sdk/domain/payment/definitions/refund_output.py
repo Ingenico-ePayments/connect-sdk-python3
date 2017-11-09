@@ -89,13 +89,14 @@ class RefundOutput(OrderOutput):
         """
         | Payment method identifier used by the our payment engine with the following possible values:
         
-        * card
-        * directDebit
-        * invoice
-        * bankTransfer
-        * redirect
-        * cash
         * bankRefund
+        * bankTransfer
+        * card
+        * cash
+        * directDebit
+        * eInvoice
+        * invoice
+        * redirect
         
         Type: str
         """

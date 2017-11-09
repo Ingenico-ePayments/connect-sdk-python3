@@ -6,12 +6,12 @@
 from ingenico.connect.sdk.domain.definitions.redirect_data_base import RedirectDataBase
 
 
-class RedirectData(RedirectDataBase):
+class MandateRedirectData(RedirectDataBase):
 
     def to_dictionary(self):
-        dictionary = super(RedirectData, self).to_dictionary()
+        dictionary = super(MandateRedirectData, self).to_dictionary()
         return dictionary
 
     def from_dictionary(self, dictionary):
-        super(RedirectData, self).from_dictionary(dictionary)
+        super(MandateRedirectData, self).from_dictionary(dictionary)
         return self

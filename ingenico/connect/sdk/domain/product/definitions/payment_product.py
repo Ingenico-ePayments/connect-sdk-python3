@@ -218,13 +218,13 @@ class PaymentProduct(DataObject):
         """
         | Indicates which payment method will be used for this payment product. Payment method is one of:
         
-        * card
-        * directDebit
-        * onlineBankTransfer
-        * invoice
         * bankTransfer
-        * redirect
+        * card
         * cash
+        * directDebit
+        * eInvoice
+        * invoice
+        * redirect
         
         Type: str
         """

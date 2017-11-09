@@ -9,6 +9,7 @@ from ingenico.connect.sdk.domain.payment.definitions.additional_order_input impo
 from ingenico.connect.sdk.domain.payment.definitions.customer import Customer
 from ingenico.connect.sdk.domain.payment.definitions.line_item import LineItem
 from ingenico.connect.sdk.domain.payment.definitions.order_references import OrderReferences
+from ingenico.connect.sdk.domain.payment.definitions.seller import Seller
 from ingenico.connect.sdk.domain.payment.definitions.shopping_cart import ShoppingCart
 
 
@@ -19,6 +20,7 @@ class Order(DataObject):
     __customer = None
     __items = None
     __references = None
+    __seller = None
     __shopping_cart = None
 
     @property
@@ -89,6 +91,19 @@ class Order(DataObject):
         self.__references = value
 
     @property
+    def seller(self):
+        """
+        | Object containing seller details
+        
+        Type: :class:`ingenico.connect.sdk.domain.payment.definitions.seller.Seller`
+        """
+        return self.__seller
+
+    @seller.setter
+    def seller(self, value):
+        self.__seller = value
+
+    @property
     def shopping_cart(self):
         """
         | Shopping cart data, including items and specific amounts.
@@ -108,6 +123,7 @@ class Order(DataObject):
         self._add_to_dictionary(dictionary, 'customer', self.customer)
         self._add_to_dictionary(dictionary, 'items', self.items)
         self._add_to_dictionary(dictionary, 'references', self.references)
+        self._add_to_dictionary(dictionary, 'seller', self.seller)
         self._add_to_dictionary(dictionary, 'shoppingCart', self.shopping_cart)
         return dictionary
 
@@ -140,6 +156,11 @@ class Order(DataObject):
                 raise TypeError('value \'{}\' is not a dictionary'.format(dictionary['references']))
             value = OrderReferences()
             self.references = value.from_dictionary(dictionary['references'])
+        if 'seller' in dictionary:
+            if not isinstance(dictionary['seller'], dict):
+                raise TypeError('value \'{}\' is not a dictionary'.format(dictionary['seller']))
+            value = Seller()
+            self.seller = value.from_dictionary(dictionary['seller'])
         if 'shoppingCart' in dictionary:
             if not isinstance(dictionary['shoppingCart'], dict):
                 raise TypeError('value \'{}\' is not a dictionary'.format(dictionary['shoppingCart']))

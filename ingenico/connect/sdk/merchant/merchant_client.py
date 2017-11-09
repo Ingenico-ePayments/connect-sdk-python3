@@ -5,6 +5,7 @@
 from ingenico.connect.sdk.api_resource import ApiResource
 from ingenico.connect.sdk.merchant.captures.captures_client import CapturesClient
 from ingenico.connect.sdk.merchant.hostedcheckouts.hostedcheckouts_client import HostedcheckoutsClient
+from ingenico.connect.sdk.merchant.mandates.mandates_client import MandatesClient
 from ingenico.connect.sdk.merchant.payments.payments_client import PaymentsClient
 from ingenico.connect.sdk.merchant.payouts.payouts_client import PayoutsClient
 from ingenico.connect.sdk.merchant.productgroups.productgroups_client import ProductgroupsClient
@@ -77,6 +78,16 @@ class MerchantClient(ApiResource):
         :return: :class:`ingenico.connect.sdk.merchant.productgroups.productgroups_client.ProductgroupsClient`
         """
         return ProductgroupsClient(self, None)
+
+    def mandates(self):
+        """
+        Resource /{merchantId}/mandates
+
+        Create, get and update mandates
+
+        :return: :class:`ingenico.connect.sdk.merchant.mandates.mandates_client.MandatesClient`
+        """
+        return MandatesClient(self, None)
 
     def refunds(self):
         """

@@ -12,6 +12,7 @@ class HostedCheckoutSpecificInput(DataObject):
     __is_recurring = None
     __locale = None
     __payment_product_filters = None
+    __return_cancel_state = None
     __return_url = None
     __show_result_page = None
     __tokens = None
@@ -58,6 +59,19 @@ class HostedCheckoutSpecificInput(DataObject):
     @payment_product_filters.setter
     def payment_product_filters(self, value):
         self.__payment_product_filters = value
+
+    @property
+    def return_cancel_state(self):
+        """
+        | When set on true, the consumer is able to cancel the Hosted Checkout by pressing the cancel button. When set to false, the cancel button will only return the consumer back to the payment method selection page. Default value is false.
+        
+        Type: bool
+        """
+        return self.__return_cancel_state
+
+    @return_cancel_state.setter
+    def return_cancel_state(self, value):
+        self.__return_cancel_state = value
 
     @property
     def return_url(self):
@@ -121,6 +135,7 @@ class HostedCheckoutSpecificInput(DataObject):
         self._add_to_dictionary(dictionary, 'isRecurring', self.is_recurring)
         self._add_to_dictionary(dictionary, 'locale', self.locale)
         self._add_to_dictionary(dictionary, 'paymentProductFilters', self.payment_product_filters)
+        self._add_to_dictionary(dictionary, 'returnCancelState', self.return_cancel_state)
         self._add_to_dictionary(dictionary, 'returnUrl', self.return_url)
         self._add_to_dictionary(dictionary, 'showResultPage', self.show_result_page)
         self._add_to_dictionary(dictionary, 'tokens', self.tokens)
@@ -138,6 +153,8 @@ class HostedCheckoutSpecificInput(DataObject):
                 raise TypeError('value \'{}\' is not a dictionary'.format(dictionary['paymentProductFilters']))
             value = PaymentProductFiltersHostedCheckout()
             self.payment_product_filters = value.from_dictionary(dictionary['paymentProductFilters'])
+        if 'returnCancelState' in dictionary:
+            self.return_cancel_state = dictionary['returnCancelState']
         if 'returnUrl' in dictionary:
             self.return_url = dictionary['returnUrl']
         if 'showResultPage' in dictionary:
