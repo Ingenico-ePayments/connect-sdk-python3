@@ -29,7 +29,7 @@ class SepaDirectDebitPaymentMethodSpecificOutput(AbstractPaymentMethodSpecificOu
     @property
     def payment_product771_specific_output(self):
         """
-        | Output that is Slimpay Sepa Direct Debit specific (i.e. the used mandate)
+        | Output that is SEPA Direct Debit specific (i.e. the used mandate)
         
         Type: :class:`ingenico.connect.sdk.domain.payment.definitions.payment_product771_specific_output.PaymentProduct771SpecificOutput`
         """

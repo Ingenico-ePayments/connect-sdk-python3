@@ -18,7 +18,7 @@ class SepaDirectDebitPaymentMethodSpecificInput(SepaDirectDebitPaymentMethodSpec
     @property
     def date_collect(self):
         """
-        | Changed date for direct debit collection
+        | Changed date for direct debit collection. Only relevant for legacy SEPA Direct Debit.
         | Format: YYYYMMDD
         
         Type: str
@@ -32,7 +32,7 @@ class SepaDirectDebitPaymentMethodSpecificInput(SepaDirectDebitPaymentMethodSpec
     @property
     def direct_debit_text(self):
         """
-        | Description of the transaction that will appear on the consumer bank statement to aid the consumer in recognizing the transaction
+        | Description of the transaction that will appear on the consumer bank statement to aid the consumer in recognizing the transaction. Only relevant for legacy SEPA Direct Debit.
         
         Type: str
         """
@@ -45,7 +45,7 @@ class SepaDirectDebitPaymentMethodSpecificInput(SepaDirectDebitPaymentMethodSpec
     @property
     def is_recurring(self):
         """
-        | Indicates if this transaction is of a one-off or a recurring type
+        | Indicates if this transaction is of a one-off or a recurring type. Only relevant for legacy SEPA Direct Debit.
         
         * true - This is recurring
         * false - This is one-off
@@ -61,6 +61,8 @@ class SepaDirectDebitPaymentMethodSpecificInput(SepaDirectDebitPaymentMethodSpec
     @property
     def recurring_payment_sequence_indicator(self):
         """
+        | Only relevant for legacy SEPA Direct Debit.
+        
         * first = This transaction is the first of a series of recurring transactions
         * recurring = This transaction is a subsequent transaction in a series of recurring transactions
         * last = This transaction is the last transaction of a series of recurring transactions
@@ -76,7 +78,7 @@ class SepaDirectDebitPaymentMethodSpecificInput(SepaDirectDebitPaymentMethodSpec
     @property
     def token(self):
         """
-        | ID of the token that holds previously stored SEPA Direct Debit account and mandate data
+        | ID of the token that holds previously stored SEPA Direct Debit account and mandate data. Only relevant for legacy SEPA Direct Debit.
         
         Type: str
         """
@@ -89,7 +91,7 @@ class SepaDirectDebitPaymentMethodSpecificInput(SepaDirectDebitPaymentMethodSpec
     @property
     def tokenize(self):
         """
-        | Indicates if this transaction should be tokenized
+        | Indicates if this transaction should be tokenized. Only relevant for legacy SEPA Direct Debit.
         
         * true - Tokenize the transaction
         * false - Do not tokenize the transaction, unless it would be tokenized by other means such as auto-tokenization of recurring payments.

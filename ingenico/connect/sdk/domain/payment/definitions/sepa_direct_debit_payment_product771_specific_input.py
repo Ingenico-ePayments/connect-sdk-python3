@@ -9,7 +9,7 @@ from ingenico.connect.sdk.domain.mandates.definitions.create_mandate_base import
 
 class SepaDirectDebitPaymentProduct771SpecificInput(DataObject):
     """
-    | Object containing information specific to SEPA Direct Debit with Slimpay
+    | Object containing information specific to SEPA Direct Debit
     """
 
     __mandate = None
@@ -18,7 +18,7 @@ class SepaDirectDebitPaymentProduct771SpecificInput(DataObject):
     @property
     def mandate(self):
         """
-        | Object containing informatin to create a Slimpay mandate. Required for creating HostedCheckouts
+        | Object containing informatin to create a SEPA Direct Debit mandate. Required for creating HostedCheckouts
         
         Type: :class:`ingenico.connect.sdk.domain.mandates.definitions.create_mandate_base.CreateMandateBase`
         """
@@ -31,7 +31,7 @@ class SepaDirectDebitPaymentProduct771SpecificInput(DataObject):
     @property
     def mandate_reference(self):
         """
-        | A mandate ID to create a mandate under iff the information to create a mandate has been supplied. Otherwise refers to the Slimpay mandate to retrieve and use in the payment.
+        | A mandate ID to create a mandate under iff the information to create a mandate has been supplied. Otherwise refers to the mandate to retrieve and use in the payment.
         
         Type: str
         """

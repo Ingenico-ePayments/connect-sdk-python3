@@ -14,7 +14,7 @@ class SepaDirectDebitPaymentMethodSpecificInputBase(AbstractPaymentMethodSpecifi
     @property
     def payment_product771_specific_input(self):
         """
-        | Object containing information specific to SEPA Direct Debit with Slimpay
+        | Object containing information specific to SEPA Direct Debit
         
         Type: :class:`ingenico.connect.sdk.domain.payment.definitions.sepa_direct_debit_payment_product771_specific_input.SepaDirectDebitPaymentProduct771SpecificInput`
         """
