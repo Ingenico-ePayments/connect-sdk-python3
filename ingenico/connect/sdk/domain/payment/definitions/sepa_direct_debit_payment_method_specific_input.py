@@ -3,14 +3,16 @@
 # This class was auto-generated from the API references found at
 # https://epayments-api.developer-ingenico.com/s2sapi/v1/
 #
-from ingenico.connect.sdk.domain.payment.definitions.sepa_direct_debit_payment_method_specific_input_base import SepaDirectDebitPaymentMethodSpecificInputBase
+from ingenico.connect.sdk.domain.payment.definitions.abstract_sepa_direct_debit_payment_method_specific_input import AbstractSepaDirectDebitPaymentMethodSpecificInput
+from ingenico.connect.sdk.domain.payment.definitions.sepa_direct_debit_payment_product771_specific_input import SepaDirectDebitPaymentProduct771SpecificInput
 
 
-class SepaDirectDebitPaymentMethodSpecificInput(SepaDirectDebitPaymentMethodSpecificInputBase):
+class SepaDirectDebitPaymentMethodSpecificInput(AbstractSepaDirectDebitPaymentMethodSpecificInput):
 
     __date_collect = None
     __direct_debit_text = None
     __is_recurring = None
+    __payment_product771_specific_input = None
     __recurring_payment_sequence_indicator = None
     __token = None
     __tokenize = None
@@ -57,6 +59,19 @@ class SepaDirectDebitPaymentMethodSpecificInput(SepaDirectDebitPaymentMethodSpec
     @is_recurring.setter
     def is_recurring(self, value):
         self.__is_recurring = value
+
+    @property
+    def payment_product771_specific_input(self):
+        """
+        | Object containing information specific to SEPA Direct Debit
+        
+        Type: :class:`ingenico.connect.sdk.domain.payment.definitions.sepa_direct_debit_payment_product771_specific_input.SepaDirectDebitPaymentProduct771SpecificInput`
+        """
+        return self.__payment_product771_specific_input
+
+    @payment_product771_specific_input.setter
+    def payment_product771_specific_input(self, value):
+        self.__payment_product771_specific_input = value
 
     @property
     def recurring_payment_sequence_indicator(self):
@@ -109,6 +124,7 @@ class SepaDirectDebitPaymentMethodSpecificInput(SepaDirectDebitPaymentMethodSpec
         self._add_to_dictionary(dictionary, 'dateCollect', self.date_collect)
         self._add_to_dictionary(dictionary, 'directDebitText', self.direct_debit_text)
         self._add_to_dictionary(dictionary, 'isRecurring', self.is_recurring)
+        self._add_to_dictionary(dictionary, 'paymentProduct771SpecificInput', self.payment_product771_specific_input)
         self._add_to_dictionary(dictionary, 'recurringPaymentSequenceIndicator', self.recurring_payment_sequence_indicator)
         self._add_to_dictionary(dictionary, 'token', self.token)
         self._add_to_dictionary(dictionary, 'tokenize', self.tokenize)
@@ -122,6 +138,11 @@ class SepaDirectDebitPaymentMethodSpecificInput(SepaDirectDebitPaymentMethodSpec
             self.direct_debit_text = dictionary['directDebitText']
         if 'isRecurring' in dictionary:
             self.is_recurring = dictionary['isRecurring']
+        if 'paymentProduct771SpecificInput' in dictionary:
+            if not isinstance(dictionary['paymentProduct771SpecificInput'], dict):
+                raise TypeError('value \'{}\' is not a dictionary'.format(dictionary['paymentProduct771SpecificInput']))
+            value = SepaDirectDebitPaymentProduct771SpecificInput()
+            self.payment_product771_specific_input = value.from_dictionary(dictionary['paymentProduct771SpecificInput'])
         if 'recurringPaymentSequenceIndicator' in dictionary:
             self.recurring_payment_sequence_indicator = dictionary['recurringPaymentSequenceIndicator']
         if 'token' in dictionary:

@@ -3,11 +3,11 @@
 # This class was auto-generated from the API references found at
 # https://epayments-api.developer-ingenico.com/s2sapi/v1/
 #
-from ingenico.connect.sdk.domain.definitions.abstract_payment_method_specific_input import AbstractPaymentMethodSpecificInput
-from ingenico.connect.sdk.domain.payment.definitions.sepa_direct_debit_payment_product771_specific_input import SepaDirectDebitPaymentProduct771SpecificInput
+from ingenico.connect.sdk.domain.payment.definitions.abstract_sepa_direct_debit_payment_method_specific_input import AbstractSepaDirectDebitPaymentMethodSpecificInput
+from ingenico.connect.sdk.domain.payment.definitions.sepa_direct_debit_payment_product771_specific_input_base import SepaDirectDebitPaymentProduct771SpecificInputBase
 
 
-class SepaDirectDebitPaymentMethodSpecificInputBase(AbstractPaymentMethodSpecificInput):
+class SepaDirectDebitPaymentMethodSpecificInputBase(AbstractSepaDirectDebitPaymentMethodSpecificInput):
 
     __payment_product771_specific_input = None
 
@@ -16,7 +16,7 @@ class SepaDirectDebitPaymentMethodSpecificInputBase(AbstractPaymentMethodSpecifi
         """
         | Object containing information specific to SEPA Direct Debit
         
-        Type: :class:`ingenico.connect.sdk.domain.payment.definitions.sepa_direct_debit_payment_product771_specific_input.SepaDirectDebitPaymentProduct771SpecificInput`
+        Type: :class:`ingenico.connect.sdk.domain.payment.definitions.sepa_direct_debit_payment_product771_specific_input_base.SepaDirectDebitPaymentProduct771SpecificInputBase`
         """
         return self.__payment_product771_specific_input
 
@@ -34,6 +34,6 @@ class SepaDirectDebitPaymentMethodSpecificInputBase(AbstractPaymentMethodSpecifi
         if 'paymentProduct771SpecificInput' in dictionary:
             if not isinstance(dictionary['paymentProduct771SpecificInput'], dict):
                 raise TypeError('value \'{}\' is not a dictionary'.format(dictionary['paymentProduct771SpecificInput']))
-            value = SepaDirectDebitPaymentProduct771SpecificInput()
+            value = SepaDirectDebitPaymentProduct771SpecificInputBase()
             self.payment_product771_specific_input = value.from_dictionary(dictionary['paymentProduct771SpecificInput'])
         return self

@@ -13,7 +13,6 @@ class CreateMandateBase(DataObject):
     __customer_reference = None
     __language = None
     __recurrence_type = None
-    __return_url = None
     __signature_type = None
 
     @property
@@ -58,7 +57,10 @@ class CreateMandateBase(DataObject):
     @property
     def recurrence_type(self):
         """
-        | Specifies whether the mandate is for one-off or recurring payments.
+        | Specifies whether the mandate is for one-off or recurring payments. Possible values are:
+        |  
+        * UNIQUE
+        * RECURRING
         
         Type: str
         """
@@ -69,22 +71,12 @@ class CreateMandateBase(DataObject):
         self.__recurrence_type = value
 
     @property
-    def return_url(self):
-        """
-        | Return url to use if the mandate signing requires redirection.
-        
-        Type: str
-        """
-        return self.__return_url
-
-    @return_url.setter
-    def return_url(self, value):
-        self.__return_url = value
-
-    @property
     def signature_type(self):
         """
-        | Specifies whether the mandate is 'Unsigned' or singed by 'SMS'.
+        | Specifies whether the mandate is unsigned or singed by SMS. Possible values are:
+        |  
+        * UNSIGNED
+        * SMS
         
         Type: str
         """
@@ -100,7 +92,6 @@ class CreateMandateBase(DataObject):
         self._add_to_dictionary(dictionary, 'customerReference', self.customer_reference)
         self._add_to_dictionary(dictionary, 'language', self.language)
         self._add_to_dictionary(dictionary, 'recurrenceType', self.recurrence_type)
-        self._add_to_dictionary(dictionary, 'returnUrl', self.return_url)
         self._add_to_dictionary(dictionary, 'signatureType', self.signature_type)
         return dictionary
 
@@ -117,8 +108,6 @@ class CreateMandateBase(DataObject):
             self.language = dictionary['language']
         if 'recurrenceType' in dictionary:
             self.recurrence_type = dictionary['recurrenceType']
-        if 'returnUrl' in dictionary:
-            self.return_url = dictionary['returnUrl']
         if 'signatureType' in dictionary:
             self.signature_type = dictionary['signatureType']
         return self
