@@ -30,11 +30,11 @@ class PaymentProductFieldDisplayElement(DataObject):
         """
         | The type of the display element. Indicates how the value should be presented. Possible values are:
         
-        * string - as plain text
-        * currency - as an amount in cents displayed with a decimal separator and the currency of the payment
-        * percentage - as a number with a percentage sign
-        * integer - as an integer
-        * uri - as a link
+        * STRING - as plain text
+        * CURRENCY - as an amount in cents displayed with a decimal separator and the currency of the payment
+        * PERCENTAGE - as a number with a percentage sign
+        * INTEGER - as an integer
+        * URI - as a link
         
         Type: str
         """

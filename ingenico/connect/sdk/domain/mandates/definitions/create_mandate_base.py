@@ -9,11 +9,26 @@ from ingenico.connect.sdk.domain.mandates.definitions.mandate_customer import Ma
 
 class CreateMandateBase(DataObject):
 
+    __alias = None
     __customer = None
     __customer_reference = None
     __language = None
     __recurrence_type = None
     __signature_type = None
+
+    @property
+    def alias(self):
+        """
+        | An alias for the mandate. This can be used to visually represent the mandate.
+        | Do not include any unobfuscated sensitive data in the alias.
+        
+        Type: str
+        """
+        return self.__alias
+
+    @alias.setter
+    def alias(self, value):
+        self.__alias = value
 
     @property
     def customer(self):
@@ -88,6 +103,7 @@ class CreateMandateBase(DataObject):
 
     def to_dictionary(self):
         dictionary = super(CreateMandateBase, self).to_dictionary()
+        self._add_to_dictionary(dictionary, 'alias', self.alias)
         self._add_to_dictionary(dictionary, 'customer', self.customer)
         self._add_to_dictionary(dictionary, 'customerReference', self.customer_reference)
         self._add_to_dictionary(dictionary, 'language', self.language)
@@ -97,6 +113,8 @@ class CreateMandateBase(DataObject):
 
     def from_dictionary(self, dictionary):
         super(CreateMandateBase, self).from_dictionary(dictionary)
+        if 'alias' in dictionary:
+            self.alias = dictionary['alias']
         if 'customer' in dictionary:
             if not isinstance(dictionary['customer'], dict):
                 raise TypeError('value \'{}\' is not a dictionary'.format(dictionary['customer']))

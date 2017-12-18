@@ -4,15 +4,30 @@
 # https://epayments-api.developer-ingenico.com/s2sapi/v1/
 #
 from ingenico.connect.sdk.domain.definitions.abstract_order_status import AbstractOrderStatus
+from ingenico.connect.sdk.domain.payment.definitions.hosted_checkout_specific_output import HostedCheckoutSpecificOutput
 from ingenico.connect.sdk.domain.payment.definitions.payment_output import PaymentOutput
 from ingenico.connect.sdk.domain.payment.definitions.payment_status_output import PaymentStatusOutput
 
 
 class Payment(AbstractOrderStatus):
 
+    __hosted_checkout_specific_output = None
     __payment_output = None
     __status = None
     __status_output = None
+
+    @property
+    def hosted_checkout_specific_output(self):
+        """
+        | Hosted Checkout specific information
+        
+        Type: :class:`ingenico.connect.sdk.domain.payment.definitions.hosted_checkout_specific_output.HostedCheckoutSpecificOutput`
+        """
+        return self.__hosted_checkout_specific_output
+
+    @hosted_checkout_specific_output.setter
+    def hosted_checkout_specific_output(self, value):
+        self.__hosted_checkout_specific_output = value
 
     @property
     def payment_output(self):
@@ -76,6 +91,7 @@ class Payment(AbstractOrderStatus):
 
     def to_dictionary(self):
         dictionary = super(Payment, self).to_dictionary()
+        self._add_to_dictionary(dictionary, 'hostedCheckoutSpecificOutput', self.hosted_checkout_specific_output)
         self._add_to_dictionary(dictionary, 'paymentOutput', self.payment_output)
         self._add_to_dictionary(dictionary, 'status', self.status)
         self._add_to_dictionary(dictionary, 'statusOutput', self.status_output)
@@ -83,6 +99,11 @@ class Payment(AbstractOrderStatus):
 
     def from_dictionary(self, dictionary):
         super(Payment, self).from_dictionary(dictionary)
+        if 'hostedCheckoutSpecificOutput' in dictionary:
+            if not isinstance(dictionary['hostedCheckoutSpecificOutput'], dict):
+                raise TypeError('value \'{}\' is not a dictionary'.format(dictionary['hostedCheckoutSpecificOutput']))
+            value = HostedCheckoutSpecificOutput()
+            self.hosted_checkout_specific_output = value.from_dictionary(dictionary['hostedCheckoutSpecificOutput'])
         if 'paymentOutput' in dictionary:
             if not isinstance(dictionary['paymentOutput'], dict):
                 raise TypeError('value \'{}\' is not a dictionary'.format(dictionary['paymentOutput']))

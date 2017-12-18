@@ -9,11 +9,26 @@ from ingenico.connect.sdk.domain.mandates.definitions.mandate_customer import Ma
 
 class MandateResponse(DataObject):
 
+    __alias = None
     __customer = None
     __customer_reference = None
     __recurrence_type = None
     __status = None
     __unique_mandate_reference = None
+
+    @property
+    def alias(self):
+        """
+        | An alias for the mandate. This can be used to visually represent the mandate.
+        | Do not include any unobfuscated sensitive data in the alias.
+        
+        Type: str
+        """
+        return self.__alias
+
+    @alias.setter
+    def alias(self, value):
+        self.__alias = value
 
     @property
     def customer(self):
@@ -90,6 +105,7 @@ class MandateResponse(DataObject):
 
     def to_dictionary(self):
         dictionary = super(MandateResponse, self).to_dictionary()
+        self._add_to_dictionary(dictionary, 'alias', self.alias)
         self._add_to_dictionary(dictionary, 'customer', self.customer)
         self._add_to_dictionary(dictionary, 'customerReference', self.customer_reference)
         self._add_to_dictionary(dictionary, 'recurrenceType', self.recurrence_type)
@@ -99,6 +115,8 @@ class MandateResponse(DataObject):
 
     def from_dictionary(self, dictionary):
         super(MandateResponse, self).from_dictionary(dictionary)
+        if 'alias' in dictionary:
+            self.alias = dictionary['alias']
         if 'customer' in dictionary:
             if not isinstance(dictionary['customer'], dict):
                 raise TypeError('value \'{}\' is not a dictionary'.format(dictionary['customer']))

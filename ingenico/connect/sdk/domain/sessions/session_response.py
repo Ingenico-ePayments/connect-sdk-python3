@@ -8,10 +8,38 @@ from ingenico.connect.sdk.data_object import DataObject
 
 class SessionResponse(DataObject):
 
+    __asset_url = None
+    __client_api_url = None
     __client_session_id = None
     __customer_id = None
     __invalid_tokens = None
     __region = None
+
+    @property
+    def asset_url(self):
+        """
+        | The base url for assets.
+        
+        Type: str
+        """
+        return self.__asset_url
+
+    @asset_url.setter
+    def asset_url(self, value):
+        self.__asset_url = value
+
+    @property
+    def client_api_url(self):
+        """
+        | The base url for client requests.
+        
+        Type: str
+        """
+        return self.__client_api_url
+
+    @client_api_url.setter
+    def client_api_url(self, value):
+        self.__client_api_url = value
 
     @property
     def client_session_id(self):
@@ -74,6 +102,8 @@ class SessionResponse(DataObject):
 
     def to_dictionary(self):
         dictionary = super(SessionResponse, self).to_dictionary()
+        self._add_to_dictionary(dictionary, 'assetUrl', self.asset_url)
+        self._add_to_dictionary(dictionary, 'clientApiUrl', self.client_api_url)
         self._add_to_dictionary(dictionary, 'clientSessionId', self.client_session_id)
         self._add_to_dictionary(dictionary, 'customerId', self.customer_id)
         self._add_to_dictionary(dictionary, 'invalidTokens', self.invalid_tokens)
@@ -82,6 +112,10 @@ class SessionResponse(DataObject):
 
     def from_dictionary(self, dictionary):
         super(SessionResponse, self).from_dictionary(dictionary)
+        if 'assetUrl' in dictionary:
+            self.asset_url = dictionary['assetUrl']
+        if 'clientApiUrl' in dictionary:
+            self.client_api_url = dictionary['clientApiUrl']
         if 'clientSessionId' in dictionary:
             self.client_session_id = dictionary['clientSessionId']
         if 'customerId' in dictionary:

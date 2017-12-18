@@ -18,6 +18,7 @@ class AirlineFlightLeg(DataObject):
     __flight_number = None
     __number = None
     __origin_airport = None
+    __service_class = None
     __stopover_code = None
 
     @property
@@ -154,6 +155,19 @@ class AirlineFlightLeg(DataObject):
         self.__origin_airport = value
 
     @property
+    def service_class(self):
+        """
+        | ServiceClass of this leg (this field is used for fraud screening on the Ogone Payment Platform)
+        
+        Type: str
+        """
+        return self.__service_class
+
+    @service_class.setter
+    def service_class(self, value):
+        self.__service_class = value
+
+    @property
     def stopover_code(self):
         """
         | Possible values are:
@@ -181,6 +195,7 @@ class AirlineFlightLeg(DataObject):
         self._add_to_dictionary(dictionary, 'flightNumber', self.flight_number)
         self._add_to_dictionary(dictionary, 'number', self.number)
         self._add_to_dictionary(dictionary, 'originAirport', self.origin_airport)
+        self._add_to_dictionary(dictionary, 'serviceClass', self.service_class)
         self._add_to_dictionary(dictionary, 'stopoverCode', self.stopover_code)
         return dictionary
 
@@ -206,6 +221,8 @@ class AirlineFlightLeg(DataObject):
             self.number = dictionary['number']
         if 'originAirport' in dictionary:
             self.origin_airport = dictionary['originAirport']
+        if 'serviceClass' in dictionary:
+            self.service_class = dictionary['serviceClass']
         if 'stopoverCode' in dictionary:
             self.stopover_code = dictionary['stopoverCode']
         return self

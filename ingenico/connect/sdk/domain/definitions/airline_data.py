@@ -5,6 +5,7 @@
 #
 from ingenico.connect.sdk.data_object import DataObject
 from ingenico.connect.sdk.domain.definitions.airline_flight_leg import AirlineFlightLeg
+from ingenico.connect.sdk.domain.definitions.airline_passenger import AirlinePassenger
 
 
 class AirlineData(DataObject):
@@ -22,6 +23,7 @@ class AirlineData(DataObject):
     __merchant_customer_id = None
     __name = None
     __passenger_name = None
+    __passengers = None
     __place_of_issue = None
     __pnr = None
     __point_of_sale = None
@@ -205,6 +207,19 @@ class AirlineData(DataObject):
         self.__passenger_name = value
 
     @property
+    def passengers(self):
+        """
+        | Object that holds the data on the individual passengers (this object is used for fraud screening on the Ogone Payment Platform)
+        
+        Type: list[:class:`ingenico.connect.sdk.domain.definitions.airline_passenger.AirlinePassenger`]
+        """
+        return self.__passengers
+
+    @passengers.setter
+    def passengers(self, value):
+        self.__passengers = value
+
+    @property
     def place_of_issue(self):
         """
         | Place of issue
@@ -309,6 +324,7 @@ class AirlineData(DataObject):
         self._add_to_dictionary(dictionary, 'merchantCustomerId', self.merchant_customer_id)
         self._add_to_dictionary(dictionary, 'name', self.name)
         self._add_to_dictionary(dictionary, 'passengerName', self.passenger_name)
+        self._add_to_dictionary(dictionary, 'passengers', self.passengers)
         self._add_to_dictionary(dictionary, 'placeOfIssue', self.place_of_issue)
         self._add_to_dictionary(dictionary, 'pnr', self.pnr)
         self._add_to_dictionary(dictionary, 'pointOfSale', self.point_of_sale)
@@ -350,6 +366,13 @@ class AirlineData(DataObject):
             self.name = dictionary['name']
         if 'passengerName' in dictionary:
             self.passenger_name = dictionary['passengerName']
+        if 'passengers' in dictionary:
+            if not isinstance(dictionary['passengers'], list):
+                raise TypeError('value \'{}\' is not a list'.format(dictionary['passengers']))
+            self.passengers = []
+            for passengers_element in dictionary['passengers']:
+                passengers_value = AirlinePassenger()
+                self.passengers.append(passengers_value.from_dictionary(passengers_element))
         if 'placeOfIssue' in dictionary:
             self.place_of_issue = dictionary['placeOfIssue']
         if 'pnr' in dictionary:
