@@ -14,7 +14,7 @@ from ingenico.connect.sdk.domain.mandates.definitions.mandate_personal_informati
 from ingenico.connect.sdk.domain.mandates.definitions.mandate_personal_name import MandatePersonalName
 
 
-class CreateMandateExample(object):
+class CreateMandateWithReferenceExample(object):
 
     def example(self):
         with self.__get_client() as client:
@@ -53,7 +53,7 @@ class CreateMandateExample(object):
             body.recurrence_type = "UNIQUE"
             body.signature_type = "UNSIGNED"
 
-            response = client.merchant("merchantId").mandates().create(body)
+            response = client.merchant("merchantId").mandates().create_with_mandate_reference("42268d8067df43e18a50a2ebf4bdb729", body)
 
     def __get_client(self):
         api_key_id = os.getenv("connect.api.apiKeyId", "someKey")

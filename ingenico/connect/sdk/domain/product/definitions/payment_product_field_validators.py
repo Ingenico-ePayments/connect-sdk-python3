@@ -22,6 +22,7 @@ class PaymentProductFieldValidators(DataObject):
     __luhn = None
     __range = None
     __regular_expression = None
+    __terms_and_conditions = None
 
     @property
     def boleto_bancario_requiredness(self):
@@ -127,6 +128,19 @@ class PaymentProductFieldValidators(DataObject):
     def regular_expression(self, value):
         self.__regular_expression = value
 
+    @property
+    def terms_and_conditions(self):
+        """
+        | Indicates that the content should be validated as such that the consumer has accepted the field as if they were terms and conditions of a service
+        
+        Type: :class:`ingenico.connect.sdk.domain.product.definitions.empty_validator.EmptyValidator`
+        """
+        return self.__terms_and_conditions
+
+    @terms_and_conditions.setter
+    def terms_and_conditions(self, value):
+        self.__terms_and_conditions = value
+
     def to_dictionary(self):
         dictionary = super(PaymentProductFieldValidators, self).to_dictionary()
         self._add_to_dictionary(dictionary, 'boletoBancarioRequiredness', self.boleto_bancario_requiredness)
@@ -137,6 +151,7 @@ class PaymentProductFieldValidators(DataObject):
         self._add_to_dictionary(dictionary, 'luhn', self.luhn)
         self._add_to_dictionary(dictionary, 'range', self.range)
         self._add_to_dictionary(dictionary, 'regularExpression', self.regular_expression)
+        self._add_to_dictionary(dictionary, 'termsAndConditions', self.terms_and_conditions)
         return dictionary
 
     def from_dictionary(self, dictionary):
@@ -181,4 +196,9 @@ class PaymentProductFieldValidators(DataObject):
                 raise TypeError('value \'{}\' is not a dictionary'.format(dictionary['regularExpression']))
             value = RegularExpressionValidator()
             self.regular_expression = value.from_dictionary(dictionary['regularExpression'])
+        if 'termsAndConditions' in dictionary:
+            if not isinstance(dictionary['termsAndConditions'], dict):
+                raise TypeError('value \'{}\' is not a dictionary'.format(dictionary['termsAndConditions']))
+            value = EmptyValidator()
+            self.terms_and_conditions = value.from_dictionary(dictionary['termsAndConditions'])
         return self

@@ -29,6 +29,16 @@ class MerchantClient(ApiResource):
         """
         super(MerchantClient, self).__init__(parent, path_context)
 
+    def hostedcheckouts(self):
+        """
+        Resource /{merchantId}/hostedcheckouts
+
+        Create new hosted checkout
+
+        :return: :class:`ingenico.connect.sdk.merchant.hostedcheckouts.hostedcheckouts_client.HostedcheckoutsClient`
+        """
+        return HostedcheckoutsClient(self, None)
+
     def payments(self):
         """
         Resource /{merchantId}/payments
@@ -49,6 +59,16 @@ class MerchantClient(ApiResource):
         """
         return CapturesClient(self, None)
 
+    def refunds(self):
+        """
+        Resource /{merchantId}/refunds
+
+        Create, cancel and approve refunds
+
+        :return: :class:`ingenico.connect.sdk.merchant.refunds.refunds_client.RefundsClient`
+        """
+        return RefundsClient(self, None)
+
     def payouts(self):
         """
         Resource /{merchantId}/payouts
@@ -58,16 +78,6 @@ class MerchantClient(ApiResource):
         :return: :class:`ingenico.connect.sdk.merchant.payouts.payouts_client.PayoutsClient`
         """
         return PayoutsClient(self, None)
-
-    def products(self):
-        """
-        Resource /{merchantId}/products
-
-        Get information about payment products
-
-        :return: :class:`ingenico.connect.sdk.merchant.products.products_client.ProductsClient`
-        """
-        return ProductsClient(self, None)
 
     def productgroups(self):
         """
@@ -79,25 +89,15 @@ class MerchantClient(ApiResource):
         """
         return ProductgroupsClient(self, None)
 
-    def mandates(self):
+    def products(self):
         """
-        Resource /{merchantId}/mandates
+        Resource /{merchantId}/products
 
-        Create, get and update mandates
+        Get information about payment products
 
-        :return: :class:`ingenico.connect.sdk.merchant.mandates.mandates_client.MandatesClient`
+        :return: :class:`ingenico.connect.sdk.merchant.products.products_client.ProductsClient`
         """
-        return MandatesClient(self, None)
-
-    def refunds(self):
-        """
-        Resource /{merchantId}/refunds
-
-        Create, cancel and approve refunds
-
-        :return: :class:`ingenico.connect.sdk.merchant.refunds.refunds_client.RefundsClient`
-        """
-        return RefundsClient(self, None)
+        return ProductsClient(self, None)
 
     def riskassessments(self):
         """
@@ -119,16 +119,6 @@ class MerchantClient(ApiResource):
         """
         return ServicesClient(self, None)
 
-    def sessions(self):
-        """
-        Resource /{merchantId}/sessions
-
-        Create new Session for Client2Server API calls
-
-        :return: :class:`ingenico.connect.sdk.merchant.sessions.sessions_client.SessionsClient`
-        """
-        return SessionsClient(self, None)
-
     def tokens(self):
         """
         Resource /{merchantId}/tokens
@@ -139,12 +129,22 @@ class MerchantClient(ApiResource):
         """
         return TokensClient(self, None)
 
-    def hostedcheckouts(self):
+    def mandates(self):
         """
-        Resource /{merchantId}/hostedcheckouts
+        Resource /{merchantId}/mandates
 
-        Create new hosted checkout
+        Create, get and update mandates
 
-        :return: :class:`ingenico.connect.sdk.merchant.hostedcheckouts.hostedcheckouts_client.HostedcheckoutsClient`
+        :return: :class:`ingenico.connect.sdk.merchant.mandates.mandates_client.MandatesClient`
         """
-        return HostedcheckoutsClient(self, None)
+        return MandatesClient(self, None)
+
+    def sessions(self):
+        """
+        Resource /{merchantId}/sessions
+
+        Create new Session for Client2Server API calls
+
+        :return: :class:`ingenico.connect.sdk.merchant.sessions.sessions_client.SessionsClient`
+        """
+        return SessionsClient(self, None)

@@ -15,7 +15,8 @@ class FraudFields(DataObject):
     __card_owner_address = None
     __customer_ip_address = None
     __default_form_fill = None
-    __finger_print_activated = None
+    __device_fingerprint_activated = None
+    __device_fingerprint_transaction_id = None
     __gift_card_type = None
     __gift_message = None
     __has_forgotten_pwd = None
@@ -98,17 +99,30 @@ class FraudFields(DataObject):
         self.__default_form_fill = value
 
     @property
-    def finger_print_activated(self):
+    def device_fingerprint_activated(self):
         """
-        | Indicates that the device fingerprint has been used while processing the order
+        | Indicates that the device fingerprint has been used while processing the order.
         
         Type: bool
         """
-        return self.__finger_print_activated
+        return self.__device_fingerprint_activated
 
-    @finger_print_activated.setter
-    def finger_print_activated(self, value):
-        self.__finger_print_activated = value
+    @device_fingerprint_activated.setter
+    def device_fingerprint_activated(self, value):
+        self.__device_fingerprint_activated = value
+
+    @property
+    def device_fingerprint_transaction_id(self):
+        """
+        | One must set the deviceFingerprintTransactionId received by the response of the endpoint /{merchant}/products/{paymentProductId}/deviceFingerprint
+        
+        Type: str
+        """
+        return self.__device_fingerprint_transaction_id
+
+    @device_fingerprint_transaction_id.setter
+    def device_fingerprint_transaction_id(self, value):
+        self.__device_fingerprint_transaction_id = value
 
     @property
     def gift_card_type(self):
@@ -299,7 +313,8 @@ class FraudFields(DataObject):
         self._add_to_dictionary(dictionary, 'cardOwnerAddress', self.card_owner_address)
         self._add_to_dictionary(dictionary, 'customerIpAddress', self.customer_ip_address)
         self._add_to_dictionary(dictionary, 'defaultFormFill', self.default_form_fill)
-        self._add_to_dictionary(dictionary, 'fingerPrintActivated', self.finger_print_activated)
+        self._add_to_dictionary(dictionary, 'deviceFingerprintActivated', self.device_fingerprint_activated)
+        self._add_to_dictionary(dictionary, 'deviceFingerprintTransactionId', self.device_fingerprint_transaction_id)
         self._add_to_dictionary(dictionary, 'giftCardType', self.gift_card_type)
         self._add_to_dictionary(dictionary, 'giftMessage', self.gift_message)
         self._add_to_dictionary(dictionary, 'hasForgottenPwd', self.has_forgotten_pwd)
@@ -328,8 +343,10 @@ class FraudFields(DataObject):
             self.customer_ip_address = dictionary['customerIpAddress']
         if 'defaultFormFill' in dictionary:
             self.default_form_fill = dictionary['defaultFormFill']
-        if 'fingerPrintActivated' in dictionary:
-            self.finger_print_activated = dictionary['fingerPrintActivated']
+        if 'deviceFingerprintActivated' in dictionary:
+            self.device_fingerprint_activated = dictionary['deviceFingerprintActivated']
+        if 'deviceFingerprintTransactionId' in dictionary:
+            self.device_fingerprint_transaction_id = dictionary['deviceFingerprintTransactionId']
         if 'giftCardType' in dictionary:
             self.gift_card_type = dictionary['giftCardType']
         if 'giftMessage' in dictionary:

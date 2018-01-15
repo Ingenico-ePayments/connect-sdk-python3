@@ -46,7 +46,7 @@ class RedirectPaymentMethodSpecificOutput(AbstractPaymentMethodSpecificOutput):
     @property
     def payment_product836_specific_output(self):
         """
-        | SofortBanking (payment product 836) specific details
+        | Sofort (payment product 836) specific details
         
         Type: :class:`ingenico.connect.sdk.domain.payment.definitions.payment_product836_specific_output.PaymentProduct836SpecificOutput`
         """

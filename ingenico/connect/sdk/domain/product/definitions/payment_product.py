@@ -18,6 +18,7 @@ class PaymentProduct(DataObject):
     __authentication_indicator = None
     __auto_tokenized = None
     __can_be_iframed = None
+    __device_fingerprint_enabled = None
     __display_hints = None
     __fields = None
     __fields_warning = None
@@ -118,6 +119,22 @@ class PaymentProduct(DataObject):
     @can_be_iframed.setter
     def can_be_iframed(self, value):
         self.__can_be_iframed = value
+
+    @property
+    def device_fingerprint_enabled(self):
+        """
+        | Indicates if device fingerprint is enabled for the product
+        
+        * true
+        * false
+        
+        Type: bool
+        """
+        return self.__device_fingerprint_enabled
+
+    @device_fingerprint_enabled.setter
+    def device_fingerprint_enabled(self, value):
+        self.__device_fingerprint_enabled = value
 
     @property
     def display_hints(self):
@@ -273,6 +290,7 @@ class PaymentProduct(DataObject):
         self._add_to_dictionary(dictionary, 'authenticationIndicator', self.authentication_indicator)
         self._add_to_dictionary(dictionary, 'autoTokenized', self.auto_tokenized)
         self._add_to_dictionary(dictionary, 'canBeIframed', self.can_be_iframed)
+        self._add_to_dictionary(dictionary, 'deviceFingerprintEnabled', self.device_fingerprint_enabled)
         self._add_to_dictionary(dictionary, 'displayHints', self.display_hints)
         self._add_to_dictionary(dictionary, 'fields', self.fields)
         self._add_to_dictionary(dictionary, 'fieldsWarning', self.fields_warning)
@@ -307,6 +325,8 @@ class PaymentProduct(DataObject):
             self.auto_tokenized = dictionary['autoTokenized']
         if 'canBeIframed' in dictionary:
             self.can_be_iframed = dictionary['canBeIframed']
+        if 'deviceFingerprintEnabled' in dictionary:
+            self.device_fingerprint_enabled = dictionary['deviceFingerprintEnabled']
         if 'displayHints' in dictionary:
             if not isinstance(dictionary['displayHints'], dict):
                 raise TypeError('value \'{}\' is not a dictionary'.format(dictionary['displayHints']))
