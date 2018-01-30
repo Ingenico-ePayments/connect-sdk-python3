@@ -35,7 +35,7 @@ class Seller(DataObject):
     @property
     def channel_code(self):
         """
-        | Channel code, refer to 
+        | Channel code, refer to
         
         Type: str
         """

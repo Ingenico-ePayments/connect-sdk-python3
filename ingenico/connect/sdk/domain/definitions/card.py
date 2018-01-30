@@ -13,7 +13,7 @@ class Card(CardWithoutCvv):
     @property
     def cvv(self):
         """
-        | Card Verification Value, a 3 or 4 digit code used as an additional security feature for card not present transactions. 
+        | Card Verification Value, a 3 or 4 digit code used as an additional security feature for card not present transactions.
         
         Type: str
         """

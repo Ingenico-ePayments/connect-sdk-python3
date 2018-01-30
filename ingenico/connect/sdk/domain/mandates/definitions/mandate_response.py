@@ -21,6 +21,7 @@ class MandateResponse(DataObject):
         """
         | An alias for the mandate. This can be used to visually represent the mandate.
         | Do not include any unobfuscated sensitive data in the alias.
+        | Default value if not provided is the obfuscated IBAN of the customer.
         
         Type: str
         """

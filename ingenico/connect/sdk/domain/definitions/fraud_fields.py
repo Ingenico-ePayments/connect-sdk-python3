@@ -58,7 +58,7 @@ class FraudFields(DataObject):
     @property
     def card_owner_address(self):
         """
-        | The address that belongs to the owner of the card 
+        | The address that belongs to the owner of the card
         
         Type: :class:`ingenico.connect.sdk.domain.definitions.address.Address`
         """

@@ -98,7 +98,7 @@ class CreatePayoutRequest(DataObject):
     @property
     def customer(self):
         """
-        | Object containing the details of the consumer. 
+        | Object containing the details of the consumer.
         
         Type: :class:`ingenico.connect.sdk.domain.payout.definitions.payout_customer.PayoutCustomer`
         

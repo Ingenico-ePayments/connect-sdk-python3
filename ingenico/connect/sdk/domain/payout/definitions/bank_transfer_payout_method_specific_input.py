@@ -21,7 +21,7 @@ class BankTransferPayoutMethodSpecificInput(AbstractPayoutMethodSpecificInput):
     @property
     def bank_account_bban(self):
         """
-        | Object containing account holder name and bank account information. 
+        | Object containing account holder name and bank account information.
         
         Type: :class:`ingenico.connect.sdk.domain.definitions.bank_account_bban.BankAccountBban`
         """
@@ -34,7 +34,7 @@ class BankTransferPayoutMethodSpecificInput(AbstractPayoutMethodSpecificInput):
     @property
     def bank_account_iban(self):
         """
-        | Object containing account holder and IBAN information. 
+        | Object containing account holder and IBAN information.
         
         Type: :class:`ingenico.connect.sdk.domain.definitions.bank_account_iban.BankAccountIban`
         """

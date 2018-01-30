@@ -11,6 +11,7 @@ class OrderLineDetails(DataObject):
     __discount_amount = None
     __google_product_category_id = None
     __line_amount_total = None
+    __product_category = None
     __product_code = None
     __product_name = None
     __product_price = None
@@ -57,6 +58,19 @@ class OrderLineDetails(DataObject):
     @line_amount_total.setter
     def line_amount_total(self, value):
         self.__line_amount_total = value
+
+    @property
+    def product_category(self):
+        """
+        | This field indicates the category of the product (i.e. home appliance), used for fraud checks.
+        
+        Type: str
+        """
+        return self.__product_category
+
+    @product_category.setter
+    def product_category(self, value):
+        self.__product_category = value
 
     @property
     def product_code(self):
@@ -157,6 +171,7 @@ class OrderLineDetails(DataObject):
         self._add_to_dictionary(dictionary, 'discountAmount', self.discount_amount)
         self._add_to_dictionary(dictionary, 'googleProductCategoryId', self.google_product_category_id)
         self._add_to_dictionary(dictionary, 'lineAmountTotal', self.line_amount_total)
+        self._add_to_dictionary(dictionary, 'productCategory', self.product_category)
         self._add_to_dictionary(dictionary, 'productCode', self.product_code)
         self._add_to_dictionary(dictionary, 'productName', self.product_name)
         self._add_to_dictionary(dictionary, 'productPrice', self.product_price)
@@ -174,6 +189,8 @@ class OrderLineDetails(DataObject):
             self.google_product_category_id = dictionary['googleProductCategoryId']
         if 'lineAmountTotal' in dictionary:
             self.line_amount_total = dictionary['lineAmountTotal']
+        if 'productCategory' in dictionary:
+            self.product_category = dictionary['productCategory']
         if 'productCode' in dictionary:
             self.product_code = dictionary['productCode']
         if 'productName' in dictionary:

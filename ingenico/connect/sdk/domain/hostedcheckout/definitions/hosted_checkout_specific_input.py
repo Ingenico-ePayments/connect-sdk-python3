@@ -16,6 +16,7 @@ class HostedCheckoutSpecificInput(DataObject):
     __return_url = None
     __show_result_page = None
     __tokens = None
+    __validate_shopping_cart = None
     __variant = None
 
     @property
@@ -118,6 +119,19 @@ class HostedCheckoutSpecificInput(DataObject):
         self.__tokens = value
 
     @property
+    def validate_shopping_cart(self):
+        """
+        | By default validation is done for all the information required to display the shopping cart. Set this value to false if you would like to turn that feature off, in which case the rendering of the shopping cart will be skipped if any required information is missing. By default the value is true.
+        
+        Type: bool
+        """
+        return self.__validate_shopping_cart
+
+    @validate_shopping_cart.setter
+    def validate_shopping_cart(self, value):
+        self.__validate_shopping_cart = value
+
+    @property
     def variant(self):
         """
         | Using the Configuration Center it is possible to create multiple variations of your MyCheckout payment pages. By specifying a specific variant you can force the use of another variant then the default. This allows you to test out the effect of certain changes to your MyCheckout payment pages in a controlled manner. Please note that you need to specify the ID of the variant.
@@ -139,6 +153,7 @@ class HostedCheckoutSpecificInput(DataObject):
         self._add_to_dictionary(dictionary, 'returnUrl', self.return_url)
         self._add_to_dictionary(dictionary, 'showResultPage', self.show_result_page)
         self._add_to_dictionary(dictionary, 'tokens', self.tokens)
+        self._add_to_dictionary(dictionary, 'validateShoppingCart', self.validate_shopping_cart)
         self._add_to_dictionary(dictionary, 'variant', self.variant)
         return dictionary
 
@@ -161,6 +176,8 @@ class HostedCheckoutSpecificInput(DataObject):
             self.show_result_page = dictionary['showResultPage']
         if 'tokens' in dictionary:
             self.tokens = dictionary['tokens']
+        if 'validateShoppingCart' in dictionary:
+            self.validate_shopping_cart = dictionary['validateShoppingCart']
         if 'variant' in dictionary:
             self.variant = dictionary['variant']
         return self

@@ -18,6 +18,7 @@ class PaymentProductFieldValidators(DataObject):
     __email_address = None
     __expiration_date = None
     __fixed_list = None
+    __iban = None
     __length = None
     __luhn = None
     __range = None
@@ -75,6 +76,19 @@ class PaymentProductFieldValidators(DataObject):
     @fixed_list.setter
     def fixed_list(self, value):
         self.__fixed_list = value
+
+    @property
+    def iban(self):
+        """
+        | Indicates that the content of this (iban) field needs to validated against format checks and modulo check (as described in ISO 7064)
+        
+        Type: :class:`ingenico.connect.sdk.domain.product.definitions.empty_validator.EmptyValidator`
+        """
+        return self.__iban
+
+    @iban.setter
+    def iban(self, value):
+        self.__iban = value
 
     @property
     def length(self):
@@ -147,6 +161,7 @@ class PaymentProductFieldValidators(DataObject):
         self._add_to_dictionary(dictionary, 'emailAddress', self.email_address)
         self._add_to_dictionary(dictionary, 'expirationDate', self.expiration_date)
         self._add_to_dictionary(dictionary, 'fixedList', self.fixed_list)
+        self._add_to_dictionary(dictionary, 'iban', self.iban)
         self._add_to_dictionary(dictionary, 'length', self.length)
         self._add_to_dictionary(dictionary, 'luhn', self.luhn)
         self._add_to_dictionary(dictionary, 'range', self.range)
@@ -176,6 +191,11 @@ class PaymentProductFieldValidators(DataObject):
                 raise TypeError('value \'{}\' is not a dictionary'.format(dictionary['fixedList']))
             value = FixedListValidator()
             self.fixed_list = value.from_dictionary(dictionary['fixedList'])
+        if 'iban' in dictionary:
+            if not isinstance(dictionary['iban'], dict):
+                raise TypeError('value \'{}\' is not a dictionary'.format(dictionary['iban']))
+            value = EmptyValidator()
+            self.iban = value.from_dictionary(dictionary['iban'])
         if 'length' in dictionary:
             if not isinstance(dictionary['length'], dict):
                 raise TypeError('value \'{}\' is not a dictionary'.format(dictionary['length']))

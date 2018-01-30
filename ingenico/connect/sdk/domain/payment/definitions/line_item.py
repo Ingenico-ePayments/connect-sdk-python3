@@ -47,7 +47,7 @@ class LineItem(DataObject):
     @property
     def level3_interchange_information(self):
         """
-        | Object containing additional informationthat when supplied can have a beneficial effect on the discountrates
+        | Object containing additional information that when supplied can have a beneficial effect on the discountrates
         
         Type: :class:`ingenico.connect.sdk.domain.payment.definitions.line_item_level3_interchange_information.LineItemLevel3InterchangeInformation`
         

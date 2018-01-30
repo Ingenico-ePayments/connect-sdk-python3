@@ -14,7 +14,7 @@ class CompletePaymentCardPaymentMethodSpecificInput(DataObject):
     @property
     def card(self):
         """
-        | Object containing card details 
+        | Object containing card details
         
         Type: :class:`ingenico.connect.sdk.domain.definitions.card_without_cvv.CardWithoutCvv`
         """
