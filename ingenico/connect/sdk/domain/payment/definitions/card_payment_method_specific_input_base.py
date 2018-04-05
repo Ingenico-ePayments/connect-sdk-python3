@@ -132,7 +132,7 @@ class CardPaymentMethodSpecificInputBase(AbstractPaymentMethodSpecificInput):
         """
         | Indicates if this transaction should be tokenized
         
-        * true - Tokenize the transaction
+        * true - Tokenize the transaction. Note that a payment on the GlobalCollect platform that results in a status REDIRECTED cannot be tokenized in this way. In this case, use the 'Create a token from payment' <https://epayments-api.developer-ingenico.com/s2sapi/v1/en_US/python/payments/tokenize.html> functionality after your customer succesfully completes the redirection.
         * false - Do not tokenize the transaction, unless it would be tokenized by other means such as auto-tokenization of recurring payments.
         
         Type: bool

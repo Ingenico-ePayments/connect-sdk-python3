@@ -5,6 +5,7 @@
 #
 from ingenico.connect.sdk.domain.definitions.abstract_payment_method_specific_input import AbstractPaymentMethodSpecificInput
 from ingenico.connect.sdk.domain.payment.definitions.non_sepa_direct_debit_payment_product705_specific_input import NonSepaDirectDebitPaymentProduct705SpecificInput
+from ingenico.connect.sdk.domain.payment.definitions.non_sepa_direct_debit_payment_product730_specific_input import NonSepaDirectDebitPaymentProduct730SpecificInput
 
 
 class NonSepaDirectDebitPaymentMethodSpecificInput(AbstractPaymentMethodSpecificInput):
@@ -13,6 +14,7 @@ class NonSepaDirectDebitPaymentMethodSpecificInput(AbstractPaymentMethodSpecific
     __direct_debit_text = None
     __is_recurring = None
     __payment_product705_specific_input = None
+    __payment_product730_specific_input = None
     __recurring_payment_sequence_indicator = None
     __token = None
     __tokenize = None
@@ -74,6 +76,19 @@ class NonSepaDirectDebitPaymentMethodSpecificInput(AbstractPaymentMethodSpecific
         self.__payment_product705_specific_input = value
 
     @property
+    def payment_product730_specific_input(self):
+        """
+        | Object containing ACH specific details
+        
+        Type: :class:`ingenico.connect.sdk.domain.payment.definitions.non_sepa_direct_debit_payment_product730_specific_input.NonSepaDirectDebitPaymentProduct730SpecificInput`
+        """
+        return self.__payment_product730_specific_input
+
+    @payment_product730_specific_input.setter
+    def payment_product730_specific_input(self, value):
+        self.__payment_product730_specific_input = value
+
+    @property
     def recurring_payment_sequence_indicator(self):
         """
         * first = This transaction is the first of a series of recurring transactions
@@ -123,6 +138,7 @@ class NonSepaDirectDebitPaymentMethodSpecificInput(AbstractPaymentMethodSpecific
         self._add_to_dictionary(dictionary, 'directDebitText', self.direct_debit_text)
         self._add_to_dictionary(dictionary, 'isRecurring', self.is_recurring)
         self._add_to_dictionary(dictionary, 'paymentProduct705SpecificInput', self.payment_product705_specific_input)
+        self._add_to_dictionary(dictionary, 'paymentProduct730SpecificInput', self.payment_product730_specific_input)
         self._add_to_dictionary(dictionary, 'recurringPaymentSequenceIndicator', self.recurring_payment_sequence_indicator)
         self._add_to_dictionary(dictionary, 'token', self.token)
         self._add_to_dictionary(dictionary, 'tokenize', self.tokenize)
@@ -141,6 +157,11 @@ class NonSepaDirectDebitPaymentMethodSpecificInput(AbstractPaymentMethodSpecific
                 raise TypeError('value \'{}\' is not a dictionary'.format(dictionary['paymentProduct705SpecificInput']))
             value = NonSepaDirectDebitPaymentProduct705SpecificInput()
             self.payment_product705_specific_input = value.from_dictionary(dictionary['paymentProduct705SpecificInput'])
+        if 'paymentProduct730SpecificInput' in dictionary:
+            if not isinstance(dictionary['paymentProduct730SpecificInput'], dict):
+                raise TypeError('value \'{}\' is not a dictionary'.format(dictionary['paymentProduct730SpecificInput']))
+            value = NonSepaDirectDebitPaymentProduct730SpecificInput()
+            self.payment_product730_specific_input = value.from_dictionary(dictionary['paymentProduct730SpecificInput'])
         if 'recurringPaymentSequenceIndicator' in dictionary:
             self.recurring_payment_sequence_indicator = dictionary['recurringPaymentSequenceIndicator']
         if 'token' in dictionary:

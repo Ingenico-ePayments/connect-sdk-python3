@@ -68,6 +68,8 @@ class OrderStatusOutput(DataObject):
         * PENDING_MERCHANT: The transaction is awaiting approval to proceed with the payment, payout or refund. This category groups the following statuses:
         
         * PENDING_APPROVAL
+        * PENDING_COMPLETION
+        * PENDING_CAPTURE
         * PENDING_FRAUD_APPROVAL
         
         

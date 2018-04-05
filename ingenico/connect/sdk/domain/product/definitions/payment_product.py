@@ -219,8 +219,9 @@ class PaymentProduct(DataObject):
         """
         | This provides insight into the level of support for payments using a device with a smaller screen size. You can for instance use this to rank payment products differently on devices with a smaller screen. Possible values are:
         
+        * NO_SUPPORT - The payment product does not work at all on a mobile device
         * BASIC_SUPPORT - The payment product has not optimized its user experience for devices with smaller screens
-        * OPTIMIZED_SUPPORT - The payment product offers a user experience that has been optimized for devices with smaller screens
+        * OPTIMISED_SUPPORT - The payment product offers a user experience that has been optimized for devices with smaller screens
         
         Type: str
         """

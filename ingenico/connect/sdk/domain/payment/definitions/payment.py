@@ -53,6 +53,8 @@ class Payment(AbstractOrderStatus):
         * PENDING_PAYMENT - Instructions have been provided and we are now waiting for the money to come in
         * PENDING_FRAUD_APPROVAL - The transaction has been marked for manual review after an automatic fraud screening
         * PENDING_APPROVAL - The transaction is awaiting approval from you to proceed with the capturing of the funds
+        * PENDING_COMPLETION - The transaction needs to be completed.
+        * PENDING_CAPTURE - The transaction is waiting for you to request one or more captures of the funds.
         * REJECTED - The transaction has been rejected
         * AUTHORIZATION_REQUESTED - we have requested an authorization against an asynchronous system and is awaiting its response
         * CAPTURE_REQUESTED - The transaction is in the queue to be captured
