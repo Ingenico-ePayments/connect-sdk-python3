@@ -19,7 +19,7 @@ class Payment(AbstractOrderStatus):
     @property
     def hosted_checkout_specific_output(self):
         """
-        | Hosted Checkout specific information
+        | Hosted Checkout specific information. Populated if the payment was created on the GlobalCollect platform through a Hosted Checkout.
         
         Type: :class:`ingenico.connect.sdk.domain.payment.definitions.hosted_checkout_specific_output.HostedCheckoutSpecificOutput`
         """

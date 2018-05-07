@@ -15,6 +15,7 @@ class CreateMandateBase(DataObject):
     __language = None
     __recurrence_type = None
     __signature_type = None
+    __unique_mandate_reference = None
 
     @property
     def alias(self):
@@ -102,6 +103,19 @@ class CreateMandateBase(DataObject):
     def signature_type(self, value):
         self.__signature_type = value
 
+    @property
+    def unique_mandate_reference(self):
+        """
+        | The unique identifier of the mandate
+        
+        Type: str
+        """
+        return self.__unique_mandate_reference
+
+    @unique_mandate_reference.setter
+    def unique_mandate_reference(self, value):
+        self.__unique_mandate_reference = value
+
     def to_dictionary(self):
         dictionary = super(CreateMandateBase, self).to_dictionary()
         self._add_to_dictionary(dictionary, 'alias', self.alias)
@@ -110,6 +124,7 @@ class CreateMandateBase(DataObject):
         self._add_to_dictionary(dictionary, 'language', self.language)
         self._add_to_dictionary(dictionary, 'recurrenceType', self.recurrence_type)
         self._add_to_dictionary(dictionary, 'signatureType', self.signature_type)
+        self._add_to_dictionary(dictionary, 'uniqueMandateReference', self.unique_mandate_reference)
         return dictionary
 
     def from_dictionary(self, dictionary):
@@ -129,4 +144,6 @@ class CreateMandateBase(DataObject):
             self.recurrence_type = dictionary['recurrenceType']
         if 'signatureType' in dictionary:
             self.signature_type = dictionary['signatureType']
+        if 'uniqueMandateReference' in dictionary:
+            self.unique_mandate_reference = dictionary['uniqueMandateReference']
         return self

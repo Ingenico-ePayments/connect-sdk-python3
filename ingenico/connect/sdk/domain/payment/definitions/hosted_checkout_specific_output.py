@@ -27,7 +27,7 @@ class HostedCheckoutSpecificOutput(DataObject):
     @property
     def variant(self):
         """
-        | The ID of the variant used to create the Hosted Checkout Session in which the payment was made.
+        | Using the Configuration Center it is possible to create multiple variations of your MyCheckout payment pages. By specifying a specific variant you can force the use of another variant then the default. This allows you to test out the effect of certain changes to your hosted mandate pages in a controlled manner. Please note that you need to specify the ID of the variant.
         
         Type: str
         """

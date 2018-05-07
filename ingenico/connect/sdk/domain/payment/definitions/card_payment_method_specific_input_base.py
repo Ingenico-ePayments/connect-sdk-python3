@@ -17,6 +17,8 @@ class CardPaymentMethodSpecificInputBase(AbstractPaymentMethodSpecificInput):
     __token = None
     __tokenize = None
     __transaction_channel = None
+    __unscheduled_card_on_file_indicator = None
+    __unscheduled_card_on_file_requestor = None
 
     @property
     def authorization_mode(self):
@@ -159,6 +161,42 @@ class CardPaymentMethodSpecificInputBase(AbstractPaymentMethodSpecificInput):
     def transaction_channel(self, value):
         self.__transaction_channel = value
 
+    @property
+    def unscheduled_card_on_file_indicator(self):
+        """
+        * first = This transaction is the first of a series of unscheduled recurring transactions
+        * subsequent = This transaction is a subsequent transaction in a series of unscheduled recurring transactions
+        
+        
+        | Note: this field is not allowed if isRecurring is true.
+        
+        Type: str
+        """
+        return self.__unscheduled_card_on_file_indicator
+
+    @unscheduled_card_on_file_indicator.setter
+    def unscheduled_card_on_file_indicator(self, value):
+        self.__unscheduled_card_on_file_indicator = value
+
+    @property
+    def unscheduled_card_on_file_requestor(self):
+        """
+        | Indicates which party initiated the unscheduled recurring transaction. Allowed values:
+        
+        * merchantInitiated - Merchant Initiated Transaction.
+        * cardholderInitiated - Cardholder Initiated Transaction.
+        
+        
+        | Note: this field is not allowed if isRecurring is true.
+        
+        Type: str
+        """
+        return self.__unscheduled_card_on_file_requestor
+
+    @unscheduled_card_on_file_requestor.setter
+    def unscheduled_card_on_file_requestor(self, value):
+        self.__unscheduled_card_on_file_requestor = value
+
     def to_dictionary(self):
         dictionary = super(CardPaymentMethodSpecificInputBase, self).to_dictionary()
         self._add_to_dictionary(dictionary, 'authorizationMode', self.authorization_mode)
@@ -170,6 +208,8 @@ class CardPaymentMethodSpecificInputBase(AbstractPaymentMethodSpecificInput):
         self._add_to_dictionary(dictionary, 'token', self.token)
         self._add_to_dictionary(dictionary, 'tokenize', self.tokenize)
         self._add_to_dictionary(dictionary, 'transactionChannel', self.transaction_channel)
+        self._add_to_dictionary(dictionary, 'unscheduledCardOnFileIndicator', self.unscheduled_card_on_file_indicator)
+        self._add_to_dictionary(dictionary, 'unscheduledCardOnFileRequestor', self.unscheduled_card_on_file_requestor)
         return dictionary
 
     def from_dictionary(self, dictionary):
@@ -192,4 +232,8 @@ class CardPaymentMethodSpecificInputBase(AbstractPaymentMethodSpecificInput):
             self.tokenize = dictionary['tokenize']
         if 'transactionChannel' in dictionary:
             self.transaction_channel = dictionary['transactionChannel']
+        if 'unscheduledCardOnFileIndicator' in dictionary:
+            self.unscheduled_card_on_file_indicator = dictionary['unscheduledCardOnFileIndicator']
+        if 'unscheduledCardOnFileRequestor' in dictionary:
+            self.unscheduled_card_on_file_requestor = dictionary['unscheduledCardOnFileRequestor']
         return self

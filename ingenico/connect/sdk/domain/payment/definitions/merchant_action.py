@@ -23,7 +23,7 @@ class MerchantAction(DataObject):
         | Action merchants needs to take in the online payment process. Possible values are:
         
         * REDIRECT - The consumer needs to be redirected using the details found in redirectData
-        * SHOW_FORM - The consumer needs to be shown a form with the fields found in formFields. You can submit the data entered by the user in a Complete payment <https://epayments-api.developer-ingenico.com/s2sapi/v1/en_US/python/payments/complete.html> request
+        * SHOW_FORM - The consumer needs to be shown a form with the fields found in formFields. You can submit the data entered by the user in a Complete payment <https://epayments-api.developer-ingenico.com/s2sapi/v1/en_US/python/payments/complete.html> request. Additionally, for payment product 3012 (Bancontact), to support payments via the Bancontact app, showData contains a QR code and URL intent.
         * SHOW_INSTRUCTIONS - The consumer needs to be shown payment instruction using the details found in showData. Alternatively the instructions can be rendered by us using the instructionsRenderingData
         * SHOW_TRANSACTION_RESULTS - The consumer needs to be shown the transaction results using the details found in showData. Alternatively the instructions can be rendered by us using the instructionsRenderingData
         
@@ -89,8 +89,12 @@ class MerchantAction(DataObject):
     @property
     def show_data(self):
         """
-        | Array of key value pairs of data that needs to be shown to the consumer. This is returned for both the SHOW_INSTRUCTION as well as the SHOW_TRANSACTION_RESULTS actionType.
+        | This is returned for the SHOW_INSTRUCTION, the SHOW_TRANSACTION_RESULTS and the SHOW_FORM actionType.
+        | When returned for SHOW_TRANSACTION_RESULTS or SHOW_FORM, this contains an array of key value pairs of data that needs to be shown to the consumer.
         | Note: The returned value for the key BARCODE is a base64 encoded gif image. By prepending 'data:image/gif;base64,' this value can be used as the source of an HTML inline image.
+        
+        | For SHOW_FORM, for payment product 3012 (Bancontact), this contains a QR code and a URL intent that can be used to complete the payment in the Bancontact app.
+        | In this case, the key QRCode is a base64 encoded png image. By prepending 'data:image/png;base64,' this value can be used as the source of an HTML inline image on a desktop or tablet (intended to be scanned by an Android device with the Bancontact app). The key UrlIntent contains a url intent that can be used as the link of an 'open the app' button on an android device.
         
         Type: list[:class:`ingenico.connect.sdk.domain.definitions.key_value_pair.KeyValuePair`]
         """
