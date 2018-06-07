@@ -14,7 +14,7 @@ class DeviceFingerprintResponse(DataObject):
     @property
     def device_fingerprint_transaction_id(self):
         """
-        | Contains the unique id which is used by the device fingerprint collector script.This will must be set in the CreatePayment's property fraudFields.deviceFingerprintTransactionId.
+        | Contains the unique id which is used by the device fingerprint collector script. This must be used to set the property fraudFields.deviceFingerprintTransactionId in either in the CreatePayment.fraudFields.deviceFingerprintTransactionId, the CreateRiskAssessmentCards.fraudFields.deviceFingerprintTransactionId or the CreateRiskAssessmentBankaccounts.fraudFields.deviceFingerprintTransactionId.
         
         Type: str
         """
@@ -27,7 +27,7 @@ class DeviceFingerprintResponse(DataObject):
     @property
     def html(self):
         """
-        | Contains the ready-to-use device fingerprint collector script. You have to inject it into your code to get it run.
+        | Contains the ready-to-use device fingerprint collector script. You have to inject it into your page and call it when the consumer presses the final payment submit button. You should only call it once per payment request.
         
         Type: str
         """

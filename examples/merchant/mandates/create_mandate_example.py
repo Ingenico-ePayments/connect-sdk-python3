@@ -23,7 +23,6 @@ class CreateMandateExample(object):
 
             contact_details = MandateContactDetails()
             contact_details.email_address = "wile.e.coyote@acmelabs.com"
-            contact_details.phone_number = "+1234567890"
 
             mandate_address = MandateAddress()
             mandate_address.city = "Monumentenvallei"

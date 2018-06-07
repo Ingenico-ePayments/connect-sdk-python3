@@ -18,6 +18,7 @@ class CardPaymentMethodSpecificOutput(AbstractPaymentMethodSpecificOutput):
     __card = None
     __fraud_results = None
     __three_d_secure_results = None
+    __token = None
 
     @property
     def authorisation_code(self):
@@ -71,12 +72,26 @@ class CardPaymentMethodSpecificOutput(AbstractPaymentMethodSpecificOutput):
     def three_d_secure_results(self, value):
         self.__three_d_secure_results = value
 
+    @property
+    def token(self):
+        """
+        | ID of the token. This property is populated for the Ogone payment platform when the payment was done with a token or when the payment was tokenized.
+        
+        Type: str
+        """
+        return self.__token
+
+    @token.setter
+    def token(self, value):
+        self.__token = value
+
     def to_dictionary(self):
         dictionary = super(CardPaymentMethodSpecificOutput, self).to_dictionary()
         self._add_to_dictionary(dictionary, 'authorisationCode', self.authorisation_code)
         self._add_to_dictionary(dictionary, 'card', self.card)
         self._add_to_dictionary(dictionary, 'fraudResults', self.fraud_results)
         self._add_to_dictionary(dictionary, 'threeDSecureResults', self.three_d_secure_results)
+        self._add_to_dictionary(dictionary, 'token', self.token)
         return dictionary
 
     def from_dictionary(self, dictionary):
@@ -98,4 +113,6 @@ class CardPaymentMethodSpecificOutput(AbstractPaymentMethodSpecificOutput):
                 raise TypeError('value \'{}\' is not a dictionary'.format(dictionary['threeDSecureResults']))
             value = ThreeDSecureResults()
             self.three_d_secure_results = value.from_dictionary(dictionary['threeDSecureResults'])
+        if 'token' in dictionary:
+            self.token = dictionary['token']
         return self

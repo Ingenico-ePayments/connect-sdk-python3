@@ -86,6 +86,7 @@ class OrderStatusOutput(DataObject):
         * CAPTURED
         * PAID
         * ACCOUNT_CREDITED
+        * CHARGEBACK_NOTIFICATION
         
         
         * REVERSED: The transaction has been reversed. This category groups the following statuses:

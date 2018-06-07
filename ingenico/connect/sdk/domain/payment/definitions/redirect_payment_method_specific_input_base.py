@@ -22,7 +22,7 @@ class RedirectPaymentMethodSpecificInputBase(AbstractPaymentMethodSpecificInput)
         | This value can be set for the following payment products
         
         * 809 - iDeal
-        * 402 - eCard Poland
+        * 402 - e-Przelewy
         
         Type: int
         """

@@ -33,7 +33,9 @@ class AmountBreakdown(DataObject):
         * CONSUMPTION_TAX - The amount of consumption tax paid by the customer, with the last 2 digits implied as decimal places.
         * DISCOUNT - Discount on the entire transaction, with the last 2 digits implied as decimal places.
         * DUTY - Duty on the entire transaction, with the last 2 digits implied as decimal places.
+        * HANDLING - Handling cost on the entire transaction, with the last 2 digits implied as decimal places.
         * SHIPPING - Shipping cost on the entire transaction, with the last 2 digits implied as decimal places.
+        * TAX - Total tax paid on the entire transaction, with the last 2 digits implied as decimal places.
         * VAT - Total amount of VAT paid on the transaction, with the last 2 digits implied as decimal places.
         
         Type: str

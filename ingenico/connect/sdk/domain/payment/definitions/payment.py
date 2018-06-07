@@ -63,6 +63,7 @@ class Payment(AbstractOrderStatus):
         * CANCELLED - You have cancelled the transaction
         * REJECTED_CAPTURE - We or one of our downstream acquirers/providers have rejected the capture request
         * REVERSED - The transaction has been reversed
+        * CHARGEBACK_NOTIFICATION - We have received a notification of chargeback and this status informs you that your account will be debited for a particular transaction
         * CHARGEBACKED - The transaction has been chargebacked
         * REFUNDED - The transaction has been refunded
         

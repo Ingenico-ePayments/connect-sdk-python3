@@ -16,6 +16,7 @@ class RedirectPaymentMethodSpecificOutput(AbstractPaymentMethodSpecificOutput):
     __fraud_results = None
     __payment_product836_specific_output = None
     __payment_product840_specific_output = None
+    __token = None
 
     @property
     def bank_account_iban(self):
@@ -69,12 +70,26 @@ class RedirectPaymentMethodSpecificOutput(AbstractPaymentMethodSpecificOutput):
     def payment_product840_specific_output(self, value):
         self.__payment_product840_specific_output = value
 
+    @property
+    def token(self):
+        """
+        | ID of the token. This property is populated for the Ogone payment platform when the payment was done with a token or when the payment was tokenized.
+        
+        Type: str
+        """
+        return self.__token
+
+    @token.setter
+    def token(self, value):
+        self.__token = value
+
     def to_dictionary(self):
         dictionary = super(RedirectPaymentMethodSpecificOutput, self).to_dictionary()
         self._add_to_dictionary(dictionary, 'bankAccountIban', self.bank_account_iban)
         self._add_to_dictionary(dictionary, 'fraudResults', self.fraud_results)
         self._add_to_dictionary(dictionary, 'paymentProduct836SpecificOutput', self.payment_product836_specific_output)
         self._add_to_dictionary(dictionary, 'paymentProduct840SpecificOutput', self.payment_product840_specific_output)
+        self._add_to_dictionary(dictionary, 'token', self.token)
         return dictionary
 
     def from_dictionary(self, dictionary):
@@ -99,4 +114,6 @@ class RedirectPaymentMethodSpecificOutput(AbstractPaymentMethodSpecificOutput):
                 raise TypeError('value \'{}\' is not a dictionary'.format(dictionary['paymentProduct840SpecificOutput']))
             value = PaymentProduct840SpecificOutput()
             self.payment_product840_specific_output = value.from_dictionary(dictionary['paymentProduct840SpecificOutput'])
+        if 'token' in dictionary:
+            self.token = dictionary['token']
         return self

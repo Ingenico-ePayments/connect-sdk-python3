@@ -88,6 +88,7 @@ class CreatedPaymentOutput(DataObject):
         * PAID
         * ACCOUNT CREDITED
         * REVERSED
+        * CHARGEBACK_NOTIFICATION
         * CHARGEBACKED
         * REFUNDED
         

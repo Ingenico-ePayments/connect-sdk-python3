@@ -13,7 +13,7 @@ class DeviceFingerprintRequest(DataObject):
     @property
     def collector_callback(self):
         """
-        | If this JavaScript function is set, it will be called after the device fingerprint data collecting is finished.
+        | You can supply a JavaScript function call that will be called after the device fingerprint data collecting using the provided JavaScript snippet is finished. This will then be added to the snippet that is returned in the property html.
         
         Type: str
         """
