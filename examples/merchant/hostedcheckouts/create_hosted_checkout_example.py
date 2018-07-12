@@ -30,6 +30,7 @@ class CreateHostedCheckoutExample(object):
 
             customer = Customer()
             customer.billing_address = billing_address
+            customer.merchant_customer_id = "1234"
 
             order = Order()
             order.amount_of_money = amount_of_money

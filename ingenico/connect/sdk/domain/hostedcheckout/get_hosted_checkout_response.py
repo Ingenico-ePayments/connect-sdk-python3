@@ -32,6 +32,7 @@ class GetHostedCheckoutResponse(DataObject):
         
         * IN_PROGRESS - The checkout is still in progress and has not finished yet
         * PAYMENT_CREATED - A payment has been created
+        * CANCELLED_BY_CONSUMER - If a consumer cancels the payment on the payment product detail page of the MyCheckout hosted payment pages, the status will change to IN_PROGRESS. Since we understand you want to be aware of a consumer cancelling the payment on the page we host for you, you can choose to get the status CANCELLED_BY_CONSUMER back instead of the status IN_PROGRESS. In order to get the status CANCELLED_BY_CONSUMER back, you need to have the returnCancelState flag enabled in the Create hosted checkout <https://epayments-api.developer-ingenico.com/s2sapi/v1/en_US/python/hostedcheckouts/create.html> call
         
         
         | Please see Statuses <https://epayments-api.developer-ingenico.com/s2sapi/v1/en_US/python/statuses.html> for a full overview of possible values.

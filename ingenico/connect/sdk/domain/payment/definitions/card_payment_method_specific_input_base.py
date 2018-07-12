@@ -27,6 +27,7 @@ class CardPaymentMethodSpecificInputBase(AbstractPaymentMethodSpecificInput):
         
         * FINAL_AUTHORIZATION - The payment creation results in an authorization that is ready for capture. Final authorizations can't be reversed and need to be captured for the full amount within 7 days.
         * PRE_AUTHORIZATION - The payment creation results in a pre-authorization that is ready for capture. Pre-authortizations can be reversed and can be captured within 30 days. The capture amount can be lower than the authorized amount.
+        * SALE - The payment creation results in an authorization that is already captured at the moment of approval.
         
         | Only used with some acquirers, ingnored for acquirers that don't support this. In case the acquirer doesn't allow this to be specified the authorizationMode is 'unspecified', which behaves similar to a final authorization.
         
@@ -71,6 +72,8 @@ class CardPaymentMethodSpecificInputBase(AbstractPaymentMethodSpecificInput):
     @property
     def requires_approval(self):
         """
+        | <div class="deprecated-wrapper depends-wrapper">Deprecated for Ogone: This flag is deprecated for the Ogone payment platform. Use CardPaymentMethodSpecificInputBase.authorizationMode instead. Value 'true' of this field is mapped to authorizationMode FINAL_AUTHORIZATION and value 'false' is mapped to authorizationMode SALE.
+        
         * true = the payment requires approval before the funds will be captured
         * false = the payment does not require approval, and the funds will be captured automatically
         
@@ -87,8 +90,8 @@ class CardPaymentMethodSpecificInputBase(AbstractPaymentMethodSpecificInput):
     @property
     def skip_authentication(self):
         """
-        * true = 3D Secure Authentication will be skipped for this transaction. This setting should be used when isRecurring is set to true and recurringPaymentSequenceIndicator is set to recurring.
-        * false = 3D Secure Authentication will not be skipped for this transaction.
+        * true = 3D Secure authentication will be skipped for this transaction. This setting should be used when isRecurring is set to true and recurringPaymentSequenceIndicator is set to recurring.
+        * false = 3D Secure authentication will not be skipped for this transaction.
         
         | Note: This is only possible if your account in our system is setup for 3D Secure authentication and if your configuration in our system allows you to override it per transaction.
         

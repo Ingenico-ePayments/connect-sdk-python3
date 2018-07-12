@@ -18,7 +18,7 @@ class SessionResponse(DataObject):
     @property
     def asset_url(self):
         """
-        | The base url for assets.
+        | The datacenter-specific base url for assets. This value needs to be passed to the Client SDK to make sure that the client software connects to the right datacenter.
         
         Type: str
         """
@@ -31,7 +31,7 @@ class SessionResponse(DataObject):
     @property
     def client_api_url(self):
         """
-        | The base url for client requests.
+        | The datacenter-specific base url for client requests. This value needs to be passed to the Client SDK to make sure that the client software connects to the right datacenter.
         
         Type: str
         """
@@ -90,7 +90,14 @@ class SessionResponse(DataObject):
         * AMS - datacenter located in Amsterdam
         * PAR - datacenter located in Paris
         
-        | When a session is created it is created in a specific datacenter. Any subsequent calls using the Client API need to be datacenter specific. The region is identified by EU or AMS (datacenter located in Amsterdam), US (datacenter located in Miami) or PAR (datacenter located in Paris). This value needs to be passed to the a Client SDK to make sure that the client software connects to the right datacenter.
+        | When a session is created it is created in a specific datacenter. Any subsequent calls using the Client API need to be datacenter specific. The datacenters are identified by this region value. This value needs to be passed to the Client SDK to make sure that the client software connects to the right datacenter. This only applies if your clients use a version older than the ones listed below:
+        
+        * JavaScript Client SDK v3.6.0
+        * iOS ObjectiveC Client SDK v3.10.0
+        * iOS Swift Client SDK v2.2.0
+        * Android Client SDK v3.10.0
+        
+        | In case of the iOS and Android SDKs the version of the SDK used will be tightly coupled with the versions of your app that is still in active use. You are advised to pass this value to your clients in case you are unsure of the version used in your clients.
         
         Type: str
         """

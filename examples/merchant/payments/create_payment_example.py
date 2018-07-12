@@ -71,7 +71,7 @@ class CreatePaymentExample(object):
 
             personal_information = PersonalInformation()
             personal_information.date_of_birth = "19490917"
-            personal_information.gender = "M"
+            personal_information.gender = "male"
             personal_information.name = name
 
             shipping_name = PersonalName()
