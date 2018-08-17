@@ -18,6 +18,7 @@ class CreatedPaymentOutput(DataObject):
     __payment = None
     __payment_creation_references = None
     __payment_status_category = None
+    __tokenization_succeeded = None
     __tokens = None
 
     @property
@@ -111,6 +112,19 @@ class CreatedPaymentOutput(DataObject):
         self.__payment_status_category = value
 
     @property
+    def tokenization_succeeded(self):
+        """
+        | If the payment was attempted to be tokenized, indicates if tokenization was successful or not.
+        
+        Type: bool
+        """
+        return self.__tokenization_succeeded
+
+    @tokenization_succeeded.setter
+    def tokenization_succeeded(self, value):
+        self.__tokenization_succeeded = value
+
+    @property
     def tokens(self):
         """
         | This field contains the tokens that are associated with the hosted checkout session/consumer. You can use the tokens listed in this list for a future checkout of the same consumer.
@@ -129,6 +143,7 @@ class CreatedPaymentOutput(DataObject):
         self._add_to_dictionary(dictionary, 'payment', self.payment)
         self._add_to_dictionary(dictionary, 'paymentCreationReferences', self.payment_creation_references)
         self._add_to_dictionary(dictionary, 'paymentStatusCategory', self.payment_status_category)
+        self._add_to_dictionary(dictionary, 'tokenizationSucceeded', self.tokenization_succeeded)
         self._add_to_dictionary(dictionary, 'tokens', self.tokens)
         return dictionary
 
@@ -151,6 +166,8 @@ class CreatedPaymentOutput(DataObject):
             self.payment_creation_references = value.from_dictionary(dictionary['paymentCreationReferences'])
         if 'paymentStatusCategory' in dictionary:
             self.payment_status_category = dictionary['paymentStatusCategory']
+        if 'tokenizationSucceeded' in dictionary:
+            self.tokenization_succeeded = dictionary['tokenizationSucceeded']
         if 'tokens' in dictionary:
             self.tokens = dictionary['tokens']
         return self

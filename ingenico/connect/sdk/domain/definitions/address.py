@@ -34,6 +34,7 @@ class Address(DataObject):
     def city(self):
         """
         | City
+        | Note: For payments with product 1503 the maximum length is not 40 but 20.
         
         Type: str
         """
@@ -86,6 +87,7 @@ class Address(DataObject):
     def state_code(self):
         """
         | State code
+        | Note: For payments with product 1503 the maximum length is not 9 but 2.
         
         Type: str
         """
@@ -112,6 +114,7 @@ class Address(DataObject):
     def zip(self):
         """
         | Zip code
+        | Note: For payments with product 1503 the maximum length is not 10 but 8.
         
         Type: str
         """

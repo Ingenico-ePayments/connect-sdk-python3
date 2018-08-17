@@ -10,6 +10,7 @@ class PaymentCreationOutput(PaymentCreationReferences):
 
     __is_new_token = None
     __token = None
+    __tokenization_succeeded = None
 
     @property
     def is_new_token(self):
@@ -40,10 +41,24 @@ class PaymentCreationOutput(PaymentCreationReferences):
     def token(self, value):
         self.__token = value
 
+    @property
+    def tokenization_succeeded(self):
+        """
+        | Indicates if tokenization was successful or not. If this value is false, then the token and isNewToken properties will not be set.
+        
+        Type: bool
+        """
+        return self.__tokenization_succeeded
+
+    @tokenization_succeeded.setter
+    def tokenization_succeeded(self, value):
+        self.__tokenization_succeeded = value
+
     def to_dictionary(self):
         dictionary = super(PaymentCreationOutput, self).to_dictionary()
         self._add_to_dictionary(dictionary, 'isNewToken', self.is_new_token)
         self._add_to_dictionary(dictionary, 'token', self.token)
+        self._add_to_dictionary(dictionary, 'tokenizationSucceeded', self.tokenization_succeeded)
         return dictionary
 
     def from_dictionary(self, dictionary):
@@ -52,4 +67,6 @@ class PaymentCreationOutput(PaymentCreationReferences):
             self.is_new_token = dictionary['isNewToken']
         if 'token' in dictionary:
             self.token = dictionary['token']
+        if 'tokenizationSucceeded' in dictionary:
+            self.tokenization_succeeded = dictionary['tokenizationSucceeded']
         return self

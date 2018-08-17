@@ -72,7 +72,7 @@ class CardPaymentMethodSpecificInputBase(AbstractPaymentMethodSpecificInput):
     @property
     def requires_approval(self):
         """
-        | <div class="deprecated-wrapper depends-wrapper">Deprecated for Ogone: This flag is deprecated for the Ogone payment platform. Use CardPaymentMethodSpecificInputBase.authorizationMode instead. Value 'true' of this field is mapped to authorizationMode FINAL_AUTHORIZATION and value 'false' is mapped to authorizationMode SALE.
+        | Deprecated for Ogone: This flag is deprecated for the Ogone payment platform. Use CardPaymentMethodSpecificInputBase.authorizationMode instead. Value 'true' of this field is mapped to authorizationMode FINAL_AUTHORIZATION and value 'false' is mapped to authorizationMode SALE.
         
         * true = the payment requires approval before the funds will be captured
         * false = the payment does not require approval, and the funds will be captured automatically

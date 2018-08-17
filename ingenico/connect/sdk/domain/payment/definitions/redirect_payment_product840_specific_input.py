@@ -20,6 +20,8 @@ class RedirectPaymentProduct840SpecificInput(DataObject):
         | A free text string that you can send to PayPal. With a special agreement between PayPal and you, PayPal uses the data in that field, for custom services they offer to you.
         
         Type: str
+        
+        Deprecated; | use order.references.descriptor instead.
         """
         return self.__custom
 
