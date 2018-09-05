@@ -14,6 +14,7 @@ class RefundCustomer(DataObject):
     __address = None
     __company_information = None
     __contact_details = None
+    __fiscal_number = None
 
     @property
     def address(self):
@@ -54,11 +55,25 @@ class RefundCustomer(DataObject):
     def contact_details(self, value):
         self.__contact_details = value
 
+    @property
+    def fiscal_number(self):
+        """
+        | Fiscal registration number of the consumer (CPF) with a length of 11 or the tax registration number of the company for a business consumer (CNPJ) with a length of 14.
+        
+        Type: str
+        """
+        return self.__fiscal_number
+
+    @fiscal_number.setter
+    def fiscal_number(self, value):
+        self.__fiscal_number = value
+
     def to_dictionary(self):
         dictionary = super(RefundCustomer, self).to_dictionary()
         self._add_to_dictionary(dictionary, 'address', self.address)
         self._add_to_dictionary(dictionary, 'companyInformation', self.company_information)
         self._add_to_dictionary(dictionary, 'contactDetails', self.contact_details)
+        self._add_to_dictionary(dictionary, 'fiscalNumber', self.fiscal_number)
         return dictionary
 
     def from_dictionary(self, dictionary):
@@ -78,4 +93,6 @@ class RefundCustomer(DataObject):
                 raise TypeError('value \'{}\' is not a dictionary'.format(dictionary['contactDetails']))
             value = ContactDetailsBase()
             self.contact_details = value.from_dictionary(dictionary['contactDetails'])
+        if 'fiscalNumber' in dictionary:
+            self.fiscal_number = dictionary['fiscalNumber']
         return self

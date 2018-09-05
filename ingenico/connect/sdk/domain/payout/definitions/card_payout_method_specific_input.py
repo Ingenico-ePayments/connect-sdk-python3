@@ -11,6 +11,7 @@ class CardPayoutMethodSpecificInput(AbstractPayoutMethodSpecificInput):
 
     __card = None
     __payment_product_id = None
+    __token = None
 
     @property
     def card(self):
@@ -39,10 +40,24 @@ class CardPayoutMethodSpecificInput(AbstractPayoutMethodSpecificInput):
     def payment_product_id(self, value):
         self.__payment_product_id = value
 
+    @property
+    def token(self):
+        """
+        | ID of the token that holds previously stored card data. Note that this is only supported for transactions on the Ogone payment engine.
+        
+        Type: str
+        """
+        return self.__token
+
+    @token.setter
+    def token(self, value):
+        self.__token = value
+
     def to_dictionary(self):
         dictionary = super(CardPayoutMethodSpecificInput, self).to_dictionary()
         self._add_to_dictionary(dictionary, 'card', self.card)
         self._add_to_dictionary(dictionary, 'paymentProductId', self.payment_product_id)
+        self._add_to_dictionary(dictionary, 'token', self.token)
         return dictionary
 
     def from_dictionary(self, dictionary):
@@ -54,4 +69,6 @@ class CardPayoutMethodSpecificInput(AbstractPayoutMethodSpecificInput):
             self.card = value.from_dictionary(dictionary['card'])
         if 'paymentProductId' in dictionary:
             self.payment_product_id = dictionary['paymentProductId']
+        if 'token' in dictionary:
+            self.token = dictionary['token']
         return self

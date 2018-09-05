@@ -9,6 +9,7 @@ from ingenico.connect.sdk.domain.definitions.bank_account_bban import BankAccoun
 class BankAccountBbanRefund(BankAccountBban):
 
     __bank_city = None
+    __patronymic_name = None
     __swift_code = None
 
     @property
@@ -23,6 +24,19 @@ class BankAccountBbanRefund(BankAccountBban):
     @bank_city.setter
     def bank_city(self, value):
         self.__bank_city = value
+
+    @property
+    def patronymic_name(self):
+        """
+        | Every Russian has three names: a first name, a patronymic, and a surname. The second name is a patronymic. Russian patronymic is a name derived from the father's first name by adding -ович/-евич (son of) for male, or -овна/-евна (daughter of) for females.
+        
+        Type: str
+        """
+        return self.__patronymic_name
+
+    @patronymic_name.setter
+    def patronymic_name(self, value):
+        self.__patronymic_name = value
 
     @property
     def swift_code(self):
@@ -40,6 +54,7 @@ class BankAccountBbanRefund(BankAccountBban):
     def to_dictionary(self):
         dictionary = super(BankAccountBbanRefund, self).to_dictionary()
         self._add_to_dictionary(dictionary, 'bankCity', self.bank_city)
+        self._add_to_dictionary(dictionary, 'patronymicName', self.patronymic_name)
         self._add_to_dictionary(dictionary, 'swiftCode', self.swift_code)
         return dictionary
 
@@ -47,6 +62,8 @@ class BankAccountBbanRefund(BankAccountBban):
         super(BankAccountBbanRefund, self).from_dictionary(dictionary)
         if 'bankCity' in dictionary:
             self.bank_city = dictionary['bankCity']
+        if 'patronymicName' in dictionary:
+            self.patronymic_name = dictionary['patronymicName']
         if 'swiftCode' in dictionary:
             self.swift_code = dictionary['swiftCode']
         return self

@@ -93,7 +93,9 @@ class GetProductgroupParams(ParamRequest):
         """
         | Allows you to hide elements from the response, reducing the amount of data that needs to be returned to your client. Possible options are:
         
-        * fields - This will not return any data on fields of the group
+        * fields - Don't return any data on fields of the payment product
+        * accountsOnFile - Don't return any accounts on file data
+        * translations - Don't return any label texts associated with the payment products
         
         Type: list[str]
         """

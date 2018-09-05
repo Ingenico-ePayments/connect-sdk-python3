@@ -95,7 +95,11 @@ class FindProductsParams(ParamRequest):
         """
         | Allows you to hide elements from the response, reducing the amount of data that needs to be returned to your client. Possible options are:
         
-        * fields - This will not return any data on fields per payment product
+        * fields - Don't return any data on fields of the payment product
+        * accountsOnFile - Don't return any accounts on file data
+        * translations - Don't return any label texts associated with the payment products
+        * productsWithoutFields - Don't return products that require any additional data to be captured
+        * productsWithoutInstructions - Don't return products that show instructions
         
         Type: list[str]
         """
