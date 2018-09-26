@@ -30,6 +30,10 @@ class AirlineData(DataObject):
     __pos_city_code = None
     __ticket_delivery_method = None
     __ticket_number = None
+    __total_fare = None
+    __total_fee = None
+    __total_taxes = None
+    __travel_agency_name = None
 
     @property
     def agent_numeric_code(self):
@@ -309,6 +313,58 @@ class AirlineData(DataObject):
     def ticket_number(self, value):
         self.__ticket_number = value
 
+    @property
+    def total_fare(self):
+        """
+        | Total fare for all legs on the ticket, excluding taxes and fees. If multiple tickets are purchased, this is the total fare for all tickets
+        
+        Type: int
+        """
+        return self.__total_fare
+
+    @total_fare.setter
+    def total_fare(self, value):
+        self.__total_fare = value
+
+    @property
+    def total_fee(self):
+        """
+        | Total fee for all legs on the ticket. If multiple tickets are purchased, this is the total fee for all tickets
+        
+        Type: int
+        """
+        return self.__total_fee
+
+    @total_fee.setter
+    def total_fee(self, value):
+        self.__total_fee = value
+
+    @property
+    def total_taxes(self):
+        """
+        | Total taxes for all legs on the ticket. If multiple tickets are purchased, this is the total taxes for all tickets
+        
+        Type: int
+        """
+        return self.__total_taxes
+
+    @total_taxes.setter
+    def total_taxes(self, value):
+        self.__total_taxes = value
+
+    @property
+    def travel_agency_name(self):
+        """
+        | Name of the travel agency issuing the ticket. For direct airline integration, leave this field blank
+        
+        Type: str
+        """
+        return self.__travel_agency_name
+
+    @travel_agency_name.setter
+    def travel_agency_name(self, value):
+        self.__travel_agency_name = value
+
     def to_dictionary(self):
         dictionary = super(AirlineData, self).to_dictionary()
         self._add_to_dictionary(dictionary, 'agentNumericCode', self.agent_numeric_code)
@@ -331,6 +387,10 @@ class AirlineData(DataObject):
         self._add_to_dictionary(dictionary, 'posCityCode', self.pos_city_code)
         self._add_to_dictionary(dictionary, 'ticketDeliveryMethod', self.ticket_delivery_method)
         self._add_to_dictionary(dictionary, 'ticketNumber', self.ticket_number)
+        self._add_to_dictionary(dictionary, 'totalFare', self.total_fare)
+        self._add_to_dictionary(dictionary, 'totalFee', self.total_fee)
+        self._add_to_dictionary(dictionary, 'totalTaxes', self.total_taxes)
+        self._add_to_dictionary(dictionary, 'travelAgencyName', self.travel_agency_name)
         return dictionary
 
     def from_dictionary(self, dictionary):
@@ -385,4 +445,12 @@ class AirlineData(DataObject):
             self.ticket_delivery_method = dictionary['ticketDeliveryMethod']
         if 'ticketNumber' in dictionary:
             self.ticket_number = dictionary['ticketNumber']
+        if 'totalFare' in dictionary:
+            self.total_fare = dictionary['totalFare']
+        if 'totalFee' in dictionary:
+            self.total_fee = dictionary['totalFee']
+        if 'totalTaxes' in dictionary:
+            self.total_taxes = dictionary['totalTaxes']
+        if 'travelAgencyName' in dictionary:
+            self.travel_agency_name = dictionary['travelAgencyName']
         return self

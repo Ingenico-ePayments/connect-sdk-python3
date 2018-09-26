@@ -100,6 +100,7 @@ class FindProductsParams(ParamRequest):
         * translations - Don't return any label texts associated with the payment products
         * productsWithoutFields - Don't return products that require any additional data to be captured
         * productsWithoutInstructions - Don't return products that show instructions
+        * productsWithRedirects - Don't return products that require a redirect to a 3rd party. Note that products that involve potential redirects related to 3D Secure authentication are not hidden
         
         Type: list[str]
         """

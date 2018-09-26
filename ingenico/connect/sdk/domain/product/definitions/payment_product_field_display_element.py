@@ -9,6 +9,7 @@ from ingenico.connect.sdk.data_object import DataObject
 class PaymentProductFieldDisplayElement(DataObject):
 
     __id = None
+    __label = None
     __type = None
     __value = None
 
@@ -24,6 +25,19 @@ class PaymentProductFieldDisplayElement(DataObject):
     @id.setter
     def id(self, value):
         self.__id = value
+
+    @property
+    def label(self):
+        """
+        | The label of the display element.
+        
+        Type: str
+        """
+        return self.__label
+
+    @label.setter
+    def label(self, value):
+        self.__label = value
 
     @property
     def type(self):
@@ -60,6 +74,7 @@ class PaymentProductFieldDisplayElement(DataObject):
     def to_dictionary(self):
         dictionary = super(PaymentProductFieldDisplayElement, self).to_dictionary()
         self._add_to_dictionary(dictionary, 'id', self.id)
+        self._add_to_dictionary(dictionary, 'label', self.label)
         self._add_to_dictionary(dictionary, 'type', self.type)
         self._add_to_dictionary(dictionary, 'value', self.value)
         return dictionary
@@ -68,6 +83,8 @@ class PaymentProductFieldDisplayElement(DataObject):
         super(PaymentProductFieldDisplayElement, self).from_dictionary(dictionary)
         if 'id' in dictionary:
             self.id = dictionary['id']
+        if 'label' in dictionary:
+            self.label = dictionary['label']
         if 'type' in dictionary:
             self.type = dictionary['type']
         if 'value' in dictionary:

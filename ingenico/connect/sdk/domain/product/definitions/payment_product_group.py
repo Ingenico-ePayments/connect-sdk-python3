@@ -15,6 +15,7 @@ class PaymentProductGroup(DataObject):
     """
 
     __accounts_on_file = None
+    __device_fingerprint_enabled = None
     __display_hints = None
     __fields = None
     __id = None
@@ -31,6 +32,22 @@ class PaymentProductGroup(DataObject):
     @accounts_on_file.setter
     def accounts_on_file(self, value):
         self.__accounts_on_file = value
+
+    @property
+    def device_fingerprint_enabled(self):
+        """
+        | Indicates if device fingerprint is enabled for the product group
+        
+        * true
+        * false
+        
+        Type: bool
+        """
+        return self.__device_fingerprint_enabled
+
+    @device_fingerprint_enabled.setter
+    def device_fingerprint_enabled(self, value):
+        self.__device_fingerprint_enabled = value
 
     @property
     def display_hints(self):
@@ -74,6 +91,7 @@ class PaymentProductGroup(DataObject):
     def to_dictionary(self):
         dictionary = super(PaymentProductGroup, self).to_dictionary()
         self._add_to_dictionary(dictionary, 'accountsOnFile', self.accounts_on_file)
+        self._add_to_dictionary(dictionary, 'deviceFingerprintEnabled', self.device_fingerprint_enabled)
         self._add_to_dictionary(dictionary, 'displayHints', self.display_hints)
         self._add_to_dictionary(dictionary, 'fields', self.fields)
         self._add_to_dictionary(dictionary, 'id', self.id)
@@ -88,6 +106,8 @@ class PaymentProductGroup(DataObject):
             for accountsOnFile_element in dictionary['accountsOnFile']:
                 accountsOnFile_value = AccountOnFile()
                 self.accounts_on_file.append(accountsOnFile_value.from_dictionary(accountsOnFile_element))
+        if 'deviceFingerprintEnabled' in dictionary:
+            self.device_fingerprint_enabled = dictionary['deviceFingerprintEnabled']
         if 'displayHints' in dictionary:
             if not isinstance(dictionary['displayHints'], dict):
                 raise TypeError('value \'{}\' is not a dictionary'.format(dictionary['displayHints']))

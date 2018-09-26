@@ -10,16 +10,24 @@ class AirlineFlightLeg(DataObject):
 
     __airline_class = None
     __arrival_airport = None
+    __arrival_time = None
     __carrier_code = None
+    __conjunction_ticket = None
+    __coupon_number = None
     __date = None
     __departure_time = None
+    __endorsement_or_restriction = None
+    __exchange_ticket = None
     __fare = None
     __fare_basis = None
+    __fee = None
     __flight_number = None
     __number = None
     __origin_airport = None
+    __passenger_class = None
     __service_class = None
     __stopover_code = None
+    __taxes = None
 
     @property
     def airline_class(self):
@@ -48,6 +56,20 @@ class AirlineFlightLeg(DataObject):
         self.__arrival_airport = value
 
     @property
+    def arrival_time(self):
+        """
+        | The arrival time in the local time zone 
+        | Format: HH:MM
+        
+        Type: str
+        """
+        return self.__arrival_time
+
+    @arrival_time.setter
+    def arrival_time(self, value):
+        self.__arrival_time = value
+
+    @property
     def carrier_code(self):
         """
         | IATA carrier code
@@ -59,6 +81,32 @@ class AirlineFlightLeg(DataObject):
     @carrier_code.setter
     def carrier_code(self, value):
         self.__carrier_code = value
+
+    @property
+    def conjunction_ticket(self):
+        """
+        | Identifying number of a ticket issued to a passenger in conjunction with this ticket and that constitutes a single contract of carriage
+        
+        Type: str
+        """
+        return self.__conjunction_ticket
+
+    @conjunction_ticket.setter
+    def conjunction_ticket(self, value):
+        self.__conjunction_ticket = value
+
+    @property
+    def coupon_number(self):
+        """
+        | The coupon number associated with this leg of the trip. A ticket can contain several legs of travel, and each leg of travel requires a separate coupon
+        
+        Type: str
+        """
+        return self.__coupon_number
+
+    @coupon_number.setter
+    def coupon_number(self, value):
+        self.__coupon_number = value
 
     @property
     def date(self):
@@ -89,6 +137,32 @@ class AirlineFlightLeg(DataObject):
         self.__departure_time = value
 
     @property
+    def endorsement_or_restriction(self):
+        """
+        | An endorsement can be an agency-added notation or a mandatory government required notation, such as value-added tax. A restriction is a limitation based on the type of fare, such as a ticket with a 3-day minimum stay
+        
+        Type: str
+        """
+        return self.__endorsement_or_restriction
+
+    @endorsement_or_restriction.setter
+    def endorsement_or_restriction(self, value):
+        self.__endorsement_or_restriction = value
+
+    @property
+    def exchange_ticket(self):
+        """
+        | New ticket number that is issued when a ticket is exchanged
+        
+        Type: str
+        """
+        return self.__exchange_ticket
+
+    @exchange_ticket.setter
+    def exchange_ticket(self, value):
+        self.__exchange_ticket = value
+
+    @property
     def fare(self):
         """
         | Fare of this leg
@@ -113,6 +187,19 @@ class AirlineFlightLeg(DataObject):
     @fare_basis.setter
     def fare_basis(self, value):
         self.__fare_basis = value
+
+    @property
+    def fee(self):
+        """
+        | Fee for this leg of the trip
+        
+        Type: int
+        """
+        return self.__fee
+
+    @fee.setter
+    def fee(self, value):
+        self.__fee = value
 
     @property
     def flight_number(self):
@@ -155,6 +242,19 @@ class AirlineFlightLeg(DataObject):
         self.__origin_airport = value
 
     @property
+    def passenger_class(self):
+        """
+        | PassengerClass if this leg
+        
+        Type: str
+        """
+        return self.__passenger_class
+
+    @passenger_class.setter
+    def passenger_class(self, value):
+        self.__passenger_class = value
+
+    @property
     def service_class(self):
         """
         | ServiceClass of this leg (this field is used for fraud screening on the Ogone Payment Platform).
@@ -167,6 +267,8 @@ class AirlineFlightLeg(DataObject):
         * first
         
         Type: str
+        
+        Deprecated; | Use passengerClass instead
         """
         return self.__service_class
 
@@ -190,20 +292,41 @@ class AirlineFlightLeg(DataObject):
     def stopover_code(self, value):
         self.__stopover_code = value
 
+    @property
+    def taxes(self):
+        """
+        | Taxes for this leg of the trip
+        
+        Type: int
+        """
+        return self.__taxes
+
+    @taxes.setter
+    def taxes(self, value):
+        self.__taxes = value
+
     def to_dictionary(self):
         dictionary = super(AirlineFlightLeg, self).to_dictionary()
         self._add_to_dictionary(dictionary, 'airlineClass', self.airline_class)
         self._add_to_dictionary(dictionary, 'arrivalAirport', self.arrival_airport)
+        self._add_to_dictionary(dictionary, 'arrivalTime', self.arrival_time)
         self._add_to_dictionary(dictionary, 'carrierCode', self.carrier_code)
+        self._add_to_dictionary(dictionary, 'conjunctionTicket', self.conjunction_ticket)
+        self._add_to_dictionary(dictionary, 'couponNumber', self.coupon_number)
         self._add_to_dictionary(dictionary, 'date', self.date)
         self._add_to_dictionary(dictionary, 'departureTime', self.departure_time)
+        self._add_to_dictionary(dictionary, 'endorsementOrRestriction', self.endorsement_or_restriction)
+        self._add_to_dictionary(dictionary, 'exchangeTicket', self.exchange_ticket)
         self._add_to_dictionary(dictionary, 'fare', self.fare)
         self._add_to_dictionary(dictionary, 'fareBasis', self.fare_basis)
+        self._add_to_dictionary(dictionary, 'fee', self.fee)
         self._add_to_dictionary(dictionary, 'flightNumber', self.flight_number)
         self._add_to_dictionary(dictionary, 'number', self.number)
         self._add_to_dictionary(dictionary, 'originAirport', self.origin_airport)
+        self._add_to_dictionary(dictionary, 'passengerClass', self.passenger_class)
         self._add_to_dictionary(dictionary, 'serviceClass', self.service_class)
         self._add_to_dictionary(dictionary, 'stopoverCode', self.stopover_code)
+        self._add_to_dictionary(dictionary, 'taxes', self.taxes)
         return dictionary
 
     def from_dictionary(self, dictionary):
@@ -212,24 +335,40 @@ class AirlineFlightLeg(DataObject):
             self.airline_class = dictionary['airlineClass']
         if 'arrivalAirport' in dictionary:
             self.arrival_airport = dictionary['arrivalAirport']
+        if 'arrivalTime' in dictionary:
+            self.arrival_time = dictionary['arrivalTime']
         if 'carrierCode' in dictionary:
             self.carrier_code = dictionary['carrierCode']
+        if 'conjunctionTicket' in dictionary:
+            self.conjunction_ticket = dictionary['conjunctionTicket']
+        if 'couponNumber' in dictionary:
+            self.coupon_number = dictionary['couponNumber']
         if 'date' in dictionary:
             self.date = dictionary['date']
         if 'departureTime' in dictionary:
             self.departure_time = dictionary['departureTime']
+        if 'endorsementOrRestriction' in dictionary:
+            self.endorsement_or_restriction = dictionary['endorsementOrRestriction']
+        if 'exchangeTicket' in dictionary:
+            self.exchange_ticket = dictionary['exchangeTicket']
         if 'fare' in dictionary:
             self.fare = dictionary['fare']
         if 'fareBasis' in dictionary:
             self.fare_basis = dictionary['fareBasis']
+        if 'fee' in dictionary:
+            self.fee = dictionary['fee']
         if 'flightNumber' in dictionary:
             self.flight_number = dictionary['flightNumber']
         if 'number' in dictionary:
             self.number = dictionary['number']
         if 'originAirport' in dictionary:
             self.origin_airport = dictionary['originAirport']
+        if 'passengerClass' in dictionary:
+            self.passenger_class = dictionary['passengerClass']
         if 'serviceClass' in dictionary:
             self.service_class = dictionary['serviceClass']
         if 'stopoverCode' in dictionary:
             self.stopover_code = dictionary['stopoverCode']
+        if 'taxes' in dictionary:
+            self.taxes = dictionary['taxes']
         return self
