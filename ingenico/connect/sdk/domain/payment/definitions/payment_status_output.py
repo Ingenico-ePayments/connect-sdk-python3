@@ -10,6 +10,7 @@ class PaymentStatusOutput(OrderStatusOutput):
 
     __is_authorized = None
     __is_refundable = None
+    __three_d_secure_status = None
 
     @property
     def is_authorized(self):
@@ -43,10 +44,33 @@ class PaymentStatusOutput(OrderStatusOutput):
     def is_refundable(self, value):
         self.__is_refundable = value
 
+    @property
+    def three_d_secure_status(self):
+        """
+        | The 3D Secure status, with the following possible values:
+        
+        * ENROLLED: the card is enrolled for 3D Secure authentication. The consumer can be redirected to a 3D Secure access control server (ACS)
+        * NOT_ENROLLED: the card is not enrolled for 3D Secure authentication
+        * INVALID_PARES_OR_NOT_COMPLETED: the PARes is invalid, or the consumer did not complete the 3D Secure authentication
+        * AUTHENTICATED: the consumer has passed the 3D Secure authentication
+        * NOT_AUTHENTICATED: the consumer failed the 3D Secure authentication
+        * NOT_PARTICIPATING: the cardholder has not set up their card for 2-step 3D Secure.
+        
+        | Note that this status will only be set for payments that make use of 2-step 3D Secure.
+        
+        Type: str
+        """
+        return self.__three_d_secure_status
+
+    @three_d_secure_status.setter
+    def three_d_secure_status(self, value):
+        self.__three_d_secure_status = value
+
     def to_dictionary(self):
         dictionary = super(PaymentStatusOutput, self).to_dictionary()
         self._add_to_dictionary(dictionary, 'isAuthorized', self.is_authorized)
         self._add_to_dictionary(dictionary, 'isRefundable', self.is_refundable)
+        self._add_to_dictionary(dictionary, 'threeDSecureStatus', self.three_d_secure_status)
         return dictionary
 
     def from_dictionary(self, dictionary):
@@ -55,4 +79,6 @@ class PaymentStatusOutput(OrderStatusOutput):
             self.is_authorized = dictionary['isAuthorized']
         if 'isRefundable' in dictionary:
             self.is_refundable = dictionary['isRefundable']
+        if 'threeDSecureStatus' in dictionary:
+            self.three_d_secure_status = dictionary['threeDSecureStatus']
         return self

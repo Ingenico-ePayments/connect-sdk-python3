@@ -66,13 +66,7 @@ class PaymentsClient(ApiResource):
                     context)
 
         except ResponseException as e:
-            error_type = {
-                400: PaymentErrorResponse,
-                402: PaymentErrorResponse,
-                403: PaymentErrorResponse,
-                502: PaymentErrorResponse,
-                503: PaymentErrorResponse,
-            }.get(e.status_code, ErrorResponse)
+            error_type = PaymentErrorResponse
             error_object = self._communicator.marshaller.unmarshal(e.body, error_type)
             raise self._create_exception(e.status_code, e.body, error_object, context)
 
@@ -489,10 +483,7 @@ class PaymentsClient(ApiResource):
                     context)
 
         except ResponseException as e:
-            error_type = {
-                400: RefundErrorResponse,
-                404: RefundErrorResponse,
-            }.get(e.status_code, ErrorResponse)
+            error_type = RefundErrorResponse
             error_object = self._communicator.marshaller.unmarshal(e.body, error_type)
             raise self._create_exception(e.status_code, e.body, error_object, context)
 

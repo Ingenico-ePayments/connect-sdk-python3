@@ -54,9 +54,7 @@ class PayoutsClient(ApiResource):
                     context)
 
         except ResponseException as e:
-            error_type = {
-                400: PayoutErrorResponse,
-            }.get(e.status_code, ErrorResponse)
+            error_type = PayoutErrorResponse
             error_object = self._communicator.marshaller.unmarshal(e.body, error_type)
             raise self._create_exception(e.status_code, e.body, error_object, context)
 
