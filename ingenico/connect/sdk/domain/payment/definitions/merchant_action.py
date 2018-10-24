@@ -23,7 +23,13 @@ class MerchantAction(DataObject):
         | Action merchants needs to take in the online payment process. Possible values are:
         
         * REDIRECT - The consumer needs to be redirected using the details found in redirectData
-        * SHOW_FORM - The consumer needs to be shown a form with the fields found in formFields. You can submit the data entered by the user in a Complete payment <https://epayments-api.developer-ingenico.com/s2sapi/v1/en_US/python/payments/complete.html> request. Additionally, for payment product 3012 (Bancontact), to support payments via the Bancontact app, showData contains a QR code and URL intent.
+        * SHOW_FORM - The consumer needs to be shown a form with the fields found in formFields. You can submit the data entered by the user in a Complete payment <https://epayments-api.developer-ingenico.com/s2sapi/v1/en_US/python/payments/complete.html> request. Additionally:
+        
+        * for payment product 3012 (Bancontact), to support payments via the Bancontact app, showData contains a QR code and URL intent.
+        * for payment product 863 (WeChat Pay), to support payments via the WeChat app, showData contains a QR code, URL intent, or signature and nonce combination. The showData field describes when each of these values can be returned.
+        | Note that WeChat Pay does not support completing payments.
+        
+        
         * SHOW_INSTRUCTIONS - The consumer needs to be shown payment instruction using the details found in showData. Alternatively the instructions can be rendered by us using the instructionsRenderingData
         * SHOW_TRANSACTION_RESULTS - The consumer needs to be shown the transaction results using the details found in showData. Alternatively the instructions can be rendered by us using the instructionsRenderingData
         
@@ -94,7 +100,13 @@ class MerchantAction(DataObject):
         | Note: The returned value for the key BARCODE is a base64 encoded gif image. By prepending 'data:image/gif;base64,' this value can be used as the source of an HTML inline image.
         
         | For SHOW_FORM, for payment product 3012 (Bancontact), this contains a QR code and a URL intent that can be used to complete the payment in the Bancontact app.
-        | In this case, the key QRCode is a base64 encoded png image. By prepending 'data:image/png;base64,' this value can be used as the source of an HTML inline image on a desktop or tablet (intended to be scanned by an Android device with the Bancontact app). The key UrlIntent contains a url intent that can be used as the link of an 'open the app' button on an android device.
+        | In this case, the key QRCODE contains a base64 encoded PNG image. By prepending 'data:image/png;base64,' this value can be used as the source of an HTML inline image on a desktop or tablet (intended to be scanned by an Android device with the Bancontact app). The key URLINTENT contains a URL intent that can be used as the link of an 'open the app' button on an Android device.
+        
+        | For SHOW_FORM, for payment product 863 (WeChat Pay), this contains the PaymentId that WeChat has assigned to the payment. In this case, the key WECHAT_PAYMENTID contains this PaymentId. In addition, this can contain different values depending on the integration type:
+        
+        * desktopQRCode - contains a QR code that can be used to complete the payment in the WeChat app. In this case, the key QRCODE contains a base64 encoded PNG image. By prepending 'data:image/png;base64,' this value can be used as the source of an HTML inline image on a desktop or tablet (intended to be scanned by a mobile device with the WeChat app).
+        * urlIntent - contains a URL intent that can be used to complete the payment in the WeChat app. In this case, the key URLINTENT contains a URL intent that can be used as the link of an 'open the app' button on a mobile device.
+        * nativeInApp - contains a signature of the payment values and a nonce used to generate the signature, that can be used to complete the payment using the WeChat SDK. In this case, the key WECHAT_SIGNATURE contains the signature that should be used for the WeChat SDK field sign. The key SIGNATURE_NONCE contains the nonce that should be used for the WeChat SDK field noncestr.
         
         Type: list[:class:`ingenico.connect.sdk.domain.definitions.key_value_pair.KeyValuePair`]
         """

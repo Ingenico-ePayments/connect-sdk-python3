@@ -3,10 +3,10 @@
 # This class was auto-generated from the API references found at
 # https://epayments-api.developer-ingenico.com/s2sapi/v1/
 #
-from ingenico.connect.sdk.domain.payment.definitions.bank_transfer_payment_method_specific_input_base import BankTransferPaymentMethodSpecificInputBase
+from ingenico.connect.sdk.domain.payment.definitions.abstract_bank_transfer_payment_method_specific_input import AbstractBankTransferPaymentMethodSpecificInput
 
 
-class BankTransferPaymentMethodSpecificInput(BankTransferPaymentMethodSpecificInputBase):
+class BankTransferPaymentMethodSpecificInput(AbstractBankTransferPaymentMethodSpecificInput):
 
     def to_dictionary(self):
         dictionary = super(BankTransferPaymentMethodSpecificInput, self).to_dictionary()

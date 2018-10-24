@@ -6,6 +6,9 @@
 from ingenico.connect.sdk.data_object import DataObject
 from ingenico.connect.sdk.domain.product.definitions.account_on_file import AccountOnFile
 from ingenico.connect.sdk.domain.product.definitions.authentication_indicator import AuthenticationIndicator
+from ingenico.connect.sdk.domain.product.definitions.payment_product302_specific_data import PaymentProduct302SpecificData
+from ingenico.connect.sdk.domain.product.definitions.payment_product320_specific_data import PaymentProduct320SpecificData
+from ingenico.connect.sdk.domain.product.definitions.payment_product863_specific_data import PaymentProduct863SpecificData
 from ingenico.connect.sdk.domain.product.definitions.payment_product_display_hints import PaymentProductDisplayHints
 from ingenico.connect.sdk.domain.product.definitions.payment_product_field import PaymentProductField
 
@@ -27,6 +30,9 @@ class PaymentProduct(DataObject):
     __min_amount = None
     __mobile_integration_level = None
     __payment_method = None
+    __payment_product302_specific_data = None
+    __payment_product320_specific_data = None
+    __payment_product863_specific_data = None
     __payment_product_group = None
     __uses_redirection_to3rd_party = None
 
@@ -253,6 +259,45 @@ class PaymentProduct(DataObject):
         self.__payment_method = value
 
     @property
+    def payment_product302_specific_data(self):
+        """
+        | Apple Pay (payment product 302) specific details.
+        
+        Type: :class:`ingenico.connect.sdk.domain.product.definitions.payment_product302_specific_data.PaymentProduct302SpecificData`
+        """
+        return self.__payment_product302_specific_data
+
+    @payment_product302_specific_data.setter
+    def payment_product302_specific_data(self, value):
+        self.__payment_product302_specific_data = value
+
+    @property
+    def payment_product320_specific_data(self):
+        """
+        | Android Pay (payment product 320) specific details.
+        
+        Type: :class:`ingenico.connect.sdk.domain.product.definitions.payment_product320_specific_data.PaymentProduct320SpecificData`
+        """
+        return self.__payment_product320_specific_data
+
+    @payment_product320_specific_data.setter
+    def payment_product320_specific_data(self, value):
+        self.__payment_product320_specific_data = value
+
+    @property
+    def payment_product863_specific_data(self):
+        """
+        | WeChat Pay (payment product 863) specific details.
+        
+        Type: :class:`ingenico.connect.sdk.domain.product.definitions.payment_product863_specific_data.PaymentProduct863SpecificData`
+        """
+        return self.__payment_product863_specific_data
+
+    @payment_product863_specific_data.setter
+    def payment_product863_specific_data(self, value):
+        self.__payment_product863_specific_data = value
+
+    @property
     def payment_product_group(self):
         """
         | The payment product group that has this payment product, if there is any. Not populated otherwise. Currently only one payment product group is supported:
@@ -300,6 +345,9 @@ class PaymentProduct(DataObject):
         self._add_to_dictionary(dictionary, 'minAmount', self.min_amount)
         self._add_to_dictionary(dictionary, 'mobileIntegrationLevel', self.mobile_integration_level)
         self._add_to_dictionary(dictionary, 'paymentMethod', self.payment_method)
+        self._add_to_dictionary(dictionary, 'paymentProduct302SpecificData', self.payment_product302_specific_data)
+        self._add_to_dictionary(dictionary, 'paymentProduct320SpecificData', self.payment_product320_specific_data)
+        self._add_to_dictionary(dictionary, 'paymentProduct863SpecificData', self.payment_product863_specific_data)
         self._add_to_dictionary(dictionary, 'paymentProductGroup', self.payment_product_group)
         self._add_to_dictionary(dictionary, 'usesRedirectionTo3rdParty', self.uses_redirection_to3rd_party)
         return dictionary
@@ -352,6 +400,21 @@ class PaymentProduct(DataObject):
             self.mobile_integration_level = dictionary['mobileIntegrationLevel']
         if 'paymentMethod' in dictionary:
             self.payment_method = dictionary['paymentMethod']
+        if 'paymentProduct302SpecificData' in dictionary:
+            if not isinstance(dictionary['paymentProduct302SpecificData'], dict):
+                raise TypeError('value \'{}\' is not a dictionary'.format(dictionary['paymentProduct302SpecificData']))
+            value = PaymentProduct302SpecificData()
+            self.payment_product302_specific_data = value.from_dictionary(dictionary['paymentProduct302SpecificData'])
+        if 'paymentProduct320SpecificData' in dictionary:
+            if not isinstance(dictionary['paymentProduct320SpecificData'], dict):
+                raise TypeError('value \'{}\' is not a dictionary'.format(dictionary['paymentProduct320SpecificData']))
+            value = PaymentProduct320SpecificData()
+            self.payment_product320_specific_data = value.from_dictionary(dictionary['paymentProduct320SpecificData'])
+        if 'paymentProduct863SpecificData' in dictionary:
+            if not isinstance(dictionary['paymentProduct863SpecificData'], dict):
+                raise TypeError('value \'{}\' is not a dictionary'.format(dictionary['paymentProduct863SpecificData']))
+            value = PaymentProduct863SpecificData()
+            self.payment_product863_specific_data = value.from_dictionary(dictionary['paymentProduct863SpecificData'])
         if 'paymentProductGroup' in dictionary:
             self.payment_product_group = dictionary['paymentProductGroup']
         if 'usesRedirectionTo3rdParty' in dictionary:

@@ -3,12 +3,12 @@
 # This class was auto-generated from the API references found at
 # https://epayments-api.developer-ingenico.com/s2sapi/v1/
 #
-from ingenico.connect.sdk.domain.payment.definitions.cash_payment_method_specific_input_base import CashPaymentMethodSpecificInputBase
+from ingenico.connect.sdk.domain.payment.definitions.abstract_cash_payment_method_specific_input import AbstractCashPaymentMethodSpecificInput
 from ingenico.connect.sdk.domain.payment.definitions.cash_payment_product1503_specific_input import CashPaymentProduct1503SpecificInput
 from ingenico.connect.sdk.domain.payment.definitions.cash_payment_product1504_specific_input import CashPaymentProduct1504SpecificInput
 
 
-class CashPaymentMethodSpecificInput(CashPaymentMethodSpecificInputBase):
+class CashPaymentMethodSpecificInput(AbstractCashPaymentMethodSpecificInput):
 
     __payment_product1503_specific_input = None
     __payment_product1504_specific_input = None

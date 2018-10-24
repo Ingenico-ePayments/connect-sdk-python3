@@ -4,11 +4,11 @@
 # https://epayments-api.developer-ingenico.com/s2sapi/v1/
 #
 from ingenico.connect.sdk.domain.definitions.card import Card
-from ingenico.connect.sdk.domain.payment.definitions.card_payment_method_specific_input_base import CardPaymentMethodSpecificInputBase
+from ingenico.connect.sdk.domain.payment.definitions.abstract_card_payment_method_specific_input import AbstractCardPaymentMethodSpecificInput
 from ingenico.connect.sdk.domain.payment.definitions.external_cardholder_authentication_data import ExternalCardholderAuthenticationData
 
 
-class CardPaymentMethodSpecificInput(CardPaymentMethodSpecificInputBase):
+class CardPaymentMethodSpecificInput(AbstractCardPaymentMethodSpecificInput):
 
     __card = None
     __external_cardholder_authentication_data = None

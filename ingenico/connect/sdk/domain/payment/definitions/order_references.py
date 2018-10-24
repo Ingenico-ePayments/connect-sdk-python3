@@ -48,6 +48,7 @@ class OrderReferences(DataObject):
         * 841 WebMoney - 175 characters
         * 849 Yandex - 64 characters
         * 861 Alipay - 256 characters
+        * 863 WeChat Pay - 32 characters
         * 880 BOKU - 20 characters
         * 8580 Qiwi - 255 characters
         * 1504 Konbini - 80 characters

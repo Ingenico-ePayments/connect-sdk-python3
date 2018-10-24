@@ -3,11 +3,11 @@
 # This class was auto-generated from the API references found at
 # https://epayments-api.developer-ingenico.com/s2sapi/v1/
 #
-from ingenico.connect.sdk.domain.payment.definitions.e_invoice_payment_method_specific_input_base import EInvoicePaymentMethodSpecificInputBase
+from ingenico.connect.sdk.domain.payment.definitions.abstract_e_invoice_payment_method_specific_input import AbstractEInvoicePaymentMethodSpecificInput
 from ingenico.connect.sdk.domain.payment.definitions.e_invoice_payment_product9000_specific_input import EInvoicePaymentProduct9000SpecificInput
 
 
-class EInvoicePaymentMethodSpecificInput(EInvoicePaymentMethodSpecificInputBase):
+class EInvoicePaymentMethodSpecificInput(AbstractEInvoicePaymentMethodSpecificInput):
 
     __accepted_terms_and_conditions = None
     __payment_product9000_specific_input = None
