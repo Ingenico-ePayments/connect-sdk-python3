@@ -1297,6 +1297,13 @@ API Reference
     :special-members:
     :exclude-members: __dict__,__weakref__,__module__,__get__
 
+.. automodule:: ingenico.connect.sdk.domain.payment.definitions.payment_product3201_specific_output
+    :members:
+    :show-inheritance:
+    :undoc-members:
+    :special-members:
+    :exclude-members: __dict__,__weakref__,__module__,__get__
+
 .. automodule:: ingenico.connect.sdk.domain.payment.definitions.payment_product771_specific_output
     :members:
     :show-inheritance:

@@ -32,7 +32,7 @@ class RedirectPaymentProduct840SpecificInput(DataObject):
     @property
     def is_shortcut(self):
         """
-        | Indicates wether to use PayPal Express Checkout. 
+        | Indicates whether to use PayPal Express Checkout. 
         
         * true = PayPal Express Checkout 
         * false = Regular PayPal payment

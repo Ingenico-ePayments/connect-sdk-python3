@@ -6,6 +6,7 @@
 from ingenico.connect.sdk.domain.definitions.bank_account_iban import BankAccountIban
 from ingenico.connect.sdk.domain.definitions.fraud_results import FraudResults
 from ingenico.connect.sdk.domain.payment.definitions.abstract_payment_method_specific_output import AbstractPaymentMethodSpecificOutput
+from ingenico.connect.sdk.domain.payment.definitions.payment_product3201_specific_output import PaymentProduct3201SpecificOutput
 from ingenico.connect.sdk.domain.payment.definitions.payment_product836_specific_output import PaymentProduct836SpecificOutput
 from ingenico.connect.sdk.domain.payment.definitions.payment_product840_specific_output import PaymentProduct840SpecificOutput
 
@@ -14,6 +15,7 @@ class RedirectPaymentMethodSpecificOutput(AbstractPaymentMethodSpecificOutput):
 
     __bank_account_iban = None
     __fraud_results = None
+    __payment_product3201_specific_output = None
     __payment_product836_specific_output = None
     __payment_product840_specific_output = None
     __token = None
@@ -43,6 +45,19 @@ class RedirectPaymentMethodSpecificOutput(AbstractPaymentMethodSpecificOutput):
     @fraud_results.setter
     def fraud_results(self, value):
         self.__fraud_results = value
+
+    @property
+    def payment_product3201_specific_output(self):
+        """
+        | PostFinance Card (payment product 3201) specific details
+        
+        Type: :class:`ingenico.connect.sdk.domain.payment.definitions.payment_product3201_specific_output.PaymentProduct3201SpecificOutput`
+        """
+        return self.__payment_product3201_specific_output
+
+    @payment_product3201_specific_output.setter
+    def payment_product3201_specific_output(self, value):
+        self.__payment_product3201_specific_output = value
 
     @property
     def payment_product836_specific_output(self):
@@ -87,6 +102,7 @@ class RedirectPaymentMethodSpecificOutput(AbstractPaymentMethodSpecificOutput):
         dictionary = super(RedirectPaymentMethodSpecificOutput, self).to_dictionary()
         self._add_to_dictionary(dictionary, 'bankAccountIban', self.bank_account_iban)
         self._add_to_dictionary(dictionary, 'fraudResults', self.fraud_results)
+        self._add_to_dictionary(dictionary, 'paymentProduct3201SpecificOutput', self.payment_product3201_specific_output)
         self._add_to_dictionary(dictionary, 'paymentProduct836SpecificOutput', self.payment_product836_specific_output)
         self._add_to_dictionary(dictionary, 'paymentProduct840SpecificOutput', self.payment_product840_specific_output)
         self._add_to_dictionary(dictionary, 'token', self.token)
@@ -104,6 +120,11 @@ class RedirectPaymentMethodSpecificOutput(AbstractPaymentMethodSpecificOutput):
                 raise TypeError('value \'{}\' is not a dictionary'.format(dictionary['fraudResults']))
             value = FraudResults()
             self.fraud_results = value.from_dictionary(dictionary['fraudResults'])
+        if 'paymentProduct3201SpecificOutput' in dictionary:
+            if not isinstance(dictionary['paymentProduct3201SpecificOutput'], dict):
+                raise TypeError('value \'{}\' is not a dictionary'.format(dictionary['paymentProduct3201SpecificOutput']))
+            value = PaymentProduct3201SpecificOutput()
+            self.payment_product3201_specific_output = value.from_dictionary(dictionary['paymentProduct3201SpecificOutput'])
         if 'paymentProduct836SpecificOutput' in dictionary:
             if not isinstance(dictionary['paymentProduct836SpecificOutput'], dict):
                 raise TypeError('value \'{}\' is not a dictionary'.format(dictionary['paymentProduct836SpecificOutput']))

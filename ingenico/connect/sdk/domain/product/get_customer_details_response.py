@@ -25,7 +25,7 @@ class GetCustomerDetailsResponse(DataObject):
     @property
     def city(self):
         """
-        | The city in which the customer recides.
+        | The city in which the customer resides.
         
         Type: str
         """
@@ -38,7 +38,7 @@ class GetCustomerDetailsResponse(DataObject):
     @property
     def country(self):
         """
-        | The country in which the customer recides.
+        | The country in which the customer resides.
         
         Type: str
         """
@@ -116,7 +116,7 @@ class GetCustomerDetailsResponse(DataObject):
     @property
     def street(self):
         """
-        | The street on which the customer recides.
+        | The street on which the customer resides.
         
         Type: str
         """
@@ -142,7 +142,7 @@ class GetCustomerDetailsResponse(DataObject):
     @property
     def zip(self):
         """
-        | The ZIP or postal code for the area in which the customer recides.
+        | The ZIP or postal code for the area in which the customer resides.
         
         Type: str
         """
