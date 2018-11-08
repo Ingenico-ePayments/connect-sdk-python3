@@ -5,6 +5,7 @@
 #
 from ingenico.connect.sdk.domain.definitions.fraud_results import FraudResults
 from ingenico.connect.sdk.domain.definitions.fraud_results_retail_decisions import FraudResultsRetailDecisions
+from ingenico.connect.sdk.domain.definitions.fraugster_results import FraugsterResults
 
 
 class CardFraudResults(FraudResults):
@@ -14,6 +15,7 @@ class CardFraudResults(FraudResults):
 
     __avs_result = None
     __cvv_result = None
+    __fraugster = None
     __retail_decisions = None
 
     @property
@@ -76,6 +78,19 @@ class CardFraudResults(FraudResults):
         self.__cvv_result = value
 
     @property
+    def fraugster(self):
+        """
+        | Results of Fraugster fraud prevention check. Fraugster collects transaction data points such as name, email address, billing, etc. to analyze whether or not the transaction is fraudulent.
+        
+        Type: :class:`ingenico.connect.sdk.domain.definitions.fraugster_results.FraugsterResults`
+        """
+        return self.__fraugster
+
+    @fraugster.setter
+    def fraugster(self, value):
+        self.__fraugster = value
+
+    @property
     def retail_decisions(self):
         """
         | Additional response data returned by RetailDecisions
@@ -92,6 +107,7 @@ class CardFraudResults(FraudResults):
         dictionary = super(CardFraudResults, self).to_dictionary()
         self._add_to_dictionary(dictionary, 'avsResult', self.avs_result)
         self._add_to_dictionary(dictionary, 'cvvResult', self.cvv_result)
+        self._add_to_dictionary(dictionary, 'fraugster', self.fraugster)
         self._add_to_dictionary(dictionary, 'retailDecisions', self.retail_decisions)
         return dictionary
 
@@ -101,6 +117,11 @@ class CardFraudResults(FraudResults):
             self.avs_result = dictionary['avsResult']
         if 'cvvResult' in dictionary:
             self.cvv_result = dictionary['cvvResult']
+        if 'fraugster' in dictionary:
+            if not isinstance(dictionary['fraugster'], dict):
+                raise TypeError('value \'{}\' is not a dictionary'.format(dictionary['fraugster']))
+            value = FraugsterResults()
+            self.fraugster = value.from_dictionary(dictionary['fraugster'])
         if 'retailDecisions' in dictionary:
             if not isinstance(dictionary['retailDecisions'], dict):
                 raise TypeError('value \'{}\' is not a dictionary'.format(dictionary['retailDecisions']))
