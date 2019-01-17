@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>ingenico.connect.sdk.domain.hostedcheckout.get_hosted_checkout_response &#8212; connect-sdk-python3 2.29.0 documentation</title>
+    <title>ingenico.connect.sdk.domain.hostedcheckout.get_hosted_checkout_response &#8212; connect-sdk-python3 2.30.0 documentation</title>
     <link rel="stylesheet" href="../../../../../../_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="../../../../../../_static/pygments.css" type="text/css" />
     <script type="text/javascript" src="../../../../../../_static/documentation_options.js"></script>
@@ -64,7 +64,8 @@
 <span class="sd">        </span>
 <span class="sd">        * IN_PROGRESS - The checkout is still in progress and has not finished yet</span>
 <span class="sd">        * PAYMENT_CREATED - A payment has been created</span>
-<span class="sd">        * CANCELLED_BY_CONSUMER - If a consumer cancels the payment on the payment product detail page of the MyCheckout hosted payment pages, the status will change to IN_PROGRESS. Since we understand you want to be aware of a consumer cancelling the payment on the page we host for you, you can choose to get the status CANCELLED_BY_CONSUMER back instead of the status IN_PROGRESS. In order to get the status CANCELLED_BY_CONSUMER back, you need to have the returnCancelState flag enabled in the Create hosted checkout &lt;https://epayments-api.developer-ingenico.com/s2sapi/v1/en_US/python/hostedcheckouts/create.html&gt; call</span>
+<span class="sd">        * CANCELLED_BY_CONSUMER - If a consumer cancels the payment on the payment product detail page of the MyCheckout hosted payment pages, the status will change to IN_PROGRESS. Since we understand you want to be aware of a consumer cancelling the payment on the page we host for you, you can choose to receive the status CANCELLED_BY_CONSUMER instead of the status IN_PROGRESS. In order to receive the status CANCELLED_BY_CONSUMER, you need to have the returnCancelState flag enabled in the Create hosted checkout &lt;https://epayments-api.developer-ingenico.com/s2sapi/v1/en_US/python/hostedcheckouts/create.html&gt; call.</span>
+<span class="sd">        * CLIENT_NOT_ELIGIBLE_FOR_SELECTED_PAYMENT_PRODUCT - With some payment products it might occur that the device of the user is not capable to complete the payment. If the Hosted Checkout Session was restricted to a single project that is not compatible to the user&#39;s device you will receive this Hosted Checkout status. This scenario applies to: Google Pay (Payment Product ID: 320).</span>
 <span class="sd">        </span>
 <span class="sd">        </span>
 <span class="sd">        | Please see Statuses &lt;https://epayments-api.developer-ingenico.com/s2sapi/v1/en_US/python/statuses.html&gt; for a full overview of possible values.</span>

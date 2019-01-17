@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>Ingenico Connect Python SDK &#8212; connect-sdk-python3 2.29.0 documentation</title>
+    <title>Ingenico Connect Python SDK &#8212; connect-sdk-python3 2.30.0 documentation</title>
     <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <script type="text/javascript" src="_static/documentation_options.js"></script>
@@ -4279,6 +4279,15 @@ representation for an object of the given type</p>
 </dd></dl>
 
 <dl class="attribute">
+<dt id="ingenico.connect.sdk.domain.hostedcheckout.create_hosted_checkout_request.CreateHostedCheckoutRequest.mobile_payment_method_specific_input">
+<code class="descname">mobile_payment_method_specific_input</code><a class="headerlink" href="#ingenico.connect.sdk.domain.hostedcheckout.create_hosted_checkout_request.CreateHostedCheckoutRequest.mobile_payment_method_specific_input" title="Permalink to this definition">¶</a></dt>
+<dd><div class="line-block">
+<div class="line">Object containing reference data for Google Pay.</div>
+</div>
+<p>Type: <a class="reference internal" href="#ingenico.connect.sdk.domain.hostedcheckout.definitions.mobile_payment_method_specific_input_hosted_checkout.MobilePaymentMethodSpecificInputHostedCheckout" title="ingenico.connect.sdk.domain.hostedcheckout.definitions.mobile_payment_method_specific_input_hosted_checkout.MobilePaymentMethodSpecificInputHostedCheckout"><code class="xref py py-class docutils literal notranslate"><span class="pre">ingenico.connect.sdk.domain.hostedcheckout.definitions.mobile_payment_method_specific_input_hosted_checkout.MobilePaymentMethodSpecificInputHostedCheckout</span></code></a></p>
+</dd></dl>
+
+<dl class="attribute">
 <dt id="ingenico.connect.sdk.domain.hostedcheckout.create_hosted_checkout_request.CreateHostedCheckoutRequest.order">
 <code class="descname">order</code><a class="headerlink" href="#ingenico.connect.sdk.domain.hostedcheckout.create_hosted_checkout_request.CreateHostedCheckoutRequest.order" title="Permalink to this definition">¶</a></dt>
 <dd><div class="line-block">
@@ -4404,7 +4413,8 @@ representation for an object of the given type</p>
 <ul class="simple">
 <li>IN_PROGRESS - The checkout is still in progress and has not finished yet</li>
 <li>PAYMENT_CREATED - A payment has been created</li>
-<li>CANCELLED_BY_CONSUMER - If a consumer cancels the payment on the payment product detail page of the MyCheckout hosted payment pages, the status will change to IN_PROGRESS. Since we understand you want to be aware of a consumer cancelling the payment on the page we host for you, you can choose to get the status CANCELLED_BY_CONSUMER back instead of the status IN_PROGRESS. In order to get the status CANCELLED_BY_CONSUMER back, you need to have the returnCancelState flag enabled in the Create hosted checkout &lt;<a class="reference external" href="https://epayments-api.developer-ingenico.com/s2sapi/v1/en_US/python/hostedcheckouts/create.html">https://epayments-api.developer-ingenico.com/s2sapi/v1/en_US/python/hostedcheckouts/create.html</a>&gt; call</li>
+<li>CANCELLED_BY_CONSUMER - If a consumer cancels the payment on the payment product detail page of the MyCheckout hosted payment pages, the status will change to IN_PROGRESS. Since we understand you want to be aware of a consumer cancelling the payment on the page we host for you, you can choose to receive the status CANCELLED_BY_CONSUMER instead of the status IN_PROGRESS. In order to receive the status CANCELLED_BY_CONSUMER, you need to have the returnCancelState flag enabled in the Create hosted checkout &lt;<a class="reference external" href="https://epayments-api.developer-ingenico.com/s2sapi/v1/en_US/python/hostedcheckouts/create.html">https://epayments-api.developer-ingenico.com/s2sapi/v1/en_US/python/hostedcheckouts/create.html</a>&gt; call.</li>
+<li>CLIENT_NOT_ELIGIBLE_FOR_SELECTED_PAYMENT_PRODUCT - With some payment products it might occur that the device of the user is not capable to complete the payment. If the Hosted Checkout Session was restricted to a single project that is not compatible to the user’s device you will receive this Hosted Checkout status. This scenario applies to: Google Pay (Payment Product ID: 320).</li>
 </ul>
 <div class="line-block">
 <div class="line">Please see Statuses &lt;<a class="reference external" href="https://epayments-api.developer-ingenico.com/s2sapi/v1/en_US/python/statuses.html">https://epayments-api.developer-ingenico.com/s2sapi/v1/en_US/python/statuses.html</a>&gt; for a full overview of possible values.</div>
@@ -4495,6 +4505,7 @@ representation for an object of the given type</p>
 <div class="line">Please see Statuses &lt;<a class="reference external" href="https://epayments-api.developer-ingenico.com/s2sapi/v1/en_US/python/statuses.html">https://epayments-api.developer-ingenico.com/s2sapi/v1/en_US/python/statuses.html</a>&gt; for a full overview of possible values.</div>
 </div>
 <p>Type: str</p>
+<p>Deprecated; | Use payment.statusOutput.statusCategory instead</p>
 </dd></dl>
 
 <dl class="method">
@@ -4694,6 +4705,65 @@ representation for an object of the given type</p>
 </div>
 <p>Type: str</p>
 </dd></dl>
+
+</dd></dl>
+
+<span class="target" id="module-ingenico.connect.sdk.domain.hostedcheckout.definitions.mobile_payment_method_specific_input_hosted_checkout"></span><dl class="class">
+<dt id="ingenico.connect.sdk.domain.hostedcheckout.definitions.mobile_payment_method_specific_input_hosted_checkout.MobilePaymentMethodSpecificInputHostedCheckout">
+<em class="property">class </em><code class="descclassname">ingenico.connect.sdk.domain.hostedcheckout.definitions.mobile_payment_method_specific_input_hosted_checkout.</code><code class="descname">MobilePaymentMethodSpecificInputHostedCheckout</code><a class="reference internal" href="_modules/ingenico/connect/sdk/domain/hostedcheckout/definitions/mobile_payment_method_specific_input_hosted_checkout.html#MobilePaymentMethodSpecificInputHostedCheckout"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ingenico.connect.sdk.domain.hostedcheckout.definitions.mobile_payment_method_specific_input_hosted_checkout.MobilePaymentMethodSpecificInputHostedCheckout" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#ingenico.connect.sdk.domain.definitions.abstract_payment_method_specific_input.AbstractPaymentMethodSpecificInput" title="ingenico.connect.sdk.domain.definitions.abstract_payment_method_specific_input.AbstractPaymentMethodSpecificInput"><code class="xref py py-class docutils literal notranslate"><span class="pre">ingenico.connect.sdk.domain.definitions.abstract_payment_method_specific_input.AbstractPaymentMethodSpecificInput</span></code></a></p>
+<dl class="method">
+<dt id="ingenico.connect.sdk.domain.hostedcheckout.definitions.mobile_payment_method_specific_input_hosted_checkout.MobilePaymentMethodSpecificInputHostedCheckout.from_dictionary">
+<code class="descname">from_dictionary</code><span class="sig-paren">(</span><em>dictionary</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ingenico/connect/sdk/domain/hostedcheckout/definitions/mobile_payment_method_specific_input_hosted_checkout.html#MobilePaymentMethodSpecificInputHostedCheckout.from_dictionary"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ingenico.connect.sdk.domain.hostedcheckout.definitions.mobile_payment_method_specific_input_hosted_checkout.MobilePaymentMethodSpecificInputHostedCheckout.from_dictionary" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ingenico.connect.sdk.domain.hostedcheckout.definitions.mobile_payment_method_specific_input_hosted_checkout.MobilePaymentMethodSpecificInputHostedCheckout.payment_product320_specific_input">
+<code class="descname">payment_product320_specific_input</code><a class="headerlink" href="#ingenico.connect.sdk.domain.hostedcheckout.definitions.mobile_payment_method_specific_input_hosted_checkout.MobilePaymentMethodSpecificInputHostedCheckout.payment_product320_specific_input" title="Permalink to this definition">¶</a></dt>
+<dd><div class="line-block">
+<div class="line">Object containing information specific to Google Pay</div>
+</div>
+<p>Type: <a class="reference internal" href="#ingenico.connect.sdk.domain.hostedcheckout.definitions.mobile_payment_product320_specific_input_hosted_checkout.MobilePaymentProduct320SpecificInputHostedCheckout" title="ingenico.connect.sdk.domain.hostedcheckout.definitions.mobile_payment_product320_specific_input_hosted_checkout.MobilePaymentProduct320SpecificInputHostedCheckout"><code class="xref py py-class docutils literal notranslate"><span class="pre">ingenico.connect.sdk.domain.hostedcheckout.definitions.mobile_payment_product320_specific_input_hosted_checkout.MobilePaymentProduct320SpecificInputHostedCheckout</span></code></a></p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ingenico.connect.sdk.domain.hostedcheckout.definitions.mobile_payment_method_specific_input_hosted_checkout.MobilePaymentMethodSpecificInputHostedCheckout.to_dictionary">
+<code class="descname">to_dictionary</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/ingenico/connect/sdk/domain/hostedcheckout/definitions/mobile_payment_method_specific_input_hosted_checkout.html#MobilePaymentMethodSpecificInputHostedCheckout.to_dictionary"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ingenico.connect.sdk.domain.hostedcheckout.definitions.mobile_payment_method_specific_input_hosted_checkout.MobilePaymentMethodSpecificInputHostedCheckout.to_dictionary" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<span class="target" id="module-ingenico.connect.sdk.domain.hostedcheckout.definitions.mobile_payment_product320_specific_input_hosted_checkout"></span><dl class="class">
+<dt id="ingenico.connect.sdk.domain.hostedcheckout.definitions.mobile_payment_product320_specific_input_hosted_checkout.MobilePaymentProduct320SpecificInputHostedCheckout">
+<em class="property">class </em><code class="descclassname">ingenico.connect.sdk.domain.hostedcheckout.definitions.mobile_payment_product320_specific_input_hosted_checkout.</code><code class="descname">MobilePaymentProduct320SpecificInputHostedCheckout</code><a class="reference internal" href="_modules/ingenico/connect/sdk/domain/hostedcheckout/definitions/mobile_payment_product320_specific_input_hosted_checkout.html#MobilePaymentProduct320SpecificInputHostedCheckout"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ingenico.connect.sdk.domain.hostedcheckout.definitions.mobile_payment_product320_specific_input_hosted_checkout.MobilePaymentProduct320SpecificInputHostedCheckout" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#ingenico.connect.sdk.data_object.DataObject" title="ingenico.connect.sdk.data_object.DataObject"><code class="xref py py-class docutils literal notranslate"><span class="pre">ingenico.connect.sdk.data_object.DataObject</span></code></a></p>
+<dl class="method">
+<dt id="ingenico.connect.sdk.domain.hostedcheckout.definitions.mobile_payment_product320_specific_input_hosted_checkout.MobilePaymentProduct320SpecificInputHostedCheckout.from_dictionary">
+<code class="descname">from_dictionary</code><span class="sig-paren">(</span><em>dictionary</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ingenico/connect/sdk/domain/hostedcheckout/definitions/mobile_payment_product320_specific_input_hosted_checkout.html#MobilePaymentProduct320SpecificInputHostedCheckout.from_dictionary"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ingenico.connect.sdk.domain.hostedcheckout.definitions.mobile_payment_product320_specific_input_hosted_checkout.MobilePaymentProduct320SpecificInputHostedCheckout.from_dictionary" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ingenico.connect.sdk.domain.hostedcheckout.definitions.mobile_payment_product320_specific_input_hosted_checkout.MobilePaymentProduct320SpecificInputHostedCheckout.merchant_name">
+<code class="descname">merchant_name</code><a class="headerlink" href="#ingenico.connect.sdk.domain.hostedcheckout.definitions.mobile_payment_product320_specific_input_hosted_checkout.MobilePaymentProduct320SpecificInputHostedCheckout.merchant_name" title="Permalink to this definition">¶</a></dt>
+<dd><div class="line-block">
+<div class="line">Used as an input for the Google Pay payment sheet. Provide your company name in a human readable form.</div>
+</div>
+<p>Type: str</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ingenico.connect.sdk.domain.hostedcheckout.definitions.mobile_payment_product320_specific_input_hosted_checkout.MobilePaymentProduct320SpecificInputHostedCheckout.merchant_origin">
+<code class="descname">merchant_origin</code><a class="headerlink" href="#ingenico.connect.sdk.domain.hostedcheckout.definitions.mobile_payment_product320_specific_input_hosted_checkout.MobilePaymentProduct320SpecificInputHostedCheckout.merchant_origin" title="Permalink to this definition">¶</a></dt>
+<dd><div class="line-block">
+<div class="line">Used as an input for the Google Pay payment sheet. Provide the url of your webshop. For international (non-ASCII) domains, please use Punycode &lt;<a class="reference external" href="https://en.wikipedia.org/wiki/Punycode">https://en.wikipedia.org/wiki/Punycode</a>&gt;.</div>
+</div>
+<p>Type: str</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ingenico.connect.sdk.domain.hostedcheckout.definitions.mobile_payment_product320_specific_input_hosted_checkout.MobilePaymentProduct320SpecificInputHostedCheckout.to_dictionary">
+<code class="descname">to_dictionary</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/ingenico/connect/sdk/domain/hostedcheckout/definitions/mobile_payment_product320_specific_input_hosted_checkout.html#MobilePaymentProduct320SpecificInputHostedCheckout.to_dictionary"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ingenico.connect.sdk.domain.hostedcheckout.definitions.mobile_payment_product320_specific_input_hosted_checkout.MobilePaymentProduct320SpecificInputHostedCheckout.to_dictionary" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
 
 </dd></dl>
 
@@ -5163,7 +5233,7 @@ representation for an object of the given type</p>
 <dt id="ingenico.connect.sdk.domain.mandates.definitions.create_mandate_base.CreateMandateBase.unique_mandate_reference">
 <code class="descname">unique_mandate_reference</code><a class="headerlink" href="#ingenico.connect.sdk.domain.mandates.definitions.create_mandate_base.CreateMandateBase.unique_mandate_reference" title="Permalink to this definition">¶</a></dt>
 <dd><div class="line-block">
-<div class="line">The unique identifier of the mandate</div>
+<div class="line">The unique identifier of the mandate. If you do not provide one, we will generate one for you.</div>
 </div>
 <p>Type: str</p>
 </dd></dl>
@@ -5888,8 +5958,15 @@ representation for an object of the given type</p>
 <dt id="ingenico.connect.sdk.domain.payment.create_payment_request.CreatePaymentRequest.mobile_payment_method_specific_input">
 <code class="descname">mobile_payment_method_specific_input</code><a class="headerlink" href="#ingenico.connect.sdk.domain.payment.create_payment_request.CreatePaymentRequest.mobile_payment_method_specific_input" title="Permalink to this definition">¶</a></dt>
 <dd><div class="line-block">
-<div class="line">Object containing the specific input details for mobile payments</div>
+<div class="line">Object containing the specific input details for mobile payments.</div>
 </div>
+<div class="line-block">
+<div class="line">Mobile payments produce the required payment data in encrypted form.</div>
+</div>
+<ul class="simple">
+<li>For Apple Pay, the encrypted payment data can be found in field data of the PKPayment &lt;<a class="reference external" href="https://developer.apple.com/documentation/passkit/pkpayment">https://developer.apple.com/documentation/passkit/pkpayment</a>&gt;.token.paymentData property.</li>
+<li>For Google Pay, the encrypted payment data can be found in field paymentMethodData.tokenizationData.token of the PaymentData &lt;<a class="reference external" href="https://developers.google.com/android/reference/com/google/android/gms/wallet/PaymentData">https://developers.google.com/android/reference/com/google/android/gms/wallet/PaymentData</a>&gt;.toJson() result.</li>
+</ul>
 <p>Type: <a class="reference internal" href="#ingenico.connect.sdk.domain.payment.definitions.mobile_payment_method_specific_input.MobilePaymentMethodSpecificInput" title="ingenico.connect.sdk.domain.payment.definitions.mobile_payment_method_specific_input.MobilePaymentMethodSpecificInput"><code class="xref py py-class docutils literal notranslate"><span class="pre">ingenico.connect.sdk.domain.payment.definitions.mobile_payment_method_specific_input.MobilePaymentMethodSpecificInput</span></code></a></p>
 </dd></dl>
 
@@ -6410,6 +6487,7 @@ representation for an object of the given type</p>
 <dt id="ingenico.connect.sdk.domain.payment.definitions.abstract_sepa_direct_debit_payment_product771_specific_input.AbstractSepaDirectDebitPaymentProduct771SpecificInput.mandate_reference">
 <code class="descname">mandate_reference</code><a class="headerlink" href="#ingenico.connect.sdk.domain.payment.definitions.abstract_sepa_direct_debit_payment_product771_specific_input.AbstractSepaDirectDebitPaymentProduct771SpecificInput.mandate_reference" title="Permalink to this definition">¶</a></dt>
 <dd><p>Type: str</p>
+<p>Deprecated; | Use existingUniqueMandateReference instead</p>
 </dd></dl>
 
 <dl class="method">
@@ -7269,11 +7347,11 @@ representation for an object of the given type</p>
 <dt id="ingenico.connect.sdk.domain.payment.definitions.decrypted_payment_data.DecryptedPaymentData.cardholder_name">
 <code class="descname">cardholder_name</code><a class="headerlink" href="#ingenico.connect.sdk.domain.payment.definitions.decrypted_payment_data.DecryptedPaymentData.cardholder_name" title="Permalink to this definition">¶</a></dt>
 <dd><div class="line-block">
-<div class="line">Card holder’s name on the card. This maps to the following field in the vendor’s encrypted payment data:</div>
+<div class="line">Card holder’s name on the card.</div>
 </div>
 <ul class="simple">
-<li>Apple Pay: PKPayment.token.paymentData.data.cardholderName</li>
-<li>Android Pay: Not Available</li>
+<li>For Apple Pay, maps to the cardholderName field in the encrypted payment data.</li>
+<li>For Google Pay this is not available in the encrypted payment data, and can be omitted.</li>
 </ul>
 <p>Type: str</p>
 </dd></dl>
@@ -7282,12 +7360,15 @@ representation for an object of the given type</p>
 <dt id="ingenico.connect.sdk.domain.payment.definitions.decrypted_payment_data.DecryptedPaymentData.cryptogram">
 <code class="descname">cryptogram</code><a class="headerlink" href="#ingenico.connect.sdk.domain.payment.definitions.decrypted_payment_data.DecryptedPaymentData.cryptogram" title="Permalink to this definition">¶</a></dt>
 <dd><div class="line-block">
-<div class="line">The 3D secure online payment cryptogram. This maps to the following field in the vendor’s encrypted payment data:</div>
+<div class="line">The 3D secure online payment cryptogram.</div>
 </div>
 <ul class="simple">
-<li>Apple Pay: PKPayment.token.paymentData.data.paymentData.onlinePaymentCryptogram</li>
-<li>Android Pay: FullWallet.paymentMethodToken.token.encryptedMessage.3dsCryptogram</li>
+<li>For Apple Pay, maps to the paymentData.onlinePaymentCryptogram field in the encrypted payment data.</li>
+<li>For Google Pay, maps to the paymentMethodDetails.3dsCryptogram field in the encrypted payment data.</li>
 </ul>
+<div class="line-block">
+<div class="line">Not allowed for Google Pay if the paymentMethod is CARD.</div>
+</div>
 <p>Type: str</p>
 </dd></dl>
 
@@ -7295,12 +7376,15 @@ representation for an object of the given type</p>
 <dt id="ingenico.connect.sdk.domain.payment.definitions.decrypted_payment_data.DecryptedPaymentData.dpan">
 <code class="descname">dpan</code><a class="headerlink" href="#ingenico.connect.sdk.domain.payment.definitions.decrypted_payment_data.DecryptedPaymentData.dpan" title="Permalink to this definition">¶</a></dt>
 <dd><div class="line-block">
-<div class="line">The device specific PAN. This maps to the following field in the vendor’s encrypted payment data:</div>
+<div class="line">The device specific PAN.</div>
 </div>
 <ul class="simple">
-<li>Apple Pay: PKPayment.token.paymentData.data.applicationPrimaryAccountNumber</li>
-<li>Android Pay: FullWallet.paymentMethodToken.token.encryptedMessage.dpan</li>
+<li>For Apple Pay, maps to the applicationPrimaryAccountNumber field in the encrypted payment data.</li>
+<li>For Google Pay, maps to the paymentMethodDetails.dpan field in the encrypted payment data.</li>
 </ul>
+<div class="line-block">
+<div class="line">Not allowed for Google Pay if the paymentMethod is CARD.</div>
+</div>
 <p>Type: str</p>
 </dd></dl>
 
@@ -7308,12 +7392,15 @@ representation for an object of the given type</p>
 <dt id="ingenico.connect.sdk.domain.payment.definitions.decrypted_payment_data.DecryptedPaymentData.eci">
 <code class="descname">eci</code><a class="headerlink" href="#ingenico.connect.sdk.domain.payment.definitions.decrypted_payment_data.DecryptedPaymentData.eci" title="Permalink to this definition">¶</a></dt>
 <dd><div class="line-block">
-<div class="line">Electronic Commerce Indicator. This maps to the following field in the vendor’s encrypted payment data:</div>
+<div class="line">Electronic Commerce Indicator.</div>
 </div>
 <ul class="simple">
-<li>Apple Pay: PKPayment.token.paymentData.data.paymentData.eciIndicator</li>
-<li>Android Pay: FullWallet.paymentMethodToken.token.encryptedMessage.3dsEciIndicator</li>
+<li>For Apple Pay, maps to the paymentData.eciIndicator field in the encrypted payment data.</li>
+<li>For Google Pay, maps to the paymentMethodDetails.3dsEciIndicator field in the encryted payment data.</li>
 </ul>
+<div class="line-block">
+<div class="line">Not allowed for Google Pay if the paymentMethod is CARD.</div>
+</div>
 <p>Type: int</p>
 </dd></dl>
 
@@ -7322,11 +7409,11 @@ representation for an object of the given type</p>
 <code class="descname">expiry_date</code><a class="headerlink" href="#ingenico.connect.sdk.domain.payment.definitions.decrypted_payment_data.DecryptedPaymentData.expiry_date" title="Permalink to this definition">¶</a></dt>
 <dd><div class="line-block">
 <div class="line">Expiry date of the card</div>
-<div class="line">Format: MMYY. This maps to the following field in the vendor’s encrypted payment data:</div>
+<div class="line">Format: MMYY.</div>
 </div>
 <ul class="simple">
-<li>Apple Pay: PKPayment.token.paymentData.data.applicationExpirationDate</li>
-<li>Android Pay:FullWallet.paymentMethodToken.token.encryptedMessage.expirationMonth and FullWallet.paymentMethodToken.token.encryptedMessage.expirationYear</li>
+<li>For Apple Pay, maps to the applicationExpirationDate field in the encrypted payment data. This field is formatted as YYMMDD, so this needs to be converted to get a correctly formatted expiry date.</li>
+<li>For Google Pay, maps to the paymentMethodDetails.expirationMonth and paymentMethodDetails.expirationYear fields in the encrypted payment data. These need to be combined to get a correctly formatted expiry date.</li>
 </ul>
 <p>Type: str</p>
 </dd></dl>
@@ -7335,6 +7422,35 @@ representation for an object of the given type</p>
 <dt id="ingenico.connect.sdk.domain.payment.definitions.decrypted_payment_data.DecryptedPaymentData.from_dictionary">
 <code class="descname">from_dictionary</code><span class="sig-paren">(</span><em>dictionary</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ingenico/connect/sdk/domain/payment/definitions/decrypted_payment_data.html#DecryptedPaymentData.from_dictionary"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ingenico.connect.sdk.domain.payment.definitions.decrypted_payment_data.DecryptedPaymentData.from_dictionary" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ingenico.connect.sdk.domain.payment.definitions.decrypted_payment_data.DecryptedPaymentData.pan">
+<code class="descname">pan</code><a class="headerlink" href="#ingenico.connect.sdk.domain.payment.definitions.decrypted_payment_data.DecryptedPaymentData.pan" title="Permalink to this definition">¶</a></dt>
+<dd><div class="line-block">
+<div class="line">The non-device specific complete credit/debit card number (also know as the PAN).</div>
+</div>
+<ul class="simple">
+<li>For Apple Pay this is not available in the encrypted payment data, and must be omitted.</li>
+<li>For Google Pay, maps to the paymentMethodDetails.pan field in the encrypted payment data.</li>
+</ul>
+<div class="line-block">
+<div class="line">Not allowed for Google Pay if the paymentMethod is TOKENIZED_CARD.</div>
+</div>
+<p>Type: str</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ingenico.connect.sdk.domain.payment.definitions.decrypted_payment_data.DecryptedPaymentData.payment_method">
+<code class="descname">payment_method</code><a class="headerlink" href="#ingenico.connect.sdk.domain.payment.definitions.decrypted_payment_data.DecryptedPaymentData.payment_method" title="Permalink to this definition">¶</a></dt>
+<dd><div class="line-block">
+<div class="line">The type of the payment credential: either CARD or TOKENIZED_CARD.</div>
+</div>
+<ul class="simple">
+<li>For Apple Pay this is not available in the encrypted payment data, and must be omitted.</li>
+<li>For Google Pay, maps to the paymentMethod field in the encrypted payment data.</li>
+</ul>
+<p>Type: str</p>
+</dd></dl>
 
 <dl class="method">
 <dt id="ingenico.connect.sdk.domain.payment.definitions.decrypted_payment_data.DecryptedPaymentData.to_dictionary">
@@ -7443,7 +7559,7 @@ representation for an object of the given type</p>
 <dt id="ingenico.connect.sdk.domain.payment.definitions.e_invoice_payment_product9000_specific_input.EInvoicePaymentProduct9000SpecificInput.installment_id">
 <code class="descname">installment_id</code><a class="headerlink" href="#ingenico.connect.sdk.domain.payment.definitions.e_invoice_payment_product9000_specific_input.EInvoicePaymentProduct9000SpecificInput.installment_id" title="Permalink to this definition">¶</a></dt>
 <dd><div class="line-block">
-<div class="line">The ID of the installment plan selected by the consumer. Installment plans can be retreived with Get payment product &lt;<a class="reference external" href="https://epayments-api.developer-ingenico.com/s2sapi/v1/en_US/python/products/get.html">https://epayments-api.developer-ingenico.com/s2sapi/v1/en_US/python/products/get.html</a>&gt;.</div>
+<div class="line">The ID of the installment plan selected by the consumer. Installment plans can be retrieved with Get payment product &lt;<a class="reference external" href="https://epayments-api.developer-ingenico.com/s2sapi/v1/en_US/python/products/get.html">https://epayments-api.developer-ingenico.com/s2sapi/v1/en_US/python/products/get.html</a>&gt;.</div>
 </div>
 <p>Type: str</p>
 </dd></dl>
@@ -8045,8 +8161,7 @@ representation for an object of the given type</p>
 <dt id="ingenico.connect.sdk.domain.payment.definitions.mobile_payment_method_specific_input.MobilePaymentMethodSpecificInput.decrypted_payment_data">
 <code class="descname">decrypted_payment_data</code><a class="headerlink" href="#ingenico.connect.sdk.domain.payment.definitions.mobile_payment_method_specific_input.MobilePaymentMethodSpecificInput.decrypted_payment_data" title="Permalink to this definition">¶</a></dt>
 <dd><div class="line-block">
-<div class="line">The payment data if you want to do the decryption of the vendor’s encrypted payment data yourself.</div>
-<div class="line">Typically you’d use encryptedCustomerInput in the root of the create payment request to provide the payment data for mobile payment methods.Only when you do not do this you need to use either this field or encryptedPaymentData, depending on who should do the decryption of the vendor’s encrypted payment data.</div>
+<div class="line">The payment data if you do the decryption of the encrypted payment data yourself.</div>
 </div>
 <p>Type: <a class="reference internal" href="#ingenico.connect.sdk.domain.payment.definitions.decrypted_payment_data.DecryptedPaymentData" title="ingenico.connect.sdk.domain.payment.definitions.decrypted_payment_data.DecryptedPaymentData"><code class="xref py py-class docutils literal notranslate"><span class="pre">ingenico.connect.sdk.domain.payment.definitions.decrypted_payment_data.DecryptedPaymentData</span></code></a></p>
 </dd></dl>
@@ -8055,12 +8170,14 @@ representation for an object of the given type</p>
 <dt id="ingenico.connect.sdk.domain.payment.definitions.mobile_payment_method_specific_input.MobilePaymentMethodSpecificInput.encrypted_payment_data">
 <code class="descname">encrypted_payment_data</code><a class="headerlink" href="#ingenico.connect.sdk.domain.payment.definitions.mobile_payment_method_specific_input.MobilePaymentMethodSpecificInput.encrypted_payment_data" title="Permalink to this definition">¶</a></dt>
 <dd><div class="line-block">
-<div class="line">The payment data if you want to let us do the decryption of the vendor’s encrypted payment data.</div>
-<div class="line">Typically you’d use encryptedCustomerInput in the root of the create payment request to provide the payment data for mobile payment methods.Only when you do not do this you need to use either this field or decryptedPaymentData, depending on who should do the decryption of the vendor’s encrypted payment data.This maps to the following field in the vendor’s encrypted payment data:</div>
+<div class="line">The payment data if we will do the decryption of the encrypted payment data.</div>
+</div>
+<div class="line-block">
+<div class="line">Typically you’d use encryptedCustomerInput in the root of the create payment request to provide the encrypted payment data instead.</div>
 </div>
 <ul class="simple">
-<li>Apple Pay: PKPayment.token.paymentData</li>
-<li>Android Pay: FullWallet.paymentMethodToken.token</li>
+<li>For Apple Pay, the encrypted payment data can be found in field data of the PKPayment &lt;<a class="reference external" href="https://developer.apple.com/documentation/passkit/pkpayment">https://developer.apple.com/documentation/passkit/pkpayment</a>&gt;.token.paymentData property.</li>
+<li>For Google Pay, the encrypted payment data can be found in field paymentMethodData.tokenizationData.token of the PaymentData &lt;<a class="reference external" href="https://developers.google.com/android/reference/com/google/android/gms/wallet/PaymentData">https://developers.google.com/android/reference/com/google/android/gms/wallet/PaymentData</a>&gt;.toJson() result.</li>
 </ul>
 <p>Type: str</p>
 </dd></dl>
@@ -8069,15 +8186,6 @@ representation for an object of the given type</p>
 <dt id="ingenico.connect.sdk.domain.payment.definitions.mobile_payment_method_specific_input.MobilePaymentMethodSpecificInput.from_dictionary">
 <code class="descname">from_dictionary</code><span class="sig-paren">(</span><em>dictionary</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ingenico/connect/sdk/domain/payment/definitions/mobile_payment_method_specific_input.html#MobilePaymentMethodSpecificInput.from_dictionary"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ingenico.connect.sdk.domain.payment.definitions.mobile_payment_method_specific_input.MobilePaymentMethodSpecificInput.from_dictionary" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
-
-<dl class="attribute">
-<dt id="ingenico.connect.sdk.domain.payment.definitions.mobile_payment_method_specific_input.MobilePaymentMethodSpecificInput.payment_product320_specific_input">
-<code class="descname">payment_product320_specific_input</code><a class="headerlink" href="#ingenico.connect.sdk.domain.payment.definitions.mobile_payment_method_specific_input.MobilePaymentMethodSpecificInput.payment_product320_specific_input" title="Permalink to this definition">¶</a></dt>
-<dd><div class="line-block">
-<div class="line">Android Pay (payment product 320) specific details.</div>
-</div>
-<p>Type: <a class="reference internal" href="#ingenico.connect.sdk.domain.payment.definitions.mobile_payment_product320_specific_input.MobilePaymentProduct320SpecificInput" title="ingenico.connect.sdk.domain.payment.definitions.mobile_payment_product320_specific_input.MobilePaymentProduct320SpecificInput"><code class="xref py py-class docutils literal notranslate"><span class="pre">ingenico.connect.sdk.domain.payment.definitions.mobile_payment_product320_specific_input.MobilePaymentProduct320SpecificInput</span></code></a></p>
-</dd></dl>
 
 <dl class="attribute">
 <dt id="ingenico.connect.sdk.domain.payment.definitions.mobile_payment_method_specific_input.MobilePaymentMethodSpecificInput.requires_approval">
@@ -8106,19 +8214,6 @@ representation for an object of the given type</p>
 <dt id="ingenico.connect.sdk.domain.payment.definitions.mobile_payment_method_specific_input.MobilePaymentMethodSpecificInput.to_dictionary">
 <code class="descname">to_dictionary</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/ingenico/connect/sdk/domain/payment/definitions/mobile_payment_method_specific_input.html#MobilePaymentMethodSpecificInput.to_dictionary"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ingenico.connect.sdk.domain.payment.definitions.mobile_payment_method_specific_input.MobilePaymentMethodSpecificInput.to_dictionary" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
-
-<dl class="attribute">
-<dt id="ingenico.connect.sdk.domain.payment.definitions.mobile_payment_method_specific_input.MobilePaymentMethodSpecificInput.transaction_id">
-<code class="descname">transaction_id</code><a class="headerlink" href="#ingenico.connect.sdk.domain.payment.definitions.mobile_payment_method_specific_input.MobilePaymentMethodSpecificInput.transaction_id" title="Permalink to this definition">¶</a></dt>
-<dd><div class="line-block">
-<div class="line">The vendor’s transaction id. This maps to the following field in the vendor’s encrypted payment data:</div>
-</div>
-<ul class="simple">
-<li>Apple Pay: PKPayment.token.transactionIdentifier</li>
-<li>Android Pay: FullWallet.googleTransactionId</li>
-</ul>
-<p>Type: str</p>
-</dd></dl>
 
 </dd></dl>
 
@@ -8179,34 +8274,6 @@ representation for an object of the given type</p>
 <dl class="method">
 <dt id="ingenico.connect.sdk.domain.payment.definitions.mobile_payment_method_specific_output.MobilePaymentMethodSpecificOutput.to_dictionary">
 <code class="descname">to_dictionary</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/ingenico/connect/sdk/domain/payment/definitions/mobile_payment_method_specific_output.html#MobilePaymentMethodSpecificOutput.to_dictionary"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ingenico.connect.sdk.domain.payment.definitions.mobile_payment_method_specific_output.MobilePaymentMethodSpecificOutput.to_dictionary" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-</dd></dl>
-
-<span class="target" id="module-ingenico.connect.sdk.domain.payment.definitions.mobile_payment_product320_specific_input"></span><dl class="class">
-<dt id="ingenico.connect.sdk.domain.payment.definitions.mobile_payment_product320_specific_input.MobilePaymentProduct320SpecificInput">
-<em class="property">class </em><code class="descclassname">ingenico.connect.sdk.domain.payment.definitions.mobile_payment_product320_specific_input.</code><code class="descname">MobilePaymentProduct320SpecificInput</code><a class="reference internal" href="_modules/ingenico/connect/sdk/domain/payment/definitions/mobile_payment_product320_specific_input.html#MobilePaymentProduct320SpecificInput"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ingenico.connect.sdk.domain.payment.definitions.mobile_payment_product320_specific_input.MobilePaymentProduct320SpecificInput" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference internal" href="#ingenico.connect.sdk.data_object.DataObject" title="ingenico.connect.sdk.data_object.DataObject"><code class="xref py py-class docutils literal notranslate"><span class="pre">ingenico.connect.sdk.data_object.DataObject</span></code></a></p>
-<div class="line-block">
-<div class="line">Please find below specific input fields for payment product 320 (Android Pay)</div>
-</div>
-<dl class="method">
-<dt id="ingenico.connect.sdk.domain.payment.definitions.mobile_payment_product320_specific_input.MobilePaymentProduct320SpecificInput.from_dictionary">
-<code class="descname">from_dictionary</code><span class="sig-paren">(</span><em>dictionary</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ingenico/connect/sdk/domain/payment/definitions/mobile_payment_product320_specific_input.html#MobilePaymentProduct320SpecificInput.from_dictionary"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ingenico.connect.sdk.domain.payment.definitions.mobile_payment_product320_specific_input.MobilePaymentProduct320SpecificInput.from_dictionary" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="attribute">
-<dt id="ingenico.connect.sdk.domain.payment.definitions.mobile_payment_product320_specific_input.MobilePaymentProduct320SpecificInput.key_id">
-<code class="descname">key_id</code><a class="headerlink" href="#ingenico.connect.sdk.domain.payment.definitions.mobile_payment_product320_specific_input.MobilePaymentProduct320SpecificInput.key_id" title="Permalink to this definition">¶</a></dt>
-<dd><div class="line-block">
-<div class="line">The identifier of the public key that is used to create the vendor’s encrypted payment data</div>
-</div>
-<p>Type: str</p>
-</dd></dl>
-
-<dl class="method">
-<dt id="ingenico.connect.sdk.domain.payment.definitions.mobile_payment_product320_specific_input.MobilePaymentProduct320SpecificInput.to_dictionary">
-<code class="descname">to_dictionary</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/ingenico/connect/sdk/domain/payment/definitions/mobile_payment_product320_specific_input.html#MobilePaymentProduct320SpecificInput.to_dictionary"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ingenico.connect.sdk.domain.payment.definitions.mobile_payment_product320_specific_input.MobilePaymentProduct320SpecificInput.to_dictionary" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
@@ -8815,7 +8882,7 @@ representation for an object of the given type</p>
 <dt id="ingenico.connect.sdk.domain.payment.definitions.order_references.OrderReferences.merchant_reference">
 <code class="descname">merchant_reference</code><a class="headerlink" href="#ingenico.connect.sdk.domain.payment.definitions.order_references.OrderReferences.merchant_reference" title="Permalink to this definition">¶</a></dt>
 <dd><div class="line-block">
-<div class="line">Your unique reference of the transaction that is also returned in our report files. This is almost always used for your reconciliation of our report files.</div>
+<div class="line">Note that the maximum length of this field for transactions processed on the GlobalCollect platform is 30. Your unique reference of the transaction that is also returned in our report files. This is almost always used for your reconciliation of our report files.</div>
 </div>
 <p>Type: str</p>
 </dd></dl>
@@ -10130,7 +10197,7 @@ representation for an object of the given type</p>
 <dt id="ingenico.connect.sdk.domain.payment.definitions.refund_mobile_method_specific_output.RefundMobileMethodSpecificOutput.network">
 <code class="descname">network</code><a class="headerlink" href="#ingenico.connect.sdk.domain.payment.definitions.refund_mobile_method_specific_output.RefundMobileMethodSpecificOutput.network" title="Permalink to this definition">¶</a></dt>
 <dd><div class="line-block">
-<div class="line">The network that was used for the refund. The string that represents the network is identical to the strings that the payment product vendors use in their documentation.For instance: “Visa” for Android Pay &lt;<a class="reference external" href="https://developer.apple.com/reference/passkit/pkpaymentnetwork">https://developer.apple.com/reference/passkit/pkpaymentnetwork</a>&gt;.</div>
+<div class="line">The network that was used for the refund. The string that represents the network is identical to the strings that the payment product vendors use in their documentation.For instance: “Visa” for Google Pay &lt;<a class="reference external" href="https://developer.apple.com/reference/passkit/pkpaymentnetwork">https://developer.apple.com/reference/passkit/pkpaymentnetwork</a>&gt;.</div>
 </div>
 <p>Type: str</p>
 </dd></dl>
@@ -10589,6 +10656,15 @@ representation for an object of the given type</p>
 <div class="line-block">
 <div class="line">Object containing information specific to SEPA Direct Debit for Create Payments.</div>
 </div>
+<dl class="attribute">
+<dt id="ingenico.connect.sdk.domain.payment.definitions.sepa_direct_debit_payment_product771_specific_input.SepaDirectDebitPaymentProduct771SpecificInput.existing_unique_mandate_reference">
+<code class="descname">existing_unique_mandate_reference</code><a class="headerlink" href="#ingenico.connect.sdk.domain.payment.definitions.sepa_direct_debit_payment_product771_specific_input.SepaDirectDebitPaymentProduct771SpecificInput.existing_unique_mandate_reference" title="Permalink to this definition">¶</a></dt>
+<dd><div class="line-block">
+<div class="line">The unique reference of the existing mandate to use in this payment.</div>
+</div>
+<p>Type: str</p>
+</dd></dl>
+
 <dl class="method">
 <dt id="ingenico.connect.sdk.domain.payment.definitions.sepa_direct_debit_payment_product771_specific_input.SepaDirectDebitPaymentProduct771SpecificInput.from_dictionary">
 <code class="descname">from_dictionary</code><span class="sig-paren">(</span><em>dictionary</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ingenico/connect/sdk/domain/payment/definitions/sepa_direct_debit_payment_product771_specific_input.html#SepaDirectDebitPaymentProduct771SpecificInput.from_dictionary"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ingenico.connect.sdk.domain.payment.definitions.sepa_direct_debit_payment_product771_specific_input.SepaDirectDebitPaymentProduct771SpecificInput.from_dictionary" title="Permalink to this definition">¶</a></dt>
@@ -10617,6 +10693,15 @@ representation for an object of the given type</p>
 <div class="line-block">
 <div class="line">Object containing information specific to SEPA Direct Debit for Hosted Checkouts.</div>
 </div>
+<dl class="attribute">
+<dt id="ingenico.connect.sdk.domain.payment.definitions.sepa_direct_debit_payment_product771_specific_input_base.SepaDirectDebitPaymentProduct771SpecificInputBase.existing_unique_mandate_reference">
+<code class="descname">existing_unique_mandate_reference</code><a class="headerlink" href="#ingenico.connect.sdk.domain.payment.definitions.sepa_direct_debit_payment_product771_specific_input_base.SepaDirectDebitPaymentProduct771SpecificInputBase.existing_unique_mandate_reference" title="Permalink to this definition">¶</a></dt>
+<dd><div class="line-block">
+<div class="line">The unique reference of the existing mandate to use in this payment.</div>
+</div>
+<p>Type: str</p>
+</dd></dl>
+
 <dl class="method">
 <dt id="ingenico.connect.sdk.domain.payment.definitions.sepa_direct_debit_payment_product771_specific_input_base.SepaDirectDebitPaymentProduct771SpecificInputBase.from_dictionary">
 <code class="descname">from_dictionary</code><span class="sig-paren">(</span><em>dictionary</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ingenico/connect/sdk/domain/payment/definitions/sepa_direct_debit_payment_product771_specific_input_base.html#SepaDirectDebitPaymentProduct771SpecificInputBase.from_dictionary"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ingenico.connect.sdk.domain.payment.definitions.sepa_direct_debit_payment_product771_specific_input_base.SepaDirectDebitPaymentProduct771SpecificInputBase.from_dictionary" title="Permalink to this definition">¶</a></dt>
@@ -10758,7 +10843,7 @@ representation for an object of the given type</p>
 <dt id="ingenico.connect.sdk.domain.payout.create_payout_request.CreatePayoutRequest.bank_account_bban">
 <code class="descname">bank_account_bban</code><a class="headerlink" href="#ingenico.connect.sdk.domain.payout.create_payout_request.CreatePayoutRequest.bank_account_bban" title="Permalink to this definition">¶</a></dt>
 <dd><div class="line-block">
-<div class="line">Object containing account holder name and bank account information. This field can only be used for payouts in the UK. Either a BBAN account or an IBAN account should be provided, but not both</div>
+<div class="line">Object containing account holder name and bank account information. This field can only be used for payouts in the UK. Either a BBAN account or an IBAN account should be provided, but not both.</div>
 </div>
 <p>Type: <a class="reference internal" href="#ingenico.connect.sdk.domain.definitions.bank_account_bban.BankAccountBban" title="ingenico.connect.sdk.domain.definitions.bank_account_bban.BankAccountBban"><code class="xref py py-class docutils literal notranslate"><span class="pre">ingenico.connect.sdk.domain.definitions.bank_account_bban.BankAccountBban</span></code></a></p>
 <p>Deprecated; | Use bankTransferPayoutMethodSpecificInput.bankAccountBban instead</p>
@@ -10768,7 +10853,7 @@ representation for an object of the given type</p>
 <dt id="ingenico.connect.sdk.domain.payout.create_payout_request.CreatePayoutRequest.bank_account_iban">
 <code class="descname">bank_account_iban</code><a class="headerlink" href="#ingenico.connect.sdk.domain.payout.create_payout_request.CreatePayoutRequest.bank_account_iban" title="Permalink to this definition">¶</a></dt>
 <dd><div class="line-block">
-<div class="line">Object containing account holder and IBAN information. Either a BBAN account or an IBAN account should be provided, but not both</div>
+<div class="line">Object containing account holder and IBAN information. Either a BBAN account or an IBAN account should be provided, but not both.</div>
 </div>
 <p>Type: <a class="reference internal" href="#ingenico.connect.sdk.domain.definitions.bank_account_iban.BankAccountIban" title="ingenico.connect.sdk.domain.definitions.bank_account_iban.BankAccountIban"><code class="xref py py-class docutils literal notranslate"><span class="pre">ingenico.connect.sdk.domain.definitions.bank_account_iban.BankAccountIban</span></code></a></p>
 <p>Deprecated; | Use bankTransferPayoutMethodSpecificInput.bankAccountIban instead</p>
@@ -11189,7 +11274,7 @@ representation for an object of the given type</p>
 <dt id="ingenico.connect.sdk.domain.payout.definitions.payout_references.PayoutReferences.merchant_reference">
 <code class="descname">merchant_reference</code><a class="headerlink" href="#ingenico.connect.sdk.domain.payout.definitions.payout_references.PayoutReferences.merchant_reference" title="Permalink to this definition">¶</a></dt>
 <dd><div class="line-block">
-<div class="line">Your unique reference of the transaction that is also returned in our report files. This is almost always used for your reconciliation of our report files.</div>
+<div class="line">Note that the maximum length of this field for transactions processed on the GlobalCollect platform is 30. Your unique reference of the transaction that is also returned in our report files. This is almost always used for your reconciliation of our report files.</div>
 </div>
 <p>Type: str</p>
 </dd></dl>
@@ -11542,7 +11627,7 @@ representation for an object of the given type</p>
 <dt id="ingenico.connect.sdk.domain.product.payment_product_networks_response.PaymentProductNetworksResponse.networks">
 <code class="descname">networks</code><a class="headerlink" href="#ingenico.connect.sdk.domain.product.payment_product_networks_response.PaymentProductNetworksResponse.networks" title="Permalink to this definition">¶</a></dt>
 <dd><div class="line-block">
-<div class="line">Array containing network entries for a payment product. The strings that represent the networks in the array are identical to the strings that the payment product vendors use in their documentation.For instance: “Visa” for Android Pay &lt;<a class="reference external" href="https://developer.apple.com/reference/passkit/pkpaymentnetwork">https://developer.apple.com/reference/passkit/pkpaymentnetwork</a>&gt;.</div>
+<div class="line">Array containing network entries for a payment product. The strings that represent the networks in the array are identical to the strings that the payment product vendors use in their documentation.For instance: “Visa” for Google Pay &lt;<a class="reference external" href="https://developer.apple.com/reference/passkit/pkpaymentnetwork">https://developer.apple.com/reference/passkit/pkpaymentnetwork</a>&gt;.</div>
 </div>
 <p>Type: list[str]</p>
 </dd></dl>
@@ -12102,6 +12187,19 @@ representation for an object of the given type</p>
 </dd></dl>
 
 <dl class="attribute">
+<dt id="ingenico.connect.sdk.domain.product.definitions.payment_product.PaymentProduct.is_java_script_required">
+<code class="descname">is_java_script_required</code><a class="headerlink" href="#ingenico.connect.sdk.domain.product.definitions.payment_product.PaymentProduct.is_java_script_required" title="Permalink to this definition">¶</a></dt>
+<dd><div class="line-block">
+<div class="line">This fields indicates if the payment product requires JavaScript to be enabled on the customer’s browser. This is usually only true if the payment product depends on a third party JavaScript integration.</div>
+</div>
+<ul class="simple">
+<li>true - the payment product requires JavaScript to be enabled.</li>
+<li>false - the payment product does not require JavaScript to be enabled. This is the default value if the field is not present.</li>
+</ul>
+<p>Type: bool</p>
+</dd></dl>
+
+<dl class="attribute">
 <dt id="ingenico.connect.sdk.domain.product.definitions.payment_product.PaymentProduct.max_amount">
 <code class="descname">max_amount</code><a class="headerlink" href="#ingenico.connect.sdk.domain.product.definitions.payment_product.PaymentProduct.max_amount" title="Permalink to this definition">¶</a></dt>
 <dd><div class="line-block">
@@ -12164,7 +12262,7 @@ representation for an object of the given type</p>
 <dt id="ingenico.connect.sdk.domain.product.definitions.payment_product.PaymentProduct.payment_product320_specific_data">
 <code class="descname">payment_product320_specific_data</code><a class="headerlink" href="#ingenico.connect.sdk.domain.product.definitions.payment_product.PaymentProduct.payment_product320_specific_data" title="Permalink to this definition">¶</a></dt>
 <dd><div class="line-block">
-<div class="line">Android Pay (payment product 320) specific details.</div>
+<div class="line">Google Pay (payment product 320) specific details.</div>
 </div>
 <p>Type: <a class="reference internal" href="#ingenico.connect.sdk.domain.product.definitions.payment_product320_specific_data.PaymentProduct320SpecificData" title="ingenico.connect.sdk.domain.product.definitions.payment_product320_specific_data.PaymentProduct320SpecificData"><code class="xref py py-class docutils literal notranslate"><span class="pre">ingenico.connect.sdk.domain.product.definitions.payment_product320_specific_data.PaymentProduct320SpecificData</span></code></a></p>
 </dd></dl>
@@ -12243,6 +12341,15 @@ representation for an object of the given type</p>
 <dt id="ingenico.connect.sdk.domain.product.definitions.payment_product320_specific_data.PaymentProduct320SpecificData.from_dictionary">
 <code class="descname">from_dictionary</code><span class="sig-paren">(</span><em>dictionary</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ingenico/connect/sdk/domain/product/definitions/payment_product320_specific_data.html#PaymentProduct320SpecificData.from_dictionary"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ingenico.connect.sdk.domain.product.definitions.payment_product320_specific_data.PaymentProduct320SpecificData.from_dictionary" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ingenico.connect.sdk.domain.product.definitions.payment_product320_specific_data.PaymentProduct320SpecificData.gateway">
+<code class="descname">gateway</code><a class="headerlink" href="#ingenico.connect.sdk.domain.product.definitions.payment_product320_specific_data.PaymentProduct320SpecificData.gateway" title="Permalink to this definition">¶</a></dt>
+<dd><div class="line-block">
+<div class="line">The GlobalCollect gateway identifier. You should use this when creating a tokenization specification &lt;<a class="reference external" href="https://developers.google.com/pay/api/android/reference/object#Gateway">https://developers.google.com/pay/api/android/reference/object#Gateway</a>&gt;.</div>
+</div>
+<p>Type: str</p>
+</dd></dl>
 
 <dl class="attribute">
 <dt id="ingenico.connect.sdk.domain.product.definitions.payment_product320_specific_data.PaymentProduct320SpecificData.networks">
@@ -13373,7 +13480,7 @@ representation for an object of the given type</p>
 <dt id="ingenico.connect.sdk.domain.refund.definitions.refund_references.RefundReferences.merchant_reference">
 <code class="descname">merchant_reference</code><a class="headerlink" href="#ingenico.connect.sdk.domain.refund.definitions.refund_references.RefundReferences.merchant_reference" title="Permalink to this definition">¶</a></dt>
 <dd><div class="line-block">
-<div class="line">Your unique reference of the transaction that is also returned in our report files. This is almost always used for your reconciliation of our report files.</div>
+<div class="line">Note that the maximum length of this field for transactions processed on the GlobalCollect platform is 30. Your unique reference of the transaction that is also returned in our report files. This is almost always used for your reconciliation of our report files.</div>
 </div>
 <p>Type: str</p>
 </dd></dl>

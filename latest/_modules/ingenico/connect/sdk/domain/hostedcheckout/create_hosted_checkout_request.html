@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>ingenico.connect.sdk.domain.hostedcheckout.create_hosted_checkout_request &#8212; connect-sdk-python3 2.29.0 documentation</title>
+    <title>ingenico.connect.sdk.domain.hostedcheckout.create_hosted_checkout_request &#8212; connect-sdk-python3 2.30.0 documentation</title>
     <link rel="stylesheet" href="../../../../../../_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="../../../../../../_static/pygments.css" type="text/css" />
     <script type="text/javascript" src="../../../../../../_static/documentation_options.js"></script>
@@ -38,6 +38,7 @@
 <span class="kn">from</span> <span class="nn">ingenico.connect.sdk.data_object</span> <span class="k">import</span> <span class="n">DataObject</span>
 <span class="kn">from</span> <span class="nn">ingenico.connect.sdk.domain.definitions.fraud_fields</span> <span class="k">import</span> <span class="n">FraudFields</span>
 <span class="kn">from</span> <span class="nn">ingenico.connect.sdk.domain.hostedcheckout.definitions.hosted_checkout_specific_input</span> <span class="k">import</span> <span class="n">HostedCheckoutSpecificInput</span>
+<span class="kn">from</span> <span class="nn">ingenico.connect.sdk.domain.hostedcheckout.definitions.mobile_payment_method_specific_input_hosted_checkout</span> <span class="k">import</span> <span class="n">MobilePaymentMethodSpecificInputHostedCheckout</span>
 <span class="kn">from</span> <span class="nn">ingenico.connect.sdk.domain.payment.definitions.bank_transfer_payment_method_specific_input_base</span> <span class="k">import</span> <span class="n">BankTransferPaymentMethodSpecificInputBase</span>
 <span class="kn">from</span> <span class="nn">ingenico.connect.sdk.domain.payment.definitions.card_payment_method_specific_input_base</span> <span class="k">import</span> <span class="n">CardPaymentMethodSpecificInputBase</span>
 <span class="kn">from</span> <span class="nn">ingenico.connect.sdk.domain.payment.definitions.cash_payment_method_specific_input_base</span> <span class="k">import</span> <span class="n">CashPaymentMethodSpecificInputBase</span>
@@ -55,6 +56,7 @@
     <span class="n">__e_invoice_payment_method_specific_input</span> <span class="o">=</span> <span class="kc">None</span>
     <span class="n">__fraud_fields</span> <span class="o">=</span> <span class="kc">None</span>
     <span class="n">__hosted_checkout_specific_input</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="n">__mobile_payment_method_specific_input</span> <span class="o">=</span> <span class="kc">None</span>
     <span class="n">__order</span> <span class="o">=</span> <span class="kc">None</span>
     <span class="n">__redirect_payment_method_specific_input</span> <span class="o">=</span> <span class="kc">None</span>
     <span class="n">__sepa_direct_debit_payment_method_specific_input</span> <span class="o">=</span> <span class="kc">None</span>
@@ -138,6 +140,19 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">__hosted_checkout_specific_input</span> <span class="o">=</span> <span class="n">value</span>
 
     <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">mobile_payment_method_specific_input</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        | Object containing reference data for Google Pay.</span>
+<span class="sd">        </span>
+<span class="sd">        Type: :class:`ingenico.connect.sdk.domain.hostedcheckout.definitions.mobile_payment_method_specific_input_hosted_checkout.MobilePaymentMethodSpecificInputHostedCheckout`</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__mobile_payment_method_specific_input</span>
+
+    <span class="nd">@mobile_payment_method_specific_input</span><span class="o">.</span><span class="n">setter</span>
+    <span class="k">def</span> <span class="nf">mobile_payment_method_specific_input</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">__mobile_payment_method_specific_input</span> <span class="o">=</span> <span class="n">value</span>
+
+    <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">order</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        | Order object containing order related data</span>
@@ -184,6 +199,7 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">_add_to_dictionary</span><span class="p">(</span><span class="n">dictionary</span><span class="p">,</span> <span class="s1">&#39;eInvoicePaymentMethodSpecificInput&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">e_invoice_payment_method_specific_input</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_add_to_dictionary</span><span class="p">(</span><span class="n">dictionary</span><span class="p">,</span> <span class="s1">&#39;fraudFields&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">fraud_fields</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_add_to_dictionary</span><span class="p">(</span><span class="n">dictionary</span><span class="p">,</span> <span class="s1">&#39;hostedCheckoutSpecificInput&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">hosted_checkout_specific_input</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_add_to_dictionary</span><span class="p">(</span><span class="n">dictionary</span><span class="p">,</span> <span class="s1">&#39;mobilePaymentMethodSpecificInput&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">mobile_payment_method_specific_input</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_add_to_dictionary</span><span class="p">(</span><span class="n">dictionary</span><span class="p">,</span> <span class="s1">&#39;order&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">order</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_add_to_dictionary</span><span class="p">(</span><span class="n">dictionary</span><span class="p">,</span> <span class="s1">&#39;redirectPaymentMethodSpecificInput&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">redirect_payment_method_specific_input</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_add_to_dictionary</span><span class="p">(</span><span class="n">dictionary</span><span class="p">,</span> <span class="s1">&#39;sepaDirectDebitPaymentMethodSpecificInput&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">sepa_direct_debit_payment_method_specific_input</span><span class="p">)</span>
@@ -221,6 +237,11 @@
                 <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s1">&#39;value </span><span class="se">\&#39;</span><span class="si">{}</span><span class="se">\&#39;</span><span class="s1"> is not a dictionary&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">dictionary</span><span class="p">[</span><span class="s1">&#39;hostedCheckoutSpecificInput&#39;</span><span class="p">]))</span>
             <span class="n">value</span> <span class="o">=</span> <span class="n">HostedCheckoutSpecificInput</span><span class="p">()</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">hosted_checkout_specific_input</span> <span class="o">=</span> <span class="n">value</span><span class="o">.</span><span class="n">from_dictionary</span><span class="p">(</span><span class="n">dictionary</span><span class="p">[</span><span class="s1">&#39;hostedCheckoutSpecificInput&#39;</span><span class="p">])</span>
+        <span class="k">if</span> <span class="s1">&#39;mobilePaymentMethodSpecificInput&#39;</span> <span class="ow">in</span> <span class="n">dictionary</span><span class="p">:</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">dictionary</span><span class="p">[</span><span class="s1">&#39;mobilePaymentMethodSpecificInput&#39;</span><span class="p">],</span> <span class="nb">dict</span><span class="p">):</span>
+                <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s1">&#39;value </span><span class="se">\&#39;</span><span class="si">{}</span><span class="se">\&#39;</span><span class="s1"> is not a dictionary&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">dictionary</span><span class="p">[</span><span class="s1">&#39;mobilePaymentMethodSpecificInput&#39;</span><span class="p">]))</span>
+            <span class="n">value</span> <span class="o">=</span> <span class="n">MobilePaymentMethodSpecificInputHostedCheckout</span><span class="p">()</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">mobile_payment_method_specific_input</span> <span class="o">=</span> <span class="n">value</span><span class="o">.</span><span class="n">from_dictionary</span><span class="p">(</span><span class="n">dictionary</span><span class="p">[</span><span class="s1">&#39;mobilePaymentMethodSpecificInput&#39;</span><span class="p">])</span>
         <span class="k">if</span> <span class="s1">&#39;order&#39;</span> <span class="ow">in</span> <span class="n">dictionary</span><span class="p">:</span>
             <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">dictionary</span><span class="p">[</span><span class="s1">&#39;order&#39;</span><span class="p">],</span> <span class="nb">dict</span><span class="p">):</span>
                 <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s1">&#39;value </span><span class="se">\&#39;</span><span class="si">{}</span><span class="se">\&#39;</span><span class="s1"> is not a dictionary&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">dictionary</span><span class="p">[</span><span class="s1">&#39;order&#39;</span><span class="p">]))</span>
