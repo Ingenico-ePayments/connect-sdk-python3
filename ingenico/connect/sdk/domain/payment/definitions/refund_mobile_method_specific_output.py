@@ -13,7 +13,7 @@ class RefundMobileMethodSpecificOutput(RefundMethodSpecificOutput):
     @property
     def network(self):
         """
-        | The network that was used for the refund. The string that represents the network is identical to the strings that the payment product vendors use in their documentation.For instance: "Visa" for Android Pay <https://developer.apple.com/reference/passkit/pkpaymentnetwork>.
+        | The network that was used for the refund. The string that represents the network is identical to the strings that the payment product vendors use in their documentation.For instance: "Visa" for Google Pay <https://developer.apple.com/reference/passkit/pkpaymentnetwork>.
         
         Type: str
         """

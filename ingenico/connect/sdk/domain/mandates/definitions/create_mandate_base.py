@@ -106,7 +106,7 @@ class CreateMandateBase(DataObject):
     @property
     def unique_mandate_reference(self):
         """
-        | The unique identifier of the mandate
+        | The unique identifier of the mandate. If you do not provide one, we will generate one for you.
         
         Type: str
         """

@@ -28,7 +28,7 @@ class EInvoicePaymentProduct9000SpecificInput(DataObject):
     @property
     def installment_id(self):
         """
-        | The ID of the installment plan selected by the consumer. Installment plans can be retreived with Get payment product <https://epayments-api.developer-ingenico.com/s2sapi/v1/en_US/python/products/get.html>.
+        | The ID of the installment plan selected by the consumer. Installment plans can be retrieved with Get payment product <https://epayments-api.developer-ingenico.com/s2sapi/v1/en_US/python/products/get.html>.
         
         Type: str
         """

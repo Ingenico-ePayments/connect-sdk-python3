@@ -140,7 +140,12 @@ class CreatePaymentRequest(DataObject):
     @property
     def mobile_payment_method_specific_input(self):
         """
-        | Object containing the specific input details for mobile payments
+        | Object containing the specific input details for mobile payments.
+        
+        | Mobile payments produce the required payment data in encrypted form.
+        
+        * For Apple Pay, the encrypted payment data can be found in field data of the PKPayment <https://developer.apple.com/documentation/passkit/pkpayment>.token.paymentData property.
+        * For Google Pay, the encrypted payment data can be found in field paymentMethodData.tokenizationData.token of the PaymentData <https://developers.google.com/android/reference/com/google/android/gms/wallet/PaymentData>.toJson() result.
         
         Type: :class:`ingenico.connect.sdk.domain.payment.definitions.mobile_payment_method_specific_input.MobilePaymentMethodSpecificInput`
         """

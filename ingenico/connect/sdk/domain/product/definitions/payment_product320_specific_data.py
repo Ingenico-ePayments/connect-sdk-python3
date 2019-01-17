@@ -8,7 +8,21 @@ from ingenico.connect.sdk.data_object import DataObject
 
 class PaymentProduct320SpecificData(DataObject):
 
+    __gateway = None
     __networks = None
+
+    @property
+    def gateway(self):
+        """
+        | The GlobalCollect gateway identifier. You should use this when creating a tokenization specification <https://developers.google.com/pay/api/android/reference/object#Gateway>.
+        
+        Type: str
+        """
+        return self.__gateway
+
+    @gateway.setter
+    def gateway(self, value):
+        self.__gateway = value
 
     @property
     def networks(self):
@@ -25,11 +39,14 @@ class PaymentProduct320SpecificData(DataObject):
 
     def to_dictionary(self):
         dictionary = super(PaymentProduct320SpecificData, self).to_dictionary()
+        self._add_to_dictionary(dictionary, 'gateway', self.gateway)
         self._add_to_dictionary(dictionary, 'networks', self.networks)
         return dictionary
 
     def from_dictionary(self, dictionary):
         super(PaymentProduct320SpecificData, self).from_dictionary(dictionary)
+        if 'gateway' in dictionary:
+            self.gateway = dictionary['gateway']
         if 'networks' in dictionary:
             if not isinstance(dictionary['networks'], list):
                 raise TypeError('value \'{}\' is not a list'.format(dictionary['networks']))

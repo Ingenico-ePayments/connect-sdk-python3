@@ -6,6 +6,7 @@
 from ingenico.connect.sdk.data_object import DataObject
 from ingenico.connect.sdk.domain.definitions.fraud_fields import FraudFields
 from ingenico.connect.sdk.domain.hostedcheckout.definitions.hosted_checkout_specific_input import HostedCheckoutSpecificInput
+from ingenico.connect.sdk.domain.hostedcheckout.definitions.mobile_payment_method_specific_input_hosted_checkout import MobilePaymentMethodSpecificInputHostedCheckout
 from ingenico.connect.sdk.domain.payment.definitions.bank_transfer_payment_method_specific_input_base import BankTransferPaymentMethodSpecificInputBase
 from ingenico.connect.sdk.domain.payment.definitions.card_payment_method_specific_input_base import CardPaymentMethodSpecificInputBase
 from ingenico.connect.sdk.domain.payment.definitions.cash_payment_method_specific_input_base import CashPaymentMethodSpecificInputBase
@@ -23,6 +24,7 @@ class CreateHostedCheckoutRequest(DataObject):
     __e_invoice_payment_method_specific_input = None
     __fraud_fields = None
     __hosted_checkout_specific_input = None
+    __mobile_payment_method_specific_input = None
     __order = None
     __redirect_payment_method_specific_input = None
     __sepa_direct_debit_payment_method_specific_input = None
@@ -106,6 +108,19 @@ class CreateHostedCheckoutRequest(DataObject):
         self.__hosted_checkout_specific_input = value
 
     @property
+    def mobile_payment_method_specific_input(self):
+        """
+        | Object containing reference data for Google Pay.
+        
+        Type: :class:`ingenico.connect.sdk.domain.hostedcheckout.definitions.mobile_payment_method_specific_input_hosted_checkout.MobilePaymentMethodSpecificInputHostedCheckout`
+        """
+        return self.__mobile_payment_method_specific_input
+
+    @mobile_payment_method_specific_input.setter
+    def mobile_payment_method_specific_input(self, value):
+        self.__mobile_payment_method_specific_input = value
+
+    @property
     def order(self):
         """
         | Order object containing order related data
@@ -152,6 +167,7 @@ class CreateHostedCheckoutRequest(DataObject):
         self._add_to_dictionary(dictionary, 'eInvoicePaymentMethodSpecificInput', self.e_invoice_payment_method_specific_input)
         self._add_to_dictionary(dictionary, 'fraudFields', self.fraud_fields)
         self._add_to_dictionary(dictionary, 'hostedCheckoutSpecificInput', self.hosted_checkout_specific_input)
+        self._add_to_dictionary(dictionary, 'mobilePaymentMethodSpecificInput', self.mobile_payment_method_specific_input)
         self._add_to_dictionary(dictionary, 'order', self.order)
         self._add_to_dictionary(dictionary, 'redirectPaymentMethodSpecificInput', self.redirect_payment_method_specific_input)
         self._add_to_dictionary(dictionary, 'sepaDirectDebitPaymentMethodSpecificInput', self.sepa_direct_debit_payment_method_specific_input)
@@ -189,6 +205,11 @@ class CreateHostedCheckoutRequest(DataObject):
                 raise TypeError('value \'{}\' is not a dictionary'.format(dictionary['hostedCheckoutSpecificInput']))
             value = HostedCheckoutSpecificInput()
             self.hosted_checkout_specific_input = value.from_dictionary(dictionary['hostedCheckoutSpecificInput'])
+        if 'mobilePaymentMethodSpecificInput' in dictionary:
+            if not isinstance(dictionary['mobilePaymentMethodSpecificInput'], dict):
+                raise TypeError('value \'{}\' is not a dictionary'.format(dictionary['mobilePaymentMethodSpecificInput']))
+            value = MobilePaymentMethodSpecificInputHostedCheckout()
+            self.mobile_payment_method_specific_input = value.from_dictionary(dictionary['mobilePaymentMethodSpecificInput'])
         if 'order' in dictionary:
             if not isinstance(dictionary['order'], dict):
                 raise TypeError('value \'{}\' is not a dictionary'.format(dictionary['order']))

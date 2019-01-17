@@ -13,14 +13,16 @@ class DecryptedPaymentData(DataObject):
     __dpan = None
     __eci = None
     __expiry_date = None
+    __pan = None
+    __payment_method = None
 
     @property
     def cardholder_name(self):
         """
-        | Card holder's name on the card. This maps to the following field in the vendor's encrypted payment data:
+        | Card holder's name on the card.
         
-        * Apple Pay: PKPayment.token.paymentData.data.cardholderName
-        * Android Pay: Not Available
+        * For Apple Pay, maps to the cardholderName field in the encrypted payment data.
+        * For Google Pay this is not available in the encrypted payment data, and can be omitted.
         
         Type: str
         """
@@ -33,10 +35,12 @@ class DecryptedPaymentData(DataObject):
     @property
     def cryptogram(self):
         """
-        | The 3D secure online payment cryptogram. This maps to the following field in the vendor's encrypted payment data:
+        | The 3D secure online payment cryptogram.
         
-        * Apple Pay: PKPayment.token.paymentData.data.paymentData.onlinePaymentCryptogram
-        * Android Pay: FullWallet.paymentMethodToken.token.encryptedMessage.3dsCryptogram
+        * For Apple Pay, maps to the paymentData.onlinePaymentCryptogram field in the encrypted payment data.
+        * For Google Pay, maps to the paymentMethodDetails.3dsCryptogram field in the encrypted payment data.
+        
+        | Not allowed for Google Pay if the paymentMethod is CARD.
         
         Type: str
         """
@@ -49,10 +53,12 @@ class DecryptedPaymentData(DataObject):
     @property
     def dpan(self):
         """
-        | The device specific PAN. This maps to the following field in the vendor's encrypted payment data:
+        | The device specific PAN.
         
-        * Apple Pay: PKPayment.token.paymentData.data.applicationPrimaryAccountNumber
-        * Android Pay: FullWallet.paymentMethodToken.token.encryptedMessage.dpan
+        * For Apple Pay, maps to the applicationPrimaryAccountNumber field in the encrypted payment data.
+        * For Google Pay, maps to the paymentMethodDetails.dpan field in the encrypted payment data.
+        
+        | Not allowed for Google Pay if the paymentMethod is CARD.
         
         Type: str
         """
@@ -65,10 +71,12 @@ class DecryptedPaymentData(DataObject):
     @property
     def eci(self):
         """
-        | Electronic Commerce Indicator. This maps to the following field in the vendor's encrypted payment data:
+        | Electronic Commerce Indicator.
         
-        * Apple Pay: PKPayment.token.paymentData.data.paymentData.eciIndicator
-        * Android Pay: FullWallet.paymentMethodToken.token.encryptedMessage.3dsEciIndicator
+        * For Apple Pay, maps to the paymentData.eciIndicator field in the encrypted payment data.
+        * For Google Pay, maps to the paymentMethodDetails.3dsEciIndicator field in the encryted payment data.
+        
+        | Not allowed for Google Pay if the paymentMethod is CARD.
         
         Type: int
         """
@@ -82,10 +90,10 @@ class DecryptedPaymentData(DataObject):
     def expiry_date(self):
         """
         | Expiry date of the card
-        | Format: MMYY. This maps to the following field in the vendor's encrypted payment data:
+        | Format: MMYY.
         
-        * Apple Pay: PKPayment.token.paymentData.data.applicationExpirationDate
-        * Android Pay:FullWallet.paymentMethodToken.token.encryptedMessage.expirationMonth and FullWallet.paymentMethodToken.token.encryptedMessage.expirationYear
+        * For Apple Pay, maps to the applicationExpirationDate field in the encrypted payment data. This field is formatted as YYMMDD, so this needs to be converted to get a correctly formatted expiry date.
+        * For Google Pay, maps to the paymentMethodDetails.expirationMonth and paymentMethodDetails.expirationYear fields in the encrypted payment data. These need to be combined to get a correctly formatted expiry date.
         
         Type: str
         """
@@ -95,6 +103,40 @@ class DecryptedPaymentData(DataObject):
     def expiry_date(self, value):
         self.__expiry_date = value
 
+    @property
+    def pan(self):
+        """
+        | The non-device specific complete credit/debit card number (also know as the PAN).
+        
+        * For Apple Pay this is not available in the encrypted payment data, and must be omitted.
+        * For Google Pay, maps to the paymentMethodDetails.pan field in the encrypted payment data.
+        
+        | Not allowed for Google Pay if the paymentMethod is TOKENIZED_CARD.
+        
+        Type: str
+        """
+        return self.__pan
+
+    @pan.setter
+    def pan(self, value):
+        self.__pan = value
+
+    @property
+    def payment_method(self):
+        """
+        | The type of the payment credential: either CARD or TOKENIZED_CARD.
+        
+        * For Apple Pay this is not available in the encrypted payment data, and must be omitted.
+        * For Google Pay, maps to the paymentMethod field in the encrypted payment data.
+        
+        Type: str
+        """
+        return self.__payment_method
+
+    @payment_method.setter
+    def payment_method(self, value):
+        self.__payment_method = value
+
     def to_dictionary(self):
         dictionary = super(DecryptedPaymentData, self).to_dictionary()
         self._add_to_dictionary(dictionary, 'cardholderName', self.cardholder_name)
@@ -102,6 +144,8 @@ class DecryptedPaymentData(DataObject):
         self._add_to_dictionary(dictionary, 'dpan', self.dpan)
         self._add_to_dictionary(dictionary, 'eci', self.eci)
         self._add_to_dictionary(dictionary, 'expiryDate', self.expiry_date)
+        self._add_to_dictionary(dictionary, 'pan', self.pan)
+        self._add_to_dictionary(dictionary, 'paymentMethod', self.payment_method)
         return dictionary
 
     def from_dictionary(self, dictionary):
@@ -116,4 +160,8 @@ class DecryptedPaymentData(DataObject):
             self.eci = dictionary['eci']
         if 'expiryDate' in dictionary:
             self.expiry_date = dictionary['expiryDate']
+        if 'pan' in dictionary:
+            self.pan = dictionary['pan']
+        if 'paymentMethod' in dictionary:
+            self.payment_method = dictionary['paymentMethod']
         return self

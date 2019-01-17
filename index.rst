@@ -583,6 +583,20 @@ API Reference
     :special-members:
     :exclude-members: __dict__,__weakref__,__module__,__get__
 
+.. automodule:: ingenico.connect.sdk.domain.hostedcheckout.definitions.mobile_payment_method_specific_input_hosted_checkout
+    :members:
+    :show-inheritance:
+    :undoc-members:
+    :special-members:
+    :exclude-members: __dict__,__weakref__,__module__,__get__
+
+.. automodule:: ingenico.connect.sdk.domain.hostedcheckout.definitions.mobile_payment_product320_specific_input_hosted_checkout
+    :members:
+    :show-inheritance:
+    :undoc-members:
+    :special-members:
+    :exclude-members: __dict__,__weakref__,__module__,__get__
+
 .. automodule:: ingenico.connect.sdk.domain.hostedcheckout.definitions.payment_product_filters_hosted_checkout
     :members:
     :show-inheritance:
@@ -1179,13 +1193,6 @@ API Reference
     :exclude-members: __dict__,__weakref__,__module__,__get__
 
 .. automodule:: ingenico.connect.sdk.domain.payment.definitions.mobile_payment_method_specific_output
-    :members:
-    :show-inheritance:
-    :undoc-members:
-    :special-members:
-    :exclude-members: __dict__,__weakref__,__module__,__get__
-
-.. automodule:: ingenico.connect.sdk.domain.payment.definitions.mobile_payment_product320_specific_input
     :members:
     :show-inheritance:
     :undoc-members:

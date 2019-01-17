@@ -104,6 +104,8 @@ class CreatedPaymentOutput(DataObject):
         | Please see Statuses <https://epayments-api.developer-ingenico.com/s2sapi/v1/en_US/python/statuses.html> for a full overview of possible values.
         
         Type: str
+        
+        Deprecated; | Use payment.statusOutput.statusCategory instead
         """
         return self.__payment_status_category
 

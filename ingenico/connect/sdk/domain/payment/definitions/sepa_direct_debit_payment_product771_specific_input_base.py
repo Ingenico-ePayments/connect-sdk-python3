@@ -12,7 +12,21 @@ class SepaDirectDebitPaymentProduct771SpecificInputBase(AbstractSepaDirectDebitP
     | Object containing information specific to SEPA Direct Debit for Hosted Checkouts.
     """
 
+    __existing_unique_mandate_reference = None
     __mandate = None
+
+    @property
+    def existing_unique_mandate_reference(self):
+        """
+        | The unique reference of the existing mandate to use in this payment.
+        
+        Type: str
+        """
+        return self.__existing_unique_mandate_reference
+
+    @existing_unique_mandate_reference.setter
+    def existing_unique_mandate_reference(self, value):
+        self.__existing_unique_mandate_reference = value
 
     @property
     def mandate(self):
@@ -29,11 +43,14 @@ class SepaDirectDebitPaymentProduct771SpecificInputBase(AbstractSepaDirectDebitP
 
     def to_dictionary(self):
         dictionary = super(SepaDirectDebitPaymentProduct771SpecificInputBase, self).to_dictionary()
+        self._add_to_dictionary(dictionary, 'existingUniqueMandateReference', self.existing_unique_mandate_reference)
         self._add_to_dictionary(dictionary, 'mandate', self.mandate)
         return dictionary
 
     def from_dictionary(self, dictionary):
         super(SepaDirectDebitPaymentProduct771SpecificInputBase, self).from_dictionary(dictionary)
+        if 'existingUniqueMandateReference' in dictionary:
+            self.existing_unique_mandate_reference = dictionary['existingUniqueMandateReference']
         if 'mandate' in dictionary:
             if not isinstance(dictionary['mandate'], dict):
                 raise TypeError('value \'{}\' is not a dictionary'.format(dictionary['mandate']))

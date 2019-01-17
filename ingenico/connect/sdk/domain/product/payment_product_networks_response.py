@@ -13,7 +13,7 @@ class PaymentProductNetworksResponse(DataObject):
     @property
     def networks(self):
         """
-        | Array containing network entries for a payment product. The strings that represent the networks in the array are identical to the strings that the payment product vendors use in their documentation.For instance: "Visa" for Android Pay <https://developer.apple.com/reference/passkit/pkpaymentnetwork>.
+        | Array containing network entries for a payment product. The strings that represent the networks in the array are identical to the strings that the payment product vendors use in their documentation.For instance: "Visa" for Google Pay <https://developer.apple.com/reference/passkit/pkpaymentnetwork>.
         
         Type: list[str]
         """

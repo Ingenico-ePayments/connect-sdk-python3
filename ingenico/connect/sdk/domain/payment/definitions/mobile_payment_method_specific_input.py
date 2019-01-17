@@ -5,7 +5,6 @@
 #
 from ingenico.connect.sdk.domain.definitions.abstract_payment_method_specific_input import AbstractPaymentMethodSpecificInput
 from ingenico.connect.sdk.domain.payment.definitions.decrypted_payment_data import DecryptedPaymentData
-from ingenico.connect.sdk.domain.payment.definitions.mobile_payment_product320_specific_input import MobilePaymentProduct320SpecificInput
 
 
 class MobilePaymentMethodSpecificInput(AbstractPaymentMethodSpecificInput):
@@ -13,10 +12,8 @@ class MobilePaymentMethodSpecificInput(AbstractPaymentMethodSpecificInput):
     __authorization_mode = None
     __decrypted_payment_data = None
     __encrypted_payment_data = None
-    __payment_product320_specific_input = None
     __requires_approval = None
     __skip_fraud_service = None
-    __transaction_id = None
 
     @property
     def authorization_mode(self):
@@ -40,8 +37,7 @@ class MobilePaymentMethodSpecificInput(AbstractPaymentMethodSpecificInput):
     @property
     def decrypted_payment_data(self):
         """
-        | The payment data if you want to do the decryption of the vendor's encrypted payment data yourself.
-        | Typically you'd use encryptedCustomerInput in the root of the create payment request to provide the payment data for mobile payment methods.Only when you do not do this you need to use either this field or encryptedPaymentData, depending on who should do the decryption of the vendor's encrypted payment data.
+        | The payment data if you do the decryption of the encrypted payment data yourself.
         
         Type: :class:`ingenico.connect.sdk.domain.payment.definitions.decrypted_payment_data.DecryptedPaymentData`
         """
@@ -54,11 +50,13 @@ class MobilePaymentMethodSpecificInput(AbstractPaymentMethodSpecificInput):
     @property
     def encrypted_payment_data(self):
         """
-        | The payment data if you want to let us do the decryption of the vendor's encrypted payment data.
-        | Typically you'd use encryptedCustomerInput in the root of the create payment request to provide the payment data for mobile payment methods.Only when you do not do this you need to use either this field or decryptedPaymentData, depending on who should do the decryption of the vendor's encrypted payment data.This maps to the following field in the vendor's encrypted payment data:
+        | The payment data if we will do the decryption of the encrypted payment data.
         
-        * Apple Pay: PKPayment.token.paymentData
-        * Android Pay: FullWallet.paymentMethodToken.token
+        
+        | Typically you'd use encryptedCustomerInput in the root of the create payment request to provide the encrypted payment data instead.
+        
+        * For Apple Pay, the encrypted payment data can be found in field data of the PKPayment <https://developer.apple.com/documentation/passkit/pkpayment>.token.paymentData property.
+        * For Google Pay, the encrypted payment data can be found in field paymentMethodData.tokenizationData.token of the PaymentData <https://developers.google.com/android/reference/com/google/android/gms/wallet/PaymentData>.toJson() result.
         
         Type: str
         """
@@ -67,19 +65,6 @@ class MobilePaymentMethodSpecificInput(AbstractPaymentMethodSpecificInput):
     @encrypted_payment_data.setter
     def encrypted_payment_data(self, value):
         self.__encrypted_payment_data = value
-
-    @property
-    def payment_product320_specific_input(self):
-        """
-        | Android Pay (payment product 320) specific details.
-        
-        Type: :class:`ingenico.connect.sdk.domain.payment.definitions.mobile_payment_product320_specific_input.MobilePaymentProduct320SpecificInput`
-        """
-        return self.__payment_product320_specific_input
-
-    @payment_product320_specific_input.setter
-    def payment_product320_specific_input(self, value):
-        self.__payment_product320_specific_input = value
 
     @property
     def requires_approval(self):
@@ -111,31 +96,13 @@ class MobilePaymentMethodSpecificInput(AbstractPaymentMethodSpecificInput):
     def skip_fraud_service(self, value):
         self.__skip_fraud_service = value
 
-    @property
-    def transaction_id(self):
-        """
-        | The vendor's transaction id. This maps to the following field in the vendor's encrypted payment data:
-        
-        * Apple Pay: PKPayment.token.transactionIdentifier
-        * Android Pay: FullWallet.googleTransactionId
-        
-        Type: str
-        """
-        return self.__transaction_id
-
-    @transaction_id.setter
-    def transaction_id(self, value):
-        self.__transaction_id = value
-
     def to_dictionary(self):
         dictionary = super(MobilePaymentMethodSpecificInput, self).to_dictionary()
         self._add_to_dictionary(dictionary, 'authorizationMode', self.authorization_mode)
         self._add_to_dictionary(dictionary, 'decryptedPaymentData', self.decrypted_payment_data)
         self._add_to_dictionary(dictionary, 'encryptedPaymentData', self.encrypted_payment_data)
-        self._add_to_dictionary(dictionary, 'paymentProduct320SpecificInput', self.payment_product320_specific_input)
         self._add_to_dictionary(dictionary, 'requiresApproval', self.requires_approval)
         self._add_to_dictionary(dictionary, 'skipFraudService', self.skip_fraud_service)
-        self._add_to_dictionary(dictionary, 'transactionId', self.transaction_id)
         return dictionary
 
     def from_dictionary(self, dictionary):
@@ -149,15 +116,8 @@ class MobilePaymentMethodSpecificInput(AbstractPaymentMethodSpecificInput):
             self.decrypted_payment_data = value.from_dictionary(dictionary['decryptedPaymentData'])
         if 'encryptedPaymentData' in dictionary:
             self.encrypted_payment_data = dictionary['encryptedPaymentData']
-        if 'paymentProduct320SpecificInput' in dictionary:
-            if not isinstance(dictionary['paymentProduct320SpecificInput'], dict):
-                raise TypeError('value \'{}\' is not a dictionary'.format(dictionary['paymentProduct320SpecificInput']))
-            value = MobilePaymentProduct320SpecificInput()
-            self.payment_product320_specific_input = value.from_dictionary(dictionary['paymentProduct320SpecificInput'])
         if 'requiresApproval' in dictionary:
             self.requires_approval = dictionary['requiresApproval']
         if 'skipFraudService' in dictionary:
             self.skip_fraud_service = dictionary['skipFraudService']
-        if 'transactionId' in dictionary:
-            self.transaction_id = dictionary['transactionId']
         return self

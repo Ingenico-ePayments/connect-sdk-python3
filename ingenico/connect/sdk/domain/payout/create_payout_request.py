@@ -42,7 +42,7 @@ class CreatePayoutRequest(DataObject):
     @property
     def bank_account_bban(self):
         """
-        | Object containing account holder name and bank account information. This field can only be used for payouts in the UK. Either a BBAN account or an IBAN account should be provided, but not both
+        | Object containing account holder name and bank account information. This field can only be used for payouts in the UK. Either a BBAN account or an IBAN account should be provided, but not both.
         
         Type: :class:`ingenico.connect.sdk.domain.definitions.bank_account_bban.BankAccountBban`
         
@@ -57,7 +57,7 @@ class CreatePayoutRequest(DataObject):
     @property
     def bank_account_iban(self):
         """
-        | Object containing account holder and IBAN information. Either a BBAN account or an IBAN account should be provided, but not both
+        | Object containing account holder and IBAN information. Either a BBAN account or an IBAN account should be provided, but not both.
         
         Type: :class:`ingenico.connect.sdk.domain.definitions.bank_account_iban.BankAccountIban`
         

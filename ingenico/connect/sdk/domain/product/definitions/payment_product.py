@@ -26,6 +26,7 @@ class PaymentProduct(DataObject):
     __fields = None
     __fields_warning = None
     __id = None
+    __is_java_script_required = None
     __max_amount = None
     __min_amount = None
     __mobile_integration_level = None
@@ -195,6 +196,22 @@ class PaymentProduct(DataObject):
         self.__id = value
 
     @property
+    def is_java_script_required(self):
+        """
+        | This fields indicates if the payment product requires JavaScript to be enabled on the customer's browser. This is usually only true if the payment product depends on a third party JavaScript integration.
+        
+        * true - the payment product requires JavaScript to be enabled.
+        * false - the payment product does not require JavaScript to be enabled. This is the default value if the field is not present.
+        
+        Type: bool
+        """
+        return self.__is_java_script_required
+
+    @is_java_script_required.setter
+    def is_java_script_required(self, value):
+        self.__is_java_script_required = value
+
+    @property
     def max_amount(self):
         """
         | Maximum amount in EUR cents (using 2 decimals, so 1 EUR becomes 100 cents) for transactions done with this payment product
@@ -274,7 +291,7 @@ class PaymentProduct(DataObject):
     @property
     def payment_product320_specific_data(self):
         """
-        | Android Pay (payment product 320) specific details.
+        | Google Pay (payment product 320) specific details.
         
         Type: :class:`ingenico.connect.sdk.domain.product.definitions.payment_product320_specific_data.PaymentProduct320SpecificData`
         """
@@ -341,6 +358,7 @@ class PaymentProduct(DataObject):
         self._add_to_dictionary(dictionary, 'fields', self.fields)
         self._add_to_dictionary(dictionary, 'fieldsWarning', self.fields_warning)
         self._add_to_dictionary(dictionary, 'id', self.id)
+        self._add_to_dictionary(dictionary, 'isJavaScriptRequired', self.is_java_script_required)
         self._add_to_dictionary(dictionary, 'maxAmount', self.max_amount)
         self._add_to_dictionary(dictionary, 'minAmount', self.min_amount)
         self._add_to_dictionary(dictionary, 'mobileIntegrationLevel', self.mobile_integration_level)
@@ -392,6 +410,8 @@ class PaymentProduct(DataObject):
             self.fields_warning = dictionary['fieldsWarning']
         if 'id' in dictionary:
             self.id = dictionary['id']
+        if 'isJavaScriptRequired' in dictionary:
+            self.is_java_script_required = dictionary['isJavaScriptRequired']
         if 'maxAmount' in dictionary:
             self.max_amount = dictionary['maxAmount']
         if 'minAmount' in dictionary:
