@@ -3,10 +3,10 @@
 # This class was auto-generated from the API references found at
 # https://epayments-api.developer-ingenico.com/s2sapi/v1/
 #
-from ingenico.connect.sdk.data_object import DataObject
+from ingenico.connect.sdk.domain.payment.definitions.abstract_redirect_payment_product840_specific_input import AbstractRedirectPaymentProduct840SpecificInput
 
 
-class RedirectPaymentProduct840SpecificInput(DataObject):
+class RedirectPaymentProduct840SpecificInput(AbstractRedirectPaymentProduct840SpecificInput):
     """
     | Please find below specific input fields for payment product 840 (PayPal)
     """
@@ -32,10 +32,13 @@ class RedirectPaymentProduct840SpecificInput(DataObject):
     @property
     def is_shortcut(self):
         """
-        | Indicates whether to use PayPal Express Checkout. 
+        | Deprecated: If your PayPal payments are processed by Ingenico's Ogone Payment Platform, please use the field addressSelectionAtPayPal instead.
+        | Indicates whether to use PayPal Express Checkout for payments processed by Ingenico's GlobalCollect Payment Platform. 
         
         * true = PayPal Express Checkout 
-        * false = Regular PayPal payment
+        * false = Regular PayPal payment 
+        
+        | . For payments processed by Ingenico's Ogone Payment Platform, please see the addressSelectionAtPayPal field for more information.
         
         Type: bool
         """

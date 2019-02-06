@@ -22,9 +22,7 @@ class SessionsClient(ApiResource):
 
     def create(self, body, context=None):
         """
-        Resource /{merchantId}/sessions
-
-        | Create session
+        Resource /{merchantId}/sessions - Create session
         
         See also https://epayments-api.developer-ingenico.com/s2sapi/v1/en_US/python/sessions/create.html
 

@@ -8,7 +8,7 @@ from ingenico.connect.sdk.param_request import ParamRequest
 
 class NetworksParams(ParamRequest):
     """
-    Query parameters for | Get payment product networks
+    Query parameters for Get payment product networks
     
     See also https://epayments-api.developer-ingenico.com/s2sapi/v1/en_US/python/products/networks.html
     """

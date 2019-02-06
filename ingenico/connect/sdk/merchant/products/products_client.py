@@ -28,9 +28,7 @@ class ProductsClient(ApiResource):
 
     def find(self, query, context=None):
         """
-        Resource /{merchantId}/products
-
-        | Get payment products
+        Resource /{merchantId}/products - Get payment products
         
         See also https://epayments-api.developer-ingenico.com/s2sapi/v1/en_US/python/products/find.html
 
@@ -62,9 +60,7 @@ class ProductsClient(ApiResource):
 
     def get(self, payment_product_id, query, context=None):
         """
-        Resource /{merchantId}/products/{paymentProductId}
-
-        | Get payment product
+        Resource /{merchantId}/products/{paymentProductId} - Get payment product
         
         See also https://epayments-api.developer-ingenico.com/s2sapi/v1/en_US/python/products/get.html
 
@@ -100,9 +96,7 @@ class ProductsClient(ApiResource):
 
     def directory(self, payment_product_id, query, context=None):
         """
-        Resource /{merchantId}/products/{paymentProductId}/directory
-
-        | Get payment product directory
+        Resource /{merchantId}/products/{paymentProductId}/directory - Get payment product directory
         
         See also https://epayments-api.developer-ingenico.com/s2sapi/v1/en_US/python/products/directory.html
 
@@ -138,9 +132,7 @@ class ProductsClient(ApiResource):
 
     def customer_details(self, payment_product_id, body, context=None):
         """
-        Resource /{merchantId}/products/{paymentProductId}/customerDetails
-
-        | Get customer details
+        Resource /{merchantId}/products/{paymentProductId}/customerDetails - Get customer details
         
         See also https://epayments-api.developer-ingenico.com/s2sapi/v1/en_US/python/products/customerDetails.html
 
@@ -177,9 +169,7 @@ class ProductsClient(ApiResource):
 
     def device_fingerprint(self, payment_product_id, body, context=None):
         """
-        Resource /{merchantId}/products/{paymentProductId}/deviceFingerprint
-
-        | Get device fingerprint
+        Resource /{merchantId}/products/{paymentProductId}/deviceFingerprint - Get device fingerprint
         
         See also https://epayments-api.developer-ingenico.com/s2sapi/v1/en_US/python/products/deviceFingerprint.html
 
@@ -216,9 +206,7 @@ class ProductsClient(ApiResource):
 
     def networks(self, payment_product_id, query, context=None):
         """
-        Resource /{merchantId}/products/{paymentProductId}/networks
-
-        | Get payment product networks
+        Resource /{merchantId}/products/{paymentProductId}/networks - Get payment product networks
         
         See also https://epayments-api.developer-ingenico.com/s2sapi/v1/en_US/python/products/networks.html
 
@@ -254,9 +242,7 @@ class ProductsClient(ApiResource):
 
     def public_key(self, payment_product_id, context=None):
         """
-        Resource /{merchantId}/products/{paymentProductId}/publicKey
-
-        | Get payment product specific public key
+        Resource /{merchantId}/products/{paymentProductId}/publicKey - Get payment product specific public key
         
         See also https://epayments-api.developer-ingenico.com/s2sapi/v1/en_US/python/products/publicKey.html
 

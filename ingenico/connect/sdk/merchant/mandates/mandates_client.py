@@ -23,9 +23,7 @@ class MandatesClient(ApiResource):
 
     def create(self, body, context=None):
         """
-        Resource /{merchantId}/mandates
-
-        | Create mandate
+        Resource /{merchantId}/mandates - Create mandate
         
         See also https://epayments-api.developer-ingenico.com/s2sapi/v1/en_US/python/mandates/create.html
 
@@ -58,9 +56,7 @@ class MandatesClient(ApiResource):
 
     def create_with_mandate_reference(self, unique_mandate_reference, body, context=None):
         """
-        Resource /{merchantId}/mandates/{uniqueMandateReference}
-
-        | Create mandate with mandatereference
+        Resource /{merchantId}/mandates/{uniqueMandateReference} - Create mandate with mandatereference
         
         See also https://epayments-api.developer-ingenico.com/s2sapi/v1/en_US/python/mandates/createWithMandateReference.html
 
@@ -97,9 +93,7 @@ class MandatesClient(ApiResource):
 
     def get(self, unique_mandate_reference, context=None):
         """
-        Resource /{merchantId}/mandates/{uniqueMandateReference}
-
-        | Get mandate
+        Resource /{merchantId}/mandates/{uniqueMandateReference} - Get mandate
         
         See also https://epayments-api.developer-ingenico.com/s2sapi/v1/en_US/python/mandates/get.html
 
@@ -134,9 +128,7 @@ class MandatesClient(ApiResource):
 
     def block(self, unique_mandate_reference, context=None):
         """
-        Resource /{merchantId}/mandates/{uniqueMandateReference}/block
-
-        | Block mandate
+        Resource /{merchantId}/mandates/{uniqueMandateReference}/block - Block mandate
         
         See also https://epayments-api.developer-ingenico.com/s2sapi/v1/en_US/python/mandates/block.html
 
@@ -172,9 +164,7 @@ class MandatesClient(ApiResource):
 
     def unblock(self, unique_mandate_reference, context=None):
         """
-        Resource /{merchantId}/mandates/{uniqueMandateReference}/unblock
-
-        | Unblock mandate
+        Resource /{merchantId}/mandates/{uniqueMandateReference}/unblock - Unblock mandate
         
         See also https://epayments-api.developer-ingenico.com/s2sapi/v1/en_US/python/mandates/unblock.html
 
@@ -210,9 +200,7 @@ class MandatesClient(ApiResource):
 
     def revoke(self, unique_mandate_reference, context=None):
         """
-        Resource /{merchantId}/mandates/{uniqueMandateReference}/revoke
-
-        | Revoke mandate
+        Resource /{merchantId}/mandates/{uniqueMandateReference}/revoke - Revoke mandate
         
         See also https://epayments-api.developer-ingenico.com/s2sapi/v1/en_US/python/mandates/revoke.html
 

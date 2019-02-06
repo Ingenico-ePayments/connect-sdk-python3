@@ -8,7 +8,7 @@ from ingenico.connect.sdk.param_request import ParamRequest
 
 class FindProductsParams(ParamRequest):
     """
-    Query parameters for | Get payment products
+    Query parameters for Get payment products
     
     See also https://epayments-api.developer-ingenico.com/s2sapi/v1/en_US/python/products/find.html
     """

@@ -8,7 +8,7 @@ from ingenico.connect.sdk.param_request import ParamRequest
 
 class FindPaymentsParams(ParamRequest):
     """
-    Query parameters for | Find payments
+    Query parameters for Find payments
     
     See also https://epayments-api.developer-ingenico.com/s2sapi/v1/en_US/python/payments/find.html
     """

@@ -24,9 +24,7 @@ class PayoutsClient(ApiResource):
 
     def create(self, body, context=None):
         """
-        Resource /{merchantId}/payouts
-
-        | Create payout
+        Resource /{merchantId}/payouts - Create payout
         
         See also https://epayments-api.developer-ingenico.com/s2sapi/v1/en_US/python/payouts/create.html
 
@@ -60,9 +58,7 @@ class PayoutsClient(ApiResource):
 
     def find(self, query, context=None):
         """
-        Resource /{merchantId}/payouts
-
-        | Find payouts
+        Resource /{merchantId}/payouts - Find payouts
         
         See also https://epayments-api.developer-ingenico.com/s2sapi/v1/en_US/python/payouts/find.html
 
@@ -94,9 +90,7 @@ class PayoutsClient(ApiResource):
 
     def get(self, payout_id, context=None):
         """
-        Resource /{merchantId}/payouts/{payoutId}
-
-        | Get payout
+        Resource /{merchantId}/payouts/{payoutId} - Get payout
         
         See also https://epayments-api.developer-ingenico.com/s2sapi/v1/en_US/python/payouts/get.html
 
@@ -131,9 +125,7 @@ class PayoutsClient(ApiResource):
 
     def approve(self, payout_id, body, context=None):
         """
-        Resource /{merchantId}/payouts/{payoutId}/approve
-
-        | Approve payout
+        Resource /{merchantId}/payouts/{payoutId}/approve - Approve payout
         
         See also https://epayments-api.developer-ingenico.com/s2sapi/v1/en_US/python/payouts/approve.html
 
@@ -170,9 +162,7 @@ class PayoutsClient(ApiResource):
 
     def cancel(self, payout_id, context=None):
         """
-        Resource /{merchantId}/payouts/{payoutId}/cancel
-
-        | Cancel payout
+        Resource /{merchantId}/payouts/{payoutId}/cancel - Cancel payout
         
         See also https://epayments-api.developer-ingenico.com/s2sapi/v1/en_US/python/payouts/cancel.html
 
@@ -208,9 +198,7 @@ class PayoutsClient(ApiResource):
 
     def cancelapproval(self, payout_id, context=None):
         """
-        Resource /{merchantId}/payouts/{payoutId}/cancelapproval
-
-        | Undo approve payout
+        Resource /{merchantId}/payouts/{payoutId}/cancelapproval - Undo approve payout
         
         See also https://epayments-api.developer-ingenico.com/s2sapi/v1/en_US/python/payouts/cancelapproval.html
 

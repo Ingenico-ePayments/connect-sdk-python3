@@ -25,9 +25,7 @@ class ServicesClient(ApiResource):
 
     def convert_amount(self, query, context=None):
         """
-        Resource /{merchantId}/services/convert/amount
-
-        | Convert amount
+        Resource /{merchantId}/services/convert/amount - Convert amount
         
         See also https://epayments-api.developer-ingenico.com/s2sapi/v1/en_US/python/services/convertAmount.html
 
@@ -65,9 +63,7 @@ class ServicesClient(ApiResource):
 
     def bankaccount(self, body, context=None):
         """
-        Resource /{merchantId}/services/convert/bankaccount
-
-        | Convert bankaccount
+        Resource /{merchantId}/services/convert/bankaccount - Convert bankaccount
         
         See also https://epayments-api.developer-ingenico.com/s2sapi/v1/en_US/python/services/bankaccount.html
 
@@ -100,9 +96,7 @@ class ServicesClient(ApiResource):
 
     def get_iin_details(self, body, context=None):
         """
-        Resource /{merchantId}/services/getIINdetails
-
-        | Get IIN details
+        Resource /{merchantId}/services/getIINdetails - Get IIN details
         
         See also https://epayments-api.developer-ingenico.com/s2sapi/v1/en_US/python/services/getIINdetails.html
 
@@ -141,9 +135,7 @@ class ServicesClient(ApiResource):
 
     def testconnection(self, context=None):
         """
-        Resource /{merchantId}/services/testconnection
-
-        | Test connection
+        Resource /{merchantId}/services/testconnection - Test connection
         
         See also https://epayments-api.developer-ingenico.com/s2sapi/v1/en_US/python/services/testconnection.html
 

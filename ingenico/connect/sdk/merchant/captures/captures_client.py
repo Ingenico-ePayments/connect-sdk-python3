@@ -22,9 +22,7 @@ class CapturesClient(ApiResource):
 
     def get(self, capture_id, context=None):
         """
-        Resource /{merchantId}/captures/{captureId}
-
-        | Get capture
+        Resource /{merchantId}/captures/{captureId} - Get capture
         
         See also https://epayments-api.developer-ingenico.com/s2sapi/v1/en_US/python/captures/get.html
 

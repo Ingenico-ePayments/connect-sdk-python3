@@ -8,7 +8,7 @@ from ingenico.connect.sdk.param_request import ParamRequest
 
 class DirectoryParams(ParamRequest):
     """
-    Query parameters for | Get payment product directory
+    Query parameters for Get payment product directory
     
     See also https://epayments-api.developer-ingenico.com/s2sapi/v1/en_US/python/products/directory.html
     """

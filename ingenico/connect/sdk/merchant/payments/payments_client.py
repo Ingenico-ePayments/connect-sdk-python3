@@ -6,6 +6,8 @@ from ingenico.connect.sdk.api_resource import ApiResource
 from ingenico.connect.sdk.response_exception import ResponseException
 from ingenico.connect.sdk.domain.capture.capture_response import CaptureResponse
 from ingenico.connect.sdk.domain.capture.captures_response import CapturesResponse
+from ingenico.connect.sdk.domain.dispute.dispute_response import DisputeResponse
+from ingenico.connect.sdk.domain.dispute.disputes_response import DisputesResponse
 from ingenico.connect.sdk.domain.errors.error_response import ErrorResponse
 from ingenico.connect.sdk.domain.payment.cancel_approval_payment_response import CancelApprovalPaymentResponse
 from ingenico.connect.sdk.domain.payment.cancel_payment_response import CancelPaymentResponse
@@ -36,9 +38,7 @@ class PaymentsClient(ApiResource):
 
     def create(self, body, context=None):
         """
-        Resource /{merchantId}/payments
-
-        | Create payment
+        Resource /{merchantId}/payments - Create payment
         
         See also https://epayments-api.developer-ingenico.com/s2sapi/v1/en_US/python/payments/create.html
 
@@ -72,9 +72,7 @@ class PaymentsClient(ApiResource):
 
     def find(self, query, context=None):
         """
-        Resource /{merchantId}/payments
-
-        | Find payments
+        Resource /{merchantId}/payments - Find payments
         
         See also https://epayments-api.developer-ingenico.com/s2sapi/v1/en_US/python/payments/find.html
 
@@ -106,9 +104,7 @@ class PaymentsClient(ApiResource):
 
     def get(self, payment_id, context=None):
         """
-        Resource /{merchantId}/payments/{paymentId}
-
-        | Get payment
+        Resource /{merchantId}/payments/{paymentId} - Get payment
         
         See also https://epayments-api.developer-ingenico.com/s2sapi/v1/en_US/python/payments/get.html
 
@@ -143,9 +139,7 @@ class PaymentsClient(ApiResource):
 
     def complete(self, payment_id, body, context=None):
         """
-        Resource /{merchantId}/payments/{paymentId}/complete
-
-        | Complete payment
+        Resource /{merchantId}/payments/{paymentId}/complete - Complete payment
         
         See also https://epayments-api.developer-ingenico.com/s2sapi/v1/en_US/python/payments/complete.html
 
@@ -182,9 +176,7 @@ class PaymentsClient(ApiResource):
 
     def third_party_status(self, payment_id, context=None):
         """
-        Resource /{merchantId}/payments/{paymentId}/thirdpartystatus
-
-        | Third party status poll
+        Resource /{merchantId}/payments/{paymentId}/thirdpartystatus - Third party status poll
         
         See also https://epayments-api.developer-ingenico.com/s2sapi/v1/en_US/python/payments/thirdPartyStatus.html
 
@@ -219,9 +211,7 @@ class PaymentsClient(ApiResource):
 
     def tokenize(self, payment_id, body, context=None):
         """
-        Resource /{merchantId}/payments/{paymentId}/tokenize
-
-        | Create a token from payment
+        Resource /{merchantId}/payments/{paymentId}/tokenize - Create a token from payment
         
         See also https://epayments-api.developer-ingenico.com/s2sapi/v1/en_US/python/payments/tokenize.html
 
@@ -258,9 +248,7 @@ class PaymentsClient(ApiResource):
 
     def processchallenged(self, payment_id, context=None):
         """
-        Resource /{merchantId}/payments/{paymentId}/processchallenged
-
-        | Approves challenged payment
+        Resource /{merchantId}/payments/{paymentId}/processchallenged - Approves challenged payment
         
         See also https://epayments-api.developer-ingenico.com/s2sapi/v1/en_US/python/payments/processchallenged.html
 
@@ -296,9 +284,7 @@ class PaymentsClient(ApiResource):
 
     def approve(self, payment_id, body, context=None):
         """
-        Resource /{merchantId}/payments/{paymentId}/approve
-
-        | Approve payment
+        Resource /{merchantId}/payments/{paymentId}/approve - Approve payment
         
         See also https://epayments-api.developer-ingenico.com/s2sapi/v1/en_US/python/payments/approve.html
 
@@ -335,9 +321,7 @@ class PaymentsClient(ApiResource):
 
     def capture(self, payment_id, body, context=None):
         """
-        Resource /{merchantId}/payments/{paymentId}/capture
-
-        | Capture payment
+        Resource /{merchantId}/payments/{paymentId}/capture - Capture payment
         
         See also https://epayments-api.developer-ingenico.com/s2sapi/v1/en_US/python/payments/capture.html
 
@@ -374,9 +358,7 @@ class PaymentsClient(ApiResource):
 
     def cancelapproval(self, payment_id, context=None):
         """
-        Resource /{merchantId}/payments/{paymentId}/cancelapproval
-
-        | Undo capture payment
+        Resource /{merchantId}/payments/{paymentId}/cancelapproval - Undo capture payment
         
         See also https://epayments-api.developer-ingenico.com/s2sapi/v1/en_US/python/payments/cancelapproval.html
 
@@ -412,9 +394,7 @@ class PaymentsClient(ApiResource):
 
     def captures(self, payment_id, context=None):
         """
-        Resource /{merchantId}/payments/{paymentId}/captures
-
-        | Get captures of payment
+        Resource /{merchantId}/payments/{paymentId}/captures - Get captures of payment
         
         See also https://epayments-api.developer-ingenico.com/s2sapi/v1/en_US/python/payments/captures.html
 
@@ -449,9 +429,7 @@ class PaymentsClient(ApiResource):
 
     def refund(self, payment_id, body, context=None):
         """
-        Resource /{merchantId}/payments/{paymentId}/refund
-
-        | Create refund
+        Resource /{merchantId}/payments/{paymentId}/refund - Create refund
         
         See also https://epayments-api.developer-ingenico.com/s2sapi/v1/en_US/python/payments/refund.html
 
@@ -489,9 +467,7 @@ class PaymentsClient(ApiResource):
 
     def refunds(self, payment_id, context=None):
         """
-        Resource /{merchantId}/payments/{paymentId}/refunds
-
-        | Get refunds of payment
+        Resource /{merchantId}/payments/{paymentId}/refunds - Get refunds of payment
         
         See also https://epayments-api.developer-ingenico.com/s2sapi/v1/en_US/python/payments/refunds.html
 
@@ -526,9 +502,7 @@ class PaymentsClient(ApiResource):
 
     def cancel(self, payment_id, context=None):
         """
-        Resource /{merchantId}/payments/{paymentId}/cancel
-
-        | Cancel payment
+        Resource /{merchantId}/payments/{paymentId}/cancel - Cancel payment
         
         See also https://epayments-api.developer-ingenico.com/s2sapi/v1/en_US/python/payments/cancel.html
 
@@ -555,6 +529,78 @@ class PaymentsClient(ApiResource):
                     None,
                     None,
                     CancelPaymentResponse,
+                    context)
+
+        except ResponseException as e:
+            error_type = ErrorResponse
+            error_object = self._communicator.marshaller.unmarshal(e.body, error_type)
+            raise self._create_exception(e.status_code, e.body, error_object, context)
+
+    def dispute(self, payment_id, body, context=None):
+        """
+        Resource /{merchantId}/payments/{paymentId}/dispute - Create dispute
+        
+        See also https://epayments-api.developer-ingenico.com/s2sapi/v1/en_US/python/payments/dispute.html
+
+        :param payment_id:  str
+        :param body:        :class:`ingenico.connect.sdk.domain.dispute.create_dispute_request.CreateDisputeRequest`
+        :param context:     :class:`ingenico.connect.sdk.call_context.CallContext`
+        :return: :class:`ingenico.connect.sdk.domain.dispute.dispute_response.DisputeResponse`
+        :raise: ValidationException if the request was not correct and couldn't be processed (HTTP status code 400)
+        :raise: AuthorizationException if the request was not allowed (HTTP status code 403)
+        :raise: ReferenceException if an object was attempted to be referenced that doesn't exist or has been removed,
+                   or there was a conflict (HTTP status code 404, 409 or 410)
+        :raise: GlobalCollectException if something went wrong at the Ingenico ePayments platform,
+                   the Ingenico ePayments platform was unable to process a message from a downstream partner/acquirer,
+                   or the service that you're trying to reach is temporary unavailable (HTTP status code 500, 502 or 503)
+        :raise: ApiException if the Ingenico ePayments platform returned any other error
+        """
+        path_context = {
+            "paymentId": payment_id,
+        }
+        uri = self._instantiate_uri("/{apiVersion}/{merchantId}/payments/{paymentId}/dispute", path_context)
+        try:
+            return self._communicator.post(
+                    uri,
+                    self._client_headers,
+                    None,
+                    body,
+                    DisputeResponse,
+                    context)
+
+        except ResponseException as e:
+            error_type = ErrorResponse
+            error_object = self._communicator.marshaller.unmarshal(e.body, error_type)
+            raise self._create_exception(e.status_code, e.body, error_object, context)
+
+    def disputes(self, payment_id, context=None):
+        """
+        Resource /{merchantId}/payments/{paymentId}/disputes - Get disputes
+        
+        See also https://epayments-api.developer-ingenico.com/s2sapi/v1/en_US/python/payments/disputes.html
+
+        :param payment_id:  str
+        :param context:     :class:`ingenico.connect.sdk.call_context.CallContext`
+        :return: :class:`ingenico.connect.sdk.domain.dispute.disputes_response.DisputesResponse`
+        :raise: ValidationException if the request was not correct and couldn't be processed (HTTP status code 400)
+        :raise: AuthorizationException if the request was not allowed (HTTP status code 403)
+        :raise: ReferenceException if an object was attempted to be referenced that doesn't exist or has been removed,
+                   or there was a conflict (HTTP status code 404, 409 or 410)
+        :raise: GlobalCollectException if something went wrong at the Ingenico ePayments platform,
+                   the Ingenico ePayments platform was unable to process a message from a downstream partner/acquirer,
+                   or the service that you're trying to reach is temporary unavailable (HTTP status code 500, 502 or 503)
+        :raise: ApiException if the Ingenico ePayments platform returned any other error
+        """
+        path_context = {
+            "paymentId": payment_id,
+        }
+        uri = self._instantiate_uri("/{apiVersion}/{merchantId}/payments/{paymentId}/disputes", path_context)
+        try:
+            return self._communicator.get(
+                    uri,
+                    self._client_headers,
+                    None,
+                    DisputesResponse,
                     context)
 
         except ResponseException as e:

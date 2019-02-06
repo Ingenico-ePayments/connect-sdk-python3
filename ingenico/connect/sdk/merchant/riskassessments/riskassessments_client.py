@@ -22,9 +22,7 @@ class RiskassessmentsClient(ApiResource):
 
     def bankaccounts(self, body, context=None):
         """
-        Resource /{merchantId}/riskassessments/bankaccounts
-
-        | Risk-assess bankaccount
+        Resource /{merchantId}/riskassessments/bankaccounts - Risk-assess bankaccount
         
         See also https://epayments-api.developer-ingenico.com/s2sapi/v1/en_US/python/riskassessments/bankaccounts.html
 
@@ -57,9 +55,7 @@ class RiskassessmentsClient(ApiResource):
 
     def cards(self, body, context=None):
         """
-        Resource /{merchantId}/riskassessments/cards
-
-        | Risk-assess card
+        Resource /{merchantId}/riskassessments/cards - Risk-assess card
         
         See also https://epayments-api.developer-ingenico.com/s2sapi/v1/en_US/python/riskassessments/cards.html
 

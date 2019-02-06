@@ -23,9 +23,7 @@ class TokensClient(ApiResource):
 
     def create(self, body, context=None):
         """
-        Resource /{merchantId}/tokens
-
-        | Create token
+        Resource /{merchantId}/tokens - Create token
         
         See also https://epayments-api.developer-ingenico.com/s2sapi/v1/en_US/python/tokens/create.html
 
@@ -58,9 +56,7 @@ class TokensClient(ApiResource):
 
     def get(self, token_id, context=None):
         """
-        Resource /{merchantId}/tokens/{tokenId}
-
-        | Get token
+        Resource /{merchantId}/tokens/{tokenId} - Get token
         
         See also https://epayments-api.developer-ingenico.com/s2sapi/v1/en_US/python/tokens/get.html
 
@@ -95,9 +91,7 @@ class TokensClient(ApiResource):
 
     def update(self, token_id, body, context=None):
         """
-        Resource /{merchantId}/tokens/{tokenId}
-
-        | Update token
+        Resource /{merchantId}/tokens/{tokenId} - Update token
         
         See also https://epayments-api.developer-ingenico.com/s2sapi/v1/en_US/python/tokens/update.html
 
@@ -134,9 +128,7 @@ class TokensClient(ApiResource):
 
     def delete(self, token_id, query, context=None):
         """
-        Resource /{merchantId}/tokens/{tokenId}
-
-        | Delete token
+        Resource /{merchantId}/tokens/{tokenId} - Delete token
         
         See also https://epayments-api.developer-ingenico.com/s2sapi/v1/en_US/python/tokens/delete.html
 
@@ -172,9 +164,7 @@ class TokensClient(ApiResource):
 
     def approvesepadirectdebit(self, token_id, body, context=None):
         """
-        Resource /{merchantId}/tokens/{tokenId}/approvesepadirectdebit
-
-        | Approve SEPA DD mandate
+        Resource /{merchantId}/tokens/{tokenId}/approvesepadirectdebit - Approve SEPA DD mandate
         
         See also https://epayments-api.developer-ingenico.com/s2sapi/v1/en_US/python/tokens/approvesepadirectdebit.html
 

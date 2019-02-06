@@ -24,9 +24,7 @@ class ProductgroupsClient(ApiResource):
 
     def find(self, query, context=None):
         """
-        Resource /{merchantId}/productgroups
-
-        | Get payment product groups
+        Resource /{merchantId}/productgroups - Get payment product groups
         
         See also https://epayments-api.developer-ingenico.com/s2sapi/v1/en_US/python/productgroups/find.html
 
@@ -58,9 +56,7 @@ class ProductgroupsClient(ApiResource):
 
     def get(self, payment_product_group_id, query, context=None):
         """
-        Resource /{merchantId}/productgroups/{paymentProductGroupId}
-
-        | Get payment product group
+        Resource /{merchantId}/productgroups/{paymentProductGroupId} - Get payment product group
         
         See also https://epayments-api.developer-ingenico.com/s2sapi/v1/en_US/python/productgroups/get.html
 
@@ -96,9 +92,7 @@ class ProductgroupsClient(ApiResource):
 
     def device_fingerprint(self, payment_product_group_id, body, context=None):
         """
-        Resource /{merchantId}/productgroups/{paymentProductGroupId}/deviceFingerprint
-
-        | Get device fingerprint
+        Resource /{merchantId}/productgroups/{paymentProductGroupId}/deviceFingerprint - Get device fingerprint
         
         See also https://epayments-api.developer-ingenico.com/s2sapi/v1/en_US/python/productgroups/deviceFingerprint.html
 

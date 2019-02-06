@@ -23,9 +23,7 @@ class HostedmandatemanagementsClient(ApiResource):
 
     def create(self, body, context=None):
         """
-        Resource /{merchantId}/hostedmandatemanagements
-
-        | Create hosted mandate management
+        Resource /{merchantId}/hostedmandatemanagements - Create hosted mandate management
         
         See also https://epayments-api.developer-ingenico.com/s2sapi/v1/en_US/python/hostedmandatemanagements/create.html
 
@@ -58,9 +56,7 @@ class HostedmandatemanagementsClient(ApiResource):
 
     def get(self, hosted_mandate_management_id, context=None):
         """
-        Resource /{merchantId}/hostedmandatemanagements/{hostedMandateManagementId}
-
-        | Get hosted mandate management status
+        Resource /{merchantId}/hostedmandatemanagements/{hostedMandateManagementId} - Get hosted mandate management status
         
         See also https://epayments-api.developer-ingenico.com/s2sapi/v1/en_US/python/hostedmandatemanagements/get.html
 

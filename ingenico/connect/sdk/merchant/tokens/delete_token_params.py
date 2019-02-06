@@ -8,7 +8,7 @@ from ingenico.connect.sdk.param_request import ParamRequest
 
 class DeleteTokenParams(ParamRequest):
     """
-    Query parameters for | Delete token
+    Query parameters for Delete token
     
     See also https://epayments-api.developer-ingenico.com/s2sapi/v1/en_US/python/tokens/delete.html
     """

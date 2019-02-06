@@ -23,9 +23,7 @@ class RefundsClient(ApiResource):
 
     def find(self, query, context=None):
         """
-        Resource /{merchantId}/refunds
-
-        | Find refunds
+        Resource /{merchantId}/refunds - Find refunds
         
         See also https://epayments-api.developer-ingenico.com/s2sapi/v1/en_US/python/refunds/find.html
 
@@ -57,9 +55,7 @@ class RefundsClient(ApiResource):
 
     def get(self, refund_id, context=None):
         """
-        Resource /{merchantId}/refunds/{refundId}
-
-        | Get refund
+        Resource /{merchantId}/refunds/{refundId} - Get refund
         
         See also https://epayments-api.developer-ingenico.com/s2sapi/v1/en_US/python/refunds/get.html
 
@@ -94,9 +90,7 @@ class RefundsClient(ApiResource):
 
     def approve(self, refund_id, body, context=None):
         """
-        Resource /{merchantId}/refunds/{refundId}/approve
-
-        | Approve refund
+        Resource /{merchantId}/refunds/{refundId}/approve - Approve refund
         
         See also https://epayments-api.developer-ingenico.com/s2sapi/v1/en_US/python/refunds/approve.html
 
@@ -133,9 +127,7 @@ class RefundsClient(ApiResource):
 
     def cancel(self, refund_id, context=None):
         """
-        Resource /{merchantId}/refunds/{refundId}/cancel
-
-        | Cancel refund
+        Resource /{merchantId}/refunds/{refundId}/cancel - Cancel refund
         
         See also https://epayments-api.developer-ingenico.com/s2sapi/v1/en_US/python/refunds/cancel.html
 
@@ -171,9 +163,7 @@ class RefundsClient(ApiResource):
 
     def cancelapproval(self, refund_id, context=None):
         """
-        Resource /{merchantId}/refunds/{refundId}/cancelapproval
-
-        | Undo approve refund
+        Resource /{merchantId}/refunds/{refundId}/cancelapproval - Undo approve refund
         
         See also https://epayments-api.developer-ingenico.com/s2sapi/v1/en_US/python/refunds/cancelapproval.html
 
