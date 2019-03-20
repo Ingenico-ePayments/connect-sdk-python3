@@ -56,7 +56,7 @@ class CreateHostedCheckoutResponse(DataObject):
     @property
     def merchant_reference(self):
         """
-        | This field will contain the merchantReference you provided in case you included one in the Create hostedCheckout API call. In case you didn't provide one the system will generate one for you (for the Ogone payment platform only) to allow you to link any created payment to this hostedCheckout.To relate a payment done by the consumer in a hostedCheckout session you can use the following fields:
+        | This property will contain the merchantReference you provided in case you included one in the Create Hosted Checkout API call. In case you didn't provide one the system will generate one for you (for the Ogone payment platform only) to allow you to link any created payment to this hostedCheckout.To relate a payment done by the consumer in a hostedCheckout session you can use the following fields:
         
         * paymentOutput.references.merchantReference (for the GlobalCollect payment engine this is only possible when you supply a merchantReference during the creation of the hostedCheckout)
         * hostedCheckoutSpecificOutput.hostedCheckoutId (only returned when using the GlobalCollect payment engine)

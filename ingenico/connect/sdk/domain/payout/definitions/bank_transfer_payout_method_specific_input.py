@@ -21,7 +21,7 @@ class BankTransferPayoutMethodSpecificInput(AbstractPayoutMethodSpecificInput):
     @property
     def bank_account_bban(self):
         """
-        | Object containing account holder name and bank account information.
+        | Object containing account holder name and bank account information. This field can only be used for payouts in the UK.
         
         Type: :class:`ingenico.connect.sdk.domain.definitions.bank_account_bban.BankAccountBban`
         """
