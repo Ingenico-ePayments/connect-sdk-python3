@@ -49,7 +49,7 @@ class Payment(AbstractOrderStatus):
         
         * ACCOUNT_VERIFIED - The account has been verified using a validation services like 0$ auth
         * CREATED - The transaction has been created. This is the initial state once a new payment is created.
-        * REDIRECTED - The consumer has been redirected to a 3rd party to complete the authentication/payment
+        * REDIRECTED - The customer has been redirected to a 3rd party to complete the authentication/payment
         * PENDING_PAYMENT - Instructions have been provided and we are now waiting for the money to come in
         * PENDING_FRAUD_APPROVAL - The transaction has been marked for manual review after an automatic fraud screening
         * PENDING_APPROVAL - The transaction is awaiting approval from you to proceed with the capturing of the funds

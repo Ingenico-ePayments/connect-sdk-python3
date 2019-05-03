@@ -47,7 +47,7 @@ class RefundRequest(DataObject):
     @property
     def customer(self):
         """
-        | Object containing the details of the consumer
+        | Object containing the details of the customer
         
         Type: :class:`ingenico.connect.sdk.domain.refund.definitions.refund_customer.RefundCustomer`
         """
@@ -74,7 +74,7 @@ class RefundRequest(DataObject):
     @property
     def refund_references(self):
         """
-        | Object that holds all reference fields that are linked to this refund
+        | Object that holds all reference properties that are linked to this refund
         
         Type: :class:`ingenico.connect.sdk.domain.refund.definitions.refund_references.RefundReferences`
         """

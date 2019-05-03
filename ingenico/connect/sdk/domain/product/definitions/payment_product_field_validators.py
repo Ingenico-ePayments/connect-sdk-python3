@@ -145,7 +145,7 @@ class PaymentProductFieldValidators(DataObject):
     @property
     def terms_and_conditions(self):
         """
-        | Indicates that the content should be validated as such that the consumer has accepted the field as if they were terms and conditions of a service
+        | Indicates that the content should be validated as such that the customer has accepted the field as if they were terms and conditions of a service
         
         Type: :class:`ingenico.connect.sdk.domain.product.definitions.empty_validator.EmptyValidator`
         """

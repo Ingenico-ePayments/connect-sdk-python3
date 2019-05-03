@@ -16,7 +16,7 @@ class PersonalInformation(DataObject):
     @property
     def date_of_birth(self):
         """
-        | The date of birth of the consumer
+        | The date of birth of the customer
         | Format: YYYYMMDD
         
         Type: str
@@ -30,7 +30,7 @@ class PersonalInformation(DataObject):
     @property
     def gender(self):
         """
-        | The gender of the consumer, possible values are:
+        | The gender of the customer, possible values are:
         
         * male
         * female
@@ -47,7 +47,7 @@ class PersonalInformation(DataObject):
     @property
     def name(self):
         """
-        | Object containing the name details of the consumer
+        | Object containing the name details of the customer
         
         Type: :class:`ingenico.connect.sdk.domain.payment.definitions.personal_name.PersonalName`
         """

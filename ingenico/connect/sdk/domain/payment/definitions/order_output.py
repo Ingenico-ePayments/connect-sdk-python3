@@ -29,7 +29,7 @@ class OrderOutput(DataObject):
     @property
     def references(self):
         """
-        | Object that holds all reference fields that are linked to this transaction
+        | Object that holds all reference properties that are linked to this transaction
         
         Type: :class:`ingenico.connect.sdk.domain.payment.definitions.payment_references.PaymentReferences`
         """

@@ -7,10 +7,16 @@ from ingenico.connect.sdk.data_object import DataObject
 
 
 class ExternalCardholderAuthenticationData(DataObject):
+    """
+    | Object containing 3D secure details.
+    """
 
     __cavv = None
     __cavv_algorithm = None
+    __directory_server_transaction_id = None
     __eci = None
+    __three_d_secure_version = None
+    __three_d_server_transaction_id = None
     __validation_result = None
     __xid = None
 
@@ -41,6 +47,19 @@ class ExternalCardholderAuthenticationData(DataObject):
         self.__cavv_algorithm = value
 
     @property
+    def directory_server_transaction_id(self):
+        """
+        | The 3-D Secure Directory Server transaction ID that is used for the 3D Authentication
+        
+        Type: str
+        """
+        return self.__directory_server_transaction_id
+
+    @directory_server_transaction_id.setter
+    def directory_server_transaction_id(self, value):
+        self.__directory_server_transaction_id = value
+
+    @property
     def eci(self):
         """
         | Electronic Commerce Indicator provides authentication validation results returned after AUTHENTICATIONVALIDATION
@@ -60,6 +79,35 @@ class ExternalCardholderAuthenticationData(DataObject):
     @eci.setter
     def eci(self, value):
         self.__eci = value
+
+    @property
+    def three_d_secure_version(self):
+        """
+        | The 3-D Secure version used for the authentication. Possible values:
+        
+        * v1
+        * v2
+        
+        Type: str
+        """
+        return self.__three_d_secure_version
+
+    @three_d_secure_version.setter
+    def three_d_secure_version(self, value):
+        self.__three_d_secure_version = value
+
+    @property
+    def three_d_server_transaction_id(self):
+        """
+        | The 3-D Secure Server transaction ID that is used for the 3-D Secure version 2 Authentication.
+        
+        Type: str
+        """
+        return self.__three_d_server_transaction_id
+
+    @three_d_server_transaction_id.setter
+    def three_d_server_transaction_id(self, value):
+        self.__three_d_server_transaction_id = value
 
     @property
     def validation_result(self):
@@ -91,7 +139,10 @@ class ExternalCardholderAuthenticationData(DataObject):
         dictionary = super(ExternalCardholderAuthenticationData, self).to_dictionary()
         self._add_to_dictionary(dictionary, 'cavv', self.cavv)
         self._add_to_dictionary(dictionary, 'cavvAlgorithm', self.cavv_algorithm)
+        self._add_to_dictionary(dictionary, 'directoryServerTransactionId', self.directory_server_transaction_id)
         self._add_to_dictionary(dictionary, 'eci', self.eci)
+        self._add_to_dictionary(dictionary, 'threeDSecureVersion', self.three_d_secure_version)
+        self._add_to_dictionary(dictionary, 'threeDServerTransactionId', self.three_d_server_transaction_id)
         self._add_to_dictionary(dictionary, 'validationResult', self.validation_result)
         self._add_to_dictionary(dictionary, 'xid', self.xid)
         return dictionary
@@ -102,8 +153,14 @@ class ExternalCardholderAuthenticationData(DataObject):
             self.cavv = dictionary['cavv']
         if 'cavvAlgorithm' in dictionary:
             self.cavv_algorithm = dictionary['cavvAlgorithm']
+        if 'directoryServerTransactionId' in dictionary:
+            self.directory_server_transaction_id = dictionary['directoryServerTransactionId']
         if 'eci' in dictionary:
             self.eci = dictionary['eci']
+        if 'threeDSecureVersion' in dictionary:
+            self.three_d_secure_version = dictionary['threeDSecureVersion']
+        if 'threeDServerTransactionId' in dictionary:
+            self.three_d_server_transaction_id = dictionary['threeDServerTransactionId']
         if 'validationResult' in dictionary:
             self.validation_result = dictionary['validationResult']
         if 'xid' in dictionary:

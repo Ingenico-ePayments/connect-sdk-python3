@@ -31,7 +31,7 @@ class PaymentProduct840SpecificOutput(DataObject):
     @property
     def customer_address(self):
         """
-        | Object containing the address details of the consumer
+        | Object containing the address details of the customer
         
         Type: :class:`ingenico.connect.sdk.domain.definitions.address.Address`
         """

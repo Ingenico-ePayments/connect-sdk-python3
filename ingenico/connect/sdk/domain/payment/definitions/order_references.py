@@ -17,7 +17,7 @@ class OrderReferences(DataObject):
     @property
     def descriptor(self):
         """
-        | Descriptive text that is used towards to consumer, either during an online checkout at a third party and/or on the statement of the consumer. For card transactions this is usually referred to as a Soft Descriptor. The maximum allowed length varies per card acquirer:
+        | Descriptive text that is used towards to customer, either during an online checkout at a third party and/or on the statement of the customer. For card transactions this is usually referred to as a Soft Descriptor. The maximum allowed length varies per card acquirer:
         
         * AIB - 22 characters
         * American Express - 25 characters

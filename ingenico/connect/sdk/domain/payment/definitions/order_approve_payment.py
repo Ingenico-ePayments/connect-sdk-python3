@@ -5,12 +5,14 @@
 #
 from ingenico.connect.sdk.data_object import DataObject
 from ingenico.connect.sdk.domain.definitions.additional_order_input_airline_data import AdditionalOrderInputAirlineData
+from ingenico.connect.sdk.domain.payment.definitions.customer_approve_payment import CustomerApprovePayment
 from ingenico.connect.sdk.domain.payment.definitions.order_references_approve_payment import OrderReferencesApprovePayment
 
 
 class OrderApprovePayment(DataObject):
 
     __additional_input = None
+    __customer = None
     __references = None
 
     @property
@@ -27,9 +29,22 @@ class OrderApprovePayment(DataObject):
         self.__additional_input = value
 
     @property
+    def customer(self):
+        """
+        | Object containing data related to the customer
+        
+        Type: :class:`ingenico.connect.sdk.domain.payment.definitions.customer_approve_payment.CustomerApprovePayment`
+        """
+        return self.__customer
+
+    @customer.setter
+    def customer(self, value):
+        self.__customer = value
+
+    @property
     def references(self):
         """
-        | Object that holds all reference fields that are linked to this transaction
+        | Object that holds all reference properties that are linked to this transaction
         
         Type: :class:`ingenico.connect.sdk.domain.payment.definitions.order_references_approve_payment.OrderReferencesApprovePayment`
         """
@@ -42,6 +57,7 @@ class OrderApprovePayment(DataObject):
     def to_dictionary(self):
         dictionary = super(OrderApprovePayment, self).to_dictionary()
         self._add_to_dictionary(dictionary, 'additionalInput', self.additional_input)
+        self._add_to_dictionary(dictionary, 'customer', self.customer)
         self._add_to_dictionary(dictionary, 'references', self.references)
         return dictionary
 
@@ -52,6 +68,11 @@ class OrderApprovePayment(DataObject):
                 raise TypeError('value \'{}\' is not a dictionary'.format(dictionary['additionalInput']))
             value = AdditionalOrderInputAirlineData()
             self.additional_input = value.from_dictionary(dictionary['additionalInput'])
+        if 'customer' in dictionary:
+            if not isinstance(dictionary['customer'], dict):
+                raise TypeError('value \'{}\' is not a dictionary'.format(dictionary['customer']))
+            value = CustomerApprovePayment()
+            self.customer = value.from_dictionary(dictionary['customer'])
         if 'references' in dictionary:
             if not isinstance(dictionary['references'], dict):
                 raise TypeError('value \'{}\' is not a dictionary'.format(dictionary['references']))

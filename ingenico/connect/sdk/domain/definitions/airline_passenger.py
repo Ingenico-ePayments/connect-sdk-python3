@@ -16,7 +16,7 @@ class AirlinePassenger(DataObject):
     @property
     def first_name(self):
         """
-        | First name of the passenger (this field is used for fraud screening on the Ogone Payment Platform)
+        | First name of the passenger (this property is used for fraud screening on the Ogone Payment Platform)
         
         Type: str
         """
@@ -29,7 +29,7 @@ class AirlinePassenger(DataObject):
     @property
     def surname(self):
         """
-        | Surname of the passenger (this field is used for fraud screening on the Ogone Payment Platform)
+        | Surname of the passenger (this property is used for fraud screening on the Ogone Payment Platform)
         
         Type: str
         """
@@ -42,7 +42,7 @@ class AirlinePassenger(DataObject):
     @property
     def surname_prefix(self):
         """
-        | Surname prefix of the passenger (this field is used for fraud screening on the Ogone Payment Platform)
+        | Surname prefix of the passenger (this property is used for fraud screening on the Ogone Payment Platform)
         
         Type: str
         """
@@ -55,7 +55,7 @@ class AirlinePassenger(DataObject):
     @property
     def title(self):
         """
-        | Title of the passenger (this field is used for fraud screening on the Ogone Payment Platform)
+        | Title of the passenger (this property is used for fraud screening on the Ogone Payment Platform)
         
         Type: str
         """

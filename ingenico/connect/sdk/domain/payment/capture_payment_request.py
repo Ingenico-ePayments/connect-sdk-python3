@@ -30,8 +30,8 @@ class CapturePaymentRequest(DataObject):
     @property
     def is_final(self):
         """
-        | This field indicates whether this will be the final capture of this transaction.
-        | The default value for this field is false.
+        | This property indicates whether this will be the final capture of this transaction.
+        | The default value for this property is false.
         
         Type: bool
         """

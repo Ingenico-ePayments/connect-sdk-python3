@@ -8,7 +8,7 @@ from ingenico.connect.sdk.data_object import DataObject
 
 class Level3SummaryData(DataObject):
     """
-    Deprecated; | Use Order.shoppingCart instead
+    Deprecated; Use ShoppingCart.amountBreakdown instead
     """
 
     __discount_amount = None
@@ -22,7 +22,7 @@ class Level3SummaryData(DataObject):
         
         Type: int
         
-        Deprecated; | Use ShoppingCart.amountbreakdown with type DISCOUNT instead
+        Deprecated; Use ShoppingCart.amountBreakdown with type DISCOUNT instead
         """
         return self.__discount_amount
 
@@ -37,7 +37,7 @@ class Level3SummaryData(DataObject):
         
         Type: int
         
-        Deprecated; | Use ShoppingCart.amountbreakdown with type DUTY instead
+        Deprecated; Use ShoppingCart.amountBreakdown with type DUTY instead
         """
         return self.__duty_amount
 
@@ -52,7 +52,7 @@ class Level3SummaryData(DataObject):
         
         Type: int
         
-        Deprecated; | Use ShoppingCart.amountbreakdown with type SHIPPING instead
+        Deprecated; Use ShoppingCart.amountBreakdown with type SHIPPING instead
         """
         return self.__shipping_amount
 

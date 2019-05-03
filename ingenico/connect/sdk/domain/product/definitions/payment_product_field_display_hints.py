@@ -24,7 +24,7 @@ class PaymentProductFieldDisplayHints(DataObject):
     @property
     def always_show(self):
         """
-        * true - Indicates that this field is advised to be captured to increase the success rates even-though it isn't marked as required. Please note that making the field required could hurt the success rates negatively. This boolean only indicates our advise to always show this field to the consumer.
+        * true - Indicates that this field is advised to be captured to increase the success rates even though it isn't marked as required. Please note that making the field required could hurt the success rates negatively. This boolean only indicates our advise to always show this field to the customer.
         * false - Indicates that this field is not to be shown unless it is a required field.
         
         Type: bool
@@ -151,7 +151,7 @@ class PaymentProductFieldDisplayHints(DataObject):
     @property
     def tooltip(self):
         """
-        | Object that contains an optional tooltip to assist the consumer
+        | Object that contains an optional tooltip to assist the customer
         
         Type: :class:`ingenico.connect.sdk.domain.product.definitions.payment_product_field_tooltip.PaymentProductFieldTooltip`
         """

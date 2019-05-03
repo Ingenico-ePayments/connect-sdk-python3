@@ -4,12 +4,22 @@
 # https://epayments-api.developer-ingenico.com/s2sapi/v1/
 #
 from ingenico.connect.sdk.data_object import DataObject
+from ingenico.connect.sdk.domain.payment.definitions.sdk_data_output import SdkDataOutput
+from ingenico.connect.sdk.domain.payment.definitions.three_d_secure_data import ThreeDSecureData
 
 
 class ThreeDSecureResults(DataObject):
+    """
+    | Object containing the 3-D Secure specific results
+    """
 
     __cavv = None
+    __directory_server_transaction_id = None
     __eci = None
+    __sdk_data = None
+    __three_d_secure_data = None
+    __three_d_secure_version = None
+    __three_d_server_transaction_id = None
     __xid = None
 
     @property
@@ -26,6 +36,19 @@ class ThreeDSecureResults(DataObject):
         self.__cavv = value
 
     @property
+    def directory_server_transaction_id(self):
+        """
+        | The 3-D Secure Directory Server transaction ID that is used for the 3D Authentication
+        
+        Type: str
+        """
+        return self.__directory_server_transaction_id
+
+    @directory_server_transaction_id.setter
+    def directory_server_transaction_id(self, value):
+        self.__directory_server_transaction_id = value
+
+    @property
     def eci(self):
         """
         | Indicates Authentication validation results returned after AuthenticationValidation
@@ -37,6 +60,60 @@ class ThreeDSecureResults(DataObject):
     @eci.setter
     def eci(self, value):
         self.__eci = value
+
+    @property
+    def sdk_data(self):
+        """
+        | Object containing 3-D Secure in-app SDK data
+        
+        Type: :class:`ingenico.connect.sdk.domain.payment.definitions.sdk_data_output.SdkDataOutput`
+        """
+        return self.__sdk_data
+
+    @sdk_data.setter
+    def sdk_data(self, value):
+        self.__sdk_data = value
+
+    @property
+    def three_d_secure_data(self):
+        """
+        | Object containing data regarding the 3-D Secure authentication
+        
+        Type: :class:`ingenico.connect.sdk.domain.payment.definitions.three_d_secure_data.ThreeDSecureData`
+        """
+        return self.__three_d_secure_data
+
+    @three_d_secure_data.setter
+    def three_d_secure_data(self, value):
+        self.__three_d_secure_data = value
+
+    @property
+    def three_d_secure_version(self):
+        """
+        | The 3-D Secure version used for the authentication.
+        
+        | This property is used in the communication with the acquirer
+        
+        Type: str
+        """
+        return self.__three_d_secure_version
+
+    @three_d_secure_version.setter
+    def three_d_secure_version(self, value):
+        self.__three_d_secure_version = value
+
+    @property
+    def three_d_server_transaction_id(self):
+        """
+        | The 3-D Secure Server transaction ID that is used for the 3-D Secure version 2 Authentication.
+        
+        Type: str
+        """
+        return self.__three_d_server_transaction_id
+
+    @three_d_server_transaction_id.setter
+    def three_d_server_transaction_id(self, value):
+        self.__three_d_server_transaction_id = value
 
     @property
     def xid(self):
@@ -54,7 +131,12 @@ class ThreeDSecureResults(DataObject):
     def to_dictionary(self):
         dictionary = super(ThreeDSecureResults, self).to_dictionary()
         self._add_to_dictionary(dictionary, 'cavv', self.cavv)
+        self._add_to_dictionary(dictionary, 'directoryServerTransactionId', self.directory_server_transaction_id)
         self._add_to_dictionary(dictionary, 'eci', self.eci)
+        self._add_to_dictionary(dictionary, 'sdkData', self.sdk_data)
+        self._add_to_dictionary(dictionary, 'threeDSecureData', self.three_d_secure_data)
+        self._add_to_dictionary(dictionary, 'threeDSecureVersion', self.three_d_secure_version)
+        self._add_to_dictionary(dictionary, 'threeDServerTransactionId', self.three_d_server_transaction_id)
         self._add_to_dictionary(dictionary, 'xid', self.xid)
         return dictionary
 
@@ -62,8 +144,24 @@ class ThreeDSecureResults(DataObject):
         super(ThreeDSecureResults, self).from_dictionary(dictionary)
         if 'cavv' in dictionary:
             self.cavv = dictionary['cavv']
+        if 'directoryServerTransactionId' in dictionary:
+            self.directory_server_transaction_id = dictionary['directoryServerTransactionId']
         if 'eci' in dictionary:
             self.eci = dictionary['eci']
+        if 'sdkData' in dictionary:
+            if not isinstance(dictionary['sdkData'], dict):
+                raise TypeError('value \'{}\' is not a dictionary'.format(dictionary['sdkData']))
+            value = SdkDataOutput()
+            self.sdk_data = value.from_dictionary(dictionary['sdkData'])
+        if 'threeDSecureData' in dictionary:
+            if not isinstance(dictionary['threeDSecureData'], dict):
+                raise TypeError('value \'{}\' is not a dictionary'.format(dictionary['threeDSecureData']))
+            value = ThreeDSecureData()
+            self.three_d_secure_data = value.from_dictionary(dictionary['threeDSecureData'])
+        if 'threeDSecureVersion' in dictionary:
+            self.three_d_secure_version = dictionary['threeDSecureVersion']
+        if 'threeDServerTransactionId' in dictionary:
+            self.three_d_server_transaction_id = dictionary['threeDServerTransactionId']
         if 'xid' in dictionary:
             self.xid = dictionary['xid']
         return self

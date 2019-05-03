@@ -54,7 +54,7 @@ class Order(DataObject):
     @property
     def customer(self):
         """
-        | Object containing the details of the consumer
+        | Object containing the details of the customer
         
         Type: :class:`ingenico.connect.sdk.domain.payment.definitions.customer.Customer`
         """
@@ -71,7 +71,7 @@ class Order(DataObject):
         
         Type: list[:class:`ingenico.connect.sdk.domain.payment.definitions.line_item.LineItem`]
         
-        Deprecated; | Use ShoppingCart.items instead
+        Deprecated; Use shoppingCart.items instead
         """
         return self.__items
 
@@ -82,7 +82,7 @@ class Order(DataObject):
     @property
     def references(self):
         """
-        | Object that holds all reference fields that are linked to this transaction
+        | Object that holds all reference properties that are linked to this transaction
         
         Type: :class:`ingenico.connect.sdk.domain.payment.definitions.order_references.OrderReferences`
         """
@@ -98,6 +98,8 @@ class Order(DataObject):
         | Object containing seller details
         
         Type: :class:`ingenico.connect.sdk.domain.payment.definitions.seller.Seller`
+        
+        Deprecated; Use Merchant.seller instead
         """
         return self.__seller
 

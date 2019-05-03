@@ -49,11 +49,11 @@ class PaymentStatusOutput(OrderStatusOutput):
         """
         | The 3D Secure status, with the following possible values:
         
-        * ENROLLED: the card is enrolled for 3D Secure authentication. The consumer can be redirected to a 3D Secure access control server (ACS)
+        * ENROLLED: the card is enrolled for 3D Secure authentication. The customer can be redirected to a 3D Secure access control server (ACS)
         * NOT_ENROLLED: the card is not enrolled for 3D Secure authentication
-        * INVALID_PARES_OR_NOT_COMPLETED: the PARes is invalid, or the consumer did not complete the 3D Secure authentication
-        * AUTHENTICATED: the consumer has passed the 3D Secure authentication
-        * NOT_AUTHENTICATED: the consumer failed the 3D Secure authentication
+        * INVALID_PARES_OR_NOT_COMPLETED: the PARes is invalid, or the customer did not complete the 3D Secure authentication
+        * AUTHENTICATED: the customer has passed the 3D Secure authentication
+        * NOT_AUTHENTICATED: the customer failed the 3D Secure authentication
         * NOT_PARTICIPATING: the cardholder has not set up their card for 2-step 3D Secure.
         
         | Note that this status will only be set for payments that make use of 2-step 3D Secure.

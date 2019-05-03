@@ -9,6 +9,7 @@ from ingenico.connect.sdk.domain.payment.definitions.redirect_payment_product816
 from ingenico.connect.sdk.domain.payment.definitions.redirect_payment_product840_specific_input import RedirectPaymentProduct840SpecificInput
 from ingenico.connect.sdk.domain.payment.definitions.redirect_payment_product863_specific_input import RedirectPaymentProduct863SpecificInput
 from ingenico.connect.sdk.domain.payment.definitions.redirect_payment_product882_specific_input import RedirectPaymentProduct882SpecificInput
+from ingenico.connect.sdk.domain.payment.definitions.redirection_data import RedirectionData
 
 
 class RedirectPaymentMethodSpecificInput(AbstractRedirectPaymentMethodSpecificInput):
@@ -19,6 +20,7 @@ class RedirectPaymentMethodSpecificInput(AbstractRedirectPaymentMethodSpecificIn
     __payment_product840_specific_input = None
     __payment_product863_specific_input = None
     __payment_product882_specific_input = None
+    __redirection_data = None
     __return_url = None
 
     @property
@@ -101,13 +103,28 @@ class RedirectPaymentMethodSpecificInput(AbstractRedirectPaymentMethodSpecificIn
         self.__payment_product882_specific_input = value
 
     @property
+    def redirection_data(self):
+        """
+        | Object containing browser specific redirection related data
+        
+        Type: :class:`ingenico.connect.sdk.domain.payment.definitions.redirection_data.RedirectionData`
+        """
+        return self.__redirection_data
+
+    @redirection_data.setter
+    def redirection_data(self, value):
+        self.__redirection_data = value
+
+    @property
     def return_url(self):
         """
-        | The URL that the consumer is redirect to after the payment flow has finished. You can add any number of key value pairs in the query string that, for instance help you to identify the consumer when they return to your site. Please note that we will also append some additional key value pairs that will also help you with this identification process.
+        | The URL that the customer is redirect to after the payment flow has finished. You can add any number of key value pairs in the query string that, for instance help you to identify the customer when they return to your site. Please note that we will also append some additional key value pairs that will also help you with this identification process.
         | Note: The provided URL should be absolute and contain the protocol to use, e.g. http:// or https://. For use on mobile devices a custom protocol can be used in the form of *protocol*://. This protocol must be registered on the device first.
         | URLs without a protocol will be rejected.
         
         Type: str
+        
+        Deprecated; Use redirectionData.returnUrl instead
         """
         return self.__return_url
 
@@ -123,6 +140,7 @@ class RedirectPaymentMethodSpecificInput(AbstractRedirectPaymentMethodSpecificIn
         self._add_to_dictionary(dictionary, 'paymentProduct840SpecificInput', self.payment_product840_specific_input)
         self._add_to_dictionary(dictionary, 'paymentProduct863SpecificInput', self.payment_product863_specific_input)
         self._add_to_dictionary(dictionary, 'paymentProduct882SpecificInput', self.payment_product882_specific_input)
+        self._add_to_dictionary(dictionary, 'redirectionData', self.redirection_data)
         self._add_to_dictionary(dictionary, 'returnUrl', self.return_url)
         return dictionary
 
@@ -155,6 +173,11 @@ class RedirectPaymentMethodSpecificInput(AbstractRedirectPaymentMethodSpecificIn
                 raise TypeError('value \'{}\' is not a dictionary'.format(dictionary['paymentProduct882SpecificInput']))
             value = RedirectPaymentProduct882SpecificInput()
             self.payment_product882_specific_input = value.from_dictionary(dictionary['paymentProduct882SpecificInput'])
+        if 'redirectionData' in dictionary:
+            if not isinstance(dictionary['redirectionData'], dict):
+                raise TypeError('value \'{}\' is not a dictionary'.format(dictionary['redirectionData']))
+            value = RedirectionData()
+            self.redirection_data = value.from_dictionary(dictionary['redirectionData'])
         if 'returnUrl' in dictionary:
             self.return_url = dictionary['returnUrl']
         return self

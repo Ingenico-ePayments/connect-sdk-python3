@@ -35,7 +35,7 @@ class RefundPaymentProduct840CustomerAccount(DataObject):
     @property
     def customer_address_status(self):
         """
-        | Status of the consumer's shipping address as registered by PayPal
+        | Status of the customer's shipping address as registered by PayPal
         | Possible values are:
         
         * none - Status is unknown at PayPal

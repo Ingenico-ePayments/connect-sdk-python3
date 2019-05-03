@@ -14,7 +14,7 @@ class PaymentCreationReferences(DataObject):
     @property
     def additional_reference(self):
         """
-        | The additional reference identifier for this transaction. Data in this field will also be returned in our report files, allowing you to reconcile them.
+        | The additional reference identifier for this transaction. Data in this property will also be returned in our report files, allowing you to reconcile them.
         
         Type: str
         """
@@ -27,7 +27,7 @@ class PaymentCreationReferences(DataObject):
     @property
     def external_reference(self):
         """
-        | The external reference identifier for this transaction. Data in this field will also be returned in our report files, allowing you to reconcile them.
+        | The external reference identifier for this transaction. Data in this property will also be returned in our report files, allowing you to reconcile them.
         
         Type: str
         """

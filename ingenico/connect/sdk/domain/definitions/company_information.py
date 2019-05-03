@@ -9,11 +9,12 @@ from ingenico.connect.sdk.data_object import DataObject
 class CompanyInformation(DataObject):
 
     __name = None
+    __vat_number = None
 
     @property
     def name(self):
         """
-        | Name of company, as a consumer
+        | Name of company, as a customer
         
         Type: str
         """
@@ -23,13 +24,29 @@ class CompanyInformation(DataObject):
     def name(self, value):
         self.__name = value
 
+    @property
+    def vat_number(self):
+        """
+        | Local VAT number of the company
+        
+        Type: str
+        """
+        return self.__vat_number
+
+    @vat_number.setter
+    def vat_number(self, value):
+        self.__vat_number = value
+
     def to_dictionary(self):
         dictionary = super(CompanyInformation, self).to_dictionary()
         self._add_to_dictionary(dictionary, 'name', self.name)
+        self._add_to_dictionary(dictionary, 'vatNumber', self.vat_number)
         return dictionary
 
     def from_dictionary(self, dictionary):
         super(CompanyInformation, self).from_dictionary(dictionary)
         if 'name' in dictionary:
             self.name = dictionary['name']
+        if 'vatNumber' in dictionary:
+            self.vat_number = dictionary['vatNumber']
         return self

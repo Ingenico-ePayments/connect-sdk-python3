@@ -17,7 +17,7 @@ class MandateMerchantAction(DataObject):
         """
         | Action merchants needs to take in the online mandate process. Possible values are:
         
-        * REDIRECT - The consumer needs to be redirected using the details found in redirectData
+        * REDIRECT - The customer needs to be redirected using the details found in redirectData
         
         Type: str
         """
@@ -30,7 +30,7 @@ class MandateMerchantAction(DataObject):
     @property
     def redirect_data(self):
         """
-        | Object containing all data needed to redirect the consumer
+        | Object containing all data needed to redirect the customer
         
         Type: :class:`ingenico.connect.sdk.domain.mandates.definitions.mandate_redirect_data.MandateRedirectData`
         """

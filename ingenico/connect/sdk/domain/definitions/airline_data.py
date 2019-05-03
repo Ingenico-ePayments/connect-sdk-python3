@@ -118,10 +118,12 @@ class AirlineData(DataObject):
     @property
     def is_registered_customer(self):
         """
-        * true = a registered known consumer
-        * false = unknown consumer
+        * true = a registered known customer
+        * false = unknown customer
         
         Type: bool
+        
+        Deprecated; Use Order.customer.accountType instead
         """
         return self.__is_registered_customer
 
@@ -174,7 +176,7 @@ class AirlineData(DataObject):
     @property
     def merchant_customer_id(self):
         """
-        | Your ID of the consumer in the context of the airline data
+        | Your ID of the customer in the context of the airline data
         
         Type: str
         """
@@ -355,7 +357,7 @@ class AirlineData(DataObject):
     @property
     def travel_agency_name(self):
         """
-        | Name of the travel agency issuing the ticket. For direct airline integration, leave this field blank
+        | Name of the travel agency issuing the ticket. For direct airline integration, leave this property blank
         
         Type: str
         """

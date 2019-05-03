@@ -14,7 +14,7 @@ class PersonalInformationToken(DataObject):
     @property
     def name(self):
         """
-        | Given name(s) or first name(s) of the consumer
+        | Given name(s) or first name(s) of the customer
         
         Type: :class:`ingenico.connect.sdk.domain.token.definitions.personal_name_token.PersonalNameToken`
         """

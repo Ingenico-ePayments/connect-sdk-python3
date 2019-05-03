@@ -114,7 +114,7 @@ class PaymentProduct(DataObject):
     @property
     def can_be_iframed(self):
         """
-        | This field is only relevant for payment products that use third party redirects. This field indicates if the third party disallows their payment pages to be embedded in an iframe using the X-Frame-Options header.
+        | This property is only relevant for payment products that use third party redirects. This property indicates if the third party disallows their payment pages to be embedded in an iframe using the X-Frame-Options header.
         
         * true - the third party allows their payment pages to be embedded in an iframe.
         * false - the third party disallows their payment pages to be embedded in an iframe.
@@ -159,7 +159,7 @@ class PaymentProduct(DataObject):
     @property
     def fields(self):
         """
-        | Object containing all the fields and their details that are associated with this payment product. If you are not interested in the data on the fields you should have us filter them our (using filter=fields in the query-string)
+        | Object containing all the fields and their details that are associated with this payment product. If you are not interested in the data in the fields you should have us filter them out (using filter=fields in the query-string)
         
         Type: list[:class:`ingenico.connect.sdk.domain.product.definitions.payment_product_field.PaymentProductField`]
         """
@@ -172,7 +172,7 @@ class PaymentProduct(DataObject):
     @property
     def fields_warning(self):
         """
-        | If one or more of the payment product fields could not be constructed, no payment product fields will be returned and a message will be present in this field stating why.
+        | If one or more of the payment product fields could not be constructed, no payment product fields will be returned and a message will be present in this property stating why.
         
         Type: str
         """
@@ -198,10 +198,10 @@ class PaymentProduct(DataObject):
     @property
     def is_java_script_required(self):
         """
-        | This fields indicates if the payment product requires JavaScript to be enabled on the customer's browser. This is usually only true if the payment product depends on a third party JavaScript integration.
+        | This property indicates if the payment product requires JavaScript to be enabled on the customer's browser. This is usually only true if the payment product depends on a third party JavaScript integration.
         
         * true - the payment product requires JavaScript to be enabled.
-        * false - the payment product does not require JavaScript to be enabled. This is the default value if the field is not present.
+        * false - the payment product does not require JavaScript to be enabled. This is the default value if the property is not present.
         
         Type: bool
         """

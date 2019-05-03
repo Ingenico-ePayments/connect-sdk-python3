@@ -105,7 +105,7 @@ class CreatedPaymentOutput(DataObject):
         
         Type: str
         
-        Deprecated; | Use payment.statusOutput.statusCategory instead
+        Deprecated; Use Payment.statusOutput.statusCategory instead
         """
         return self.__payment_status_category
 
@@ -129,7 +129,7 @@ class CreatedPaymentOutput(DataObject):
     @property
     def tokens(self):
         """
-        | This field contains the tokens that are associated with the hosted checkout session/consumer. You can use the tokens listed in this list for a future checkout of the same consumer.
+        | This property contains the tokens that are associated with the hosted checkout session/customer. You can use the tokens listed in this list for a future checkout of the same customer.
         
         Type: str
         """

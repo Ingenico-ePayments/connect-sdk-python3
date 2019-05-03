@@ -77,7 +77,7 @@ class GetCustomerDetailsResponse(DataObject):
     @property
     def fiscal_number(self):
         """
-        | The fiscal number (SSN) for the consumer.
+        | The fiscal number (SSN) for the customer.
         
         Type: str
         """

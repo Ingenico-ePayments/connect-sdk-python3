@@ -27,7 +27,7 @@ class PaymentProductFieldTooltip(DataObject):
     @property
     def label(self):
         """
-        | A text explaining the field in more detail. This is meant to be used for displaying to the consumer.
+        | A text explaining the field in more detail. This is meant to be used for displaying to the customer.
         
         Type: str
         """

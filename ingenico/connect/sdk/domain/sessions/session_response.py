@@ -57,7 +57,7 @@ class SessionResponse(DataObject):
     @property
     def customer_id(self):
         """
-        | The session is build up around the consumer in the form of the customerId. All of the Client APIs use this customerId in the URI to identify the consumer.
+        | The session is build up around the customer in the form of the customerId. All of the Client APIs use this customerId in the URI to identify the customer.
         
         Type: str
         """

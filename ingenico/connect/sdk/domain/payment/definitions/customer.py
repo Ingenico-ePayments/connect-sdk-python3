@@ -7,20 +7,56 @@ from ingenico.connect.sdk.domain.definitions.address import Address
 from ingenico.connect.sdk.domain.definitions.customer_base import CustomerBase
 from ingenico.connect.sdk.domain.payment.definitions.address_personal import AddressPersonal
 from ingenico.connect.sdk.domain.payment.definitions.contact_details import ContactDetails
+from ingenico.connect.sdk.domain.payment.definitions.customer_account import CustomerAccount
+from ingenico.connect.sdk.domain.payment.definitions.customer_device import CustomerDevice
 from ingenico.connect.sdk.domain.payment.definitions.personal_information import PersonalInformation
 
 
 class Customer(CustomerBase):
     """
-    | This object contains information about the consumer
+    | Object containing data related to the customer
     """
 
+    __account = None
+    __account_type = None
     __billing_address = None
     __contact_details = None
+    __device = None
     __fiscal_number = None
+    __is_previous_customer = None
     __locale = None
     __personal_information = None
     __shipping_address = None
+
+    @property
+    def account(self):
+        """
+        | Object containing data related to the account the customer has with you
+        
+        Type: :class:`ingenico.connect.sdk.domain.payment.definitions.customer_account.CustomerAccount`
+        """
+        return self.__account
+
+    @account.setter
+    def account(self, value):
+        self.__account = value
+
+    @property
+    def account_type(self):
+        """
+        | Type of the customer account that is used to place this order. Can have one of the following values:
+        
+        * none - The account that was used to place the order with is a guest account or no account was used at all
+        * created - The customer account was created during this transaction
+        * existing - The customer account was an already existing account prior to this transaction
+        
+        Type: str
+        """
+        return self.__account_type
+
+    @account_type.setter
+    def account_type(self, value):
+        self.__account_type = value
 
     @property
     def billing_address(self):
@@ -49,9 +85,29 @@ class Customer(CustomerBase):
         self.__contact_details = value
 
     @property
+    def device(self):
+        """
+        | Object containing information on the device and browser of the customer
+        
+        Type: :class:`ingenico.connect.sdk.domain.payment.definitions.customer_device.CustomerDevice`
+        """
+        return self.__device
+
+    @device.setter
+    def device(self, value):
+        self.__device = value
+
+    @property
     def fiscal_number(self):
         """
-        | Fiscal registration number of the consumer (CPF) with a length of 11 or the tax registration number of the company for a business consumer (CNPJ) with a length of 14.
+        | Fiscal registration number of the customer or the tax registration number of the company for a business customer. Please find below specifics per country:
+        
+        * Brazil - Consumer (CPF) with a length of 11 digits
+        * Brazil - Company (CNPJ) with a length of 14 digits
+        * Denmark - Consumer (CPR-nummer or personnummer) with a length of 10 digits
+        * Finland - Consumer (Finnish: henkilötunnus (abbreviated as HETU), Swedish: personbeteckning) with a length of 11 characters
+        * Norway - Consumer (fødselsnummer) with a length of 11 digits
+        * Sweden - Consumer (personnummer) with a length of 10 or 12 digits
         
         Type: str
         """
@@ -62,9 +118,25 @@ class Customer(CustomerBase):
         self.__fiscal_number = value
 
     @property
+    def is_previous_customer(self):
+        """
+        | Specifies if the customer has a history of online shopping with the merchant
+        
+        * true - The customer is a known returning customer
+        * false - The customer is new/unknown customer
+        
+        Type: bool
+        """
+        return self.__is_previous_customer
+
+    @is_previous_customer.setter
+    def is_previous_customer(self, value):
+        self.__is_previous_customer = value
+
+    @property
     def locale(self):
         """
-        | The locale that the consumer should be addressed in (for 3rd parties). Note that some 3rd party providers only support the languageCode part of the locale, in those cases we will only use part of the locale provided.
+        | The locale that the customer should be addressed in (for 3rd parties). Note that some 3rd party providers only support the languageCode part of the locale, in those cases we will only use part of the locale provided.
         
         Type: str
         """
@@ -93,6 +165,8 @@ class Customer(CustomerBase):
         | Object containing shipping address details
         
         Type: :class:`ingenico.connect.sdk.domain.payment.definitions.address_personal.AddressPersonal`
+        
+        Deprecated; Use Order.shipping.address instead
         """
         return self.__shipping_address
 
@@ -102,9 +176,13 @@ class Customer(CustomerBase):
 
     def to_dictionary(self):
         dictionary = super(Customer, self).to_dictionary()
+        self._add_to_dictionary(dictionary, 'account', self.account)
+        self._add_to_dictionary(dictionary, 'accountType', self.account_type)
         self._add_to_dictionary(dictionary, 'billingAddress', self.billing_address)
         self._add_to_dictionary(dictionary, 'contactDetails', self.contact_details)
+        self._add_to_dictionary(dictionary, 'device', self.device)
         self._add_to_dictionary(dictionary, 'fiscalNumber', self.fiscal_number)
+        self._add_to_dictionary(dictionary, 'isPreviousCustomer', self.is_previous_customer)
         self._add_to_dictionary(dictionary, 'locale', self.locale)
         self._add_to_dictionary(dictionary, 'personalInformation', self.personal_information)
         self._add_to_dictionary(dictionary, 'shippingAddress', self.shipping_address)
@@ -112,6 +190,13 @@ class Customer(CustomerBase):
 
     def from_dictionary(self, dictionary):
         super(Customer, self).from_dictionary(dictionary)
+        if 'account' in dictionary:
+            if not isinstance(dictionary['account'], dict):
+                raise TypeError('value \'{}\' is not a dictionary'.format(dictionary['account']))
+            value = CustomerAccount()
+            self.account = value.from_dictionary(dictionary['account'])
+        if 'accountType' in dictionary:
+            self.account_type = dictionary['accountType']
         if 'billingAddress' in dictionary:
             if not isinstance(dictionary['billingAddress'], dict):
                 raise TypeError('value \'{}\' is not a dictionary'.format(dictionary['billingAddress']))
@@ -122,8 +207,15 @@ class Customer(CustomerBase):
                 raise TypeError('value \'{}\' is not a dictionary'.format(dictionary['contactDetails']))
             value = ContactDetails()
             self.contact_details = value.from_dictionary(dictionary['contactDetails'])
+        if 'device' in dictionary:
+            if not isinstance(dictionary['device'], dict):
+                raise TypeError('value \'{}\' is not a dictionary'.format(dictionary['device']))
+            value = CustomerDevice()
+            self.device = value.from_dictionary(dictionary['device'])
         if 'fiscalNumber' in dictionary:
             self.fiscal_number = dictionary['fiscalNumber']
+        if 'isPreviousCustomer' in dictionary:
+            self.is_previous_customer = dictionary['isPreviousCustomer']
         if 'locale' in dictionary:
             self.locale = dictionary['locale']
         if 'personalInformation' in dictionary:

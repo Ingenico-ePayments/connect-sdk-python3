@@ -7,6 +7,9 @@ from ingenico.connect.sdk.data_object import DataObject
 
 
 class FraudFieldsShippingDetails(DataObject):
+    """
+    Deprecated; No replacement
+    """
 
     __method_details = None
     __method_speed = None
@@ -18,6 +21,8 @@ class FraudFieldsShippingDetails(DataObject):
         | Details regarding the shipping method
         
         Type: str
+        
+        Deprecated; No replacement
         """
         return self.__method_details
 
@@ -31,6 +36,8 @@ class FraudFieldsShippingDetails(DataObject):
         | Shipping method speed indicator
         
         Type: int
+        
+        Deprecated; No replacement
         """
         return self.__method_speed
 
@@ -44,6 +51,8 @@ class FraudFieldsShippingDetails(DataObject):
         | Shipping method type indicator
         
         Type: int
+        
+        Deprecated; No replacement
         """
         return self.__method_type
 

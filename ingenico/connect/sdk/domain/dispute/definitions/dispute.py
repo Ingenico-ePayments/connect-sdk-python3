@@ -19,7 +19,7 @@ class Dispute(DataObject):
     @property
     def dispute_output(self):
         """
-        | This field contains the creationDetails and default information regarding a dispute.
+        | This property contains the creationDetails and default information regarding a dispute.
         
         Type: :class:`ingenico.connect.sdk.domain.dispute.definitions.dispute_output.DisputeOutput`
         """
@@ -71,7 +71,7 @@ class Dispute(DataObject):
     @property
     def status_output(self):
         """
-        | This field contains the output for a dispute regarding the status of the dispute.
+        | This property contains the output for a dispute regarding the status of the dispute.
         
         Type: :class:`ingenico.connect.sdk.domain.dispute.definitions.dispute_status_output.DisputeStatusOutput`
         """

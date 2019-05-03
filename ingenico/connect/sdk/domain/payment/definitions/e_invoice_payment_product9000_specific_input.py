@@ -15,7 +15,7 @@ class EInvoicePaymentProduct9000SpecificInput(DataObject):
     @property
     def bank_account_iban(self):
         """
-        | Object containing the bank account details of the consumer.
+        | Object containing the bank account details of the customer.
         
         Type: :class:`ingenico.connect.sdk.domain.definitions.bank_account_iban.BankAccountIban`
         """
@@ -28,7 +28,7 @@ class EInvoicePaymentProduct9000SpecificInput(DataObject):
     @property
     def installment_id(self):
         """
-        | The ID of the installment plan selected by the consumer. Installment plans can be retrieved with Get payment product <https://epayments-api.developer-ingenico.com/s2sapi/v1/en_US/python/products/get.html>.
+        | The ID of the installment plan selected by the customer. Installment plans can be retrieved with Get payment product <https://epayments-api.developer-ingenico.com/s2sapi/v1/en_US/python/products/get.html>.
         
         Type: str
         """

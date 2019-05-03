@@ -31,7 +31,7 @@ class GetCustomerDetailsRequest(DataObject):
     @property
     def values(self):
         """
-        | A list of keys with a value used to retrieve the details of a consumer. Depending on the country code, different keys are required. These can be determined with a getPaymentProduct call and using payment product fields with the field usedForLookup set to true.
+        | A list of keys with a value used to retrieve the details of a customer. Depending on the country code, different keys are required. These can be determined with a getPaymentProduct call and using payment product properties with the property usedForLookup set to true.
         
         Type: list[:class:`ingenico.connect.sdk.domain.definitions.key_value_pair.KeyValuePair`]
         """

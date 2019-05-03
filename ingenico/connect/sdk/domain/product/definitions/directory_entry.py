@@ -30,7 +30,7 @@ class DirectoryEntry(DataObject):
     @property
     def issuer_id(self):
         """
-        | Unique ID of the issuing bank of the consumer
+        | Unique ID of the issuing bank of the customer
         
         Type: str
         """
@@ -61,7 +61,7 @@ class DirectoryEntry(DataObject):
     @property
     def issuer_name(self):
         """
-        | Name of the issuing bank, as it should be presented to the consumer
+        | Name of the issuing bank, as it should be presented to the customer
         
         Type: str
         """

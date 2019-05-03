@@ -14,7 +14,7 @@ class PersonalInformationRiskAssessment(DataObject):
     @property
     def name(self):
         """
-        | Object containing the name details of the consumer
+        | Object containing the name details of the customer
         
         Type: :class:`ingenico.connect.sdk.domain.riskassessments.definitions.personal_name_risk_assessment.PersonalNameRiskAssessment`
         """

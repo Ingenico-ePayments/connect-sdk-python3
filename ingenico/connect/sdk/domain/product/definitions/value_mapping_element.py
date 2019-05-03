@@ -33,7 +33,7 @@ class ValueMappingElement(DataObject):
         
         Type: str
         
-        Deprecated; | use displayElement with ID 'displayName' instead.
+        Deprecated; Use displayElements instead with ID 'displayName'
         """
         return self.__display_name
 

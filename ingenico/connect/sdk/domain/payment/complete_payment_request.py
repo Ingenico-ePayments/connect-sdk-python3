@@ -5,12 +5,14 @@
 #
 from ingenico.connect.sdk.data_object import DataObject
 from ingenico.connect.sdk.domain.payment.definitions.complete_payment_card_payment_method_specific_input import CompletePaymentCardPaymentMethodSpecificInput
+from ingenico.connect.sdk.domain.payment.definitions.merchant import Merchant
 from ingenico.connect.sdk.domain.payment.definitions.order import Order
 
 
 class CompletePaymentRequest(DataObject):
 
     __card_payment_method_specific_input = None
+    __merchant = None
     __order = None
 
     @property
@@ -25,6 +27,19 @@ class CompletePaymentRequest(DataObject):
     @card_payment_method_specific_input.setter
     def card_payment_method_specific_input(self, value):
         self.__card_payment_method_specific_input = value
+
+    @property
+    def merchant(self):
+        """
+        | Object containing information on you, the merchant
+        
+        Type: :class:`ingenico.connect.sdk.domain.payment.definitions.merchant.Merchant`
+        """
+        return self.__merchant
+
+    @merchant.setter
+    def merchant(self, value):
+        self.__merchant = value
 
     @property
     def order(self):
@@ -42,6 +57,7 @@ class CompletePaymentRequest(DataObject):
     def to_dictionary(self):
         dictionary = super(CompletePaymentRequest, self).to_dictionary()
         self._add_to_dictionary(dictionary, 'cardPaymentMethodSpecificInput', self.card_payment_method_specific_input)
+        self._add_to_dictionary(dictionary, 'merchant', self.merchant)
         self._add_to_dictionary(dictionary, 'order', self.order)
         return dictionary
 
@@ -52,6 +68,11 @@ class CompletePaymentRequest(DataObject):
                 raise TypeError('value \'{}\' is not a dictionary'.format(dictionary['cardPaymentMethodSpecificInput']))
             value = CompletePaymentCardPaymentMethodSpecificInput()
             self.card_payment_method_specific_input = value.from_dictionary(dictionary['cardPaymentMethodSpecificInput'])
+        if 'merchant' in dictionary:
+            if not isinstance(dictionary['merchant'], dict):
+                raise TypeError('value \'{}\' is not a dictionary'.format(dictionary['merchant']))
+            value = Merchant()
+            self.merchant = value.from_dictionary(dictionary['merchant'])
         if 'order' in dictionary:
             if not isinstance(dictionary['order'], dict):
                 raise TypeError('value \'{}\' is not a dictionary'.format(dictionary['order']))

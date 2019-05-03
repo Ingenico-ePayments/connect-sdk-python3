@@ -16,7 +16,7 @@ class RedirectPaymentProduct882SpecificInput(DataObject):
     @property
     def issuer_id(self):
         """
-        | ID of the issuing bank of the consumer. A list of available issuerIDs can be obtained by using the retrieve payment product directory API.
+        | ID of the issuing bank of the customer. A list of available issuerIDs can be obtained by using the retrieve payment product directory API.
         
         Type: str
         """

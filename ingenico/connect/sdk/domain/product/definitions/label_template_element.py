@@ -14,7 +14,7 @@ class LabelTemplateElement(DataObject):
     @property
     def attribute_key(self):
         """
-        | Name of the attribute that is shown to the consumer on selection pages or screens
+        | Name of the attribute that is shown to the customer on selection pages or screens
         
         Type: str
         """

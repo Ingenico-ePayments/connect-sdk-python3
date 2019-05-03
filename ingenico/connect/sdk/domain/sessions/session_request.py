@@ -28,7 +28,7 @@ class SessionRequest(DataObject):
     @property
     def tokens(self):
         """
-        | List of previously stored tokens linked to the consumer that wants to checkout.
+        | List of previously stored tokens linked to the customer that wants to checkout.
         
         Type: list[str]
         """

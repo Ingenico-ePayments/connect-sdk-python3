@@ -59,11 +59,11 @@ class PaymentApprovalResponse(DataObject):
     def payment_method_specific_output(self):
         """
         | Object containing additional payment method specific details
-        | Deprecated: this field does not support different outputs for payment methods other than cards. Please use cardPaymentMethodSpecificOutput instead.
+        | Deprecated: this property does not support different outputs for payment methods other than cards. Please use cardPaymentMethodSpecificOutput instead.
         
         Type: :class:`ingenico.connect.sdk.domain.payment.definitions.approve_payment_card_payment_method_specific_output.ApprovePaymentCardPaymentMethodSpecificOutput`
         
-        Deprecated; | Use cardPaymentMethodSpecificOutput instead
+        Deprecated; Use cardPaymentMethodSpecificOutput instead
         """
         return self.__payment_method_specific_output
 

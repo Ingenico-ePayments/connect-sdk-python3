@@ -13,7 +13,7 @@ class CreateMandateWithReturnUrl(CreateMandateBase):
     @property
     def return_url(self):
         """
-        | Return url to use if the mandate signing requires redirection.
+        | Return URL to use if the mandate signing requires redirection.
         
         Type: str
         """

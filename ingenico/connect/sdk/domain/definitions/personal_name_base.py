@@ -15,7 +15,7 @@ class PersonalNameBase(DataObject):
     @property
     def first_name(self):
         """
-        | Given name(s) or first name(s) of the consumer
+        | Given name(s) or first name(s) of the customer
         
         Type: str
         """
@@ -39,7 +39,7 @@ class PersonalNameBase(DataObject):
     @property
     def surname_prefix(self):
         """
-        | Middle name - In between first name and surname - of the consumer
+        | Middle name - In between first name and surname - of the customer
         
         Type: str
         """

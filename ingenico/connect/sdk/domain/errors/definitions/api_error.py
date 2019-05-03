@@ -75,7 +75,7 @@ class APIError(DataObject):
     @property
     def message(self):
         """
-        | Human-readable error message that is not meant to be relayed to consumer as it might tip off people who are trying to commit fraud
+        | Human-readable error message that is not meant to be relayed to customer as it might tip off people who are trying to commit fraud
         
         Type: str
         """

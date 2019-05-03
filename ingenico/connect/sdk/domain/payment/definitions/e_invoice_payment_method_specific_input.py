@@ -15,7 +15,7 @@ class EInvoicePaymentMethodSpecificInput(AbstractEInvoicePaymentMethodSpecificIn
     @property
     def accepted_terms_and_conditions(self):
         """
-        | Indicates that the consumer has read and accepted the terms and conditions of the product before proceeding with the payment. This must be done before the payment can continue. An URL to the terms and conditions can be retrieved with Get payment product <https://epayments-api.developer-ingenico.com/s2sapi/v1/en_US/python/products/get.html>.
+        | Indicates that the customer has read and accepted the terms and conditions of the product before proceeding with the payment. This must be done before the payment can continue. An URL to the terms and conditions can be retrieved with Get payment product <https://epayments-api.developer-ingenico.com/s2sapi/v1/en_US/python/products/get.html>.
         
         Type: bool
         """

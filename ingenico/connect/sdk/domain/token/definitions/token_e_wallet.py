@@ -16,7 +16,7 @@ class TokenEWallet(AbstractToken):
     @property
     def customer(self):
         """
-        | Object containing the details of the consumer
+        | Object containing the details of the customer
         
         Type: :class:`ingenico.connect.sdk.domain.token.definitions.customer_token.CustomerToken`
         """

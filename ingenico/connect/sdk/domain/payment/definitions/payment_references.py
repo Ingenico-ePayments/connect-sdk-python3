@@ -83,7 +83,7 @@ class PaymentReferences(DataObject):
     @property
     def reference_orig_payment(self):
         """
-        | When you did not supply a merchantReference for your payment, you need to fill this field with the reference of the original payment when you want to refund it
+        | When you did not supply a merchantReference for your payment, you need to fill this property with the reference of the original payment when you want to refund it
         
         Type: str
         """

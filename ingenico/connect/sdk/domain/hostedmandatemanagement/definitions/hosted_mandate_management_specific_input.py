@@ -16,7 +16,7 @@ class HostedMandateManagementSpecificInput(DataObject):
     @property
     def locale(self):
         """
-        | Locale to use to present the hosted mandate pages to the consumer. Please make sure that a language pack is configured for the locale you are submitting. If you submit a locale that is not setup on your account we will use the default language pack for your account. You can easily upload additional language packs and set the default language pack in the Configuration Center.
+        | Locale to use to present the hosted mandate pages to the customer. Please make sure that a language pack is configured for the locale you are submitting. If you submit a locale that is not setup on your account we will use the default language pack for your account. You can easily upload additional language packs and set the default language pack in the Configuration Center.
         
         Type: str
         """
@@ -29,7 +29,7 @@ class HostedMandateManagementSpecificInput(DataObject):
     @property
     def return_url(self):
         """
-        | The URL that the consumer is redirect to after the mandate flow has finished. You can add any number of key value pairs in the query string that, for instance help you to identify the consumer when they return to your site. Please note that we will also append some additional key value pairs that will also help you with this identification process.
+        | The URL that the customer is redirect to after the mandate flow has finished. You can add any number of key value pairs in the query string that, for instance help you to identify the customer when they return to your site. Please note that we will also append some additional key value pairs that will also help you with this identification process.
         | Note: The provided URL should be absolute and contain the protocol to use, e.g. http:// or https://. For use on mobile devices a custom protocol can be used in the form of *protocol*://. This protocol must be registered on the device first.
         | URLs without a protocol will be rejected.
         
@@ -44,10 +44,10 @@ class HostedMandateManagementSpecificInput(DataObject):
     @property
     def show_result_page(self):
         """
-        * true - MyMandate will show a result page to the consumer when applicable. Default.
-        * false - MyMandate will redirect the consumer back to the provided returnUrl when this is possible.
+        * true - MyMandate will show a result page to the customer when applicable. Default.
+        * false - MyMandate will redirect the customer back to the provided returnUrl when this is possible.
         
-        | The default value for this field is true.
+        | The default value for this property is true.
         
         Type: bool
         """

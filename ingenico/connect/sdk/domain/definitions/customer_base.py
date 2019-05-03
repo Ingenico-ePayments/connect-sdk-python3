@@ -9,7 +9,7 @@ from ingenico.connect.sdk.domain.definitions.company_information import CompanyI
 
 class CustomerBase(DataObject):
     """
-    | Basic information of a consumer
+    | Basic information of a customer
     """
 
     __company_information = None
@@ -32,7 +32,7 @@ class CustomerBase(DataObject):
     @property
     def merchant_customer_id(self):
         """
-        | Your identifier for the consumer that can be used as a search criteria in the Global Collect Payment Console and is also included in the Global Collect report files. For Ingenco's Ogone Payment Platform this field is used in the fraud-screening process.
+        | Your identifier for the customer. It can be used as a search criteria in the GlobalCollect Payment Console and is also included in the GlobalCollect report files. It is used in the fraud-screening process for payments on the Ogone Payment Platform.
         
         Type: str
         """
@@ -45,9 +45,11 @@ class CustomerBase(DataObject):
     @property
     def vat_number(self):
         """
-        | Local VAT number of the consumer
+        | Local VAT number of the company
         
         Type: str
+        
+        Deprecated; Use companyInformation.vatNumber instead
         """
         return self.__vat_number
 

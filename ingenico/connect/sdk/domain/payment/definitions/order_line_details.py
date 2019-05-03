@@ -62,7 +62,7 @@ class OrderLineDetails(DataObject):
     @property
     def product_category(self):
         """
-        | This field indicates the category of the product (i.e. home appliance), used for fraud screening on the Ogone Payment Platform.
+        | The category of the product (i.e. home appliance). This property can be used for fraud screening on the Ogone Platform.
         
         Type: str
         """

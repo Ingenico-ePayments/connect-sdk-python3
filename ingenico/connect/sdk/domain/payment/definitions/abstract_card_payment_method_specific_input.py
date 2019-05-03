@@ -4,12 +4,14 @@
 # https://epayments-api.developer-ingenico.com/s2sapi/v1/
 #
 from ingenico.connect.sdk.domain.definitions.abstract_payment_method_specific_input import AbstractPaymentMethodSpecificInput
+from ingenico.connect.sdk.domain.payment.definitions.card_recurrence_details import CardRecurrenceDetails
 
 
 class AbstractCardPaymentMethodSpecificInput(AbstractPaymentMethodSpecificInput):
 
     __authorization_mode = None
     __customer_reference = None
+    __recurring = None
     __recurring_payment_sequence_indicator = None
     __requires_approval = None
     __skip_authentication = None
@@ -19,6 +21,7 @@ class AbstractCardPaymentMethodSpecificInput(AbstractPaymentMethodSpecificInput)
     __transaction_channel = None
     __unscheduled_card_on_file_indicator = None
     __unscheduled_card_on_file_requestor = None
+    __unscheduled_card_on_file_sequence_indicator = None
 
     @property
     def authorization_mode(self):
@@ -43,9 +46,22 @@ class AbstractCardPaymentMethodSpecificInput(AbstractPaymentMethodSpecificInput)
         self.__customer_reference = value
 
     @property
+    def recurring(self):
+        """
+        Type: :class:`ingenico.connect.sdk.domain.payment.definitions.card_recurrence_details.CardRecurrenceDetails`
+        """
+        return self.__recurring
+
+    @recurring.setter
+    def recurring(self, value):
+        self.__recurring = value
+
+    @property
     def recurring_payment_sequence_indicator(self):
         """
         Type: str
+        
+        Deprecated; Use recurring.recurringPaymentSequenceIndicator instead
         """
         return self.__recurring_payment_sequence_indicator
 
@@ -68,6 +84,8 @@ class AbstractCardPaymentMethodSpecificInput(AbstractPaymentMethodSpecificInput)
     def skip_authentication(self):
         """
         Type: bool
+        
+        Deprecated; Use threeDSecure.skipAuthentication instead
         """
         return self.__skip_authentication
 
@@ -123,6 +141,8 @@ class AbstractCardPaymentMethodSpecificInput(AbstractPaymentMethodSpecificInput)
     def unscheduled_card_on_file_indicator(self):
         """
         Type: str
+        
+        Deprecated; Use unscheduledCardOnFileSequenceIndicator instead
         """
         return self.__unscheduled_card_on_file_indicator
 
@@ -141,10 +161,22 @@ class AbstractCardPaymentMethodSpecificInput(AbstractPaymentMethodSpecificInput)
     def unscheduled_card_on_file_requestor(self, value):
         self.__unscheduled_card_on_file_requestor = value
 
+    @property
+    def unscheduled_card_on_file_sequence_indicator(self):
+        """
+        Type: str
+        """
+        return self.__unscheduled_card_on_file_sequence_indicator
+
+    @unscheduled_card_on_file_sequence_indicator.setter
+    def unscheduled_card_on_file_sequence_indicator(self, value):
+        self.__unscheduled_card_on_file_sequence_indicator = value
+
     def to_dictionary(self):
         dictionary = super(AbstractCardPaymentMethodSpecificInput, self).to_dictionary()
         self._add_to_dictionary(dictionary, 'authorizationMode', self.authorization_mode)
         self._add_to_dictionary(dictionary, 'customerReference', self.customer_reference)
+        self._add_to_dictionary(dictionary, 'recurring', self.recurring)
         self._add_to_dictionary(dictionary, 'recurringPaymentSequenceIndicator', self.recurring_payment_sequence_indicator)
         self._add_to_dictionary(dictionary, 'requiresApproval', self.requires_approval)
         self._add_to_dictionary(dictionary, 'skipAuthentication', self.skip_authentication)
@@ -154,6 +186,7 @@ class AbstractCardPaymentMethodSpecificInput(AbstractPaymentMethodSpecificInput)
         self._add_to_dictionary(dictionary, 'transactionChannel', self.transaction_channel)
         self._add_to_dictionary(dictionary, 'unscheduledCardOnFileIndicator', self.unscheduled_card_on_file_indicator)
         self._add_to_dictionary(dictionary, 'unscheduledCardOnFileRequestor', self.unscheduled_card_on_file_requestor)
+        self._add_to_dictionary(dictionary, 'unscheduledCardOnFileSequenceIndicator', self.unscheduled_card_on_file_sequence_indicator)
         return dictionary
 
     def from_dictionary(self, dictionary):
@@ -162,6 +195,11 @@ class AbstractCardPaymentMethodSpecificInput(AbstractPaymentMethodSpecificInput)
             self.authorization_mode = dictionary['authorizationMode']
         if 'customerReference' in dictionary:
             self.customer_reference = dictionary['customerReference']
+        if 'recurring' in dictionary:
+            if not isinstance(dictionary['recurring'], dict):
+                raise TypeError('value \'{}\' is not a dictionary'.format(dictionary['recurring']))
+            value = CardRecurrenceDetails()
+            self.recurring = value.from_dictionary(dictionary['recurring'])
         if 'recurringPaymentSequenceIndicator' in dictionary:
             self.recurring_payment_sequence_indicator = dictionary['recurringPaymentSequenceIndicator']
         if 'requiresApproval' in dictionary:
@@ -180,4 +218,6 @@ class AbstractCardPaymentMethodSpecificInput(AbstractPaymentMethodSpecificInput)
             self.unscheduled_card_on_file_indicator = dictionary['unscheduledCardOnFileIndicator']
         if 'unscheduledCardOnFileRequestor' in dictionary:
             self.unscheduled_card_on_file_requestor = dictionary['unscheduledCardOnFileRequestor']
+        if 'unscheduledCardOnFileSequenceIndicator' in dictionary:
+            self.unscheduled_card_on_file_sequence_indicator = dictionary['unscheduledCardOnFileSequenceIndicator']
         return self

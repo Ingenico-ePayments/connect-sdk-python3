@@ -37,7 +37,7 @@ class AdditionalOrderInput(DataObject):
         
         Type: :class:`ingenico.connect.sdk.domain.payment.definitions.level3_summary_data.Level3SummaryData`
         
-        Deprecated; | Use Order.shoppingCart instead
+        Deprecated; Use Order.shoppingCart.amountBreakdown instead
         """
         return self.__level3_summary_data
 

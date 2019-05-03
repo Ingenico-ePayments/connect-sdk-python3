@@ -19,6 +19,8 @@ class CashPaymentMethodSpecificInput(AbstractCashPaymentMethodSpecificInput):
         | Object that holds the specific data for Boleto Bancario in Brazil (payment product 1503)
         
         Type: :class:`ingenico.connect.sdk.domain.payment.definitions.cash_payment_product1503_specific_input.CashPaymentProduct1503SpecificInput`
+        
+        Deprecated; No replacement
         """
         return self.__payment_product1503_specific_input
 

@@ -15,7 +15,7 @@ class MandatePersonalInformation(DataObject):
     @property
     def name(self):
         """
-        | Object containing the name details of the consumer
+        | Object containing the name details of the customer
         
         Type: :class:`ingenico.connect.sdk.domain.mandates.definitions.mandate_personal_name.MandatePersonalName`
         """
@@ -28,7 +28,7 @@ class MandatePersonalInformation(DataObject):
     @property
     def title(self):
         """
-        | Object containing the title of the consumer (Mr, Miss or Mrs)
+        | Object containing the title of the customer (Mr, Miss or Mrs)
         
         Type: str
         """

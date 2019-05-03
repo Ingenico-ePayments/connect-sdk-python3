@@ -14,7 +14,7 @@ class CancelApprovalPaymentResponse(DataObject):
     @property
     def payment(self):
         """
-        | Object that holds the payment related fields
+        | Object that holds the payment related properties
         
         Type: :class:`ingenico.connect.sdk.domain.payment.definitions.payment.Payment`
         """

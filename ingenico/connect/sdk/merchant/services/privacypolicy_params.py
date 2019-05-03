@@ -32,7 +32,7 @@ class PrivacypolicyParams(ParamRequest):
     @property
     def payment_product_id(self):
         """
-        | ID of the payment product for which you wish to retrieve the privacy policy. When no ID is provided you will receive all privacy policies for your payment products. 
+        | ID of the payment product for which you wish to retrieve the privacy policy. When no ID is provided you will receive all privacy policies for your payment products.
         
         Type: int
         """

@@ -34,7 +34,7 @@ class MandateCustomer(DataObject):
     @property
     def company_name(self):
         """
-        | Name of company, as a consumer
+        | Name of company, as a customer
         
         Type: str
         """
@@ -73,7 +73,7 @@ class MandateCustomer(DataObject):
     @property
     def personal_information(self):
         """
-        | Object containing personal information of the consumer
+        | Object containing personal information of the customer
         
         Type: :class:`ingenico.connect.sdk.domain.mandates.definitions.mandate_personal_information.MandatePersonalInformation`
         """

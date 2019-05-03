@@ -257,7 +257,7 @@ class AirlineFlightLeg(DataObject):
     @property
     def service_class(self):
         """
-        | ServiceClass of this leg (this field is used for fraud screening on the Ogone Payment Platform).
+        | ServiceClass of this leg (this property is used for fraud screening on the Ogone Payment Platform).
         
         | Possible values are:
         
@@ -268,7 +268,7 @@ class AirlineFlightLeg(DataObject):
         
         Type: str
         
-        Deprecated; | Use passengerClass instead
+        Deprecated; Use passengerClass instead
         """
         return self.__service_class
 

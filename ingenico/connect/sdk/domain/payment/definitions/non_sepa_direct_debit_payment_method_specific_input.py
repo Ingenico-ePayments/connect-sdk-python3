@@ -36,7 +36,7 @@ class NonSepaDirectDebitPaymentMethodSpecificInput(AbstractPaymentMethodSpecific
     @property
     def direct_debit_text(self):
         """
-        | Descriptor intended to identify the transaction on the consumer's bank statement
+        | Descriptor intended to identify the transaction on the customer's bank statement
         
         Type: str
         """

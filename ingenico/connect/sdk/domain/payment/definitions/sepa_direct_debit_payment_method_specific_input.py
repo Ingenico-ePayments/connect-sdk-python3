@@ -34,7 +34,7 @@ class SepaDirectDebitPaymentMethodSpecificInput(AbstractSepaDirectDebitPaymentMe
     @property
     def direct_debit_text(self):
         """
-        | Description of the transaction that will appear on the consumer bank statement to aid the consumer in recognizing the transaction. Only relevant for legacy SEPA Direct Debit.
+        | Description of the transaction that will appear on the customer bank statement to aid the customer in recognizing the transaction. Only relevant for legacy SEPA Direct Debit.
         
         Type: str
         """

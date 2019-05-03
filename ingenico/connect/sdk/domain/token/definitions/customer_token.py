@@ -29,7 +29,7 @@ class CustomerToken(CustomerBase):
     @property
     def personal_information(self):
         """
-        | Object containing personal information of the consumer
+        | Object containing personal information of the customer
         
         Type: :class:`ingenico.connect.sdk.domain.token.definitions.personal_information_token.PersonalInformationToken`
         """

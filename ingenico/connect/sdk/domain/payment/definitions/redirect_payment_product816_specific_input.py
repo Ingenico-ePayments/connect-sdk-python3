@@ -17,7 +17,7 @@ class RedirectPaymentProduct816SpecificInput(DataObject):
     @property
     def bank_account_iban(self):
         """
-        | Object containing the bank account details of the consumer
+        | Object containing the bank account details of the customer
         
         Type: :class:`ingenico.connect.sdk.domain.definitions.bank_account_iban.BankAccountIban`
         """

@@ -51,7 +51,7 @@ class LineItem(DataObject):
         
         Type: :class:`ingenico.connect.sdk.domain.payment.definitions.line_item_level3_interchange_information.LineItemLevel3InterchangeInformation`
         
-        Deprecated; | Use orderLineDetails instead
+        Deprecated; Use orderLineDetails instead
         """
         return self.__level3_interchange_information
 

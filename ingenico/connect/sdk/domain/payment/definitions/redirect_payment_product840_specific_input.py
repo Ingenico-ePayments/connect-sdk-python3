@@ -17,11 +17,11 @@ class RedirectPaymentProduct840SpecificInput(AbstractRedirectPaymentProduct840Sp
     @property
     def custom(self):
         """
-        | A free text string that you can send to PayPal. With a special agreement between PayPal and you, PayPal uses the data in that field, for custom services they offer to you.
+        | A free text string that you can send to PayPal. With a special agreement between PayPal and you, PayPal uses the data in that property, for custom services they offer to you.
         
         Type: str
         
-        Deprecated; | use order.references.descriptor instead.
+        Deprecated; Use Order.references.descriptor instead
         """
         return self.__custom
 
@@ -32,13 +32,13 @@ class RedirectPaymentProduct840SpecificInput(AbstractRedirectPaymentProduct840Sp
     @property
     def is_shortcut(self):
         """
-        | Deprecated: If your PayPal payments are processed by Ingenico's Ogone Payment Platform, please use the field addressSelectionAtPayPal instead.
+        | Deprecated: If your PayPal payments are processed by Ingenico's Ogone Payment Platform, please use the property addressSelectionAtPayPal instead.
         | Indicates whether to use PayPal Express Checkout for payments processed by Ingenico's GlobalCollect Payment Platform. 
         
         * true = PayPal Express Checkout 
         * false = Regular PayPal payment 
         
-        | . For payments processed by Ingenico's Ogone Payment Platform, please see the addressSelectionAtPayPal field for more information.
+        | For payments processed by Ingenico's Ogone Payment Platform, please see the addressSelectionAtPayPal property for more information.
         
         Type: bool
         """

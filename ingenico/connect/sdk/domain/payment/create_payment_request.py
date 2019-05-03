@@ -10,6 +10,7 @@ from ingenico.connect.sdk.domain.payment.definitions.card_payment_method_specifi
 from ingenico.connect.sdk.domain.payment.definitions.cash_payment_method_specific_input import CashPaymentMethodSpecificInput
 from ingenico.connect.sdk.domain.payment.definitions.e_invoice_payment_method_specific_input import EInvoicePaymentMethodSpecificInput
 from ingenico.connect.sdk.domain.payment.definitions.invoice_payment_method_specific_input import InvoicePaymentMethodSpecificInput
+from ingenico.connect.sdk.domain.payment.definitions.merchant import Merchant
 from ingenico.connect.sdk.domain.payment.definitions.mobile_payment_method_specific_input import MobilePaymentMethodSpecificInput
 from ingenico.connect.sdk.domain.payment.definitions.non_sepa_direct_debit_payment_method_specific_input import NonSepaDirectDebitPaymentMethodSpecificInput
 from ingenico.connect.sdk.domain.payment.definitions.order import Order
@@ -27,6 +28,7 @@ class CreatePaymentRequest(DataObject):
     __encrypted_customer_input = None
     __fraud_fields = None
     __invoice_payment_method_specific_input = None
+    __merchant = None
     __mobile_payment_method_specific_input = None
     __order = None
     __redirect_payment_method_specific_input = None
@@ -100,7 +102,7 @@ class CreatePaymentRequest(DataObject):
     @property
     def encrypted_customer_input(self):
         """
-        | Data that was encrypted client side containing all consumer entered data elements like card data.
+        | Data that was encrypted client side containing all customer entered data elements like card data.
         | Note: Because this data can only be submitted once to our system and contains encrypted card data you should not store it. As the data was captured within the context of a client session you also need to submit it to us before the session has expired.
         
         Type: str
@@ -138,14 +140,27 @@ class CreatePaymentRequest(DataObject):
         self.__invoice_payment_method_specific_input = value
 
     @property
+    def merchant(self):
+        """
+        | Object containing information on you, the merchant
+        
+        Type: :class:`ingenico.connect.sdk.domain.payment.definitions.merchant.Merchant`
+        """
+        return self.__merchant
+
+    @merchant.setter
+    def merchant(self, value):
+        self.__merchant = value
+
+    @property
     def mobile_payment_method_specific_input(self):
         """
         | Object containing the specific input details for mobile payments.
         
         | Mobile payments produce the required payment data in encrypted form.
         
-        * For Apple Pay, the encrypted payment data can be found in field data of the PKPayment <https://developer.apple.com/documentation/passkit/pkpayment>.token.paymentData property.
-        * For Google Pay, the encrypted payment data can be found in field paymentMethodData.tokenizationData.token of the PaymentData <https://developers.google.com/android/reference/com/google/android/gms/wallet/PaymentData>.toJson() result.
+        * For Apple Pay, the encrypted payment data can be found in property data of the PKPayment <https://developer.apple.com/documentation/passkit/pkpayment>.token.paymentData property.
+        * For Google Pay, the encrypted payment data can be found in property paymentMethodData.tokenizationData.token of the PaymentData <https://developers.google.com/android/reference/com/google/android/gms/wallet/PaymentData>.toJson() result.
         
         Type: :class:`ingenico.connect.sdk.domain.payment.definitions.mobile_payment_method_specific_input.MobilePaymentMethodSpecificInput`
         """
@@ -205,6 +220,7 @@ class CreatePaymentRequest(DataObject):
         self._add_to_dictionary(dictionary, 'encryptedCustomerInput', self.encrypted_customer_input)
         self._add_to_dictionary(dictionary, 'fraudFields', self.fraud_fields)
         self._add_to_dictionary(dictionary, 'invoicePaymentMethodSpecificInput', self.invoice_payment_method_specific_input)
+        self._add_to_dictionary(dictionary, 'merchant', self.merchant)
         self._add_to_dictionary(dictionary, 'mobilePaymentMethodSpecificInput', self.mobile_payment_method_specific_input)
         self._add_to_dictionary(dictionary, 'order', self.order)
         self._add_to_dictionary(dictionary, 'redirectPaymentMethodSpecificInput', self.redirect_payment_method_specific_input)
@@ -250,6 +266,11 @@ class CreatePaymentRequest(DataObject):
                 raise TypeError('value \'{}\' is not a dictionary'.format(dictionary['invoicePaymentMethodSpecificInput']))
             value = InvoicePaymentMethodSpecificInput()
             self.invoice_payment_method_specific_input = value.from_dictionary(dictionary['invoicePaymentMethodSpecificInput'])
+        if 'merchant' in dictionary:
+            if not isinstance(dictionary['merchant'], dict):
+                raise TypeError('value \'{}\' is not a dictionary'.format(dictionary['merchant']))
+            value = Merchant()
+            self.merchant = value.from_dictionary(dictionary['merchant'])
         if 'mobilePaymentMethodSpecificInput' in dictionary:
             if not isinstance(dictionary['mobilePaymentMethodSpecificInput'], dict):
                 raise TypeError('value \'{}\' is not a dictionary'.format(dictionary['mobilePaymentMethodSpecificInput']))

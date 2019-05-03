@@ -14,7 +14,7 @@ class ContactDetailsBase(DataObject):
     @property
     def email_address(self):
         """
-        | Email address of the consumer
+        | Email address of the customer
         
         Type: str
         """

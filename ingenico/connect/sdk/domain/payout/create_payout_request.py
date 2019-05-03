@@ -42,11 +42,11 @@ class CreatePayoutRequest(DataObject):
     @property
     def bank_account_bban(self):
         """
-        | Object containing account holder name and bank account information. This field can only be used for payouts in the UK.
+        | Object containing account holder name and bank account information. This property can only be used for payouts in the UK.
         
         Type: :class:`ingenico.connect.sdk.domain.definitions.bank_account_bban.BankAccountBban`
         
-        Deprecated; | Use bankTransferPayoutMethodSpecificInput.bankAccountBban instead
+        Deprecated; Moved to BankTransferPayoutMethodSpecificInput
         """
         return self.__bank_account_bban
 
@@ -61,7 +61,7 @@ class CreatePayoutRequest(DataObject):
         
         Type: :class:`ingenico.connect.sdk.domain.definitions.bank_account_iban.BankAccountIban`
         
-        Deprecated; | Use bankTransferPayoutMethodSpecificInput.bankAccountIban instead
+        Deprecated; Moved to BankTransferPayoutMethodSpecificInput
         """
         return self.__bank_account_iban
 
@@ -98,11 +98,11 @@ class CreatePayoutRequest(DataObject):
     @property
     def customer(self):
         """
-        | Object containing the details of the consumer.
+        | Object containing the details of the customer.
         
         Type: :class:`ingenico.connect.sdk.domain.payout.definitions.payout_customer.PayoutCustomer`
         
-        Deprecated; | Use bankTransferPayoutMethodSpecificInput.customer instead
+        Deprecated; Moved to BankTransferPayoutMethodSpecificInput
         """
         return self.__customer
 
@@ -118,7 +118,7 @@ class CreatePayoutRequest(DataObject):
         
         Type: str
         
-        Deprecated; | Use bankTransferPayoutMethodSpecificInput.payoutDate instead
+        Deprecated; Moved to BankTransferPayoutMethodSpecificInput
         """
         return self.__payout_date
 
@@ -133,7 +133,7 @@ class CreatePayoutRequest(DataObject):
         
         Type: str
         
-        Deprecated; | Use bankTransferPayoutMethodSpecificInput.payoutText instead
+        Deprecated; Moved to BankTransferPayoutMethodSpecificInput
         """
         return self.__payout_text
 
@@ -144,7 +144,7 @@ class CreatePayoutRequest(DataObject):
     @property
     def references(self):
         """
-        | Object that holds all reference fields that are linked to this transaction
+        | Object that holds all reference properties that are linked to this transaction
         
         Type: :class:`ingenico.connect.sdk.domain.payout.definitions.payout_references.PayoutReferences`
         """
@@ -161,7 +161,7 @@ class CreatePayoutRequest(DataObject):
         
         Type: str
         
-        Deprecated; | Use bankTransferPayoutMethodSpecificInput.swiftCode instead
+        Deprecated; Moved to BankTransferPayoutMethodSpecificInput
         """
         return self.__swift_code
 

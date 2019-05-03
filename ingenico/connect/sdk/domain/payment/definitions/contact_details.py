@@ -9,12 +9,14 @@ from ingenico.connect.sdk.domain.definitions.contact_details_base import Contact
 class ContactDetails(ContactDetailsBase):
 
     __fax_number = None
+    __mobile_phone_number = None
     __phone_number = None
+    __work_phone_number = None
 
     @property
     def fax_number(self):
         """
-        | Fax number of the consumer
+        | Fax number of the customer
         
         Type: str
         """
@@ -25,9 +27,22 @@ class ContactDetails(ContactDetailsBase):
         self.__fax_number = value
 
     @property
+    def mobile_phone_number(self):
+        """
+        | International version of the mobile phone number of the customer including the leading + (i.e. +16127779311)
+        
+        Type: str
+        """
+        return self.__mobile_phone_number
+
+    @mobile_phone_number.setter
+    def mobile_phone_number(self, value):
+        self.__mobile_phone_number = value
+
+    @property
     def phone_number(self):
         """
-        | Phone number of the consumer
+        | Phone number of the customer
         
         Type: str
         """
@@ -37,16 +52,35 @@ class ContactDetails(ContactDetailsBase):
     def phone_number(self, value):
         self.__phone_number = value
 
+    @property
+    def work_phone_number(self):
+        """
+        | International version of the work phone number of the customer including the leading + (i.e. +31235671500)
+        
+        Type: str
+        """
+        return self.__work_phone_number
+
+    @work_phone_number.setter
+    def work_phone_number(self, value):
+        self.__work_phone_number = value
+
     def to_dictionary(self):
         dictionary = super(ContactDetails, self).to_dictionary()
         self._add_to_dictionary(dictionary, 'faxNumber', self.fax_number)
+        self._add_to_dictionary(dictionary, 'mobilePhoneNumber', self.mobile_phone_number)
         self._add_to_dictionary(dictionary, 'phoneNumber', self.phone_number)
+        self._add_to_dictionary(dictionary, 'workPhoneNumber', self.work_phone_number)
         return dictionary
 
     def from_dictionary(self, dictionary):
         super(ContactDetails, self).from_dictionary(dictionary)
         if 'faxNumber' in dictionary:
             self.fax_number = dictionary['faxNumber']
+        if 'mobilePhoneNumber' in dictionary:
+            self.mobile_phone_number = dictionary['mobilePhoneNumber']
         if 'phoneNumber' in dictionary:
             self.phone_number = dictionary['phoneNumber']
+        if 'workPhoneNumber' in dictionary:
+            self.work_phone_number = dictionary['workPhoneNumber']
         return self

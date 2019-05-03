@@ -31,7 +31,7 @@ class SepaDirectDebitPaymentProduct771SpecificInputBase(AbstractSepaDirectDebitP
     @property
     def mandate(self):
         """
-        | Object containing information to create a SEPA Direct Debit mandate. Required for creating HostedCheckouts with SEPA Direct Debit supported.
+        | Object containing information to create a SEPA Direct Debit mandate.
         
         Type: :class:`ingenico.connect.sdk.domain.mandates.definitions.create_mandate_base.CreateMandateBase`
         """

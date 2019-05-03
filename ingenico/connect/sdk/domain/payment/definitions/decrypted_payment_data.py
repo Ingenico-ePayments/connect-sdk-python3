@@ -21,7 +21,7 @@ class DecryptedPaymentData(DataObject):
         """
         | Card holder's name on the card.
         
-        * For Apple Pay, maps to the cardholderName field in the encrypted payment data.
+        * For Apple Pay, maps to the cardholderName property in the encrypted payment data.
         * For Google Pay this is not available in the encrypted payment data, and can be omitted.
         
         Type: str
@@ -37,8 +37,8 @@ class DecryptedPaymentData(DataObject):
         """
         | The 3D secure online payment cryptogram.
         
-        * For Apple Pay, maps to the paymentData.onlinePaymentCryptogram field in the encrypted payment data.
-        * For Google Pay, maps to the paymentMethodDetails.3dsCryptogram field in the encrypted payment data.
+        * For Apple Pay, maps to the paymentData.onlinePaymentCryptogram property in the encrypted payment data.
+        * For Google Pay, maps to the paymentMethodDetails.3dsCryptogram property in the encrypted payment data.
         
         | Not allowed for Google Pay if the paymentMethod is CARD.
         
@@ -55,8 +55,8 @@ class DecryptedPaymentData(DataObject):
         """
         | The device specific PAN.
         
-        * For Apple Pay, maps to the applicationPrimaryAccountNumber field in the encrypted payment data.
-        * For Google Pay, maps to the paymentMethodDetails.dpan field in the encrypted payment data.
+        * For Apple Pay, maps to the applicationPrimaryAccountNumber property in the encrypted payment data.
+        * For Google Pay, maps to the paymentMethodDetails.dpan property in the encrypted payment data.
         
         | Not allowed for Google Pay if the paymentMethod is CARD.
         
@@ -73,8 +73,8 @@ class DecryptedPaymentData(DataObject):
         """
         | Electronic Commerce Indicator.
         
-        * For Apple Pay, maps to the paymentData.eciIndicator field in the encrypted payment data.
-        * For Google Pay, maps to the paymentMethodDetails.3dsEciIndicator field in the encryted payment data.
+        * For Apple Pay, maps to the paymentData.eciIndicator property in the encrypted payment data.
+        * For Google Pay, maps to the paymentMethodDetails.3dsEciIndicator property in the encryted payment data.
         
         | Not allowed for Google Pay if the paymentMethod is CARD.
         
@@ -92,8 +92,8 @@ class DecryptedPaymentData(DataObject):
         | Expiry date of the card
         | Format: MMYY.
         
-        * For Apple Pay, maps to the applicationExpirationDate field in the encrypted payment data. This field is formatted as YYMMDD, so this needs to be converted to get a correctly formatted expiry date.
-        * For Google Pay, maps to the paymentMethodDetails.expirationMonth and paymentMethodDetails.expirationYear fields in the encrypted payment data. These need to be combined to get a correctly formatted expiry date.
+        * For Apple Pay, maps to the applicationExpirationDate property in the encrypted payment data. This property is formatted as YYMMDD, so this needs to be converted to get a correctly formatted expiry date.
+        * For Google Pay, maps to the paymentMethodDetails.expirationMonth and paymentMethodDetails.expirationYear properties in the encrypted payment data. These need to be combined to get a correctly formatted expiry date.
         
         Type: str
         """
@@ -109,7 +109,7 @@ class DecryptedPaymentData(DataObject):
         | The non-device specific complete credit/debit card number (also know as the PAN).
         
         * For Apple Pay this is not available in the encrypted payment data, and must be omitted.
-        * For Google Pay, maps to the paymentMethodDetails.pan field in the encrypted payment data.
+        * For Google Pay, maps to the paymentMethodDetails.pan property in the encrypted payment data.
         
         | Not allowed for Google Pay if the paymentMethod is TOKENIZED_CARD.
         
@@ -127,7 +127,7 @@ class DecryptedPaymentData(DataObject):
         | The type of the payment credential: either CARD or TOKENIZED_CARD.
         
         * For Apple Pay this is not available in the encrypted payment data, and must be omitted.
-        * For Google Pay, maps to the paymentMethod field in the encrypted payment data.
+        * For Google Pay, maps to the paymentMethod property in the encrypted payment data.
         
         Type: str
         """

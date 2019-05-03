@@ -15,8 +15,8 @@ class RedirectPaymentProduct863SpecificInput(DataObject):
         """
         | The type of integration with WeChat. Possible values:
         
-        * desktopQRCode - used on desktops, the consumer opens the WeChat app by scanning a QR code.
-        * urlIntent - used in mobile apps or on mobile web pages, the consumer opens the WeChat app using a URL intent.
+        * desktopQRCode - used on desktops, the customer opens the WeChat app by scanning a QR code.
+        * urlIntent - used in mobile apps or on mobile web pages, the customer opens the WeChat app using a URL intent.
         * nativeInApp - used in mobile apps that use the WeChat Pay SDK.
         
         Type: str

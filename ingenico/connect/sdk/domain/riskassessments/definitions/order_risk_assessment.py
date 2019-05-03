@@ -7,6 +7,7 @@ from ingenico.connect.sdk.data_object import DataObject
 from ingenico.connect.sdk.domain.definitions.additional_order_input_airline_data import AdditionalOrderInputAirlineData
 from ingenico.connect.sdk.domain.definitions.amount_of_money import AmountOfMoney
 from ingenico.connect.sdk.domain.riskassessments.definitions.customer_risk_assessment import CustomerRiskAssessment
+from ingenico.connect.sdk.domain.riskassessments.definitions.shipping_risk_assessment import ShippingRiskAssessment
 
 
 class OrderRiskAssessment(DataObject):
@@ -14,6 +15,7 @@ class OrderRiskAssessment(DataObject):
     __additional_input = None
     __amount_of_money = None
     __customer = None
+    __shipping = None
 
     @property
     def additional_input(self):
@@ -44,7 +46,7 @@ class OrderRiskAssessment(DataObject):
     @property
     def customer(self):
         """
-        | Object containing the details of the consumer
+        | Object containing the details of the customer
         
         Type: :class:`ingenico.connect.sdk.domain.riskassessments.definitions.customer_risk_assessment.CustomerRiskAssessment`
         """
@@ -54,11 +56,25 @@ class OrderRiskAssessment(DataObject):
     def customer(self, value):
         self.__customer = value
 
+    @property
+    def shipping(self):
+        """
+        | Object containing information regarding shipping / delivery
+        
+        Type: :class:`ingenico.connect.sdk.domain.riskassessments.definitions.shipping_risk_assessment.ShippingRiskAssessment`
+        """
+        return self.__shipping
+
+    @shipping.setter
+    def shipping(self, value):
+        self.__shipping = value
+
     def to_dictionary(self):
         dictionary = super(OrderRiskAssessment, self).to_dictionary()
         self._add_to_dictionary(dictionary, 'additionalInput', self.additional_input)
         self._add_to_dictionary(dictionary, 'amountOfMoney', self.amount_of_money)
         self._add_to_dictionary(dictionary, 'customer', self.customer)
+        self._add_to_dictionary(dictionary, 'shipping', self.shipping)
         return dictionary
 
     def from_dictionary(self, dictionary):
@@ -78,4 +94,9 @@ class OrderRiskAssessment(DataObject):
                 raise TypeError('value \'{}\' is not a dictionary'.format(dictionary['customer']))
             value = CustomerRiskAssessment()
             self.customer = value.from_dictionary(dictionary['customer'])
+        if 'shipping' in dictionary:
+            if not isinstance(dictionary['shipping'], dict):
+                raise TypeError('value \'{}\' is not a dictionary'.format(dictionary['shipping']))
+            value = ShippingRiskAssessment()
+            self.shipping = value.from_dictionary(dictionary['shipping'])
         return self

@@ -64,7 +64,6 @@ class RiskAssessmentCardsExample(object):
             airline_data.flight_legs = flight_legs
             airline_data.invoice_number = "123456"
             airline_data.is_e_ticket = True
-            airline_data.is_registered_customer = True
             airline_data.is_restricted_ticket = True
             airline_data.is_third_party = True
             airline_data.issue_date = "20150101"
@@ -89,6 +88,7 @@ class RiskAssessmentCardsExample(object):
             billing_address.country_code = "US"
 
             customer = CustomerRiskAssessment()
+            customer.account_type = "existing"
             customer.billing_address = billing_address
             customer.locale = "en_US"
 

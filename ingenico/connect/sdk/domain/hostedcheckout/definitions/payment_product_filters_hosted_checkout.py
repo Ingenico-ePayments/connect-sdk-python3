@@ -42,10 +42,10 @@ class PaymentProductFiltersHostedCheckout(DataObject):
     @property
     def tokens_only(self):
         """
-        * true - The consumer may only complete the payment using one of the provided accounts on file.
-        * false -The consumer can complete the payment using any way they like, as long as it is allowed in the payment context. Default.
+        * true - The customer may only complete the payment using one of the provided accounts on file.
+        * false -The customer can complete the payment using any way they like, as long as it is allowed in the payment context. Default.
         
-        | Note that the request must contain at least one valid account on file with an allowed payment product (not excluded and allowed in context) if this field is set to true, else the request will fail.
+        | Note that the request must contain at least one valid account on file with an allowed payment product (not excluded and allowed in context) if this property is set to true, else the request will fail.
         
         Type: bool
         """

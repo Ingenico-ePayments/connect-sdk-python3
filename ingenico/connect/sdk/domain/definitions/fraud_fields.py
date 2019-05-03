@@ -35,6 +35,8 @@ class FraudFields(DataObject):
         | Indicates that invoice and shipping addresses are equal.
         
         Type: bool
+        
+        Deprecated; For risk assessments there is no replacement. For other calls, use Order.shipping.addressIndicator instead
         """
         return self.__addresses_are_identical
 
@@ -61,6 +63,8 @@ class FraudFields(DataObject):
         | The address that belongs to the owner of the card
         
         Type: :class:`ingenico.connect.sdk.domain.definitions.address.Address`
+        
+        Deprecated; This should be the same as Order.customer.billingAddress
         """
         return self.__card_owner_address
 
@@ -71,7 +75,7 @@ class FraudFields(DataObject):
     @property
     def customer_ip_address(self):
         """
-        | The IP Address of the consumer that is making the payment
+        | The IP Address of the customer that is making the payment
         
         Type: str
         """
@@ -91,6 +95,8 @@ class FraudFields(DataObject):
         * manually - All fields were entered manually
         
         Type: str
+        
+        Deprecated; Use Order.customer.device.defaultFormFill instead
         """
         return self.__default_form_fill
 
@@ -104,6 +110,8 @@ class FraudFields(DataObject):
         | Indicates that the device fingerprint has been used while processing the order.
         
         Type: bool
+        
+        Deprecated; No replacement
         """
         return self.__device_fingerprint_activated
 
@@ -117,6 +125,8 @@ class FraudFields(DataObject):
         | One must set the deviceFingerprintTransactionId received by the response of the endpoint /{merchant}/products/{paymentProductId}/deviceFingerprint
         
         Type: str
+        
+        Deprecated; Use Order.customer.device.deviceFingerprintTransactionId instead
         """
         return self.__device_fingerprint_transaction_id
 
@@ -183,12 +193,14 @@ class FraudFields(DataObject):
     @property
     def has_forgotten_pwd(self):
         """
-        | Specifies if the consumer (initially) had forgotten their password
+        | Specifies if the customer (initially) had forgotten their password
         
-        * true - The consumer has forgotten their password
-        * false - The consumer has not forgotten their password
+        * true - The customer has forgotten their password
+        * false - The customer has not forgotten their password
         
         Type: bool
+        
+        Deprecated; Use Order.customer.account.hasForgottenPassword instead
         """
         return self.__has_forgotten_pwd
 
@@ -199,12 +211,14 @@ class FraudFields(DataObject):
     @property
     def has_password(self):
         """
-        | Specifies if the consumer entered a password to gain access to an account registered with the you
+        | Specifies if the customer entered a password to gain access to an account registered with the you
         
-        * true - The consumer has used a password to gain access
-        * false - The consumer has not used a password to gain access
+        * true - The customer has used a password to gain access
+        * false - The customer has not used a password to gain access
         
         Type: bool
+        
+        Deprecated; Use Order.customer.account.hasPassword instead
         """
         return self.__has_password
 
@@ -215,12 +229,14 @@ class FraudFields(DataObject):
     @property
     def is_previous_customer(self):
         """
-        | Specifies if the consumer has a history of online shopping with the merchant
+        | Specifies if the customer has a history of online shopping with the merchant
         
-        * true - The consumer is a known returning consumer
-        * false - The consumer is new/unknown consumer
+        * true - The customer is a known returning customer
+        * false - The customer is new/unknown customer
         
         Type: bool
+        
+        Deprecated; Use Order.customer.isPreviousCustomer instead
         """
         return self.__is_previous_customer
 
@@ -247,6 +263,8 @@ class FraudFields(DataObject):
         | Comments included during shipping
         
         Type: str
+        
+        Deprecated; Use Order.shipping.comments instead
         """
         return self.__ship_comments
 
@@ -260,6 +278,8 @@ class FraudFields(DataObject):
         | Shipment tracking number
         
         Type: str
+        
+        Deprecated; Use Order.shipping.trackingNumber instead
         """
         return self.__shipment_tracking_number
 
@@ -273,6 +293,8 @@ class FraudFields(DataObject):
         | Details on how the order is shipped to the customer
         
         Type: :class:`ingenico.connect.sdk.domain.definitions.fraud_fields_shipping_details.FraudFieldsShippingDetails`
+        
+        Deprecated; No replacement
         """
         return self.__shipping_details
 
@@ -283,7 +305,7 @@ class FraudFields(DataObject):
     @property
     def user_data(self):
         """
-        | Array of up to 16 userData fields, each with a max length of 256 characters, that can be used for fraudscreening
+        | Array of up to 16 userData properties, each with a max length of 256 characters, that can be used for fraudscreening
         
         Type: list[str]
         """
@@ -299,6 +321,8 @@ class FraudFields(DataObject):
         | The website from which the purchase was made
         
         Type: str
+        
+        Deprecated; Use Merchant.websiteUrl instead
         """
         return self.__website
 

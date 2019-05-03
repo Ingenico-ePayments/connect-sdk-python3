@@ -36,7 +36,7 @@ class RefundResult(AbstractOrderStatus):
         * PENDING_APPROVAL - The transaction is awaiting approval from you to proceed with the processing of the refund
         * REJECTED - The refund has been rejected
         * REFUND_REQUESTED - The transaction is in the queue to be refunded
-        * REFUNDED - We have successfully refunded the consumer
+        * REFUNDED - We have successfully refunded the customer
         * REJECTED_CAPTURE - The refund was rejected by the bank or us during processing
         * CANCELLED - You have cancelled the transaction
         

@@ -6,6 +6,7 @@
 from ingenico.connect.sdk.domain.definitions.card import Card
 from ingenico.connect.sdk.domain.payment.definitions.abstract_card_payment_method_specific_input import AbstractCardPaymentMethodSpecificInput
 from ingenico.connect.sdk.domain.payment.definitions.external_cardholder_authentication_data import ExternalCardholderAuthenticationData
+from ingenico.connect.sdk.domain.payment.definitions.three_d_secure import ThreeDSecure
 
 
 class CardPaymentMethodSpecificInput(AbstractCardPaymentMethodSpecificInput):
@@ -14,6 +15,7 @@ class CardPaymentMethodSpecificInput(AbstractCardPaymentMethodSpecificInput):
     __external_cardholder_authentication_data = None
     __is_recurring = None
     __return_url = None
+    __three_d_secure = None
 
     @property
     def card(self):
@@ -34,6 +36,8 @@ class CardPaymentMethodSpecificInput(AbstractCardPaymentMethodSpecificInput):
         | Object containing 3D secure details.
         
         Type: :class:`ingenico.connect.sdk.domain.payment.definitions.external_cardholder_authentication_data.ExternalCardholderAuthenticationData`
+        
+        Deprecated; Use threeDSecure.externalCardholderAuthenticationData instead
         """
         return self.__external_cardholder_authentication_data
 
@@ -60,11 +64,13 @@ class CardPaymentMethodSpecificInput(AbstractCardPaymentMethodSpecificInput):
     @property
     def return_url(self):
         """
-        | The URL that the consumer is redirect to after the payment flow has finished. You can add any number of key value pairs in the query string that, for instance help you to identify the consumer when they return to your site. Please note that we will also append some additional key value pairs that will also help you with this identification process.
+        | The URL that the customer is redirect to after the payment flow has finished. You can add any number of key value pairs in the query string that, for instance help you to identify the customer when they return to your site. Please note that we will also append some additional key value pairs that will also help you with this identification process.
         | Note: The provided URL should be absolute and contain the protocol to use, e.g. http:// or https://. For use on mobile devices a custom protocol can be used in the form of *protocol*://. This protocol must be registered on the device first.
         | URLs without a protocol will be rejected.
         
         Type: str
+        
+        Deprecated; Use threeDSecure.redirectionData.returnUrl instead
         """
         return self.__return_url
 
@@ -72,12 +78,26 @@ class CardPaymentMethodSpecificInput(AbstractCardPaymentMethodSpecificInput):
     def return_url(self, value):
         self.__return_url = value
 
+    @property
+    def three_d_secure(self):
+        """
+        | Object containing specific data regarding 3-D Secure
+        
+        Type: :class:`ingenico.connect.sdk.domain.payment.definitions.three_d_secure.ThreeDSecure`
+        """
+        return self.__three_d_secure
+
+    @three_d_secure.setter
+    def three_d_secure(self, value):
+        self.__three_d_secure = value
+
     def to_dictionary(self):
         dictionary = super(CardPaymentMethodSpecificInput, self).to_dictionary()
         self._add_to_dictionary(dictionary, 'card', self.card)
         self._add_to_dictionary(dictionary, 'externalCardholderAuthenticationData', self.external_cardholder_authentication_data)
         self._add_to_dictionary(dictionary, 'isRecurring', self.is_recurring)
         self._add_to_dictionary(dictionary, 'returnUrl', self.return_url)
+        self._add_to_dictionary(dictionary, 'threeDSecure', self.three_d_secure)
         return dictionary
 
     def from_dictionary(self, dictionary):
@@ -96,4 +116,9 @@ class CardPaymentMethodSpecificInput(AbstractCardPaymentMethodSpecificInput):
             self.is_recurring = dictionary['isRecurring']
         if 'returnUrl' in dictionary:
             self.return_url = dictionary['returnUrl']
+        if 'threeDSecure' in dictionary:
+            if not isinstance(dictionary['threeDSecure'], dict):
+                raise TypeError('value \'{}\' is not a dictionary'.format(dictionary['threeDSecure']))
+            value = ThreeDSecure()
+            self.three_d_secure = value.from_dictionary(dictionary['threeDSecure'])
         return self

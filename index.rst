@@ -961,6 +961,13 @@ API Reference
     :special-members:
     :exclude-members: __dict__,__weakref__,__module__,__get__
 
+.. automodule:: ingenico.connect.sdk.domain.payment.definitions.abstract_three_d_secure
+    :members:
+    :show-inheritance:
+    :undoc-members:
+    :special-members:
+    :exclude-members: __dict__,__weakref__,__module__,__get__
+
 .. automodule:: ingenico.connect.sdk.domain.payment.definitions.additional_order_input
     :members:
     :show-inheritance:
@@ -1045,6 +1052,13 @@ API Reference
     :special-members:
     :exclude-members: __dict__,__weakref__,__module__,__get__
 
+.. automodule:: ingenico.connect.sdk.domain.payment.definitions.browser_data
+    :members:
+    :show-inheritance:
+    :undoc-members:
+    :special-members:
+    :exclude-members: __dict__,__weakref__,__module__,__get__
+
 .. automodule:: ingenico.connect.sdk.domain.payment.definitions.cancel_payment_card_payment_method_specific_output
     :members:
     :show-inheritance:
@@ -1074,6 +1088,13 @@ API Reference
     :exclude-members: __dict__,__weakref__,__module__,__get__
 
 .. automodule:: ingenico.connect.sdk.domain.payment.definitions.card_payment_method_specific_output
+    :members:
+    :show-inheritance:
+    :undoc-members:
+    :special-members:
+    :exclude-members: __dict__,__weakref__,__module__,__get__
+
+.. automodule:: ingenico.connect.sdk.domain.payment.definitions.card_recurrence_details
     :members:
     :show-inheritance:
     :undoc-members:
@@ -1143,7 +1164,49 @@ API Reference
     :special-members:
     :exclude-members: __dict__,__weakref__,__module__,__get__
 
+.. automodule:: ingenico.connect.sdk.domain.payment.definitions.customer_account
+    :members:
+    :show-inheritance:
+    :undoc-members:
+    :special-members:
+    :exclude-members: __dict__,__weakref__,__module__,__get__
+
+.. automodule:: ingenico.connect.sdk.domain.payment.definitions.customer_account_authentication
+    :members:
+    :show-inheritance:
+    :undoc-members:
+    :special-members:
+    :exclude-members: __dict__,__weakref__,__module__,__get__
+
+.. automodule:: ingenico.connect.sdk.domain.payment.definitions.customer_approve_payment
+    :members:
+    :show-inheritance:
+    :undoc-members:
+    :special-members:
+    :exclude-members: __dict__,__weakref__,__module__,__get__
+
+.. automodule:: ingenico.connect.sdk.domain.payment.definitions.customer_device
+    :members:
+    :show-inheritance:
+    :undoc-members:
+    :special-members:
+    :exclude-members: __dict__,__weakref__,__module__,__get__
+
+.. automodule:: ingenico.connect.sdk.domain.payment.definitions.customer_payment_activity
+    :members:
+    :show-inheritance:
+    :undoc-members:
+    :special-members:
+    :exclude-members: __dict__,__weakref__,__module__,__get__
+
 .. automodule:: ingenico.connect.sdk.domain.payment.definitions.decrypted_payment_data
+    :members:
+    :show-inheritance:
+    :undoc-members:
+    :special-members:
+    :exclude-members: __dict__,__weakref__,__module__,__get__
+
+.. automodule:: ingenico.connect.sdk.domain.payment.definitions.device_render_options
     :members:
     :show-inheritance:
     :undoc-members:
@@ -1186,6 +1249,13 @@ API Reference
     :exclude-members: __dict__,__weakref__,__module__,__get__
 
 .. automodule:: ingenico.connect.sdk.domain.payment.definitions.external_cardholder_authentication_data
+    :members:
+    :show-inheritance:
+    :undoc-members:
+    :special-members:
+    :exclude-members: __dict__,__weakref__,__module__,__get__
+
+.. automodule:: ingenico.connect.sdk.domain.payment.definitions.gift_card_purchase
     :members:
     :show-inheritance:
     :undoc-members:
@@ -1241,6 +1311,13 @@ API Reference
     :special-members:
     :exclude-members: __dict__,__weakref__,__module__,__get__
 
+.. automodule:: ingenico.connect.sdk.domain.payment.definitions.merchant
+    :members:
+    :show-inheritance:
+    :undoc-members:
+    :special-members:
+    :exclude-members: __dict__,__weakref__,__module__,__get__
+
 .. automodule:: ingenico.connect.sdk.domain.payment.definitions.merchant_action
     :members:
     :show-inheritance:
@@ -1263,6 +1340,13 @@ API Reference
     :exclude-members: __dict__,__weakref__,__module__,__get__
 
 .. automodule:: ingenico.connect.sdk.domain.payment.definitions.mobile_payment_method_specific_output
+    :members:
+    :show-inheritance:
+    :undoc-members:
+    :special-members:
+    :exclude-members: __dict__,__weakref__,__module__,__get__
+
+.. automodule:: ingenico.connect.sdk.domain.payment.definitions.mobile_three_d_secure_challenge_parameters
     :members:
     :show-inheritance:
     :undoc-members:
@@ -1354,6 +1438,13 @@ API Reference
     :exclude-members: __dict__,__weakref__,__module__,__get__
 
 .. automodule:: ingenico.connect.sdk.domain.payment.definitions.payment
+    :members:
+    :show-inheritance:
+    :undoc-members:
+    :special-members:
+    :exclude-members: __dict__,__weakref__,__module__,__get__
+
+.. automodule:: ingenico.connect.sdk.domain.payment.definitions.payment_account_on_file
     :members:
     :show-inheritance:
     :undoc-members:
@@ -1521,6 +1612,13 @@ API Reference
     :special-members:
     :exclude-members: __dict__,__weakref__,__module__,__get__
 
+.. automodule:: ingenico.connect.sdk.domain.payment.definitions.redirection_data
+    :members:
+    :show-inheritance:
+    :undoc-members:
+    :special-members:
+    :exclude-members: __dict__,__weakref__,__module__,__get__
+
 .. automodule:: ingenico.connect.sdk.domain.payment.definitions.refund_bank_method_specific_output
     :members:
     :show-inheritance:
@@ -1584,6 +1682,20 @@ API Reference
     :special-members:
     :exclude-members: __dict__,__weakref__,__module__,__get__
 
+.. automodule:: ingenico.connect.sdk.domain.payment.definitions.sdk_data_input
+    :members:
+    :show-inheritance:
+    :undoc-members:
+    :special-members:
+    :exclude-members: __dict__,__weakref__,__module__,__get__
+
+.. automodule:: ingenico.connect.sdk.domain.payment.definitions.sdk_data_output
+    :members:
+    :show-inheritance:
+    :undoc-members:
+    :special-members:
+    :exclude-members: __dict__,__weakref__,__module__,__get__
+
 .. automodule:: ingenico.connect.sdk.domain.payment.definitions.seller
     :members:
     :show-inheritance:
@@ -1634,6 +1746,27 @@ API Reference
     :exclude-members: __dict__,__weakref__,__module__,__get__
 
 .. automodule:: ingenico.connect.sdk.domain.payment.definitions.shopping_cart
+    :members:
+    :show-inheritance:
+    :undoc-members:
+    :special-members:
+    :exclude-members: __dict__,__weakref__,__module__,__get__
+
+.. automodule:: ingenico.connect.sdk.domain.payment.definitions.three_d_secure
+    :members:
+    :show-inheritance:
+    :undoc-members:
+    :special-members:
+    :exclude-members: __dict__,__weakref__,__module__,__get__
+
+.. automodule:: ingenico.connect.sdk.domain.payment.definitions.three_d_secure_base
+    :members:
+    :show-inheritance:
+    :undoc-members:
+    :special-members:
+    :exclude-members: __dict__,__weakref__,__module__,__get__
+
+.. automodule:: ingenico.connect.sdk.domain.payment.definitions.three_d_secure_data
     :members:
     :show-inheritance:
     :undoc-members:
@@ -2095,7 +2228,28 @@ API Reference
     :special-members:
     :exclude-members: __dict__,__weakref__,__module__,__get__
 
+.. automodule:: ingenico.connect.sdk.domain.riskassessments.definitions.customer_account_risk_assessment
+    :members:
+    :show-inheritance:
+    :undoc-members:
+    :special-members:
+    :exclude-members: __dict__,__weakref__,__module__,__get__
+
+.. automodule:: ingenico.connect.sdk.domain.riskassessments.definitions.customer_device_risk_assessment
+    :members:
+    :show-inheritance:
+    :undoc-members:
+    :special-members:
+    :exclude-members: __dict__,__weakref__,__module__,__get__
+
 .. automodule:: ingenico.connect.sdk.domain.riskassessments.definitions.customer_risk_assessment
+    :members:
+    :show-inheritance:
+    :undoc-members:
+    :special-members:
+    :exclude-members: __dict__,__weakref__,__module__,__get__
+
+.. automodule:: ingenico.connect.sdk.domain.riskassessments.definitions.merchant_risk_assessment
     :members:
     :show-inheritance:
     :undoc-members:
@@ -2124,6 +2278,13 @@ API Reference
     :exclude-members: __dict__,__weakref__,__module__,__get__
 
 .. automodule:: ingenico.connect.sdk.domain.riskassessments.definitions.risk_assessment
+    :members:
+    :show-inheritance:
+    :undoc-members:
+    :special-members:
+    :exclude-members: __dict__,__weakref__,__module__,__get__
+
+.. automodule:: ingenico.connect.sdk.domain.riskassessments.definitions.shipping_risk_assessment
     :members:
     :show-inheritance:
     :undoc-members:

@@ -16,6 +16,8 @@ from ingenico.connect.sdk.domain.payment.definitions.address_personal import Add
 from ingenico.connect.sdk.domain.payment.definitions.card_payment_method_specific_input import CardPaymentMethodSpecificInput
 from ingenico.connect.sdk.domain.payment.definitions.contact_details import ContactDetails
 from ingenico.connect.sdk.domain.payment.definitions.customer import Customer
+from ingenico.connect.sdk.domain.payment.definitions.device_render_options import DeviceRenderOptions
+from ingenico.connect.sdk.domain.payment.definitions.external_cardholder_authentication_data import ExternalCardholderAuthenticationData
 from ingenico.connect.sdk.domain.payment.definitions.line_item import LineItem
 from ingenico.connect.sdk.domain.payment.definitions.line_item_invoice_data import LineItemInvoiceData
 from ingenico.connect.sdk.domain.payment.definitions.order import Order
@@ -23,7 +25,11 @@ from ingenico.connect.sdk.domain.payment.definitions.order_invoice_data import O
 from ingenico.connect.sdk.domain.payment.definitions.order_references import OrderReferences
 from ingenico.connect.sdk.domain.payment.definitions.personal_information import PersonalInformation
 from ingenico.connect.sdk.domain.payment.definitions.personal_name import PersonalName
+from ingenico.connect.sdk.domain.payment.definitions.sdk_data_input import SdkDataInput
+from ingenico.connect.sdk.domain.payment.definitions.shipping import Shipping
 from ingenico.connect.sdk.domain.payment.definitions.shopping_cart import ShoppingCart
+from ingenico.connect.sdk.domain.payment.definitions.three_d_secure import ThreeDSecure
+from ingenico.connect.sdk.domain.payment.definitions.three_d_secure_data import ThreeDSecureData
 
 
 class CreatePaymentExample(object):
@@ -36,10 +42,47 @@ class CreatePaymentExample(object):
             card.cvv = "123"
             card.expiry_date = "1220"
 
+            external_cardholder_authentication_data = ExternalCardholderAuthenticationData()
+            external_cardholder_authentication_data.cavv = "AgAAAAAABk4DWZ4C28yUQAAAAAA="
+            external_cardholder_authentication_data.cavv_algorithm = "1"
+            external_cardholder_authentication_data.eci = 8
+            external_cardholder_authentication_data.three_d_secure_version = "v2"
+            external_cardholder_authentication_data.three_d_server_transaction_id = "3DSTID1234"
+            external_cardholder_authentication_data.validation_result = "Y"
+            external_cardholder_authentication_data.xid = "n3h2uOQPUgnmqhCkXNfxl8pOZJA="
+
+            prior_three_d_secure_data = ThreeDSecureData()
+            prior_three_d_secure_data.acs_transaction_id = "empty"
+            prior_three_d_secure_data.method = "challenged"
+            prior_three_d_secure_data.utc_timestamp = "201901311530"
+
+            device_render_options = DeviceRenderOptions()
+            device_render_options.sdk_interface = "native"
+            device_render_options.sdk_ui_type = "multi-select"
+
+            sdk_data = SdkDataInput()
+            sdk_data.device_info = "abc123"
+            sdk_data.device_render_options = device_render_options
+            sdk_data.sdk_app_id = "xyz"
+            sdk_data.sdk_encrypted_data = "abc123"
+            sdk_data.sdk_ephemeral_public_key = "123xyz"
+            sdk_data.sdk_max_timeout = "30"
+            sdk_data.sdk_reference_number = "zaq123"
+            sdk_data.sdk_transaction_id = "xsw321"
+
+            three_d_secure = ThreeDSecure()
+            three_d_secure.authentication_flow = "browser"
+            three_d_secure.challenge_canvas_size = "600x400"
+            three_d_secure.challenge_indicator = "challenge-requested"
+            three_d_secure.external_cardholder_authentication_data = external_cardholder_authentication_data
+            three_d_secure.prior_three_d_secure_data = prior_three_d_secure_data
+            three_d_secure.sdk_data = sdk_data
+            three_d_secure.skip_authentication = False
+
             card_payment_method_specific_input = CardPaymentMethodSpecificInput()
             card_payment_method_specific_input.card = card
             card_payment_method_specific_input.payment_product_id = 1
-            card_payment_method_specific_input.skip_authentication = False
+            card_payment_method_specific_input.three_d_secure = three_d_secure
 
             amount_of_money = AmountOfMoney()
             amount_of_money.amount = 2980
@@ -56,6 +99,7 @@ class CreatePaymentExample(object):
 
             company_information = CompanyInformation()
             company_information.name = "Acme Labs"
+            company_information.vat_number = "1234AB5678CD"
 
             contact_details = ContactDetails()
             contact_details.email_address = "wile.e.coyote@acmelabs.com"
@@ -74,21 +118,6 @@ class CreatePaymentExample(object):
             personal_information.gender = "male"
             personal_information.name = name
 
-            shipping_name = PersonalName()
-            shipping_name.first_name = "Road"
-            shipping_name.surname = "Runner"
-            shipping_name.title = "Miss"
-
-            shipping_address = AddressPersonal()
-            shipping_address.additional_info = "Suite II"
-            shipping_address.city = "Monument Valley"
-            shipping_address.country_code = "US"
-            shipping_address.house_number = "1"
-            shipping_address.name = shipping_name
-            shipping_address.state = "Utah"
-            shipping_address.street = "Desertroad"
-            shipping_address.zip = "84536"
-
             customer = Customer()
             customer.billing_address = billing_address
             customer.company_information = company_information
@@ -96,8 +125,6 @@ class CreatePaymentExample(object):
             customer.locale = "en_US"
             customer.merchant_customer_id = "1234"
             customer.personal_information = personal_information
-            customer.shipping_address = shipping_address
-            customer.vat_number = "1234AB5678CD"
 
             invoice_data = OrderInvoiceData()
             invoice_data.invoice_date = "20140306191500"
@@ -108,6 +135,24 @@ class CreatePaymentExample(object):
             references.invoice_data = invoice_data
             references.merchant_order_id = 123456
             references.merchant_reference = "AcmeOrder0001"
+
+            shipping_name = PersonalName()
+            shipping_name.first_name = "Road"
+            shipping_name.surname = "Runner"
+            shipping_name.title = "Miss"
+
+            address = AddressPersonal()
+            address.additional_info = "Suite II"
+            address.city = "Monument Valley"
+            address.country_code = "US"
+            address.house_number = "1"
+            address.name = shipping_name
+            address.state = "Utah"
+            address.street = "Desertroad"
+            address.zip = "84536"
+
+            shipping = Shipping()
+            shipping.address = address
 
             items = []
 
@@ -148,6 +193,7 @@ class CreatePaymentExample(object):
             order.amount_of_money = amount_of_money
             order.customer = customer
             order.references = references
+            order.shipping = shipping
             order.shopping_cart = shopping_cart
 
             body = CreatePaymentRequest()

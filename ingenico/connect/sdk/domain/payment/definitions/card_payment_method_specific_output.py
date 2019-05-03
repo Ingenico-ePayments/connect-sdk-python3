@@ -75,7 +75,7 @@ class CardPaymentMethodSpecificOutput(AbstractPaymentMethodSpecificOutput):
     @property
     def token(self):
         """
-        | ID of the token. This property is populated for the Ogone payment platform when the payment was done with a token or when the payment was tokenized.
+        | If a token was used for or created during the payment, then the ID of that token. This property is only populated for payments on the Ogone payment platform.
         
         Type: str
         """

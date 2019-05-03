@@ -34,7 +34,7 @@ class MandateSepaDirectDebitWithoutCreditor(DataObject):
     @property
     def customer_contract_identifier(self):
         """
-        | Identifies the contract between consumer and merchant
+        | Identifies the contract between customer and merchant
         
         Type: str
         """
@@ -87,7 +87,7 @@ class MandateSepaDirectDebitWithoutCreditor(DataObject):
     @property
     def pre_notification(self):
         """
-        | Indicates whether a pre-notification should be sent to the consumer.
+        | Indicates whether a pre-notification should be sent to the customer.
         
         * do-not-send - Do not send a pre-notification
         * send-on-first-collection - Send a pre-notification

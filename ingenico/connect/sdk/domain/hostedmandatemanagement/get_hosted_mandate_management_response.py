@@ -31,7 +31,7 @@ class GetHostedMandateManagementResponse(DataObject):
         | This is the status of the hosted mandate management. Possible values are:
         
         * IN_PROGRESS - The session has been created, but no mandate has been created yet.
-        * MANDATE_CREATED - A mandate has been created, the consumer might still need to sign the mandate.
+        * MANDATE_CREATED - A mandate has been created, the customer might still need to sign the mandate.
         * FAILED - There was an error while creating the mandate, the session can not continue.
         * CANCELLED_BY_CONSUMER - The session was cancelled before a mandate was created
         
