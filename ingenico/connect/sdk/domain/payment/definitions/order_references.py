@@ -42,7 +42,6 @@ class OrderReferences(DataObject):
         * 404 INICIS - 80 characters
         * 802 Nordea ePayment Finland - 234 characters
         * 809 iDeal - 32 characters
-        * 819 Aktia - 210 characters
         * 836 SOFORT - 42 characters
         * 840 PayPal - 127 characters
         * 841 WebMoney - 175 characters

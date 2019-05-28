@@ -13,10 +13,24 @@ class FindRefundsParams(ParamRequest):
     See also https://epayments-api.developer-ingenico.com/s2sapi/v1/en_US/python/refunds/find.html
     """
 
+    __hosted_checkout_id = None
     __merchant_reference = None
     __merchant_order_id = None
     __offset = None
     __limit = None
+
+    @property
+    def hosted_checkout_id(self):
+        """
+        | Your hosted checkout identifier to filter on.
+        
+        Type: str
+        """
+        return self.__hosted_checkout_id
+
+    @hosted_checkout_id.setter
+    def hosted_checkout_id(self, value):
+        self.__hosted_checkout_id = value
 
     @property
     def merchant_reference(self):
@@ -75,6 +89,7 @@ class FindRefundsParams(ParamRequest):
         :return: list[RequestParam]
         """
         result = []
+        self._add_parameter(result, "hostedCheckoutId", self.hosted_checkout_id)
         self._add_parameter(result, "merchantReference", self.merchant_reference)
         self._add_parameter(result, "merchantOrderId", self.merchant_order_id)
         self._add_parameter(result, "offset", self.offset)

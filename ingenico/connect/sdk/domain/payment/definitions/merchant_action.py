@@ -7,6 +7,7 @@ from ingenico.connect.sdk.data_object import DataObject
 from ingenico.connect.sdk.domain.definitions.key_value_pair import KeyValuePair
 from ingenico.connect.sdk.domain.payment.definitions.mobile_three_d_secure_challenge_parameters import MobileThreeDSecureChallengeParameters
 from ingenico.connect.sdk.domain.payment.definitions.redirect_data import RedirectData
+from ingenico.connect.sdk.domain.payment.definitions.third_party_data import ThirdPartyData
 from ingenico.connect.sdk.domain.product.definitions.payment_product_field import PaymentProductField
 
 
@@ -18,6 +19,7 @@ class MerchantAction(DataObject):
     __redirect_data = None
     __rendering_data = None
     __show_data = None
+    __third_party_data = None
 
     @property
     def action_type(self):
@@ -35,6 +37,7 @@ class MerchantAction(DataObject):
         * SHOW_INSTRUCTIONS - The customer needs to be shown payment instruction using the details found in showData. Alternatively the instructions can be rendered by us using the instructionsRenderingData
         * SHOW_TRANSACTION_RESULTS - The customer needs to be shown the transaction results using the details found in showData. Alternatively the instructions can be rendered by us using the instructionsRenderingData
         * MOBILE_THREEDS_CHALLENGE - The customer needs to complete a challenge as part of the 3D Secure authentication inside your mobile app. The details contained in mobileThreeDSecureChallengeParameters need to be provided to the EMVco certified Mobile SDK as a challengeParameters object.
+        * CALL_THIRD_PARTY - The merchant needs to call a third party using the data found in thirdPartyData
         
         Type: str
         """
@@ -132,6 +135,20 @@ class MerchantAction(DataObject):
     def show_data(self, value):
         self.__show_data = value
 
+    @property
+    def third_party_data(self):
+        """
+        | This is returned for the CALL_THIRD_PARTY actionType.
+        | The payment product specific field of the payment product used for the payment will be populated with the third party data that should be used when calling the third party.
+        
+        Type: :class:`ingenico.connect.sdk.domain.payment.definitions.third_party_data.ThirdPartyData`
+        """
+        return self.__third_party_data
+
+    @third_party_data.setter
+    def third_party_data(self, value):
+        self.__third_party_data = value
+
     def to_dictionary(self):
         dictionary = super(MerchantAction, self).to_dictionary()
         self._add_to_dictionary(dictionary, 'actionType', self.action_type)
@@ -140,6 +157,7 @@ class MerchantAction(DataObject):
         self._add_to_dictionary(dictionary, 'redirectData', self.redirect_data)
         self._add_to_dictionary(dictionary, 'renderingData', self.rendering_data)
         self._add_to_dictionary(dictionary, 'showData', self.show_data)
+        self._add_to_dictionary(dictionary, 'thirdPartyData', self.third_party_data)
         return dictionary
 
     def from_dictionary(self, dictionary):
@@ -172,4 +190,9 @@ class MerchantAction(DataObject):
             for showData_element in dictionary['showData']:
                 showData_value = KeyValuePair()
                 self.show_data.append(showData_value.from_dictionary(showData_element))
+        if 'thirdPartyData' in dictionary:
+            if not isinstance(dictionary['thirdPartyData'], dict):
+                raise TypeError('value \'{}\' is not a dictionary'.format(dictionary['thirdPartyData']))
+            value = ThirdPartyData()
+            self.third_party_data = value.from_dictionary(dictionary['thirdPartyData'])
         return self

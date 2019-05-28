@@ -13,6 +13,7 @@ class FindPaymentsExample(object):
     def example(self):
         with self.__get_client() as client:
             query = FindPaymentsParams()
+            query.hosted_checkout_id = "15c09dac-bf44-486a-af6b-edfd8680a166"
             query.merchant_reference = "AcmeOrder0001"
             query.merchant_order_id = 123456
             query.offset = 0
