@@ -16,7 +16,6 @@ from ingenico.connect.sdk.domain.payment.definitions.address_personal import Add
 from ingenico.connect.sdk.domain.payment.definitions.card_payment_method_specific_input import CardPaymentMethodSpecificInput
 from ingenico.connect.sdk.domain.payment.definitions.contact_details import ContactDetails
 from ingenico.connect.sdk.domain.payment.definitions.customer import Customer
-from ingenico.connect.sdk.domain.payment.definitions.device_render_options import DeviceRenderOptions
 from ingenico.connect.sdk.domain.payment.definitions.external_cardholder_authentication_data import ExternalCardholderAuthenticationData
 from ingenico.connect.sdk.domain.payment.definitions.line_item import LineItem
 from ingenico.connect.sdk.domain.payment.definitions.line_item_invoice_data import LineItemInvoiceData
@@ -25,7 +24,6 @@ from ingenico.connect.sdk.domain.payment.definitions.order_invoice_data import O
 from ingenico.connect.sdk.domain.payment.definitions.order_references import OrderReferences
 from ingenico.connect.sdk.domain.payment.definitions.personal_information import PersonalInformation
 from ingenico.connect.sdk.domain.payment.definitions.personal_name import PersonalName
-from ingenico.connect.sdk.domain.payment.definitions.sdk_data_input import SdkDataInput
 from ingenico.connect.sdk.domain.payment.definitions.shipping import Shipping
 from ingenico.connect.sdk.domain.payment.definitions.shopping_cart import ShoppingCart
 from ingenico.connect.sdk.domain.payment.definitions.three_d_secure import ThreeDSecure
@@ -56,27 +54,12 @@ class CreatePaymentExample(object):
             prior_three_d_secure_data.method = "challenged"
             prior_three_d_secure_data.utc_timestamp = "201901311530"
 
-            device_render_options = DeviceRenderOptions()
-            device_render_options.sdk_interface = "native"
-            device_render_options.sdk_ui_type = "multi-select"
-
-            sdk_data = SdkDataInput()
-            sdk_data.device_info = "abc123"
-            sdk_data.device_render_options = device_render_options
-            sdk_data.sdk_app_id = "xyz"
-            sdk_data.sdk_encrypted_data = "abc123"
-            sdk_data.sdk_ephemeral_public_key = "123xyz"
-            sdk_data.sdk_max_timeout = "30"
-            sdk_data.sdk_reference_number = "zaq123"
-            sdk_data.sdk_transaction_id = "xsw321"
-
             three_d_secure = ThreeDSecure()
             three_d_secure.authentication_flow = "browser"
             three_d_secure.challenge_canvas_size = "600x400"
             three_d_secure.challenge_indicator = "challenge-requested"
             three_d_secure.external_cardholder_authentication_data = external_cardholder_authentication_data
             three_d_secure.prior_three_d_secure_data = prior_three_d_secure_data
-            three_d_secure.sdk_data = sdk_data
             three_d_secure.skip_authentication = False
 
             card_payment_method_specific_input = CardPaymentMethodSpecificInput()
