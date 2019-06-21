@@ -28,7 +28,8 @@ class RedirectPaymentProduct882SpecificInput(DataObject):
 
     def to_dictionary(self):
         dictionary = super(RedirectPaymentProduct882SpecificInput, self).to_dictionary()
-        self._add_to_dictionary(dictionary, 'issuerId', self.issuer_id)
+        if self.issuer_id is not None:
+            dictionary['issuerId'] = self.issuer_id
         return dictionary
 
     def from_dictionary(self, dictionary):

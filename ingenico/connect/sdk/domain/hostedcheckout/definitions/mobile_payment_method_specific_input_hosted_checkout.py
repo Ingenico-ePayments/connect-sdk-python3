@@ -26,7 +26,8 @@ class MobilePaymentMethodSpecificInputHostedCheckout(AbstractPaymentMethodSpecif
 
     def to_dictionary(self):
         dictionary = super(MobilePaymentMethodSpecificInputHostedCheckout, self).to_dictionary()
-        self._add_to_dictionary(dictionary, 'paymentProduct320SpecificInput', self.payment_product320_specific_input)
+        if self.payment_product320_specific_input is not None:
+            dictionary['paymentProduct320SpecificInput'] = self.payment_product320_specific_input.to_dictionary()
         return dictionary
 
     def from_dictionary(self, dictionary):

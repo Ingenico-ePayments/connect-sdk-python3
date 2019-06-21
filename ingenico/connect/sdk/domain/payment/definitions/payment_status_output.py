@@ -68,9 +68,12 @@ class PaymentStatusOutput(OrderStatusOutput):
 
     def to_dictionary(self):
         dictionary = super(PaymentStatusOutput, self).to_dictionary()
-        self._add_to_dictionary(dictionary, 'isAuthorized', self.is_authorized)
-        self._add_to_dictionary(dictionary, 'isRefundable', self.is_refundable)
-        self._add_to_dictionary(dictionary, 'threeDSecureStatus', self.three_d_secure_status)
+        if self.is_authorized is not None:
+            dictionary['isAuthorized'] = self.is_authorized
+        if self.is_refundable is not None:
+            dictionary['isRefundable'] = self.is_refundable
+        if self.three_d_secure_status is not None:
+            dictionary['threeDSecureStatus'] = self.three_d_secure_status
         return dictionary
 
     def from_dictionary(self, dictionary):

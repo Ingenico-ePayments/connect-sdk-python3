@@ -21,7 +21,7 @@ class MetaDataProvider:
     """
     Provides meta info about the server.
     """
-    __SDK_VERSION = "2.36.0"
+    __SDK_VERSION = "3.0.0"
     __SERVER_META_INFO_HEADER = "X-GCS-ServerMetaInfo"
     __prohibited_headers = [__SERVER_META_INFO_HEADER, "X-GCS-Idempotence-Key",
                             "Date", "Content-Type", "Authorization"]
@@ -36,21 +36,21 @@ class MetaDataProvider:
         shopping_cart_extension = None
 
         def to_dictionary(self):
-            dictionary = super(MetaDataProvider.ServerMetaInfo,
-                               self).to_dictionary()
-            self._add_to_dictionary(dictionary, "platformIdentifier",
-                                    self.platform_identifier)
-            self._add_to_dictionary(dictionary, "sdkIdentifier",
-                                    self.sdk_identifier)
-            self._add_to_dictionary(dictionary, "sdkCreator", self.sdk_creator)
-            self._add_to_dictionary(dictionary, "integrator", self.integrator)
-            self._add_to_dictionary(dictionary, "shoppingCartExtension",
-                                    self.shopping_cart_extension)
+            dictionary = super(MetaDataProvider.ServerMetaInfo, self).to_dictionary()
+            if self.platform_identifier is not None:
+                dictionary['platformIdentifier'] = self.platform_identifier
+            if self.sdk_identifier is not None:
+                dictionary['sdkIdentifier'] = self.sdk_identifier
+            if self.sdk_creator is not None:
+                dictionary['sdkCreator'] = self.sdk_creator
+            if self.integrator is not None:
+                dictionary['integrator'] = self.integrator
+            if self.shopping_cart_extension is not None:
+                dictionary['shoppingCartExtension'] = self.shopping_cart_extension.to_dictionary()
             return dictionary
 
         def from_dictionary(self, dictionary):
-            super(MetaDataProvider.ServerMetaInfo, self).from_dictionary(
-                dictionary)
+            super(MetaDataProvider.ServerMetaInfo, self).from_dictionary(dictionary)
             if 'platformIdentifier' in dictionary:
                 self.platform_identifier = dictionary['platformIdentifier']
             if 'sdkIdentifier' in dictionary:
@@ -104,7 +104,7 @@ class MetaDataProvider:
     @staticmethod
     def __validate_additional_request_header(additional_request_header):
         try:
-            if additional_request_header.name in MetaDataProvider.prohibited_headers:
+            if additional_request_header.name in MetaDataProvider.__PROHIBITED_HEADERS:
                 raise ValueError("request header not allowed: ",
                                  str(additional_request_header))
         except AttributeError:

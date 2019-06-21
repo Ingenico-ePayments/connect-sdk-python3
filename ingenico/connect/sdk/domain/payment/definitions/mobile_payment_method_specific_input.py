@@ -98,11 +98,16 @@ class MobilePaymentMethodSpecificInput(AbstractPaymentMethodSpecificInput):
 
     def to_dictionary(self):
         dictionary = super(MobilePaymentMethodSpecificInput, self).to_dictionary()
-        self._add_to_dictionary(dictionary, 'authorizationMode', self.authorization_mode)
-        self._add_to_dictionary(dictionary, 'decryptedPaymentData', self.decrypted_payment_data)
-        self._add_to_dictionary(dictionary, 'encryptedPaymentData', self.encrypted_payment_data)
-        self._add_to_dictionary(dictionary, 'requiresApproval', self.requires_approval)
-        self._add_to_dictionary(dictionary, 'skipFraudService', self.skip_fraud_service)
+        if self.authorization_mode is not None:
+            dictionary['authorizationMode'] = self.authorization_mode
+        if self.decrypted_payment_data is not None:
+            dictionary['decryptedPaymentData'] = self.decrypted_payment_data.to_dictionary()
+        if self.encrypted_payment_data is not None:
+            dictionary['encryptedPaymentData'] = self.encrypted_payment_data
+        if self.requires_approval is not None:
+            dictionary['requiresApproval'] = self.requires_approval
+        if self.skip_fraud_service is not None:
+            dictionary['skipFraudService'] = self.skip_fraud_service
         return dictionary
 
     def from_dictionary(self, dictionary):

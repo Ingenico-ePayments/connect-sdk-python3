@@ -54,9 +54,12 @@ class PayoutReferences(DataObject):
 
     def to_dictionary(self):
         dictionary = super(PayoutReferences, self).to_dictionary()
-        self._add_to_dictionary(dictionary, 'invoiceNumber', self.invoice_number)
-        self._add_to_dictionary(dictionary, 'merchantOrderId', self.merchant_order_id)
-        self._add_to_dictionary(dictionary, 'merchantReference', self.merchant_reference)
+        if self.invoice_number is not None:
+            dictionary['invoiceNumber'] = self.invoice_number
+        if self.merchant_order_id is not None:
+            dictionary['merchantOrderId'] = self.merchant_order_id
+        if self.merchant_reference is not None:
+            dictionary['merchantReference'] = self.merchant_reference
         return dictionary
 
     def from_dictionary(self, dictionary):

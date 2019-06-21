@@ -23,7 +23,8 @@ class AbstractEInvoicePaymentMethodSpecificInput(AbstractPaymentMethodSpecificIn
 
     def to_dictionary(self):
         dictionary = super(AbstractEInvoicePaymentMethodSpecificInput, self).to_dictionary()
-        self._add_to_dictionary(dictionary, 'requiresApproval', self.requires_approval)
+        if self.requires_approval is not None:
+            dictionary['requiresApproval'] = self.requires_approval
         return dictionary
 
     def from_dictionary(self, dictionary):

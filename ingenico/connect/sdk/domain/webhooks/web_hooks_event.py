@@ -2,6 +2,7 @@ from ingenico.connect.sdk.data_object import DataObject
 from ingenico.connect.sdk.domain.payment.payment_response import PaymentResponse
 from ingenico.connect.sdk.domain.refund.refund_response import RefundResponse
 from ingenico.connect.sdk.domain.payout.payout_response import PayoutResponse
+from ingenico.connect.sdk.domain.token.token_response import TokenResponse
 
 
 class WebhooksEvent(DataObject):
@@ -89,15 +90,24 @@ class WebhooksEvent(DataObject):
 
     def to_dictionary(self):
         dictionary = super(WebhooksEvent, self).to_dictionary()
-        self._add_to_dictionary(dictionary, 'apiVersion', self.__api_version)
-        self._add_to_dictionary(dictionary, 'id', self.__id)
-        self._add_to_dictionary(dictionary, 'created', self.__created)
-        self._add_to_dictionary(dictionary, 'merchantId', self.__merchant_id)
-        self._add_to_dictionary(dictionary, 'type', self.__type)
-        self._add_to_dictionary(dictionary, 'payment', self.__payment)
-        self._add_to_dictionary(dictionary, 'refund', self.__refund)
-        self._add_to_dictionary(dictionary, 'payout', self.__payout)
-        self._add_to_dictionary(dictionary, 'token', self.__token)
+        if self.__api_version is not None:
+            dictionary['apiVersion'] = self.__api_version
+        if self.__id is not None:
+            dictionary['id'] = self.__id
+        if self.__created is not None:
+            dictionary['created'] = self.__created
+        if self.__merchant_id is not None:
+            dictionary['merchantId'] = self.__merchant_id
+        if self.__type is not None:
+            dictionary['type'] = self.__type
+        if self.__payment is not None:
+            dictionary['payment'] = self.__payment
+        if self.__refund is not None:
+            dictionary['refund'] = self.__refund
+        if self.__payout is not None:
+            dictionary['payout'] = self.__payout
+        if self.__token is not None:
+            dictionary['token'] = self.__token
         return dictionary
 
     def from_dictionary(self, dictionary):
@@ -128,5 +138,8 @@ class WebhooksEvent(DataObject):
             value = RefundResponse()
             self.__refund = value.from_dictionary(dictionary['refund'])
         if 'token' in dictionary:
-            self.__token = dictionary['token']
+            if not isinstance(dictionary['token'], dict):
+                raise TypeError('value \'{}\' is not a dictionary'.format(dictionary['token']))
+            value = TokenResponse()
+            self.__token = value.from_dictionary(dictionary['token'])
         return self

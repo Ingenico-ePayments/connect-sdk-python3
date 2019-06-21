@@ -4,6 +4,7 @@
 # https://epayments-api.developer-ingenico.com/s2sapi/v1/
 #
 from ingenico.connect.sdk.param_request import ParamRequest
+from ingenico.connect.sdk.request_param import RequestParam
 
 
 class FindRefundsParams(ParamRequest):
@@ -89,9 +90,14 @@ class FindRefundsParams(ParamRequest):
         :return: list[RequestParam]
         """
         result = []
-        self._add_parameter(result, "hostedCheckoutId", self.hosted_checkout_id)
-        self._add_parameter(result, "merchantReference", self.merchant_reference)
-        self._add_parameter(result, "merchantOrderId", self.merchant_order_id)
-        self._add_parameter(result, "offset", self.offset)
-        self._add_parameter(result, "limit", self.limit)
+        if self.hosted_checkout_id is not None:
+            result.append(RequestParam("hostedCheckoutId", self.hosted_checkout_id))
+        if self.merchant_reference is not None:
+            result.append(RequestParam("merchantReference", self.merchant_reference))
+        if self.merchant_order_id is not None:
+            result.append(RequestParam("merchantOrderId", str(self.merchant_order_id)))
+        if self.offset is not None:
+            result.append(RequestParam("offset", str(self.offset)))
+        if self.limit is not None:
+            result.append(RequestParam("limit", str(self.limit)))
         return result

@@ -25,7 +25,8 @@ class CaptureStatusOutput(DataObject):
 
     def to_dictionary(self):
         dictionary = super(CaptureStatusOutput, self).to_dictionary()
-        self._add_to_dictionary(dictionary, 'statusCode', self.status_code)
+        if self.status_code is not None:
+            dictionary['statusCode'] = self.status_code
         return dictionary
 
     def from_dictionary(self, dictionary):

@@ -212,19 +212,32 @@ class CreatePaymentRequest(DataObject):
 
     def to_dictionary(self):
         dictionary = super(CreatePaymentRequest, self).to_dictionary()
-        self._add_to_dictionary(dictionary, 'bankTransferPaymentMethodSpecificInput', self.bank_transfer_payment_method_specific_input)
-        self._add_to_dictionary(dictionary, 'cardPaymentMethodSpecificInput', self.card_payment_method_specific_input)
-        self._add_to_dictionary(dictionary, 'cashPaymentMethodSpecificInput', self.cash_payment_method_specific_input)
-        self._add_to_dictionary(dictionary, 'directDebitPaymentMethodSpecificInput', self.direct_debit_payment_method_specific_input)
-        self._add_to_dictionary(dictionary, 'eInvoicePaymentMethodSpecificInput', self.e_invoice_payment_method_specific_input)
-        self._add_to_dictionary(dictionary, 'encryptedCustomerInput', self.encrypted_customer_input)
-        self._add_to_dictionary(dictionary, 'fraudFields', self.fraud_fields)
-        self._add_to_dictionary(dictionary, 'invoicePaymentMethodSpecificInput', self.invoice_payment_method_specific_input)
-        self._add_to_dictionary(dictionary, 'merchant', self.merchant)
-        self._add_to_dictionary(dictionary, 'mobilePaymentMethodSpecificInput', self.mobile_payment_method_specific_input)
-        self._add_to_dictionary(dictionary, 'order', self.order)
-        self._add_to_dictionary(dictionary, 'redirectPaymentMethodSpecificInput', self.redirect_payment_method_specific_input)
-        self._add_to_dictionary(dictionary, 'sepaDirectDebitPaymentMethodSpecificInput', self.sepa_direct_debit_payment_method_specific_input)
+        if self.bank_transfer_payment_method_specific_input is not None:
+            dictionary['bankTransferPaymentMethodSpecificInput'] = self.bank_transfer_payment_method_specific_input.to_dictionary()
+        if self.card_payment_method_specific_input is not None:
+            dictionary['cardPaymentMethodSpecificInput'] = self.card_payment_method_specific_input.to_dictionary()
+        if self.cash_payment_method_specific_input is not None:
+            dictionary['cashPaymentMethodSpecificInput'] = self.cash_payment_method_specific_input.to_dictionary()
+        if self.direct_debit_payment_method_specific_input is not None:
+            dictionary['directDebitPaymentMethodSpecificInput'] = self.direct_debit_payment_method_specific_input.to_dictionary()
+        if self.e_invoice_payment_method_specific_input is not None:
+            dictionary['eInvoicePaymentMethodSpecificInput'] = self.e_invoice_payment_method_specific_input.to_dictionary()
+        if self.encrypted_customer_input is not None:
+            dictionary['encryptedCustomerInput'] = self.encrypted_customer_input
+        if self.fraud_fields is not None:
+            dictionary['fraudFields'] = self.fraud_fields.to_dictionary()
+        if self.invoice_payment_method_specific_input is not None:
+            dictionary['invoicePaymentMethodSpecificInput'] = self.invoice_payment_method_specific_input.to_dictionary()
+        if self.merchant is not None:
+            dictionary['merchant'] = self.merchant.to_dictionary()
+        if self.mobile_payment_method_specific_input is not None:
+            dictionary['mobilePaymentMethodSpecificInput'] = self.mobile_payment_method_specific_input.to_dictionary()
+        if self.order is not None:
+            dictionary['order'] = self.order.to_dictionary()
+        if self.redirect_payment_method_specific_input is not None:
+            dictionary['redirectPaymentMethodSpecificInput'] = self.redirect_payment_method_specific_input.to_dictionary()
+        if self.sepa_direct_debit_payment_method_specific_input is not None:
+            dictionary['sepaDirectDebitPaymentMethodSpecificInput'] = self.sepa_direct_debit_payment_method_specific_input.to_dictionary()
         return dictionary
 
     def from_dictionary(self, dictionary):

@@ -5,13 +5,19 @@
 import os
 
 from ingenico.connect.sdk.factory import Factory
+from ingenico.connect.sdk.uploadable_file import UploadableFile
+from ingenico.connect.sdk.merchant.disputes.upload_file_request import UploadFileRequest
 
 
-class GetPaymentProductPublicKeyExample(object):
+class UploadDisputeFileExample(object):
 
     def example(self):
         with self.__get_client() as client:
-            response = client.merchant("merchantId").products().public_key(320)
+            body = UploadFileRequest()
+            with open("file.pdf", "rb") as file_content:
+                body.file = UploadableFile("file.pdf", file_content, "application/pdf")
+
+                response = client.merchant("merchantId").disputes().upload_file("disputeId", body)
 
     def __get_client(self):
         api_key_id = os.getenv("connect.api.apiKeyId", "someKey")

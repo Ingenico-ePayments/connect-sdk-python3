@@ -109,12 +109,21 @@ class SessionResponse(DataObject):
 
     def to_dictionary(self):
         dictionary = super(SessionResponse, self).to_dictionary()
-        self._add_to_dictionary(dictionary, 'assetUrl', self.asset_url)
-        self._add_to_dictionary(dictionary, 'clientApiUrl', self.client_api_url)
-        self._add_to_dictionary(dictionary, 'clientSessionId', self.client_session_id)
-        self._add_to_dictionary(dictionary, 'customerId', self.customer_id)
-        self._add_to_dictionary(dictionary, 'invalidTokens', self.invalid_tokens)
-        self._add_to_dictionary(dictionary, 'region', self.region)
+        if self.asset_url is not None:
+            dictionary['assetUrl'] = self.asset_url
+        if self.client_api_url is not None:
+            dictionary['clientApiUrl'] = self.client_api_url
+        if self.client_session_id is not None:
+            dictionary['clientSessionId'] = self.client_session_id
+        if self.customer_id is not None:
+            dictionary['customerId'] = self.customer_id
+        if self.invalid_tokens is not None:
+            dictionary['invalidTokens'] = []
+            for element in self.invalid_tokens:
+                if element is not None:
+                    dictionary['invalidTokens'].append(element)
+        if self.region is not None:
+            dictionary['region'] = self.region
         return dictionary
 
     def from_dictionary(self, dictionary):
@@ -131,8 +140,8 @@ class SessionResponse(DataObject):
             if not isinstance(dictionary['invalidTokens'], list):
                 raise TypeError('value \'{}\' is not a list'.format(dictionary['invalidTokens']))
             self.invalid_tokens = []
-            for invalidTokens_element in dictionary['invalidTokens']:
-                self.invalid_tokens.append(invalidTokens_element)
+            for element in dictionary['invalidTokens']:
+                self.invalid_tokens.append(element)
         if 'region' in dictionary:
             self.region = dictionary['region']
         return self

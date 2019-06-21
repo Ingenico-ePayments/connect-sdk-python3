@@ -26,7 +26,8 @@ class SepaDirectDebitPaymentMethodSpecificInputBase(AbstractSepaDirectDebitPayme
 
     def to_dictionary(self):
         dictionary = super(SepaDirectDebitPaymentMethodSpecificInputBase, self).to_dictionary()
-        self._add_to_dictionary(dictionary, 'paymentProduct771SpecificInput', self.payment_product771_specific_input)
+        if self.payment_product771_specific_input is not None:
+            dictionary['paymentProduct771SpecificInput'] = self.payment_product771_specific_input.to_dictionary()
         return dictionary
 
     def from_dictionary(self, dictionary):

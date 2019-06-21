@@ -26,7 +26,8 @@ class ThirdPartyData(DataObject):
 
     def to_dictionary(self):
         dictionary = super(ThirdPartyData, self).to_dictionary()
-        self._add_to_dictionary(dictionary, 'paymentProduct863', self.payment_product863)
+        if self.payment_product863 is not None:
+            dictionary['paymentProduct863'] = self.payment_product863.to_dictionary()
         return dictionary
 
     def from_dictionary(self, dictionary):

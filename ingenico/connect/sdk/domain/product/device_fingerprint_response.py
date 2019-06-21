@@ -39,8 +39,10 @@ class DeviceFingerprintResponse(DataObject):
 
     def to_dictionary(self):
         dictionary = super(DeviceFingerprintResponse, self).to_dictionary()
-        self._add_to_dictionary(dictionary, 'deviceFingerprintTransactionId', self.device_fingerprint_transaction_id)
-        self._add_to_dictionary(dictionary, 'html', self.html)
+        if self.device_fingerprint_transaction_id is not None:
+            dictionary['deviceFingerprintTransactionId'] = self.device_fingerprint_transaction_id
+        if self.html is not None:
+            dictionary['html'] = self.html
         return dictionary
 
     def from_dictionary(self, dictionary):

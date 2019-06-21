@@ -44,8 +44,10 @@ class PaymentAccountOnFile(DataObject):
 
     def to_dictionary(self):
         dictionary = super(PaymentAccountOnFile, self).to_dictionary()
-        self._add_to_dictionary(dictionary, 'createDate', self.create_date)
-        self._add_to_dictionary(dictionary, 'numberOfCardOnFileCreationAttemptsLast24Hours', self.number_of_card_on_file_creation_attempts_last24_hours)
+        if self.create_date is not None:
+            dictionary['createDate'] = self.create_date
+        if self.number_of_card_on_file_creation_attempts_last24_hours is not None:
+            dictionary['numberOfCardOnFileCreationAttemptsLast24Hours'] = self.number_of_card_on_file_creation_attempts_last24_hours
         return dictionary
 
     def from_dictionary(self, dictionary):

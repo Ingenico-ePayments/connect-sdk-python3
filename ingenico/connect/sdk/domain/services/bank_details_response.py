@@ -71,10 +71,14 @@ class BankDetailsResponse(DataObject):
 
     def to_dictionary(self):
         dictionary = super(BankDetailsResponse, self).to_dictionary()
-        self._add_to_dictionary(dictionary, 'bankAccountBban', self.bank_account_bban)
-        self._add_to_dictionary(dictionary, 'bankAccountIban', self.bank_account_iban)
-        self._add_to_dictionary(dictionary, 'bankData', self.bank_data)
-        self._add_to_dictionary(dictionary, 'swift', self.swift)
+        if self.bank_account_bban is not None:
+            dictionary['bankAccountBban'] = self.bank_account_bban.to_dictionary()
+        if self.bank_account_iban is not None:
+            dictionary['bankAccountIban'] = self.bank_account_iban.to_dictionary()
+        if self.bank_data is not None:
+            dictionary['bankData'] = self.bank_data.to_dictionary()
+        if self.swift is not None:
+            dictionary['swift'] = self.swift.to_dictionary()
         return dictionary
 
     def from_dictionary(self, dictionary):

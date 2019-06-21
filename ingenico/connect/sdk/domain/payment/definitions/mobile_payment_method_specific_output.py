@@ -84,11 +84,16 @@ class MobilePaymentMethodSpecificOutput(AbstractPaymentMethodSpecificOutput):
 
     def to_dictionary(self):
         dictionary = super(MobilePaymentMethodSpecificOutput, self).to_dictionary()
-        self._add_to_dictionary(dictionary, 'authorisationCode', self.authorisation_code)
-        self._add_to_dictionary(dictionary, 'fraudResults', self.fraud_results)
-        self._add_to_dictionary(dictionary, 'network', self.network)
-        self._add_to_dictionary(dictionary, 'paymentData', self.payment_data)
-        self._add_to_dictionary(dictionary, 'threeDSecureResults', self.three_d_secure_results)
+        if self.authorisation_code is not None:
+            dictionary['authorisationCode'] = self.authorisation_code
+        if self.fraud_results is not None:
+            dictionary['fraudResults'] = self.fraud_results.to_dictionary()
+        if self.network is not None:
+            dictionary['network'] = self.network
+        if self.payment_data is not None:
+            dictionary['paymentData'] = self.payment_data.to_dictionary()
+        if self.three_d_secure_results is not None:
+            dictionary['threeDSecureResults'] = self.three_d_secure_results.to_dictionary()
         return dictionary
 
     def from_dictionary(self, dictionary):

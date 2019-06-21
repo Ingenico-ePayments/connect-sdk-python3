@@ -43,8 +43,10 @@ class CapturePaymentRequest(DataObject):
 
     def to_dictionary(self):
         dictionary = super(CapturePaymentRequest, self).to_dictionary()
-        self._add_to_dictionary(dictionary, 'amount', self.amount)
-        self._add_to_dictionary(dictionary, 'isFinal', self.is_final)
+        if self.amount is not None:
+            dictionary['amount'] = self.amount
+        if self.is_final is not None:
+            dictionary['isFinal'] = self.is_final
         return dictionary
 
     def from_dictionary(self, dictionary):

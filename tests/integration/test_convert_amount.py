@@ -15,7 +15,7 @@ class ConvertAmountTest(unittest.TestCase):
         request.target = "EUR"
 
         with init_utils.create_client() as client:
-            response = client.merchant(MERCHANT_ID).services().convertAmount(request)
+            response = client.merchant(MERCHANT_ID).services().convert_amount(request)
         # actual convert amount may vary due to changing rates, so simply check if there is an amount
         self.assertIsNotNone(response.converted_amount)
         self.assertGreater(int(response.converted_amount), 0)

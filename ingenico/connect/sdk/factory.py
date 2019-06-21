@@ -2,7 +2,7 @@ from configparser import ConfigParser
 
 from .communicator import Communicator
 from .communicator_configuration import CommunicatorConfiguration
-from ingenico.connect.sdk.client import Client
+from .client import Client
 from ingenico.connect.sdk.defaultimpl.default_authenticator import \
     DefaultAuthenticator
 from ingenico.connect.sdk.defaultimpl.default_connection import \

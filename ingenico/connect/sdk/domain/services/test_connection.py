@@ -25,7 +25,8 @@ class TestConnection(DataObject):
 
     def to_dictionary(self):
         dictionary = super(TestConnection, self).to_dictionary()
-        self._add_to_dictionary(dictionary, 'result', self.result)
+        if self.result is not None:
+            dictionary['result'] = self.result
         return dictionary
 
     def from_dictionary(self, dictionary):

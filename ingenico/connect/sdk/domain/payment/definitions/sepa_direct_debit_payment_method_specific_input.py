@@ -121,13 +121,20 @@ class SepaDirectDebitPaymentMethodSpecificInput(AbstractSepaDirectDebitPaymentMe
 
     def to_dictionary(self):
         dictionary = super(SepaDirectDebitPaymentMethodSpecificInput, self).to_dictionary()
-        self._add_to_dictionary(dictionary, 'dateCollect', self.date_collect)
-        self._add_to_dictionary(dictionary, 'directDebitText', self.direct_debit_text)
-        self._add_to_dictionary(dictionary, 'isRecurring', self.is_recurring)
-        self._add_to_dictionary(dictionary, 'paymentProduct771SpecificInput', self.payment_product771_specific_input)
-        self._add_to_dictionary(dictionary, 'recurringPaymentSequenceIndicator', self.recurring_payment_sequence_indicator)
-        self._add_to_dictionary(dictionary, 'token', self.token)
-        self._add_to_dictionary(dictionary, 'tokenize', self.tokenize)
+        if self.date_collect is not None:
+            dictionary['dateCollect'] = self.date_collect
+        if self.direct_debit_text is not None:
+            dictionary['directDebitText'] = self.direct_debit_text
+        if self.is_recurring is not None:
+            dictionary['isRecurring'] = self.is_recurring
+        if self.payment_product771_specific_input is not None:
+            dictionary['paymentProduct771SpecificInput'] = self.payment_product771_specific_input.to_dictionary()
+        if self.recurring_payment_sequence_indicator is not None:
+            dictionary['recurringPaymentSequenceIndicator'] = self.recurring_payment_sequence_indicator
+        if self.token is not None:
+            dictionary['token'] = self.token
+        if self.tokenize is not None:
+            dictionary['tokenize'] = self.tokenize
         return dictionary
 
     def from_dictionary(self, dictionary):

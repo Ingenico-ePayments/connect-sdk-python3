@@ -67,10 +67,14 @@ class BankData(DataObject):
 
     def to_dictionary(self):
         dictionary = super(BankData, self).to_dictionary()
-        self._add_to_dictionary(dictionary, 'newBankName', self.new_bank_name)
-        self._add_to_dictionary(dictionary, 'reformattedAccountNumber', self.reformatted_account_number)
-        self._add_to_dictionary(dictionary, 'reformattedBankCode', self.reformatted_bank_code)
-        self._add_to_dictionary(dictionary, 'reformattedBranchCode', self.reformatted_branch_code)
+        if self.new_bank_name is not None:
+            dictionary['newBankName'] = self.new_bank_name
+        if self.reformatted_account_number is not None:
+            dictionary['reformattedAccountNumber'] = self.reformatted_account_number
+        if self.reformatted_bank_code is not None:
+            dictionary['reformattedBankCode'] = self.reformatted_bank_code
+        if self.reformatted_branch_code is not None:
+            dictionary['reformattedBranchCode'] = self.reformatted_branch_code
         return dictionary
 
     def from_dictionary(self, dictionary):

@@ -29,7 +29,8 @@ class RedirectPaymentProduct816SpecificInput(DataObject):
 
     def to_dictionary(self):
         dictionary = super(RedirectPaymentProduct816SpecificInput, self).to_dictionary()
-        self._add_to_dictionary(dictionary, 'bankAccountIban', self.bank_account_iban)
+        if self.bank_account_iban is not None:
+            dictionary['bankAccountIban'] = self.bank_account_iban.to_dictionary()
         return dictionary
 
     def from_dictionary(self, dictionary):

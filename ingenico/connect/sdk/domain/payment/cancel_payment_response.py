@@ -59,9 +59,12 @@ class CancelPaymentResponse(DataObject):
 
     def to_dictionary(self):
         dictionary = super(CancelPaymentResponse, self).to_dictionary()
-        self._add_to_dictionary(dictionary, 'cardPaymentMethodSpecificOutput', self.card_payment_method_specific_output)
-        self._add_to_dictionary(dictionary, 'mobilePaymentMethodSpecificOutput', self.mobile_payment_method_specific_output)
-        self._add_to_dictionary(dictionary, 'payment', self.payment)
+        if self.card_payment_method_specific_output is not None:
+            dictionary['cardPaymentMethodSpecificOutput'] = self.card_payment_method_specific_output.to_dictionary()
+        if self.mobile_payment_method_specific_output is not None:
+            dictionary['mobilePaymentMethodSpecificOutput'] = self.mobile_payment_method_specific_output.to_dictionary()
+        if self.payment is not None:
+            dictionary['payment'] = self.payment.to_dictionary()
         return dictionary
 
     def from_dictionary(self, dictionary):

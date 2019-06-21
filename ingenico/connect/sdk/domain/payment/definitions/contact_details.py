@@ -67,10 +67,14 @@ class ContactDetails(ContactDetailsBase):
 
     def to_dictionary(self):
         dictionary = super(ContactDetails, self).to_dictionary()
-        self._add_to_dictionary(dictionary, 'faxNumber', self.fax_number)
-        self._add_to_dictionary(dictionary, 'mobilePhoneNumber', self.mobile_phone_number)
-        self._add_to_dictionary(dictionary, 'phoneNumber', self.phone_number)
-        self._add_to_dictionary(dictionary, 'workPhoneNumber', self.work_phone_number)
+        if self.fax_number is not None:
+            dictionary['faxNumber'] = self.fax_number
+        if self.mobile_phone_number is not None:
+            dictionary['mobilePhoneNumber'] = self.mobile_phone_number
+        if self.phone_number is not None:
+            dictionary['phoneNumber'] = self.phone_number
+        if self.work_phone_number is not None:
+            dictionary['workPhoneNumber'] = self.work_phone_number
         return dictionary
 
     def from_dictionary(self, dictionary):

@@ -46,8 +46,10 @@ class CustomerDeviceRiskAssessment(DataObject):
 
     def to_dictionary(self):
         dictionary = super(CustomerDeviceRiskAssessment, self).to_dictionary()
-        self._add_to_dictionary(dictionary, 'defaultFormFill', self.default_form_fill)
-        self._add_to_dictionary(dictionary, 'deviceFingerprintTransactionId', self.device_fingerprint_transaction_id)
+        if self.default_form_fill is not None:
+            dictionary['defaultFormFill'] = self.default_form_fill
+        if self.device_fingerprint_transaction_id is not None:
+            dictionary['deviceFingerprintTransactionId'] = self.device_fingerprint_transaction_id
         return dictionary
 
     def from_dictionary(self, dictionary):

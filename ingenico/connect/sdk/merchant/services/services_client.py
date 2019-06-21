@@ -42,7 +42,7 @@ class ServicesClient(ApiResource):
                    or the service that you're trying to reach is temporary unavailable (HTTP status code 500, 502 or 503)
         :raise: ApiException if the Ingenico ePayments platform returned any other error
         """
-        uri = self._instantiate_uri("/{apiVersion}/{merchantId}/services/convert/amount", None)
+        uri = self._instantiate_uri("/v1/{merchantId}/services/convert/amount", None)
         try:
             return self._communicator.get(
                     uri,
@@ -55,12 +55,6 @@ class ServicesClient(ApiResource):
             error_type = ErrorResponse
             error_object = self._communicator.marshaller.unmarshal(e.body, error_type)
             raise self._create_exception(e.status_code, e.body, error_object, context)
-
-    def convertAmount(self, query, context=None):
-        """
-        Deprecated. Use convert_amount instead.
-        """
-        return self.convert_amount(query, context)
 
     def bankaccount(self, body, context=None):
         """
@@ -80,7 +74,7 @@ class ServicesClient(ApiResource):
                    or the service that you're trying to reach is temporary unavailable (HTTP status code 500, 502 or 503)
         :raise: ApiException if the Ingenico ePayments platform returned any other error
         """
-        uri = self._instantiate_uri("/{apiVersion}/{merchantId}/services/convert/bankaccount", None)
+        uri = self._instantiate_uri("/v1/{merchantId}/services/convert/bankaccount", None)
         try:
             return self._communicator.post(
                     uri,
@@ -113,7 +107,7 @@ class ServicesClient(ApiResource):
                    or the service that you're trying to reach is temporary unavailable (HTTP status code 500, 502 or 503)
         :raise: ApiException if the Ingenico ePayments platform returned any other error
         """
-        uri = self._instantiate_uri("/{apiVersion}/{merchantId}/services/getIINdetails", None)
+        uri = self._instantiate_uri("/v1/{merchantId}/services/getIINdetails", None)
         try:
             return self._communicator.post(
                     uri,
@@ -127,12 +121,6 @@ class ServicesClient(ApiResource):
             error_type = ErrorResponse
             error_object = self._communicator.marshaller.unmarshal(e.body, error_type)
             raise self._create_exception(e.status_code, e.body, error_object, context)
-
-    def getIINdetails(self, body, context=None):
-        """
-        Deprecated. Use get_iin_details instead.
-        """
-        return self.get_iin_details(body, context)
 
     def privacypolicy(self, query, context=None):
         """
@@ -152,7 +140,7 @@ class ServicesClient(ApiResource):
                    or the service that you're trying to reach is temporary unavailable (HTTP status code 500, 502 or 503)
         :raise: ApiException if the Ingenico ePayments platform returned any other error
         """
-        uri = self._instantiate_uri("/{apiVersion}/{merchantId}/services/privacypolicy", None)
+        uri = self._instantiate_uri("/v1/{merchantId}/services/privacypolicy", None)
         try:
             return self._communicator.get(
                     uri,
@@ -183,7 +171,7 @@ class ServicesClient(ApiResource):
                    or the service that you're trying to reach is temporary unavailable (HTTP status code 500, 502 or 503)
         :raise: ApiException if the Ingenico ePayments platform returned any other error
         """
-        uri = self._instantiate_uri("/{apiVersion}/{merchantId}/services/testconnection", None)
+        uri = self._instantiate_uri("/v1/{merchantId}/services/testconnection", None)
         try:
             return self._communicator.get(
                     uri,

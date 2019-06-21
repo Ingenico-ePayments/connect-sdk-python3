@@ -41,8 +41,10 @@ class FraugsterResults(DataObject):
 
     def to_dictionary(self):
         dictionary = super(FraugsterResults, self).to_dictionary()
-        self._add_to_dictionary(dictionary, 'fraudInvestigationPoints', self.fraud_investigation_points)
-        self._add_to_dictionary(dictionary, 'fraudScore', self.fraud_score)
+        if self.fraud_investigation_points is not None:
+            dictionary['fraudInvestigationPoints'] = self.fraud_investigation_points
+        if self.fraud_score is not None:
+            dictionary['fraudScore'] = self.fraud_score
         return dictionary
 
     def from_dictionary(self, dictionary):

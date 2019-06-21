@@ -25,7 +25,8 @@ class AbstractSepaDirectDebitPaymentProduct771SpecificInput(DataObject):
 
     def to_dictionary(self):
         dictionary = super(AbstractSepaDirectDebitPaymentProduct771SpecificInput, self).to_dictionary()
-        self._add_to_dictionary(dictionary, 'mandateReference', self.mandate_reference)
+        if self.mandate_reference is not None:
+            dictionary['mandateReference'] = self.mandate_reference
         return dictionary
 
     def from_dictionary(self, dictionary):

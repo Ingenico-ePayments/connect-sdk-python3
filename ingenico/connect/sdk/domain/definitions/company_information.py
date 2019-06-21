@@ -39,8 +39,10 @@ class CompanyInformation(DataObject):
 
     def to_dictionary(self):
         dictionary = super(CompanyInformation, self).to_dictionary()
-        self._add_to_dictionary(dictionary, 'name', self.name)
-        self._add_to_dictionary(dictionary, 'vatNumber', self.vat_number)
+        if self.name is not None:
+            dictionary['name'] = self.name
+        if self.vat_number is not None:
+            dictionary['vatNumber'] = self.vat_number
         return dictionary
 
     def from_dictionary(self, dictionary):

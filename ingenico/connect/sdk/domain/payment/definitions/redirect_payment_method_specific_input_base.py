@@ -26,7 +26,8 @@ class RedirectPaymentMethodSpecificInputBase(AbstractRedirectPaymentMethodSpecif
 
     def to_dictionary(self):
         dictionary = super(RedirectPaymentMethodSpecificInputBase, self).to_dictionary()
-        self._add_to_dictionary(dictionary, 'paymentProduct840SpecificInput', self.payment_product840_specific_input)
+        if self.payment_product840_specific_input is not None:
+            dictionary['paymentProduct840SpecificInput'] = self.payment_product840_specific_input.to_dictionary()
         return dictionary
 
     def from_dictionary(self, dictionary):

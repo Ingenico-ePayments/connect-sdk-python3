@@ -67,10 +67,14 @@ class AirlinePassenger(DataObject):
 
     def to_dictionary(self):
         dictionary = super(AirlinePassenger, self).to_dictionary()
-        self._add_to_dictionary(dictionary, 'firstName', self.first_name)
-        self._add_to_dictionary(dictionary, 'surname', self.surname)
-        self._add_to_dictionary(dictionary, 'surnamePrefix', self.surname_prefix)
-        self._add_to_dictionary(dictionary, 'title', self.title)
+        if self.first_name is not None:
+            dictionary['firstName'] = self.first_name
+        if self.surname is not None:
+            dictionary['surname'] = self.surname
+        if self.surname_prefix is not None:
+            dictionary['surnamePrefix'] = self.surname_prefix
+        if self.title is not None:
+            dictionary['title'] = self.title
         return dictionary
 
     def from_dictionary(self, dictionary):

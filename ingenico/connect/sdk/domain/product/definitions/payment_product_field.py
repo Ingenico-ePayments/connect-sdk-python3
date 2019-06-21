@@ -90,11 +90,16 @@ class PaymentProductField(DataObject):
 
     def to_dictionary(self):
         dictionary = super(PaymentProductField, self).to_dictionary()
-        self._add_to_dictionary(dictionary, 'dataRestrictions', self.data_restrictions)
-        self._add_to_dictionary(dictionary, 'displayHints', self.display_hints)
-        self._add_to_dictionary(dictionary, 'id', self.id)
-        self._add_to_dictionary(dictionary, 'type', self.type)
-        self._add_to_dictionary(dictionary, 'usedForLookup', self.used_for_lookup)
+        if self.data_restrictions is not None:
+            dictionary['dataRestrictions'] = self.data_restrictions.to_dictionary()
+        if self.display_hints is not None:
+            dictionary['displayHints'] = self.display_hints.to_dictionary()
+        if self.id is not None:
+            dictionary['id'] = self.id
+        if self.type is not None:
+            dictionary['type'] = self.type
+        if self.used_for_lookup is not None:
+            dictionary['usedForLookup'] = self.used_for_lookup
         return dictionary
 
     def from_dictionary(self, dictionary):

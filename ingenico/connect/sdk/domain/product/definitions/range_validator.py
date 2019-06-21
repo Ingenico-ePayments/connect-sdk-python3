@@ -39,8 +39,10 @@ class RangeValidator(DataObject):
 
     def to_dictionary(self):
         dictionary = super(RangeValidator, self).to_dictionary()
-        self._add_to_dictionary(dictionary, 'maxValue', self.max_value)
-        self._add_to_dictionary(dictionary, 'minValue', self.min_value)
+        if self.max_value is not None:
+            dictionary['maxValue'] = self.max_value
+        if self.min_value is not None:
+            dictionary['minValue'] = self.min_value
         return dictionary
 
     def from_dictionary(self, dictionary):

@@ -67,10 +67,14 @@ class RiskAssessment(DataObject):
 
     def to_dictionary(self):
         dictionary = super(RiskAssessment, self).to_dictionary()
-        self._add_to_dictionary(dictionary, 'fraudFields', self.fraud_fields)
-        self._add_to_dictionary(dictionary, 'merchant', self.merchant)
-        self._add_to_dictionary(dictionary, 'order', self.order)
-        self._add_to_dictionary(dictionary, 'paymentProductId', self.payment_product_id)
+        if self.fraud_fields is not None:
+            dictionary['fraudFields'] = self.fraud_fields.to_dictionary()
+        if self.merchant is not None:
+            dictionary['merchant'] = self.merchant.to_dictionary()
+        if self.order is not None:
+            dictionary['order'] = self.order.to_dictionary()
+        if self.payment_product_id is not None:
+            dictionary['paymentProductId'] = self.payment_product_id
         return dictionary
 
     def from_dictionary(self, dictionary):

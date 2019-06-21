@@ -39,7 +39,7 @@ class MandatesClient(ApiResource):
                    or the service that you're trying to reach is temporary unavailable (HTTP status code 500, 502 or 503)
         :raise: ApiException if the Ingenico ePayments platform returned any other error
         """
-        uri = self._instantiate_uri("/{apiVersion}/{merchantId}/mandates", None)
+        uri = self._instantiate_uri("/v1/{merchantId}/mandates", None)
         try:
             return self._communicator.post(
                     uri,
@@ -76,7 +76,7 @@ class MandatesClient(ApiResource):
         path_context = {
             "uniqueMandateReference": unique_mandate_reference,
         }
-        uri = self._instantiate_uri("/{apiVersion}/{merchantId}/mandates/{uniqueMandateReference}", path_context)
+        uri = self._instantiate_uri("/v1/{merchantId}/mandates/{uniqueMandateReference}", path_context)
         try:
             return self._communicator.put(
                     uri,
@@ -112,7 +112,7 @@ class MandatesClient(ApiResource):
         path_context = {
             "uniqueMandateReference": unique_mandate_reference,
         }
-        uri = self._instantiate_uri("/{apiVersion}/{merchantId}/mandates/{uniqueMandateReference}", path_context)
+        uri = self._instantiate_uri("/v1/{merchantId}/mandates/{uniqueMandateReference}", path_context)
         try:
             return self._communicator.get(
                     uri,
@@ -147,7 +147,7 @@ class MandatesClient(ApiResource):
         path_context = {
             "uniqueMandateReference": unique_mandate_reference,
         }
-        uri = self._instantiate_uri("/{apiVersion}/{merchantId}/mandates/{uniqueMandateReference}/block", path_context)
+        uri = self._instantiate_uri("/v1/{merchantId}/mandates/{uniqueMandateReference}/block", path_context)
         try:
             return self._communicator.post(
                     uri,
@@ -183,7 +183,7 @@ class MandatesClient(ApiResource):
         path_context = {
             "uniqueMandateReference": unique_mandate_reference,
         }
-        uri = self._instantiate_uri("/{apiVersion}/{merchantId}/mandates/{uniqueMandateReference}/unblock", path_context)
+        uri = self._instantiate_uri("/v1/{merchantId}/mandates/{uniqueMandateReference}/unblock", path_context)
         try:
             return self._communicator.post(
                     uri,
@@ -219,7 +219,7 @@ class MandatesClient(ApiResource):
         path_context = {
             "uniqueMandateReference": unique_mandate_reference,
         }
-        uri = self._instantiate_uri("/{apiVersion}/{merchantId}/mandates/{uniqueMandateReference}/revoke", path_context)
+        uri = self._instantiate_uri("/v1/{merchantId}/mandates/{uniqueMandateReference}/revoke", path_context)
         try:
             return self._communicator.post(
                     uri,

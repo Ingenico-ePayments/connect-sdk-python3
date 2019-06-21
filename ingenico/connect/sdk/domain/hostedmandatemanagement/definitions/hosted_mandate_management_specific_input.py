@@ -72,10 +72,14 @@ class HostedMandateManagementSpecificInput(DataObject):
 
     def to_dictionary(self):
         dictionary = super(HostedMandateManagementSpecificInput, self).to_dictionary()
-        self._add_to_dictionary(dictionary, 'locale', self.locale)
-        self._add_to_dictionary(dictionary, 'returnUrl', self.return_url)
-        self._add_to_dictionary(dictionary, 'showResultPage', self.show_result_page)
-        self._add_to_dictionary(dictionary, 'variant', self.variant)
+        if self.locale is not None:
+            dictionary['locale'] = self.locale
+        if self.return_url is not None:
+            dictionary['returnUrl'] = self.return_url
+        if self.show_result_page is not None:
+            dictionary['showResultPage'] = self.show_result_page
+        if self.variant is not None:
+            dictionary['variant'] = self.variant
         return dictionary
 
     def from_dictionary(self, dictionary):

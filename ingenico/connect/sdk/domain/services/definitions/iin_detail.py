@@ -46,8 +46,10 @@ class IINDetail(DataObject):
 
     def to_dictionary(self):
         dictionary = super(IINDetail, self).to_dictionary()
-        self._add_to_dictionary(dictionary, 'isAllowedInContext', self.is_allowed_in_context)
-        self._add_to_dictionary(dictionary, 'paymentProductId', self.payment_product_id)
+        if self.is_allowed_in_context is not None:
+            dictionary['isAllowedInContext'] = self.is_allowed_in_context
+        if self.payment_product_id is not None:
+            dictionary['paymentProductId'] = self.payment_product_id
         return dictionary
 
     def from_dictionary(self, dictionary):

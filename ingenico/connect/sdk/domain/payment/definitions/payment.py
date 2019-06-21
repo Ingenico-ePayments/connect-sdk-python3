@@ -94,10 +94,14 @@ class Payment(AbstractOrderStatus):
 
     def to_dictionary(self):
         dictionary = super(Payment, self).to_dictionary()
-        self._add_to_dictionary(dictionary, 'hostedCheckoutSpecificOutput', self.hosted_checkout_specific_output)
-        self._add_to_dictionary(dictionary, 'paymentOutput', self.payment_output)
-        self._add_to_dictionary(dictionary, 'status', self.status)
-        self._add_to_dictionary(dictionary, 'statusOutput', self.status_output)
+        if self.hosted_checkout_specific_output is not None:
+            dictionary['hostedCheckoutSpecificOutput'] = self.hosted_checkout_specific_output.to_dictionary()
+        if self.payment_output is not None:
+            dictionary['paymentOutput'] = self.payment_output.to_dictionary()
+        if self.status is not None:
+            dictionary['status'] = self.status
+        if self.status_output is not None:
+            dictionary['statusOutput'] = self.status_output.to_dictionary()
         return dictionary
 
     def from_dictionary(self, dictionary):

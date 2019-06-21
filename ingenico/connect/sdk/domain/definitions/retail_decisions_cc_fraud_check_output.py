@@ -53,9 +53,12 @@ class RetailDecisionsCCFraudCheckOutput(DataObject):
 
     def to_dictionary(self):
         dictionary = super(RetailDecisionsCCFraudCheckOutput, self).to_dictionary()
-        self._add_to_dictionary(dictionary, 'fraudCode', self.fraud_code)
-        self._add_to_dictionary(dictionary, 'fraudNeural', self.fraud_neural)
-        self._add_to_dictionary(dictionary, 'fraudRCF', self.fraud_rcf)
+        if self.fraud_code is not None:
+            dictionary['fraudCode'] = self.fraud_code
+        if self.fraud_neural is not None:
+            dictionary['fraudNeural'] = self.fraud_neural
+        if self.fraud_rcf is not None:
+            dictionary['fraudRCF'] = self.fraud_rcf
         return dictionary
 
     def from_dictionary(self, dictionary):

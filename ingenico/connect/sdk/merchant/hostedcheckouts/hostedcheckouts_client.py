@@ -39,7 +39,7 @@ class HostedcheckoutsClient(ApiResource):
                    or the service that you're trying to reach is temporary unavailable (HTTP status code 500, 502 or 503)
         :raise: ApiException if the Ingenico ePayments platform returned any other error
         """
-        uri = self._instantiate_uri("/{apiVersion}/{merchantId}/hostedcheckouts", None)
+        uri = self._instantiate_uri("/v1/{merchantId}/hostedcheckouts", None)
         try:
             return self._communicator.post(
                     uri,
@@ -75,7 +75,7 @@ class HostedcheckoutsClient(ApiResource):
         path_context = {
             "hostedCheckoutId": hosted_checkout_id,
         }
-        uri = self._instantiate_uri("/{apiVersion}/{merchantId}/hostedcheckouts/{hostedCheckoutId}", path_context)
+        uri = self._instantiate_uri("/v1/{merchantId}/hostedcheckouts/{hostedCheckoutId}", path_context)
         try:
             return self._communicator.get(
                     uri,

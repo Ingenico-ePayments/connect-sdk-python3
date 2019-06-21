@@ -28,7 +28,8 @@ class MandateContactDetails(DataObject):
 
     def to_dictionary(self):
         dictionary = super(MandateContactDetails, self).to_dictionary()
-        self._add_to_dictionary(dictionary, 'emailAddress', self.email_address)
+        if self.email_address is not None:
+            dictionary['emailAddress'] = self.email_address
         return dictionary
 
     def from_dictionary(self, dictionary):

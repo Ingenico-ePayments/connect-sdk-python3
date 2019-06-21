@@ -53,9 +53,12 @@ class BankAccountBbanRefund(BankAccountBban):
 
     def to_dictionary(self):
         dictionary = super(BankAccountBbanRefund, self).to_dictionary()
-        self._add_to_dictionary(dictionary, 'bankCity', self.bank_city)
-        self._add_to_dictionary(dictionary, 'patronymicName', self.patronymic_name)
-        self._add_to_dictionary(dictionary, 'swiftCode', self.swift_code)
+        if self.bank_city is not None:
+            dictionary['bankCity'] = self.bank_city
+        if self.patronymic_name is not None:
+            dictionary['patronymicName'] = self.patronymic_name
+        if self.swift_code is not None:
+            dictionary['swiftCode'] = self.swift_code
         return dictionary
 
     def from_dictionary(self, dictionary):

@@ -31,6 +31,7 @@ class DefaultMarshaller(Marshaller):
                 return type_class().from_dictionary(loads(response_json))
             except ValueError as e:
                 raise MarshallerSyntaxException(e)
+
         class Object(object):
             pass
 

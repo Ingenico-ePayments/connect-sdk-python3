@@ -31,6 +31,7 @@ Python 3.3.5 or higher is required. In addition, the following packages are requ
 
 * [django](https://www.djangoproject.com/) 1.10 or higher
 * [requests](http://docs.python-requests.org/en/master/) 2.11.0 or higher
+* [requests-toolbelt](https://toolbelt.readthedocs.io/) 0.8.0 or higher
 
 These packages will be installed automatically if the SDK is installed manually or using pip following the below instructions.
 

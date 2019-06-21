@@ -41,8 +41,10 @@ class OrderOutput(DataObject):
 
     def to_dictionary(self):
         dictionary = super(OrderOutput, self).to_dictionary()
-        self._add_to_dictionary(dictionary, 'amountOfMoney', self.amount_of_money)
-        self._add_to_dictionary(dictionary, 'references', self.references)
+        if self.amount_of_money is not None:
+            dictionary['amountOfMoney'] = self.amount_of_money.to_dictionary()
+        if self.references is not None:
+            dictionary['references'] = self.references.to_dictionary()
         return dictionary
 
     def from_dictionary(self, dictionary):

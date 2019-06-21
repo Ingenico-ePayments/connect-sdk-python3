@@ -51,9 +51,12 @@ class PersonalNameBase(DataObject):
 
     def to_dictionary(self):
         dictionary = super(PersonalNameBase, self).to_dictionary()
-        self._add_to_dictionary(dictionary, 'firstName', self.first_name)
-        self._add_to_dictionary(dictionary, 'surname', self.surname)
-        self._add_to_dictionary(dictionary, 'surnamePrefix', self.surname_prefix)
+        if self.first_name is not None:
+            dictionary['firstName'] = self.first_name
+        if self.surname is not None:
+            dictionary['surname'] = self.surname
+        if self.surname_prefix is not None:
+            dictionary['surnamePrefix'] = self.surname_prefix
         return dictionary
 
     def from_dictionary(self, dictionary):

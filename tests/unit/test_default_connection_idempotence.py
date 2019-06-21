@@ -19,12 +19,16 @@ from tests.unit.server_mock_utils import create_server_listening, create_client
 
 
 class DefaultConnectionIdempotenceTest(unittest.TestCase):
-    """Tests that sending the same request twice using DefaultConnection has the same effect as only sending one request
+    """
+    Tests that sending the same request twice using DefaultConnection
+     has the same effect as only sending one request
     """
 
     def setUp(self):
-        self.request_path = None           # The server path the request arrived at
-        self.idempotence_header = "unset"  # Stores the idempotence header received at the server side
+        # The server path the request arrived at
+        self.request_path = None
+        # Stores the idempotence header received at the server side
+        self.idempotence_header = "unset"
 
     def test_idempotence_first_request(self):
         """Test a request with idempotence key where the first request is successful"""
@@ -33,11 +37,11 @@ class DefaultConnectionIdempotenceTest(unittest.TestCase):
         call_context = CallContext(idempotence_key)
         request = create_payment_request()
         test_path = "/v1/20000/payments"  # relative url through which the request should be sent
+        additional_headers \
+            = (("Content-Type", "application/json"),
+               ("Location", "http://localhost/v1/20000/payments/000002000020142549460000100001"))
         handler = self.create_handler(response_code=201, body=response_body,
-                                      additional_headers=(("Content-Type", "application/json"),
-                                                          ("Location",
-                                                           "http://localhost/v1/20000/payments/000002000020142549460000100001"
-                                                           )))
+                                      additional_headers=additional_headers)
         with create_server_listening(handler) as address:
             with create_client(address) as client:
                 response = client.merchant("20000").payments().create(request, call_context)
@@ -45,24 +49,31 @@ class DefaultConnectionIdempotenceTest(unittest.TestCase):
         self.assertIsNotNone(response)
         self.assertIsNotNone(response.payment)
         self.assertIsNotNone(response.payment.id)
-        self.assertEqual(test_path, self.request_path, 'Request has arrived at the wrong path')
-        self.assertEqual(idempotence_key, self.idempotence_header, "Wrong idempotence key is sent in the request")
+        self.assertEqual(test_path, self.request_path,
+                         'Request has arrived at the wrong path')
+        self.assertEqual(idempotence_key, self.idempotence_header,
+                         "Wrong idempotence key is sent in the request")
         self.assertEqual(idempotence_key, call_context.idempotence_key)
 
     def test_idempotence_second_request(self):
-        """Test that the client can successfully handle a response indicating a request has been sent prior"""
+        """
+        Test that the client can successfully handle a response
+         indicating a request has been sent prior
+        """
         response_body = read_resource("idempotence_success.json")
         idempotence_key = str(uuid.uuid4())
-        idempotence_timestamp = current_milli_time()
+        idempotence_timestamp = str(int(time.time() * 1000))
         call_context = CallContext(idempotence_key)
         request = create_payment_request()
         test_path = "/v1/20000/payments"  # relative url through which the request should be sent
-        handler = self.create_handler(response_code=201, body=response_body,
-                                      additional_headers=(("Content-Type", "application/json"),
-                                                          ("Location",
-                                                           "http://localhost/v1/20000/payments/000002000020142549460000100001"
-                                                           ), ("X-GCS-Idempotence-Request-Timestamp",
-                                                               idempotence_timestamp)))
+        additional_headers \
+            = (("Content-Type", "application/json"),
+               ("Location", "http://localhost/v1/20000/payments/000002000020142549460000100001"),
+               ("X-GCS-Idempotence-Request-Timestamp", idempotence_timestamp))
+        handler = \
+            self.create_handler(response_code=201,
+                                body=response_body,
+                                additional_headers=additional_headers)
         with create_server_listening(handler) as address:
             with create_client(address) as client:
                 response = client.merchant("20000").payments().create(request, call_context)
@@ -70,10 +81,13 @@ class DefaultConnectionIdempotenceTest(unittest.TestCase):
         self.assertIsNotNone(response)
         self.assertIsNotNone(response.payment)
         self.assertIsNotNone(response.payment.id)
-        self.assertEqual(test_path, self.request_path, 'Request has arrived at the wrong path')
-        self.assertEqual(idempotence_key, self.idempotence_header, "Wrong idempotence key is sent in the request")
+        self.assertEqual(test_path, self.request_path,
+                         'Request has arrived at the wrong path')
+        self.assertEqual(idempotence_key, self.idempotence_header,
+                         "Wrong idempotence key is sent in the request")
         self.assertEqual(idempotence_key, call_context.idempotence_key)
-        self.assertEqual(int(idempotence_timestamp), int(call_context.idempotence_request_timestamp))
+        self.assertEqual(int(idempotence_timestamp),
+                         int(call_context.idempotence_request_timestamp))
 
     def test_idempotence_first_failure(self):
         """Test a request where a request is rejected without prior requests"""
@@ -90,8 +104,10 @@ class DefaultConnectionIdempotenceTest(unittest.TestCase):
                     client.merchant("20000").payments().create(request, call_context)
         self.assertEqual(402, exc.exception.status_code)
         self.assertEqual(response_body, exc.exception.response_body)
-        self.assertEqual(test_path, self.request_path, 'Request has arrived at the wrong path')
-        self.assertEqual(idempotence_key, self.idempotence_header, "Wrong idempotence key is sent in the request")
+        self.assertEqual(test_path, self.request_path,
+                         'Request has arrived at the wrong path')
+        self.assertEqual(idempotence_key, self.idempotence_header,
+                         "Wrong idempotence key is sent in the request")
         self.assertEqual(idempotence_key, call_context.idempotence_key)
         self.assertIsNone(call_context.idempotence_request_timestamp)
 
@@ -99,37 +115,46 @@ class DefaultConnectionIdempotenceTest(unittest.TestCase):
         """Test a request where a request is rejected with a prior request"""
         response_body = read_resource("idempotence_rejected.json")
         idempotence_key = str(uuid.uuid4())
-        idempotence_timestamp = current_milli_time()
+        idempotence_timestamp = str(int(time.time() * 1000))
         call_context = CallContext(idempotence_key)
         request = create_payment_request()
-        test_path = "/v1/20000/payments"  # relative url through which the request should be sent
-        handler = self.create_handler(response_code=402, body=response_body,
-                                      additional_headers=(("Content-Type", "application/json"),
-                                                          ("X-GCS-Idempotence-Request-Timestamp",idempotence_timestamp)
-                                                          ))
+        # relative url through which the request should be sent
+        test_path = "/v1/20000/payments"
+        additional_headers \
+            = (("Content-Type", "application/json"),
+               ("X-GCS-Idempotence-Request-Timestamp", idempotence_timestamp))
+        handler =\
+            self.create_handler(response_code=402, body=response_body,
+                                additional_headers=additional_headers)
         with create_server_listening(handler) as address:
             with create_client(address) as client:
                 with self.assertRaises(DeclinedPaymentException) as exc:
-                    client.merchant("20000").payments().create(request, call_context)
+                    client.merchant("20000").payments()\
+                        .create(request, call_context)
         self.assertEqual(402, exc.exception.status_code)
         self.assertEqual(response_body, exc.exception.response_body)
-        self.assertEqual(test_path, self.request_path, 'Request has arrived at the wrong path')
-        self.assertEqual(idempotence_key, self.idempotence_header, "Wrong idempotence key is sent in the request")
+        self.assertEqual(test_path, self.request_path,
+                         'Request has arrived at the wrong path')
+        self.assertEqual(idempotence_key, self.idempotence_header,
+                         "Wrong idempotence key is sent in the request")
         self.assertEqual(idempotence_key, call_context.idempotence_key)
-        self.assertEqual(int(idempotence_timestamp), int(call_context.idempotence_request_timestamp))
+        self.assertEqual(int(idempotence_timestamp),
+                         int(call_context.idempotence_request_timestamp))
 
     def test_idempotence_duplicate_request(self):
         """Test a request where a request arrived twice"""
         response_body = read_resource("idempotence_duplicate_failure.json")
         idempotence_key = str(uuid.uuid4())
-        idempotence_timestamp = current_milli_time()
+        idempotence_timestamp = str(int(time.time() * 1000))
         call_context = CallContext(idempotence_key)
         request = create_payment_request()
         test_path = "/v1/20000/payments"  # relative url through which the request should be sent
-        handler = self.create_handler(response_code=409, body=response_body,
-                                      additional_headers=(("Content-Type", "application/json"),
-                                                          ("X-GCS-Idempotence-Request-Timestamp", idempotence_timestamp)
-                                                          ))
+        additional_headers \
+            = (("Content-Type", "application/json"),
+               ("X-GCS-Idempotence-Request-Timestamp", idempotence_timestamp))
+        handler \
+            = self.create_handler(response_code=409, body=response_body,
+                                  additional_headers=additional_headers)
         with create_server_listening(handler) as address:
             with create_client(address) as client:
                 with self.assertRaises(IdempotenceException) as exc:
@@ -137,24 +162,33 @@ class DefaultConnectionIdempotenceTest(unittest.TestCase):
         self.assertEqual(409, exc.exception.status_code)
         self.assertEqual(response_body, exc.exception.response_body)
         self.assertEqual(idempotence_key, exc.exception.idempotence_key)
-        self.assertEqual(idempotence_key, self.idempotence_header, "Wrong idempotence key is sent in the request")
+        self.assertEqual(idempotence_key, self.idempotence_header,
+                         "Wrong idempotence key is sent in the request")
         self.assertEqual(idempotence_key, call_context.idempotence_key)
-        self.assertEqual(test_path, self.request_path, 'Request has arrived at the wrong path')
-        self.assertEqual(int(idempotence_timestamp), int(call_context.idempotence_request_timestamp))
+        self.assertEqual(test_path, self.request_path,
+                         'Request has arrived at the wrong path')
+        self.assertEqual(int(idempotence_timestamp),
+                         int(call_context.idempotence_request_timestamp))
 
     def create_handler(self, response_code=200, body='',
                        additional_headers=()):
-        """Creates a request handler that receives the request on the server side
+        """
+        Creates a request handler that receives the request on the
+         server side
 
         :param response_code: status code of the desired response
-        :param body: the body of the response message to return, it should be in json format
-        :param additional_headers: additional headers that are added to the handler's response
-        If the request is sent through the proper path, self.request_successful will be set to true, false otherwise
+        :param body: the body of the response message to return, it
+         should be in json format
+        :param additional_headers: additional headers that are added to
+         the handler's response
+        If the request is sent through the proper path,
+         self.request_successful will be set to true, false otherwise
         """
         def handler_func(handler):
             try:
                 self.idempotence_header = handler.headers['X-GCS-Idempotence-Key']
-                self.request_path = handler.path  # record if the request was sent through the expected path
+                # record if the request was sent through the expected path
+                self.request_path = handler.path
                 handler.protocol_version = 'HTTP/1.1'
                 handler.send_response(response_code)
                 for header in additional_headers:
@@ -192,10 +226,11 @@ def create_payment_request():
     body.card_payment_method_specific_input = card_payment_input
     return body
 
-current_milli_time = lambda: str(int(time.time() * 1000))
 
+def read_resource(relative_path):
+    return file_utils.read_file(os.path.join("default_implementation",
+                                             relative_path))
 
-def read_resource(relative_path): return file_utils.read_file(os.path.join("default_implementation", relative_path))
 
 if __name__ == '__main__':
     unittest.main()

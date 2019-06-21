@@ -83,11 +83,16 @@ class LineItemInvoiceData(DataObject):
 
     def to_dictionary(self):
         dictionary = super(LineItemInvoiceData, self).to_dictionary()
-        self._add_to_dictionary(dictionary, 'description', self.description)
-        self._add_to_dictionary(dictionary, 'merchantLinenumber', self.merchant_linenumber)
-        self._add_to_dictionary(dictionary, 'merchantPagenumber', self.merchant_pagenumber)
-        self._add_to_dictionary(dictionary, 'nrOfItems', self.nr_of_items)
-        self._add_to_dictionary(dictionary, 'pricePerItem', self.price_per_item)
+        if self.description is not None:
+            dictionary['description'] = self.description
+        if self.merchant_linenumber is not None:
+            dictionary['merchantLinenumber'] = self.merchant_linenumber
+        if self.merchant_pagenumber is not None:
+            dictionary['merchantPagenumber'] = self.merchant_pagenumber
+        if self.nr_of_items is not None:
+            dictionary['nrOfItems'] = self.nr_of_items
+        if self.price_per_item is not None:
+            dictionary['pricePerItem'] = self.price_per_item
         return dictionary
 
     def from_dictionary(self, dictionary):

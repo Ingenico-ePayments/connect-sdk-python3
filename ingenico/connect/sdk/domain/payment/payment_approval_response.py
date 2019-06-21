@@ -73,10 +73,14 @@ class PaymentApprovalResponse(DataObject):
 
     def to_dictionary(self):
         dictionary = super(PaymentApprovalResponse, self).to_dictionary()
-        self._add_to_dictionary(dictionary, 'cardPaymentMethodSpecificOutput', self.card_payment_method_specific_output)
-        self._add_to_dictionary(dictionary, 'mobilePaymentMethodSpecificOutput', self.mobile_payment_method_specific_output)
-        self._add_to_dictionary(dictionary, 'payment', self.payment)
-        self._add_to_dictionary(dictionary, 'paymentMethodSpecificOutput', self.payment_method_specific_output)
+        if self.card_payment_method_specific_output is not None:
+            dictionary['cardPaymentMethodSpecificOutput'] = self.card_payment_method_specific_output.to_dictionary()
+        if self.mobile_payment_method_specific_output is not None:
+            dictionary['mobilePaymentMethodSpecificOutput'] = self.mobile_payment_method_specific_output.to_dictionary()
+        if self.payment is not None:
+            dictionary['payment'] = self.payment.to_dictionary()
+        if self.payment_method_specific_output is not None:
+            dictionary['paymentMethodSpecificOutput'] = self.payment_method_specific_output.to_dictionary()
         return dictionary
 
     def from_dictionary(self, dictionary):

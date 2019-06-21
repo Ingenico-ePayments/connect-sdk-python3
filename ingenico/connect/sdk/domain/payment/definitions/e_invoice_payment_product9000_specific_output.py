@@ -25,7 +25,8 @@ class EInvoicePaymentProduct9000SpecificOutput(DataObject):
 
     def to_dictionary(self):
         dictionary = super(EInvoicePaymentProduct9000SpecificOutput, self).to_dictionary()
-        self._add_to_dictionary(dictionary, 'installmentId', self.installment_id)
+        if self.installment_id is not None:
+            dictionary['installmentId'] = self.installment_id
         return dictionary
 
     def from_dictionary(self, dictionary):

@@ -41,8 +41,10 @@ class CreateHostedMandateManagementRequest(DataObject):
 
     def to_dictionary(self):
         dictionary = super(CreateHostedMandateManagementRequest, self).to_dictionary()
-        self._add_to_dictionary(dictionary, 'createMandateInfo', self.create_mandate_info)
-        self._add_to_dictionary(dictionary, 'hostedMandateManagementSpecificInput', self.hosted_mandate_management_specific_input)
+        if self.create_mandate_info is not None:
+            dictionary['createMandateInfo'] = self.create_mandate_info.to_dictionary()
+        if self.hosted_mandate_management_specific_input is not None:
+            dictionary['hostedMandateManagementSpecificInput'] = self.hosted_mandate_management_specific_input.to_dictionary()
         return dictionary
 
     def from_dictionary(self, dictionary):

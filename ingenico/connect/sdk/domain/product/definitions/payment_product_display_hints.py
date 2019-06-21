@@ -53,9 +53,12 @@ class PaymentProductDisplayHints(DataObject):
 
     def to_dictionary(self):
         dictionary = super(PaymentProductDisplayHints, self).to_dictionary()
-        self._add_to_dictionary(dictionary, 'displayOrder', self.display_order)
-        self._add_to_dictionary(dictionary, 'label', self.label)
-        self._add_to_dictionary(dictionary, 'logo', self.logo)
+        if self.display_order is not None:
+            dictionary['displayOrder'] = self.display_order
+        if self.label is not None:
+            dictionary['label'] = self.label
+        if self.logo is not None:
+            dictionary['logo'] = self.logo
         return dictionary
 
     def from_dictionary(self, dictionary):

@@ -202,6 +202,6 @@ class CreatePaymentExample(object):
         # handle the result here
         pass
 
-    def  handle_api_errors(self, errors):
+    def handle_api_errors(self, errors):
         # handle the errors here
         pass

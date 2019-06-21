@@ -105,5 +105,6 @@ class GetProductGroupParamsTest(unittest.TestCase):
 
         self.assertCountEqual(expected, request_params)
 
+
 if __name__ == '__main__':
     unittest.main()

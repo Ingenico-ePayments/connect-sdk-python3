@@ -100,12 +100,18 @@ class RedirectPaymentMethodSpecificOutput(AbstractPaymentMethodSpecificOutput):
 
     def to_dictionary(self):
         dictionary = super(RedirectPaymentMethodSpecificOutput, self).to_dictionary()
-        self._add_to_dictionary(dictionary, 'bankAccountIban', self.bank_account_iban)
-        self._add_to_dictionary(dictionary, 'fraudResults', self.fraud_results)
-        self._add_to_dictionary(dictionary, 'paymentProduct3201SpecificOutput', self.payment_product3201_specific_output)
-        self._add_to_dictionary(dictionary, 'paymentProduct836SpecificOutput', self.payment_product836_specific_output)
-        self._add_to_dictionary(dictionary, 'paymentProduct840SpecificOutput', self.payment_product840_specific_output)
-        self._add_to_dictionary(dictionary, 'token', self.token)
+        if self.bank_account_iban is not None:
+            dictionary['bankAccountIban'] = self.bank_account_iban.to_dictionary()
+        if self.fraud_results is not None:
+            dictionary['fraudResults'] = self.fraud_results.to_dictionary()
+        if self.payment_product3201_specific_output is not None:
+            dictionary['paymentProduct3201SpecificOutput'] = self.payment_product3201_specific_output.to_dictionary()
+        if self.payment_product836_specific_output is not None:
+            dictionary['paymentProduct836SpecificOutput'] = self.payment_product836_specific_output.to_dictionary()
+        if self.payment_product840_specific_output is not None:
+            dictionary['paymentProduct840SpecificOutput'] = self.payment_product840_specific_output.to_dictionary()
+        if self.token is not None:
+            dictionary['token'] = self.token
         return dictionary
 
     def from_dictionary(self, dictionary):

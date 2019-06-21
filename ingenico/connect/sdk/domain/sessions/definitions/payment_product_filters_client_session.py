@@ -40,8 +40,10 @@ class PaymentProductFiltersClientSession(DataObject):
 
     def to_dictionary(self):
         dictionary = super(PaymentProductFiltersClientSession, self).to_dictionary()
-        self._add_to_dictionary(dictionary, 'exclude', self.exclude)
-        self._add_to_dictionary(dictionary, 'restrictTo', self.restrict_to)
+        if self.exclude is not None:
+            dictionary['exclude'] = self.exclude.to_dictionary()
+        if self.restrict_to is not None:
+            dictionary['restrictTo'] = self.restrict_to.to_dictionary()
         return dictionary
 
     def from_dictionary(self, dictionary):

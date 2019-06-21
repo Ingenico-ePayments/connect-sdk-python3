@@ -136,13 +136,20 @@ class BrowserData(DataObject):
 
     def to_dictionary(self):
         dictionary = super(BrowserData, self).to_dictionary()
-        self._add_to_dictionary(dictionary, 'colorDepth', self.color_depth)
-        self._add_to_dictionary(dictionary, 'innerHeight', self.inner_height)
-        self._add_to_dictionary(dictionary, 'innerWidth', self.inner_width)
-        self._add_to_dictionary(dictionary, 'javaEnabled', self.java_enabled)
-        self._add_to_dictionary(dictionary, 'javaScriptEnabled', self.java_script_enabled)
-        self._add_to_dictionary(dictionary, 'screenHeight', self.screen_height)
-        self._add_to_dictionary(dictionary, 'screenWidth', self.screen_width)
+        if self.color_depth is not None:
+            dictionary['colorDepth'] = self.color_depth
+        if self.inner_height is not None:
+            dictionary['innerHeight'] = self.inner_height
+        if self.inner_width is not None:
+            dictionary['innerWidth'] = self.inner_width
+        if self.java_enabled is not None:
+            dictionary['javaEnabled'] = self.java_enabled
+        if self.java_script_enabled is not None:
+            dictionary['javaScriptEnabled'] = self.java_script_enabled
+        if self.screen_height is not None:
+            dictionary['screenHeight'] = self.screen_height
+        if self.screen_width is not None:
+            dictionary['screenWidth'] = self.screen_width
         return dictionary
 
     def from_dictionary(self, dictionary):

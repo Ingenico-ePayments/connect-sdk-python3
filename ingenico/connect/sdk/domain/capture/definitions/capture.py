@@ -65,9 +65,12 @@ class Capture(AbstractOrderStatus):
 
     def to_dictionary(self):
         dictionary = super(Capture, self).to_dictionary()
-        self._add_to_dictionary(dictionary, 'captureOutput', self.capture_output)
-        self._add_to_dictionary(dictionary, 'status', self.status)
-        self._add_to_dictionary(dictionary, 'statusOutput', self.status_output)
+        if self.capture_output is not None:
+            dictionary['captureOutput'] = self.capture_output.to_dictionary()
+        if self.status is not None:
+            dictionary['status'] = self.status
+        if self.status_output is not None:
+            dictionary['statusOutput'] = self.status_output.to_dictionary()
         return dictionary
 
     def from_dictionary(self, dictionary):

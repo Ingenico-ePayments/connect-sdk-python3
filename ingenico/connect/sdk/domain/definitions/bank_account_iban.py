@@ -25,7 +25,8 @@ class BankAccountIban(BankAccount):
 
     def to_dictionary(self):
         dictionary = super(BankAccountIban, self).to_dictionary()
-        self._add_to_dictionary(dictionary, 'iban', self.iban)
+        if self.iban is not None:
+            dictionary['iban'] = self.iban
         return dictionary
 
     def from_dictionary(self, dictionary):

@@ -73,10 +73,17 @@ class DirectoryEntry(DataObject):
 
     def to_dictionary(self):
         dictionary = super(DirectoryEntry, self).to_dictionary()
-        self._add_to_dictionary(dictionary, 'countryNames', self.country_names)
-        self._add_to_dictionary(dictionary, 'issuerId', self.issuer_id)
-        self._add_to_dictionary(dictionary, 'issuerList', self.issuer_list)
-        self._add_to_dictionary(dictionary, 'issuerName', self.issuer_name)
+        if self.country_names is not None:
+            dictionary['countryNames'] = []
+            for element in self.country_names:
+                if element is not None:
+                    dictionary['countryNames'].append(element)
+        if self.issuer_id is not None:
+            dictionary['issuerId'] = self.issuer_id
+        if self.issuer_list is not None:
+            dictionary['issuerList'] = self.issuer_list
+        if self.issuer_name is not None:
+            dictionary['issuerName'] = self.issuer_name
         return dictionary
 
     def from_dictionary(self, dictionary):
@@ -85,8 +92,8 @@ class DirectoryEntry(DataObject):
             if not isinstance(dictionary['countryNames'], list):
                 raise TypeError('value \'{}\' is not a list'.format(dictionary['countryNames']))
             self.country_names = []
-            for countryNames_element in dictionary['countryNames']:
-                self.country_names.append(countryNames_element)
+            for element in dictionary['countryNames']:
+                self.country_names.append(element)
         if 'issuerId' in dictionary:
             self.issuer_id = dictionary['issuerId']
         if 'issuerList' in dictionary:

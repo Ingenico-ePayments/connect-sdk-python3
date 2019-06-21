@@ -85,11 +85,16 @@ class PayoutCustomer(DataObject):
 
     def to_dictionary(self):
         dictionary = super(PayoutCustomer, self).to_dictionary()
-        self._add_to_dictionary(dictionary, 'address', self.address)
-        self._add_to_dictionary(dictionary, 'companyInformation', self.company_information)
-        self._add_to_dictionary(dictionary, 'contactDetails', self.contact_details)
-        self._add_to_dictionary(dictionary, 'merchantCustomerId', self.merchant_customer_id)
-        self._add_to_dictionary(dictionary, 'name', self.name)
+        if self.address is not None:
+            dictionary['address'] = self.address.to_dictionary()
+        if self.company_information is not None:
+            dictionary['companyInformation'] = self.company_information.to_dictionary()
+        if self.contact_details is not None:
+            dictionary['contactDetails'] = self.contact_details.to_dictionary()
+        if self.merchant_customer_id is not None:
+            dictionary['merchantCustomerId'] = self.merchant_customer_id
+        if self.name is not None:
+            dictionary['name'] = self.name.to_dictionary()
         return dictionary
 
     def from_dictionary(self, dictionary):

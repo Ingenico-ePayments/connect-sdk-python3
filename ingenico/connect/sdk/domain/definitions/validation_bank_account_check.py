@@ -58,9 +58,12 @@ class ValidationBankAccountCheck(DataObject):
 
     def to_dictionary(self):
         dictionary = super(ValidationBankAccountCheck, self).to_dictionary()
-        self._add_to_dictionary(dictionary, 'code', self.code)
-        self._add_to_dictionary(dictionary, 'description', self.description)
-        self._add_to_dictionary(dictionary, 'result', self.result)
+        if self.code is not None:
+            dictionary['code'] = self.code
+        if self.description is not None:
+            dictionary['description'] = self.description
+        if self.result is not None:
+            dictionary['result'] = self.result
         return dictionary
 
     def from_dictionary(self, dictionary):

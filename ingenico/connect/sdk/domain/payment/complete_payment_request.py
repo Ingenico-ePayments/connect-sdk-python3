@@ -56,9 +56,12 @@ class CompletePaymentRequest(DataObject):
 
     def to_dictionary(self):
         dictionary = super(CompletePaymentRequest, self).to_dictionary()
-        self._add_to_dictionary(dictionary, 'cardPaymentMethodSpecificInput', self.card_payment_method_specific_input)
-        self._add_to_dictionary(dictionary, 'merchant', self.merchant)
-        self._add_to_dictionary(dictionary, 'order', self.order)
+        if self.card_payment_method_specific_input is not None:
+            dictionary['cardPaymentMethodSpecificInput'] = self.card_payment_method_specific_input.to_dictionary()
+        if self.merchant is not None:
+            dictionary['merchant'] = self.merchant.to_dictionary()
+        if self.order is not None:
+            dictionary['order'] = self.order.to_dictionary()
         return dictionary
 
     def from_dictionary(self, dictionary):

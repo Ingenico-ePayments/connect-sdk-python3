@@ -47,8 +47,10 @@ class ProtectionEligibility(DataObject):
 
     def to_dictionary(self):
         dictionary = super(ProtectionEligibility, self).to_dictionary()
-        self._add_to_dictionary(dictionary, 'eligibility', self.eligibility)
-        self._add_to_dictionary(dictionary, 'type', self.type)
+        if self.eligibility is not None:
+            dictionary['eligibility'] = self.eligibility
+        if self.type is not None:
+            dictionary['type'] = self.type
         return dictionary
 
     def from_dictionary(self, dictionary):

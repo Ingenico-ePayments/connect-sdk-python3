@@ -46,6 +46,8 @@ are required:
 -  `django <https://www.djangoproject.com/>`__ 1.10 or higher
 -  `requests <http://docs.python-requests.org/en/master/>`__ 2.11.0 or
    higher
+-  `requests-toolbelt <https://toolbelt.readthedocs.io/>`__ 0.8.0 or
+   higher
 
 These packages will be installed automatically if the SDK is installed
 manually or using pip following the below instructions.

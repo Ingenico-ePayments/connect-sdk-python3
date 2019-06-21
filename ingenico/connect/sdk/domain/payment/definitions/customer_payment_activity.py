@@ -56,9 +56,12 @@ class CustomerPaymentActivity(DataObject):
 
     def to_dictionary(self):
         dictionary = super(CustomerPaymentActivity, self).to_dictionary()
-        self._add_to_dictionary(dictionary, 'numberOfPaymentAttemptsLast24Hours', self.number_of_payment_attempts_last24_hours)
-        self._add_to_dictionary(dictionary, 'numberOfPaymentAttemptsLastYear', self.number_of_payment_attempts_last_year)
-        self._add_to_dictionary(dictionary, 'numberOfPurchasesLast6Months', self.number_of_purchases_last6_months)
+        if self.number_of_payment_attempts_last24_hours is not None:
+            dictionary['numberOfPaymentAttemptsLast24Hours'] = self.number_of_payment_attempts_last24_hours
+        if self.number_of_payment_attempts_last_year is not None:
+            dictionary['numberOfPaymentAttemptsLastYear'] = self.number_of_payment_attempts_last_year
+        if self.number_of_purchases_last6_months is not None:
+            dictionary['numberOfPurchasesLast6Months'] = self.number_of_purchases_last6_months
         return dictionary
 
     def from_dictionary(self, dictionary):

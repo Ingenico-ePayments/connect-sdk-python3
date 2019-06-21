@@ -99,12 +99,18 @@ class BankTransferPayoutMethodSpecificInput(AbstractPayoutMethodSpecificInput):
 
     def to_dictionary(self):
         dictionary = super(BankTransferPayoutMethodSpecificInput, self).to_dictionary()
-        self._add_to_dictionary(dictionary, 'bankAccountBban', self.bank_account_bban)
-        self._add_to_dictionary(dictionary, 'bankAccountIban', self.bank_account_iban)
-        self._add_to_dictionary(dictionary, 'customer', self.customer)
-        self._add_to_dictionary(dictionary, 'payoutDate', self.payout_date)
-        self._add_to_dictionary(dictionary, 'payoutText', self.payout_text)
-        self._add_to_dictionary(dictionary, 'swiftCode', self.swift_code)
+        if self.bank_account_bban is not None:
+            dictionary['bankAccountBban'] = self.bank_account_bban.to_dictionary()
+        if self.bank_account_iban is not None:
+            dictionary['bankAccountIban'] = self.bank_account_iban.to_dictionary()
+        if self.customer is not None:
+            dictionary['customer'] = self.customer.to_dictionary()
+        if self.payout_date is not None:
+            dictionary['payoutDate'] = self.payout_date
+        if self.payout_text is not None:
+            dictionary['payoutText'] = self.payout_text
+        if self.swift_code is not None:
+            dictionary['swiftCode'] = self.swift_code
         return dictionary
 
     def from_dictionary(self, dictionary):

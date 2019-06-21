@@ -65,8 +65,8 @@ class CommunicatorConfigurationTest(unittest.TestCase):
         from settings with a proxy and authentication
         """
         self.config.set('ConnectSDK', "connect.api.proxy.uri", "http://proxy.example.org:3128")
-        self.config.set('ConnectSDK', "connect.api.proxy.username", "global-collect-username")
-        self.config.set('ConnectSDK', "connect.api.proxy.password", "global-collect-password")
+        self.config.set('ConnectSDK', "connect.api.proxy.username", "connect-username")
+        self.config.set('ConnectSDK', "connect.api.proxy.password", "connect-password")
 
         communicator_config = CommunicatorConfiguration(self.config)
 
@@ -78,8 +78,8 @@ class CommunicatorConfigurationTest(unittest.TestCase):
         self.assertEqual("http", proxy_config.scheme)
         self.assertEqual("proxy.example.org", proxy_config.host)
         self.assertEqual(3128, proxy_config.port)
-        self.assertEqual("global-collect-username", proxy_config.username)
-        self.assertEqual("global-collect-password", proxy_config.password)
+        self.assertEqual("connect-username", proxy_config.username)
+        self.assertEqual("connect-password", proxy_config.password)
 
     def test_construct_from_properties_with_max_connection(self):
         """Tests if a CommunicatorConfiguration can be constructed correctly

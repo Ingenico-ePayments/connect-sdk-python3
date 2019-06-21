@@ -109,13 +109,20 @@ class PaymentProduct863ThirdPartyData(DataObject):
 
     def to_dictionary(self):
         dictionary = super(PaymentProduct863ThirdPartyData, self).to_dictionary()
-        self._add_to_dictionary(dictionary, 'appId', self.app_id)
-        self._add_to_dictionary(dictionary, 'nonceStr', self.nonce_str)
-        self._add_to_dictionary(dictionary, 'packageSign', self.package_sign)
-        self._add_to_dictionary(dictionary, 'paySign', self.pay_sign)
-        self._add_to_dictionary(dictionary, 'prepayId', self.prepay_id)
-        self._add_to_dictionary(dictionary, 'signType', self.sign_type)
-        self._add_to_dictionary(dictionary, 'timeStamp', self.time_stamp)
+        if self.app_id is not None:
+            dictionary['appId'] = self.app_id
+        if self.nonce_str is not None:
+            dictionary['nonceStr'] = self.nonce_str
+        if self.package_sign is not None:
+            dictionary['packageSign'] = self.package_sign
+        if self.pay_sign is not None:
+            dictionary['paySign'] = self.pay_sign
+        if self.prepay_id is not None:
+            dictionary['prepayId'] = self.prepay_id
+        if self.sign_type is not None:
+            dictionary['signType'] = self.sign_type
+        if self.time_stamp is not None:
+            dictionary['timeStamp'] = self.time_stamp
         return dictionary
 
     def from_dictionary(self, dictionary):

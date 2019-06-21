@@ -25,7 +25,8 @@ class OrderReferencesApprovePayment(DataObject):
 
     def to_dictionary(self):
         dictionary = super(OrderReferencesApprovePayment, self).to_dictionary()
-        self._add_to_dictionary(dictionary, 'merchantReference', self.merchant_reference)
+        if self.merchant_reference is not None:
+            dictionary['merchantReference'] = self.merchant_reference
         return dictionary
 
     def from_dictionary(self, dictionary):

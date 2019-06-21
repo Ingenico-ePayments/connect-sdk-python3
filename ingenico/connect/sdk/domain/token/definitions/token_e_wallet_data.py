@@ -25,7 +25,8 @@ class TokenEWalletData(DataObject):
 
     def to_dictionary(self):
         dictionary = super(TokenEWalletData, self).to_dictionary()
-        self._add_to_dictionary(dictionary, 'billingAgreementId', self.billing_agreement_id)
+        if self.billing_agreement_id is not None:
+            dictionary['billingAgreementId'] = self.billing_agreement_id
         return dictionary
 
     def from_dictionary(self, dictionary):

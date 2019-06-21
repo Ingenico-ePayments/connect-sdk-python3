@@ -96,12 +96,18 @@ class BankAccountBban(BankAccount):
 
     def to_dictionary(self):
         dictionary = super(BankAccountBban, self).to_dictionary()
-        self._add_to_dictionary(dictionary, 'accountNumber', self.account_number)
-        self._add_to_dictionary(dictionary, 'bankCode', self.bank_code)
-        self._add_to_dictionary(dictionary, 'bankName', self.bank_name)
-        self._add_to_dictionary(dictionary, 'branchCode', self.branch_code)
-        self._add_to_dictionary(dictionary, 'checkDigit', self.check_digit)
-        self._add_to_dictionary(dictionary, 'countryCode', self.country_code)
+        if self.account_number is not None:
+            dictionary['accountNumber'] = self.account_number
+        if self.bank_code is not None:
+            dictionary['bankCode'] = self.bank_code
+        if self.bank_name is not None:
+            dictionary['bankName'] = self.bank_name
+        if self.branch_code is not None:
+            dictionary['branchCode'] = self.branch_code
+        if self.check_digit is not None:
+            dictionary['checkDigit'] = self.check_digit
+        if self.country_code is not None:
+            dictionary['countryCode'] = self.country_code
         return dictionary
 
     def from_dictionary(self, dictionary):

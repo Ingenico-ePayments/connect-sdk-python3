@@ -40,8 +40,10 @@ class ApprovePaymentPaymentMethodSpecificInput(DataObject):
 
     def to_dictionary(self):
         dictionary = super(ApprovePaymentPaymentMethodSpecificInput, self).to_dictionary()
-        self._add_to_dictionary(dictionary, 'dateCollect', self.date_collect)
-        self._add_to_dictionary(dictionary, 'token', self.token)
+        if self.date_collect is not None:
+            dictionary['dateCollect'] = self.date_collect
+        if self.token is not None:
+            dictionary['token'] = self.token
         return dictionary
 
     def from_dictionary(self, dictionary):

@@ -134,10 +134,14 @@ class DisputeStatusOutput(DataObject):
 
     def to_dictionary(self):
         dictionary = super(DisputeStatusOutput, self).to_dictionary()
-        self._add_to_dictionary(dictionary, 'isCancellable', self.is_cancellable)
-        self._add_to_dictionary(dictionary, 'statusCategory', self.status_category)
-        self._add_to_dictionary(dictionary, 'statusCode', self.status_code)
-        self._add_to_dictionary(dictionary, 'statusCodeChangeDateTime', self.status_code_change_date_time)
+        if self.is_cancellable is not None:
+            dictionary['isCancellable'] = self.is_cancellable
+        if self.status_category is not None:
+            dictionary['statusCategory'] = self.status_category
+        if self.status_code is not None:
+            dictionary['statusCode'] = self.status_code
+        if self.status_code_change_date_time is not None:
+            dictionary['statusCodeChangeDateTime'] = self.status_code_change_date_time
         return dictionary
 
     def from_dictionary(self, dictionary):

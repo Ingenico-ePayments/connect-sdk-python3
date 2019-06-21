@@ -25,3 +25,35 @@ class RequestHeader:
 
     def __str__(self):
         return self.__name + ":" + str(self.__value)
+
+
+def get_header_value(headers, header_name):
+    """
+    :return: The value of the header with the given name, or None if there
+     was no such header.
+    """
+    if isinstance(headers, dict):
+        for name, value in headers.items():
+            if name.lower() == header_name.lower():
+                return value
+    elif headers is not None:
+        for header in headers:
+            if header.name.lower() == header_name.lower():
+                return header.value
+    return None
+
+
+def get_header(headers, header_name):
+    """
+    :return: The header with the given name, or None if there was no such
+     header.
+    """
+    if isinstance(headers, dict):
+        for name, value in headers.items():
+            if name.lower() == header_name.lower():
+                return RequestHeader(name, value)
+    elif headers is not None:
+        for header in headers:
+            if header.name.lower() == header_name.lower():
+                return header
+    return None

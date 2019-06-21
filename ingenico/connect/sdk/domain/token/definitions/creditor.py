@@ -166,17 +166,28 @@ class Creditor(DataObject):
 
     def to_dictionary(self):
         dictionary = super(Creditor, self).to_dictionary()
-        self._add_to_dictionary(dictionary, 'additionalAddressInfo', self.additional_address_info)
-        self._add_to_dictionary(dictionary, 'city', self.city)
-        self._add_to_dictionary(dictionary, 'countryCode', self.country_code)
-        self._add_to_dictionary(dictionary, 'houseNumber', self.house_number)
-        self._add_to_dictionary(dictionary, 'iban', self.iban)
-        self._add_to_dictionary(dictionary, 'id', self.id)
-        self._add_to_dictionary(dictionary, 'name', self.name)
-        self._add_to_dictionary(dictionary, 'referenceParty', self.reference_party)
-        self._add_to_dictionary(dictionary, 'referencePartyId', self.reference_party_id)
-        self._add_to_dictionary(dictionary, 'street', self.street)
-        self._add_to_dictionary(dictionary, 'zip', self.zip)
+        if self.additional_address_info is not None:
+            dictionary['additionalAddressInfo'] = self.additional_address_info
+        if self.city is not None:
+            dictionary['city'] = self.city
+        if self.country_code is not None:
+            dictionary['countryCode'] = self.country_code
+        if self.house_number is not None:
+            dictionary['houseNumber'] = self.house_number
+        if self.iban is not None:
+            dictionary['iban'] = self.iban
+        if self.id is not None:
+            dictionary['id'] = self.id
+        if self.name is not None:
+            dictionary['name'] = self.name
+        if self.reference_party is not None:
+            dictionary['referenceParty'] = self.reference_party
+        if self.reference_party_id is not None:
+            dictionary['referencePartyId'] = self.reference_party_id
+        if self.street is not None:
+            dictionary['street'] = self.street
+        if self.zip is not None:
+            dictionary['zip'] = self.zip
         return dictionary
 
     def from_dictionary(self, dictionary):

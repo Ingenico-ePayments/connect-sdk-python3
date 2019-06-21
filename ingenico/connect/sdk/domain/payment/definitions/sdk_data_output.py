@@ -25,7 +25,8 @@ class SdkDataOutput(DataObject):
 
     def to_dictionary(self):
         dictionary = super(SdkDataOutput, self).to_dictionary()
-        self._add_to_dictionary(dictionary, 'sdkTransactionId', self.sdk_transaction_id)
+        if self.sdk_transaction_id is not None:
+            dictionary['sdkTransactionId'] = self.sdk_transaction_id
         return dictionary
 
     def from_dictionary(self, dictionary):

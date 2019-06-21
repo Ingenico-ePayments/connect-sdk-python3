@@ -104,10 +104,14 @@ class OrderReferences(DataObject):
 
     def to_dictionary(self):
         dictionary = super(OrderReferences, self).to_dictionary()
-        self._add_to_dictionary(dictionary, 'descriptor', self.descriptor)
-        self._add_to_dictionary(dictionary, 'invoiceData', self.invoice_data)
-        self._add_to_dictionary(dictionary, 'merchantOrderId', self.merchant_order_id)
-        self._add_to_dictionary(dictionary, 'merchantReference', self.merchant_reference)
+        if self.descriptor is not None:
+            dictionary['descriptor'] = self.descriptor
+        if self.invoice_data is not None:
+            dictionary['invoiceData'] = self.invoice_data.to_dictionary()
+        if self.merchant_order_id is not None:
+            dictionary['merchantOrderId'] = self.merchant_order_id
+        if self.merchant_reference is not None:
+            dictionary['merchantReference'] = self.merchant_reference
         return dictionary
 
     def from_dictionary(self, dictionary):

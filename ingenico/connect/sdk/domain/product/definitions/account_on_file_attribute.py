@@ -45,8 +45,10 @@ class AccountOnFileAttribute(KeyValuePair):
 
     def to_dictionary(self):
         dictionary = super(AccountOnFileAttribute, self).to_dictionary()
-        self._add_to_dictionary(dictionary, 'mustWriteReason', self.must_write_reason)
-        self._add_to_dictionary(dictionary, 'status', self.status)
+        if self.must_write_reason is not None:
+            dictionary['mustWriteReason'] = self.must_write_reason
+        if self.status is not None:
+            dictionary['status'] = self.status
         return dictionary
 
     def from_dictionary(self, dictionary):

@@ -70,9 +70,15 @@ class DisplayedData(DataObject):
 
     def to_dictionary(self):
         dictionary = super(DisplayedData, self).to_dictionary()
-        self._add_to_dictionary(dictionary, 'displayedDataType', self.displayed_data_type)
-        self._add_to_dictionary(dictionary, 'renderingData', self.rendering_data)
-        self._add_to_dictionary(dictionary, 'showData', self.show_data)
+        if self.displayed_data_type is not None:
+            dictionary['displayedDataType'] = self.displayed_data_type
+        if self.rendering_data is not None:
+            dictionary['renderingData'] = self.rendering_data
+        if self.show_data is not None:
+            dictionary['showData'] = []
+            for element in self.show_data:
+                if element is not None:
+                    dictionary['showData'].append(element.to_dictionary())
         return dictionary
 
     def from_dictionary(self, dictionary):
@@ -85,7 +91,7 @@ class DisplayedData(DataObject):
             if not isinstance(dictionary['showData'], list):
                 raise TypeError('value \'{}\' is not a list'.format(dictionary['showData']))
             self.show_data = []
-            for showData_element in dictionary['showData']:
-                showData_value = KeyValuePair()
-                self.show_data.append(showData_value.from_dictionary(showData_element))
+            for element in dictionary['showData']:
+                value = KeyValuePair()
+                self.show_data.append(value.from_dictionary(element))
         return self

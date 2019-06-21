@@ -137,14 +137,22 @@ class ExternalCardholderAuthenticationData(DataObject):
 
     def to_dictionary(self):
         dictionary = super(ExternalCardholderAuthenticationData, self).to_dictionary()
-        self._add_to_dictionary(dictionary, 'cavv', self.cavv)
-        self._add_to_dictionary(dictionary, 'cavvAlgorithm', self.cavv_algorithm)
-        self._add_to_dictionary(dictionary, 'directoryServerTransactionId', self.directory_server_transaction_id)
-        self._add_to_dictionary(dictionary, 'eci', self.eci)
-        self._add_to_dictionary(dictionary, 'threeDSecureVersion', self.three_d_secure_version)
-        self._add_to_dictionary(dictionary, 'threeDServerTransactionId', self.three_d_server_transaction_id)
-        self._add_to_dictionary(dictionary, 'validationResult', self.validation_result)
-        self._add_to_dictionary(dictionary, 'xid', self.xid)
+        if self.cavv is not None:
+            dictionary['cavv'] = self.cavv
+        if self.cavv_algorithm is not None:
+            dictionary['cavvAlgorithm'] = self.cavv_algorithm
+        if self.directory_server_transaction_id is not None:
+            dictionary['directoryServerTransactionId'] = self.directory_server_transaction_id
+        if self.eci is not None:
+            dictionary['eci'] = self.eci
+        if self.three_d_secure_version is not None:
+            dictionary['threeDSecureVersion'] = self.three_d_secure_version
+        if self.three_d_server_transaction_id is not None:
+            dictionary['threeDServerTransactionId'] = self.three_d_server_transaction_id
+        if self.validation_result is not None:
+            dictionary['validationResult'] = self.validation_result
+        if self.xid is not None:
+            dictionary['xid'] = self.xid
         return dictionary
 
     def from_dictionary(self, dictionary):

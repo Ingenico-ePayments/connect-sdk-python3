@@ -163,16 +163,26 @@ class PaymentProduct840CustomerAccount(DataObject):
 
     def to_dictionary(self):
         dictionary = super(PaymentProduct840CustomerAccount, self).to_dictionary()
-        self._add_to_dictionary(dictionary, 'accountId', self.account_id)
-        self._add_to_dictionary(dictionary, 'billingAgreementId', self.billing_agreement_id)
-        self._add_to_dictionary(dictionary, 'companyName', self.company_name)
-        self._add_to_dictionary(dictionary, 'contactPhone', self.contact_phone)
-        self._add_to_dictionary(dictionary, 'countryCode', self.country_code)
-        self._add_to_dictionary(dictionary, 'customerAccountStatus', self.customer_account_status)
-        self._add_to_dictionary(dictionary, 'customerAddressStatus', self.customer_address_status)
-        self._add_to_dictionary(dictionary, 'firstName', self.first_name)
-        self._add_to_dictionary(dictionary, 'payerId', self.payer_id)
-        self._add_to_dictionary(dictionary, 'surname', self.surname)
+        if self.account_id is not None:
+            dictionary['accountId'] = self.account_id
+        if self.billing_agreement_id is not None:
+            dictionary['billingAgreementId'] = self.billing_agreement_id
+        if self.company_name is not None:
+            dictionary['companyName'] = self.company_name
+        if self.contact_phone is not None:
+            dictionary['contactPhone'] = self.contact_phone
+        if self.country_code is not None:
+            dictionary['countryCode'] = self.country_code
+        if self.customer_account_status is not None:
+            dictionary['customerAccountStatus'] = self.customer_account_status
+        if self.customer_address_status is not None:
+            dictionary['customerAddressStatus'] = self.customer_address_status
+        if self.first_name is not None:
+            dictionary['firstName'] = self.first_name
+        if self.payer_id is not None:
+            dictionary['payerId'] = self.payer_id
+        if self.surname is not None:
+            dictionary['surname'] = self.surname
         return dictionary
 
     def from_dictionary(self, dictionary):

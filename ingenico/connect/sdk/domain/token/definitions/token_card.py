@@ -41,8 +41,10 @@ class TokenCard(AbstractToken):
 
     def to_dictionary(self):
         dictionary = super(TokenCard, self).to_dictionary()
-        self._add_to_dictionary(dictionary, 'customer', self.customer)
-        self._add_to_dictionary(dictionary, 'data', self.data)
+        if self.customer is not None:
+            dictionary['customer'] = self.customer.to_dictionary()
+        if self.data is not None:
+            dictionary['data'] = self.data.to_dictionary()
         return dictionary
 
     def from_dictionary(self, dictionary):

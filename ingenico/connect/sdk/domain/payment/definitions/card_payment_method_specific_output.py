@@ -87,11 +87,16 @@ class CardPaymentMethodSpecificOutput(AbstractPaymentMethodSpecificOutput):
 
     def to_dictionary(self):
         dictionary = super(CardPaymentMethodSpecificOutput, self).to_dictionary()
-        self._add_to_dictionary(dictionary, 'authorisationCode', self.authorisation_code)
-        self._add_to_dictionary(dictionary, 'card', self.card)
-        self._add_to_dictionary(dictionary, 'fraudResults', self.fraud_results)
-        self._add_to_dictionary(dictionary, 'threeDSecureResults', self.three_d_secure_results)
-        self._add_to_dictionary(dictionary, 'token', self.token)
+        if self.authorisation_code is not None:
+            dictionary['authorisationCode'] = self.authorisation_code
+        if self.card is not None:
+            dictionary['card'] = self.card.to_dictionary()
+        if self.fraud_results is not None:
+            dictionary['fraudResults'] = self.fraud_results.to_dictionary()
+        if self.three_d_secure_results is not None:
+            dictionary['threeDSecureResults'] = self.three_d_secure_results.to_dictionary()
+        if self.token is not None:
+            dictionary['token'] = self.token
         return dictionary
 
     def from_dictionary(self, dictionary):

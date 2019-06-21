@@ -44,8 +44,10 @@ class ThreeDSecure(AbstractThreeDSecure):
 
     def to_dictionary(self):
         dictionary = super(ThreeDSecure, self).to_dictionary()
-        self._add_to_dictionary(dictionary, 'externalCardholderAuthenticationData', self.external_cardholder_authentication_data)
-        self._add_to_dictionary(dictionary, 'redirectionData', self.redirection_data)
+        if self.external_cardholder_authentication_data is not None:
+            dictionary['externalCardholderAuthenticationData'] = self.external_cardholder_authentication_data.to_dictionary()
+        if self.redirection_data is not None:
+            dictionary['redirectionData'] = self.redirection_data.to_dictionary()
         return dictionary
 
     def from_dictionary(self, dictionary):

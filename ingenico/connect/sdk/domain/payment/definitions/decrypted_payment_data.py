@@ -139,13 +139,20 @@ class DecryptedPaymentData(DataObject):
 
     def to_dictionary(self):
         dictionary = super(DecryptedPaymentData, self).to_dictionary()
-        self._add_to_dictionary(dictionary, 'cardholderName', self.cardholder_name)
-        self._add_to_dictionary(dictionary, 'cryptogram', self.cryptogram)
-        self._add_to_dictionary(dictionary, 'dpan', self.dpan)
-        self._add_to_dictionary(dictionary, 'eci', self.eci)
-        self._add_to_dictionary(dictionary, 'expiryDate', self.expiry_date)
-        self._add_to_dictionary(dictionary, 'pan', self.pan)
-        self._add_to_dictionary(dictionary, 'paymentMethod', self.payment_method)
+        if self.cardholder_name is not None:
+            dictionary['cardholderName'] = self.cardholder_name
+        if self.cryptogram is not None:
+            dictionary['cryptogram'] = self.cryptogram
+        if self.dpan is not None:
+            dictionary['dpan'] = self.dpan
+        if self.eci is not None:
+            dictionary['eci'] = self.eci
+        if self.expiry_date is not None:
+            dictionary['expiryDate'] = self.expiry_date
+        if self.pan is not None:
+            dictionary['pan'] = self.pan
+        if self.payment_method is not None:
+            dictionary['paymentMethod'] = self.payment_method
         return dictionary
 
     def from_dictionary(self, dictionary):

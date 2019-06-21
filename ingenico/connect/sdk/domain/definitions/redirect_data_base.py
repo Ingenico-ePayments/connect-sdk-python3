@@ -35,8 +35,10 @@ class RedirectDataBase(DataObject):
 
     def to_dictionary(self):
         dictionary = super(RedirectDataBase, self).to_dictionary()
-        self._add_to_dictionary(dictionary, 'RETURNMAC', self.returnmac)
-        self._add_to_dictionary(dictionary, 'redirectURL', self.redirect_url)
+        if self.returnmac is not None:
+            dictionary['RETURNMAC'] = self.returnmac
+        if self.redirect_url is not None:
+            dictionary['redirectURL'] = self.redirect_url
         return dictionary
 
     def from_dictionary(self, dictionary):

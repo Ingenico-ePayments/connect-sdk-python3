@@ -35,7 +35,7 @@ class Seller(DataObject):
     @property
     def channel_code(self):
         """
-        | Channel code, refer to
+        | This property is specific to Visa Argentina. Channelcode according to Prisma. Please contact the acquirer to get the full list you need to use.
         
         Type: str
         """
@@ -154,15 +154,24 @@ class Seller(DataObject):
 
     def to_dictionary(self):
         dictionary = super(Seller, self).to_dictionary()
-        self._add_to_dictionary(dictionary, 'address', self.address)
-        self._add_to_dictionary(dictionary, 'channelCode', self.channel_code)
-        self._add_to_dictionary(dictionary, 'description', self.description)
-        self._add_to_dictionary(dictionary, 'geocode', self.geocode)
-        self._add_to_dictionary(dictionary, 'id', self.id)
-        self._add_to_dictionary(dictionary, 'invoiceNumber', self.invoice_number)
-        self._add_to_dictionary(dictionary, 'mcc', self.mcc)
-        self._add_to_dictionary(dictionary, 'name', self.name)
-        self._add_to_dictionary(dictionary, 'type', self.type)
+        if self.address is not None:
+            dictionary['address'] = self.address.to_dictionary()
+        if self.channel_code is not None:
+            dictionary['channelCode'] = self.channel_code
+        if self.description is not None:
+            dictionary['description'] = self.description
+        if self.geocode is not None:
+            dictionary['geocode'] = self.geocode
+        if self.id is not None:
+            dictionary['id'] = self.id
+        if self.invoice_number is not None:
+            dictionary['invoiceNumber'] = self.invoice_number
+        if self.mcc is not None:
+            dictionary['mcc'] = self.mcc
+        if self.name is not None:
+            dictionary['name'] = self.name
+        if self.type is not None:
+            dictionary['type'] = self.type
         return dictionary
 
     def from_dictionary(self, dictionary):

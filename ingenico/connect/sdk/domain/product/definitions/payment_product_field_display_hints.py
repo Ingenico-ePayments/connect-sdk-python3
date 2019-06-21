@@ -163,16 +163,26 @@ class PaymentProductFieldDisplayHints(DataObject):
 
     def to_dictionary(self):
         dictionary = super(PaymentProductFieldDisplayHints, self).to_dictionary()
-        self._add_to_dictionary(dictionary, 'alwaysShow', self.always_show)
-        self._add_to_dictionary(dictionary, 'displayOrder', self.display_order)
-        self._add_to_dictionary(dictionary, 'formElement', self.form_element)
-        self._add_to_dictionary(dictionary, 'label', self.label)
-        self._add_to_dictionary(dictionary, 'link', self.link)
-        self._add_to_dictionary(dictionary, 'mask', self.mask)
-        self._add_to_dictionary(dictionary, 'obfuscate', self.obfuscate)
-        self._add_to_dictionary(dictionary, 'placeholderLabel', self.placeholder_label)
-        self._add_to_dictionary(dictionary, 'preferredInputType', self.preferred_input_type)
-        self._add_to_dictionary(dictionary, 'tooltip', self.tooltip)
+        if self.always_show is not None:
+            dictionary['alwaysShow'] = self.always_show
+        if self.display_order is not None:
+            dictionary['displayOrder'] = self.display_order
+        if self.form_element is not None:
+            dictionary['formElement'] = self.form_element.to_dictionary()
+        if self.label is not None:
+            dictionary['label'] = self.label
+        if self.link is not None:
+            dictionary['link'] = self.link
+        if self.mask is not None:
+            dictionary['mask'] = self.mask
+        if self.obfuscate is not None:
+            dictionary['obfuscate'] = self.obfuscate
+        if self.placeholder_label is not None:
+            dictionary['placeholderLabel'] = self.placeholder_label
+        if self.preferred_input_type is not None:
+            dictionary['preferredInputType'] = self.preferred_input_type
+        if self.tooltip is not None:
+            dictionary['tooltip'] = self.tooltip.to_dictionary()
         return dictionary
 
     def from_dictionary(self, dictionary):

@@ -150,13 +150,26 @@ class MerchantAction(DataObject):
 
     def to_dictionary(self):
         dictionary = super(MerchantAction, self).to_dictionary()
-        self._add_to_dictionary(dictionary, 'actionType', self.action_type)
-        self._add_to_dictionary(dictionary, 'formFields', self.form_fields)
-        self._add_to_dictionary(dictionary, 'mobileThreeDSecureChallengeParameters', self.mobile_three_d_secure_challenge_parameters)
-        self._add_to_dictionary(dictionary, 'redirectData', self.redirect_data)
-        self._add_to_dictionary(dictionary, 'renderingData', self.rendering_data)
-        self._add_to_dictionary(dictionary, 'showData', self.show_data)
-        self._add_to_dictionary(dictionary, 'thirdPartyData', self.third_party_data)
+        if self.action_type is not None:
+            dictionary['actionType'] = self.action_type
+        if self.form_fields is not None:
+            dictionary['formFields'] = []
+            for element in self.form_fields:
+                if element is not None:
+                    dictionary['formFields'].append(element.to_dictionary())
+        if self.mobile_three_d_secure_challenge_parameters is not None:
+            dictionary['mobileThreeDSecureChallengeParameters'] = self.mobile_three_d_secure_challenge_parameters.to_dictionary()
+        if self.redirect_data is not None:
+            dictionary['redirectData'] = self.redirect_data.to_dictionary()
+        if self.rendering_data is not None:
+            dictionary['renderingData'] = self.rendering_data
+        if self.show_data is not None:
+            dictionary['showData'] = []
+            for element in self.show_data:
+                if element is not None:
+                    dictionary['showData'].append(element.to_dictionary())
+        if self.third_party_data is not None:
+            dictionary['thirdPartyData'] = self.third_party_data.to_dictionary()
         return dictionary
 
     def from_dictionary(self, dictionary):
@@ -167,9 +180,9 @@ class MerchantAction(DataObject):
             if not isinstance(dictionary['formFields'], list):
                 raise TypeError('value \'{}\' is not a list'.format(dictionary['formFields']))
             self.form_fields = []
-            for formFields_element in dictionary['formFields']:
-                formFields_value = PaymentProductField()
-                self.form_fields.append(formFields_value.from_dictionary(formFields_element))
+            for element in dictionary['formFields']:
+                value = PaymentProductField()
+                self.form_fields.append(value.from_dictionary(element))
         if 'mobileThreeDSecureChallengeParameters' in dictionary:
             if not isinstance(dictionary['mobileThreeDSecureChallengeParameters'], dict):
                 raise TypeError('value \'{}\' is not a dictionary'.format(dictionary['mobileThreeDSecureChallengeParameters']))
@@ -186,9 +199,9 @@ class MerchantAction(DataObject):
             if not isinstance(dictionary['showData'], list):
                 raise TypeError('value \'{}\' is not a list'.format(dictionary['showData']))
             self.show_data = []
-            for showData_element in dictionary['showData']:
-                showData_value = KeyValuePair()
-                self.show_data.append(showData_value.from_dictionary(showData_element))
+            for element in dictionary['showData']:
+                value = KeyValuePair()
+                self.show_data.append(value.from_dictionary(element))
         if 'thirdPartyData' in dictionary:
             if not isinstance(dictionary['thirdPartyData'], dict):
                 raise TypeError('value \'{}\' is not a dictionary'.format(dictionary['thirdPartyData']))

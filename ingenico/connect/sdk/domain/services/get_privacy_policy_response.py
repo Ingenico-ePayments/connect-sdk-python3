@@ -28,7 +28,8 @@ class GetPrivacyPolicyResponse(DataObject):
 
     def to_dictionary(self):
         dictionary = super(GetPrivacyPolicyResponse, self).to_dictionary()
-        self._add_to_dictionary(dictionary, 'htmlContent', self.html_content)
+        if self.html_content is not None:
+            dictionary['htmlContent'] = self.html_content
         return dictionary
 
     def from_dictionary(self, dictionary):

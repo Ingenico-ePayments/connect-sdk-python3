@@ -183,17 +183,28 @@ class PaymentOutput(OrderOutput):
 
     def to_dictionary(self):
         dictionary = super(PaymentOutput, self).to_dictionary()
-        self._add_to_dictionary(dictionary, 'amountPaid', self.amount_paid)
-        self._add_to_dictionary(dictionary, 'bankTransferPaymentMethodSpecificOutput', self.bank_transfer_payment_method_specific_output)
-        self._add_to_dictionary(dictionary, 'cardPaymentMethodSpecificOutput', self.card_payment_method_specific_output)
-        self._add_to_dictionary(dictionary, 'cashPaymentMethodSpecificOutput', self.cash_payment_method_specific_output)
-        self._add_to_dictionary(dictionary, 'directDebitPaymentMethodSpecificOutput', self.direct_debit_payment_method_specific_output)
-        self._add_to_dictionary(dictionary, 'eInvoicePaymentMethodSpecificOutput', self.e_invoice_payment_method_specific_output)
-        self._add_to_dictionary(dictionary, 'invoicePaymentMethodSpecificOutput', self.invoice_payment_method_specific_output)
-        self._add_to_dictionary(dictionary, 'mobilePaymentMethodSpecificOutput', self.mobile_payment_method_specific_output)
-        self._add_to_dictionary(dictionary, 'paymentMethod', self.payment_method)
-        self._add_to_dictionary(dictionary, 'redirectPaymentMethodSpecificOutput', self.redirect_payment_method_specific_output)
-        self._add_to_dictionary(dictionary, 'sepaDirectDebitPaymentMethodSpecificOutput', self.sepa_direct_debit_payment_method_specific_output)
+        if self.amount_paid is not None:
+            dictionary['amountPaid'] = self.amount_paid
+        if self.bank_transfer_payment_method_specific_output is not None:
+            dictionary['bankTransferPaymentMethodSpecificOutput'] = self.bank_transfer_payment_method_specific_output.to_dictionary()
+        if self.card_payment_method_specific_output is not None:
+            dictionary['cardPaymentMethodSpecificOutput'] = self.card_payment_method_specific_output.to_dictionary()
+        if self.cash_payment_method_specific_output is not None:
+            dictionary['cashPaymentMethodSpecificOutput'] = self.cash_payment_method_specific_output.to_dictionary()
+        if self.direct_debit_payment_method_specific_output is not None:
+            dictionary['directDebitPaymentMethodSpecificOutput'] = self.direct_debit_payment_method_specific_output.to_dictionary()
+        if self.e_invoice_payment_method_specific_output is not None:
+            dictionary['eInvoicePaymentMethodSpecificOutput'] = self.e_invoice_payment_method_specific_output.to_dictionary()
+        if self.invoice_payment_method_specific_output is not None:
+            dictionary['invoicePaymentMethodSpecificOutput'] = self.invoice_payment_method_specific_output.to_dictionary()
+        if self.mobile_payment_method_specific_output is not None:
+            dictionary['mobilePaymentMethodSpecificOutput'] = self.mobile_payment_method_specific_output.to_dictionary()
+        if self.payment_method is not None:
+            dictionary['paymentMethod'] = self.payment_method
+        if self.redirect_payment_method_specific_output is not None:
+            dictionary['redirectPaymentMethodSpecificOutput'] = self.redirect_payment_method_specific_output.to_dictionary()
+        if self.sepa_direct_debit_payment_method_specific_output is not None:
+            dictionary['sepaDirectDebitPaymentMethodSpecificOutput'] = self.sepa_direct_debit_payment_method_specific_output.to_dictionary()
         return dictionary
 
     def from_dictionary(self, dictionary):

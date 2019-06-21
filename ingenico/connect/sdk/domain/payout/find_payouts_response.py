@@ -68,10 +68,17 @@ class FindPayoutsResponse(DataObject):
 
     def to_dictionary(self):
         dictionary = super(FindPayoutsResponse, self).to_dictionary()
-        self._add_to_dictionary(dictionary, 'limit', self.limit)
-        self._add_to_dictionary(dictionary, 'offset', self.offset)
-        self._add_to_dictionary(dictionary, 'payouts', self.payouts)
-        self._add_to_dictionary(dictionary, 'totalCount', self.total_count)
+        if self.limit is not None:
+            dictionary['limit'] = self.limit
+        if self.offset is not None:
+            dictionary['offset'] = self.offset
+        if self.payouts is not None:
+            dictionary['payouts'] = []
+            for element in self.payouts:
+                if element is not None:
+                    dictionary['payouts'].append(element.to_dictionary())
+        if self.total_count is not None:
+            dictionary['totalCount'] = self.total_count
         return dictionary
 
     def from_dictionary(self, dictionary):
@@ -84,9 +91,9 @@ class FindPayoutsResponse(DataObject):
             if not isinstance(dictionary['payouts'], list):
                 raise TypeError('value \'{}\' is not a list'.format(dictionary['payouts']))
             self.payouts = []
-            for payouts_element in dictionary['payouts']:
-                payouts_value = PayoutResult()
-                self.payouts.append(payouts_value.from_dictionary(payouts_element))
+            for element in dictionary['payouts']:
+                value = PayoutResult()
+                self.payouts.append(value.from_dictionary(element))
         if 'totalCount' in dictionary:
             self.total_count = dictionary['totalCount']
         return self

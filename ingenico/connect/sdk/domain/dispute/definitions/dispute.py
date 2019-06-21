@@ -83,11 +83,16 @@ class Dispute(DataObject):
 
     def to_dictionary(self):
         dictionary = super(Dispute, self).to_dictionary()
-        self._add_to_dictionary(dictionary, 'disputeOutput', self.dispute_output)
-        self._add_to_dictionary(dictionary, 'id', self.id)
-        self._add_to_dictionary(dictionary, 'paymentId', self.payment_id)
-        self._add_to_dictionary(dictionary, 'status', self.status)
-        self._add_to_dictionary(dictionary, 'statusOutput', self.status_output)
+        if self.dispute_output is not None:
+            dictionary['disputeOutput'] = self.dispute_output.to_dictionary()
+        if self.id is not None:
+            dictionary['id'] = self.id
+        if self.payment_id is not None:
+            dictionary['paymentId'] = self.payment_id
+        if self.status is not None:
+            dictionary['status'] = self.status
+        if self.status_output is not None:
+            dictionary['statusOutput'] = self.status_output.to_dictionary()
         return dictionary
 
     def from_dictionary(self, dictionary):

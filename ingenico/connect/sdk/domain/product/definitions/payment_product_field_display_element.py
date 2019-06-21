@@ -73,10 +73,14 @@ class PaymentProductFieldDisplayElement(DataObject):
 
     def to_dictionary(self):
         dictionary = super(PaymentProductFieldDisplayElement, self).to_dictionary()
-        self._add_to_dictionary(dictionary, 'id', self.id)
-        self._add_to_dictionary(dictionary, 'label', self.label)
-        self._add_to_dictionary(dictionary, 'type', self.type)
-        self._add_to_dictionary(dictionary, 'value', self.value)
+        if self.id is not None:
+            dictionary['id'] = self.id
+        if self.label is not None:
+            dictionary['label'] = self.label
+        if self.type is not None:
+            dictionary['type'] = self.type
+        if self.value is not None:
+            dictionary['value'] = self.value
         return dictionary
 
     def from_dictionary(self, dictionary):

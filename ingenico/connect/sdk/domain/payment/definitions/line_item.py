@@ -74,10 +74,14 @@ class LineItem(DataObject):
 
     def to_dictionary(self):
         dictionary = super(LineItem, self).to_dictionary()
-        self._add_to_dictionary(dictionary, 'amountOfMoney', self.amount_of_money)
-        self._add_to_dictionary(dictionary, 'invoiceData', self.invoice_data)
-        self._add_to_dictionary(dictionary, 'level3InterchangeInformation', self.level3_interchange_information)
-        self._add_to_dictionary(dictionary, 'orderLineDetails', self.order_line_details)
+        if self.amount_of_money is not None:
+            dictionary['amountOfMoney'] = self.amount_of_money.to_dictionary()
+        if self.invoice_data is not None:
+            dictionary['invoiceData'] = self.invoice_data.to_dictionary()
+        if self.level3_interchange_information is not None:
+            dictionary['level3InterchangeInformation'] = self.level3_interchange_information.to_dictionary()
+        if self.order_line_details is not None:
+            dictionary['orderLineDetails'] = self.order_line_details.to_dictionary()
         return dictionary
 
     def from_dictionary(self, dictionary):

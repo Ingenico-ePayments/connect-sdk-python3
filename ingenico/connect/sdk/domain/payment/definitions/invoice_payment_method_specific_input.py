@@ -25,7 +25,8 @@ class InvoicePaymentMethodSpecificInput(AbstractPaymentMethodSpecificInput):
 
     def to_dictionary(self):
         dictionary = super(InvoicePaymentMethodSpecificInput, self).to_dictionary()
-        self._add_to_dictionary(dictionary, 'additionalReference', self.additional_reference)
+        if self.additional_reference is not None:
+            dictionary['additionalReference'] = self.additional_reference
         return dictionary
 
     def from_dictionary(self, dictionary):

@@ -35,7 +35,8 @@ class ApprovePaymentMobilePaymentMethodSpecificOutput(DataObject):
 
     def to_dictionary(self):
         dictionary = super(ApprovePaymentMobilePaymentMethodSpecificOutput, self).to_dictionary()
-        self._add_to_dictionary(dictionary, 'voidResponseId', self.void_response_id)
+        if self.void_response_id is not None:
+            dictionary['voidResponseId'] = self.void_response_id
         return dictionary
 
     def from_dictionary(self, dictionary):

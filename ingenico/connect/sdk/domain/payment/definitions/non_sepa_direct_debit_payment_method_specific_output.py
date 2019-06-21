@@ -26,7 +26,8 @@ class NonSepaDirectDebitPaymentMethodSpecificOutput(AbstractPaymentMethodSpecifi
 
     def to_dictionary(self):
         dictionary = super(NonSepaDirectDebitPaymentMethodSpecificOutput, self).to_dictionary()
-        self._add_to_dictionary(dictionary, 'fraudResults', self.fraud_results)
+        if self.fraud_results is not None:
+            dictionary['fraudResults'] = self.fraud_results.to_dictionary()
         return dictionary
 
     def from_dictionary(self, dictionary):

@@ -23,7 +23,8 @@ class AbstractRedirectPaymentProduct840SpecificInput(DataObject):
 
     def to_dictionary(self):
         dictionary = super(AbstractRedirectPaymentProduct840SpecificInput, self).to_dictionary()
-        self._add_to_dictionary(dictionary, 'addressSelectionAtPayPal', self.address_selection_at_pay_pal)
+        if self.address_selection_at_pay_pal is not None:
+            dictionary['addressSelectionAtPayPal'] = self.address_selection_at_pay_pal
         return dictionary
 
     def from_dictionary(self, dictionary):

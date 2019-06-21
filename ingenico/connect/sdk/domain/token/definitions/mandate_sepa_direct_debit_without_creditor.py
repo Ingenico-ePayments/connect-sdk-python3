@@ -102,12 +102,18 @@ class MandateSepaDirectDebitWithoutCreditor(DataObject):
 
     def to_dictionary(self):
         dictionary = super(MandateSepaDirectDebitWithoutCreditor, self).to_dictionary()
-        self._add_to_dictionary(dictionary, 'bankAccountIban', self.bank_account_iban)
-        self._add_to_dictionary(dictionary, 'customerContractIdentifier', self.customer_contract_identifier)
-        self._add_to_dictionary(dictionary, 'debtor', self.debtor)
-        self._add_to_dictionary(dictionary, 'isRecurring', self.is_recurring)
-        self._add_to_dictionary(dictionary, 'mandateApproval', self.mandate_approval)
-        self._add_to_dictionary(dictionary, 'preNotification', self.pre_notification)
+        if self.bank_account_iban is not None:
+            dictionary['bankAccountIban'] = self.bank_account_iban.to_dictionary()
+        if self.customer_contract_identifier is not None:
+            dictionary['customerContractIdentifier'] = self.customer_contract_identifier
+        if self.debtor is not None:
+            dictionary['debtor'] = self.debtor.to_dictionary()
+        if self.is_recurring is not None:
+            dictionary['isRecurring'] = self.is_recurring
+        if self.mandate_approval is not None:
+            dictionary['mandateApproval'] = self.mandate_approval.to_dictionary()
+        if self.pre_notification is not None:
+            dictionary['preNotification'] = self.pre_notification
         return dictionary
 
     def from_dictionary(self, dictionary):

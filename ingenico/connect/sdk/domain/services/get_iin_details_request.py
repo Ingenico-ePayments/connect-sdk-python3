@@ -43,8 +43,10 @@ class GetIINDetailsRequest(DataObject):
 
     def to_dictionary(self):
         dictionary = super(GetIINDetailsRequest, self).to_dictionary()
-        self._add_to_dictionary(dictionary, 'bin', self.bin)
-        self._add_to_dictionary(dictionary, 'paymentContext', self.payment_context)
+        if self.bin is not None:
+            dictionary['bin'] = self.bin
+        if self.payment_context is not None:
+            dictionary['paymentContext'] = self.payment_context.to_dictionary()
         return dictionary
 
     def from_dictionary(self, dictionary):

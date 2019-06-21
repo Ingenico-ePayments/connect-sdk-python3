@@ -40,8 +40,10 @@ class EInvoicePaymentMethodSpecificInput(AbstractEInvoicePaymentMethodSpecificIn
 
     def to_dictionary(self):
         dictionary = super(EInvoicePaymentMethodSpecificInput, self).to_dictionary()
-        self._add_to_dictionary(dictionary, 'acceptedTermsAndConditions', self.accepted_terms_and_conditions)
-        self._add_to_dictionary(dictionary, 'paymentProduct9000SpecificInput', self.payment_product9000_specific_input)
+        if self.accepted_terms_and_conditions is not None:
+            dictionary['acceptedTermsAndConditions'] = self.accepted_terms_and_conditions
+        if self.payment_product9000_specific_input is not None:
+            dictionary['paymentProduct9000SpecificInput'] = self.payment_product9000_specific_input.to_dictionary()
         return dictionary
 
     def from_dictionary(self, dictionary):

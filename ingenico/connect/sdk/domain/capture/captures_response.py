@@ -26,7 +26,11 @@ class CapturesResponse(DataObject):
 
     def to_dictionary(self):
         dictionary = super(CapturesResponse, self).to_dictionary()
-        self._add_to_dictionary(dictionary, 'captures', self.captures)
+        if self.captures is not None:
+            dictionary['captures'] = []
+            for element in self.captures:
+                if element is not None:
+                    dictionary['captures'].append(element.to_dictionary())
         return dictionary
 
     def from_dictionary(self, dictionary):
@@ -35,7 +39,7 @@ class CapturesResponse(DataObject):
             if not isinstance(dictionary['captures'], list):
                 raise TypeError('value \'{}\' is not a list'.format(dictionary['captures']))
             self.captures = []
-            for captures_element in dictionary['captures']:
-                captures_value = Capture()
-                self.captures.append(captures_value.from_dictionary(captures_element))
+            for element in dictionary['captures']:
+                value = Capture()
+                self.captures.append(value.from_dictionary(element))
         return self

@@ -43,8 +43,13 @@ class GetCustomerDetailsRequest(DataObject):
 
     def to_dictionary(self):
         dictionary = super(GetCustomerDetailsRequest, self).to_dictionary()
-        self._add_to_dictionary(dictionary, 'countryCode', self.country_code)
-        self._add_to_dictionary(dictionary, 'values', self.values)
+        if self.country_code is not None:
+            dictionary['countryCode'] = self.country_code
+        if self.values is not None:
+            dictionary['values'] = []
+            for element in self.values:
+                if element is not None:
+                    dictionary['values'].append(element.to_dictionary())
         return dictionary
 
     def from_dictionary(self, dictionary):
@@ -55,7 +60,7 @@ class GetCustomerDetailsRequest(DataObject):
             if not isinstance(dictionary['values'], list):
                 raise TypeError('value \'{}\' is not a list'.format(dictionary['values']))
             self.values = []
-            for values_element in dictionary['values']:
-                values_value = KeyValuePair()
-                self.values.append(values_value.from_dictionary(values_element))
+            for element in dictionary['values']:
+                value = KeyValuePair()
+                self.values.append(value.from_dictionary(element))
         return self

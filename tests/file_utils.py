@@ -11,6 +11,7 @@ def read_file(rel_path, *args, **kwargs):
     with open(path, *args, **kwargs) as _file:
         return _file.read()
 
+
 def write_file(rel_path, text, *args, **kwargs):
     """Function to write text to a file located in the subfolder tests/resources into a string
 

@@ -27,7 +27,8 @@ class CashPaymentProduct1526SpecificInput(DataObject):
 
     def to_dictionary(self):
         dictionary = super(CashPaymentProduct1526SpecificInput, self).to_dictionary()
-        self._add_to_dictionary(dictionary, 'returnUrl', self.return_url)
+        if self.return_url is not None:
+            dictionary['returnUrl'] = self.return_url
         return dictionary
 
     def from_dictionary(self, dictionary):

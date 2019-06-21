@@ -171,16 +171,26 @@ class CreatePayoutRequest(DataObject):
 
     def to_dictionary(self):
         dictionary = super(CreatePayoutRequest, self).to_dictionary()
-        self._add_to_dictionary(dictionary, 'amountOfMoney', self.amount_of_money)
-        self._add_to_dictionary(dictionary, 'bankAccountBban', self.bank_account_bban)
-        self._add_to_dictionary(dictionary, 'bankAccountIban', self.bank_account_iban)
-        self._add_to_dictionary(dictionary, 'bankTransferPayoutMethodSpecificInput', self.bank_transfer_payout_method_specific_input)
-        self._add_to_dictionary(dictionary, 'cardPayoutMethodSpecificInput', self.card_payout_method_specific_input)
-        self._add_to_dictionary(dictionary, 'customer', self.customer)
-        self._add_to_dictionary(dictionary, 'payoutDate', self.payout_date)
-        self._add_to_dictionary(dictionary, 'payoutText', self.payout_text)
-        self._add_to_dictionary(dictionary, 'references', self.references)
-        self._add_to_dictionary(dictionary, 'swiftCode', self.swift_code)
+        if self.amount_of_money is not None:
+            dictionary['amountOfMoney'] = self.amount_of_money.to_dictionary()
+        if self.bank_account_bban is not None:
+            dictionary['bankAccountBban'] = self.bank_account_bban.to_dictionary()
+        if self.bank_account_iban is not None:
+            dictionary['bankAccountIban'] = self.bank_account_iban.to_dictionary()
+        if self.bank_transfer_payout_method_specific_input is not None:
+            dictionary['bankTransferPayoutMethodSpecificInput'] = self.bank_transfer_payout_method_specific_input.to_dictionary()
+        if self.card_payout_method_specific_input is not None:
+            dictionary['cardPayoutMethodSpecificInput'] = self.card_payout_method_specific_input.to_dictionary()
+        if self.customer is not None:
+            dictionary['customer'] = self.customer.to_dictionary()
+        if self.payout_date is not None:
+            dictionary['payoutDate'] = self.payout_date
+        if self.payout_text is not None:
+            dictionary['payoutText'] = self.payout_text
+        if self.references is not None:
+            dictionary['references'] = self.references.to_dictionary()
+        if self.swift_code is not None:
+            dictionary['swiftCode'] = self.swift_code
         return dictionary
 
     def from_dictionary(self, dictionary):

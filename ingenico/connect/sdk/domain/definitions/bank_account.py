@@ -25,7 +25,8 @@ class BankAccount(DataObject):
 
     def to_dictionary(self):
         dictionary = super(BankAccount, self).to_dictionary()
-        self._add_to_dictionary(dictionary, 'accountHolderName', self.account_holder_name)
+        if self.account_holder_name is not None:
+            dictionary['accountHolderName'] = self.account_holder_name
         return dictionary
 
     def from_dictionary(self, dictionary):

@@ -26,7 +26,8 @@ class RiskAssessmentCard(RiskAssessment):
 
     def to_dictionary(self):
         dictionary = super(RiskAssessmentCard, self).to_dictionary()
-        self._add_to_dictionary(dictionary, 'card', self.card)
+        if self.card is not None:
+            dictionary['card'] = self.card.to_dictionary()
         return dictionary
 
     def from_dictionary(self, dictionary):

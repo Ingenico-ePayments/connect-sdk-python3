@@ -29,7 +29,11 @@ class PaymentProduct863SpecificData(DataObject):
 
     def to_dictionary(self):
         dictionary = super(PaymentProduct863SpecificData, self).to_dictionary()
-        self._add_to_dictionary(dictionary, 'integrationTypes', self.integration_types)
+        if self.integration_types is not None:
+            dictionary['integrationTypes'] = []
+            for element in self.integration_types:
+                if element is not None:
+                    dictionary['integrationTypes'].append(element)
         return dictionary
 
     def from_dictionary(self, dictionary):
@@ -38,6 +42,6 @@ class PaymentProduct863SpecificData(DataObject):
             if not isinstance(dictionary['integrationTypes'], list):
                 raise TypeError('value \'{}\' is not a list'.format(dictionary['integrationTypes']))
             self.integration_types = []
-            for integrationTypes_element in dictionary['integrationTypes']:
-                self.integration_types.append(integrationTypes_element)
+            for element in dictionary['integrationTypes']:
+                self.integration_types.append(element)
         return self

@@ -207,18 +207,30 @@ class CustomerAccount(DataObject):
 
     def to_dictionary(self):
         dictionary = super(CustomerAccount, self).to_dictionary()
-        self._add_to_dictionary(dictionary, 'authentication', self.authentication)
-        self._add_to_dictionary(dictionary, 'changeDate', self.change_date)
-        self._add_to_dictionary(dictionary, 'changedDuringCheckout', self.changed_during_checkout)
-        self._add_to_dictionary(dictionary, 'createDate', self.create_date)
-        self._add_to_dictionary(dictionary, 'hadSuspiciousActivity', self.had_suspicious_activity)
-        self._add_to_dictionary(dictionary, 'hasForgottenPassword', self.has_forgotten_password)
-        self._add_to_dictionary(dictionary, 'hasPassword', self.has_password)
-        self._add_to_dictionary(dictionary, 'passwordChangeDate', self.password_change_date)
-        self._add_to_dictionary(dictionary, 'passwordChangedDuringCheckout', self.password_changed_during_checkout)
-        self._add_to_dictionary(dictionary, 'paymentAccountOnFile', self.payment_account_on_file)
-        self._add_to_dictionary(dictionary, 'paymentAccountOnFileType', self.payment_account_on_file_type)
-        self._add_to_dictionary(dictionary, 'paymentActivity', self.payment_activity)
+        if self.authentication is not None:
+            dictionary['authentication'] = self.authentication.to_dictionary()
+        if self.change_date is not None:
+            dictionary['changeDate'] = self.change_date
+        if self.changed_during_checkout is not None:
+            dictionary['changedDuringCheckout'] = self.changed_during_checkout
+        if self.create_date is not None:
+            dictionary['createDate'] = self.create_date
+        if self.had_suspicious_activity is not None:
+            dictionary['hadSuspiciousActivity'] = self.had_suspicious_activity
+        if self.has_forgotten_password is not None:
+            dictionary['hasForgottenPassword'] = self.has_forgotten_password
+        if self.has_password is not None:
+            dictionary['hasPassword'] = self.has_password
+        if self.password_change_date is not None:
+            dictionary['passwordChangeDate'] = self.password_change_date
+        if self.password_changed_during_checkout is not None:
+            dictionary['passwordChangedDuringCheckout'] = self.password_changed_during_checkout
+        if self.payment_account_on_file is not None:
+            dictionary['paymentAccountOnFile'] = self.payment_account_on_file.to_dictionary()
+        if self.payment_account_on_file_type is not None:
+            dictionary['paymentAccountOnFileType'] = self.payment_account_on_file_type
+        if self.payment_activity is not None:
+            dictionary['paymentActivity'] = self.payment_activity.to_dictionary()
         return dictionary
 
     def from_dictionary(self, dictionary):

@@ -42,8 +42,10 @@ class CreateTokenResponse(DataObject):
 
     def to_dictionary(self):
         dictionary = super(CreateTokenResponse, self).to_dictionary()
-        self._add_to_dictionary(dictionary, 'isNewToken', self.is_new_token)
-        self._add_to_dictionary(dictionary, 'token', self.token)
+        if self.is_new_token is not None:
+            dictionary['isNewToken'] = self.is_new_token
+        if self.token is not None:
+            dictionary['token'] = self.token
         return dictionary
 
     def from_dictionary(self, dictionary):

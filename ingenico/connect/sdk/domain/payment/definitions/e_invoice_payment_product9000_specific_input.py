@@ -40,8 +40,10 @@ class EInvoicePaymentProduct9000SpecificInput(DataObject):
 
     def to_dictionary(self):
         dictionary = super(EInvoicePaymentProduct9000SpecificInput, self).to_dictionary()
-        self._add_to_dictionary(dictionary, 'bankAccountIban', self.bank_account_iban)
-        self._add_to_dictionary(dictionary, 'installmentId', self.installment_id)
+        if self.bank_account_iban is not None:
+            dictionary['bankAccountIban'] = self.bank_account_iban.to_dictionary()
+        if self.installment_id is not None:
+            dictionary['installmentId'] = self.installment_id
         return dictionary
 
     def from_dictionary(self, dictionary):

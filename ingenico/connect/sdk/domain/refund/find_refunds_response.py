@@ -68,10 +68,17 @@ class FindRefundsResponse(DataObject):
 
     def to_dictionary(self):
         dictionary = super(FindRefundsResponse, self).to_dictionary()
-        self._add_to_dictionary(dictionary, 'limit', self.limit)
-        self._add_to_dictionary(dictionary, 'offset', self.offset)
-        self._add_to_dictionary(dictionary, 'refunds', self.refunds)
-        self._add_to_dictionary(dictionary, 'totalCount', self.total_count)
+        if self.limit is not None:
+            dictionary['limit'] = self.limit
+        if self.offset is not None:
+            dictionary['offset'] = self.offset
+        if self.refunds is not None:
+            dictionary['refunds'] = []
+            for element in self.refunds:
+                if element is not None:
+                    dictionary['refunds'].append(element.to_dictionary())
+        if self.total_count is not None:
+            dictionary['totalCount'] = self.total_count
         return dictionary
 
     def from_dictionary(self, dictionary):
@@ -84,9 +91,9 @@ class FindRefundsResponse(DataObject):
             if not isinstance(dictionary['refunds'], list):
                 raise TypeError('value \'{}\' is not a list'.format(dictionary['refunds']))
             self.refunds = []
-            for refunds_element in dictionary['refunds']:
-                refunds_value = RefundResult()
-                self.refunds.append(refunds_value.from_dictionary(refunds_element))
+            for element in dictionary['refunds']:
+                value = RefundResult()
+                self.refunds.append(value.from_dictionary(element))
         if 'totalCount' in dictionary:
             self.total_count = dictionary['totalCount']
         return self

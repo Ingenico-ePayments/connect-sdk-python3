@@ -55,9 +55,12 @@ class BankRefundMethodSpecificInput(DataObject):
 
     def to_dictionary(self):
         dictionary = super(BankRefundMethodSpecificInput, self).to_dictionary()
-        self._add_to_dictionary(dictionary, 'bankAccountBban', self.bank_account_bban)
-        self._add_to_dictionary(dictionary, 'bankAccountIban', self.bank_account_iban)
-        self._add_to_dictionary(dictionary, 'countryCode', self.country_code)
+        if self.bank_account_bban is not None:
+            dictionary['bankAccountBban'] = self.bank_account_bban.to_dictionary()
+        if self.bank_account_iban is not None:
+            dictionary['bankAccountIban'] = self.bank_account_iban.to_dictionary()
+        if self.country_code is not None:
+            dictionary['countryCode'] = self.country_code
         return dictionary
 
     def from_dictionary(self, dictionary):

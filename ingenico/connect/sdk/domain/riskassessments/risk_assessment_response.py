@@ -26,7 +26,11 @@ class RiskAssessmentResponse(DataObject):
 
     def to_dictionary(self):
         dictionary = super(RiskAssessmentResponse, self).to_dictionary()
-        self._add_to_dictionary(dictionary, 'results', self.results)
+        if self.results is not None:
+            dictionary['results'] = []
+            for element in self.results:
+                if element is not None:
+                    dictionary['results'].append(element.to_dictionary())
         return dictionary
 
     def from_dictionary(self, dictionary):
@@ -35,7 +39,7 @@ class RiskAssessmentResponse(DataObject):
             if not isinstance(dictionary['results'], list):
                 raise TypeError('value \'{}\' is not a list'.format(dictionary['results']))
             self.results = []
-            for results_element in dictionary['results']:
-                results_value = ResultDoRiskAssessment()
-                self.results.append(results_value.from_dictionary(results_element))
+            for element in dictionary['results']:
+                value = ResultDoRiskAssessment()
+                self.results.append(value.from_dictionary(element))
         return self

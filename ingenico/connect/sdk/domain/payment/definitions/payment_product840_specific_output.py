@@ -56,9 +56,12 @@ class PaymentProduct840SpecificOutput(DataObject):
 
     def to_dictionary(self):
         dictionary = super(PaymentProduct840SpecificOutput, self).to_dictionary()
-        self._add_to_dictionary(dictionary, 'customerAccount', self.customer_account)
-        self._add_to_dictionary(dictionary, 'customerAddress', self.customer_address)
-        self._add_to_dictionary(dictionary, 'protectionEligibility', self.protection_eligibility)
+        if self.customer_account is not None:
+            dictionary['customerAccount'] = self.customer_account.to_dictionary()
+        if self.customer_address is not None:
+            dictionary['customerAddress'] = self.customer_address.to_dictionary()
+        if self.protection_eligibility is not None:
+            dictionary['protectionEligibility'] = self.protection_eligibility.to_dictionary()
         return dictionary
 
     def from_dictionary(self, dictionary):

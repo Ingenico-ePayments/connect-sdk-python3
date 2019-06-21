@@ -48,6 +48,7 @@ class LoggingUtil:
                 else:
                     if x == key:
                         return y
+            return None
 
         class ValueObfuscator:
             __mask_character = None
@@ -87,7 +88,7 @@ class LoggingUtil:
         def obfuscate(self, body):
             if body is None:
                 return None
-            if len(body) == 0:
+            if not body:
                 return ""
             index = 0
             s_obfuscate = ""
@@ -130,7 +131,7 @@ class LoggingUtil:
         """
         if charset is None:
             return LoggingUtil.__property_obfuscator.obfuscate(arg)
-        if charset is not None:  # possible dead code
+        else:  # possible dead code
             return LoggingUtil.obfuscate_body(codecs.decode(arg, charset))
 
     @staticmethod

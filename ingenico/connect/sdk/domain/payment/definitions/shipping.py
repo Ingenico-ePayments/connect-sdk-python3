@@ -144,14 +144,22 @@ class Shipping(DataObject):
 
     def to_dictionary(self):
         dictionary = super(Shipping, self).to_dictionary()
-        self._add_to_dictionary(dictionary, 'address', self.address)
-        self._add_to_dictionary(dictionary, 'addressIndicator', self.address_indicator)
-        self._add_to_dictionary(dictionary, 'comments', self.comments)
-        self._add_to_dictionary(dictionary, 'emailAddress', self.email_address)
-        self._add_to_dictionary(dictionary, 'firstUsageDate', self.first_usage_date)
-        self._add_to_dictionary(dictionary, 'isFirstUsage', self.is_first_usage)
-        self._add_to_dictionary(dictionary, 'trackingNumber', self.tracking_number)
-        self._add_to_dictionary(dictionary, 'type', self.type)
+        if self.address is not None:
+            dictionary['address'] = self.address.to_dictionary()
+        if self.address_indicator is not None:
+            dictionary['addressIndicator'] = self.address_indicator
+        if self.comments is not None:
+            dictionary['comments'] = self.comments
+        if self.email_address is not None:
+            dictionary['emailAddress'] = self.email_address
+        if self.first_usage_date is not None:
+            dictionary['firstUsageDate'] = self.first_usage_date
+        if self.is_first_usage is not None:
+            dictionary['isFirstUsage'] = self.is_first_usage
+        if self.tracking_number is not None:
+            dictionary['trackingNumber'] = self.tracking_number
+        if self.type is not None:
+            dictionary['type'] = self.type
         return dictionary
 
     def from_dictionary(self, dictionary):

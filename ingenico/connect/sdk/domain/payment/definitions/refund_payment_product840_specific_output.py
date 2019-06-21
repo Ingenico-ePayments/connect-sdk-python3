@@ -29,7 +29,8 @@ class RefundPaymentProduct840SpecificOutput(DataObject):
 
     def to_dictionary(self):
         dictionary = super(RefundPaymentProduct840SpecificOutput, self).to_dictionary()
-        self._add_to_dictionary(dictionary, 'customerAccount', self.customer_account)
+        if self.customer_account is not None:
+            dictionary['customerAccount'] = self.customer_account.to_dictionary()
         return dictionary
 
     def from_dictionary(self, dictionary):

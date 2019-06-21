@@ -57,9 +57,12 @@ class CardRecurrenceDetails(DataObject):
 
     def to_dictionary(self):
         dictionary = super(CardRecurrenceDetails, self).to_dictionary()
-        self._add_to_dictionary(dictionary, 'endDate', self.end_date)
-        self._add_to_dictionary(dictionary, 'minFrequency', self.min_frequency)
-        self._add_to_dictionary(dictionary, 'recurringPaymentSequenceIndicator', self.recurring_payment_sequence_indicator)
+        if self.end_date is not None:
+            dictionary['endDate'] = self.end_date
+        if self.min_frequency is not None:
+            dictionary['minFrequency'] = self.min_frequency
+        if self.recurring_payment_sequence_indicator is not None:
+            dictionary['recurringPaymentSequenceIndicator'] = self.recurring_payment_sequence_indicator
         return dictionary
 
     def from_dictionary(self, dictionary):

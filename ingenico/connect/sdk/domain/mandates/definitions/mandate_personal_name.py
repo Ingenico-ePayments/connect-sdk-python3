@@ -39,8 +39,10 @@ class MandatePersonalName(DataObject):
 
     def to_dictionary(self):
         dictionary = super(MandatePersonalName, self).to_dictionary()
-        self._add_to_dictionary(dictionary, 'firstName', self.first_name)
-        self._add_to_dictionary(dictionary, 'surname', self.surname)
+        if self.first_name is not None:
+            dictionary['firstName'] = self.first_name
+        if self.surname is not None:
+            dictionary['surname'] = self.surname
         return dictionary
 
     def from_dictionary(self, dictionary):

@@ -86,11 +86,16 @@ class RefundRequest(DataObject):
 
     def to_dictionary(self):
         dictionary = super(RefundRequest, self).to_dictionary()
-        self._add_to_dictionary(dictionary, 'amountOfMoney', self.amount_of_money)
-        self._add_to_dictionary(dictionary, 'bankRefundMethodSpecificInput', self.bank_refund_method_specific_input)
-        self._add_to_dictionary(dictionary, 'customer', self.customer)
-        self._add_to_dictionary(dictionary, 'refundDate', self.refund_date)
-        self._add_to_dictionary(dictionary, 'refundReferences', self.refund_references)
+        if self.amount_of_money is not None:
+            dictionary['amountOfMoney'] = self.amount_of_money.to_dictionary()
+        if self.bank_refund_method_specific_input is not None:
+            dictionary['bankRefundMethodSpecificInput'] = self.bank_refund_method_specific_input.to_dictionary()
+        if self.customer is not None:
+            dictionary['customer'] = self.customer.to_dictionary()
+        if self.refund_date is not None:
+            dictionary['refundDate'] = self.refund_date
+        if self.refund_references is not None:
+            dictionary['refundReferences'] = self.refund_references.to_dictionary()
         return dictionary
 
     def from_dictionary(self, dictionary):

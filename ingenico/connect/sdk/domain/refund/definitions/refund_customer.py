@@ -70,10 +70,14 @@ class RefundCustomer(DataObject):
 
     def to_dictionary(self):
         dictionary = super(RefundCustomer, self).to_dictionary()
-        self._add_to_dictionary(dictionary, 'address', self.address)
-        self._add_to_dictionary(dictionary, 'companyInformation', self.company_information)
-        self._add_to_dictionary(dictionary, 'contactDetails', self.contact_details)
-        self._add_to_dictionary(dictionary, 'fiscalNumber', self.fiscal_number)
+        if self.address is not None:
+            dictionary['address'] = self.address.to_dictionary()
+        if self.company_information is not None:
+            dictionary['companyInformation'] = self.company_information.to_dictionary()
+        if self.contact_details is not None:
+            dictionary['contactDetails'] = self.contact_details.to_dictionary()
+        if self.fiscal_number is not None:
+            dictionary['fiscalNumber'] = self.fiscal_number
         return dictionary
 
     def from_dictionary(self, dictionary):

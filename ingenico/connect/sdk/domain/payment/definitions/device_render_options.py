@@ -56,8 +56,10 @@ class DeviceRenderOptions(DataObject):
 
     def to_dictionary(self):
         dictionary = super(DeviceRenderOptions, self).to_dictionary()
-        self._add_to_dictionary(dictionary, 'sdkInterface', self.sdk_interface)
-        self._add_to_dictionary(dictionary, 'sdkUiType', self.sdk_ui_type)
+        if self.sdk_interface is not None:
+            dictionary['sdkInterface'] = self.sdk_interface
+        if self.sdk_ui_type is not None:
+            dictionary['sdkUiType'] = self.sdk_ui_type
         return dictionary
 
     def from_dictionary(self, dictionary):

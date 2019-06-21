@@ -62,9 +62,12 @@ class FraudFieldsShippingDetails(DataObject):
 
     def to_dictionary(self):
         dictionary = super(FraudFieldsShippingDetails, self).to_dictionary()
-        self._add_to_dictionary(dictionary, 'methodDetails', self.method_details)
-        self._add_to_dictionary(dictionary, 'methodSpeed', self.method_speed)
-        self._add_to_dictionary(dictionary, 'methodType', self.method_type)
+        if self.method_details is not None:
+            dictionary['methodDetails'] = self.method_details
+        if self.method_speed is not None:
+            dictionary['methodSpeed'] = self.method_speed
+        if self.method_type is not None:
+            dictionary['methodType'] = self.method_type
         return dictionary
 
     def from_dictionary(self, dictionary):

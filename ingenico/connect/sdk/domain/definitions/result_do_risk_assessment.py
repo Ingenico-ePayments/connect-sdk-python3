@@ -82,10 +82,14 @@ class ResultDoRiskAssessment(DataObject):
 
     def to_dictionary(self):
         dictionary = super(ResultDoRiskAssessment, self).to_dictionary()
-        self._add_to_dictionary(dictionary, 'category', self.category)
-        self._add_to_dictionary(dictionary, 'result', self.result)
-        self._add_to_dictionary(dictionary, 'retaildecisionsCCFraudCheckOutput', self.retaildecisions_cc_fraud_check_output)
-        self._add_to_dictionary(dictionary, 'validationBankAccountOutput', self.validation_bank_account_output)
+        if self.category is not None:
+            dictionary['category'] = self.category
+        if self.result is not None:
+            dictionary['result'] = self.result
+        if self.retaildecisions_cc_fraud_check_output is not None:
+            dictionary['retaildecisionsCCFraudCheckOutput'] = self.retaildecisions_cc_fraud_check_output.to_dictionary()
+        if self.validation_bank_account_output is not None:
+            dictionary['validationBankAccountOutput'] = self.validation_bank_account_output.to_dictionary()
         return dictionary
 
     def from_dictionary(self, dictionary):

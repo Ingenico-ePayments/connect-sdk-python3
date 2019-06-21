@@ -59,9 +59,12 @@ class PersonalInformation(DataObject):
 
     def to_dictionary(self):
         dictionary = super(PersonalInformation, self).to_dictionary()
-        self._add_to_dictionary(dictionary, 'dateOfBirth', self.date_of_birth)
-        self._add_to_dictionary(dictionary, 'gender', self.gender)
-        self._add_to_dictionary(dictionary, 'name', self.name)
+        if self.date_of_birth is not None:
+            dictionary['dateOfBirth'] = self.date_of_birth
+        if self.gender is not None:
+            dictionary['gender'] = self.gender
+        if self.name is not None:
+            dictionary['name'] = self.name.to_dictionary()
         return dictionary
 
     def from_dictionary(self, dictionary):

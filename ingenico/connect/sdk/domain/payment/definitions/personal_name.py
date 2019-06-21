@@ -25,7 +25,8 @@ class PersonalName(PersonalNameBase):
 
     def to_dictionary(self):
         dictionary = super(PersonalName, self).to_dictionary()
-        self._add_to_dictionary(dictionary, 'title', self.title)
+        if self.title is not None:
+            dictionary['title'] = self.title
         return dictionary
 
     def from_dictionary(self, dictionary):

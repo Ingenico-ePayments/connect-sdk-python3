@@ -82,11 +82,19 @@ class ValidationBankAccountOutput(DataObject):
 
     def to_dictionary(self):
         dictionary = super(ValidationBankAccountOutput, self).to_dictionary()
-        self._add_to_dictionary(dictionary, 'checks', self.checks)
-        self._add_to_dictionary(dictionary, 'newBankName', self.new_bank_name)
-        self._add_to_dictionary(dictionary, 'reformattedAccountNumber', self.reformatted_account_number)
-        self._add_to_dictionary(dictionary, 'reformattedBankCode', self.reformatted_bank_code)
-        self._add_to_dictionary(dictionary, 'reformattedBranchCode', self.reformatted_branch_code)
+        if self.checks is not None:
+            dictionary['checks'] = []
+            for element in self.checks:
+                if element is not None:
+                    dictionary['checks'].append(element.to_dictionary())
+        if self.new_bank_name is not None:
+            dictionary['newBankName'] = self.new_bank_name
+        if self.reformatted_account_number is not None:
+            dictionary['reformattedAccountNumber'] = self.reformatted_account_number
+        if self.reformatted_bank_code is not None:
+            dictionary['reformattedBankCode'] = self.reformatted_bank_code
+        if self.reformatted_branch_code is not None:
+            dictionary['reformattedBranchCode'] = self.reformatted_branch_code
         return dictionary
 
     def from_dictionary(self, dictionary):
@@ -95,9 +103,9 @@ class ValidationBankAccountOutput(DataObject):
             if not isinstance(dictionary['checks'], list):
                 raise TypeError('value \'{}\' is not a list'.format(dictionary['checks']))
             self.checks = []
-            for checks_element in dictionary['checks']:
-                checks_value = ValidationBankAccountCheck()
-                self.checks.append(checks_value.from_dictionary(checks_element))
+            for element in dictionary['checks']:
+                value = ValidationBankAccountCheck()
+                self.checks.append(value.from_dictionary(element))
         if 'newBankName' in dictionary:
             self.new_bank_name = dictionary['newBankName']
         if 'reformattedAccountNumber' in dictionary:

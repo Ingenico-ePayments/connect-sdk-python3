@@ -25,7 +25,8 @@ class Card(CardWithoutCvv):
 
     def to_dictionary(self):
         dictionary = super(Card, self).to_dictionary()
-        self._add_to_dictionary(dictionary, 'cvv', self.cvv)
+        if self.cvv is not None:
+            dictionary['cvv'] = self.cvv
         return dictionary
 
     def from_dictionary(self, dictionary):

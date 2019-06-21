@@ -76,7 +76,7 @@ class ClientTest(unittest.TestCase):
             api_key_id=API_KEY_ID, secret_api_key=SECRET_API_KEY)
         client = Factory.create_client_from_session(session)
 
-        client.close_idle_connections(timedelta(seconds=5))  #seconds
+        client.close_idle_connections(timedelta(seconds=5))  # seconds
 
         function_mock.assert_called_once_with(timedelta(seconds=5))
 
@@ -111,6 +111,7 @@ class ClientTest(unittest.TestCase):
         client.close_expired_connections()
 
         function_mock.assert_called_once_with()
+
 
 if __name__ == '__main__':
     unittest.main()

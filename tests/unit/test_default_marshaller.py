@@ -77,7 +77,8 @@ class JsonMiniMiniDummy(DataObject):
 
     def to_dictionary(self, dictionary=None):
         dictionary = super(JsonMiniMiniDummy, self).to_dictionary()
-        self._add_to_dictionary(dictionary, 'foo', self.foo)
+        if self.foo is not None:
+            dictionary['foo'] = self.foo
 
         return dictionary
 
@@ -94,7 +95,8 @@ class JsonMiniDummy(DataObject):
     def to_dictionary(self, dictionary=None):
         # type: () -> object
         dictionary = super(JsonMiniDummy, self).to_dictionary()
-        self._add_to_dictionary(dictionary, 'foo', self.foo)
+        if self.foo is not None:
+            dictionary['foo'] = self.foo.to_dictionary()
         return dictionary
 
     def from_dictionary(self, dictionary):
@@ -115,10 +117,14 @@ class JsonDummy(DataObject):
 
     def to_dictionary(self):
         dictionary = super(JsonDummy, self).to_dictionary()
-        self._add_to_dictionary(dictionary, 'foo', self.foo)
-        self._add_to_dictionary(dictionary, 'bar', self.bar)
-        self._add_to_dictionary(dictionary, 'boo', self.boo)
-        self._add_to_dictionary(dictionary, 'far', self.far)
+        if self.foo is not None:
+            dictionary['foo'] = self.foo
+        if self.bar is not None:
+            dictionary['bar'] = self.bar
+        if self.boo is not None:
+            dictionary['boo'] = self.boo
+        if self.far is not None:
+            dictionary['far'] = self.far
 
         return dictionary
 
@@ -144,7 +150,8 @@ class JsonDummyExtended(JsonDummy):
 
     def to_dictionary(self):
         dictionary = super(JsonDummyExtended, self).to_dictionary()
-        self._add_to_dictionary(dictionary, 'extraField', self.extra_field)
+        if self.extra_field is not None:
+            dictionary['extraField'] = self.extra_field
         return dictionary
 
     def from_dictionary(self, dictionary):

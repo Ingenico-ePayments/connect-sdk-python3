@@ -149,11 +149,19 @@ class OrderStatusOutput(DataObject):
 
     def to_dictionary(self):
         dictionary = super(OrderStatusOutput, self).to_dictionary()
-        self._add_to_dictionary(dictionary, 'errors', self.errors)
-        self._add_to_dictionary(dictionary, 'isCancellable', self.is_cancellable)
-        self._add_to_dictionary(dictionary, 'statusCategory', self.status_category)
-        self._add_to_dictionary(dictionary, 'statusCode', self.status_code)
-        self._add_to_dictionary(dictionary, 'statusCodeChangeDateTime', self.status_code_change_date_time)
+        if self.errors is not None:
+            dictionary['errors'] = []
+            for element in self.errors:
+                if element is not None:
+                    dictionary['errors'].append(element.to_dictionary())
+        if self.is_cancellable is not None:
+            dictionary['isCancellable'] = self.is_cancellable
+        if self.status_category is not None:
+            dictionary['statusCategory'] = self.status_category
+        if self.status_code is not None:
+            dictionary['statusCode'] = self.status_code
+        if self.status_code_change_date_time is not None:
+            dictionary['statusCodeChangeDateTime'] = self.status_code_change_date_time
         return dictionary
 
     def from_dictionary(self, dictionary):
@@ -162,9 +170,9 @@ class OrderStatusOutput(DataObject):
             if not isinstance(dictionary['errors'], list):
                 raise TypeError('value \'{}\' is not a list'.format(dictionary['errors']))
             self.errors = []
-            for errors_element in dictionary['errors']:
-                errors_value = APIError()
-                self.errors.append(errors_value.from_dictionary(errors_element))
+            for element in dictionary['errors']:
+                value = APIError()
+                self.errors.append(value.from_dictionary(element))
         if 'isCancellable' in dictionary:
             self.is_cancellable = dictionary['isCancellable']
         if 'statusCategory' in dictionary:

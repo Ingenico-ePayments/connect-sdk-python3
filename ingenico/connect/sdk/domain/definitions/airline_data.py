@@ -369,30 +369,60 @@ class AirlineData(DataObject):
 
     def to_dictionary(self):
         dictionary = super(AirlineData, self).to_dictionary()
-        self._add_to_dictionary(dictionary, 'agentNumericCode', self.agent_numeric_code)
-        self._add_to_dictionary(dictionary, 'code', self.code)
-        self._add_to_dictionary(dictionary, 'flightDate', self.flight_date)
-        self._add_to_dictionary(dictionary, 'flightLegs', self.flight_legs)
-        self._add_to_dictionary(dictionary, 'invoiceNumber', self.invoice_number)
-        self._add_to_dictionary(dictionary, 'isETicket', self.is_e_ticket)
-        self._add_to_dictionary(dictionary, 'isRegisteredCustomer', self.is_registered_customer)
-        self._add_to_dictionary(dictionary, 'isRestrictedTicket', self.is_restricted_ticket)
-        self._add_to_dictionary(dictionary, 'isThirdParty', self.is_third_party)
-        self._add_to_dictionary(dictionary, 'issueDate', self.issue_date)
-        self._add_to_dictionary(dictionary, 'merchantCustomerId', self.merchant_customer_id)
-        self._add_to_dictionary(dictionary, 'name', self.name)
-        self._add_to_dictionary(dictionary, 'passengerName', self.passenger_name)
-        self._add_to_dictionary(dictionary, 'passengers', self.passengers)
-        self._add_to_dictionary(dictionary, 'placeOfIssue', self.place_of_issue)
-        self._add_to_dictionary(dictionary, 'pnr', self.pnr)
-        self._add_to_dictionary(dictionary, 'pointOfSale', self.point_of_sale)
-        self._add_to_dictionary(dictionary, 'posCityCode', self.pos_city_code)
-        self._add_to_dictionary(dictionary, 'ticketDeliveryMethod', self.ticket_delivery_method)
-        self._add_to_dictionary(dictionary, 'ticketNumber', self.ticket_number)
-        self._add_to_dictionary(dictionary, 'totalFare', self.total_fare)
-        self._add_to_dictionary(dictionary, 'totalFee', self.total_fee)
-        self._add_to_dictionary(dictionary, 'totalTaxes', self.total_taxes)
-        self._add_to_dictionary(dictionary, 'travelAgencyName', self.travel_agency_name)
+        if self.agent_numeric_code is not None:
+            dictionary['agentNumericCode'] = self.agent_numeric_code
+        if self.code is not None:
+            dictionary['code'] = self.code
+        if self.flight_date is not None:
+            dictionary['flightDate'] = self.flight_date
+        if self.flight_legs is not None:
+            dictionary['flightLegs'] = []
+            for element in self.flight_legs:
+                if element is not None:
+                    dictionary['flightLegs'].append(element.to_dictionary())
+        if self.invoice_number is not None:
+            dictionary['invoiceNumber'] = self.invoice_number
+        if self.is_e_ticket is not None:
+            dictionary['isETicket'] = self.is_e_ticket
+        if self.is_registered_customer is not None:
+            dictionary['isRegisteredCustomer'] = self.is_registered_customer
+        if self.is_restricted_ticket is not None:
+            dictionary['isRestrictedTicket'] = self.is_restricted_ticket
+        if self.is_third_party is not None:
+            dictionary['isThirdParty'] = self.is_third_party
+        if self.issue_date is not None:
+            dictionary['issueDate'] = self.issue_date
+        if self.merchant_customer_id is not None:
+            dictionary['merchantCustomerId'] = self.merchant_customer_id
+        if self.name is not None:
+            dictionary['name'] = self.name
+        if self.passenger_name is not None:
+            dictionary['passengerName'] = self.passenger_name
+        if self.passengers is not None:
+            dictionary['passengers'] = []
+            for element in self.passengers:
+                if element is not None:
+                    dictionary['passengers'].append(element.to_dictionary())
+        if self.place_of_issue is not None:
+            dictionary['placeOfIssue'] = self.place_of_issue
+        if self.pnr is not None:
+            dictionary['pnr'] = self.pnr
+        if self.point_of_sale is not None:
+            dictionary['pointOfSale'] = self.point_of_sale
+        if self.pos_city_code is not None:
+            dictionary['posCityCode'] = self.pos_city_code
+        if self.ticket_delivery_method is not None:
+            dictionary['ticketDeliveryMethod'] = self.ticket_delivery_method
+        if self.ticket_number is not None:
+            dictionary['ticketNumber'] = self.ticket_number
+        if self.total_fare is not None:
+            dictionary['totalFare'] = self.total_fare
+        if self.total_fee is not None:
+            dictionary['totalFee'] = self.total_fee
+        if self.total_taxes is not None:
+            dictionary['totalTaxes'] = self.total_taxes
+        if self.travel_agency_name is not None:
+            dictionary['travelAgencyName'] = self.travel_agency_name
         return dictionary
 
     def from_dictionary(self, dictionary):
@@ -407,9 +437,9 @@ class AirlineData(DataObject):
             if not isinstance(dictionary['flightLegs'], list):
                 raise TypeError('value \'{}\' is not a list'.format(dictionary['flightLegs']))
             self.flight_legs = []
-            for flightLegs_element in dictionary['flightLegs']:
-                flightLegs_value = AirlineFlightLeg()
-                self.flight_legs.append(flightLegs_value.from_dictionary(flightLegs_element))
+            for element in dictionary['flightLegs']:
+                value = AirlineFlightLeg()
+                self.flight_legs.append(value.from_dictionary(element))
         if 'invoiceNumber' in dictionary:
             self.invoice_number = dictionary['invoiceNumber']
         if 'isETicket' in dictionary:
@@ -432,9 +462,9 @@ class AirlineData(DataObject):
             if not isinstance(dictionary['passengers'], list):
                 raise TypeError('value \'{}\' is not a list'.format(dictionary['passengers']))
             self.passengers = []
-            for passengers_element in dictionary['passengers']:
-                passengers_value = AirlinePassenger()
-                self.passengers.append(passengers_value.from_dictionary(passengers_element))
+            for element in dictionary['passengers']:
+                value = AirlinePassenger()
+                self.passengers.append(value.from_dictionary(element))
         if 'placeOfIssue' in dictionary:
             self.place_of_issue = dictionary['placeOfIssue']
         if 'pnr' in dictionary:

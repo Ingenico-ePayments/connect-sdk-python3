@@ -15,9 +15,10 @@ class SDKProxyTest(unittest.TestCase):
 
         with init_utils.create_client_with_proxy() as client:
             services = client.merchant(MERCHANT_ID).services()
-            services.convertAmount(request)
+            services.convert_amount(request)
 
             self.assertIsInstance(services, ServicesClient)
+
 
 if __name__ == '__main__':
     unittest.main()

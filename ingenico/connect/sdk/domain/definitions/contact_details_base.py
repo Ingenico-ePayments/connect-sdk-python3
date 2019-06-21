@@ -42,8 +42,10 @@ class ContactDetailsBase(DataObject):
 
     def to_dictionary(self):
         dictionary = super(ContactDetailsBase, self).to_dictionary()
-        self._add_to_dictionary(dictionary, 'emailAddress', self.email_address)
-        self._add_to_dictionary(dictionary, 'emailMessageType', self.email_message_type)
+        if self.email_address is not None:
+            dictionary['emailAddress'] = self.email_address
+        if self.email_message_type is not None:
+            dictionary['emailMessageType'] = self.email_message_type
         return dictionary
 
     def from_dictionary(self, dictionary):

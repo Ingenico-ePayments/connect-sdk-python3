@@ -27,19 +27,17 @@ class ResponseLogMessage(LogMessage):
                    self.request_id + "'):\n" + \
                    "  status_code:  " + str(
                        self.__status_code) + "\n  headers:      " + \
-                   self.headers + "\n  content-type :" + \
+                   self.headers + "\n  content-type: " + \
                    self.empty_if_none(
-                       self.content_type) + "\n  body         " + \
-                   self.empty_if_none(
-                       self.body)
+                       self.content_type) + "\n  body:         " + \
+                   self.empty_if_none(self.body)
 
         else:
             return "Incoming response (requestId='" + \
                    self.request_id + "', " + str(self.__duration) + " ms):\n" + \
-                   "  status_code:  " + str(
-                str(self.__status_code) + "\n  headers:      " + \
-                self.headers + "\n  content-type :" + \
-                self.empty_if_none(
-                            self.content_type) + "\n  body         " + \
-                self.empty_if_none(
-                            self.body))
+                   "  status_code:  " + \
+                   str(self.__status_code) + "\n  headers:      " + \
+                   self.headers + "\n  content-type: " + \
+                   self.empty_if_none(
+                       self.content_type) + "\n  body:         " + \
+                   self.empty_if_none(self.body)

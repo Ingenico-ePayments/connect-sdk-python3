@@ -27,7 +27,8 @@ class AbstractToken(DataObject):
 
     def to_dictionary(self):
         dictionary = super(AbstractToken, self).to_dictionary()
-        self._add_to_dictionary(dictionary, 'alias', self.alias)
+        if self.alias is not None:
+            dictionary['alias'] = self.alias
         return dictionary
 
     def from_dictionary(self, dictionary):

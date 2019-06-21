@@ -48,8 +48,10 @@ class GetHostedCheckoutResponse(DataObject):
 
     def to_dictionary(self):
         dictionary = super(GetHostedCheckoutResponse, self).to_dictionary()
-        self._add_to_dictionary(dictionary, 'createdPaymentOutput', self.created_payment_output)
-        self._add_to_dictionary(dictionary, 'status', self.status)
+        if self.created_payment_output is not None:
+            dictionary['createdPaymentOutput'] = self.created_payment_output.to_dictionary()
+        if self.status is not None:
+            dictionary['status'] = self.status
         return dictionary
 
     def from_dictionary(self, dictionary):

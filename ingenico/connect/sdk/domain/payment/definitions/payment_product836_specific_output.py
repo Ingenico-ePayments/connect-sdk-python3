@@ -28,7 +28,8 @@ class PaymentProduct836SpecificOutput(DataObject):
 
     def to_dictionary(self):
         dictionary = super(PaymentProduct836SpecificOutput, self).to_dictionary()
-        self._add_to_dictionary(dictionary, 'securityIndicator', self.security_indicator)
+        if self.security_indicator is not None:
+            dictionary['securityIndicator'] = self.security_indicator
         return dictionary
 
     def from_dictionary(self, dictionary):

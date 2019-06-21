@@ -118,13 +118,20 @@ class CashPaymentMethodSpecificInput(AbstractCashPaymentMethodSpecificInput):
 
     def to_dictionary(self):
         dictionary = super(CashPaymentMethodSpecificInput, self).to_dictionary()
-        self._add_to_dictionary(dictionary, 'paymentProduct1503SpecificInput', self.payment_product1503_specific_input)
-        self._add_to_dictionary(dictionary, 'paymentProduct1504SpecificInput', self.payment_product1504_specific_input)
-        self._add_to_dictionary(dictionary, 'paymentProduct1521SpecificInput', self.payment_product1521_specific_input)
-        self._add_to_dictionary(dictionary, 'paymentProduct1522SpecificInput', self.payment_product1522_specific_input)
-        self._add_to_dictionary(dictionary, 'paymentProduct1523SpecificInput', self.payment_product1523_specific_input)
-        self._add_to_dictionary(dictionary, 'paymentProduct1524SpecificInput', self.payment_product1524_specific_input)
-        self._add_to_dictionary(dictionary, 'paymentProduct1526SpecificInput', self.payment_product1526_specific_input)
+        if self.payment_product1503_specific_input is not None:
+            dictionary['paymentProduct1503SpecificInput'] = self.payment_product1503_specific_input.to_dictionary()
+        if self.payment_product1504_specific_input is not None:
+            dictionary['paymentProduct1504SpecificInput'] = self.payment_product1504_specific_input.to_dictionary()
+        if self.payment_product1521_specific_input is not None:
+            dictionary['paymentProduct1521SpecificInput'] = self.payment_product1521_specific_input.to_dictionary()
+        if self.payment_product1522_specific_input is not None:
+            dictionary['paymentProduct1522SpecificInput'] = self.payment_product1522_specific_input.to_dictionary()
+        if self.payment_product1523_specific_input is not None:
+            dictionary['paymentProduct1523SpecificInput'] = self.payment_product1523_specific_input.to_dictionary()
+        if self.payment_product1524_specific_input is not None:
+            dictionary['paymentProduct1524SpecificInput'] = self.payment_product1524_specific_input.to_dictionary()
+        if self.payment_product1526_specific_input is not None:
+            dictionary['paymentProduct1526SpecificInput'] = self.payment_product1526_specific_input.to_dictionary()
         return dictionary
 
     def from_dictionary(self, dictionary):

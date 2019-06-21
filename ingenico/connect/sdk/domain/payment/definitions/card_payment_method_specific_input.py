@@ -93,11 +93,16 @@ class CardPaymentMethodSpecificInput(AbstractCardPaymentMethodSpecificInput):
 
     def to_dictionary(self):
         dictionary = super(CardPaymentMethodSpecificInput, self).to_dictionary()
-        self._add_to_dictionary(dictionary, 'card', self.card)
-        self._add_to_dictionary(dictionary, 'externalCardholderAuthenticationData', self.external_cardholder_authentication_data)
-        self._add_to_dictionary(dictionary, 'isRecurring', self.is_recurring)
-        self._add_to_dictionary(dictionary, 'returnUrl', self.return_url)
-        self._add_to_dictionary(dictionary, 'threeDSecure', self.three_d_secure)
+        if self.card is not None:
+            dictionary['card'] = self.card.to_dictionary()
+        if self.external_cardholder_authentication_data is not None:
+            dictionary['externalCardholderAuthenticationData'] = self.external_cardholder_authentication_data.to_dictionary()
+        if self.is_recurring is not None:
+            dictionary['isRecurring'] = self.is_recurring
+        if self.return_url is not None:
+            dictionary['returnUrl'] = self.return_url
+        if self.three_d_secure is not None:
+            dictionary['threeDSecure'] = self.three_d_secure.to_dictionary()
         return dictionary
 
     def from_dictionary(self, dictionary):

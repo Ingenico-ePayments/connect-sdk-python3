@@ -25,7 +25,8 @@ class DeviceFingerprintRequest(DataObject):
 
     def to_dictionary(self):
         dictionary = super(DeviceFingerprintRequest, self).to_dictionary()
-        self._add_to_dictionary(dictionary, 'collectorCallback', self.collector_callback)
+        if self.collector_callback is not None:
+            dictionary['collectorCallback'] = self.collector_callback
         return dictionary
 
     def from_dictionary(self, dictionary):

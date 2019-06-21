@@ -148,15 +148,24 @@ class HostedCheckoutSpecificInput(DataObject):
 
     def to_dictionary(self):
         dictionary = super(HostedCheckoutSpecificInput, self).to_dictionary()
-        self._add_to_dictionary(dictionary, 'isRecurring', self.is_recurring)
-        self._add_to_dictionary(dictionary, 'locale', self.locale)
-        self._add_to_dictionary(dictionary, 'paymentProductFilters', self.payment_product_filters)
-        self._add_to_dictionary(dictionary, 'returnCancelState', self.return_cancel_state)
-        self._add_to_dictionary(dictionary, 'returnUrl', self.return_url)
-        self._add_to_dictionary(dictionary, 'showResultPage', self.show_result_page)
-        self._add_to_dictionary(dictionary, 'tokens', self.tokens)
-        self._add_to_dictionary(dictionary, 'validateShoppingCart', self.validate_shopping_cart)
-        self._add_to_dictionary(dictionary, 'variant', self.variant)
+        if self.is_recurring is not None:
+            dictionary['isRecurring'] = self.is_recurring
+        if self.locale is not None:
+            dictionary['locale'] = self.locale
+        if self.payment_product_filters is not None:
+            dictionary['paymentProductFilters'] = self.payment_product_filters.to_dictionary()
+        if self.return_cancel_state is not None:
+            dictionary['returnCancelState'] = self.return_cancel_state
+        if self.return_url is not None:
+            dictionary['returnUrl'] = self.return_url
+        if self.show_result_page is not None:
+            dictionary['showResultPage'] = self.show_result_page
+        if self.tokens is not None:
+            dictionary['tokens'] = self.tokens
+        if self.validate_shopping_cart is not None:
+            dictionary['validateShoppingCart'] = self.validate_shopping_cart
+        if self.variant is not None:
+            dictionary['variant'] = self.variant
         return dictionary
 
     def from_dictionary(self, dictionary):

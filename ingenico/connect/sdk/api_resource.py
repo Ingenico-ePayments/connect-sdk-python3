@@ -114,10 +114,10 @@ def _is_idempotence_error(status_code, errors, context):
     errors and context
     """
     return status_code == 409 \
-           and context is not None \
-           and context.idempotence_key is not None \
-           and len(errors) == 1 \
-           and errors[0].code
+        and context is not None \
+        and context.idempotence_key is not None \
+        and len(errors) == 1 \
+        and errors[0].code
 
 
 ERROR_MAP = {

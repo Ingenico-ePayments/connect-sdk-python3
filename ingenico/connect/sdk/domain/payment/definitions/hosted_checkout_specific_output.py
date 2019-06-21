@@ -39,8 +39,10 @@ class HostedCheckoutSpecificOutput(DataObject):
 
     def to_dictionary(self):
         dictionary = super(HostedCheckoutSpecificOutput, self).to_dictionary()
-        self._add_to_dictionary(dictionary, 'hostedCheckoutId', self.hosted_checkout_id)
-        self._add_to_dictionary(dictionary, 'variant', self.variant)
+        if self.hosted_checkout_id is not None:
+            dictionary['hostedCheckoutId'] = self.hosted_checkout_id
+        if self.variant is not None:
+            dictionary['variant'] = self.variant
         return dictionary
 
     def from_dictionary(self, dictionary):

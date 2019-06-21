@@ -61,9 +61,12 @@ class ThreeDSecureData(DataObject):
 
     def to_dictionary(self):
         dictionary = super(ThreeDSecureData, self).to_dictionary()
-        self._add_to_dictionary(dictionary, 'acsTransactionId', self.acs_transaction_id)
-        self._add_to_dictionary(dictionary, 'method', self.method)
-        self._add_to_dictionary(dictionary, 'utcTimestamp', self.utc_timestamp)
+        if self.acs_transaction_id is not None:
+            dictionary['acsTransactionId'] = self.acs_transaction_id
+        if self.method is not None:
+            dictionary['method'] = self.method
+        if self.utc_timestamp is not None:
+            dictionary['utcTimestamp'] = self.utc_timestamp
         return dictionary
 
     def from_dictionary(self, dictionary):

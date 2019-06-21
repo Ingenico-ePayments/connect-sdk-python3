@@ -137,14 +137,22 @@ class CustomerDevice(DataObject):
 
     def to_dictionary(self):
         dictionary = super(CustomerDevice, self).to_dictionary()
-        self._add_to_dictionary(dictionary, 'acceptHeader', self.accept_header)
-        self._add_to_dictionary(dictionary, 'browserData', self.browser_data)
-        self._add_to_dictionary(dictionary, 'defaultFormFill', self.default_form_fill)
-        self._add_to_dictionary(dictionary, 'deviceFingerprintTransactionId', self.device_fingerprint_transaction_id)
-        self._add_to_dictionary(dictionary, 'ipAddress', self.ip_address)
-        self._add_to_dictionary(dictionary, 'locale', self.locale)
-        self._add_to_dictionary(dictionary, 'timezoneOffsetUtcMinutes', self.timezone_offset_utc_minutes)
-        self._add_to_dictionary(dictionary, 'userAgent', self.user_agent)
+        if self.accept_header is not None:
+            dictionary['acceptHeader'] = self.accept_header
+        if self.browser_data is not None:
+            dictionary['browserData'] = self.browser_data.to_dictionary()
+        if self.default_form_fill is not None:
+            dictionary['defaultFormFill'] = self.default_form_fill
+        if self.device_fingerprint_transaction_id is not None:
+            dictionary['deviceFingerprintTransactionId'] = self.device_fingerprint_transaction_id
+        if self.ip_address is not None:
+            dictionary['ipAddress'] = self.ip_address
+        if self.locale is not None:
+            dictionary['locale'] = self.locale
+        if self.timezone_offset_utc_minutes is not None:
+            dictionary['timezoneOffsetUtcMinutes'] = self.timezone_offset_utc_minutes
+        if self.user_agent is not None:
+            dictionary['userAgent'] = self.user_agent
         return dictionary
 
     def from_dictionary(self, dictionary):

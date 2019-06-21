@@ -26,7 +26,8 @@ class AbstractPaymentMethodSpecificInput(DataObject):
 
     def to_dictionary(self):
         dictionary = super(AbstractPaymentMethodSpecificInput, self).to_dictionary()
-        self._add_to_dictionary(dictionary, 'paymentProductId', self.payment_product_id)
+        if self.payment_product_id is not None:
+            dictionary['paymentProductId'] = self.payment_product_id
         return dictionary
 
     def from_dictionary(self, dictionary):

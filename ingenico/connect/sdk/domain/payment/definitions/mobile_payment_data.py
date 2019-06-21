@@ -40,8 +40,10 @@ class MobilePaymentData(DataObject):
 
     def to_dictionary(self):
         dictionary = super(MobilePaymentData, self).to_dictionary()
-        self._add_to_dictionary(dictionary, 'dpan', self.dpan)
-        self._add_to_dictionary(dictionary, 'expiryDate', self.expiry_date)
+        if self.dpan is not None:
+            dictionary['dpan'] = self.dpan
+        if self.expiry_date is not None:
+            dictionary['expiryDate'] = self.expiry_date
         return dictionary
 
     def from_dictionary(self, dictionary):

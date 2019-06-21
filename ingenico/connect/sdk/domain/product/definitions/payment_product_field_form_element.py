@@ -46,8 +46,13 @@ class PaymentProductFieldFormElement(DataObject):
 
     def to_dictionary(self):
         dictionary = super(PaymentProductFieldFormElement, self).to_dictionary()
-        self._add_to_dictionary(dictionary, 'type', self.type)
-        self._add_to_dictionary(dictionary, 'valueMapping', self.value_mapping)
+        if self.type is not None:
+            dictionary['type'] = self.type
+        if self.value_mapping is not None:
+            dictionary['valueMapping'] = []
+            for element in self.value_mapping:
+                if element is not None:
+                    dictionary['valueMapping'].append(element.to_dictionary())
         return dictionary
 
     def from_dictionary(self, dictionary):
@@ -58,7 +63,7 @@ class PaymentProductFieldFormElement(DataObject):
             if not isinstance(dictionary['valueMapping'], list):
                 raise TypeError('value \'{}\' is not a list'.format(dictionary['valueMapping']))
             self.value_mapping = []
-            for valueMapping_element in dictionary['valueMapping']:
-                valueMapping_value = ValueMappingElement()
-                self.value_mapping.append(valueMapping_value.from_dictionary(valueMapping_element))
+            for element in dictionary['valueMapping']:
+                value = ValueMappingElement()
+                self.value_mapping.append(value.from_dictionary(element))
         return self

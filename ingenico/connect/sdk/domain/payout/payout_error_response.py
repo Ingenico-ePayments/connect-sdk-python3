@@ -55,9 +55,15 @@ class PayoutErrorResponse(DataObject):
 
     def to_dictionary(self):
         dictionary = super(PayoutErrorResponse, self).to_dictionary()
-        self._add_to_dictionary(dictionary, 'errorId', self.error_id)
-        self._add_to_dictionary(dictionary, 'errors', self.errors)
-        self._add_to_dictionary(dictionary, 'payoutResult', self.payout_result)
+        if self.error_id is not None:
+            dictionary['errorId'] = self.error_id
+        if self.errors is not None:
+            dictionary['errors'] = []
+            for element in self.errors:
+                if element is not None:
+                    dictionary['errors'].append(element.to_dictionary())
+        if self.payout_result is not None:
+            dictionary['payoutResult'] = self.payout_result.to_dictionary()
         return dictionary
 
     def from_dictionary(self, dictionary):
@@ -68,9 +74,9 @@ class PayoutErrorResponse(DataObject):
             if not isinstance(dictionary['errors'], list):
                 raise TypeError('value \'{}\' is not a list'.format(dictionary['errors']))
             self.errors = []
-            for errors_element in dictionary['errors']:
-                errors_value = APIError()
-                self.errors.append(errors_value.from_dictionary(errors_element))
+            for element in dictionary['errors']:
+                value = APIError()
+                self.errors.append(value.from_dictionary(element))
         if 'payoutResult' in dictionary:
             if not isinstance(dictionary['payoutResult'], dict):
                 raise TypeError('value \'{}\' is not a dictionary'.format(dictionary['payoutResult']))

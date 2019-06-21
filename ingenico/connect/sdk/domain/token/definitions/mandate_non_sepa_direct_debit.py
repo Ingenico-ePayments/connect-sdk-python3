@@ -41,8 +41,10 @@ class MandateNonSepaDirectDebit(DataObject):
 
     def to_dictionary(self):
         dictionary = super(MandateNonSepaDirectDebit, self).to_dictionary()
-        self._add_to_dictionary(dictionary, 'paymentProduct705SpecificData', self.payment_product705_specific_data)
-        self._add_to_dictionary(dictionary, 'paymentProduct730SpecificData', self.payment_product730_specific_data)
+        if self.payment_product705_specific_data is not None:
+            dictionary['paymentProduct705SpecificData'] = self.payment_product705_specific_data.to_dictionary()
+        if self.payment_product730_specific_data is not None:
+            dictionary['paymentProduct730SpecificData'] = self.payment_product730_specific_data.to_dictionary()
         return dictionary
 
     def from_dictionary(self, dictionary):

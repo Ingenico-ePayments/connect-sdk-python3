@@ -40,8 +40,13 @@ class AccountOnFileDisplayHints(DataObject):
 
     def to_dictionary(self):
         dictionary = super(AccountOnFileDisplayHints, self).to_dictionary()
-        self._add_to_dictionary(dictionary, 'labelTemplate', self.label_template)
-        self._add_to_dictionary(dictionary, 'logo', self.logo)
+        if self.label_template is not None:
+            dictionary['labelTemplate'] = []
+            for element in self.label_template:
+                if element is not None:
+                    dictionary['labelTemplate'].append(element.to_dictionary())
+        if self.logo is not None:
+            dictionary['logo'] = self.logo
         return dictionary
 
     def from_dictionary(self, dictionary):
@@ -50,9 +55,9 @@ class AccountOnFileDisplayHints(DataObject):
             if not isinstance(dictionary['labelTemplate'], list):
                 raise TypeError('value \'{}\' is not a list'.format(dictionary['labelTemplate']))
             self.label_template = []
-            for labelTemplate_element in dictionary['labelTemplate']:
-                labelTemplate_value = LabelTemplateElement()
-                self.label_template.append(labelTemplate_value.from_dictionary(labelTemplate_element))
+            for element in dictionary['labelTemplate']:
+                value = LabelTemplateElement()
+                self.label_template.append(value.from_dictionary(element))
         if 'logo' in dictionary:
             self.logo = dictionary['logo']
         return self

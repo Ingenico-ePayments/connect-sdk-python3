@@ -40,8 +40,10 @@ class TokenNonSepaDirectDebitPaymentProduct705SpecificData(DataObject):
 
     def to_dictionary(self):
         dictionary = super(TokenNonSepaDirectDebitPaymentProduct705SpecificData, self).to_dictionary()
-        self._add_to_dictionary(dictionary, 'authorisationId', self.authorisation_id)
-        self._add_to_dictionary(dictionary, 'bankAccountBban', self.bank_account_bban)
+        if self.authorisation_id is not None:
+            dictionary['authorisationId'] = self.authorisation_id
+        if self.bank_account_bban is not None:
+            dictionary['bankAccountBban'] = self.bank_account_bban.to_dictionary()
         return dictionary
 
     def from_dictionary(self, dictionary):

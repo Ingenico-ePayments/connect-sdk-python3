@@ -157,16 +157,26 @@ class PaymentProductFieldValidators(DataObject):
 
     def to_dictionary(self):
         dictionary = super(PaymentProductFieldValidators, self).to_dictionary()
-        self._add_to_dictionary(dictionary, 'boletoBancarioRequiredness', self.boleto_bancario_requiredness)
-        self._add_to_dictionary(dictionary, 'emailAddress', self.email_address)
-        self._add_to_dictionary(dictionary, 'expirationDate', self.expiration_date)
-        self._add_to_dictionary(dictionary, 'fixedList', self.fixed_list)
-        self._add_to_dictionary(dictionary, 'iban', self.iban)
-        self._add_to_dictionary(dictionary, 'length', self.length)
-        self._add_to_dictionary(dictionary, 'luhn', self.luhn)
-        self._add_to_dictionary(dictionary, 'range', self.range)
-        self._add_to_dictionary(dictionary, 'regularExpression', self.regular_expression)
-        self._add_to_dictionary(dictionary, 'termsAndConditions', self.terms_and_conditions)
+        if self.boleto_bancario_requiredness is not None:
+            dictionary['boletoBancarioRequiredness'] = self.boleto_bancario_requiredness.to_dictionary()
+        if self.email_address is not None:
+            dictionary['emailAddress'] = self.email_address.to_dictionary()
+        if self.expiration_date is not None:
+            dictionary['expirationDate'] = self.expiration_date.to_dictionary()
+        if self.fixed_list is not None:
+            dictionary['fixedList'] = self.fixed_list.to_dictionary()
+        if self.iban is not None:
+            dictionary['iban'] = self.iban.to_dictionary()
+        if self.length is not None:
+            dictionary['length'] = self.length.to_dictionary()
+        if self.luhn is not None:
+            dictionary['luhn'] = self.luhn.to_dictionary()
+        if self.range is not None:
+            dictionary['range'] = self.range.to_dictionary()
+        if self.regular_expression is not None:
+            dictionary['regularExpression'] = self.regular_expression.to_dictionary()
+        if self.terms_and_conditions is not None:
+            dictionary['termsAndConditions'] = self.terms_and_conditions.to_dictionary()
         return dictionary
 
     def from_dictionary(self, dictionary):

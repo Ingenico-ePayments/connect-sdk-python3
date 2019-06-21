@@ -332,24 +332,45 @@ class FraudFields(DataObject):
 
     def to_dictionary(self):
         dictionary = super(FraudFields, self).to_dictionary()
-        self._add_to_dictionary(dictionary, 'addressesAreIdentical', self.addresses_are_identical)
-        self._add_to_dictionary(dictionary, 'blackListData', self.black_list_data)
-        self._add_to_dictionary(dictionary, 'cardOwnerAddress', self.card_owner_address)
-        self._add_to_dictionary(dictionary, 'customerIpAddress', self.customer_ip_address)
-        self._add_to_dictionary(dictionary, 'defaultFormFill', self.default_form_fill)
-        self._add_to_dictionary(dictionary, 'deviceFingerprintActivated', self.device_fingerprint_activated)
-        self._add_to_dictionary(dictionary, 'deviceFingerprintTransactionId', self.device_fingerprint_transaction_id)
-        self._add_to_dictionary(dictionary, 'giftCardType', self.gift_card_type)
-        self._add_to_dictionary(dictionary, 'giftMessage', self.gift_message)
-        self._add_to_dictionary(dictionary, 'hasForgottenPwd', self.has_forgotten_pwd)
-        self._add_to_dictionary(dictionary, 'hasPassword', self.has_password)
-        self._add_to_dictionary(dictionary, 'isPreviousCustomer', self.is_previous_customer)
-        self._add_to_dictionary(dictionary, 'orderTimezone', self.order_timezone)
-        self._add_to_dictionary(dictionary, 'shipComments', self.ship_comments)
-        self._add_to_dictionary(dictionary, 'shipmentTrackingNumber', self.shipment_tracking_number)
-        self._add_to_dictionary(dictionary, 'shippingDetails', self.shipping_details)
-        self._add_to_dictionary(dictionary, 'userData', self.user_data)
-        self._add_to_dictionary(dictionary, 'website', self.website)
+        if self.addresses_are_identical is not None:
+            dictionary['addressesAreIdentical'] = self.addresses_are_identical
+        if self.black_list_data is not None:
+            dictionary['blackListData'] = self.black_list_data
+        if self.card_owner_address is not None:
+            dictionary['cardOwnerAddress'] = self.card_owner_address.to_dictionary()
+        if self.customer_ip_address is not None:
+            dictionary['customerIpAddress'] = self.customer_ip_address
+        if self.default_form_fill is not None:
+            dictionary['defaultFormFill'] = self.default_form_fill
+        if self.device_fingerprint_activated is not None:
+            dictionary['deviceFingerprintActivated'] = self.device_fingerprint_activated
+        if self.device_fingerprint_transaction_id is not None:
+            dictionary['deviceFingerprintTransactionId'] = self.device_fingerprint_transaction_id
+        if self.gift_card_type is not None:
+            dictionary['giftCardType'] = self.gift_card_type
+        if self.gift_message is not None:
+            dictionary['giftMessage'] = self.gift_message
+        if self.has_forgotten_pwd is not None:
+            dictionary['hasForgottenPwd'] = self.has_forgotten_pwd
+        if self.has_password is not None:
+            dictionary['hasPassword'] = self.has_password
+        if self.is_previous_customer is not None:
+            dictionary['isPreviousCustomer'] = self.is_previous_customer
+        if self.order_timezone is not None:
+            dictionary['orderTimezone'] = self.order_timezone
+        if self.ship_comments is not None:
+            dictionary['shipComments'] = self.ship_comments
+        if self.shipment_tracking_number is not None:
+            dictionary['shipmentTrackingNumber'] = self.shipment_tracking_number
+        if self.shipping_details is not None:
+            dictionary['shippingDetails'] = self.shipping_details.to_dictionary()
+        if self.user_data is not None:
+            dictionary['userData'] = []
+            for element in self.user_data:
+                if element is not None:
+                    dictionary['userData'].append(element)
+        if self.website is not None:
+            dictionary['website'] = self.website
         return dictionary
 
     def from_dictionary(self, dictionary):
@@ -396,8 +417,8 @@ class FraudFields(DataObject):
             if not isinstance(dictionary['userData'], list):
                 raise TypeError('value \'{}\' is not a list'.format(dictionary['userData']))
             self.user_data = []
-            for userData_element in dictionary['userData']:
-                self.user_data.append(userData_element)
+            for element in dictionary['userData']:
+                self.user_data.append(element)
         if 'website' in dictionary:
             self.website = dictionary['website']
         return self

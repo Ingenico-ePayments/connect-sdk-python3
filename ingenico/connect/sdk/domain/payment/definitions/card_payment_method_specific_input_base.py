@@ -26,7 +26,8 @@ class CardPaymentMethodSpecificInputBase(AbstractCardPaymentMethodSpecificInput)
 
     def to_dictionary(self):
         dictionary = super(CardPaymentMethodSpecificInputBase, self).to_dictionary()
-        self._add_to_dictionary(dictionary, 'threeDSecure', self.three_d_secure)
+        if self.three_d_secure is not None:
+            dictionary['threeDSecure'] = self.three_d_secure.to_dictionary()
         return dictionary
 
     def from_dictionary(self, dictionary):

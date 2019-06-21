@@ -87,11 +87,16 @@ class AdditionalOrderInput(DataObject):
 
     def to_dictionary(self):
         dictionary = super(AdditionalOrderInput, self).to_dictionary()
-        self._add_to_dictionary(dictionary, 'airlineData', self.airline_data)
-        self._add_to_dictionary(dictionary, 'level3SummaryData', self.level3_summary_data)
-        self._add_to_dictionary(dictionary, 'numberOfInstallments', self.number_of_installments)
-        self._add_to_dictionary(dictionary, 'orderDate', self.order_date)
-        self._add_to_dictionary(dictionary, 'typeInformation', self.type_information)
+        if self.airline_data is not None:
+            dictionary['airlineData'] = self.airline_data.to_dictionary()
+        if self.level3_summary_data is not None:
+            dictionary['level3SummaryData'] = self.level3_summary_data.to_dictionary()
+        if self.number_of_installments is not None:
+            dictionary['numberOfInstallments'] = self.number_of_installments
+        if self.order_date is not None:
+            dictionary['orderDate'] = self.order_date
+        if self.type_information is not None:
+            dictionary['typeInformation'] = self.type_information.to_dictionary()
         return dictionary
 
     def from_dictionary(self, dictionary):

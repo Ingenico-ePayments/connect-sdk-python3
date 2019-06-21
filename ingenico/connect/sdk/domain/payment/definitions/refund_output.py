@@ -123,13 +123,20 @@ class RefundOutput(OrderOutput):
 
     def to_dictionary(self):
         dictionary = super(RefundOutput, self).to_dictionary()
-        self._add_to_dictionary(dictionary, 'amountPaid', self.amount_paid)
-        self._add_to_dictionary(dictionary, 'bankRefundMethodSpecificOutput', self.bank_refund_method_specific_output)
-        self._add_to_dictionary(dictionary, 'cardRefundMethodSpecificOutput', self.card_refund_method_specific_output)
-        self._add_to_dictionary(dictionary, 'eInvoiceRefundMethodSpecificOutput', self.e_invoice_refund_method_specific_output)
-        self._add_to_dictionary(dictionary, 'eWalletRefundMethodSpecificOutput', self.e_wallet_refund_method_specific_output)
-        self._add_to_dictionary(dictionary, 'mobileRefundMethodSpecificOutput', self.mobile_refund_method_specific_output)
-        self._add_to_dictionary(dictionary, 'paymentMethod', self.payment_method)
+        if self.amount_paid is not None:
+            dictionary['amountPaid'] = self.amount_paid
+        if self.bank_refund_method_specific_output is not None:
+            dictionary['bankRefundMethodSpecificOutput'] = self.bank_refund_method_specific_output.to_dictionary()
+        if self.card_refund_method_specific_output is not None:
+            dictionary['cardRefundMethodSpecificOutput'] = self.card_refund_method_specific_output.to_dictionary()
+        if self.e_invoice_refund_method_specific_output is not None:
+            dictionary['eInvoiceRefundMethodSpecificOutput'] = self.e_invoice_refund_method_specific_output.to_dictionary()
+        if self.e_wallet_refund_method_specific_output is not None:
+            dictionary['eWalletRefundMethodSpecificOutput'] = self.e_wallet_refund_method_specific_output.to_dictionary()
+        if self.mobile_refund_method_specific_output is not None:
+            dictionary['mobileRefundMethodSpecificOutput'] = self.mobile_refund_method_specific_output.to_dictionary()
+        if self.payment_method is not None:
+            dictionary['paymentMethod'] = self.payment_method
         return dictionary
 
     def from_dictionary(self, dictionary):

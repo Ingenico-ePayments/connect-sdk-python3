@@ -37,8 +37,10 @@ class RefundMethodSpecificOutput(DataObject):
 
     def to_dictionary(self):
         dictionary = super(RefundMethodSpecificOutput, self).to_dictionary()
-        self._add_to_dictionary(dictionary, 'totalAmountPaid', self.total_amount_paid)
-        self._add_to_dictionary(dictionary, 'totalAmountRefunded', self.total_amount_refunded)
+        if self.total_amount_paid is not None:
+            dictionary['totalAmountPaid'] = self.total_amount_paid
+        if self.total_amount_refunded is not None:
+            dictionary['totalAmountRefunded'] = self.total_amount_refunded
         return dictionary
 
     def from_dictionary(self, dictionary):

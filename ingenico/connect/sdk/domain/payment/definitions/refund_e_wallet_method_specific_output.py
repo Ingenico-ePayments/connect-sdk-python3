@@ -26,7 +26,8 @@ class RefundEWalletMethodSpecificOutput(RefundMethodSpecificOutput):
 
     def to_dictionary(self):
         dictionary = super(RefundEWalletMethodSpecificOutput, self).to_dictionary()
-        self._add_to_dictionary(dictionary, 'paymentProduct840SpecificOutput', self.payment_product840_specific_output)
+        if self.payment_product840_specific_output is not None:
+            dictionary['paymentProduct840SpecificOutput'] = self.payment_product840_specific_output.to_dictionary()
         return dictionary
 
     def from_dictionary(self, dictionary):

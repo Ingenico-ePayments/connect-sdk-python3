@@ -26,7 +26,8 @@ class ApprovePayoutRequest(DataObject):
 
     def to_dictionary(self):
         dictionary = super(ApprovePayoutRequest, self).to_dictionary()
-        self._add_to_dictionary(dictionary, 'datePayout', self.date_payout)
+        if self.date_payout is not None:
+            dictionary['datePayout'] = self.date_payout
         return dictionary
 
     def from_dictionary(self, dictionary):

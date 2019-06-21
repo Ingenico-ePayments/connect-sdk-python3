@@ -2,12 +2,10 @@ import hmac
 from base64 import b64encode
 import hashlib
 
-from ingenico.connect.sdk.webhooks.api_version_mismatch_exception import \
-    ApiVersionMismatchException
+from .api_version_mismatch_exception import ApiVersionMismatchException
 from ingenico.connect.sdk.client import Client
 from ingenico.connect.sdk.domain.webhooks.web_hooks_event import WebhooksEvent
-from ingenico.connect.sdk.webhooks.signature_validation_exception import \
-    SignatureValidationException
+from .signature_validation_exception import SignatureValidationException
 
 
 class WebhooksHelper:
@@ -65,7 +63,7 @@ class WebhooksHelper:
         if is_valid is False:
             raise SignatureValidationException("failed to validate signature: "
                                                + signature + "'Expected: " + expected_signature + str(
-                len(signature)) + str(len(expected_signature)))
+                                                   len(signature)) + str(len(expected_signature)))
 
     @staticmethod
     def are_equal_signatures(signature, expected_signature):

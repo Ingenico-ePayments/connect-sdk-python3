@@ -63,7 +63,7 @@ class ConnectionPoolingTest(unittest.TestCase):
             client = Factory.create_client_from_communicator(communicator)
             self.flag.wait()
             start_time = timeit.default_timer()
-            dummy = client.merchant(MERCHANT_ID).services().convertAmount(request).converted_amount
+            dummy = client.merchant(MERCHANT_ID).services().convert_amount(request).converted_amount
             end_time = timeit.default_timer()
             with self.lock:
                 self.result_list.append((start_time, end_time))
@@ -71,6 +71,7 @@ class ConnectionPoolingTest(unittest.TestCase):
             with self.lock:
                 self.result_list.append(e)
         # check server logs for additional data about the requests sent
+
 
 if __name__ == '__main__':
     unittest.main()

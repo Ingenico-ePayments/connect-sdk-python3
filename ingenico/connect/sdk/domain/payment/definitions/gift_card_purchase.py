@@ -43,8 +43,10 @@ class GiftCardPurchase(DataObject):
 
     def to_dictionary(self):
         dictionary = super(GiftCardPurchase, self).to_dictionary()
-        self._add_to_dictionary(dictionary, 'amountOfMoney', self.amount_of_money)
-        self._add_to_dictionary(dictionary, 'numberOfGiftCards', self.number_of_gift_cards)
+        if self.amount_of_money is not None:
+            dictionary['amountOfMoney'] = self.amount_of_money.to_dictionary()
+        if self.number_of_gift_cards is not None:
+            dictionary['numberOfGiftCards'] = self.number_of_gift_cards
         return dictionary
 
     def from_dictionary(self, dictionary):

@@ -39,8 +39,10 @@ class PaymentCreationReferences(DataObject):
 
     def to_dictionary(self):
         dictionary = super(PaymentCreationReferences, self).to_dictionary()
-        self._add_to_dictionary(dictionary, 'additionalReference', self.additional_reference)
-        self._add_to_dictionary(dictionary, 'externalReference', self.external_reference)
+        if self.additional_reference is not None:
+            dictionary['additionalReference'] = self.additional_reference
+        if self.external_reference is not None:
+            dictionary['externalReference'] = self.external_reference
         return dictionary
 
     def from_dictionary(self, dictionary):

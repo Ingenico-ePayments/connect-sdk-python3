@@ -26,7 +26,8 @@ class AdditionalOrderInputAirlineData(DataObject):
 
     def to_dictionary(self):
         dictionary = super(AdditionalOrderInputAirlineData, self).to_dictionary()
-        self._add_to_dictionary(dictionary, 'airlineData', self.airline_data)
+        if self.airline_data is not None:
+            dictionary['airlineData'] = self.airline_data.to_dictionary()
         return dictionary
 
     def from_dictionary(self, dictionary):

@@ -25,7 +25,8 @@ class PaymentProduct771SpecificOutput(DataObject):
 
     def to_dictionary(self):
         dictionary = super(PaymentProduct771SpecificOutput, self).to_dictionary()
-        self._add_to_dictionary(dictionary, 'mandateReference', self.mandate_reference)
+        if self.mandate_reference is not None:
+            dictionary['mandateReference'] = self.mandate_reference
         return dictionary
 
     def from_dictionary(self, dictionary):

@@ -41,8 +41,10 @@ class SepaDirectDebitPaymentMethodSpecificOutput(AbstractPaymentMethodSpecificOu
 
     def to_dictionary(self):
         dictionary = super(SepaDirectDebitPaymentMethodSpecificOutput, self).to_dictionary()
-        self._add_to_dictionary(dictionary, 'fraudResults', self.fraud_results)
-        self._add_to_dictionary(dictionary, 'paymentProduct771SpecificOutput', self.payment_product771_specific_output)
+        if self.fraud_results is not None:
+            dictionary['fraudResults'] = self.fraud_results.to_dictionary()
+        if self.payment_product771_specific_output is not None:
+            dictionary['paymentProduct771SpecificOutput'] = self.payment_product771_specific_output.to_dictionary()
         return dictionary
 
     def from_dictionary(self, dictionary):

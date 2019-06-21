@@ -56,9 +56,15 @@ class ValueMappingElement(DataObject):
 
     def to_dictionary(self):
         dictionary = super(ValueMappingElement, self).to_dictionary()
-        self._add_to_dictionary(dictionary, 'displayElements', self.display_elements)
-        self._add_to_dictionary(dictionary, 'displayName', self.display_name)
-        self._add_to_dictionary(dictionary, 'value', self.value)
+        if self.display_elements is not None:
+            dictionary['displayElements'] = []
+            for element in self.display_elements:
+                if element is not None:
+                    dictionary['displayElements'].append(element.to_dictionary())
+        if self.display_name is not None:
+            dictionary['displayName'] = self.display_name
+        if self.value is not None:
+            dictionary['value'] = self.value
         return dictionary
 
     def from_dictionary(self, dictionary):
@@ -67,9 +73,9 @@ class ValueMappingElement(DataObject):
             if not isinstance(dictionary['displayElements'], list):
                 raise TypeError('value \'{}\' is not a list'.format(dictionary['displayElements']))
             self.display_elements = []
-            for displayElements_element in dictionary['displayElements']:
-                displayElements_value = PaymentProductFieldDisplayElement()
-                self.display_elements.append(displayElements_value.from_dictionary(displayElements_element))
+            for element in dictionary['displayElements']:
+                value = PaymentProductFieldDisplayElement()
+                self.display_elements.append(value.from_dictionary(element))
         if 'displayName' in dictionary:
             self.display_name = dictionary['displayName']
         if 'value' in dictionary:

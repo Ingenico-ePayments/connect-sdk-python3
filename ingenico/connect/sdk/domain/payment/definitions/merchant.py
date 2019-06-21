@@ -54,9 +54,12 @@ class Merchant(DataObject):
 
     def to_dictionary(self):
         dictionary = super(Merchant, self).to_dictionary()
-        self._add_to_dictionary(dictionary, 'contactWebsiteUrl', self.contact_website_url)
-        self._add_to_dictionary(dictionary, 'seller', self.seller)
-        self._add_to_dictionary(dictionary, 'websiteUrl', self.website_url)
+        if self.contact_website_url is not None:
+            dictionary['contactWebsiteUrl'] = self.contact_website_url
+        if self.seller is not None:
+            dictionary['seller'] = self.seller.to_dictionary()
+        if self.website_url is not None:
+            dictionary['websiteUrl'] = self.website_url
         return dictionary
 
     def from_dictionary(self, dictionary):

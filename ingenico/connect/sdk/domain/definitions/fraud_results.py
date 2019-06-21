@@ -31,7 +31,8 @@ class FraudResults(DataObject):
 
     def to_dictionary(self):
         dictionary = super(FraudResults, self).to_dictionary()
-        self._add_to_dictionary(dictionary, 'fraudServiceResult', self.fraud_service_result)
+        if self.fraud_service_result is not None:
+            dictionary['fraudServiceResult'] = self.fraud_service_result
         return dictionary
 
     def from_dictionary(self, dictionary):

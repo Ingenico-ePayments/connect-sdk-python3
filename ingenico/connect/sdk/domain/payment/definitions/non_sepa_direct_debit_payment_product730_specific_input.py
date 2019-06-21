@@ -29,7 +29,8 @@ class NonSepaDirectDebitPaymentProduct730SpecificInput(DataObject):
 
     def to_dictionary(self):
         dictionary = super(NonSepaDirectDebitPaymentProduct730SpecificInput, self).to_dictionary()
-        self._add_to_dictionary(dictionary, 'bankAccountBban', self.bank_account_bban)
+        if self.bank_account_bban is not None:
+            dictionary['bankAccountBban'] = self.bank_account_bban.to_dictionary()
         return dictionary
 
     def from_dictionary(self, dictionary):

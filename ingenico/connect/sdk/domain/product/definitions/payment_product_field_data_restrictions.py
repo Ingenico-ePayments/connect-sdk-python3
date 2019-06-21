@@ -41,8 +41,10 @@ class PaymentProductFieldDataRestrictions(DataObject):
 
     def to_dictionary(self):
         dictionary = super(PaymentProductFieldDataRestrictions, self).to_dictionary()
-        self._add_to_dictionary(dictionary, 'isRequired', self.is_required)
-        self._add_to_dictionary(dictionary, 'validators', self.validators)
+        if self.is_required is not None:
+            dictionary['isRequired'] = self.is_required
+        if self.validators is not None:
+            dictionary['validators'] = self.validators.to_dictionary()
         return dictionary
 
     def from_dictionary(self, dictionary):

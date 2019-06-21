@@ -26,7 +26,8 @@ class CustomerTokenWithContactDetails(CustomerToken):
 
     def to_dictionary(self):
         dictionary = super(CustomerTokenWithContactDetails, self).to_dictionary()
-        self._add_to_dictionary(dictionary, 'contactDetails', self.contact_details)
+        if self.contact_details is not None:
+            dictionary['contactDetails'] = self.contact_details.to_dictionary()
         return dictionary
 
     def from_dictionary(self, dictionary):

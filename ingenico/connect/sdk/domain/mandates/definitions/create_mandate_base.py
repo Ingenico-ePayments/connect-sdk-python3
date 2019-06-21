@@ -118,13 +118,20 @@ class CreateMandateBase(DataObject):
 
     def to_dictionary(self):
         dictionary = super(CreateMandateBase, self).to_dictionary()
-        self._add_to_dictionary(dictionary, 'alias', self.alias)
-        self._add_to_dictionary(dictionary, 'customer', self.customer)
-        self._add_to_dictionary(dictionary, 'customerReference', self.customer_reference)
-        self._add_to_dictionary(dictionary, 'language', self.language)
-        self._add_to_dictionary(dictionary, 'recurrenceType', self.recurrence_type)
-        self._add_to_dictionary(dictionary, 'signatureType', self.signature_type)
-        self._add_to_dictionary(dictionary, 'uniqueMandateReference', self.unique_mandate_reference)
+        if self.alias is not None:
+            dictionary['alias'] = self.alias
+        if self.customer is not None:
+            dictionary['customer'] = self.customer.to_dictionary()
+        if self.customer_reference is not None:
+            dictionary['customerReference'] = self.customer_reference
+        if self.language is not None:
+            dictionary['language'] = self.language
+        if self.recurrence_type is not None:
+            dictionary['recurrenceType'] = self.recurrence_type
+        if self.signature_type is not None:
+            dictionary['signatureType'] = self.signature_type
+        if self.unique_mandate_reference is not None:
+            dictionary['uniqueMandateReference'] = self.unique_mandate_reference
         return dictionary
 
     def from_dictionary(self, dictionary):

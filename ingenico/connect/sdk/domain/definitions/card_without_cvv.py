@@ -39,8 +39,10 @@ class CardWithoutCvv(CardEssentials):
 
     def to_dictionary(self):
         dictionary = super(CardWithoutCvv, self).to_dictionary()
-        self._add_to_dictionary(dictionary, 'cardholderName', self.cardholder_name)
-        self._add_to_dictionary(dictionary, 'issueNumber', self.issue_number)
+        if self.cardholder_name is not None:
+            dictionary['cardholderName'] = self.cardholder_name
+        if self.issue_number is not None:
+            dictionary['issueNumber'] = self.issue_number
         return dictionary
 
     def from_dictionary(self, dictionary):

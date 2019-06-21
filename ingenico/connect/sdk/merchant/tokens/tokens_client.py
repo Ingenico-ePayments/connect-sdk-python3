@@ -39,7 +39,7 @@ class TokensClient(ApiResource):
                    or the service that you're trying to reach is temporary unavailable (HTTP status code 500, 502 or 503)
         :raise: ApiException if the Ingenico ePayments platform returned any other error
         """
-        uri = self._instantiate_uri("/{apiVersion}/{merchantId}/tokens", None)
+        uri = self._instantiate_uri("/v1/{merchantId}/tokens", None)
         try:
             return self._communicator.post(
                     uri,
@@ -75,7 +75,7 @@ class TokensClient(ApiResource):
         path_context = {
             "tokenId": token_id,
         }
-        uri = self._instantiate_uri("/{apiVersion}/{merchantId}/tokens/{tokenId}", path_context)
+        uri = self._instantiate_uri("/v1/{merchantId}/tokens/{tokenId}", path_context)
         try:
             return self._communicator.get(
                     uri,
@@ -111,7 +111,7 @@ class TokensClient(ApiResource):
         path_context = {
             "tokenId": token_id,
         }
-        uri = self._instantiate_uri("/{apiVersion}/{merchantId}/tokens/{tokenId}", path_context)
+        uri = self._instantiate_uri("/v1/{merchantId}/tokens/{tokenId}", path_context)
         try:
             return self._communicator.put(
                     uri,
@@ -148,7 +148,7 @@ class TokensClient(ApiResource):
         path_context = {
             "tokenId": token_id,
         }
-        uri = self._instantiate_uri("/{apiVersion}/{merchantId}/tokens/{tokenId}", path_context)
+        uri = self._instantiate_uri("/v1/{merchantId}/tokens/{tokenId}", path_context)
         try:
             return self._communicator.delete(
                     uri,
@@ -184,7 +184,7 @@ class TokensClient(ApiResource):
         path_context = {
             "tokenId": token_id,
         }
-        uri = self._instantiate_uri("/{apiVersion}/{merchantId}/tokens/{tokenId}/approvesepadirectdebit", path_context)
+        uri = self._instantiate_uri("/v1/{merchantId}/tokens/{tokenId}/approvesepadirectdebit", path_context)
         try:
             return self._communicator.post(
                     uri,

@@ -25,7 +25,8 @@ class RedirectPaymentProduct861SpecificInput(DataObject):
 
     def to_dictionary(self):
         dictionary = super(RedirectPaymentProduct861SpecificInput, self).to_dictionary()
-        self._add_to_dictionary(dictionary, 'mobileDevice', self.mobile_device)
+        if self.mobile_device is not None:
+            dictionary['mobileDevice'] = self.mobile_device
         return dictionary
 
     def from_dictionary(self, dictionary):

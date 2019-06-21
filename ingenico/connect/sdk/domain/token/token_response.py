@@ -100,12 +100,18 @@ class TokenResponse(DataObject):
 
     def to_dictionary(self):
         dictionary = super(TokenResponse, self).to_dictionary()
-        self._add_to_dictionary(dictionary, 'card', self.card)
-        self._add_to_dictionary(dictionary, 'eWallet', self.e_wallet)
-        self._add_to_dictionary(dictionary, 'id', self.id)
-        self._add_to_dictionary(dictionary, 'nonSepaDirectDebit', self.non_sepa_direct_debit)
-        self._add_to_dictionary(dictionary, 'paymentProductId', self.payment_product_id)
-        self._add_to_dictionary(dictionary, 'sepaDirectDebit', self.sepa_direct_debit)
+        if self.card is not None:
+            dictionary['card'] = self.card.to_dictionary()
+        if self.e_wallet is not None:
+            dictionary['eWallet'] = self.e_wallet.to_dictionary()
+        if self.id is not None:
+            dictionary['id'] = self.id
+        if self.non_sepa_direct_debit is not None:
+            dictionary['nonSepaDirectDebit'] = self.non_sepa_direct_debit.to_dictionary()
+        if self.payment_product_id is not None:
+            dictionary['paymentProductId'] = self.payment_product_id
+        if self.sepa_direct_debit is not None:
+            dictionary['sepaDirectDebit'] = self.sepa_direct_debit.to_dictionary()
         return dictionary
 
     def from_dictionary(self, dictionary):

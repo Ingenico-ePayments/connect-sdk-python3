@@ -50,8 +50,10 @@ class RedirectPaymentProduct840SpecificInput(AbstractRedirectPaymentProduct840Sp
 
     def to_dictionary(self):
         dictionary = super(RedirectPaymentProduct840SpecificInput, self).to_dictionary()
-        self._add_to_dictionary(dictionary, 'custom', self.custom)
-        self._add_to_dictionary(dictionary, 'isShortcut', self.is_shortcut)
+        if self.custom is not None:
+            dictionary['custom'] = self.custom
+        if self.is_shortcut is not None:
+            dictionary['isShortcut'] = self.is_shortcut
         return dictionary
 
     def from_dictionary(self, dictionary):

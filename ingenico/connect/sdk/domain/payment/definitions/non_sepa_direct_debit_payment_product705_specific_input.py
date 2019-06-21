@@ -63,9 +63,12 @@ class NonSepaDirectDebitPaymentProduct705SpecificInput(DataObject):
 
     def to_dictionary(self):
         dictionary = super(NonSepaDirectDebitPaymentProduct705SpecificInput, self).to_dictionary()
-        self._add_to_dictionary(dictionary, 'authorisationId', self.authorisation_id)
-        self._add_to_dictionary(dictionary, 'bankAccountBban', self.bank_account_bban)
-        self._add_to_dictionary(dictionary, 'transactionType', self.transaction_type)
+        if self.authorisation_id is not None:
+            dictionary['authorisationId'] = self.authorisation_id
+        if self.bank_account_bban is not None:
+            dictionary['bankAccountBban'] = self.bank_account_bban.to_dictionary()
+        if self.transaction_type is not None:
+            dictionary['transactionType'] = self.transaction_type
         return dictionary
 
     def from_dictionary(self, dictionary):

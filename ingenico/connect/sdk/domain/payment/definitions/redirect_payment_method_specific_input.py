@@ -149,15 +149,24 @@ class RedirectPaymentMethodSpecificInput(AbstractRedirectPaymentMethodSpecificIn
 
     def to_dictionary(self):
         dictionary = super(RedirectPaymentMethodSpecificInput, self).to_dictionary()
-        self._add_to_dictionary(dictionary, 'isRecurring', self.is_recurring)
-        self._add_to_dictionary(dictionary, 'paymentProduct809SpecificInput', self.payment_product809_specific_input)
-        self._add_to_dictionary(dictionary, 'paymentProduct816SpecificInput', self.payment_product816_specific_input)
-        self._add_to_dictionary(dictionary, 'paymentProduct840SpecificInput', self.payment_product840_specific_input)
-        self._add_to_dictionary(dictionary, 'paymentProduct861SpecificInput', self.payment_product861_specific_input)
-        self._add_to_dictionary(dictionary, 'paymentProduct863SpecificInput', self.payment_product863_specific_input)
-        self._add_to_dictionary(dictionary, 'paymentProduct882SpecificInput', self.payment_product882_specific_input)
-        self._add_to_dictionary(dictionary, 'redirectionData', self.redirection_data)
-        self._add_to_dictionary(dictionary, 'returnUrl', self.return_url)
+        if self.is_recurring is not None:
+            dictionary['isRecurring'] = self.is_recurring
+        if self.payment_product809_specific_input is not None:
+            dictionary['paymentProduct809SpecificInput'] = self.payment_product809_specific_input.to_dictionary()
+        if self.payment_product816_specific_input is not None:
+            dictionary['paymentProduct816SpecificInput'] = self.payment_product816_specific_input.to_dictionary()
+        if self.payment_product840_specific_input is not None:
+            dictionary['paymentProduct840SpecificInput'] = self.payment_product840_specific_input.to_dictionary()
+        if self.payment_product861_specific_input is not None:
+            dictionary['paymentProduct861SpecificInput'] = self.payment_product861_specific_input.to_dictionary()
+        if self.payment_product863_specific_input is not None:
+            dictionary['paymentProduct863SpecificInput'] = self.payment_product863_specific_input.to_dictionary()
+        if self.payment_product882_specific_input is not None:
+            dictionary['paymentProduct882SpecificInput'] = self.payment_product882_specific_input.to_dictionary()
+        if self.redirection_data is not None:
+            dictionary['redirectionData'] = self.redirection_data.to_dictionary()
+        if self.return_url is not None:
+            dictionary['returnUrl'] = self.return_url
         return dictionary
 
     def from_dictionary(self, dictionary):

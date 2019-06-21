@@ -38,7 +38,6 @@ class DefaultConnectionTest(unittest.TestCase):
         message.set_body(body, content)
         logger.log_response(message)
 
-
     def test_construct_without_proxy(self):
         """Tests construction of a DefaultConnection without using a proxy"""
         connection = DefaultConnection(CONNECT_TIMEOUT, SOCKET_TIMEOUT)

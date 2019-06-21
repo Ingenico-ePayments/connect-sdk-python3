@@ -81,11 +81,16 @@ class DisputeReference(DataObject):
 
     def to_dictionary(self):
         dictionary = super(DisputeReference, self).to_dictionary()
-        self._add_to_dictionary(dictionary, 'merchantOrderId', self.merchant_order_id)
-        self._add_to_dictionary(dictionary, 'merchantReference', self.merchant_reference)
-        self._add_to_dictionary(dictionary, 'paymentReference', self.payment_reference)
-        self._add_to_dictionary(dictionary, 'providerId', self.provider_id)
-        self._add_to_dictionary(dictionary, 'providerReference', self.provider_reference)
+        if self.merchant_order_id is not None:
+            dictionary['merchantOrderId'] = self.merchant_order_id
+        if self.merchant_reference is not None:
+            dictionary['merchantReference'] = self.merchant_reference
+        if self.payment_reference is not None:
+            dictionary['paymentReference'] = self.payment_reference
+        if self.provider_id is not None:
+            dictionary['providerId'] = self.provider_id
+        if self.provider_reference is not None:
+            dictionary['providerReference'] = self.provider_reference
         return dictionary
 
     def from_dictionary(self, dictionary):

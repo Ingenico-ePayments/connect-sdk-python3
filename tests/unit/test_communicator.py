@@ -40,9 +40,9 @@ class CommunicatorTest(unittest.TestCase):
         uri2 = communicator._to_absolute_uri("/v1/merchant/20000/convertamount", requestparams)
 
         self.assertEqual("https://api-sandbox.globalcollect.com/v1/merchant/20000/convertamount"
-                          "?amount=123&source=USD&target=EUR&dummy=%C3%A9%26%25%3D", uri1.geturl())
+                         "?amount=123&source=USD&target=EUR&dummy=%C3%A9%26%25%3D", uri1.geturl())
         self.assertEqual("https://api-sandbox.globalcollect.com/v1/merchant/20000/convertamount"
-                          "?amount=123&source=USD&target=EUR&dummy=%C3%A9%26%25%3D", uri2.geturl())
+                         "?amount=123&source=USD&target=EUR&dummy=%C3%A9%26%25%3D", uri2.geturl())
 
 
 if __name__ == '__main__':

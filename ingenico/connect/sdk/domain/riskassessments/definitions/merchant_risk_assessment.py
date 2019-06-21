@@ -25,7 +25,8 @@ class MerchantRiskAssessment(DataObject):
 
     def to_dictionary(self):
         dictionary = super(MerchantRiskAssessment, self).to_dictionary()
-        self._add_to_dictionary(dictionary, 'websiteUrl', self.website_url)
+        if self.website_url is not None:
+            dictionary['websiteUrl'] = self.website_url
         return dictionary
 
     def from_dictionary(self, dictionary):

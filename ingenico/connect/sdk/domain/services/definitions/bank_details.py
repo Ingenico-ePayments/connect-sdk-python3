@@ -41,8 +41,10 @@ class BankDetails(DataObject):
 
     def to_dictionary(self):
         dictionary = super(BankDetails, self).to_dictionary()
-        self._add_to_dictionary(dictionary, 'bankAccountBban', self.bank_account_bban)
-        self._add_to_dictionary(dictionary, 'bankAccountIban', self.bank_account_iban)
+        if self.bank_account_bban is not None:
+            dictionary['bankAccountBban'] = self.bank_account_bban.to_dictionary()
+        if self.bank_account_iban is not None:
+            dictionary['bankAccountIban'] = self.bank_account_iban.to_dictionary()
         return dictionary
 
     def from_dictionary(self, dictionary):

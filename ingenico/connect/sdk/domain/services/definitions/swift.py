@@ -152,16 +152,26 @@ class Swift(DataObject):
 
     def to_dictionary(self):
         dictionary = super(Swift, self).to_dictionary()
-        self._add_to_dictionary(dictionary, 'bic', self.bic)
-        self._add_to_dictionary(dictionary, 'category', self.category)
-        self._add_to_dictionary(dictionary, 'chipsUID', self.chips_uid)
-        self._add_to_dictionary(dictionary, 'extraInfo', self.extra_info)
-        self._add_to_dictionary(dictionary, 'poBoxCountry', self.po_box_country)
-        self._add_to_dictionary(dictionary, 'poBoxLocation', self.po_box_location)
-        self._add_to_dictionary(dictionary, 'poBoxNumber', self.po_box_number)
-        self._add_to_dictionary(dictionary, 'poBoxZip', self.po_box_zip)
-        self._add_to_dictionary(dictionary, 'routingBic', self.routing_bic)
-        self._add_to_dictionary(dictionary, 'services', self.services)
+        if self.bic is not None:
+            dictionary['bic'] = self.bic
+        if self.category is not None:
+            dictionary['category'] = self.category
+        if self.chips_uid is not None:
+            dictionary['chipsUID'] = self.chips_uid
+        if self.extra_info is not None:
+            dictionary['extraInfo'] = self.extra_info
+        if self.po_box_country is not None:
+            dictionary['poBoxCountry'] = self.po_box_country
+        if self.po_box_location is not None:
+            dictionary['poBoxLocation'] = self.po_box_location
+        if self.po_box_number is not None:
+            dictionary['poBoxNumber'] = self.po_box_number
+        if self.po_box_zip is not None:
+            dictionary['poBoxZip'] = self.po_box_zip
+        if self.routing_bic is not None:
+            dictionary['routingBic'] = self.routing_bic
+        if self.services is not None:
+            dictionary['services'] = self.services
         return dictionary
 
     def from_dictionary(self, dictionary):

@@ -23,7 +23,6 @@ from ingenico.connect.sdk.idempotence_exception import IdempotenceException
 from ingenico.connect.sdk.meta_data_provider import MetaDataProvider
 from ingenico.connect.sdk.not_found_exception import NotFoundException
 from ingenico.connect.sdk.reference_exception import ReferenceException
-from ingenico.connect.sdk.response import Response
 from ingenico.connect.sdk.response_exception import ResponseException
 from ingenico.connect.sdk.session import Session
 from ingenico.connect.sdk.validation_exception import ValidationException
@@ -46,7 +45,10 @@ class PaymentsClientTest(unittest.TestCase):
         request_body = create_request()
 
         def receive_post(uri, request_headers, body):
-            return Response(201, response_body, None)
+            def generate_body():
+                for start in range(0, len(response_body), 1024):
+                    yield response_body[start: start + 1024].encode('utf-8')
+            return 201, None, generate_body()
         self.mock_connection.post.side_effect = receive_post
 
         response = client.merchant("merchantId").payments().create(request_body)
@@ -61,7 +63,10 @@ class PaymentsClientTest(unittest.TestCase):
         request_body = create_request()
 
         def receive_post(uri, request_headers, body):
-            return Response(400, response_body, None)
+            def generate_response():
+                for start in range(0, len(response_body), 1024):
+                    yield response_body[start: start + 1024].encode('utf-8')
+            return 400, None, generate_response()
         self.mock_connection.post.side_effect = receive_post
 
         with self.assertRaises(DeclinedPaymentException) as context:
@@ -80,7 +85,10 @@ class PaymentsClientTest(unittest.TestCase):
         request_body = create_request()
 
         def receive_post(uri, request_headers, body):
-            return Response(400, response_body, None)
+            def generate_response():
+                for start in range(0, len(response_body), 1024):
+                    yield response_body[start: start + 1024].encode('utf-8')
+            return 400, None, generate_response()
         self.mock_connection.post.side_effect = receive_post
 
         with self.assertRaises(ValidationException) as exception:
@@ -94,7 +102,10 @@ class PaymentsClientTest(unittest.TestCase):
         request_body = create_request()
 
         def receive_post(uri, request_headers, body):
-            return Response(401, response_body, None)
+            def generate_response():
+                for start in range(0, len(response_body), 1024):
+                    yield response_body[start: start + 1024].encode('utf-8')
+            return 401, None, generate_response()
         self.mock_connection.post.side_effect = receive_post
 
         with self.assertRaises(ApiException) as exception:
@@ -110,7 +121,10 @@ class PaymentsClientTest(unittest.TestCase):
         request_body = create_request()
 
         def receive_post(uri, request_headers, body):
-            return Response(409, response_body, None)
+            def generate_response():
+                for start in range(0, len(response_body), 1024):
+                    yield response_body[start: start + 1024].encode('utf-8')
+            return 409, None, generate_response()
         self.mock_connection.post.side_effect = receive_post
 
         with self.assertRaises(ReferenceException) as exception:
@@ -127,7 +141,10 @@ class PaymentsClientTest(unittest.TestCase):
         context = CallContext("key")
 
         def receive_post(uri, request_headers, body):
-            return Response(409, response_body, None)
+            def generate_response():
+                for start in range(0, len(response_body), 1024):
+                    yield response_body[start: start + 1024].encode('utf-8')
+            return 409, None, generate_response()
         self.mock_connection.post.side_effect = receive_post
 
         with self.assertRaises(IdempotenceException) as exception:
@@ -143,7 +160,10 @@ class PaymentsClientTest(unittest.TestCase):
         request_body = create_request()
 
         def receive_post(uri, request_headers, body):
-            return Response(404, response_body, {"content-type": "text/html"})
+            def generate_response():
+                for start in range(0, len(response_body), 1024):
+                    yield response_body[start: start + 1024].encode('utf-8')
+            return 404, {"content-type": "text/html"}, generate_response()
         self.mock_connection.post.side_effect = receive_post
 
         with self.assertRaises(NotFoundException) as exception:
@@ -160,7 +180,10 @@ class PaymentsClientTest(unittest.TestCase):
         request_body = create_request()
 
         def receive_post(uri, request_headers, body):
-            return Response(405, response_body, {"content-type": "text/html"})
+            def generate_response():
+                for start in range(0, len(response_body), 1024):
+                    yield response_body[start: start + 1024].encode('utf-8')
+            return 405, {"content-type": "text/html"}, generate_response()
         self.mock_connection.post.side_effect = receive_post
 
         with self.assertRaises(CommunicationException) as exception:

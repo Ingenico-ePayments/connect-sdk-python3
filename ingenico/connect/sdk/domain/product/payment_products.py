@@ -26,7 +26,11 @@ class PaymentProducts(DataObject):
 
     def to_dictionary(self):
         dictionary = super(PaymentProducts, self).to_dictionary()
-        self._add_to_dictionary(dictionary, 'paymentProducts', self.payment_products)
+        if self.payment_products is not None:
+            dictionary['paymentProducts'] = []
+            for element in self.payment_products:
+                if element is not None:
+                    dictionary['paymentProducts'].append(element.to_dictionary())
         return dictionary
 
     def from_dictionary(self, dictionary):
@@ -35,7 +39,7 @@ class PaymentProducts(DataObject):
             if not isinstance(dictionary['paymentProducts'], list):
                 raise TypeError('value \'{}\' is not a list'.format(dictionary['paymentProducts']))
             self.payment_products = []
-            for paymentProducts_element in dictionary['paymentProducts']:
-                paymentProducts_value = PaymentProduct()
-                self.payment_products.append(paymentProducts_value.from_dictionary(paymentProducts_element))
+            for element in dictionary['paymentProducts']:
+                value = PaymentProduct()
+                self.payment_products.append(value.from_dictionary(element))
         return self

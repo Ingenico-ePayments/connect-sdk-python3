@@ -57,9 +57,12 @@ class PaymentContext(DataObject):
 
     def to_dictionary(self):
         dictionary = super(PaymentContext, self).to_dictionary()
-        self._add_to_dictionary(dictionary, 'amountOfMoney', self.amount_of_money)
-        self._add_to_dictionary(dictionary, 'countryCode', self.country_code)
-        self._add_to_dictionary(dictionary, 'isRecurring', self.is_recurring)
+        if self.amount_of_money is not None:
+            dictionary['amountOfMoney'] = self.amount_of_money.to_dictionary()
+        if self.country_code is not None:
+            dictionary['countryCode'] = self.country_code
+        if self.is_recurring is not None:
+            dictionary['isRecurring'] = self.is_recurring
         return dictionary
 
     def from_dictionary(self, dictionary):

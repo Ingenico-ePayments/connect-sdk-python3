@@ -41,8 +41,10 @@ class CreateMandateResponse(DataObject):
 
     def to_dictionary(self):
         dictionary = super(CreateMandateResponse, self).to_dictionary()
-        self._add_to_dictionary(dictionary, 'mandate', self.mandate)
-        self._add_to_dictionary(dictionary, 'merchantAction', self.merchant_action)
+        if self.mandate is not None:
+            dictionary['mandate'] = self.mandate.to_dictionary()
+        if self.merchant_action is not None:
+            dictionary['merchantAction'] = self.merchant_action.to_dictionary()
         return dictionary
 
     def from_dictionary(self, dictionary):

@@ -67,10 +67,14 @@ class MobileThreeDSecureChallengeParameters(DataObject):
 
     def to_dictionary(self):
         dictionary = super(MobileThreeDSecureChallengeParameters, self).to_dictionary()
-        self._add_to_dictionary(dictionary, 'acsReferenceNumber', self.acs_reference_number)
-        self._add_to_dictionary(dictionary, 'acsSignedContent', self.acs_signed_content)
-        self._add_to_dictionary(dictionary, 'acsTransactionId', self.acs_transaction_id)
-        self._add_to_dictionary(dictionary, 'threeDServerTransactionId', self.three_d_server_transaction_id)
+        if self.acs_reference_number is not None:
+            dictionary['acsReferenceNumber'] = self.acs_reference_number
+        if self.acs_signed_content is not None:
+            dictionary['acsSignedContent'] = self.acs_signed_content
+        if self.acs_transaction_id is not None:
+            dictionary['acsTransactionId'] = self.acs_transaction_id
+        if self.three_d_server_transaction_id is not None:
+            dictionary['threeDServerTransactionId'] = self.three_d_server_transaction_id
         return dictionary
 
     def from_dictionary(self, dictionary):

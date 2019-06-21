@@ -154,16 +154,26 @@ class GetCustomerDetailsResponse(DataObject):
 
     def to_dictionary(self):
         dictionary = super(GetCustomerDetailsResponse, self).to_dictionary()
-        self._add_to_dictionary(dictionary, 'city', self.city)
-        self._add_to_dictionary(dictionary, 'country', self.country)
-        self._add_to_dictionary(dictionary, 'emailAddress', self.email_address)
-        self._add_to_dictionary(dictionary, 'firstName', self.first_name)
-        self._add_to_dictionary(dictionary, 'fiscalNumber', self.fiscal_number)
-        self._add_to_dictionary(dictionary, 'languageCode', self.language_code)
-        self._add_to_dictionary(dictionary, 'phoneNumber', self.phone_number)
-        self._add_to_dictionary(dictionary, 'street', self.street)
-        self._add_to_dictionary(dictionary, 'surname', self.surname)
-        self._add_to_dictionary(dictionary, 'zip', self.zip)
+        if self.city is not None:
+            dictionary['city'] = self.city
+        if self.country is not None:
+            dictionary['country'] = self.country
+        if self.email_address is not None:
+            dictionary['emailAddress'] = self.email_address
+        if self.first_name is not None:
+            dictionary['firstName'] = self.first_name
+        if self.fiscal_number is not None:
+            dictionary['fiscalNumber'] = self.fiscal_number
+        if self.language_code is not None:
+            dictionary['languageCode'] = self.language_code
+        if self.phone_number is not None:
+            dictionary['phoneNumber'] = self.phone_number
+        if self.street is not None:
+            dictionary['street'] = self.street
+        if self.surname is not None:
+            dictionary['surname'] = self.surname
+        if self.zip is not None:
+            dictionary['zip'] = self.zip
         return dictionary
 
     def from_dictionary(self, dictionary):

@@ -39,8 +39,10 @@ class AmountOfMoney(DataObject):
 
     def to_dictionary(self):
         dictionary = super(AmountOfMoney, self).to_dictionary()
-        self._add_to_dictionary(dictionary, 'amount', self.amount)
-        self._add_to_dictionary(dictionary, 'currencyCode', self.currency_code)
+        if self.amount is not None:
+            dictionary['amount'] = self.amount
+        if self.currency_code is not None:
+            dictionary['currencyCode'] = self.currency_code
         return dictionary
 
     def from_dictionary(self, dictionary):

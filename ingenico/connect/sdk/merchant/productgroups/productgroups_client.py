@@ -40,7 +40,7 @@ class ProductgroupsClient(ApiResource):
                    or the service that you're trying to reach is temporary unavailable (HTTP status code 500, 502 or 503)
         :raise: ApiException if the Ingenico ePayments platform returned any other error
         """
-        uri = self._instantiate_uri("/{apiVersion}/{merchantId}/productgroups", None)
+        uri = self._instantiate_uri("/v1/{merchantId}/productgroups", None)
         try:
             return self._communicator.get(
                     uri,
@@ -76,7 +76,7 @@ class ProductgroupsClient(ApiResource):
         path_context = {
             "paymentProductGroupId": payment_product_group_id,
         }
-        uri = self._instantiate_uri("/{apiVersion}/{merchantId}/productgroups/{paymentProductGroupId}", path_context)
+        uri = self._instantiate_uri("/v1/{merchantId}/productgroups/{paymentProductGroupId}", path_context)
         try:
             return self._communicator.get(
                     uri,
@@ -112,7 +112,7 @@ class ProductgroupsClient(ApiResource):
         path_context = {
             "paymentProductGroupId": payment_product_group_id,
         }
-        uri = self._instantiate_uri("/{apiVersion}/{merchantId}/productgroups/{paymentProductGroupId}/deviceFingerprint", path_context)
+        uri = self._instantiate_uri("/v1/{merchantId}/productgroups/{paymentProductGroupId}/deviceFingerprint", path_context)
         try:
             return self._communicator.post(
                     uri,

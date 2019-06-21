@@ -83,11 +83,19 @@ class CreateHostedCheckoutResponse(DataObject):
 
     def to_dictionary(self):
         dictionary = super(CreateHostedCheckoutResponse, self).to_dictionary()
-        self._add_to_dictionary(dictionary, 'RETURNMAC', self.returnmac)
-        self._add_to_dictionary(dictionary, 'hostedCheckoutId', self.hosted_checkout_id)
-        self._add_to_dictionary(dictionary, 'invalidTokens', self.invalid_tokens)
-        self._add_to_dictionary(dictionary, 'merchantReference', self.merchant_reference)
-        self._add_to_dictionary(dictionary, 'partialRedirectUrl', self.partial_redirect_url)
+        if self.returnmac is not None:
+            dictionary['RETURNMAC'] = self.returnmac
+        if self.hosted_checkout_id is not None:
+            dictionary['hostedCheckoutId'] = self.hosted_checkout_id
+        if self.invalid_tokens is not None:
+            dictionary['invalidTokens'] = []
+            for element in self.invalid_tokens:
+                if element is not None:
+                    dictionary['invalidTokens'].append(element)
+        if self.merchant_reference is not None:
+            dictionary['merchantReference'] = self.merchant_reference
+        if self.partial_redirect_url is not None:
+            dictionary['partialRedirectUrl'] = self.partial_redirect_url
         return dictionary
 
     def from_dictionary(self, dictionary):
@@ -100,8 +108,8 @@ class CreateHostedCheckoutResponse(DataObject):
             if not isinstance(dictionary['invalidTokens'], list):
                 raise TypeError('value \'{}\' is not a list'.format(dictionary['invalidTokens']))
             self.invalid_tokens = []
-            for invalidTokens_element in dictionary['invalidTokens']:
-                self.invalid_tokens.append(invalidTokens_element)
+            for element in dictionary['invalidTokens']:
+                self.invalid_tokens.append(element)
         if 'merchantReference' in dictionary:
             self.merchant_reference = dictionary['merchantReference']
         if 'partialRedirectUrl' in dictionary:

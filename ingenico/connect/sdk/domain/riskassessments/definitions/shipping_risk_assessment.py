@@ -57,9 +57,12 @@ class ShippingRiskAssessment(DataObject):
 
     def to_dictionary(self):
         dictionary = super(ShippingRiskAssessment, self).to_dictionary()
-        self._add_to_dictionary(dictionary, 'address', self.address)
-        self._add_to_dictionary(dictionary, 'comments', self.comments)
-        self._add_to_dictionary(dictionary, 'trackingNumber', self.tracking_number)
+        if self.address is not None:
+            dictionary['address'] = self.address.to_dictionary()
+        if self.comments is not None:
+            dictionary['comments'] = self.comments
+        if self.tracking_number is not None:
+            dictionary['trackingNumber'] = self.tracking_number
         return dictionary
 
     def from_dictionary(self, dictionary):

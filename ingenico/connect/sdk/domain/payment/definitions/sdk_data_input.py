@@ -124,14 +124,22 @@ class SdkDataInput(DataObject):
 
     def to_dictionary(self):
         dictionary = super(SdkDataInput, self).to_dictionary()
-        self._add_to_dictionary(dictionary, 'deviceInfo', self.device_info)
-        self._add_to_dictionary(dictionary, 'deviceRenderOptions', self.device_render_options)
-        self._add_to_dictionary(dictionary, 'sdkAppId', self.sdk_app_id)
-        self._add_to_dictionary(dictionary, 'sdkEncryptedData', self.sdk_encrypted_data)
-        self._add_to_dictionary(dictionary, 'sdkEphemeralPublicKey', self.sdk_ephemeral_public_key)
-        self._add_to_dictionary(dictionary, 'sdkMaxTimeout', self.sdk_max_timeout)
-        self._add_to_dictionary(dictionary, 'sdkReferenceNumber', self.sdk_reference_number)
-        self._add_to_dictionary(dictionary, 'sdkTransactionId', self.sdk_transaction_id)
+        if self.device_info is not None:
+            dictionary['deviceInfo'] = self.device_info
+        if self.device_render_options is not None:
+            dictionary['deviceRenderOptions'] = self.device_render_options.to_dictionary()
+        if self.sdk_app_id is not None:
+            dictionary['sdkAppId'] = self.sdk_app_id
+        if self.sdk_encrypted_data is not None:
+            dictionary['sdkEncryptedData'] = self.sdk_encrypted_data
+        if self.sdk_ephemeral_public_key is not None:
+            dictionary['sdkEphemeralPublicKey'] = self.sdk_ephemeral_public_key
+        if self.sdk_max_timeout is not None:
+            dictionary['sdkMaxTimeout'] = self.sdk_max_timeout
+        if self.sdk_reference_number is not None:
+            dictionary['sdkReferenceNumber'] = self.sdk_reference_number
+        if self.sdk_transaction_id is not None:
+            dictionary['sdkTransactionId'] = self.sdk_transaction_id
         return dictionary
 
     def from_dictionary(self, dictionary):

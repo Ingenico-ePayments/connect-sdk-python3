@@ -4,6 +4,7 @@
 # https://epayments-api.developer-ingenico.com/s2sapi/v1/
 #
 from ingenico.connect.sdk.param_request import ParamRequest
+from ingenico.connect.sdk.request_param import RequestParam
 
 
 class ConvertAmountParams(ParamRequest):
@@ -61,7 +62,10 @@ class ConvertAmountParams(ParamRequest):
         :return: list[RequestParam]
         """
         result = []
-        self._add_parameter(result, "source", self.source)
-        self._add_parameter(result, "target", self.target)
-        self._add_parameter(result, "amount", self.amount)
+        if self.source is not None:
+            result.append(RequestParam("source", self.source))
+        if self.target is not None:
+            result.append(RequestParam("target", self.target))
+        if self.amount is not None:
+            result.append(RequestParam("amount", str(self.amount)))
         return result

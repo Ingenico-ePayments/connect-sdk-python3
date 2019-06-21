@@ -39,8 +39,10 @@ class KeyValuePair(DataObject):
 
     def to_dictionary(self):
         dictionary = super(KeyValuePair, self).to_dictionary()
-        self._add_to_dictionary(dictionary, 'key', self.key)
-        self._add_to_dictionary(dictionary, 'value', self.value)
+        if self.key is not None:
+            dictionary['key'] = self.key
+        if self.value is not None:
+            dictionary['value'] = self.value
         return dictionary
 
     def from_dictionary(self, dictionary):

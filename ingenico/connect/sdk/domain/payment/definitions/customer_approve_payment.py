@@ -29,7 +29,8 @@ class CustomerApprovePayment(DataObject):
 
     def to_dictionary(self):
         dictionary = super(CustomerApprovePayment, self).to_dictionary()
-        self._add_to_dictionary(dictionary, 'accountType', self.account_type)
+        if self.account_type is not None:
+            dictionary['accountType'] = self.account_type
         return dictionary
 
     def from_dictionary(self, dictionary):

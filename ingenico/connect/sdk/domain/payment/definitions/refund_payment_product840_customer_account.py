@@ -65,9 +65,12 @@ class RefundPaymentProduct840CustomerAccount(DataObject):
 
     def to_dictionary(self):
         dictionary = super(RefundPaymentProduct840CustomerAccount, self).to_dictionary()
-        self._add_to_dictionary(dictionary, 'customerAccountStatus', self.customer_account_status)
-        self._add_to_dictionary(dictionary, 'customerAddressStatus', self.customer_address_status)
-        self._add_to_dictionary(dictionary, 'payerId', self.payer_id)
+        if self.customer_account_status is not None:
+            dictionary['customerAccountStatus'] = self.customer_account_status
+        if self.customer_address_status is not None:
+            dictionary['customerAddressStatus'] = self.customer_address_status
+        if self.payer_id is not None:
+            dictionary['payerId'] = self.payer_id
         return dictionary
 
     def from_dictionary(self, dictionary):

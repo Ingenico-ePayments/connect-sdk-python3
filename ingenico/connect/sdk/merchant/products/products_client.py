@@ -11,7 +11,6 @@ from ingenico.connect.sdk.domain.product.get_customer_details_response import Ge
 from ingenico.connect.sdk.domain.product.payment_product_networks_response import PaymentProductNetworksResponse
 from ingenico.connect.sdk.domain.product.payment_product_response import PaymentProductResponse
 from ingenico.connect.sdk.domain.product.payment_products import PaymentProducts
-from ingenico.connect.sdk.domain.publickey.public_key import PublicKey
 
 
 class ProductsClient(ApiResource):
@@ -44,7 +43,7 @@ class ProductsClient(ApiResource):
                    or the service that you're trying to reach is temporary unavailable (HTTP status code 500, 502 or 503)
         :raise: ApiException if the Ingenico ePayments platform returned any other error
         """
-        uri = self._instantiate_uri("/{apiVersion}/{merchantId}/products", None)
+        uri = self._instantiate_uri("/v1/{merchantId}/products", None)
         try:
             return self._communicator.get(
                     uri,
@@ -80,7 +79,7 @@ class ProductsClient(ApiResource):
         path_context = {
             "paymentProductId": str(payment_product_id),
         }
-        uri = self._instantiate_uri("/{apiVersion}/{merchantId}/products/{paymentProductId}", path_context)
+        uri = self._instantiate_uri("/v1/{merchantId}/products/{paymentProductId}", path_context)
         try:
             return self._communicator.get(
                     uri,
@@ -116,7 +115,7 @@ class ProductsClient(ApiResource):
         path_context = {
             "paymentProductId": str(payment_product_id),
         }
-        uri = self._instantiate_uri("/{apiVersion}/{merchantId}/products/{paymentProductId}/directory", path_context)
+        uri = self._instantiate_uri("/v1/{merchantId}/products/{paymentProductId}/directory", path_context)
         try:
             return self._communicator.get(
                     uri,
@@ -152,7 +151,7 @@ class ProductsClient(ApiResource):
         path_context = {
             "paymentProductId": str(payment_product_id),
         }
-        uri = self._instantiate_uri("/{apiVersion}/{merchantId}/products/{paymentProductId}/customerDetails", path_context)
+        uri = self._instantiate_uri("/v1/{merchantId}/products/{paymentProductId}/customerDetails", path_context)
         try:
             return self._communicator.post(
                     uri,
@@ -189,7 +188,7 @@ class ProductsClient(ApiResource):
         path_context = {
             "paymentProductId": str(payment_product_id),
         }
-        uri = self._instantiate_uri("/{apiVersion}/{merchantId}/products/{paymentProductId}/deviceFingerprint", path_context)
+        uri = self._instantiate_uri("/v1/{merchantId}/products/{paymentProductId}/deviceFingerprint", path_context)
         try:
             return self._communicator.post(
                     uri,
@@ -226,48 +225,13 @@ class ProductsClient(ApiResource):
         path_context = {
             "paymentProductId": str(payment_product_id),
         }
-        uri = self._instantiate_uri("/{apiVersion}/{merchantId}/products/{paymentProductId}/networks", path_context)
+        uri = self._instantiate_uri("/v1/{merchantId}/products/{paymentProductId}/networks", path_context)
         try:
             return self._communicator.get(
                     uri,
                     self._client_headers,
                     query,
                     PaymentProductNetworksResponse,
-                    context)
-
-        except ResponseException as e:
-            error_type = ErrorResponse
-            error_object = self._communicator.marshaller.unmarshal(e.body, error_type)
-            raise self._create_exception(e.status_code, e.body, error_object, context)
-
-    def public_key(self, payment_product_id, context=None):
-        """
-        Resource /{merchantId}/products/{paymentProductId}/publicKey - Get payment product specific public key
-        
-        See also https://epayments-api.developer-ingenico.com/s2sapi/v1/en_US/python/products/publicKey.html
-
-        :param payment_product_id:  int
-        :param context:             :class:`ingenico.connect.sdk.call_context.CallContext`
-        :return: :class:`ingenico.connect.sdk.domain.publickey.public_key.PublicKey`
-        :raise: ValidationException if the request was not correct and couldn't be processed (HTTP status code 400)
-        :raise: AuthorizationException if the request was not allowed (HTTP status code 403)
-        :raise: ReferenceException if an object was attempted to be referenced that doesn't exist or has been removed,
-                   or there was a conflict (HTTP status code 404, 409 or 410)
-        :raise: GlobalCollectException if something went wrong at the Ingenico ePayments platform,
-                   the Ingenico ePayments platform was unable to process a message from a downstream partner/acquirer,
-                   or the service that you're trying to reach is temporary unavailable (HTTP status code 500, 502 or 503)
-        :raise: ApiException if the Ingenico ePayments platform returned any other error
-        """
-        path_context = {
-            "paymentProductId": str(payment_product_id),
-        }
-        uri = self._instantiate_uri("/{apiVersion}/{merchantId}/products/{paymentProductId}/publicKey", path_context)
-        try:
-            return self._communicator.get(
-                    uri,
-                    self._client_headers,
-                    None,
-                    PublicKey,
                     context)
 
         except ResponseException as e:

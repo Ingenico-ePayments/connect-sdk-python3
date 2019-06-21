@@ -25,7 +25,8 @@ class RefundMobileMethodSpecificOutput(RefundMethodSpecificOutput):
 
     def to_dictionary(self):
         dictionary = super(RefundMobileMethodSpecificOutput, self).to_dictionary()
-        self._add_to_dictionary(dictionary, 'network', self.network)
+        if self.network is not None:
+            dictionary['network'] = self.network
         return dictionary
 
     def from_dictionary(self, dictionary):

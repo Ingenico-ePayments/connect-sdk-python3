@@ -65,9 +65,12 @@ class OrderTypeInformation(DataObject):
 
     def to_dictionary(self):
         dictionary = super(OrderTypeInformation, self).to_dictionary()
-        self._add_to_dictionary(dictionary, 'purchaseType', self.purchase_type)
-        self._add_to_dictionary(dictionary, 'transactionType', self.transaction_type)
-        self._add_to_dictionary(dictionary, 'usageType', self.usage_type)
+        if self.purchase_type is not None:
+            dictionary['purchaseType'] = self.purchase_type
+        if self.transaction_type is not None:
+            dictionary['transactionType'] = self.transaction_type
+        if self.usage_type is not None:
+            dictionary['usageType'] = self.usage_type
         return dictionary
 
     def from_dictionary(self, dictionary):

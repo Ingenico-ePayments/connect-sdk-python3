@@ -4,6 +4,7 @@
 # https://epayments-api.developer-ingenico.com/s2sapi/v1/
 #
 from ingenico.connect.sdk.param_request import ParamRequest
+from ingenico.connect.sdk.request_param import RequestParam
 
 
 class DeleteTokenParams(ParamRequest):
@@ -34,5 +35,6 @@ class DeleteTokenParams(ParamRequest):
         :return: list[RequestParam]
         """
         result = []
-        self._add_parameter(result, "mandateCancelDate", self.mandate_cancel_date)
+        if self.mandate_cancel_date is not None:
+            result.append(RequestParam("mandateCancelDate", self.mandate_cancel_date))
         return result

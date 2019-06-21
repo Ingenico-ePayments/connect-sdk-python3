@@ -52,6 +52,6 @@ class ApiException(RuntimeError):
         string = super(ApiException, self).__str__()
         if self.__status_code > 0:
             string += "; status_code=" + str(self.__status_code)
-        if self.__response_body is not None and len(self.__response_body) > 0:
+        if self.__response_body:
             string += "; response_body='" + self.__response_body + "'"
         return str(string)

@@ -26,7 +26,11 @@ class DisputesResponse(DataObject):
 
     def to_dictionary(self):
         dictionary = super(DisputesResponse, self).to_dictionary()
-        self._add_to_dictionary(dictionary, 'disputes', self.disputes)
+        if self.disputes is not None:
+            dictionary['disputes'] = []
+            for element in self.disputes:
+                if element is not None:
+                    dictionary['disputes'].append(element.to_dictionary())
         return dictionary
 
     def from_dictionary(self, dictionary):
@@ -35,7 +39,7 @@ class DisputesResponse(DataObject):
             if not isinstance(dictionary['disputes'], list):
                 raise TypeError('value \'{}\' is not a list'.format(dictionary['disputes']))
             self.disputes = []
-            for disputes_element in dictionary['disputes']:
-                disputes_value = Dispute()
-                self.disputes.append(disputes_value.from_dictionary(disputes_element))
+            for element in dictionary['disputes']:
+                value = Dispute()
+                self.disputes.append(value.from_dictionary(element))
         return self

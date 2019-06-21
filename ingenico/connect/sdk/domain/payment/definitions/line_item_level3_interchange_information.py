@@ -126,14 +126,22 @@ class LineItemLevel3InterchangeInformation(DataObject):
 
     def to_dictionary(self):
         dictionary = super(LineItemLevel3InterchangeInformation, self).to_dictionary()
-        self._add_to_dictionary(dictionary, 'discountAmount', self.discount_amount)
-        self._add_to_dictionary(dictionary, 'lineAmountTotal', self.line_amount_total)
-        self._add_to_dictionary(dictionary, 'productCode', self.product_code)
-        self._add_to_dictionary(dictionary, 'productPrice', self.product_price)
-        self._add_to_dictionary(dictionary, 'productType', self.product_type)
-        self._add_to_dictionary(dictionary, 'quantity', self.quantity)
-        self._add_to_dictionary(dictionary, 'taxAmount', self.tax_amount)
-        self._add_to_dictionary(dictionary, 'unit', self.unit)
+        if self.discount_amount is not None:
+            dictionary['discountAmount'] = self.discount_amount
+        if self.line_amount_total is not None:
+            dictionary['lineAmountTotal'] = self.line_amount_total
+        if self.product_code is not None:
+            dictionary['productCode'] = self.product_code
+        if self.product_price is not None:
+            dictionary['productPrice'] = self.product_price
+        if self.product_type is not None:
+            dictionary['productType'] = self.product_type
+        if self.quantity is not None:
+            dictionary['quantity'] = self.quantity
+        if self.tax_amount is not None:
+            dictionary['taxAmount'] = self.tax_amount
+        if self.unit is not None:
+            dictionary['unit'] = self.unit
         return dictionary
 
     def from_dictionary(self, dictionary):

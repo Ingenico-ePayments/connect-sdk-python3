@@ -53,9 +53,12 @@ class CreateHostedMandateManagementResponse(DataObject):
 
     def to_dictionary(self):
         dictionary = super(CreateHostedMandateManagementResponse, self).to_dictionary()
-        self._add_to_dictionary(dictionary, 'RETURNMAC', self.returnmac)
-        self._add_to_dictionary(dictionary, 'hostedMandateManagementId', self.hosted_mandate_management_id)
-        self._add_to_dictionary(dictionary, 'partialRedirectUrl', self.partial_redirect_url)
+        if self.returnmac is not None:
+            dictionary['RETURNMAC'] = self.returnmac
+        if self.hosted_mandate_management_id is not None:
+            dictionary['hostedMandateManagementId'] = self.hosted_mandate_management_id
+        if self.partial_redirect_url is not None:
+            dictionary['partialRedirectUrl'] = self.partial_redirect_url
         return dictionary
 
     def from_dictionary(self, dictionary):

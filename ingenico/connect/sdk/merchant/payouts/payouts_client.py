@@ -41,7 +41,7 @@ class PayoutsClient(ApiResource):
                    or the service that you're trying to reach is temporary unavailable (HTTP status code 500, 502 or 503)
         :raise: ApiException if the Ingenico ePayments platform returned any other error
         """
-        uri = self._instantiate_uri("/{apiVersion}/{merchantId}/payouts", None)
+        uri = self._instantiate_uri("/v1/{merchantId}/payouts", None)
         try:
             return self._communicator.post(
                     uri,
@@ -74,7 +74,7 @@ class PayoutsClient(ApiResource):
                    or the service that you're trying to reach is temporary unavailable (HTTP status code 500, 502 or 503)
         :raise: ApiException if the Ingenico ePayments platform returned any other error
         """
-        uri = self._instantiate_uri("/{apiVersion}/{merchantId}/payouts", None)
+        uri = self._instantiate_uri("/v1/{merchantId}/payouts", None)
         try:
             return self._communicator.get(
                     uri,
@@ -109,7 +109,7 @@ class PayoutsClient(ApiResource):
         path_context = {
             "payoutId": payout_id,
         }
-        uri = self._instantiate_uri("/{apiVersion}/{merchantId}/payouts/{payoutId}", path_context)
+        uri = self._instantiate_uri("/v1/{merchantId}/payouts/{payoutId}", path_context)
         try:
             return self._communicator.get(
                     uri,
@@ -145,7 +145,7 @@ class PayoutsClient(ApiResource):
         path_context = {
             "payoutId": payout_id,
         }
-        uri = self._instantiate_uri("/{apiVersion}/{merchantId}/payouts/{payoutId}/approve", path_context)
+        uri = self._instantiate_uri("/v1/{merchantId}/payouts/{payoutId}/approve", path_context)
         try:
             return self._communicator.post(
                     uri,
@@ -181,7 +181,7 @@ class PayoutsClient(ApiResource):
         path_context = {
             "payoutId": payout_id,
         }
-        uri = self._instantiate_uri("/{apiVersion}/{merchantId}/payouts/{payoutId}/cancel", path_context)
+        uri = self._instantiate_uri("/v1/{merchantId}/payouts/{payoutId}/cancel", path_context)
         try:
             return self._communicator.post(
                     uri,
@@ -217,7 +217,7 @@ class PayoutsClient(ApiResource):
         path_context = {
             "payoutId": payout_id,
         }
-        uri = self._instantiate_uri("/{apiVersion}/{merchantId}/payouts/{payoutId}/cancelapproval", path_context)
+        uri = self._instantiate_uri("/v1/{merchantId}/payouts/{payoutId}/cancelapproval", path_context)
         try:
             return self._communicator.post(
                     uri,

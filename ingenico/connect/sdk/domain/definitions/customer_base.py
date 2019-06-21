@@ -59,9 +59,12 @@ class CustomerBase(DataObject):
 
     def to_dictionary(self):
         dictionary = super(CustomerBase, self).to_dictionary()
-        self._add_to_dictionary(dictionary, 'companyInformation', self.company_information)
-        self._add_to_dictionary(dictionary, 'merchantCustomerId', self.merchant_customer_id)
-        self._add_to_dictionary(dictionary, 'vatNumber', self.vat_number)
+        if self.company_information is not None:
+            dictionary['companyInformation'] = self.company_information.to_dictionary()
+        if self.merchant_customer_id is not None:
+            dictionary['merchantCustomerId'] = self.merchant_customer_id
+        if self.vat_number is not None:
+            dictionary['vatNumber'] = self.vat_number
         return dictionary
 
     def from_dictionary(self, dictionary):

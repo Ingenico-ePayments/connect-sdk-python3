@@ -26,7 +26,8 @@ class CancelApprovalPaymentResponse(DataObject):
 
     def to_dictionary(self):
         dictionary = super(CancelApprovalPaymentResponse, self).to_dictionary()
-        self._add_to_dictionary(dictionary, 'payment', self.payment)
+        if self.payment is not None:
+            dictionary['payment'] = self.payment.to_dictionary()
         return dictionary
 
     def from_dictionary(self, dictionary):

@@ -56,9 +56,12 @@ class CreatePaymentResult(DataObject):
 
     def to_dictionary(self):
         dictionary = super(CreatePaymentResult, self).to_dictionary()
-        self._add_to_dictionary(dictionary, 'creationOutput', self.creation_output)
-        self._add_to_dictionary(dictionary, 'merchantAction', self.merchant_action)
-        self._add_to_dictionary(dictionary, 'payment', self.payment)
+        if self.creation_output is not None:
+            dictionary['creationOutput'] = self.creation_output.to_dictionary()
+        if self.merchant_action is not None:
+            dictionary['merchantAction'] = self.merchant_action.to_dictionary()
+        if self.payment is not None:
+            dictionary['payment'] = self.payment.to_dictionary()
         return dictionary
 
     def from_dictionary(self, dictionary):

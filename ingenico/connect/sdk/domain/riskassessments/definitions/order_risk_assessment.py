@@ -71,10 +71,14 @@ class OrderRiskAssessment(DataObject):
 
     def to_dictionary(self):
         dictionary = super(OrderRiskAssessment, self).to_dictionary()
-        self._add_to_dictionary(dictionary, 'additionalInput', self.additional_input)
-        self._add_to_dictionary(dictionary, 'amountOfMoney', self.amount_of_money)
-        self._add_to_dictionary(dictionary, 'customer', self.customer)
-        self._add_to_dictionary(dictionary, 'shipping', self.shipping)
+        if self.additional_input is not None:
+            dictionary['additionalInput'] = self.additional_input.to_dictionary()
+        if self.amount_of_money is not None:
+            dictionary['amountOfMoney'] = self.amount_of_money.to_dictionary()
+        if self.customer is not None:
+            dictionary['customer'] = self.customer.to_dictionary()
+        if self.shipping is not None:
+            dictionary['shipping'] = self.shipping.to_dictionary()
         return dictionary
 
     def from_dictionary(self, dictionary):

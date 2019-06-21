@@ -39,8 +39,10 @@ class PaymentProductFieldTooltip(DataObject):
 
     def to_dictionary(self):
         dictionary = super(PaymentProductFieldTooltip, self).to_dictionary()
-        self._add_to_dictionary(dictionary, 'image', self.image)
-        self._add_to_dictionary(dictionary, 'label', self.label)
+        if self.image is not None:
+            dictionary['image'] = self.image
+        if self.label is not None:
+            dictionary['label'] = self.label
         return dictionary
 
     def from_dictionary(self, dictionary):

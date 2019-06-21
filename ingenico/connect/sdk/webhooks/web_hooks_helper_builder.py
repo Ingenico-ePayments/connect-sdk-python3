@@ -1,4 +1,4 @@
-from ingenico.connect.sdk.webhooks.web_hooks_helper import WebhooksHelper
+from .web_hooks_helper import WebhooksHelper
 
 
 class WebhooksHelperBuilder:

@@ -55,9 +55,12 @@ class TokenCardData(DataObject):
 
     def to_dictionary(self):
         dictionary = super(TokenCardData, self).to_dictionary()
-        self._add_to_dictionary(dictionary, 'cardWithoutCvv', self.card_without_cvv)
-        self._add_to_dictionary(dictionary, 'firstTransactionDate', self.first_transaction_date)
-        self._add_to_dictionary(dictionary, 'providerReference', self.provider_reference)
+        if self.card_without_cvv is not None:
+            dictionary['cardWithoutCvv'] = self.card_without_cvv.to_dictionary()
+        if self.first_transaction_date is not None:
+            dictionary['firstTransactionDate'] = self.first_transaction_date
+        if self.provider_reference is not None:
+            dictionary['providerReference'] = self.provider_reference
         return dictionary
 
     def from_dictionary(self, dictionary):

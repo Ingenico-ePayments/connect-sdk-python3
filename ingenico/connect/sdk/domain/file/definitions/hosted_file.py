@@ -70,10 +70,14 @@ class HostedFile(DataObject):
 
     def to_dictionary(self):
         dictionary = super(HostedFile, self).to_dictionary()
-        self._add_to_dictionary(dictionary, 'fileName', self.file_name)
-        self._add_to_dictionary(dictionary, 'fileSize', self.file_size)
-        self._add_to_dictionary(dictionary, 'fileType', self.file_type)
-        self._add_to_dictionary(dictionary, 'id', self.id)
+        if self.file_name is not None:
+            dictionary['fileName'] = self.file_name
+        if self.file_size is not None:
+            dictionary['fileSize'] = self.file_size
+        if self.file_type is not None:
+            dictionary['fileType'] = self.file_type
+        if self.id is not None:
+            dictionary['id'] = self.id
         return dictionary
 
     def from_dictionary(self, dictionary):

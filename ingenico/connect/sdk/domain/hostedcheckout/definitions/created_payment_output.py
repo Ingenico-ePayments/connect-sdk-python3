@@ -141,12 +141,18 @@ class CreatedPaymentOutput(DataObject):
 
     def to_dictionary(self):
         dictionary = super(CreatedPaymentOutput, self).to_dictionary()
-        self._add_to_dictionary(dictionary, 'displayedData', self.displayed_data)
-        self._add_to_dictionary(dictionary, 'payment', self.payment)
-        self._add_to_dictionary(dictionary, 'paymentCreationReferences', self.payment_creation_references)
-        self._add_to_dictionary(dictionary, 'paymentStatusCategory', self.payment_status_category)
-        self._add_to_dictionary(dictionary, 'tokenizationSucceeded', self.tokenization_succeeded)
-        self._add_to_dictionary(dictionary, 'tokens', self.tokens)
+        if self.displayed_data is not None:
+            dictionary['displayedData'] = self.displayed_data.to_dictionary()
+        if self.payment is not None:
+            dictionary['payment'] = self.payment.to_dictionary()
+        if self.payment_creation_references is not None:
+            dictionary['paymentCreationReferences'] = self.payment_creation_references.to_dictionary()
+        if self.payment_status_category is not None:
+            dictionary['paymentStatusCategory'] = self.payment_status_category
+        if self.tokenization_succeeded is not None:
+            dictionary['tokenizationSucceeded'] = self.tokenization_succeeded
+        if self.tokens is not None:
+            dictionary['tokens'] = self.tokens
         return dictionary
 
     def from_dictionary(self, dictionary):

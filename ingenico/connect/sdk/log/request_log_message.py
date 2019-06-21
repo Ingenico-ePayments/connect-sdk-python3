@@ -15,13 +15,13 @@ class RequestLogMessage(LogMessage):
     def get_message(self):
         string = "Outgoing request (requestId='" + \
                  str(self.request_id) + "'):\n" + \
-                 "  method:        " + \
-                 self.empty_if_none("'" + self.method + "'") + "\n  uri:          '" + \
-                 self.empty_if_none("'" + self.uri + "'") + "'\n  headers:      " + \
+                 "  method:       " + \
+                 self.empty_if_none("'" + self.method + "'") + "\n  uri:          " + \
+                 self.empty_if_none("'" + self.uri + "'") + "\n  headers:      " + \
                  self.headers
         body = self.body
         if body is None:
             return string
         else:
-            return string + "\n  content-type:  '" + self.empty_if_none(self.content_type) + "'" + \
+            return string + "\n  content-type: '" + self.empty_if_none(self.content_type) + "'" + \
                    "\n  body:         '" + body + "'"

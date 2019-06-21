@@ -76,10 +76,17 @@ class GetIINDetailsResponse(DataObject):
 
     def to_dictionary(self):
         dictionary = super(GetIINDetailsResponse, self).to_dictionary()
-        self._add_to_dictionary(dictionary, 'coBrands', self.co_brands)
-        self._add_to_dictionary(dictionary, 'countryCode', self.country_code)
-        self._add_to_dictionary(dictionary, 'isAllowedInContext', self.is_allowed_in_context)
-        self._add_to_dictionary(dictionary, 'paymentProductId', self.payment_product_id)
+        if self.co_brands is not None:
+            dictionary['coBrands'] = []
+            for element in self.co_brands:
+                if element is not None:
+                    dictionary['coBrands'].append(element.to_dictionary())
+        if self.country_code is not None:
+            dictionary['countryCode'] = self.country_code
+        if self.is_allowed_in_context is not None:
+            dictionary['isAllowedInContext'] = self.is_allowed_in_context
+        if self.payment_product_id is not None:
+            dictionary['paymentProductId'] = self.payment_product_id
         return dictionary
 
     def from_dictionary(self, dictionary):
@@ -88,9 +95,9 @@ class GetIINDetailsResponse(DataObject):
             if not isinstance(dictionary['coBrands'], list):
                 raise TypeError('value \'{}\' is not a list'.format(dictionary['coBrands']))
             self.co_brands = []
-            for coBrands_element in dictionary['coBrands']:
-                coBrands_value = IINDetail()
-                self.co_brands.append(coBrands_value.from_dictionary(coBrands_element))
+            for element in dictionary['coBrands']:
+                value = IINDetail()
+                self.co_brands.append(value.from_dictionary(element))
         if 'countryCode' in dictionary:
             self.country_code = dictionary['countryCode']
         if 'isAllowedInContext' in dictionary:

@@ -47,8 +47,10 @@ class GetHostedMandateManagementResponse(DataObject):
 
     def to_dictionary(self):
         dictionary = super(GetHostedMandateManagementResponse, self).to_dictionary()
-        self._add_to_dictionary(dictionary, 'mandate', self.mandate)
-        self._add_to_dictionary(dictionary, 'status', self.status)
+        if self.mandate is not None:
+            dictionary['mandate'] = self.mandate.to_dictionary()
+        if self.status is not None:
+            dictionary['status'] = self.status
         return dictionary
 
     def from_dictionary(self, dictionary):

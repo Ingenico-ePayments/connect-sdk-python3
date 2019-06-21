@@ -4,6 +4,7 @@
 # https://epayments-api.developer-ingenico.com/s2sapi/v1/
 #
 from ingenico.connect.sdk.param_request import ParamRequest
+from ingenico.connect.sdk.request_param import RequestParam
 
 
 class PrivacypolicyParams(ParamRequest):
@@ -47,6 +48,8 @@ class PrivacypolicyParams(ParamRequest):
         :return: list[RequestParam]
         """
         result = []
-        self._add_parameter(result, "locale", self.locale)
-        self._add_parameter(result, "paymentProductId", self.payment_product_id)
+        if self.locale is not None:
+            result.append(RequestParam("locale", self.locale))
+        if self.payment_product_id is not None:
+            result.append(RequestParam("paymentProductId", str(self.payment_product_id)))
         return result

@@ -36,9 +36,8 @@ class DefaultAuthenticatorTest(unittest.TestCase):
                        "\"sdkIdentifier\":\"1.0\"}\n" \
                        "/v1/9991/services%20bla/convert/amount?aap=noot&mies=geen%20noot\n"
 
-        data_to_sign = authenticator.to_data_to_sign("POST",
-            urllib.parse.urlparse("http://localhost:8080/v1/9991/services%20bla/convert/amount?aap=noot&mies=geen%20noot"),
-            http_headers)
+        url = urllib.parse.urlparse("http://localhost:8080/v1/9991/services%20bla/convert/amount?aap=noot&mies=geen%20noot")
+        data_to_sign = authenticator.to_data_to_sign("POST", url, http_headers)
 
         actual_start = data_to_sign[:22]
         actual_end = data_to_sign[52:]

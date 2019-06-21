@@ -27,7 +27,7 @@ class Client(ApiResource, LoggingCapable):
         :param communicator:      :class:`ingenico.connect.sdk.communicator.Communicator`
         :param client_meta_info:  str
         """
-        super(Client, self).__init__(communicator, {"apiVersion": Client.API_VERSION()}, client_meta_info)
+        super(Client, self).__init__(communicator, None, client_meta_info)
 
     def with_client_meta_info(self, client_meta_info):
         """

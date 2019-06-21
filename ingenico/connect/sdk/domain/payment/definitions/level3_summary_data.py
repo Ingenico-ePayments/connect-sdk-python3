@@ -62,9 +62,12 @@ class Level3SummaryData(DataObject):
 
     def to_dictionary(self):
         dictionary = super(Level3SummaryData, self).to_dictionary()
-        self._add_to_dictionary(dictionary, 'discountAmount', self.discount_amount)
-        self._add_to_dictionary(dictionary, 'dutyAmount', self.duty_amount)
-        self._add_to_dictionary(dictionary, 'shippingAmount', self.shipping_amount)
+        if self.discount_amount is not None:
+            dictionary['discountAmount'] = self.discount_amount
+        if self.duty_amount is not None:
+            dictionary['dutyAmount'] = self.duty_amount
+        if self.shipping_amount is not None:
+            dictionary['shippingAmount'] = self.shipping_amount
         return dictionary
 
     def from_dictionary(self, dictionary):

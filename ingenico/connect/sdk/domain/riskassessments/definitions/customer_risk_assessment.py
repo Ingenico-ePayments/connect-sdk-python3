@@ -155,15 +155,24 @@ class CustomerRiskAssessment(DataObject):
 
     def to_dictionary(self):
         dictionary = super(CustomerRiskAssessment, self).to_dictionary()
-        self._add_to_dictionary(dictionary, 'account', self.account)
-        self._add_to_dictionary(dictionary, 'accountType', self.account_type)
-        self._add_to_dictionary(dictionary, 'billingAddress', self.billing_address)
-        self._add_to_dictionary(dictionary, 'contactDetails', self.contact_details)
-        self._add_to_dictionary(dictionary, 'device', self.device)
-        self._add_to_dictionary(dictionary, 'isPreviousCustomer', self.is_previous_customer)
-        self._add_to_dictionary(dictionary, 'locale', self.locale)
-        self._add_to_dictionary(dictionary, 'personalInformation', self.personal_information)
-        self._add_to_dictionary(dictionary, 'shippingAddress', self.shipping_address)
+        if self.account is not None:
+            dictionary['account'] = self.account.to_dictionary()
+        if self.account_type is not None:
+            dictionary['accountType'] = self.account_type
+        if self.billing_address is not None:
+            dictionary['billingAddress'] = self.billing_address.to_dictionary()
+        if self.contact_details is not None:
+            dictionary['contactDetails'] = self.contact_details.to_dictionary()
+        if self.device is not None:
+            dictionary['device'] = self.device.to_dictionary()
+        if self.is_previous_customer is not None:
+            dictionary['isPreviousCustomer'] = self.is_previous_customer
+        if self.locale is not None:
+            dictionary['locale'] = self.locale
+        if self.personal_information is not None:
+            dictionary['personalInformation'] = self.personal_information.to_dictionary()
+        if self.shipping_address is not None:
+            dictionary['shippingAddress'] = self.shipping_address.to_dictionary()
         return dictionary
 
     def from_dictionary(self, dictionary):

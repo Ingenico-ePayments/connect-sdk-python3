@@ -39,8 +39,10 @@ class MobilePaymentProduct320SpecificInputHostedCheckout(DataObject):
 
     def to_dictionary(self):
         dictionary = super(MobilePaymentProduct320SpecificInputHostedCheckout, self).to_dictionary()
-        self._add_to_dictionary(dictionary, 'merchantName', self.merchant_name)
-        self._add_to_dictionary(dictionary, 'merchantOrigin', self.merchant_origin)
+        if self.merchant_name is not None:
+            dictionary['merchantName'] = self.merchant_name
+        if self.merchant_origin is not None:
+            dictionary['merchantOrigin'] = self.merchant_origin
         return dictionary
 
     def from_dictionary(self, dictionary):

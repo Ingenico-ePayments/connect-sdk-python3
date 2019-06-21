@@ -70,10 +70,14 @@ class ApprovePaymentRequest(DataObject):
 
     def to_dictionary(self):
         dictionary = super(ApprovePaymentRequest, self).to_dictionary()
-        self._add_to_dictionary(dictionary, 'amount', self.amount)
-        self._add_to_dictionary(dictionary, 'directDebitPaymentMethodSpecificInput', self.direct_debit_payment_method_specific_input)
-        self._add_to_dictionary(dictionary, 'order', self.order)
-        self._add_to_dictionary(dictionary, 'sepaDirectDebitPaymentMethodSpecificInput', self.sepa_direct_debit_payment_method_specific_input)
+        if self.amount is not None:
+            dictionary['amount'] = self.amount
+        if self.direct_debit_payment_method_specific_input is not None:
+            dictionary['directDebitPaymentMethodSpecificInput'] = self.direct_debit_payment_method_specific_input.to_dictionary()
+        if self.order is not None:
+            dictionary['order'] = self.order.to_dictionary()
+        if self.sepa_direct_debit_payment_method_specific_input is not None:
+            dictionary['sepaDirectDebitPaymentMethodSpecificInput'] = self.sepa_direct_debit_payment_method_specific_input.to_dictionary()
         return dictionary
 
     def from_dictionary(self, dictionary):

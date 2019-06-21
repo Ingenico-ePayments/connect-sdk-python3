@@ -55,9 +55,12 @@ class MandateApproval(DataObject):
 
     def to_dictionary(self):
         dictionary = super(MandateApproval, self).to_dictionary()
-        self._add_to_dictionary(dictionary, 'mandateSignatureDate', self.mandate_signature_date)
-        self._add_to_dictionary(dictionary, 'mandateSignaturePlace', self.mandate_signature_place)
-        self._add_to_dictionary(dictionary, 'mandateSigned', self.mandate_signed)
+        if self.mandate_signature_date is not None:
+            dictionary['mandateSignatureDate'] = self.mandate_signature_date
+        if self.mandate_signature_place is not None:
+            dictionary['mandateSignaturePlace'] = self.mandate_signature_place
+        if self.mandate_signed is not None:
+            dictionary['mandateSigned'] = self.mandate_signed
         return dictionary
 
     def from_dictionary(self, dictionary):

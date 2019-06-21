@@ -39,8 +39,13 @@ class PaymentProduct320SpecificData(DataObject):
 
     def to_dictionary(self):
         dictionary = super(PaymentProduct320SpecificData, self).to_dictionary()
-        self._add_to_dictionary(dictionary, 'gateway', self.gateway)
-        self._add_to_dictionary(dictionary, 'networks', self.networks)
+        if self.gateway is not None:
+            dictionary['gateway'] = self.gateway
+        if self.networks is not None:
+            dictionary['networks'] = []
+            for element in self.networks:
+                if element is not None:
+                    dictionary['networks'].append(element)
         return dictionary
 
     def from_dictionary(self, dictionary):
@@ -51,6 +56,6 @@ class PaymentProduct320SpecificData(DataObject):
             if not isinstance(dictionary['networks'], list):
                 raise TypeError('value \'{}\' is not a list'.format(dictionary['networks']))
             self.networks = []
-            for networks_element in dictionary['networks']:
-                self.networks.append(networks_element)
+            for element in dictionary['networks']:
+                self.networks.append(element)
         return self

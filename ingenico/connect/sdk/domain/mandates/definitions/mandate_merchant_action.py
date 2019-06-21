@@ -42,8 +42,10 @@ class MandateMerchantAction(DataObject):
 
     def to_dictionary(self):
         dictionary = super(MandateMerchantAction, self).to_dictionary()
-        self._add_to_dictionary(dictionary, 'actionType', self.action_type)
-        self._add_to_dictionary(dictionary, 'redirectData', self.redirect_data)
+        if self.action_type is not None:
+            dictionary['actionType'] = self.action_type
+        if self.redirect_data is not None:
+            dictionary['redirectData'] = self.redirect_data.to_dictionary()
         return dictionary
 
     def from_dictionary(self, dictionary):

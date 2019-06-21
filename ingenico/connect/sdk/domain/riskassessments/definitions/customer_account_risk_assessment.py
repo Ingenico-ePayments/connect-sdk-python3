@@ -48,8 +48,10 @@ class CustomerAccountRiskAssessment(DataObject):
 
     def to_dictionary(self):
         dictionary = super(CustomerAccountRiskAssessment, self).to_dictionary()
-        self._add_to_dictionary(dictionary, 'hasForgottenPassword', self.has_forgotten_password)
-        self._add_to_dictionary(dictionary, 'hasPassword', self.has_password)
+        if self.has_forgotten_password is not None:
+            dictionary['hasForgottenPassword'] = self.has_forgotten_password
+        if self.has_password is not None:
+            dictionary['hasPassword'] = self.has_password
         return dictionary
 
     def from_dictionary(self, dictionary):

@@ -43,8 +43,10 @@ class SepaDirectDebitPaymentProduct771SpecificInput(AbstractSepaDirectDebitPayme
 
     def to_dictionary(self):
         dictionary = super(SepaDirectDebitPaymentProduct771SpecificInput, self).to_dictionary()
-        self._add_to_dictionary(dictionary, 'existingUniqueMandateReference', self.existing_unique_mandate_reference)
-        self._add_to_dictionary(dictionary, 'mandate', self.mandate)
+        if self.existing_unique_mandate_reference is not None:
+            dictionary['existingUniqueMandateReference'] = self.existing_unique_mandate_reference
+        if self.mandate is not None:
+            dictionary['mandate'] = self.mandate.to_dictionary()
         return dictionary
 
     def from_dictionary(self, dictionary):

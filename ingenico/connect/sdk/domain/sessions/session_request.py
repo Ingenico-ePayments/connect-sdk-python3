@@ -40,8 +40,13 @@ class SessionRequest(DataObject):
 
     def to_dictionary(self):
         dictionary = super(SessionRequest, self).to_dictionary()
-        self._add_to_dictionary(dictionary, 'paymentProductFilters', self.payment_product_filters)
-        self._add_to_dictionary(dictionary, 'tokens', self.tokens)
+        if self.payment_product_filters is not None:
+            dictionary['paymentProductFilters'] = self.payment_product_filters.to_dictionary()
+        if self.tokens is not None:
+            dictionary['tokens'] = []
+            for element in self.tokens:
+                if element is not None:
+                    dictionary['tokens'].append(element)
         return dictionary
 
     def from_dictionary(self, dictionary):
@@ -55,6 +60,6 @@ class SessionRequest(DataObject):
             if not isinstance(dictionary['tokens'], list):
                 raise TypeError('value \'{}\' is not a list'.format(dictionary['tokens']))
             self.tokens = []
-            for tokens_element in dictionary['tokens']:
-                self.tokens.append(tokens_element)
+            for element in dictionary['tokens']:
+                self.tokens.append(element)
         return self

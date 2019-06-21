@@ -25,7 +25,8 @@ class ApproveRefundRequest(DataObject):
 
     def to_dictionary(self):
         dictionary = super(ApproveRefundRequest, self).to_dictionary()
-        self._add_to_dictionary(dictionary, 'amount', self.amount)
+        if self.amount is not None:
+            dictionary['amount'] = self.amount
         return dictionary
 
     def from_dictionary(self, dictionary):

@@ -2,6 +2,7 @@
 .settings/
 .project
 .pydevproject
+.vscode/
 main_test.py
 
 

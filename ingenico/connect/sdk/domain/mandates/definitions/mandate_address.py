@@ -84,11 +84,16 @@ class MandateAddress(DataObject):
 
     def to_dictionary(self):
         dictionary = super(MandateAddress, self).to_dictionary()
-        self._add_to_dictionary(dictionary, 'city', self.city)
-        self._add_to_dictionary(dictionary, 'countryCode', self.country_code)
-        self._add_to_dictionary(dictionary, 'houseNumber', self.house_number)
-        self._add_to_dictionary(dictionary, 'street', self.street)
-        self._add_to_dictionary(dictionary, 'zip', self.zip)
+        if self.city is not None:
+            dictionary['city'] = self.city
+        if self.country_code is not None:
+            dictionary['countryCode'] = self.country_code
+        if self.house_number is not None:
+            dictionary['houseNumber'] = self.house_number
+        if self.street is not None:
+            dictionary['street'] = self.street
+        if self.zip is not None:
+            dictionary['zip'] = self.zip
         return dictionary
 
     def from_dictionary(self, dictionary):

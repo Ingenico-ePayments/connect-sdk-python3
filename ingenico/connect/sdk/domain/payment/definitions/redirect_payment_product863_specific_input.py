@@ -45,8 +45,10 @@ class RedirectPaymentProduct863SpecificInput(DataObject):
 
     def to_dictionary(self):
         dictionary = super(RedirectPaymentProduct863SpecificInput, self).to_dictionary()
-        self._add_to_dictionary(dictionary, 'integrationType', self.integration_type)
-        self._add_to_dictionary(dictionary, 'openId', self.open_id)
+        if self.integration_type is not None:
+            dictionary['integrationType'] = self.integration_type
+        if self.open_id is not None:
+            dictionary['openId'] = self.open_id
         return dictionary
 
     def from_dictionary(self, dictionary):

@@ -25,7 +25,8 @@ class ConvertAmount(DataObject):
 
     def to_dictionary(self):
         dictionary = super(ConvertAmount, self).to_dictionary()
-        self._add_to_dictionary(dictionary, 'convertedAmount', self.converted_amount)
+        if self.converted_amount is not None:
+            dictionary['convertedAmount'] = self.converted_amount
         return dictionary
 
     def from_dictionary(self, dictionary):

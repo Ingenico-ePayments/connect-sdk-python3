@@ -45,8 +45,10 @@ class RedirectPaymentProduct809SpecificInput(DataObject):
 
     def to_dictionary(self):
         dictionary = super(RedirectPaymentProduct809SpecificInput, self).to_dictionary()
-        self._add_to_dictionary(dictionary, 'expirationPeriod', self.expiration_period)
-        self._add_to_dictionary(dictionary, 'issuerId', self.issuer_id)
+        if self.expiration_period is not None:
+            dictionary['expirationPeriod'] = self.expiration_period
+        if self.issuer_id is not None:
+            dictionary['issuerId'] = self.issuer_id
         return dictionary
 
     def from_dictionary(self, dictionary):

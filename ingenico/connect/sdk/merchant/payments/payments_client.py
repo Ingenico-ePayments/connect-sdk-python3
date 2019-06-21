@@ -55,7 +55,7 @@ class PaymentsClient(ApiResource):
                    or the service that you're trying to reach is temporary unavailable (HTTP status code 500, 502 or 503)
         :raise: ApiException if the Ingenico ePayments platform returned any other error
         """
-        uri = self._instantiate_uri("/{apiVersion}/{merchantId}/payments", None)
+        uri = self._instantiate_uri("/v1/{merchantId}/payments", None)
         try:
             return self._communicator.post(
                     uri,
@@ -88,7 +88,7 @@ class PaymentsClient(ApiResource):
                    or the service that you're trying to reach is temporary unavailable (HTTP status code 500, 502 or 503)
         :raise: ApiException if the Ingenico ePayments platform returned any other error
         """
-        uri = self._instantiate_uri("/{apiVersion}/{merchantId}/payments", None)
+        uri = self._instantiate_uri("/v1/{merchantId}/payments", None)
         try:
             return self._communicator.get(
                     uri,
@@ -123,7 +123,7 @@ class PaymentsClient(ApiResource):
         path_context = {
             "paymentId": payment_id,
         }
-        uri = self._instantiate_uri("/{apiVersion}/{merchantId}/payments/{paymentId}", path_context)
+        uri = self._instantiate_uri("/v1/{merchantId}/payments/{paymentId}", path_context)
         try:
             return self._communicator.get(
                     uri,
@@ -159,7 +159,7 @@ class PaymentsClient(ApiResource):
         path_context = {
             "paymentId": payment_id,
         }
-        uri = self._instantiate_uri("/{apiVersion}/{merchantId}/payments/{paymentId}/complete", path_context)
+        uri = self._instantiate_uri("/v1/{merchantId}/payments/{paymentId}/complete", path_context)
         try:
             return self._communicator.post(
                     uri,
@@ -195,7 +195,7 @@ class PaymentsClient(ApiResource):
         path_context = {
             "paymentId": payment_id,
         }
-        uri = self._instantiate_uri("/{apiVersion}/{merchantId}/payments/{paymentId}/thirdpartystatus", path_context)
+        uri = self._instantiate_uri("/v1/{merchantId}/payments/{paymentId}/thirdpartystatus", path_context)
         try:
             return self._communicator.get(
                     uri,
@@ -231,7 +231,7 @@ class PaymentsClient(ApiResource):
         path_context = {
             "paymentId": payment_id,
         }
-        uri = self._instantiate_uri("/{apiVersion}/{merchantId}/payments/{paymentId}/tokenize", path_context)
+        uri = self._instantiate_uri("/v1/{merchantId}/payments/{paymentId}/tokenize", path_context)
         try:
             return self._communicator.post(
                     uri,
@@ -267,7 +267,7 @@ class PaymentsClient(ApiResource):
         path_context = {
             "paymentId": payment_id,
         }
-        uri = self._instantiate_uri("/{apiVersion}/{merchantId}/payments/{paymentId}/processchallenged", path_context)
+        uri = self._instantiate_uri("/v1/{merchantId}/payments/{paymentId}/processchallenged", path_context)
         try:
             return self._communicator.post(
                     uri,
@@ -304,7 +304,7 @@ class PaymentsClient(ApiResource):
         path_context = {
             "paymentId": payment_id,
         }
-        uri = self._instantiate_uri("/{apiVersion}/{merchantId}/payments/{paymentId}/approve", path_context)
+        uri = self._instantiate_uri("/v1/{merchantId}/payments/{paymentId}/approve", path_context)
         try:
             return self._communicator.post(
                     uri,
@@ -341,7 +341,7 @@ class PaymentsClient(ApiResource):
         path_context = {
             "paymentId": payment_id,
         }
-        uri = self._instantiate_uri("/{apiVersion}/{merchantId}/payments/{paymentId}/capture", path_context)
+        uri = self._instantiate_uri("/v1/{merchantId}/payments/{paymentId}/capture", path_context)
         try:
             return self._communicator.post(
                     uri,
@@ -377,7 +377,7 @@ class PaymentsClient(ApiResource):
         path_context = {
             "paymentId": payment_id,
         }
-        uri = self._instantiate_uri("/{apiVersion}/{merchantId}/payments/{paymentId}/cancelapproval", path_context)
+        uri = self._instantiate_uri("/v1/{merchantId}/payments/{paymentId}/cancelapproval", path_context)
         try:
             return self._communicator.post(
                     uri,
@@ -413,7 +413,7 @@ class PaymentsClient(ApiResource):
         path_context = {
             "paymentId": payment_id,
         }
-        uri = self._instantiate_uri("/{apiVersion}/{merchantId}/payments/{paymentId}/captures", path_context)
+        uri = self._instantiate_uri("/v1/{merchantId}/payments/{paymentId}/captures", path_context)
         try:
             return self._communicator.get(
                     uri,
@@ -450,7 +450,7 @@ class PaymentsClient(ApiResource):
         path_context = {
             "paymentId": payment_id,
         }
-        uri = self._instantiate_uri("/{apiVersion}/{merchantId}/payments/{paymentId}/refund", path_context)
+        uri = self._instantiate_uri("/v1/{merchantId}/payments/{paymentId}/refund", path_context)
         try:
             return self._communicator.post(
                     uri,
@@ -486,7 +486,7 @@ class PaymentsClient(ApiResource):
         path_context = {
             "paymentId": payment_id,
         }
-        uri = self._instantiate_uri("/{apiVersion}/{merchantId}/payments/{paymentId}/refunds", path_context)
+        uri = self._instantiate_uri("/v1/{merchantId}/payments/{paymentId}/refunds", path_context)
         try:
             return self._communicator.get(
                     uri,
@@ -521,7 +521,7 @@ class PaymentsClient(ApiResource):
         path_context = {
             "paymentId": payment_id,
         }
-        uri = self._instantiate_uri("/{apiVersion}/{merchantId}/payments/{paymentId}/cancel", path_context)
+        uri = self._instantiate_uri("/v1/{merchantId}/payments/{paymentId}/cancel", path_context)
         try:
             return self._communicator.post(
                     uri,
@@ -558,7 +558,7 @@ class PaymentsClient(ApiResource):
         path_context = {
             "paymentId": payment_id,
         }
-        uri = self._instantiate_uri("/{apiVersion}/{merchantId}/payments/{paymentId}/dispute", path_context)
+        uri = self._instantiate_uri("/v1/{merchantId}/payments/{paymentId}/dispute", path_context)
         try:
             return self._communicator.post(
                     uri,
@@ -594,7 +594,7 @@ class PaymentsClient(ApiResource):
         path_context = {
             "paymentId": payment_id,
         }
-        uri = self._instantiate_uri("/{apiVersion}/{merchantId}/payments/{paymentId}/disputes", path_context)
+        uri = self._instantiate_uri("/v1/{merchantId}/payments/{paymentId}/disputes", path_context)
         try:
             return self._communicator.get(
                     uri,

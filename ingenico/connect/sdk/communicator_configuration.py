@@ -3,6 +3,8 @@ from ingenico.connect.sdk.defaultimpl.authorization_type import \
     AuthorizationType
 
 
+# pylint: disable=too-many-instance-attributes
+# Necessary to load information from config
 class CommunicatorConfiguration(EndpointConfiguration):
     """
     Configuration for the communicator.

@@ -41,7 +41,7 @@ class CapturesClient(ApiResource):
         path_context = {
             "captureId": capture_id,
         }
-        uri = self._instantiate_uri("/{apiVersion}/{merchantId}/captures/{captureId}", path_context)
+        uri = self._instantiate_uri("/v1/{merchantId}/captures/{captureId}", path_context)
         try:
             return self._communicator.get(
                     uri,

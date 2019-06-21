@@ -25,7 +25,8 @@ class MandateSepaDirectDebitWithMandateId(MandateSepaDirectDebitWithoutCreditor)
 
     def to_dictionary(self):
         dictionary = super(MandateSepaDirectDebitWithMandateId, self).to_dictionary()
-        self._add_to_dictionary(dictionary, 'mandateId', self.mandate_id)
+        if self.mandate_id is not None:
+            dictionary['mandateId'] = self.mandate_id
         return dictionary
 
     def from_dictionary(self, dictionary):

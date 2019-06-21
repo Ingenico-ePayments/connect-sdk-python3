@@ -38,7 +38,7 @@ class SessionsClient(ApiResource):
                    or the service that you're trying to reach is temporary unavailable (HTTP status code 500, 502 or 503)
         :raise: ApiException if the Ingenico ePayments platform returned any other error
         """
-        uri = self._instantiate_uri("/{apiVersion}/{merchantId}/sessions", None)
+        uri = self._instantiate_uri("/v1/{merchantId}/sessions", None)
         try:
             return self._communicator.post(
                     uri,

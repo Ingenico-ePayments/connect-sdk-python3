@@ -25,7 +25,8 @@ class AbstractOrderStatus(DataObject):
 
     def to_dictionary(self):
         dictionary = super(AbstractOrderStatus, self).to_dictionary()
-        self._add_to_dictionary(dictionary, 'id', self.id)
+        if self.id is not None:
+            dictionary['id'] = self.id
         return dictionary
 
     def from_dictionary(self, dictionary):

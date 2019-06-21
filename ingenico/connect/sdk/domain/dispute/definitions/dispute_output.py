@@ -141,15 +141,27 @@ class DisputeOutput(DataObject):
 
     def to_dictionary(self):
         dictionary = super(DisputeOutput, self).to_dictionary()
-        self._add_to_dictionary(dictionary, 'amountOfMoney', self.amount_of_money)
-        self._add_to_dictionary(dictionary, 'contactPerson', self.contact_person)
-        self._add_to_dictionary(dictionary, 'creationDetails', self.creation_details)
-        self._add_to_dictionary(dictionary, 'emailAddress', self.email_address)
-        self._add_to_dictionary(dictionary, 'files', self.files)
-        self._add_to_dictionary(dictionary, 'reference', self.reference)
-        self._add_to_dictionary(dictionary, 'replyTo', self.reply_to)
-        self._add_to_dictionary(dictionary, 'requestMessage', self.request_message)
-        self._add_to_dictionary(dictionary, 'responseMessage', self.response_message)
+        if self.amount_of_money is not None:
+            dictionary['amountOfMoney'] = self.amount_of_money.to_dictionary()
+        if self.contact_person is not None:
+            dictionary['contactPerson'] = self.contact_person
+        if self.creation_details is not None:
+            dictionary['creationDetails'] = self.creation_details.to_dictionary()
+        if self.email_address is not None:
+            dictionary['emailAddress'] = self.email_address
+        if self.files is not None:
+            dictionary['files'] = []
+            for element in self.files:
+                if element is not None:
+                    dictionary['files'].append(element.to_dictionary())
+        if self.reference is not None:
+            dictionary['reference'] = self.reference.to_dictionary()
+        if self.reply_to is not None:
+            dictionary['replyTo'] = self.reply_to
+        if self.request_message is not None:
+            dictionary['requestMessage'] = self.request_message
+        if self.response_message is not None:
+            dictionary['responseMessage'] = self.response_message
         return dictionary
 
     def from_dictionary(self, dictionary):
@@ -172,9 +184,9 @@ class DisputeOutput(DataObject):
             if not isinstance(dictionary['files'], list):
                 raise TypeError('value \'{}\' is not a list'.format(dictionary['files']))
             self.files = []
-            for files_element in dictionary['files']:
-                files_value = HostedFile()
-                self.files.append(files_value.from_dictionary(files_element))
+            for element in dictionary['files']:
+                value = HostedFile()
+                self.files.append(value.from_dictionary(element))
         if 'reference' in dictionary:
             if not isinstance(dictionary['reference'], dict):
                 raise TypeError('value \'{}\' is not a dictionary'.format(dictionary['reference']))

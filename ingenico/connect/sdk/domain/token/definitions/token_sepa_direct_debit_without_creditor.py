@@ -41,8 +41,10 @@ class TokenSepaDirectDebitWithoutCreditor(AbstractToken):
 
     def to_dictionary(self):
         dictionary = super(TokenSepaDirectDebitWithoutCreditor, self).to_dictionary()
-        self._add_to_dictionary(dictionary, 'customer', self.customer)
-        self._add_to_dictionary(dictionary, 'mandate', self.mandate)
+        if self.customer is not None:
+            dictionary['customer'] = self.customer.to_dictionary()
+        if self.mandate is not None:
+            dictionary['mandate'] = self.mandate.to_dictionary()
         return dictionary
 
     def from_dictionary(self, dictionary):

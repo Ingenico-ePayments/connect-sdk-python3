@@ -130,14 +130,22 @@ class ThreeDSecureResults(DataObject):
 
     def to_dictionary(self):
         dictionary = super(ThreeDSecureResults, self).to_dictionary()
-        self._add_to_dictionary(dictionary, 'cavv', self.cavv)
-        self._add_to_dictionary(dictionary, 'directoryServerTransactionId', self.directory_server_transaction_id)
-        self._add_to_dictionary(dictionary, 'eci', self.eci)
-        self._add_to_dictionary(dictionary, 'sdkData', self.sdk_data)
-        self._add_to_dictionary(dictionary, 'threeDSecureData', self.three_d_secure_data)
-        self._add_to_dictionary(dictionary, 'threeDSecureVersion', self.three_d_secure_version)
-        self._add_to_dictionary(dictionary, 'threeDServerTransactionId', self.three_d_server_transaction_id)
-        self._add_to_dictionary(dictionary, 'xid', self.xid)
+        if self.cavv is not None:
+            dictionary['cavv'] = self.cavv
+        if self.directory_server_transaction_id is not None:
+            dictionary['directoryServerTransactionId'] = self.directory_server_transaction_id
+        if self.eci is not None:
+            dictionary['eci'] = self.eci
+        if self.sdk_data is not None:
+            dictionary['sdkData'] = self.sdk_data.to_dictionary()
+        if self.three_d_secure_data is not None:
+            dictionary['threeDSecureData'] = self.three_d_secure_data.to_dictionary()
+        if self.three_d_secure_version is not None:
+            dictionary['threeDSecureVersion'] = self.three_d_secure_version
+        if self.three_d_server_transaction_id is not None:
+            dictionary['threeDServerTransactionId'] = self.three_d_server_transaction_id
+        if self.xid is not None:
+            dictionary['xid'] = self.xid
         return dictionary
 
     def from_dictionary(self, dictionary):

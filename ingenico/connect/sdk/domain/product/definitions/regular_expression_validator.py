@@ -25,7 +25,8 @@ class RegularExpressionValidator(DataObject):
 
     def to_dictionary(self):
         dictionary = super(RegularExpressionValidator, self).to_dictionary()
-        self._add_to_dictionary(dictionary, 'regularExpression', self.regular_expression)
+        if self.regular_expression is not None:
+            dictionary['regularExpression'] = self.regular_expression
         return dictionary
 
     def from_dictionary(self, dictionary):

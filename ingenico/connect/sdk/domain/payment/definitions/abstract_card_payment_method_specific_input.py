@@ -174,19 +174,32 @@ class AbstractCardPaymentMethodSpecificInput(AbstractPaymentMethodSpecificInput)
 
     def to_dictionary(self):
         dictionary = super(AbstractCardPaymentMethodSpecificInput, self).to_dictionary()
-        self._add_to_dictionary(dictionary, 'authorizationMode', self.authorization_mode)
-        self._add_to_dictionary(dictionary, 'customerReference', self.customer_reference)
-        self._add_to_dictionary(dictionary, 'recurring', self.recurring)
-        self._add_to_dictionary(dictionary, 'recurringPaymentSequenceIndicator', self.recurring_payment_sequence_indicator)
-        self._add_to_dictionary(dictionary, 'requiresApproval', self.requires_approval)
-        self._add_to_dictionary(dictionary, 'skipAuthentication', self.skip_authentication)
-        self._add_to_dictionary(dictionary, 'skipFraudService', self.skip_fraud_service)
-        self._add_to_dictionary(dictionary, 'token', self.token)
-        self._add_to_dictionary(dictionary, 'tokenize', self.tokenize)
-        self._add_to_dictionary(dictionary, 'transactionChannel', self.transaction_channel)
-        self._add_to_dictionary(dictionary, 'unscheduledCardOnFileIndicator', self.unscheduled_card_on_file_indicator)
-        self._add_to_dictionary(dictionary, 'unscheduledCardOnFileRequestor', self.unscheduled_card_on_file_requestor)
-        self._add_to_dictionary(dictionary, 'unscheduledCardOnFileSequenceIndicator', self.unscheduled_card_on_file_sequence_indicator)
+        if self.authorization_mode is not None:
+            dictionary['authorizationMode'] = self.authorization_mode
+        if self.customer_reference is not None:
+            dictionary['customerReference'] = self.customer_reference
+        if self.recurring is not None:
+            dictionary['recurring'] = self.recurring.to_dictionary()
+        if self.recurring_payment_sequence_indicator is not None:
+            dictionary['recurringPaymentSequenceIndicator'] = self.recurring_payment_sequence_indicator
+        if self.requires_approval is not None:
+            dictionary['requiresApproval'] = self.requires_approval
+        if self.skip_authentication is not None:
+            dictionary['skipAuthentication'] = self.skip_authentication
+        if self.skip_fraud_service is not None:
+            dictionary['skipFraudService'] = self.skip_fraud_service
+        if self.token is not None:
+            dictionary['token'] = self.token
+        if self.tokenize is not None:
+            dictionary['tokenize'] = self.tokenize
+        if self.transaction_channel is not None:
+            dictionary['transactionChannel'] = self.transaction_channel
+        if self.unscheduled_card_on_file_indicator is not None:
+            dictionary['unscheduledCardOnFileIndicator'] = self.unscheduled_card_on_file_indicator
+        if self.unscheduled_card_on_file_requestor is not None:
+            dictionary['unscheduledCardOnFileRequestor'] = self.unscheduled_card_on_file_requestor
+        if self.unscheduled_card_on_file_sequence_indicator is not None:
+            dictionary['unscheduledCardOnFileSequenceIndicator'] = self.unscheduled_card_on_file_sequence_indicator
         return dictionary
 
     def from_dictionary(self, dictionary):

@@ -26,7 +26,8 @@ class GetMandateResponse(DataObject):
 
     def to_dictionary(self):
         dictionary = super(GetMandateResponse, self).to_dictionary()
-        self._add_to_dictionary(dictionary, 'mandate', self.mandate)
+        if self.mandate is not None:
+            dictionary['mandate'] = self.mandate.to_dictionary()
         return dictionary
 
     def from_dictionary(self, dictionary):

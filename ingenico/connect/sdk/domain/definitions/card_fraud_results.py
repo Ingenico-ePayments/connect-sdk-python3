@@ -105,10 +105,14 @@ class CardFraudResults(FraudResults):
 
     def to_dictionary(self):
         dictionary = super(CardFraudResults, self).to_dictionary()
-        self._add_to_dictionary(dictionary, 'avsResult', self.avs_result)
-        self._add_to_dictionary(dictionary, 'cvvResult', self.cvv_result)
-        self._add_to_dictionary(dictionary, 'fraugster', self.fraugster)
-        self._add_to_dictionary(dictionary, 'retailDecisions', self.retail_decisions)
+        if self.avs_result is not None:
+            dictionary['avsResult'] = self.avs_result
+        if self.cvv_result is not None:
+            dictionary['cvvResult'] = self.cvv_result
+        if self.fraugster is not None:
+            dictionary['fraugster'] = self.fraugster.to_dictionary()
+        if self.retail_decisions is not None:
+            dictionary['retailDecisions'] = self.retail_decisions.to_dictionary()
         return dictionary
 
     def from_dictionary(self, dictionary):

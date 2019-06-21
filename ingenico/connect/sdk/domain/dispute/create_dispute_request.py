@@ -82,11 +82,16 @@ class CreateDisputeRequest(DataObject):
 
     def to_dictionary(self):
         dictionary = super(CreateDisputeRequest, self).to_dictionary()
-        self._add_to_dictionary(dictionary, 'amountOfMoney', self.amount_of_money)
-        self._add_to_dictionary(dictionary, 'contactPerson', self.contact_person)
-        self._add_to_dictionary(dictionary, 'emailAddress', self.email_address)
-        self._add_to_dictionary(dictionary, 'replyTo', self.reply_to)
-        self._add_to_dictionary(dictionary, 'requestMessage', self.request_message)
+        if self.amount_of_money is not None:
+            dictionary['amountOfMoney'] = self.amount_of_money.to_dictionary()
+        if self.contact_person is not None:
+            dictionary['contactPerson'] = self.contact_person
+        if self.email_address is not None:
+            dictionary['emailAddress'] = self.email_address
+        if self.reply_to is not None:
+            dictionary['replyTo'] = self.reply_to
+        if self.request_message is not None:
+            dictionary['requestMessage'] = self.request_message
         return dictionary
 
     def from_dictionary(self, dictionary):

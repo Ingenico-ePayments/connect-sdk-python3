@@ -38,7 +38,7 @@ class RiskassessmentsClient(ApiResource):
                    or the service that you're trying to reach is temporary unavailable (HTTP status code 500, 502 or 503)
         :raise: ApiException if the Ingenico ePayments platform returned any other error
         """
-        uri = self._instantiate_uri("/{apiVersion}/{merchantId}/riskassessments/bankaccounts", None)
+        uri = self._instantiate_uri("/v1/{merchantId}/riskassessments/bankaccounts", None)
         try:
             return self._communicator.post(
                     uri,
@@ -71,7 +71,7 @@ class RiskassessmentsClient(ApiResource):
                    or the service that you're trying to reach is temporary unavailable (HTTP status code 500, 502 or 503)
         :raise: ApiException if the Ingenico ePayments platform returned any other error
         """
-        uri = self._instantiate_uri("/{apiVersion}/{merchantId}/riskassessments/cards", None)
+        uri = self._instantiate_uri("/v1/{merchantId}/riskassessments/cards", None)
         try:
             return self._communicator.post(
                     uri,

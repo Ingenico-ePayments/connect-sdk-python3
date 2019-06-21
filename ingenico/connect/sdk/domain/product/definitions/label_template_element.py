@@ -40,8 +40,10 @@ class LabelTemplateElement(DataObject):
 
     def to_dictionary(self):
         dictionary = super(LabelTemplateElement, self).to_dictionary()
-        self._add_to_dictionary(dictionary, 'attributeKey', self.attribute_key)
-        self._add_to_dictionary(dictionary, 'mask', self.mask)
+        if self.attribute_key is not None:
+            dictionary['attributeKey'] = self.attribute_key
+        if self.mask is not None:
+            dictionary['mask'] = self.mask
         return dictionary
 
     def from_dictionary(self, dictionary):

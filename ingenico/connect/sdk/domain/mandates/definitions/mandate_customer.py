@@ -85,11 +85,16 @@ class MandateCustomer(DataObject):
 
     def to_dictionary(self):
         dictionary = super(MandateCustomer, self).to_dictionary()
-        self._add_to_dictionary(dictionary, 'bankAccountIban', self.bank_account_iban)
-        self._add_to_dictionary(dictionary, 'companyName', self.company_name)
-        self._add_to_dictionary(dictionary, 'contactDetails', self.contact_details)
-        self._add_to_dictionary(dictionary, 'mandateAddress', self.mandate_address)
-        self._add_to_dictionary(dictionary, 'personalInformation', self.personal_information)
+        if self.bank_account_iban is not None:
+            dictionary['bankAccountIban'] = self.bank_account_iban.to_dictionary()
+        if self.company_name is not None:
+            dictionary['companyName'] = self.company_name
+        if self.contact_details is not None:
+            dictionary['contactDetails'] = self.contact_details.to_dictionary()
+        if self.mandate_address is not None:
+            dictionary['mandateAddress'] = self.mandate_address.to_dictionary()
+        if self.personal_information is not None:
+            dictionary['personalInformation'] = self.personal_information.to_dictionary()
         return dictionary
 
     def from_dictionary(self, dictionary):

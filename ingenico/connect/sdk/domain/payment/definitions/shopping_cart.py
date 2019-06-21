@@ -102,12 +102,24 @@ class ShoppingCart(DataObject):
 
     def to_dictionary(self):
         dictionary = super(ShoppingCart, self).to_dictionary()
-        self._add_to_dictionary(dictionary, 'amountBreakdown', self.amount_breakdown)
-        self._add_to_dictionary(dictionary, 'giftCardPurchase', self.gift_card_purchase)
-        self._add_to_dictionary(dictionary, 'isPreOrder', self.is_pre_order)
-        self._add_to_dictionary(dictionary, 'items', self.items)
-        self._add_to_dictionary(dictionary, 'preOrderItemAvailabilityDate', self.pre_order_item_availability_date)
-        self._add_to_dictionary(dictionary, 'reOrderIndicator', self.re_order_indicator)
+        if self.amount_breakdown is not None:
+            dictionary['amountBreakdown'] = []
+            for element in self.amount_breakdown:
+                if element is not None:
+                    dictionary['amountBreakdown'].append(element.to_dictionary())
+        if self.gift_card_purchase is not None:
+            dictionary['giftCardPurchase'] = self.gift_card_purchase.to_dictionary()
+        if self.is_pre_order is not None:
+            dictionary['isPreOrder'] = self.is_pre_order
+        if self.items is not None:
+            dictionary['items'] = []
+            for element in self.items:
+                if element is not None:
+                    dictionary['items'].append(element.to_dictionary())
+        if self.pre_order_item_availability_date is not None:
+            dictionary['preOrderItemAvailabilityDate'] = self.pre_order_item_availability_date
+        if self.re_order_indicator is not None:
+            dictionary['reOrderIndicator'] = self.re_order_indicator
         return dictionary
 
     def from_dictionary(self, dictionary):
@@ -116,9 +128,9 @@ class ShoppingCart(DataObject):
             if not isinstance(dictionary['amountBreakdown'], list):
                 raise TypeError('value \'{}\' is not a list'.format(dictionary['amountBreakdown']))
             self.amount_breakdown = []
-            for amountBreakdown_element in dictionary['amountBreakdown']:
-                amountBreakdown_value = AmountBreakdown()
-                self.amount_breakdown.append(amountBreakdown_value.from_dictionary(amountBreakdown_element))
+            for element in dictionary['amountBreakdown']:
+                value = AmountBreakdown()
+                self.amount_breakdown.append(value.from_dictionary(element))
         if 'giftCardPurchase' in dictionary:
             if not isinstance(dictionary['giftCardPurchase'], dict):
                 raise TypeError('value \'{}\' is not a dictionary'.format(dictionary['giftCardPurchase']))
@@ -130,9 +142,9 @@ class ShoppingCart(DataObject):
             if not isinstance(dictionary['items'], list):
                 raise TypeError('value \'{}\' is not a list'.format(dictionary['items']))
             self.items = []
-            for items_element in dictionary['items']:
-                items_value = LineItem()
-                self.items.append(items_value.from_dictionary(items_element))
+            for element in dictionary['items']:
+                value = LineItem()
+                self.items.append(value.from_dictionary(element))
         if 'preOrderItemAvailabilityDate' in dictionary:
             self.pre_order_item_availability_date = dictionary['preOrderItemAvailabilityDate']
         if 'reOrderIndicator' in dictionary:

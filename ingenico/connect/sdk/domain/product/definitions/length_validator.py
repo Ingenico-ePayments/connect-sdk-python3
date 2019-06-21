@@ -39,8 +39,10 @@ class LengthValidator(DataObject):
 
     def to_dictionary(self):
         dictionary = super(LengthValidator, self).to_dictionary()
-        self._add_to_dictionary(dictionary, 'maxLength', self.max_length)
-        self._add_to_dictionary(dictionary, 'minLength', self.min_length)
+        if self.max_length is not None:
+            dictionary['maxLength'] = self.max_length
+        if self.min_length is not None:
+            dictionary['minLength'] = self.min_length
         return dictionary
 
     def from_dictionary(self, dictionary):

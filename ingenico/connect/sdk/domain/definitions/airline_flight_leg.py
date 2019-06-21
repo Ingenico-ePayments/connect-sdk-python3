@@ -307,26 +307,46 @@ class AirlineFlightLeg(DataObject):
 
     def to_dictionary(self):
         dictionary = super(AirlineFlightLeg, self).to_dictionary()
-        self._add_to_dictionary(dictionary, 'airlineClass', self.airline_class)
-        self._add_to_dictionary(dictionary, 'arrivalAirport', self.arrival_airport)
-        self._add_to_dictionary(dictionary, 'arrivalTime', self.arrival_time)
-        self._add_to_dictionary(dictionary, 'carrierCode', self.carrier_code)
-        self._add_to_dictionary(dictionary, 'conjunctionTicket', self.conjunction_ticket)
-        self._add_to_dictionary(dictionary, 'couponNumber', self.coupon_number)
-        self._add_to_dictionary(dictionary, 'date', self.date)
-        self._add_to_dictionary(dictionary, 'departureTime', self.departure_time)
-        self._add_to_dictionary(dictionary, 'endorsementOrRestriction', self.endorsement_or_restriction)
-        self._add_to_dictionary(dictionary, 'exchangeTicket', self.exchange_ticket)
-        self._add_to_dictionary(dictionary, 'fare', self.fare)
-        self._add_to_dictionary(dictionary, 'fareBasis', self.fare_basis)
-        self._add_to_dictionary(dictionary, 'fee', self.fee)
-        self._add_to_dictionary(dictionary, 'flightNumber', self.flight_number)
-        self._add_to_dictionary(dictionary, 'number', self.number)
-        self._add_to_dictionary(dictionary, 'originAirport', self.origin_airport)
-        self._add_to_dictionary(dictionary, 'passengerClass', self.passenger_class)
-        self._add_to_dictionary(dictionary, 'serviceClass', self.service_class)
-        self._add_to_dictionary(dictionary, 'stopoverCode', self.stopover_code)
-        self._add_to_dictionary(dictionary, 'taxes', self.taxes)
+        if self.airline_class is not None:
+            dictionary['airlineClass'] = self.airline_class
+        if self.arrival_airport is not None:
+            dictionary['arrivalAirport'] = self.arrival_airport
+        if self.arrival_time is not None:
+            dictionary['arrivalTime'] = self.arrival_time
+        if self.carrier_code is not None:
+            dictionary['carrierCode'] = self.carrier_code
+        if self.conjunction_ticket is not None:
+            dictionary['conjunctionTicket'] = self.conjunction_ticket
+        if self.coupon_number is not None:
+            dictionary['couponNumber'] = self.coupon_number
+        if self.date is not None:
+            dictionary['date'] = self.date
+        if self.departure_time is not None:
+            dictionary['departureTime'] = self.departure_time
+        if self.endorsement_or_restriction is not None:
+            dictionary['endorsementOrRestriction'] = self.endorsement_or_restriction
+        if self.exchange_ticket is not None:
+            dictionary['exchangeTicket'] = self.exchange_ticket
+        if self.fare is not None:
+            dictionary['fare'] = self.fare
+        if self.fare_basis is not None:
+            dictionary['fareBasis'] = self.fare_basis
+        if self.fee is not None:
+            dictionary['fee'] = self.fee
+        if self.flight_number is not None:
+            dictionary['flightNumber'] = self.flight_number
+        if self.number is not None:
+            dictionary['number'] = self.number
+        if self.origin_airport is not None:
+            dictionary['originAirport'] = self.origin_airport
+        if self.passenger_class is not None:
+            dictionary['passengerClass'] = self.passenger_class
+        if self.service_class is not None:
+            dictionary['serviceClass'] = self.service_class
+        if self.stopover_code is not None:
+            dictionary['stopoverCode'] = self.stopover_code
+        if self.taxes is not None:
+            dictionary['taxes'] = self.taxes
         return dictionary
 
     def from_dictionary(self, dictionary):

@@ -85,12 +85,18 @@ class AbstractThreeDSecure(DataObject):
 
     def to_dictionary(self):
         dictionary = super(AbstractThreeDSecure, self).to_dictionary()
-        self._add_to_dictionary(dictionary, 'authenticationFlow', self.authentication_flow)
-        self._add_to_dictionary(dictionary, 'challengeCanvasSize', self.challenge_canvas_size)
-        self._add_to_dictionary(dictionary, 'challengeIndicator', self.challenge_indicator)
-        self._add_to_dictionary(dictionary, 'priorThreeDSecureData', self.prior_three_d_secure_data)
-        self._add_to_dictionary(dictionary, 'sdkData', self.sdk_data)
-        self._add_to_dictionary(dictionary, 'skipAuthentication', self.skip_authentication)
+        if self.authentication_flow is not None:
+            dictionary['authenticationFlow'] = self.authentication_flow
+        if self.challenge_canvas_size is not None:
+            dictionary['challengeCanvasSize'] = self.challenge_canvas_size
+        if self.challenge_indicator is not None:
+            dictionary['challengeIndicator'] = self.challenge_indicator
+        if self.prior_three_d_secure_data is not None:
+            dictionary['priorThreeDSecureData'] = self.prior_three_d_secure_data.to_dictionary()
+        if self.sdk_data is not None:
+            dictionary['sdkData'] = self.sdk_data.to_dictionary()
+        if self.skip_authentication is not None:
+            dictionary['skipAuthentication'] = self.skip_authentication
         return dictionary
 
     def from_dictionary(self, dictionary):

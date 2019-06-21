@@ -168,17 +168,28 @@ class Debtor(DataObject):
 
     def to_dictionary(self):
         dictionary = super(Debtor, self).to_dictionary()
-        self._add_to_dictionary(dictionary, 'additionalAddressInfo', self.additional_address_info)
-        self._add_to_dictionary(dictionary, 'city', self.city)
-        self._add_to_dictionary(dictionary, 'countryCode', self.country_code)
-        self._add_to_dictionary(dictionary, 'firstName', self.first_name)
-        self._add_to_dictionary(dictionary, 'houseNumber', self.house_number)
-        self._add_to_dictionary(dictionary, 'state', self.state)
-        self._add_to_dictionary(dictionary, 'stateCode', self.state_code)
-        self._add_to_dictionary(dictionary, 'street', self.street)
-        self._add_to_dictionary(dictionary, 'surname', self.surname)
-        self._add_to_dictionary(dictionary, 'surnamePrefix', self.surname_prefix)
-        self._add_to_dictionary(dictionary, 'zip', self.zip)
+        if self.additional_address_info is not None:
+            dictionary['additionalAddressInfo'] = self.additional_address_info
+        if self.city is not None:
+            dictionary['city'] = self.city
+        if self.country_code is not None:
+            dictionary['countryCode'] = self.country_code
+        if self.first_name is not None:
+            dictionary['firstName'] = self.first_name
+        if self.house_number is not None:
+            dictionary['houseNumber'] = self.house_number
+        if self.state is not None:
+            dictionary['state'] = self.state
+        if self.state_code is not None:
+            dictionary['stateCode'] = self.state_code
+        if self.street is not None:
+            dictionary['street'] = self.street
+        if self.surname is not None:
+            dictionary['surname'] = self.surname
+        if self.surname_prefix is not None:
+            dictionary['surnamePrefix'] = self.surname_prefix
+        if self.zip is not None:
+            dictionary['zip'] = self.zip
         return dictionary
 
     def from_dictionary(self, dictionary):

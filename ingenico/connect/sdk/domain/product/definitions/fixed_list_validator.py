@@ -25,7 +25,11 @@ class FixedListValidator(DataObject):
 
     def to_dictionary(self):
         dictionary = super(FixedListValidator, self).to_dictionary()
-        self._add_to_dictionary(dictionary, 'allowedValues', self.allowed_values)
+        if self.allowed_values is not None:
+            dictionary['allowedValues'] = []
+            for element in self.allowed_values:
+                if element is not None:
+                    dictionary['allowedValues'].append(element)
         return dictionary
 
     def from_dictionary(self, dictionary):
@@ -34,6 +38,6 @@ class FixedListValidator(DataObject):
             if not isinstance(dictionary['allowedValues'], list):
                 raise TypeError('value \'{}\' is not a list'.format(dictionary['allowedValues']))
             self.allowed_values = []
-            for allowedValues_element in dictionary['allowedValues']:
-                self.allowed_values.append(allowedValues_element)
+            for element in dictionary['allowedValues']:
+                self.allowed_values.append(element)
         return self

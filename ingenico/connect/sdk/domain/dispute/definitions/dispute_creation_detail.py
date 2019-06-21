@@ -53,9 +53,12 @@ class DisputeCreationDetail(DataObject):
 
     def to_dictionary(self):
         dictionary = super(DisputeCreationDetail, self).to_dictionary()
-        self._add_to_dictionary(dictionary, 'disputeCreationDate', self.dispute_creation_date)
-        self._add_to_dictionary(dictionary, 'disputeOriginator', self.dispute_originator)
-        self._add_to_dictionary(dictionary, 'userName', self.user_name)
+        if self.dispute_creation_date is not None:
+            dictionary['disputeCreationDate'] = self.dispute_creation_date
+        if self.dispute_originator is not None:
+            dictionary['disputeOriginator'] = self.dispute_originator
+        if self.user_name is not None:
+            dictionary['userName'] = self.user_name
         return dictionary
 
     def from_dictionary(self, dictionary):

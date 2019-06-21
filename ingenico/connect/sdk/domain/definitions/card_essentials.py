@@ -40,8 +40,10 @@ class CardEssentials(DataObject):
 
     def to_dictionary(self):
         dictionary = super(CardEssentials, self).to_dictionary()
-        self._add_to_dictionary(dictionary, 'cardNumber', self.card_number)
-        self._add_to_dictionary(dictionary, 'expiryDate', self.expiry_date)
+        if self.card_number is not None:
+            dictionary['cardNumber'] = self.card_number
+        if self.expiry_date is not None:
+            dictionary['expiryDate'] = self.expiry_date
         return dictionary
 
     def from_dictionary(self, dictionary):

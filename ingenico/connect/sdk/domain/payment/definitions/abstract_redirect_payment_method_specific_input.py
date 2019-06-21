@@ -71,11 +71,16 @@ class AbstractRedirectPaymentMethodSpecificInput(AbstractPaymentMethodSpecificIn
 
     def to_dictionary(self):
         dictionary = super(AbstractRedirectPaymentMethodSpecificInput, self).to_dictionary()
-        self._add_to_dictionary(dictionary, 'expirationPeriod', self.expiration_period)
-        self._add_to_dictionary(dictionary, 'recurringPaymentSequenceIndicator', self.recurring_payment_sequence_indicator)
-        self._add_to_dictionary(dictionary, 'requiresApproval', self.requires_approval)
-        self._add_to_dictionary(dictionary, 'token', self.token)
-        self._add_to_dictionary(dictionary, 'tokenize', self.tokenize)
+        if self.expiration_period is not None:
+            dictionary['expirationPeriod'] = self.expiration_period
+        if self.recurring_payment_sequence_indicator is not None:
+            dictionary['recurringPaymentSequenceIndicator'] = self.recurring_payment_sequence_indicator
+        if self.requires_approval is not None:
+            dictionary['requiresApproval'] = self.requires_approval
+        if self.token is not None:
+            dictionary['token'] = self.token
+        if self.tokenize is not None:
+            dictionary['tokenize'] = self.tokenize
         return dictionary
 
     def from_dictionary(self, dictionary):

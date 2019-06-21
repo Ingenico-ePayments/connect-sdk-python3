@@ -26,7 +26,8 @@ class PersonalInformationRiskAssessment(DataObject):
 
     def to_dictionary(self):
         dictionary = super(PersonalInformationRiskAssessment, self).to_dictionary()
-        self._add_to_dictionary(dictionary, 'name', self.name)
+        if self.name is not None:
+            dictionary['name'] = self.name.to_dictionary()
         return dictionary
 
     def from_dictionary(self, dictionary):

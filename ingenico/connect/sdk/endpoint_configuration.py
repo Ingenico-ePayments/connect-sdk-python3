@@ -141,8 +141,8 @@ class EndpointConfiguration(object):
         if endpoint is not None and endpoint.path:
             raise ValueError("apiEndpoint should not contain a path")
         if endpoint is not None and (
-                            endpoint.username is not None or
-                        endpoint.query or endpoint.fragment):
+                endpoint.username is not None or
+                endpoint.query or endpoint.fragment):
             raise ValueError(
                 "apiEndpoint should not contain user info, query or fragment")
         self.__endpoint = endpoint

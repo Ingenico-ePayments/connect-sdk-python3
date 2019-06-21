@@ -40,8 +40,13 @@ class ErrorResponse(DataObject):
 
     def to_dictionary(self):
         dictionary = super(ErrorResponse, self).to_dictionary()
-        self._add_to_dictionary(dictionary, 'errorId', self.error_id)
-        self._add_to_dictionary(dictionary, 'errors', self.errors)
+        if self.error_id is not None:
+            dictionary['errorId'] = self.error_id
+        if self.errors is not None:
+            dictionary['errors'] = []
+            for element in self.errors:
+                if element is not None:
+                    dictionary['errors'].append(element.to_dictionary())
         return dictionary
 
     def from_dictionary(self, dictionary):
@@ -52,7 +57,7 @@ class ErrorResponse(DataObject):
             if not isinstance(dictionary['errors'], list):
                 raise TypeError('value \'{}\' is not a list'.format(dictionary['errors']))
             self.errors = []
-            for errors_element in dictionary['errors']:
-                errors_value = APIError()
-                self.errors.append(errors_value.from_dictionary(errors_element))
+            for element in dictionary['errors']:
+                value = APIError()
+                self.errors.append(value.from_dictionary(element))
         return self

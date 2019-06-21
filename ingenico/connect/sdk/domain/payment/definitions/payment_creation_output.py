@@ -56,9 +56,12 @@ class PaymentCreationOutput(PaymentCreationReferences):
 
     def to_dictionary(self):
         dictionary = super(PaymentCreationOutput, self).to_dictionary()
-        self._add_to_dictionary(dictionary, 'isNewToken', self.is_new_token)
-        self._add_to_dictionary(dictionary, 'token', self.token)
-        self._add_to_dictionary(dictionary, 'tokenizationSucceeded', self.tokenization_succeeded)
+        if self.is_new_token is not None:
+            dictionary['isNewToken'] = self.is_new_token
+        if self.token is not None:
+            dictionary['token'] = self.token
+        if self.tokenization_succeeded is not None:
+            dictionary['tokenizationSucceeded'] = self.tokenization_succeeded
         return dictionary
 
     def from_dictionary(self, dictionary):

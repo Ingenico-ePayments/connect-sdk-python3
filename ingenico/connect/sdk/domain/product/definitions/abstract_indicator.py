@@ -35,8 +35,10 @@ class AbstractIndicator(DataObject):
 
     def to_dictionary(self):
         dictionary = super(AbstractIndicator, self).to_dictionary()
-        self._add_to_dictionary(dictionary, 'name', self.name)
-        self._add_to_dictionary(dictionary, 'value', self.value)
+        if self.name is not None:
+            dictionary['name'] = self.name
+        if self.value is not None:
+            dictionary['value'] = self.value
         return dictionary
 
     def from_dictionary(self, dictionary):

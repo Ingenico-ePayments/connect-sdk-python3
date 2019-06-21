@@ -4,6 +4,7 @@
 # https://epayments-api.developer-ingenico.com/s2sapi/v1/
 #
 from ingenico.connect.sdk.param_request import ParamRequest
+from ingenico.connect.sdk.request_param import RequestParam
 
 
 class GetProductParams(ParamRequest):
@@ -134,11 +135,20 @@ class GetProductParams(ParamRequest):
         :return: list[RequestParam]
         """
         result = []
-        self._add_parameter(result, "countryCode", self.country_code)
-        self._add_parameter(result, "currencyCode", self.currency_code)
-        self._add_parameter(result, "locale", self.locale)
-        self._add_parameter(result, "amount", self.amount)
-        self._add_parameter(result, "isRecurring", self.is_recurring)
-        self._add_parameter(result, "hide", self.hide)
-        self._add_parameter(result, "forceBasicFlow", self.force_basic_flow)
+        if self.country_code is not None:
+            result.append(RequestParam("countryCode", self.country_code))
+        if self.currency_code is not None:
+            result.append(RequestParam("currencyCode", self.currency_code))
+        if self.locale is not None:
+            result.append(RequestParam("locale", self.locale))
+        if self.amount is not None:
+            result.append(RequestParam("amount", str(self.amount)))
+        if self.is_recurring is not None:
+            result.append(RequestParam("isRecurring", str(self.is_recurring)))
+        if self.hide is not None:
+            for hide_element in self.hide:
+                if hide_element is not None:
+                    result.append(RequestParam("hide", hide_element))
+        if self.force_basic_flow is not None:
+            result.append(RequestParam("forceBasicFlow", str(self.force_basic_flow)))
         return result

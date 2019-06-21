@@ -26,7 +26,8 @@ class BoletoBancarioRequirednessValidator(DataObject):
 
     def to_dictionary(self):
         dictionary = super(BoletoBancarioRequirednessValidator, self).to_dictionary()
-        self._add_to_dictionary(dictionary, 'fiscalNumberLength', self.fiscal_number_length)
+        if self.fiscal_number_length is not None:
+            dictionary['fiscalNumberLength'] = self.fiscal_number_length
         return dictionary
 
     def from_dictionary(self, dictionary):

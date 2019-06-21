@@ -4,6 +4,7 @@
 # https://epayments-api.developer-ingenico.com/s2sapi/v1/
 #
 from ingenico.connect.sdk.param_request import ParamRequest
+from ingenico.connect.sdk.request_param import RequestParam
 
 
 class DirectoryParams(ParamRequest):
@@ -47,6 +48,8 @@ class DirectoryParams(ParamRequest):
         :return: list[RequestParam]
         """
         result = []
-        self._add_parameter(result, "countryCode", self.country_code)
-        self._add_parameter(result, "currencyCode", self.currency_code)
+        if self.country_code is not None:
+            result.append(RequestParam("countryCode", self.country_code))
+        if self.currency_code is not None:
+            result.append(RequestParam("currencyCode", self.currency_code))
         return result

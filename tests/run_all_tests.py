@@ -19,5 +19,6 @@ def load_tests(loader, tests, pattern):
     tests.addTests(integration_tests)
     return tests
 
+
 if __name__ == '__main__':
     unittest.main()

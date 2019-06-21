@@ -29,7 +29,8 @@ class EInvoicePaymentMethodSpecificOutput(AbstractPaymentMethodSpecificOutput):
 
     def to_dictionary(self):
         dictionary = super(EInvoicePaymentMethodSpecificOutput, self).to_dictionary()
-        self._add_to_dictionary(dictionary, 'paymentProduct9000SpecificOutput', self.payment_product9000_specific_output)
+        if self.payment_product9000_specific_output is not None:
+            dictionary['paymentProduct9000SpecificOutput'] = self.payment_product9000_specific_output.to_dictionary()
         return dictionary
 
     def from_dictionary(self, dictionary):

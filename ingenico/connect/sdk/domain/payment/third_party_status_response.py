@@ -30,7 +30,8 @@ class ThirdPartyStatusResponse(DataObject):
 
     def to_dictionary(self):
         dictionary = super(ThirdPartyStatusResponse, self).to_dictionary()
-        self._add_to_dictionary(dictionary, 'thirdPartyStatus', self.third_party_status)
+        if self.third_party_status is not None:
+            dictionary['thirdPartyStatus'] = self.third_party_status
         return dictionary
 
     def from_dictionary(self, dictionary):

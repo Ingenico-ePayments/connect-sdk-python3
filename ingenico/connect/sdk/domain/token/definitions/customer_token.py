@@ -41,8 +41,10 @@ class CustomerToken(CustomerBase):
 
     def to_dictionary(self):
         dictionary = super(CustomerToken, self).to_dictionary()
-        self._add_to_dictionary(dictionary, 'billingAddress', self.billing_address)
-        self._add_to_dictionary(dictionary, 'personalInformation', self.personal_information)
+        if self.billing_address is not None:
+            dictionary['billingAddress'] = self.billing_address.to_dictionary()
+        if self.personal_information is not None:
+            dictionary['personalInformation'] = self.personal_information.to_dictionary()
         return dictionary
 
     def from_dictionary(self, dictionary):

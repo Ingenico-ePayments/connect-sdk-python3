@@ -90,11 +90,22 @@ class PaymentProductGroup(DataObject):
 
     def to_dictionary(self):
         dictionary = super(PaymentProductGroup, self).to_dictionary()
-        self._add_to_dictionary(dictionary, 'accountsOnFile', self.accounts_on_file)
-        self._add_to_dictionary(dictionary, 'deviceFingerprintEnabled', self.device_fingerprint_enabled)
-        self._add_to_dictionary(dictionary, 'displayHints', self.display_hints)
-        self._add_to_dictionary(dictionary, 'fields', self.fields)
-        self._add_to_dictionary(dictionary, 'id', self.id)
+        if self.accounts_on_file is not None:
+            dictionary['accountsOnFile'] = []
+            for element in self.accounts_on_file:
+                if element is not None:
+                    dictionary['accountsOnFile'].append(element.to_dictionary())
+        if self.device_fingerprint_enabled is not None:
+            dictionary['deviceFingerprintEnabled'] = self.device_fingerprint_enabled
+        if self.display_hints is not None:
+            dictionary['displayHints'] = self.display_hints.to_dictionary()
+        if self.fields is not None:
+            dictionary['fields'] = []
+            for element in self.fields:
+                if element is not None:
+                    dictionary['fields'].append(element.to_dictionary())
+        if self.id is not None:
+            dictionary['id'] = self.id
         return dictionary
 
     def from_dictionary(self, dictionary):
@@ -103,9 +114,9 @@ class PaymentProductGroup(DataObject):
             if not isinstance(dictionary['accountsOnFile'], list):
                 raise TypeError('value \'{}\' is not a list'.format(dictionary['accountsOnFile']))
             self.accounts_on_file = []
-            for accountsOnFile_element in dictionary['accountsOnFile']:
-                accountsOnFile_value = AccountOnFile()
-                self.accounts_on_file.append(accountsOnFile_value.from_dictionary(accountsOnFile_element))
+            for element in dictionary['accountsOnFile']:
+                value = AccountOnFile()
+                self.accounts_on_file.append(value.from_dictionary(element))
         if 'deviceFingerprintEnabled' in dictionary:
             self.device_fingerprint_enabled = dictionary['deviceFingerprintEnabled']
         if 'displayHints' in dictionary:
@@ -117,9 +128,9 @@ class PaymentProductGroup(DataObject):
             if not isinstance(dictionary['fields'], list):
                 raise TypeError('value \'{}\' is not a list'.format(dictionary['fields']))
             self.fields = []
-            for fields_element in dictionary['fields']:
-                fields_value = PaymentProductField()
-                self.fields.append(fields_value.from_dictionary(fields_element))
+            for element in dictionary['fields']:
+                value = PaymentProductField()
+                self.fields.append(value.from_dictionary(element))
         if 'id' in dictionary:
             self.id = dictionary['id']
         return self

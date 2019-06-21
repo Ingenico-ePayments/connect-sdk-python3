@@ -55,9 +55,12 @@ class CardPayoutMethodSpecificInput(AbstractPayoutMethodSpecificInput):
 
     def to_dictionary(self):
         dictionary = super(CardPayoutMethodSpecificInput, self).to_dictionary()
-        self._add_to_dictionary(dictionary, 'card', self.card)
-        self._add_to_dictionary(dictionary, 'paymentProductId', self.payment_product_id)
-        self._add_to_dictionary(dictionary, 'token', self.token)
+        if self.card is not None:
+            dictionary['card'] = self.card.to_dictionary()
+        if self.payment_product_id is not None:
+            dictionary['paymentProductId'] = self.payment_product_id
+        if self.token is not None:
+            dictionary['token'] = self.token
         return dictionary
 
     def from_dictionary(self, dictionary):

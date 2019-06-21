@@ -16,10 +16,14 @@ class ShoppingCartExtension(DataObject):
 
     def to_dictionary(self):
         dictionary = super(ShoppingCartExtension, self).to_dictionary()
-        self._add_to_dictionary(dictionary, "creator", self.__creator)
-        self._add_to_dictionary(dictionary, "name", self.__name)
-        self._add_to_dictionary(dictionary, "version", self.__version)
-        self._add_to_dictionary(dictionary, "extensionId", self.__extension_id)
+        if self.__creator is not None:
+            dictionary['creator'] = self.__creator
+        if self.__name is not None:
+            dictionary['name'] = self.__name
+        if self.__version is not None:
+            dictionary['version'] = self.__version
+        if self.__extension_id is not None:
+            dictionary['extensionId'] = self.__extension_id
         return dictionary
 
     def from_dictionary(self, dictionary):

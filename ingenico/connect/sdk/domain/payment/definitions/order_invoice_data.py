@@ -68,10 +68,17 @@ class OrderInvoiceData(DataObject):
 
     def to_dictionary(self):
         dictionary = super(OrderInvoiceData, self).to_dictionary()
-        self._add_to_dictionary(dictionary, 'additionalData', self.additional_data)
-        self._add_to_dictionary(dictionary, 'invoiceDate', self.invoice_date)
-        self._add_to_dictionary(dictionary, 'invoiceNumber', self.invoice_number)
-        self._add_to_dictionary(dictionary, 'textQualifiers', self.text_qualifiers)
+        if self.additional_data is not None:
+            dictionary['additionalData'] = self.additional_data
+        if self.invoice_date is not None:
+            dictionary['invoiceDate'] = self.invoice_date
+        if self.invoice_number is not None:
+            dictionary['invoiceNumber'] = self.invoice_number
+        if self.text_qualifiers is not None:
+            dictionary['textQualifiers'] = []
+            for element in self.text_qualifiers:
+                if element is not None:
+                    dictionary['textQualifiers'].append(element)
         return dictionary
 
     def from_dictionary(self, dictionary):
@@ -86,6 +93,6 @@ class OrderInvoiceData(DataObject):
             if not isinstance(dictionary['textQualifiers'], list):
                 raise TypeError('value \'{}\' is not a list'.format(dictionary['textQualifiers']))
             self.text_qualifiers = []
-            for textQualifiers_element in dictionary['textQualifiers']:
-                self.text_qualifiers.append(textQualifiers_element)
+            for element in dictionary['textQualifiers']:
+                self.text_qualifiers.append(element)
         return self

@@ -119,13 +119,20 @@ class APIError(DataObject):
 
     def to_dictionary(self):
         dictionary = super(APIError, self).to_dictionary()
-        self._add_to_dictionary(dictionary, 'category', self.category)
-        self._add_to_dictionary(dictionary, 'code', self.code)
-        self._add_to_dictionary(dictionary, 'httpStatusCode', self.http_status_code)
-        self._add_to_dictionary(dictionary, 'id', self.id)
-        self._add_to_dictionary(dictionary, 'message', self.message)
-        self._add_to_dictionary(dictionary, 'propertyName', self.property_name)
-        self._add_to_dictionary(dictionary, 'requestId', self.request_id)
+        if self.category is not None:
+            dictionary['category'] = self.category
+        if self.code is not None:
+            dictionary['code'] = self.code
+        if self.http_status_code is not None:
+            dictionary['httpStatusCode'] = self.http_status_code
+        if self.id is not None:
+            dictionary['id'] = self.id
+        if self.message is not None:
+            dictionary['message'] = self.message
+        if self.property_name is not None:
+            dictionary['propertyName'] = self.property_name
+        if self.request_id is not None:
+            dictionary['requestId'] = self.request_id
         return dictionary
 
     def from_dictionary(self, dictionary):

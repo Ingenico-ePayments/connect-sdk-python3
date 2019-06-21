@@ -135,14 +135,25 @@ class Order(DataObject):
 
     def to_dictionary(self):
         dictionary = super(Order, self).to_dictionary()
-        self._add_to_dictionary(dictionary, 'additionalInput', self.additional_input)
-        self._add_to_dictionary(dictionary, 'amountOfMoney', self.amount_of_money)
-        self._add_to_dictionary(dictionary, 'customer', self.customer)
-        self._add_to_dictionary(dictionary, 'items', self.items)
-        self._add_to_dictionary(dictionary, 'references', self.references)
-        self._add_to_dictionary(dictionary, 'seller', self.seller)
-        self._add_to_dictionary(dictionary, 'shipping', self.shipping)
-        self._add_to_dictionary(dictionary, 'shoppingCart', self.shopping_cart)
+        if self.additional_input is not None:
+            dictionary['additionalInput'] = self.additional_input.to_dictionary()
+        if self.amount_of_money is not None:
+            dictionary['amountOfMoney'] = self.amount_of_money.to_dictionary()
+        if self.customer is not None:
+            dictionary['customer'] = self.customer.to_dictionary()
+        if self.items is not None:
+            dictionary['items'] = []
+            for element in self.items:
+                if element is not None:
+                    dictionary['items'].append(element.to_dictionary())
+        if self.references is not None:
+            dictionary['references'] = self.references.to_dictionary()
+        if self.seller is not None:
+            dictionary['seller'] = self.seller.to_dictionary()
+        if self.shipping is not None:
+            dictionary['shipping'] = self.shipping.to_dictionary()
+        if self.shopping_cart is not None:
+            dictionary['shoppingCart'] = self.shopping_cart.to_dictionary()
         return dictionary
 
     def from_dictionary(self, dictionary):
@@ -166,9 +177,9 @@ class Order(DataObject):
             if not isinstance(dictionary['items'], list):
                 raise TypeError('value \'{}\' is not a list'.format(dictionary['items']))
             self.items = []
-            for items_element in dictionary['items']:
-                items_value = LineItem()
-                self.items.append(items_value.from_dictionary(items_element))
+            for element in dictionary['items']:
+                value = LineItem()
+                self.items.append(value.from_dictionary(element))
         if 'references' in dictionary:
             if not isinstance(dictionary['references'], dict):
                 raise TypeError('value \'{}\' is not a dictionary'.format(dictionary['references']))

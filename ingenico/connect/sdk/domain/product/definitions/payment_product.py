@@ -347,27 +347,54 @@ class PaymentProduct(DataObject):
 
     def to_dictionary(self):
         dictionary = super(PaymentProduct, self).to_dictionary()
-        self._add_to_dictionary(dictionary, 'accountsOnFile', self.accounts_on_file)
-        self._add_to_dictionary(dictionary, 'allowsRecurring', self.allows_recurring)
-        self._add_to_dictionary(dictionary, 'allowsTokenization', self.allows_tokenization)
-        self._add_to_dictionary(dictionary, 'authenticationIndicator', self.authentication_indicator)
-        self._add_to_dictionary(dictionary, 'autoTokenized', self.auto_tokenized)
-        self._add_to_dictionary(dictionary, 'canBeIframed', self.can_be_iframed)
-        self._add_to_dictionary(dictionary, 'deviceFingerprintEnabled', self.device_fingerprint_enabled)
-        self._add_to_dictionary(dictionary, 'displayHints', self.display_hints)
-        self._add_to_dictionary(dictionary, 'fields', self.fields)
-        self._add_to_dictionary(dictionary, 'fieldsWarning', self.fields_warning)
-        self._add_to_dictionary(dictionary, 'id', self.id)
-        self._add_to_dictionary(dictionary, 'isJavaScriptRequired', self.is_java_script_required)
-        self._add_to_dictionary(dictionary, 'maxAmount', self.max_amount)
-        self._add_to_dictionary(dictionary, 'minAmount', self.min_amount)
-        self._add_to_dictionary(dictionary, 'mobileIntegrationLevel', self.mobile_integration_level)
-        self._add_to_dictionary(dictionary, 'paymentMethod', self.payment_method)
-        self._add_to_dictionary(dictionary, 'paymentProduct302SpecificData', self.payment_product302_specific_data)
-        self._add_to_dictionary(dictionary, 'paymentProduct320SpecificData', self.payment_product320_specific_data)
-        self._add_to_dictionary(dictionary, 'paymentProduct863SpecificData', self.payment_product863_specific_data)
-        self._add_to_dictionary(dictionary, 'paymentProductGroup', self.payment_product_group)
-        self._add_to_dictionary(dictionary, 'usesRedirectionTo3rdParty', self.uses_redirection_to3rd_party)
+        if self.accounts_on_file is not None:
+            dictionary['accountsOnFile'] = []
+            for element in self.accounts_on_file:
+                if element is not None:
+                    dictionary['accountsOnFile'].append(element.to_dictionary())
+        if self.allows_recurring is not None:
+            dictionary['allowsRecurring'] = self.allows_recurring
+        if self.allows_tokenization is not None:
+            dictionary['allowsTokenization'] = self.allows_tokenization
+        if self.authentication_indicator is not None:
+            dictionary['authenticationIndicator'] = self.authentication_indicator.to_dictionary()
+        if self.auto_tokenized is not None:
+            dictionary['autoTokenized'] = self.auto_tokenized
+        if self.can_be_iframed is not None:
+            dictionary['canBeIframed'] = self.can_be_iframed
+        if self.device_fingerprint_enabled is not None:
+            dictionary['deviceFingerprintEnabled'] = self.device_fingerprint_enabled
+        if self.display_hints is not None:
+            dictionary['displayHints'] = self.display_hints.to_dictionary()
+        if self.fields is not None:
+            dictionary['fields'] = []
+            for element in self.fields:
+                if element is not None:
+                    dictionary['fields'].append(element.to_dictionary())
+        if self.fields_warning is not None:
+            dictionary['fieldsWarning'] = self.fields_warning
+        if self.id is not None:
+            dictionary['id'] = self.id
+        if self.is_java_script_required is not None:
+            dictionary['isJavaScriptRequired'] = self.is_java_script_required
+        if self.max_amount is not None:
+            dictionary['maxAmount'] = self.max_amount
+        if self.min_amount is not None:
+            dictionary['minAmount'] = self.min_amount
+        if self.mobile_integration_level is not None:
+            dictionary['mobileIntegrationLevel'] = self.mobile_integration_level
+        if self.payment_method is not None:
+            dictionary['paymentMethod'] = self.payment_method
+        if self.payment_product302_specific_data is not None:
+            dictionary['paymentProduct302SpecificData'] = self.payment_product302_specific_data.to_dictionary()
+        if self.payment_product320_specific_data is not None:
+            dictionary['paymentProduct320SpecificData'] = self.payment_product320_specific_data.to_dictionary()
+        if self.payment_product863_specific_data is not None:
+            dictionary['paymentProduct863SpecificData'] = self.payment_product863_specific_data.to_dictionary()
+        if self.payment_product_group is not None:
+            dictionary['paymentProductGroup'] = self.payment_product_group
+        if self.uses_redirection_to3rd_party is not None:
+            dictionary['usesRedirectionTo3rdParty'] = self.uses_redirection_to3rd_party
         return dictionary
 
     def from_dictionary(self, dictionary):
@@ -376,9 +403,9 @@ class PaymentProduct(DataObject):
             if not isinstance(dictionary['accountsOnFile'], list):
                 raise TypeError('value \'{}\' is not a list'.format(dictionary['accountsOnFile']))
             self.accounts_on_file = []
-            for accountsOnFile_element in dictionary['accountsOnFile']:
-                accountsOnFile_value = AccountOnFile()
-                self.accounts_on_file.append(accountsOnFile_value.from_dictionary(accountsOnFile_element))
+            for element in dictionary['accountsOnFile']:
+                value = AccountOnFile()
+                self.accounts_on_file.append(value.from_dictionary(element))
         if 'allowsRecurring' in dictionary:
             self.allows_recurring = dictionary['allowsRecurring']
         if 'allowsTokenization' in dictionary:
@@ -403,9 +430,9 @@ class PaymentProduct(DataObject):
             if not isinstance(dictionary['fields'], list):
                 raise TypeError('value \'{}\' is not a list'.format(dictionary['fields']))
             self.fields = []
-            for fields_element in dictionary['fields']:
-                fields_value = PaymentProductField()
-                self.fields.append(fields_value.from_dictionary(fields_element))
+            for element in dictionary['fields']:
+                value = PaymentProductField()
+                self.fields.append(value.from_dictionary(element))
         if 'fieldsWarning' in dictionary:
             self.fields_warning = dictionary['fieldsWarning']
         if 'id' in dictionary:
