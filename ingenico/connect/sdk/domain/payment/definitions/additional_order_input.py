@@ -6,6 +6,7 @@
 from ingenico.connect.sdk.data_object import DataObject
 from ingenico.connect.sdk.domain.definitions.airline_data import AirlineData
 from ingenico.connect.sdk.domain.payment.definitions.level3_summary_data import Level3SummaryData
+from ingenico.connect.sdk.domain.payment.definitions.loan_recipient import LoanRecipient
 from ingenico.connect.sdk.domain.payment.definitions.order_type_information import OrderTypeInformation
 
 
@@ -13,6 +14,7 @@ class AdditionalOrderInput(DataObject):
 
     __airline_data = None
     __level3_summary_data = None
+    __loan_recipient = None
     __number_of_installments = None
     __order_date = None
     __type_information = None
@@ -44,6 +46,19 @@ class AdditionalOrderInput(DataObject):
     @level3_summary_data.setter
     def level3_summary_data(self, value):
         self.__level3_summary_data = value
+
+    @property
+    def loan_recipient(self):
+        """
+        | Object containing specific data regarding the recipient of a loan in the UK
+        
+        Type: :class:`ingenico.connect.sdk.domain.payment.definitions.loan_recipient.LoanRecipient`
+        """
+        return self.__loan_recipient
+
+    @loan_recipient.setter
+    def loan_recipient(self, value):
+        self.__loan_recipient = value
 
     @property
     def number_of_installments(self):
@@ -91,6 +106,8 @@ class AdditionalOrderInput(DataObject):
             dictionary['airlineData'] = self.airline_data.to_dictionary()
         if self.level3_summary_data is not None:
             dictionary['level3SummaryData'] = self.level3_summary_data.to_dictionary()
+        if self.loan_recipient is not None:
+            dictionary['loanRecipient'] = self.loan_recipient.to_dictionary()
         if self.number_of_installments is not None:
             dictionary['numberOfInstallments'] = self.number_of_installments
         if self.order_date is not None:
@@ -111,6 +128,11 @@ class AdditionalOrderInput(DataObject):
                 raise TypeError('value \'{}\' is not a dictionary'.format(dictionary['level3SummaryData']))
             value = Level3SummaryData()
             self.level3_summary_data = value.from_dictionary(dictionary['level3SummaryData'])
+        if 'loanRecipient' in dictionary:
+            if not isinstance(dictionary['loanRecipient'], dict):
+                raise TypeError('value \'{}\' is not a dictionary'.format(dictionary['loanRecipient']))
+            value = LoanRecipient()
+            self.loan_recipient = value.from_dictionary(dictionary['loanRecipient'])
         if 'numberOfInstallments' in dictionary:
             self.number_of_installments = dictionary['numberOfInstallments']
         if 'orderDate' in dictionary:
