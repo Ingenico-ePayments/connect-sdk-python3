@@ -13,10 +13,11 @@ from ingenico.connect.sdk.domain.definitions.card import Card
 from ingenico.connect.sdk.domain.definitions.company_information import CompanyInformation
 from ingenico.connect.sdk.domain.payment.create_payment_request import CreatePaymentRequest
 from ingenico.connect.sdk.domain.payment.definitions.address_personal import AddressPersonal
+from ingenico.connect.sdk.domain.payment.definitions.browser_data import BrowserData
 from ingenico.connect.sdk.domain.payment.definitions.card_payment_method_specific_input import CardPaymentMethodSpecificInput
 from ingenico.connect.sdk.domain.payment.definitions.contact_details import ContactDetails
 from ingenico.connect.sdk.domain.payment.definitions.customer import Customer
-from ingenico.connect.sdk.domain.payment.definitions.external_cardholder_authentication_data import ExternalCardholderAuthenticationData
+from ingenico.connect.sdk.domain.payment.definitions.customer_device import CustomerDevice
 from ingenico.connect.sdk.domain.payment.definitions.line_item import LineItem
 from ingenico.connect.sdk.domain.payment.definitions.line_item_invoice_data import LineItemInvoiceData
 from ingenico.connect.sdk.domain.payment.definitions.order import Order
@@ -24,10 +25,10 @@ from ingenico.connect.sdk.domain.payment.definitions.order_invoice_data import O
 from ingenico.connect.sdk.domain.payment.definitions.order_references import OrderReferences
 from ingenico.connect.sdk.domain.payment.definitions.personal_information import PersonalInformation
 from ingenico.connect.sdk.domain.payment.definitions.personal_name import PersonalName
+from ingenico.connect.sdk.domain.payment.definitions.redirection_data import RedirectionData
 from ingenico.connect.sdk.domain.payment.definitions.shipping import Shipping
 from ingenico.connect.sdk.domain.payment.definitions.shopping_cart import ShoppingCart
 from ingenico.connect.sdk.domain.payment.definitions.three_d_secure import ThreeDSecure
-from ingenico.connect.sdk.domain.payment.definitions.three_d_secure_data import ThreeDSecureData
 
 
 class CreatePaymentExample(object):
@@ -40,32 +41,22 @@ class CreatePaymentExample(object):
             card.cvv = "123"
             card.expiry_date = "1220"
 
-            external_cardholder_authentication_data = ExternalCardholderAuthenticationData()
-            external_cardholder_authentication_data.cavv = "AgAAAAAABk4DWZ4C28yUQAAAAAA="
-            external_cardholder_authentication_data.cavv_algorithm = "1"
-            external_cardholder_authentication_data.eci = 8
-            external_cardholder_authentication_data.three_d_secure_version = "v2"
-            external_cardholder_authentication_data.three_d_server_transaction_id = "3DSTID1234"
-            external_cardholder_authentication_data.validation_result = "Y"
-            external_cardholder_authentication_data.xid = "n3h2uOQPUgnmqhCkXNfxl8pOZJA="
-
-            prior_three_d_secure_data = ThreeDSecureData()
-            prior_three_d_secure_data.acs_transaction_id = "empty"
-            prior_three_d_secure_data.method = "challenged"
-            prior_three_d_secure_data.utc_timestamp = "201901311530"
+            redirection_data = RedirectionData()
+            redirection_data.return_url = "https://hostname.myownwebsite.url"
 
             three_d_secure = ThreeDSecure()
             three_d_secure.authentication_flow = "browser"
             three_d_secure.challenge_canvas_size = "600x400"
             three_d_secure.challenge_indicator = "challenge-requested"
-            three_d_secure.external_cardholder_authentication_data = external_cardholder_authentication_data
-            three_d_secure.prior_three_d_secure_data = prior_three_d_secure_data
+            three_d_secure.redirection_data = redirection_data
             three_d_secure.skip_authentication = False
 
             card_payment_method_specific_input = CardPaymentMethodSpecificInput()
             card_payment_method_specific_input.card = card
+            card_payment_method_specific_input.is_recurring = False
             card_payment_method_specific_input.payment_product_id = 1
             card_payment_method_specific_input.three_d_secure = three_d_secure
+            card_payment_method_specific_input.transaction_channel = "ECOMMERCE"
 
             amount_of_money = AmountOfMoney()
             amount_of_money.amount = 2980
@@ -86,9 +77,22 @@ class CreatePaymentExample(object):
 
             contact_details = ContactDetails()
             contact_details.email_address = "wile.e.coyote@acmelabs.com"
-            contact_details.email_message_type = "html"
             contact_details.fax_number = "+1234567891"
             contact_details.phone_number = "+1234567890"
+
+            browser_data = BrowserData()
+            browser_data.color_depth = 24
+            browser_data.java_enabled = False
+            browser_data.screen_height = "1200"
+            browser_data.screen_width = "1920"
+
+            device = CustomerDevice()
+            device.accept_header = "texthtml,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"
+            device.browser_data = browser_data
+            device.ip_address = "123.123.123.123"
+            device.locale = "en-US"
+            device.timezone_offset_utc_minutes = "420"
+            device.user_agent = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_4) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/12.1 Safari/605.1.15"
 
             name = PersonalName()
             name.first_name = "Wile"
@@ -102,9 +106,11 @@ class CreatePaymentExample(object):
             personal_information.name = name
 
             customer = Customer()
+            customer.account_type = "none"
             customer.billing_address = billing_address
             customer.company_information = company_information
             customer.contact_details = contact_details
+            customer.device = device
             customer.locale = "en_US"
             customer.merchant_customer_id = "1234"
             customer.personal_information = personal_information

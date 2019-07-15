@@ -18,6 +18,7 @@ from ingenico.connect.sdk.domain.payment.definitions.sepa_direct_debit_payment_m
 class PaymentOutput(OrderOutput):
 
     __amount_paid = None
+    __amount_reversed = None
     __bank_transfer_payment_method_specific_output = None
     __card_payment_method_specific_output = None
     __cash_payment_method_specific_output = None
@@ -41,6 +42,19 @@ class PaymentOutput(OrderOutput):
     @amount_paid.setter
     def amount_paid(self, value):
         self.__amount_paid = value
+
+    @property
+    def amount_reversed(self):
+        """
+        | Amount that has been reversed
+        
+        Type: int
+        """
+        return self.__amount_reversed
+
+    @amount_reversed.setter
+    def amount_reversed(self, value):
+        self.__amount_reversed = value
 
     @property
     def bank_transfer_payment_method_specific_output(self):
@@ -185,6 +199,8 @@ class PaymentOutput(OrderOutput):
         dictionary = super(PaymentOutput, self).to_dictionary()
         if self.amount_paid is not None:
             dictionary['amountPaid'] = self.amount_paid
+        if self.amount_reversed is not None:
+            dictionary['amountReversed'] = self.amount_reversed
         if self.bank_transfer_payment_method_specific_output is not None:
             dictionary['bankTransferPaymentMethodSpecificOutput'] = self.bank_transfer_payment_method_specific_output.to_dictionary()
         if self.card_payment_method_specific_output is not None:
@@ -211,6 +227,8 @@ class PaymentOutput(OrderOutput):
         super(PaymentOutput, self).from_dictionary(dictionary)
         if 'amountPaid' in dictionary:
             self.amount_paid = dictionary['amountPaid']
+        if 'amountReversed' in dictionary:
+            self.amount_reversed = dictionary['amountReversed']
         if 'bankTransferPaymentMethodSpecificOutput' in dictionary:
             if not isinstance(dictionary['bankTransferPaymentMethodSpecificOutput'], dict):
                 raise TypeError('value \'{}\' is not a dictionary'.format(dictionary['bankTransferPaymentMethodSpecificOutput']))

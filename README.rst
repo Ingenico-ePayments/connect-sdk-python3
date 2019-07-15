@@ -59,7 +59,7 @@ To install the SDK using pip, execute the following command:
 
 ::
 
-    pip install connect-sdk-python3
+   pip install connect-sdk-python3
 
 Alternatively, you can install the SDK from a source distribution file:
 
@@ -72,7 +72,7 @@ Alternatively, you can install the SDK from a source distribution file:
 
    ::
 
-       pip install connect-sdk-python3-x.y.z.zip
+      pip install connect-sdk-python3-x.y.z.zip
 
 Uninstalling
 ------------
@@ -82,17 +82,17 @@ following command:
 
 ::
 
-    pip uninstall connect-sdk-python3
+   pip uninstall connect-sdk-python3
 
 The required packages can be uninstalled in the same way.
 
 Running tests
 -------------
 
-| There are two types of tests: unit tests and integration tests. The
-  unit tests will work out-of-the-box; for the integration tests some
-  configuration is required.
-| First, some environment variables need to be set:
+There are two types of tests: unit tests and integration tests. The unit
+tests will work out-of-the-box; for the integration tests some
+configuration is required. First, some environment variables need to be
+set:
 
 -  ``connect.api.apiKeyId`` for the API key id to use. This can be
    retrieved from the Configuration Center.
@@ -111,7 +111,7 @@ can be installed using the following command:
 
 ::
 
-    pip install mock mockito
+   pip install mock mockito
 
 The following commands can now be executed from the ``tests`` directory
 to execute the tests:
@@ -120,16 +120,16 @@ to execute the tests:
 
    ::
 
-       python run_unit_tests.py
+      python run_unit_tests.py
 
 -  Integration tests:
 
    ::
 
-       python run_integration_tests.py
+      python run_integration_tests.py
 
 -  Both unit and integration tests:
 
    ::
 
-       python run_all_tests.py
+      python run_all_tests.py

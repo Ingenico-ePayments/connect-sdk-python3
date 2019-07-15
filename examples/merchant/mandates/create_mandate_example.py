@@ -19,7 +19,7 @@ class CreateMandateExample(object):
     def example(self):
         with self.__get_client() as client:
             bank_account_iban = BankAccountIban()
-            bank_account_iban.iban = "DE46940594210000012345"
+            bank_account_iban.iban = "DE46720200700359736690"
 
             contact_details = MandateContactDetails()
             contact_details.email_address = "wile.e.coyote@acmelabs.com"
