@@ -87,6 +87,9 @@ class ExternalCardholderAuthenticationData(DataObject):
         
         * v1
         * v2
+        * 1.0.2
+        * 2.1.0
+        * 2.2.0
         
         Type: str
         """

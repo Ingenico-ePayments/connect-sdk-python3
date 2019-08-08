@@ -48,12 +48,14 @@ class CreatePaymentExample(object):
             three_d_secure.authentication_flow = "browser"
             three_d_secure.challenge_canvas_size = "600x400"
             three_d_secure.challenge_indicator = "challenge-requested"
+            three_d_secure.exemption_request = "none"
             three_d_secure.redirection_data = redirection_data
             three_d_secure.skip_authentication = False
 
             card_payment_method_specific_input = CardPaymentMethodSpecificInput()
             card_payment_method_specific_input.card = card
             card_payment_method_specific_input.is_recurring = False
+            card_payment_method_specific_input.merchant_initiated_reason_indicator = "delayedCharges"
             card_payment_method_specific_input.payment_product_id = 1
             card_payment_method_specific_input.three_d_secure = three_d_secure
             card_payment_method_specific_input.transaction_channel = "ECOMMERCE"

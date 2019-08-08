@@ -13,6 +13,7 @@ class AbstractThreeDSecure(DataObject):
     __authentication_flow = None
     __challenge_canvas_size = None
     __challenge_indicator = None
+    __exemption_request = None
     __prior_three_d_secure_data = None
     __sdk_data = None
     __skip_authentication = None
@@ -49,6 +50,17 @@ class AbstractThreeDSecure(DataObject):
     @challenge_indicator.setter
     def challenge_indicator(self, value):
         self.__challenge_indicator = value
+
+    @property
+    def exemption_request(self):
+        """
+        Type: str
+        """
+        return self.__exemption_request
+
+    @exemption_request.setter
+    def exemption_request(self, value):
+        self.__exemption_request = value
 
     @property
     def prior_three_d_secure_data(self):
@@ -91,6 +103,8 @@ class AbstractThreeDSecure(DataObject):
             dictionary['challengeCanvasSize'] = self.challenge_canvas_size
         if self.challenge_indicator is not None:
             dictionary['challengeIndicator'] = self.challenge_indicator
+        if self.exemption_request is not None:
+            dictionary['exemptionRequest'] = self.exemption_request
         if self.prior_three_d_secure_data is not None:
             dictionary['priorThreeDSecureData'] = self.prior_three_d_secure_data.to_dictionary()
         if self.sdk_data is not None:
@@ -107,6 +121,8 @@ class AbstractThreeDSecure(DataObject):
             self.challenge_canvas_size = dictionary['challengeCanvasSize']
         if 'challengeIndicator' in dictionary:
             self.challenge_indicator = dictionary['challengeIndicator']
+        if 'exemptionRequest' in dictionary:
+            self.exemption_request = dictionary['exemptionRequest']
         if 'priorThreeDSecureData' in dictionary:
             if not isinstance(dictionary['priorThreeDSecureData'], dict):
                 raise TypeError('value \'{}\' is not a dictionary'.format(dictionary['priorThreeDSecureData']))

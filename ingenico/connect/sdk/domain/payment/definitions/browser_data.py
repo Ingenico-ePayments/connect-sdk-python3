@@ -67,7 +67,7 @@ class BrowserData(DataObject):
         """
         | true =Java is enabled in the browser
         
-        | false = Java is not enabled in the browser (default if left empty)
+        | false = Java is not enabled in the browser
         
         | Value is returned from the navigator.javaEnabled property.
         
@@ -88,7 +88,7 @@ class BrowserData(DataObject):
         """
         | true = JavaScript is enabled in the browser
         
-        | false = JavaScript is not enabled in the browser (default if left empty)
+        | false = JavaScript is not enabled in the browser
         
         | Note: Required in future 3-D Secure version 2.2.
         

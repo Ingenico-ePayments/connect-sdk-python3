@@ -1,4 +1,5 @@
 from ingenico.connect.sdk.data_object import DataObject
+from ingenico.connect.sdk.domain.dispute.dispute_response import DisputeResponse
 from ingenico.connect.sdk.domain.payment.payment_response import PaymentResponse
 from ingenico.connect.sdk.domain.refund.refund_response import RefundResponse
 from ingenico.connect.sdk.domain.payout.payout_response import PayoutResponse
@@ -15,6 +16,7 @@ class WebhooksEvent(DataObject):
     __refund = None
     __payout = None
     __token = None
+    __dispute = None
 
     @property
     def api_version(self):
@@ -88,6 +90,14 @@ class WebhooksEvent(DataObject):
     def token(self, token):
         self.__token = token
 
+    @property
+    def dispute(self):
+        return self.__dispute
+
+    @dispute.setter
+    def dispute(self, dispute):
+        self.__dispute = dispute
+
     def to_dictionary(self):
         dictionary = super(WebhooksEvent, self).to_dictionary()
         if self.__api_version is not None:
@@ -108,6 +118,8 @@ class WebhooksEvent(DataObject):
             dictionary['payout'] = self.__payout
         if self.__token is not None:
             dictionary['token'] = self.__token
+        if self.__dispute is not None:
+            dictionary['dispute'] = self.__dispute
         return dictionary
 
     def from_dictionary(self, dictionary):
@@ -142,4 +154,9 @@ class WebhooksEvent(DataObject):
                 raise TypeError('value \'{}\' is not a dictionary'.format(dictionary['token']))
             value = TokenResponse()
             self.__token = value.from_dictionary(dictionary['token'])
+        if 'dispute' in dictionary:
+            if not isinstance(dictionary['dispute'], dict):
+                raise TypeError('value \'{}\' is not a dictionary'.format(dictionary['dispute']))
+            value = DisputeResponse()
+            self.__dispute = value.from_dictionary(dictionary['dispute'])
         return self
