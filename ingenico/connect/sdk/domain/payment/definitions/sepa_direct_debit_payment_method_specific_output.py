@@ -12,6 +12,7 @@ class SepaDirectDebitPaymentMethodSpecificOutput(AbstractPaymentMethodSpecificOu
 
     __fraud_results = None
     __payment_product771_specific_output = None
+    __token = None
 
     @property
     def fraud_results(self):
@@ -39,12 +40,27 @@ class SepaDirectDebitPaymentMethodSpecificOutput(AbstractPaymentMethodSpecificOu
     def payment_product771_specific_output(self, value):
         self.__payment_product771_specific_output = value
 
+    @property
+    def token(self):
+        """
+        | ID of the token. This property is populated for the GlobalCollect payment platform when the payment was done with a token or when the payment was tokenized.
+        
+        Type: str
+        """
+        return self.__token
+
+    @token.setter
+    def token(self, value):
+        self.__token = value
+
     def to_dictionary(self):
         dictionary = super(SepaDirectDebitPaymentMethodSpecificOutput, self).to_dictionary()
         if self.fraud_results is not None:
             dictionary['fraudResults'] = self.fraud_results.to_dictionary()
         if self.payment_product771_specific_output is not None:
             dictionary['paymentProduct771SpecificOutput'] = self.payment_product771_specific_output.to_dictionary()
+        if self.token is not None:
+            dictionary['token'] = self.token
         return dictionary
 
     def from_dictionary(self, dictionary):
@@ -59,4 +75,6 @@ class SepaDirectDebitPaymentMethodSpecificOutput(AbstractPaymentMethodSpecificOu
                 raise TypeError('value \'{}\' is not a dictionary'.format(dictionary['paymentProduct771SpecificOutput']))
             value = PaymentProduct771SpecificOutput()
             self.payment_product771_specific_output = value.from_dictionary(dictionary['paymentProduct771SpecificOutput'])
+        if 'token' in dictionary:
+            self.token = dictionary['token']
         return self

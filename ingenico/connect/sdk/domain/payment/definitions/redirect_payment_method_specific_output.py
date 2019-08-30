@@ -88,7 +88,7 @@ class RedirectPaymentMethodSpecificOutput(AbstractPaymentMethodSpecificOutput):
     @property
     def token(self):
         """
-        | ID of the token. This property is populated for the Ogone payment platform when the payment was done with a token or when the payment was tokenized.
+        | ID of the token. This property is populated when the payment was done with a token or when the payment was tokenized.
         
         Type: str
         """

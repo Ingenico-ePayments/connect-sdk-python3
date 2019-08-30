@@ -61,7 +61,7 @@ class CreateMandateBase(DataObject):
     @property
     def language(self):
         """
-        | The language of the customer.
+        | The language code of the customer, one of de, en, es, fr, it, nl, si, sk, sv.
         
         Type: str
         """
