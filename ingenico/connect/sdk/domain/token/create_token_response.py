@@ -9,6 +9,7 @@ from ingenico.connect.sdk.data_object import DataObject
 class CreateTokenResponse(DataObject):
 
     __is_new_token = None
+    __original_payment_id = None
     __token = None
 
     @property
@@ -28,6 +29,19 @@ class CreateTokenResponse(DataObject):
         self.__is_new_token = value
 
     @property
+    def original_payment_id(self):
+        """
+        | The initial Payment ID of the transaction from which the token has been created
+        
+        Type: str
+        """
+        return self.__original_payment_id
+
+    @original_payment_id.setter
+    def original_payment_id(self, value):
+        self.__original_payment_id = value
+
+    @property
     def token(self):
         """
         | ID of the token
@@ -44,6 +58,8 @@ class CreateTokenResponse(DataObject):
         dictionary = super(CreateTokenResponse, self).to_dictionary()
         if self.is_new_token is not None:
             dictionary['isNewToken'] = self.is_new_token
+        if self.original_payment_id is not None:
+            dictionary['originalPaymentId'] = self.original_payment_id
         if self.token is not None:
             dictionary['token'] = self.token
         return dictionary
@@ -52,6 +68,8 @@ class CreateTokenResponse(DataObject):
         super(CreateTokenResponse, self).from_dictionary(dictionary)
         if 'isNewToken' in dictionary:
             self.is_new_token = dictionary['isNewToken']
+        if 'originalPaymentId' in dictionary:
+            self.original_payment_id = dictionary['originalPaymentId']
         if 'token' in dictionary:
             self.token = dictionary['token']
         return self

@@ -16,6 +16,7 @@ class TokenResponse(DataObject):
     __e_wallet = None
     __id = None
     __non_sepa_direct_debit = None
+    __original_payment_id = None
     __payment_product_id = None
     __sepa_direct_debit = None
 
@@ -72,6 +73,19 @@ class TokenResponse(DataObject):
         self.__non_sepa_direct_debit = value
 
     @property
+    def original_payment_id(self):
+        """
+        | The initial Payment ID of the transaction from which the token has been created
+        
+        Type: str
+        """
+        return self.__original_payment_id
+
+    @original_payment_id.setter
+    def original_payment_id(self, value):
+        self.__original_payment_id = value
+
+    @property
     def payment_product_id(self):
         """
         | Payment product identifier
@@ -108,6 +122,8 @@ class TokenResponse(DataObject):
             dictionary['id'] = self.id
         if self.non_sepa_direct_debit is not None:
             dictionary['nonSepaDirectDebit'] = self.non_sepa_direct_debit.to_dictionary()
+        if self.original_payment_id is not None:
+            dictionary['originalPaymentId'] = self.original_payment_id
         if self.payment_product_id is not None:
             dictionary['paymentProductId'] = self.payment_product_id
         if self.sepa_direct_debit is not None:
@@ -133,6 +149,8 @@ class TokenResponse(DataObject):
                 raise TypeError('value \'{}\' is not a dictionary'.format(dictionary['nonSepaDirectDebit']))
             value = TokenNonSepaDirectDebit()
             self.non_sepa_direct_debit = value.from_dictionary(dictionary['nonSepaDirectDebit'])
+        if 'originalPaymentId' in dictionary:
+            self.original_payment_id = dictionary['originalPaymentId']
         if 'paymentProductId' in dictionary:
             self.payment_product_id = dictionary['paymentProductId']
         if 'sepaDirectDebit' in dictionary:
