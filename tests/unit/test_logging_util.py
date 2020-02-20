@@ -41,6 +41,11 @@ class LoggingUtilTest(unittest.TestCase):
         """Tests that the obfuscate_body function does not touch data that does not need to be obfuscated"""
         self.obfuscate_body_no_match("bodyNoObfuscation.json")
 
+    def test_obfuscate_body_object(self):
+        """Tests that the obfuscate_body correctly obfuscates a json containing an object that does not need to be obfuscated"""
+        self.obfuscate_body_match("bodyWithObjectOriginal.json",
+                                  "bodyWithObjectObfuscated.json")
+
     def obfuscate_body_match(self, original_resource, obfuscated_resource):
         """Tests that the LoggingUtil obfuscates the json in original_resource to the json in obfuscated_resource
 

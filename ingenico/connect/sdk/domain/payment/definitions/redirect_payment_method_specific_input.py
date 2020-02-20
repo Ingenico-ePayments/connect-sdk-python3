@@ -9,6 +9,7 @@ from ingenico.connect.sdk.domain.payment.definitions.redirect_payment_product816
 from ingenico.connect.sdk.domain.payment.definitions.redirect_payment_product840_specific_input import RedirectPaymentProduct840SpecificInput
 from ingenico.connect.sdk.domain.payment.definitions.redirect_payment_product861_specific_input import RedirectPaymentProduct861SpecificInput
 from ingenico.connect.sdk.domain.payment.definitions.redirect_payment_product863_specific_input import RedirectPaymentProduct863SpecificInput
+from ingenico.connect.sdk.domain.payment.definitions.redirect_payment_product869_specific_input import RedirectPaymentProduct869SpecificInput
 from ingenico.connect.sdk.domain.payment.definitions.redirect_payment_product882_specific_input import RedirectPaymentProduct882SpecificInput
 from ingenico.connect.sdk.domain.payment.definitions.redirection_data import RedirectionData
 
@@ -21,6 +22,7 @@ class RedirectPaymentMethodSpecificInput(AbstractRedirectPaymentMethodSpecificIn
     __payment_product840_specific_input = None
     __payment_product861_specific_input = None
     __payment_product863_specific_input = None
+    __payment_product869_specific_input = None
     __payment_product882_specific_input = None
     __redirection_data = None
     __return_url = None
@@ -105,6 +107,19 @@ class RedirectPaymentMethodSpecificInput(AbstractRedirectPaymentMethodSpecificIn
         self.__payment_product863_specific_input = value
 
     @property
+    def payment_product869_specific_input(self):
+        """
+        | Object containing specific input required for China UnionPay payments (Payment product ID 869)
+        
+        Type: :class:`ingenico.connect.sdk.domain.payment.definitions.redirect_payment_product869_specific_input.RedirectPaymentProduct869SpecificInput`
+        """
+        return self.__payment_product869_specific_input
+
+    @payment_product869_specific_input.setter
+    def payment_product869_specific_input(self, value):
+        self.__payment_product869_specific_input = value
+
+    @property
     def payment_product882_specific_input(self):
         """
         | Object containing specific input required for Indian Net Banking payments (Payment product ID 882)
@@ -161,6 +176,8 @@ class RedirectPaymentMethodSpecificInput(AbstractRedirectPaymentMethodSpecificIn
             dictionary['paymentProduct861SpecificInput'] = self.payment_product861_specific_input.to_dictionary()
         if self.payment_product863_specific_input is not None:
             dictionary['paymentProduct863SpecificInput'] = self.payment_product863_specific_input.to_dictionary()
+        if self.payment_product869_specific_input is not None:
+            dictionary['paymentProduct869SpecificInput'] = self.payment_product869_specific_input.to_dictionary()
         if self.payment_product882_specific_input is not None:
             dictionary['paymentProduct882SpecificInput'] = self.payment_product882_specific_input.to_dictionary()
         if self.redirection_data is not None:
@@ -198,6 +215,11 @@ class RedirectPaymentMethodSpecificInput(AbstractRedirectPaymentMethodSpecificIn
                 raise TypeError('value \'{}\' is not a dictionary'.format(dictionary['paymentProduct863SpecificInput']))
             value = RedirectPaymentProduct863SpecificInput()
             self.payment_product863_specific_input = value.from_dictionary(dictionary['paymentProduct863SpecificInput'])
+        if 'paymentProduct869SpecificInput' in dictionary:
+            if not isinstance(dictionary['paymentProduct869SpecificInput'], dict):
+                raise TypeError('value \'{}\' is not a dictionary'.format(dictionary['paymentProduct869SpecificInput']))
+            value = RedirectPaymentProduct869SpecificInput()
+            self.payment_product869_specific_input = value.from_dictionary(dictionary['paymentProduct869SpecificInput'])
         if 'paymentProduct882SpecificInput' in dictionary:
             if not isinstance(dictionary['paymentProduct882SpecificInput'], dict):
                 raise TypeError('value \'{}\' is not a dictionary'.format(dictionary['paymentProduct882SpecificInput']))
