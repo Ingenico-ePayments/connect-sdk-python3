@@ -23,6 +23,7 @@ class PaymentProductFieldValidators(DataObject):
     __luhn = None
     __range = None
     __regular_expression = None
+    __resident_id_number = None
     __terms_and_conditions = None
 
     @property
@@ -143,6 +144,19 @@ class PaymentProductFieldValidators(DataObject):
         self.__regular_expression = value
 
     @property
+    def resident_id_number(self):
+        """
+        | Indicates that the content needs to be validated as per the Chinese resident identity number format
+        
+        Type: :class:`ingenico.connect.sdk.domain.product.definitions.empty_validator.EmptyValidator`
+        """
+        return self.__resident_id_number
+
+    @resident_id_number.setter
+    def resident_id_number(self, value):
+        self.__resident_id_number = value
+
+    @property
     def terms_and_conditions(self):
         """
         | Indicates that the content should be validated as such that the customer has accepted the field as if they were terms and conditions of a service
@@ -175,6 +189,8 @@ class PaymentProductFieldValidators(DataObject):
             dictionary['range'] = self.range.to_dictionary()
         if self.regular_expression is not None:
             dictionary['regularExpression'] = self.regular_expression.to_dictionary()
+        if self.resident_id_number is not None:
+            dictionary['residentIdNumber'] = self.resident_id_number.to_dictionary()
         if self.terms_and_conditions is not None:
             dictionary['termsAndConditions'] = self.terms_and_conditions.to_dictionary()
         return dictionary
@@ -226,6 +242,11 @@ class PaymentProductFieldValidators(DataObject):
                 raise TypeError('value \'{}\' is not a dictionary'.format(dictionary['regularExpression']))
             value = RegularExpressionValidator()
             self.regular_expression = value.from_dictionary(dictionary['regularExpression'])
+        if 'residentIdNumber' in dictionary:
+            if not isinstance(dictionary['residentIdNumber'], dict):
+                raise TypeError('value \'{}\' is not a dictionary'.format(dictionary['residentIdNumber']))
+            value = EmptyValidator()
+            self.resident_id_number = value.from_dictionary(dictionary['residentIdNumber'])
         if 'termsAndConditions' in dictionary:
             if not isinstance(dictionary['termsAndConditions'], dict):
                 raise TypeError('value \'{}\' is not a dictionary'.format(dictionary['termsAndConditions']))

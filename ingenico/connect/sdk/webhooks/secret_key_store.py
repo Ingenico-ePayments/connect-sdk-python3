@@ -6,7 +6,7 @@ class SecretKeyStore(object):
     def get_secret_key(self, key_id):
         """
         :return: The secret key for the given key ID. Never None.
-        :raises SecretKeyNotAvailableException: If the secret key for the given
-        key ID is not available.
+        :raise: SecretKeyNotAvailableException: If the secret key for the given
+         key ID is not available.
         """
         raise NotImplementedError

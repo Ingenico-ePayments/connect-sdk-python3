@@ -14,6 +14,7 @@ class CreateTokenRequest(DataObject):
 
     __card = None
     __e_wallet = None
+    __encrypted_customer_input = None
     __non_sepa_direct_debit = None
     __payment_product_id = None
     __sepa_direct_debit = None
@@ -43,6 +44,20 @@ class CreateTokenRequest(DataObject):
     @e_wallet.setter
     def e_wallet(self, value):
         self.__e_wallet = value
+
+    @property
+    def encrypted_customer_input(self):
+        """
+        | Data that was encrypted client side containing all customer entered data elements like card data.
+        | Note: Because this data can only be submitted once to our system and contains encrypted card data you should not store it. As the data was captured within the context of a client session you also need to submit it to us before the session has expired.
+        
+        Type: str
+        """
+        return self.__encrypted_customer_input
+
+    @encrypted_customer_input.setter
+    def encrypted_customer_input(self, value):
+        self.__encrypted_customer_input = value
 
     @property
     def non_sepa_direct_debit(self):
@@ -90,6 +105,8 @@ class CreateTokenRequest(DataObject):
             dictionary['card'] = self.card.to_dictionary()
         if self.e_wallet is not None:
             dictionary['eWallet'] = self.e_wallet.to_dictionary()
+        if self.encrypted_customer_input is not None:
+            dictionary['encryptedCustomerInput'] = self.encrypted_customer_input
         if self.non_sepa_direct_debit is not None:
             dictionary['nonSepaDirectDebit'] = self.non_sepa_direct_debit.to_dictionary()
         if self.payment_product_id is not None:
@@ -110,6 +127,8 @@ class CreateTokenRequest(DataObject):
                 raise TypeError('value \'{}\' is not a dictionary'.format(dictionary['eWallet']))
             value = TokenEWallet()
             self.e_wallet = value.from_dictionary(dictionary['eWallet'])
+        if 'encryptedCustomerInput' in dictionary:
+            self.encrypted_customer_input = dictionary['encryptedCustomerInput']
         if 'nonSepaDirectDebit' in dictionary:
             if not isinstance(dictionary['nonSepaDirectDebit'], dict):
                 raise TypeError('value \'{}\' is not a dictionary'.format(dictionary['nonSepaDirectDebit']))

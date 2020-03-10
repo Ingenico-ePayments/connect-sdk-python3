@@ -26,9 +26,10 @@ class WebhooksHelper:
     def unmarshal(self, body, request_headers):
         """
         Unmarshals the given body, while also validating it using the given request headers.
-        @:raises SignatureValidationException: If the body could not be validated successfully.
-        @:raises ApiVersionMismatchException: If the resulting event has an API
-        version that this version of the SDK does not support.
+
+        :raise: SignatureValidationException: If the body could not be validated successfully.
+        :raise: ApiVersionMismatchException: If the resulting event has an API
+         version that this version of the SDK does not support.
         :return: The body unmarshalled as a WebhooksEvent.
         """
         self._validate(body, request_headers)
@@ -39,8 +40,9 @@ class WebhooksHelper:
     def _validate(self, param, request_headers):
         """
         Validates the given body using the given request headers.
-        :raises SignatureValidationException: If the body could not be validated
-        successfully.
+
+        :raise: SignatureValidationException: If the body could not be validated
+         successfully.
         """
         # if isinstance(param, str):
         #     self._validate(param.encode('UTF-8'), request_headers)

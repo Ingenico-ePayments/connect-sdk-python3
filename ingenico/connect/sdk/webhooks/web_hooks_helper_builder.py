@@ -25,6 +25,7 @@ class WebhooksHelperBuilder:
     def build(self):
         """
         Creates a fully initialized WebhooksHelper object.
-        :raises ValueError: if not all required components are set
+
+        :raise: ValueError: if not all required components are set
         """
         return WebhooksHelper(self.__marshaller, self.__secret_key_store)
