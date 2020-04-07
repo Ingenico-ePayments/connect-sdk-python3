@@ -1563,6 +1563,13 @@ API Reference
     :special-members:
     :exclude-members: __dict__,__weakref__,__module__,__get__
 
+.. automodule:: ingenico.connect.sdk.domain.payment.definitions.payment_product806_specific_output
+    :members:
+    :show-inheritance:
+    :undoc-members:
+    :special-members:
+    :exclude-members: __dict__,__weakref__,__module__,__get__
+
 .. automodule:: ingenico.connect.sdk.domain.payment.definitions.payment_product836_specific_output
     :members:
     :show-inheritance:
@@ -1886,6 +1893,13 @@ API Reference
     :exclude-members: __dict__,__weakref__,__module__,__get__
 
 .. automodule:: ingenico.connect.sdk.domain.payment.definitions.three_d_secure_results
+    :members:
+    :show-inheritance:
+    :undoc-members:
+    :special-members:
+    :exclude-members: __dict__,__weakref__,__module__,__get__
+
+.. automodule:: ingenico.connect.sdk.domain.payment.definitions.trustly_bank_account
     :members:
     :show-inheritance:
     :undoc-members:
