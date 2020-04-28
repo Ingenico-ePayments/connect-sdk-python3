@@ -64,6 +64,8 @@ class RedirectPaymentMethodSpecificOutput(AbstractPaymentMethodSpecificOutput):
     @property
     def payment_product806_specific_output(self):
         """
+        | Trustly (payment product 806) specific details
+        
         Type: :class:`ingenico.connect.sdk.domain.payment.definitions.payment_product806_specific_output.PaymentProduct806SpecificOutput`
         """
         return self.__payment_product806_specific_output

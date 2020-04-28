@@ -16,6 +16,8 @@ class PaymentProduct806SpecificOutput(DataObject):
     @property
     def billing_address(self):
         """
+        | Object containing the billing address details of the customer
+        
         Type: :class:`ingenico.connect.sdk.domain.definitions.address.Address`
         """
         return self.__billing_address
@@ -27,6 +29,8 @@ class PaymentProduct806SpecificOutput(DataObject):
     @property
     def customer_account(self):
         """
+        | Object containing the account details
+        
         Type: :class:`ingenico.connect.sdk.domain.payment.definitions.trustly_bank_account.TrustlyBankAccount`
         """
         return self.__customer_account

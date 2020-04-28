@@ -11,14 +11,43 @@ class ExternalCardholderAuthenticationData(DataObject):
     | Object containing 3D secure details.
     """
 
+    __acs_transaction_id = None
+    __applied_exemption = None
     __cavv = None
     __cavv_algorithm = None
     __directory_server_transaction_id = None
     __eci = None
+    __scheme_risk_score = None
     __three_d_secure_version = None
     __three_d_server_transaction_id = None
     __validation_result = None
     __xid = None
+
+    @property
+    def acs_transaction_id(self):
+        """
+        | Identifier of the authenticated transaction at the ACS/Issuer.
+        
+        Type: str
+        """
+        return self.__acs_transaction_id
+
+    @acs_transaction_id.setter
+    def acs_transaction_id(self, value):
+        self.__acs_transaction_id = value
+
+    @property
+    def applied_exemption(self):
+        """
+        | Exemption code from Carte Bancaire (130) (unknown possible values so far -free format).
+        
+        Type: str
+        """
+        return self.__applied_exemption
+
+    @applied_exemption.setter
+    def applied_exemption(self, value):
+        self.__applied_exemption = value
 
     @property
     def cavv(self):
@@ -81,6 +110,19 @@ class ExternalCardholderAuthenticationData(DataObject):
         self.__eci = value
 
     @property
+    def scheme_risk_score(self):
+        """
+        | Global score calculated by the Carte Bancaire (130) Scoring platform. Possible values from 0 to 99.
+        
+        Type: int
+        """
+        return self.__scheme_risk_score
+
+    @scheme_risk_score.setter
+    def scheme_risk_score(self, value):
+        self.__scheme_risk_score = value
+
+    @property
     def three_d_secure_version(self):
         """
         | The 3-D Secure version used for the authentication. Possible values:
@@ -105,6 +147,8 @@ class ExternalCardholderAuthenticationData(DataObject):
         | The 3-D Secure Server transaction ID that is used for the 3-D Secure version 2 Authentication.
         
         Type: str
+        
+        Deprecated; No replacement
         """
         return self.__three_d_server_transaction_id
 
@@ -140,6 +184,10 @@ class ExternalCardholderAuthenticationData(DataObject):
 
     def to_dictionary(self):
         dictionary = super(ExternalCardholderAuthenticationData, self).to_dictionary()
+        if self.acs_transaction_id is not None:
+            dictionary['acsTransactionId'] = self.acs_transaction_id
+        if self.applied_exemption is not None:
+            dictionary['appliedExemption'] = self.applied_exemption
         if self.cavv is not None:
             dictionary['cavv'] = self.cavv
         if self.cavv_algorithm is not None:
@@ -148,6 +196,8 @@ class ExternalCardholderAuthenticationData(DataObject):
             dictionary['directoryServerTransactionId'] = self.directory_server_transaction_id
         if self.eci is not None:
             dictionary['eci'] = self.eci
+        if self.scheme_risk_score is not None:
+            dictionary['schemeRiskScore'] = self.scheme_risk_score
         if self.three_d_secure_version is not None:
             dictionary['threeDSecureVersion'] = self.three_d_secure_version
         if self.three_d_server_transaction_id is not None:
@@ -160,6 +210,10 @@ class ExternalCardholderAuthenticationData(DataObject):
 
     def from_dictionary(self, dictionary):
         super(ExternalCardholderAuthenticationData, self).from_dictionary(dictionary)
+        if 'acsTransactionId' in dictionary:
+            self.acs_transaction_id = dictionary['acsTransactionId']
+        if 'appliedExemption' in dictionary:
+            self.applied_exemption = dictionary['appliedExemption']
         if 'cavv' in dictionary:
             self.cavv = dictionary['cavv']
         if 'cavvAlgorithm' in dictionary:
@@ -168,6 +222,8 @@ class ExternalCardholderAuthenticationData(DataObject):
             self.directory_server_transaction_id = dictionary['directoryServerTransactionId']
         if 'eci' in dictionary:
             self.eci = dictionary['eci']
+        if 'schemeRiskScore' in dictionary:
+            self.scheme_risk_score = dictionary['schemeRiskScore']
         if 'threeDSecureVersion' in dictionary:
             self.three_d_secure_version = dictionary['threeDSecureVersion']
         if 'threeDServerTransactionId' in dictionary:
