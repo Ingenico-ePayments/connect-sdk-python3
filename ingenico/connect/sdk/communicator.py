@@ -2,9 +2,6 @@ from datetime import datetime
 from urllib.parse import quote
 from urllib.parse import urlparse
 
-from django.core.exceptions import ValidationError
-from django.core.validators import URLValidator
-
 from .communication_exception import CommunicationException
 from ingenico.connect.sdk.log.logging_capable import LoggingCapable
 from .not_found_exception import NotFoundException
@@ -305,19 +302,7 @@ class Communicator(LoggingCapable):
             absolute_path = relative_path
         else:
             absolute_path = "/" + relative_path
-        if api_endpoint.port is None:
-            if api_endpoint.scheme:
-                uri = api_endpoint.scheme + "://" + api_endpoint.hostname + \
-                      absolute_path
-            else:
-                uri = api_endpoint.hostname + absolute_path
-        else:
-            if api_endpoint.scheme:
-                uri = api_endpoint.scheme + "://" + api_endpoint.hostname + \
-                      ":" + str(api_endpoint.port) + absolute_path
-            else:
-                uri = api_endpoint.hostname + ":" + str(api_endpoint.port) + \
-                      absolute_path
+        uri = api_endpoint.geturl() + absolute_path
         flag = False
         if request_parameters is not None:
             for nvp in request_parameters:
@@ -327,11 +312,8 @@ class Communicator(LoggingCapable):
                 else:
                     uri += "&"
                 uri += quote(nvp.name) + "=" + quote(nvp.value)
-        try:
-            URLValidator(uri)
-            return urlparse(uri)
-        except ValidationError as e:
-            raise ValueError("Unable to construct URI", e)
+        # no need to revalidate that uri has a valid scheme and netloc
+        return urlparse(uri)
 
     def _add_generic_headers(self, http_method, uri, request_headers, context):
         """

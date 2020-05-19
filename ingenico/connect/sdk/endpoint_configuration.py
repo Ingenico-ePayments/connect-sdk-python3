@@ -1,9 +1,6 @@
 from configparser import NoOptionError
 from urllib.parse import urlparse
 
-from django.core.exceptions import ValidationError
-from django.core.validators import URLValidator
-
 from ingenico.connect.sdk.domain.metadata.shopping_cart_extension import \
     ShoppingCartExtension
 
@@ -99,11 +96,10 @@ class EndpointConfiguration(object):
             uri = scheme + "://" + host + ":" + str(port)
         else:
             uri = scheme + "://" + host
-        try:
-            URLValidator(uri)
-            return urlparse(uri)
-        except ValidationError as e:
-            raise ValueError("Unable to construct endpoint URI", e)
+        url = urlparse(uri)
+        if not url.scheme.lower() in ["http", "https"] or not url.netloc:
+            raise ValueError("Unable to construct endpoint URI")
+        return url
 
     def __get_shopping_cart_extension(self, properties, prefix):
         try:

@@ -41,10 +41,15 @@ class CreatePaymentExample(object):
             card.cvv = "123"
             card.expiry_date = "1220"
 
+            authentication_amount = AmountOfMoney()
+            authentication_amount.amount = 2980
+            authentication_amount.currency_code = "EUR"
+
             redirection_data = RedirectionData()
             redirection_data.return_url = "https://hostname.myownwebsite.url"
 
             three_d_secure = ThreeDSecure()
+            three_d_secure.authentication_amount = authentication_amount
             three_d_secure.authentication_flow = "browser"
             three_d_secure.challenge_canvas_size = "600x400"
             three_d_secure.challenge_indicator = "challenge-requested"

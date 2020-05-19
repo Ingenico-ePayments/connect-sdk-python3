@@ -13,6 +13,8 @@ class Session(object):
             raise ValueError("api_endpoint is required")
         if isinstance(api_endpoint, str):
             api_endpoint = urlparse(api_endpoint)
+        if not api_endpoint.scheme.lower() in ["http", "https"] or not api_endpoint.netloc:
+            raise ValueError("invalid api_endpoint: " + api_endpoint)
         if api_endpoint.path:
             raise ValueError("api_endpoint should not contain a path")
         if api_endpoint.username is not None or api_endpoint.query or api_endpoint.fragment:

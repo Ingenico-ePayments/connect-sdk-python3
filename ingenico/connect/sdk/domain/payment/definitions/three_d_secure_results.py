@@ -4,6 +4,7 @@
 # https://epayments-api.developer-ingenico.com/s2sapi/v1/
 #
 from ingenico.connect.sdk.data_object import DataObject
+from ingenico.connect.sdk.domain.definitions.amount_of_money import AmountOfMoney
 from ingenico.connect.sdk.domain.payment.definitions.sdk_data_output import SdkDataOutput
 from ingenico.connect.sdk.domain.payment.definitions.three_d_secure_data import ThreeDSecureData
 
@@ -15,6 +16,7 @@ class ThreeDSecureResults(DataObject):
 
     __acs_transaction_id = None
     __applied_exemption = None
+    __authentication_amount = None
     __cavv = None
     __directory_server_transaction_id = None
     __eci = None
@@ -50,6 +52,20 @@ class ThreeDSecureResults(DataObject):
     @applied_exemption.setter
     def applied_exemption(self, value):
         self.__applied_exemption = value
+
+    @property
+    def authentication_amount(self):
+        """
+        | Allows you to send in an authentication amount which can be greater or equal to the order amount. 
+        | The currency code of the authentication amount  should be the same as the currency code of the order amount.
+        
+        Type: :class:`ingenico.connect.sdk.domain.definitions.amount_of_money.AmountOfMoney`
+        """
+        return self.__authentication_amount
+
+    @authentication_amount.setter
+    def authentication_amount(self, value):
+        self.__authentication_amount = value
 
     @property
     def cavv(self):
@@ -176,6 +192,8 @@ class ThreeDSecureResults(DataObject):
             dictionary['acsTransactionId'] = self.acs_transaction_id
         if self.applied_exemption is not None:
             dictionary['appliedExemption'] = self.applied_exemption
+        if self.authentication_amount is not None:
+            dictionary['authenticationAmount'] = self.authentication_amount.to_dictionary()
         if self.cavv is not None:
             dictionary['cavv'] = self.cavv
         if self.directory_server_transaction_id is not None:
@@ -202,6 +220,11 @@ class ThreeDSecureResults(DataObject):
             self.acs_transaction_id = dictionary['acsTransactionId']
         if 'appliedExemption' in dictionary:
             self.applied_exemption = dictionary['appliedExemption']
+        if 'authenticationAmount' in dictionary:
+            if not isinstance(dictionary['authenticationAmount'], dict):
+                raise TypeError('value \'{}\' is not a dictionary'.format(dictionary['authenticationAmount']))
+            value = AmountOfMoney()
+            self.authentication_amount = value.from_dictionary(dictionary['authenticationAmount'])
         if 'cavv' in dictionary:
             self.cavv = dictionary['cavv']
         if 'directoryServerTransactionId' in dictionary:

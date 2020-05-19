@@ -4,12 +4,14 @@
 # https://epayments-api.developer-ingenico.com/s2sapi/v1/
 #
 from ingenico.connect.sdk.data_object import DataObject
+from ingenico.connect.sdk.domain.definitions.amount_of_money import AmountOfMoney
 from ingenico.connect.sdk.domain.payment.definitions.sdk_data_input import SdkDataInput
 from ingenico.connect.sdk.domain.payment.definitions.three_d_secure_data import ThreeDSecureData
 
 
 class AbstractThreeDSecure(DataObject):
 
+    __authentication_amount = None
     __authentication_flow = None
     __challenge_canvas_size = None
     __challenge_indicator = None
@@ -17,6 +19,17 @@ class AbstractThreeDSecure(DataObject):
     __prior_three_d_secure_data = None
     __sdk_data = None
     __skip_authentication = None
+
+    @property
+    def authentication_amount(self):
+        """
+        Type: :class:`ingenico.connect.sdk.domain.definitions.amount_of_money.AmountOfMoney`
+        """
+        return self.__authentication_amount
+
+    @authentication_amount.setter
+    def authentication_amount(self, value):
+        self.__authentication_amount = value
 
     @property
     def authentication_flow(self):
@@ -97,6 +110,8 @@ class AbstractThreeDSecure(DataObject):
 
     def to_dictionary(self):
         dictionary = super(AbstractThreeDSecure, self).to_dictionary()
+        if self.authentication_amount is not None:
+            dictionary['authenticationAmount'] = self.authentication_amount.to_dictionary()
         if self.authentication_flow is not None:
             dictionary['authenticationFlow'] = self.authentication_flow
         if self.challenge_canvas_size is not None:
@@ -115,6 +130,11 @@ class AbstractThreeDSecure(DataObject):
 
     def from_dictionary(self, dictionary):
         super(AbstractThreeDSecure, self).from_dictionary(dictionary)
+        if 'authenticationAmount' in dictionary:
+            if not isinstance(dictionary['authenticationAmount'], dict):
+                raise TypeError('value \'{}\' is not a dictionary'.format(dictionary['authenticationAmount']))
+            value = AmountOfMoney()
+            self.authentication_amount = value.from_dictionary(dictionary['authenticationAmount'])
         if 'authenticationFlow' in dictionary:
             self.authentication_flow = dictionary['authenticationFlow']
         if 'challengeCanvasSize' in dictionary:

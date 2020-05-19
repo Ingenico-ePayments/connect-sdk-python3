@@ -82,7 +82,7 @@ class LoggingUtil:
             s = "([\"'])("
             for p in property_names:
                 s += '|' + re.escape(p)
-            s += ")\\1\\s*:\\s*(?:([\"'])(.*?)(?<!\\\\)\\3|([^\"'\\s\\[\\{]\\S*))"
+            s += ")\\1\\s*:\\s*(?:([\"'])(.*?)(?<!\\\\)\\3|([^\"'\\s\\[\\{]((?!,)\\S)*))"
             return re.compile(s, re.DOTALL)
 
         def obfuscate(self, body):

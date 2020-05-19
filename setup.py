@@ -21,7 +21,7 @@ def test_collector():
 
 setup(
     name="connect-sdk-python3",
-    version="3.9.0",
+    version="3.10.0",
     author="Ingenico ePayments",
     author_email="github@epay.ingenico.com",
     description="SDK to communicate with the Ingenico ePayments platform using the Ingenico Connect Server API",
@@ -53,8 +53,8 @@ setup(
     ],
     scripts=[],  # executable python scripts, none since this is a library
     install_requires=[
-        "requests >= 2.11.0",
-        "django >= 1.10"
+        "requests >= 2.20.0",
+        "requests-toolbelt >= 0.8.0"
     ],
     # test_suite="tests/run_unit_tests"   # enables command 'pip connect-sdk-python3 test', which runs unit tests)
 

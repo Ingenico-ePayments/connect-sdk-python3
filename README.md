@@ -29,8 +29,8 @@ Note that the source code of the unit tests and integration tests and the exampl
 
 Python 3.3.5 or higher is required. In addition, the following packages are required:
 
-* [django](https://www.djangoproject.com/) 1.10 or higher
-* [requests](http://docs.python-requests.org/en/master/) 2.11.0 or higher
+* [requests](https://requests.readthedocs.io/) 2.20.0 or higher
+	* **Note**: for Python 3.3, the maximum supported version is 2.18.4. While this version will work, it has known vulnerabilities.
 * [requests-toolbelt](https://toolbelt.readthedocs.io/) 0.8.0 or higher
 
 These packages will be installed automatically if the SDK is installed manually or using pip following the below instructions.
@@ -49,6 +49,18 @@ Alternatively, you can install the SDK from a source distribution file:
     ```
     pip install connect-sdk-python3-x.y.z.zip
     ```
+
+### Python 3.3
+
+When using Python 3.3, these commands will fail because the requests dependency is not supported. Instead, you need to install the dependencies separately:
+
+    pip install connect-sdk-python3 --no-deps
+    pip install requests requests-toolbelt
+
+or
+
+    pip install connect-sdk-python3-x.y.z.zip --no-deps
+    pip install requests requests-toolbelt
 
 ## Uninstalling
 

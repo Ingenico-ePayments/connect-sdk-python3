@@ -43,9 +43,11 @@ Requirements
 Python 3.3.5 or higher is required. In addition, the following packages
 are required:
 
--  `django <https://www.djangoproject.com/>`__ 1.10 or higher
--  `requests <http://docs.python-requests.org/en/master/>`__ 2.11.0 or
-   higher
+-  `requests <https://requests.readthedocs.io/>`__ 2.20.0 or higher
+
+   -  **Note**: for Python 3.3, the maximum supported version is 2.18.4.
+      While this version will work, it has known vulnerabilities.
+
 -  `requests-toolbelt <https://toolbelt.readthedocs.io/>`__ 0.8.0 or
    higher
 
@@ -74,6 +76,27 @@ Alternatively, you can install the SDK from a source distribution file:
    ::
 
       pip install connect-sdk-python3-x.y.z.zip
+
+.. _python-33:
+
+Python 3.3
+~~~~~~~~~~
+
+When using Python 3.3, these commands will fail because the requests
+dependency is not supported. Instead, you need to install the
+dependencies separately:
+
+::
+
+   pip install connect-sdk-python3 --no-deps
+   pip install requests requests-toolbelt
+
+or
+
+::
+
+   pip install connect-sdk-python3-x.y.z.zip --no-deps
+   pip install requests requests-toolbelt
 
 Uninstalling
 ------------
