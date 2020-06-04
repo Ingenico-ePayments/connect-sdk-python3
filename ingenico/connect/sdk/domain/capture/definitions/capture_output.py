@@ -28,6 +28,7 @@ class CaptureOutput(OrderOutput):
     __mobile_payment_method_specific_output = None
     __payment_method = None
     __redirect_payment_method_specific_output = None
+    __reversal_reason = None
     __sepa_direct_debit_payment_method_specific_output = None
 
     @property
@@ -183,6 +184,19 @@ class CaptureOutput(OrderOutput):
         self.__redirect_payment_method_specific_output = value
 
     @property
+    def reversal_reason(self):
+        """
+        | The reason description given for the reversedAmount property.
+        
+        Type: str
+        """
+        return self.__reversal_reason
+
+    @reversal_reason.setter
+    def reversal_reason(self, value):
+        self.__reversal_reason = value
+
+    @property
     def sepa_direct_debit_payment_method_specific_output(self):
         """
         | Object containing the SEPA direct debit details
@@ -219,6 +233,8 @@ class CaptureOutput(OrderOutput):
             dictionary['paymentMethod'] = self.payment_method
         if self.redirect_payment_method_specific_output is not None:
             dictionary['redirectPaymentMethodSpecificOutput'] = self.redirect_payment_method_specific_output.to_dictionary()
+        if self.reversal_reason is not None:
+            dictionary['reversalReason'] = self.reversal_reason
         if self.sepa_direct_debit_payment_method_specific_output is not None:
             dictionary['sepaDirectDebitPaymentMethodSpecificOutput'] = self.sepa_direct_debit_payment_method_specific_output.to_dictionary()
         return dictionary
@@ -271,6 +287,8 @@ class CaptureOutput(OrderOutput):
                 raise TypeError('value \'{}\' is not a dictionary'.format(dictionary['redirectPaymentMethodSpecificOutput']))
             value = RedirectPaymentMethodSpecificOutput()
             self.redirect_payment_method_specific_output = value.from_dictionary(dictionary['redirectPaymentMethodSpecificOutput'])
+        if 'reversalReason' in dictionary:
+            self.reversal_reason = dictionary['reversalReason']
         if 'sepaDirectDebitPaymentMethodSpecificOutput' in dictionary:
             if not isinstance(dictionary['sepaDirectDebitPaymentMethodSpecificOutput'], dict):
                 raise TypeError('value \'{}\' is not a dictionary'.format(dictionary['sepaDirectDebitPaymentMethodSpecificOutput']))
