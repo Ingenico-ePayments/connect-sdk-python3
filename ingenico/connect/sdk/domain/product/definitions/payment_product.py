@@ -16,6 +16,7 @@ from ingenico.connect.sdk.domain.product.definitions.payment_product_field impor
 class PaymentProduct(DataObject):
 
     __accounts_on_file = None
+    __allows_installments = None
     __allows_recurring = None
     __allows_tokenization = None
     __authentication_indicator = None
@@ -49,6 +50,22 @@ class PaymentProduct(DataObject):
     @accounts_on_file.setter
     def accounts_on_file(self, value):
         self.__accounts_on_file = value
+
+    @property
+    def allows_installments(self):
+        """
+        | Indicates if the product supports installments
+        
+        * true - This payment supports installments
+        * false - This payment does not support installments
+        
+        Type: bool
+        """
+        return self.__allows_installments
+
+    @allows_installments.setter
+    def allows_installments(self, value):
+        self.__allows_installments = value
 
     @property
     def allows_recurring(self):
@@ -352,6 +369,8 @@ class PaymentProduct(DataObject):
             for element in self.accounts_on_file:
                 if element is not None:
                     dictionary['accountsOnFile'].append(element.to_dictionary())
+        if self.allows_installments is not None:
+            dictionary['allowsInstallments'] = self.allows_installments
         if self.allows_recurring is not None:
             dictionary['allowsRecurring'] = self.allows_recurring
         if self.allows_tokenization is not None:
@@ -406,6 +425,8 @@ class PaymentProduct(DataObject):
             for element in dictionary['accountsOnFile']:
                 value = AccountOnFile()
                 self.accounts_on_file.append(value.from_dictionary(element))
+        if 'allowsInstallments' in dictionary:
+            self.allows_installments = dictionary['allowsInstallments']
         if 'allowsRecurring' in dictionary:
             self.allows_recurring = dictionary['allowsRecurring']
         if 'allowsTokenization' in dictionary:
