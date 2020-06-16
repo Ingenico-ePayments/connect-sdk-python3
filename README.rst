@@ -40,14 +40,10 @@ the examples can only be found on GitHub.
 Requirements
 ------------
 
-Python 3.3.5 or higher is required. In addition, the following packages
+Python 3.5 or higher is required. In addition, the following packages
 are required:
 
 -  `requests <https://requests.readthedocs.io/>`__ 2.20.0 or higher
-
-   -  **Note**: for Python 3.3, the maximum supported version is 2.18.4.
-      While this version will work, it has known vulnerabilities.
-
 -  `requests-toolbelt <https://toolbelt.readthedocs.io/>`__ 0.8.0 or
    higher
 
@@ -69,34 +65,12 @@ Alternatively, you can install the SDK from a source distribution file:
    ``connect-sdk-python3-x.y.z.zip`` file from the
    `releases <https://github.com/Ingenico-ePayments/connect-sdk-python3/releases>`__
    page, where ``x.y.z`` is the version number.
-
 #. Execute the following command in the folder where the SDK was
    downloaded to:
 
    ::
 
       pip install connect-sdk-python3-x.y.z.zip
-
-.. _python-33:
-
-Python 3.3
-~~~~~~~~~~
-
-When using Python 3.3, these commands will fail because the requests
-dependency is not supported. Instead, you need to install the
-dependencies separately:
-
-::
-
-   pip install connect-sdk-python3 --no-deps
-   pip install requests requests-toolbelt
-
-or
-
-::
-
-   pip install connect-sdk-python3-x.y.z.zip --no-deps
-   pip install requests requests-toolbelt
 
 Uninstalling
 ------------
