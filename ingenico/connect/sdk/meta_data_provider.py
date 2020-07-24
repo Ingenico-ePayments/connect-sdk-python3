@@ -21,7 +21,7 @@ class MetaDataProvider:
     """
     Provides meta info about the server.
     """
-    __SDK_VERSION = "3.12.0"
+    __SDK_VERSION = "3.13.0"
     __SERVER_META_INFO_HEADER = "X-GCS-ServerMetaInfo"
     __prohibited_headers = [__SERVER_META_INFO_HEADER, "X-GCS-Idempotence-Key",
                             "Date", "Content-Type", "Authorization"]

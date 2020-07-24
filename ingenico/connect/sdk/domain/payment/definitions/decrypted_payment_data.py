@@ -40,7 +40,7 @@ class DecryptedPaymentData(DataObject):
         * For Apple Pay, maps to the paymentData.onlinePaymentCryptogram property in the encrypted payment data.
         * For Google Pay, maps to the paymentMethodDetails.3dsCryptogram property in the encrypted payment data.
         
-        | Not allowed for Google Pay if the paymentMethod is CARD.
+        | Not allowed for Google Pay if the authMethod in the response of Google is PAN_ONLY.
         
         Type: str
         """
@@ -58,7 +58,7 @@ class DecryptedPaymentData(DataObject):
         * For Apple Pay, maps to the applicationPrimaryAccountNumber property in the encrypted payment data.
         * For Google Pay, maps to the paymentMethodDetails.dpan property in the encrypted payment data.
         
-        | Not allowed for Google Pay if the paymentMethod is CARD.
+        | Not allowed for Google Pay if the authMethod in the response of Google is PAN_ONLY.
         
         Type: str
         """
@@ -76,7 +76,7 @@ class DecryptedPaymentData(DataObject):
         * For Apple Pay, maps to the paymentData.eciIndicator property in the encrypted payment data.
         * For Google Pay, maps to the paymentMethodDetails.3dsEciIndicator property in the encryted payment data.
         
-        | Not allowed for Google Pay if the paymentMethod is CARD.
+        | Not allowed for Google Pay if the authMethod in the response of Google is PAN_ONLY.
         
         Type: int
         """
@@ -111,7 +111,7 @@ class DecryptedPaymentData(DataObject):
         * For Apple Pay this is not available in the encrypted payment data, and must be omitted.
         * For Google Pay, maps to the paymentMethodDetails.pan property in the encrypted payment data.
         
-        | Not allowed for Google Pay if the paymentMethod is TOKENIZED_CARD.
+        | Not allowed for Google Pay if the authMethod in the response of Google is CRYPTOGRAM_3DS.
         
         Type: str
         """
@@ -124,10 +124,10 @@ class DecryptedPaymentData(DataObject):
     @property
     def payment_method(self):
         """
-        | The type of the payment credential: either CARD or TOKENIZED_CARD.
+        * In case Google provides in the response as authMethod: CRYPTOGRAM_3DS send in as value of this property TOKENIZED_CARD.
+        * In case Google provides in the response as authMethod: PAN_ONLY send in as value of this property CARD.
         
-        * For Apple Pay this is not available in the encrypted payment data, and must be omitted.
-        * For Google Pay, maps to the paymentMethod property in the encrypted payment data.
+        | For Apple Pay this is not available in the encrypted payment data, and must be omitted.
         
         Type: str
         """
