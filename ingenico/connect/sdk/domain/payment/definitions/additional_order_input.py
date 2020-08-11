@@ -5,6 +5,7 @@
 #
 from ingenico.connect.sdk.data_object import DataObject
 from ingenico.connect.sdk.domain.definitions.airline_data import AirlineData
+from ingenico.connect.sdk.domain.payment.definitions.installments import Installments
 from ingenico.connect.sdk.domain.payment.definitions.level3_summary_data import Level3SummaryData
 from ingenico.connect.sdk.domain.payment.definitions.loan_recipient import LoanRecipient
 from ingenico.connect.sdk.domain.payment.definitions.order_type_information import OrderTypeInformation
@@ -13,6 +14,7 @@ from ingenico.connect.sdk.domain.payment.definitions.order_type_information impo
 class AdditionalOrderInput(DataObject):
 
     __airline_data = None
+    __installments = None
     __level3_summary_data = None
     __loan_recipient = None
     __number_of_installments = None
@@ -31,6 +33,19 @@ class AdditionalOrderInput(DataObject):
     @airline_data.setter
     def airline_data(self, value):
         self.__airline_data = value
+
+    @property
+    def installments(self):
+        """
+        | Object containing data related to installments.
+        
+        Type: :class:`ingenico.connect.sdk.domain.payment.definitions.installments.Installments`
+        """
+        return self.__installments
+
+    @installments.setter
+    def installments(self, value):
+        self.__installments = value
 
     @property
     def level3_summary_data(self):
@@ -66,6 +81,8 @@ class AdditionalOrderInput(DataObject):
         | The number of installments
         
         Type: int
+        
+        Deprecated; Use installments.numberOfInstallments instead
         """
         return self.__number_of_installments
 
@@ -104,6 +121,8 @@ class AdditionalOrderInput(DataObject):
         dictionary = super(AdditionalOrderInput, self).to_dictionary()
         if self.airline_data is not None:
             dictionary['airlineData'] = self.airline_data.to_dictionary()
+        if self.installments is not None:
+            dictionary['installments'] = self.installments.to_dictionary()
         if self.level3_summary_data is not None:
             dictionary['level3SummaryData'] = self.level3_summary_data.to_dictionary()
         if self.loan_recipient is not None:
@@ -123,6 +142,11 @@ class AdditionalOrderInput(DataObject):
                 raise TypeError('value \'{}\' is not a dictionary'.format(dictionary['airlineData']))
             value = AirlineData()
             self.airline_data = value.from_dictionary(dictionary['airlineData'])
+        if 'installments' in dictionary:
+            if not isinstance(dictionary['installments'], dict):
+                raise TypeError('value \'{}\' is not a dictionary'.format(dictionary['installments']))
+            value = Installments()
+            self.installments = value.from_dictionary(dictionary['installments'])
         if 'level3SummaryData' in dictionary:
             if not isinstance(dictionary['level3SummaryData'], dict):
                 raise TypeError('value \'{}\' is not a dictionary'.format(dictionary['level3SummaryData']))

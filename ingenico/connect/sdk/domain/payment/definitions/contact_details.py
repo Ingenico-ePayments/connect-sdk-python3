@@ -29,7 +29,7 @@ class ContactDetails(ContactDetailsBase):
     @property
     def mobile_phone_number(self):
         """
-        | International version of the mobile phone number of the customer including the leading + (i.e. +16127779311)
+        | International version of the mobile phone number of the customer including the leading + (i.e. +16127779311).
         
         Type: str
         """

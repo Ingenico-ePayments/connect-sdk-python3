@@ -15,6 +15,7 @@ class PaymentProductGroup(DataObject):
     """
 
     __accounts_on_file = None
+    __allows_installments = None
     __device_fingerprint_enabled = None
     __display_hints = None
     __fields = None
@@ -32,6 +33,22 @@ class PaymentProductGroup(DataObject):
     @accounts_on_file.setter
     def accounts_on_file(self, value):
         self.__accounts_on_file = value
+
+    @property
+    def allows_installments(self):
+        """
+        | Indicates if the product supports installments
+        
+        * true - This payment supports installments
+        * false - This payment does not support installments
+        
+        Type: bool
+        """
+        return self.__allows_installments
+
+    @allows_installments.setter
+    def allows_installments(self, value):
+        self.__allows_installments = value
 
     @property
     def device_fingerprint_enabled(self):
@@ -95,6 +112,8 @@ class PaymentProductGroup(DataObject):
             for element in self.accounts_on_file:
                 if element is not None:
                     dictionary['accountsOnFile'].append(element.to_dictionary())
+        if self.allows_installments is not None:
+            dictionary['allowsInstallments'] = self.allows_installments
         if self.device_fingerprint_enabled is not None:
             dictionary['deviceFingerprintEnabled'] = self.device_fingerprint_enabled
         if self.display_hints is not None:
@@ -117,6 +136,8 @@ class PaymentProductGroup(DataObject):
             for element in dictionary['accountsOnFile']:
                 value = AccountOnFile()
                 self.accounts_on_file.append(value.from_dictionary(element))
+        if 'allowsInstallments' in dictionary:
+            self.allows_installments = dictionary['allowsInstallments']
         if 'deviceFingerprintEnabled' in dictionary:
             self.device_fingerprint_enabled = dictionary['deviceFingerprintEnabled']
         if 'displayHints' in dictionary:
