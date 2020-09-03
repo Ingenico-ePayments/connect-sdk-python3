@@ -9,7 +9,7 @@ from ingenico.connect.sdk.domain.definitions.amount_of_money import AmountOfMone
 
 class Installments(DataObject):
     """
-    | Object containing data related to installments.
+    | Object containing data related to installments which can be used for card payments and only with some acquirers. In case you send in the details of this object, only the combination of card products and acquirers that do support installments will be shown on the MyCheckout hosted payment pages.
     """
 
     __amount_of_money_per_installment = None
@@ -64,7 +64,7 @@ class Installments(DataObject):
     @property
     def number_of_installments(self):
         """
-        | The number of installments in which this transaction will be paid.
+        | The number of installments in which this transaction will be paid, which can be used for card payments. Only used with some acquirers. In case you send in the details of this object, only the combination of card products and acquirers that do support installments will be shown on the MyCheckout hosted payment pages.
         
         Type: int
         """

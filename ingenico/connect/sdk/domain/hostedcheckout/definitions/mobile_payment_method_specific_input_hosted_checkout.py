@@ -29,7 +29,7 @@ class MobilePaymentMethodSpecificInputHostedCheckout(AbstractPaymentMethodSpecif
     @property
     def payment_product320_specific_input(self):
         """
-        | Object containing information specific to Google Pay
+        | Object containing information specific to Google Pay (paymentProductId 320)
         
         Type: :class:`ingenico.connect.sdk.domain.hostedcheckout.definitions.mobile_payment_product320_specific_input_hosted_checkout.MobilePaymentProduct320SpecificInputHostedCheckout`
         """

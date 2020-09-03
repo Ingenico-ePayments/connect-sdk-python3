@@ -8,6 +8,7 @@ from ingenico.connect.sdk.data_object import DataObject
 
 class DecryptedPaymentData(DataObject):
 
+    __auth_method = None
     __cardholder_name = None
     __cryptogram = None
     __dpan = None
@@ -15,6 +16,23 @@ class DecryptedPaymentData(DataObject):
     __expiry_date = None
     __pan = None
     __payment_method = None
+
+    @property
+    def auth_method(self):
+        """
+        | The type of payment credential which the customer used.
+        
+        * For Google Pay, maps to the paymentMethodDetails.authMethod property in the encrypted payment data.
+        
+        | .
+        
+        Type: str
+        """
+        return self.__auth_method
+
+    @auth_method.setter
+    def auth_method(self, value):
+        self.__auth_method = value
 
     @property
     def cardholder_name(self):
@@ -139,6 +157,8 @@ class DecryptedPaymentData(DataObject):
 
     def to_dictionary(self):
         dictionary = super(DecryptedPaymentData, self).to_dictionary()
+        if self.auth_method is not None:
+            dictionary['authMethod'] = self.auth_method
         if self.cardholder_name is not None:
             dictionary['cardholderName'] = self.cardholder_name
         if self.cryptogram is not None:
@@ -157,6 +177,8 @@ class DecryptedPaymentData(DataObject):
 
     def from_dictionary(self, dictionary):
         super(DecryptedPaymentData, self).from_dictionary(dictionary)
+        if 'authMethod' in dictionary:
+            self.auth_method = dictionary['authMethod']
         if 'cardholderName' in dictionary:
             self.cardholder_name = dictionary['cardholderName']
         if 'cryptogram' in dictionary:

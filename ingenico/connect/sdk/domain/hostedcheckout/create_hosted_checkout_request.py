@@ -125,7 +125,7 @@ class CreateHostedCheckoutRequest(DataObject):
     @property
     def mobile_payment_method_specific_input(self):
         """
-        | Object containing reference data for Google Pay.
+        | Object containing reference data for Google Pay (paymentProductId 320) and Apple Pay (paymentProductID 302).
         
         Type: :class:`ingenico.connect.sdk.domain.hostedcheckout.definitions.mobile_payment_method_specific_input_hosted_checkout.MobilePaymentMethodSpecificInputHostedCheckout`
         """
