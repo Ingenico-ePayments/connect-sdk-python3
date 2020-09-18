@@ -16,7 +16,7 @@ class CreatePaymentProductSessionExample(object):
             payment_product_session302_specific_input = MobilePaymentProductSession302SpecificInput()
             payment_product_session302_specific_input.display_name = "Ingenico"
             payment_product_session302_specific_input.domain_name = "pay1.secured-by-ingenico.com"
-            payment_product_session302_specific_input.validation_url = "https://apple-pay-gateway-cert.apple.com/paymentservices/startSession"
+            payment_product_session302_specific_input.validation_url = "<VALIDATION URL RECEIVED FROM APPLE>"
 
             body = CreatePaymentProductSessionRequest()
             body.payment_product_session302_specific_input = payment_product_session302_specific_input

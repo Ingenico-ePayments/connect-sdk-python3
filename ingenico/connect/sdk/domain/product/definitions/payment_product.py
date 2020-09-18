@@ -16,6 +16,7 @@ from ingenico.connect.sdk.domain.product.definitions.payment_product_field impor
 class PaymentProduct(DataObject):
 
     __accounts_on_file = None
+    __acquirer_country = None
     __allows_installments = None
     __allows_recurring = None
     __allows_tokenization = None
@@ -50,6 +51,19 @@ class PaymentProduct(DataObject):
     @accounts_on_file.setter
     def accounts_on_file(self, value):
         self.__accounts_on_file = value
+
+    @property
+    def acquirer_country(self):
+        """
+        | ISO 3166-1 alpha-2 country code which indicates the most likely country code of the acquirer that will process the transaction. For Google Pay (paymentProductId 320) transactions this acquirerCountry is should be provided in the https://developers.google.com/pay/api/web/guides/resources/sca <https://developers.google.com/pay/api/web/reference/request-objects#TransactionInfo>
+        
+        Type: str
+        """
+        return self.__acquirer_country
+
+    @acquirer_country.setter
+    def acquirer_country(self, value):
+        self.__acquirer_country = value
 
     @property
     def allows_installments(self):
@@ -369,6 +383,8 @@ class PaymentProduct(DataObject):
             for element in self.accounts_on_file:
                 if element is not None:
                     dictionary['accountsOnFile'].append(element.to_dictionary())
+        if self.acquirer_country is not None:
+            dictionary['acquirerCountry'] = self.acquirer_country
         if self.allows_installments is not None:
             dictionary['allowsInstallments'] = self.allows_installments
         if self.allows_recurring is not None:
@@ -425,6 +441,8 @@ class PaymentProduct(DataObject):
             for element in dictionary['accountsOnFile']:
                 value = AccountOnFile()
                 self.accounts_on_file.append(value.from_dictionary(element))
+        if 'acquirerCountry' in dictionary:
+            self.acquirer_country = dictionary['acquirerCountry']
         if 'allowsInstallments' in dictionary:
             self.allows_installments = dictionary['allowsInstallments']
         if 'allowsRecurring' in dictionary:

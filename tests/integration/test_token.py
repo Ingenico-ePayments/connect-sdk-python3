@@ -21,7 +21,7 @@ class TokenTest(unittest.TestCase):
         card_without_ccv.cardholder_name = "Jan"
         card_without_ccv.issue_number = "12"
         card_without_ccv.card_number = "4567350000427977"
-        card_without_ccv.expiry_date = "0820"
+        card_without_ccv.expiry_date = "1225"
         card_data = TokenCardData()
         card_data.card_without_cvv = card_without_ccv
         card = TokenCard()
