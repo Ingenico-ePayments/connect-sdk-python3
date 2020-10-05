@@ -5,13 +5,16 @@
 #
 from ingenico.connect.sdk.domain.definitions.abstract_payment_method_specific_input import AbstractPaymentMethodSpecificInput
 from ingenico.connect.sdk.domain.payment.definitions.decrypted_payment_data import DecryptedPaymentData
+from ingenico.connect.sdk.domain.payment.definitions.mobile_payment_product320_specific_input import MobilePaymentProduct320SpecificInput
 
 
 class MobilePaymentMethodSpecificInput(AbstractPaymentMethodSpecificInput):
 
     __authorization_mode = None
+    __customer_reference = None
     __decrypted_payment_data = None
     __encrypted_payment_data = None
+    __payment_product320_specific_input = None
     __requires_approval = None
     __skip_fraud_service = None
 
@@ -33,6 +36,19 @@ class MobilePaymentMethodSpecificInput(AbstractPaymentMethodSpecificInput):
     @authorization_mode.setter
     def authorization_mode(self, value):
         self.__authorization_mode = value
+
+    @property
+    def customer_reference(self):
+        """
+        | Reference of the customer for the payment (purchase order #, etc.). Only used with some acquirers.
+        
+        Type: str
+        """
+        return self.__customer_reference
+
+    @customer_reference.setter
+    def customer_reference(self, value):
+        self.__customer_reference = value
 
     @property
     def decrypted_payment_data(self):
@@ -65,6 +81,19 @@ class MobilePaymentMethodSpecificInput(AbstractPaymentMethodSpecificInput):
     @encrypted_payment_data.setter
     def encrypted_payment_data(self, value):
         self.__encrypted_payment_data = value
+
+    @property
+    def payment_product320_specific_input(self):
+        """
+        | Object containing information specific to Google Pay
+        
+        Type: :class:`ingenico.connect.sdk.domain.payment.definitions.mobile_payment_product320_specific_input.MobilePaymentProduct320SpecificInput`
+        """
+        return self.__payment_product320_specific_input
+
+    @payment_product320_specific_input.setter
+    def payment_product320_specific_input(self, value):
+        self.__payment_product320_specific_input = value
 
     @property
     def requires_approval(self):
@@ -100,10 +129,14 @@ class MobilePaymentMethodSpecificInput(AbstractPaymentMethodSpecificInput):
         dictionary = super(MobilePaymentMethodSpecificInput, self).to_dictionary()
         if self.authorization_mode is not None:
             dictionary['authorizationMode'] = self.authorization_mode
+        if self.customer_reference is not None:
+            dictionary['customerReference'] = self.customer_reference
         if self.decrypted_payment_data is not None:
             dictionary['decryptedPaymentData'] = self.decrypted_payment_data.to_dictionary()
         if self.encrypted_payment_data is not None:
             dictionary['encryptedPaymentData'] = self.encrypted_payment_data
+        if self.payment_product320_specific_input is not None:
+            dictionary['paymentProduct320SpecificInput'] = self.payment_product320_specific_input.to_dictionary()
         if self.requires_approval is not None:
             dictionary['requiresApproval'] = self.requires_approval
         if self.skip_fraud_service is not None:
@@ -114,6 +147,8 @@ class MobilePaymentMethodSpecificInput(AbstractPaymentMethodSpecificInput):
         super(MobilePaymentMethodSpecificInput, self).from_dictionary(dictionary)
         if 'authorizationMode' in dictionary:
             self.authorization_mode = dictionary['authorizationMode']
+        if 'customerReference' in dictionary:
+            self.customer_reference = dictionary['customerReference']
         if 'decryptedPaymentData' in dictionary:
             if not isinstance(dictionary['decryptedPaymentData'], dict):
                 raise TypeError('value \'{}\' is not a dictionary'.format(dictionary['decryptedPaymentData']))
@@ -121,6 +156,11 @@ class MobilePaymentMethodSpecificInput(AbstractPaymentMethodSpecificInput):
             self.decrypted_payment_data = value.from_dictionary(dictionary['decryptedPaymentData'])
         if 'encryptedPaymentData' in dictionary:
             self.encrypted_payment_data = dictionary['encryptedPaymentData']
+        if 'paymentProduct320SpecificInput' in dictionary:
+            if not isinstance(dictionary['paymentProduct320SpecificInput'], dict):
+                raise TypeError('value \'{}\' is not a dictionary'.format(dictionary['paymentProduct320SpecificInput']))
+            value = MobilePaymentProduct320SpecificInput()
+            self.payment_product320_specific_input = value.from_dictionary(dictionary['paymentProduct320SpecificInput'])
         if 'requiresApproval' in dictionary:
             self.requires_approval = dictionary['requiresApproval']
         if 'skipFraudService' in dictionary:
