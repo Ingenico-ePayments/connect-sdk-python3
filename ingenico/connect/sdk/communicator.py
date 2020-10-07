@@ -350,10 +350,10 @@ class Communicator(LoggingCapable):
         return date_format_utc
 
     def __collect_chunks(self, chunks):
-        collected_body = ""
+        collected_body = b""
         for chunk in chunks:
-            collected_body += chunk.decode('utf-8')
-        return collected_body
+            collected_body += chunk
+        return collected_body.decode('utf-8')
 
     def _process_binary_response(self, status, chunks, headers, request_path, context):
         if context is not None:
