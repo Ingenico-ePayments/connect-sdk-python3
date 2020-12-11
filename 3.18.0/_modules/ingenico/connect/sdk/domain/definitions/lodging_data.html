@@ -1,0 +1,444 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>ingenico.connect.sdk.domain.definitions.lodging_data &#8212; connect-sdk-python3 3.18.0 documentation</title>
+    <link rel="stylesheet" href="../../../../../../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../../../_static/pygments.css" type="text/css" />
+    <script id="documentation_options" data-url_root="../../../../../../" src="../../../../../../_static/documentation_options.js"></script>
+    <script src="../../../../../../_static/jquery.js"></script>
+    <script src="../../../../../../_static/underscore.js"></script>
+    <script src="../../../../../../_static/doctools.js"></script>
+    <script src="../../../../../../_static/language_data.js"></script>
+    <link rel="index" title="Index" href="../../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../../search.html" />
+   
+  <link rel="stylesheet" href="../../../../../../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <h1>Source code for ingenico.connect.sdk.domain.definitions.lodging_data</h1><div class="highlight"><pre>
+<span></span><span class="c1"># -*- coding: utf-8 -*-</span>
+<span class="c1">#</span>
+<span class="c1"># This class was auto-generated from the API references found at</span>
+<span class="c1"># https://epayments-api.developer-ingenico.com/s2sapi/v1/</span>
+<span class="c1">#</span>
+<span class="kn">from</span> <span class="nn">ingenico.connect.sdk.data_object</span> <span class="kn">import</span> <span class="n">DataObject</span>
+<span class="kn">from</span> <span class="nn">ingenico.connect.sdk.domain.definitions.lodging_charge</span> <span class="kn">import</span> <span class="n">LodgingCharge</span>
+<span class="kn">from</span> <span class="nn">ingenico.connect.sdk.domain.definitions.lodging_room</span> <span class="kn">import</span> <span class="n">LodgingRoom</span>
+
+
+<div class="viewcode-block" id="LodgingData"><a class="viewcode-back" href="../../../../../../index.html#ingenico.connect.sdk.domain.definitions.lodging_data.LodgingData">[docs]</a><span class="k">class</span> <span class="nc">LodgingData</span><span class="p">(</span><span class="n">DataObject</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    | Object that holds lodging specific data</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">__charges</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="n">__check_in_date</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="n">__check_out_date</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="n">__folio_number</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="n">__is_confirmed_reservation</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="n">__is_facility_fire_safety_conform</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="n">__is_no_show</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="n">__is_preference_smoking_room</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="n">__number_of_adults</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="n">__number_of_nights</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="n">__number_of_rooms</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="n">__program_code</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="n">__property_customer_service_phone_number</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="n">__property_phone_number</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="n">__renter_name</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="n">__rooms</span> <span class="o">=</span> <span class="kc">None</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">charges</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        | Object that holds lodging related charges</span>
+<span class="sd">        </span>
+<span class="sd">        Type: list[:class:`ingenico.connect.sdk.domain.definitions.lodging_charge.LodgingCharge`]</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__charges</span>
+
+    <span class="nd">@charges</span><span class="o">.</span><span class="n">setter</span>
+    <span class="k">def</span> <span class="nf">charges</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">__charges</span> <span class="o">=</span> <span class="n">value</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">check_in_date</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        | The date the guest checks into (or plans to check in to) the facility. </span>
+<span class="sd">        | Format: YYYYMMDD</span>
+<span class="sd">        </span>
+<span class="sd">        Type: str</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__check_in_date</span>
+
+    <span class="nd">@check_in_date</span><span class="o">.</span><span class="n">setter</span>
+    <span class="k">def</span> <span class="nf">check_in_date</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">__check_in_date</span> <span class="o">=</span> <span class="n">value</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">check_out_date</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        | The date the guest checks out of (or plans to check out of) the facility. </span>
+<span class="sd">        | Format: YYYYMMDD</span>
+<span class="sd">        </span>
+<span class="sd">        Type: str</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__check_out_date</span>
+
+    <span class="nd">@check_out_date</span><span class="o">.</span><span class="n">setter</span>
+    <span class="k">def</span> <span class="nf">check_out_date</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">__check_out_date</span> <span class="o">=</span> <span class="n">value</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">folio_number</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        | The Lodging Folio Number assigned to the itemized statement of charges and credits associated with this lodging stay, which can be any combination of characters and numerals defined by the Merchant or authorized Third Party Processor.</span>
+<span class="sd">        </span>
+<span class="sd">        Type: str</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__folio_number</span>
+
+    <span class="nd">@folio_number</span><span class="o">.</span><span class="n">setter</span>
+    <span class="k">def</span> <span class="nf">folio_number</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">__folio_number</span> <span class="o">=</span> <span class="n">value</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">is_confirmed_reservation</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        | Indicates whether the room reservation is confirmed.</span>
+<span class="sd">        </span>
+<span class="sd">        * true - The room reservation is confirmed</span>
+<span class="sd">        * false - The room reservation is not confirmed</span>
+<span class="sd">        </span>
+<span class="sd">        Type: bool</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__is_confirmed_reservation</span>
+
+    <span class="nd">@is_confirmed_reservation</span><span class="o">.</span><span class="n">setter</span>
+    <span class="k">def</span> <span class="nf">is_confirmed_reservation</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">__is_confirmed_reservation</span> <span class="o">=</span> <span class="n">value</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">is_facility_fire_safety_conform</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        | Defines whether or not the facility conforms to the requirements of the Hotel and Motel Fire Safety Act of 1990, or similar legislation.</span>
+<span class="sd">        </span>
+<span class="sd">        * true - The facility conform to the requirements</span>
+<span class="sd">        * false - The facility doesn&#39;t conform to the requirements</span>
+<span class="sd">        </span>
+<span class="sd">        Type: bool</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__is_facility_fire_safety_conform</span>
+
+    <span class="nd">@is_facility_fire_safety_conform</span><span class="o">.</span><span class="n">setter</span>
+    <span class="k">def</span> <span class="nf">is_facility_fire_safety_conform</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">__is_facility_fire_safety_conform</span> <span class="o">=</span> <span class="n">value</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">is_no_show</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        | Indicate if this the customer is a no show case. In such case, the lodging property can charge a no show fee.</span>
+<span class="sd">        </span>
+<span class="sd">        * true - The customer is a no show</span>
+<span class="sd">        * false - Not applicable</span>
+<span class="sd">        </span>
+<span class="sd">        Type: bool</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__is_no_show</span>
+
+    <span class="nd">@is_no_show</span><span class="o">.</span><span class="n">setter</span>
+    <span class="k">def</span> <span class="nf">is_no_show</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">__is_no_show</span> <span class="o">=</span> <span class="n">value</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">is_preference_smoking_room</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        | Indicated the preference of the customer for a smoking or non-smoking room.</span>
+<span class="sd">        </span>
+<span class="sd">        * true - A smoking room is preferred</span>
+<span class="sd">        * false - A non-smoking room is preferred</span>
+<span class="sd">        </span>
+<span class="sd">        Type: bool</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__is_preference_smoking_room</span>
+
+    <span class="nd">@is_preference_smoking_room</span><span class="o">.</span><span class="n">setter</span>
+    <span class="k">def</span> <span class="nf">is_preference_smoking_room</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">__is_preference_smoking_room</span> <span class="o">=</span> <span class="n">value</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">number_of_adults</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        | The total number of adult guests staying (or planning to stay) at the facility (i.e., all booked rooms)</span>
+<span class="sd">        </span>
+<span class="sd">        Type: int</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__number_of_adults</span>
+
+    <span class="nd">@number_of_adults</span><span class="o">.</span><span class="n">setter</span>
+    <span class="k">def</span> <span class="nf">number_of_adults</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">__number_of_adults</span> <span class="o">=</span> <span class="n">value</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">number_of_nights</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        | The number of nights for the lodging stay</span>
+<span class="sd">        </span>
+<span class="sd">        Type: int</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__number_of_nights</span>
+
+    <span class="nd">@number_of_nights</span><span class="o">.</span><span class="n">setter</span>
+    <span class="k">def</span> <span class="nf">number_of_nights</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">__number_of_nights</span> <span class="o">=</span> <span class="n">value</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">number_of_rooms</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        | The number of rooms rented for the lodging stay</span>
+<span class="sd">        </span>
+<span class="sd">        Type: int</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__number_of_rooms</span>
+
+    <span class="nd">@number_of_rooms</span><span class="o">.</span><span class="n">setter</span>
+    <span class="k">def</span> <span class="nf">number_of_rooms</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">__number_of_rooms</span> <span class="o">=</span> <span class="n">value</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">program_code</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        | Code that corresponds to the category of lodging charges detailed in this message.Allowed values:</span>
+<span class="sd">        </span>
+<span class="sd">        * lodging - (Default) Submitted charges are for lodging</span>
+<span class="sd">        * noShow - Submitted charges are for the failure of the guest(s) to check in for reserved a room</span>
+<span class="sd">        * advancedDeposit - Submitted charges are for an Advanced Deposit to reserve one or more rooms</span>
+<span class="sd">        </span>
+<span class="sd">        | If no value is submitted the default value lodging is used.</span>
+<span class="sd">        </span>
+<span class="sd">        Type: str</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__program_code</span>
+
+    <span class="nd">@program_code</span><span class="o">.</span><span class="n">setter</span>
+    <span class="k">def</span> <span class="nf">program_code</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">__program_code</span> <span class="o">=</span> <span class="n">value</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">property_customer_service_phone_number</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        | The international customer service phone number of the facility</span>
+<span class="sd">        </span>
+<span class="sd">        Type: str</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__property_customer_service_phone_number</span>
+
+    <span class="nd">@property_customer_service_phone_number</span><span class="o">.</span><span class="n">setter</span>
+    <span class="k">def</span> <span class="nf">property_customer_service_phone_number</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">__property_customer_service_phone_number</span> <span class="o">=</span> <span class="n">value</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">property_phone_number</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        | The local phone number of the facility in an international phone number format</span>
+<span class="sd">        </span>
+<span class="sd">        Type: str</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__property_phone_number</span>
+
+    <span class="nd">@property_phone_number</span><span class="o">.</span><span class="n">setter</span>
+    <span class="k">def</span> <span class="nf">property_phone_number</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">__property_phone_number</span> <span class="o">=</span> <span class="n">value</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">renter_name</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        | Name of the person or business entity charged for the reservation and/or lodging stay</span>
+<span class="sd">        </span>
+<span class="sd">        Type: str</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__renter_name</span>
+
+    <span class="nd">@renter_name</span><span class="o">.</span><span class="n">setter</span>
+    <span class="k">def</span> <span class="nf">renter_name</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">__renter_name</span> <span class="o">=</span> <span class="n">value</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">rooms</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        | Object that holds lodging related room data</span>
+<span class="sd">        </span>
+<span class="sd">        Type: list[:class:`ingenico.connect.sdk.domain.definitions.lodging_room.LodgingRoom`]</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__rooms</span>
+
+    <span class="nd">@rooms</span><span class="o">.</span><span class="n">setter</span>
+    <span class="k">def</span> <span class="nf">rooms</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">__rooms</span> <span class="o">=</span> <span class="n">value</span>
+
+<div class="viewcode-block" id="LodgingData.to_dictionary"><a class="viewcode-back" href="../../../../../../index.html#ingenico.connect.sdk.domain.definitions.lodging_data.LodgingData.to_dictionary">[docs]</a>    <span class="k">def</span> <span class="nf">to_dictionary</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">dictionary</span> <span class="o">=</span> <span class="nb">super</span><span class="p">(</span><span class="n">LodgingData</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">to_dictionary</span><span class="p">()</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">charges</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">dictionary</span><span class="p">[</span><span class="s1">&#39;charges&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
+            <span class="k">for</span> <span class="n">element</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">charges</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">element</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                    <span class="n">dictionary</span><span class="p">[</span><span class="s1">&#39;charges&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">element</span><span class="o">.</span><span class="n">to_dictionary</span><span class="p">())</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">check_in_date</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">dictionary</span><span class="p">[</span><span class="s1">&#39;checkInDate&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">check_in_date</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">check_out_date</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">dictionary</span><span class="p">[</span><span class="s1">&#39;checkOutDate&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">check_out_date</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">folio_number</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">dictionary</span><span class="p">[</span><span class="s1">&#39;folioNumber&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">folio_number</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">is_confirmed_reservation</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">dictionary</span><span class="p">[</span><span class="s1">&#39;isConfirmedReservation&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">is_confirmed_reservation</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">is_facility_fire_safety_conform</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">dictionary</span><span class="p">[</span><span class="s1">&#39;isFacilityFireSafetyConform&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">is_facility_fire_safety_conform</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">is_no_show</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">dictionary</span><span class="p">[</span><span class="s1">&#39;isNoShow&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">is_no_show</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">is_preference_smoking_room</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">dictionary</span><span class="p">[</span><span class="s1">&#39;isPreferenceSmokingRoom&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">is_preference_smoking_room</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">number_of_adults</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">dictionary</span><span class="p">[</span><span class="s1">&#39;numberOfAdults&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">number_of_adults</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">number_of_nights</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">dictionary</span><span class="p">[</span><span class="s1">&#39;numberOfNights&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">number_of_nights</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">number_of_rooms</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">dictionary</span><span class="p">[</span><span class="s1">&#39;numberOfRooms&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">number_of_rooms</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">program_code</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">dictionary</span><span class="p">[</span><span class="s1">&#39;programCode&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">program_code</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">property_customer_service_phone_number</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">dictionary</span><span class="p">[</span><span class="s1">&#39;propertyCustomerServicePhoneNumber&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">property_customer_service_phone_number</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">property_phone_number</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">dictionary</span><span class="p">[</span><span class="s1">&#39;propertyPhoneNumber&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">property_phone_number</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">renter_name</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">dictionary</span><span class="p">[</span><span class="s1">&#39;renterName&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">renter_name</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">rooms</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">dictionary</span><span class="p">[</span><span class="s1">&#39;rooms&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
+            <span class="k">for</span> <span class="n">element</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">rooms</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">element</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                    <span class="n">dictionary</span><span class="p">[</span><span class="s1">&#39;rooms&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">element</span><span class="o">.</span><span class="n">to_dictionary</span><span class="p">())</span>
+        <span class="k">return</span> <span class="n">dictionary</span></div>
+
+<div class="viewcode-block" id="LodgingData.from_dictionary"><a class="viewcode-back" href="../../../../../../index.html#ingenico.connect.sdk.domain.definitions.lodging_data.LodgingData.from_dictionary">[docs]</a>    <span class="k">def</span> <span class="nf">from_dictionary</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dictionary</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">LodgingData</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">from_dictionary</span><span class="p">(</span><span class="n">dictionary</span><span class="p">)</span>
+        <span class="k">if</span> <span class="s1">&#39;charges&#39;</span> <span class="ow">in</span> <span class="n">dictionary</span><span class="p">:</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">dictionary</span><span class="p">[</span><span class="s1">&#39;charges&#39;</span><span class="p">],</span> <span class="nb">list</span><span class="p">):</span>
+                <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s1">&#39;value </span><span class="se">\&#39;</span><span class="si">{}</span><span class="se">\&#39;</span><span class="s1"> is not a list&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">dictionary</span><span class="p">[</span><span class="s1">&#39;charges&#39;</span><span class="p">]))</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">charges</span> <span class="o">=</span> <span class="p">[]</span>
+            <span class="k">for</span> <span class="n">element</span> <span class="ow">in</span> <span class="n">dictionary</span><span class="p">[</span><span class="s1">&#39;charges&#39;</span><span class="p">]:</span>
+                <span class="n">value</span> <span class="o">=</span> <span class="n">LodgingCharge</span><span class="p">()</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">charges</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">value</span><span class="o">.</span><span class="n">from_dictionary</span><span class="p">(</span><span class="n">element</span><span class="p">))</span>
+        <span class="k">if</span> <span class="s1">&#39;checkInDate&#39;</span> <span class="ow">in</span> <span class="n">dictionary</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">check_in_date</span> <span class="o">=</span> <span class="n">dictionary</span><span class="p">[</span><span class="s1">&#39;checkInDate&#39;</span><span class="p">]</span>
+        <span class="k">if</span> <span class="s1">&#39;checkOutDate&#39;</span> <span class="ow">in</span> <span class="n">dictionary</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">check_out_date</span> <span class="o">=</span> <span class="n">dictionary</span><span class="p">[</span><span class="s1">&#39;checkOutDate&#39;</span><span class="p">]</span>
+        <span class="k">if</span> <span class="s1">&#39;folioNumber&#39;</span> <span class="ow">in</span> <span class="n">dictionary</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">folio_number</span> <span class="o">=</span> <span class="n">dictionary</span><span class="p">[</span><span class="s1">&#39;folioNumber&#39;</span><span class="p">]</span>
+        <span class="k">if</span> <span class="s1">&#39;isConfirmedReservation&#39;</span> <span class="ow">in</span> <span class="n">dictionary</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">is_confirmed_reservation</span> <span class="o">=</span> <span class="n">dictionary</span><span class="p">[</span><span class="s1">&#39;isConfirmedReservation&#39;</span><span class="p">]</span>
+        <span class="k">if</span> <span class="s1">&#39;isFacilityFireSafetyConform&#39;</span> <span class="ow">in</span> <span class="n">dictionary</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">is_facility_fire_safety_conform</span> <span class="o">=</span> <span class="n">dictionary</span><span class="p">[</span><span class="s1">&#39;isFacilityFireSafetyConform&#39;</span><span class="p">]</span>
+        <span class="k">if</span> <span class="s1">&#39;isNoShow&#39;</span> <span class="ow">in</span> <span class="n">dictionary</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">is_no_show</span> <span class="o">=</span> <span class="n">dictionary</span><span class="p">[</span><span class="s1">&#39;isNoShow&#39;</span><span class="p">]</span>
+        <span class="k">if</span> <span class="s1">&#39;isPreferenceSmokingRoom&#39;</span> <span class="ow">in</span> <span class="n">dictionary</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">is_preference_smoking_room</span> <span class="o">=</span> <span class="n">dictionary</span><span class="p">[</span><span class="s1">&#39;isPreferenceSmokingRoom&#39;</span><span class="p">]</span>
+        <span class="k">if</span> <span class="s1">&#39;numberOfAdults&#39;</span> <span class="ow">in</span> <span class="n">dictionary</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">number_of_adults</span> <span class="o">=</span> <span class="n">dictionary</span><span class="p">[</span><span class="s1">&#39;numberOfAdults&#39;</span><span class="p">]</span>
+        <span class="k">if</span> <span class="s1">&#39;numberOfNights&#39;</span> <span class="ow">in</span> <span class="n">dictionary</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">number_of_nights</span> <span class="o">=</span> <span class="n">dictionary</span><span class="p">[</span><span class="s1">&#39;numberOfNights&#39;</span><span class="p">]</span>
+        <span class="k">if</span> <span class="s1">&#39;numberOfRooms&#39;</span> <span class="ow">in</span> <span class="n">dictionary</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">number_of_rooms</span> <span class="o">=</span> <span class="n">dictionary</span><span class="p">[</span><span class="s1">&#39;numberOfRooms&#39;</span><span class="p">]</span>
+        <span class="k">if</span> <span class="s1">&#39;programCode&#39;</span> <span class="ow">in</span> <span class="n">dictionary</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">program_code</span> <span class="o">=</span> <span class="n">dictionary</span><span class="p">[</span><span class="s1">&#39;programCode&#39;</span><span class="p">]</span>
+        <span class="k">if</span> <span class="s1">&#39;propertyCustomerServicePhoneNumber&#39;</span> <span class="ow">in</span> <span class="n">dictionary</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">property_customer_service_phone_number</span> <span class="o">=</span> <span class="n">dictionary</span><span class="p">[</span><span class="s1">&#39;propertyCustomerServicePhoneNumber&#39;</span><span class="p">]</span>
+        <span class="k">if</span> <span class="s1">&#39;propertyPhoneNumber&#39;</span> <span class="ow">in</span> <span class="n">dictionary</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">property_phone_number</span> <span class="o">=</span> <span class="n">dictionary</span><span class="p">[</span><span class="s1">&#39;propertyPhoneNumber&#39;</span><span class="p">]</span>
+        <span class="k">if</span> <span class="s1">&#39;renterName&#39;</span> <span class="ow">in</span> <span class="n">dictionary</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">renter_name</span> <span class="o">=</span> <span class="n">dictionary</span><span class="p">[</span><span class="s1">&#39;renterName&#39;</span><span class="p">]</span>
+        <span class="k">if</span> <span class="s1">&#39;rooms&#39;</span> <span class="ow">in</span> <span class="n">dictionary</span><span class="p">:</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">dictionary</span><span class="p">[</span><span class="s1">&#39;rooms&#39;</span><span class="p">],</span> <span class="nb">list</span><span class="p">):</span>
+                <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s1">&#39;value </span><span class="se">\&#39;</span><span class="si">{}</span><span class="se">\&#39;</span><span class="s1"> is not a list&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">dictionary</span><span class="p">[</span><span class="s1">&#39;rooms&#39;</span><span class="p">]))</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">rooms</span> <span class="o">=</span> <span class="p">[]</span>
+            <span class="k">for</span> <span class="n">element</span> <span class="ow">in</span> <span class="n">dictionary</span><span class="p">[</span><span class="s1">&#39;rooms&#39;</span><span class="p">]:</span>
+                <span class="n">value</span> <span class="o">=</span> <span class="n">LodgingRoom</span><span class="p">()</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">rooms</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">value</span><span class="o">.</span><span class="n">from_dictionary</span><span class="p">(</span><span class="n">element</span><span class="p">))</span>
+        <span class="k">return</span> <span class="bp">self</span></div></div>
+</pre></div>
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../../../../../../index.html">connect-sdk-python3</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../../../../../../index.html">Documentation overview</a><ul>
+  <li><a href="../../../../../index.html">Module code</a><ul>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../../../../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;Copyright (c) 2016 Global Collect Services B.V..
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 3.0.2</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+    </div>
+
+    
+
+    
+  </body>
+</html>
