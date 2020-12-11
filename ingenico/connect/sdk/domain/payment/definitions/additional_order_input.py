@@ -5,6 +5,7 @@
 #
 from ingenico.connect.sdk.data_object import DataObject
 from ingenico.connect.sdk.domain.definitions.airline_data import AirlineData
+from ingenico.connect.sdk.domain.definitions.lodging_data import LodgingData
 from ingenico.connect.sdk.domain.payment.definitions.installments import Installments
 from ingenico.connect.sdk.domain.payment.definitions.level3_summary_data import Level3SummaryData
 from ingenico.connect.sdk.domain.payment.definitions.loan_recipient import LoanRecipient
@@ -17,6 +18,7 @@ class AdditionalOrderInput(DataObject):
     __installments = None
     __level3_summary_data = None
     __loan_recipient = None
+    __lodging_data = None
     __number_of_installments = None
     __order_date = None
     __type_information = None
@@ -76,6 +78,19 @@ class AdditionalOrderInput(DataObject):
         self.__loan_recipient = value
 
     @property
+    def lodging_data(self):
+        """
+        | Object that holds lodging specific data
+        
+        Type: :class:`ingenico.connect.sdk.domain.definitions.lodging_data.LodgingData`
+        """
+        return self.__lodging_data
+
+    @lodging_data.setter
+    def lodging_data(self, value):
+        self.__lodging_data = value
+
+    @property
     def number_of_installments(self):
         """
         | The number of installments in which this transaction will be paid, which can be used for card payments. Only used with some acquirers. In case you send in the details of this object, only the combination of card products and acquirers that do support installments will be shown on the MyCheckout hosted payment pages.
@@ -127,6 +142,8 @@ class AdditionalOrderInput(DataObject):
             dictionary['level3SummaryData'] = self.level3_summary_data.to_dictionary()
         if self.loan_recipient is not None:
             dictionary['loanRecipient'] = self.loan_recipient.to_dictionary()
+        if self.lodging_data is not None:
+            dictionary['lodgingData'] = self.lodging_data.to_dictionary()
         if self.number_of_installments is not None:
             dictionary['numberOfInstallments'] = self.number_of_installments
         if self.order_date is not None:
@@ -157,6 +174,11 @@ class AdditionalOrderInput(DataObject):
                 raise TypeError('value \'{}\' is not a dictionary'.format(dictionary['loanRecipient']))
             value = LoanRecipient()
             self.loan_recipient = value.from_dictionary(dictionary['loanRecipient'])
+        if 'lodgingData' in dictionary:
+            if not isinstance(dictionary['lodgingData'], dict):
+                raise TypeError('value \'{}\' is not a dictionary'.format(dictionary['lodgingData']))
+            value = LodgingData()
+            self.lodging_data = value.from_dictionary(dictionary['lodgingData'])
         if 'numberOfInstallments' in dictionary:
             self.number_of_installments = dictionary['numberOfInstallments']
         if 'orderDate' in dictionary:

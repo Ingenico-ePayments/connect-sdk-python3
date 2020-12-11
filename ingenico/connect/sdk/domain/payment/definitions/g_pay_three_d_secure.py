@@ -63,7 +63,7 @@ class GPayThreeDSecure(DataObject):
         * none - No exemption flagging is to be used of this transaction (Default).
         * automatic - Our systems will determine the best possible exemption based on the transaction parameters and the risk scores.
         * transaction-risk-analysis - You have determined that this transaction is of low risk and are willing to take the liability. Please note that your fraud rate needs to stay below thresholds to allow your use of this exemption.
-        * low-value - The value of the transaction is below 30 EUR. Please note that the issuer will still require every 5th low-value transaction pithing 24 hours to be strongly authenticated. The issuer will also keep track of the cumulative amount authorized on the card. When this exceeds 150 EUR strong customer authentication is also required.
+        * low-value - The value of the transaction is below 30 EUR. Please note that the issuer will still require every 5th low-value transaction pithing 24 hours to be strongly authenticated. The issuer will also keep track of the cumulative amount authorized on the card. When this exceeds 100 EUR strong customer authentication is also required.
         * whitelist - You have been whitelisted by the customer at the issuer.
         
         Type: str

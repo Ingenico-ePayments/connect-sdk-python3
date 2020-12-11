@@ -56,7 +56,7 @@ class DecryptedPaymentData(DataObject):
         | The 3D secure online payment cryptogram.
         
         * For Apple Pay, maps to the paymentData.onlinePaymentCryptogram property in the encrypted payment data.
-        * For Google Pay, maps to the paymentMethodDetails.3dsCryptogram property in the encrypted payment data.
+        * For Google Pay, maps to the paymentMethodDetails.cryptogram property in the encrypted payment data.
         
         | Not allowed for Google Pay if the authMethod in the response of Google is PAN_ONLY.
         
@@ -92,7 +92,7 @@ class DecryptedPaymentData(DataObject):
         | Electronic Commerce Indicator.
         
         * For Apple Pay, maps to the paymentData.eciIndicator property in the encrypted payment data.
-        * For Google Pay, maps to the paymentMethodDetails.3dsEciIndicator property in the encryted payment data.
+        * For Google Pay, maps to the paymentMethodDetails.eciIndicator property in the encryted payment data.
         
         | Not allowed for Google Pay if the authMethod in the response of Google is PAN_ONLY.
         

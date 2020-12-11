@@ -5,6 +5,7 @@
 #
 from ingenico.connect.sdk.data_object import DataObject
 from ingenico.connect.sdk.domain.definitions.amount_of_money import AmountOfMoney
+from ingenico.connect.sdk.domain.payment.definitions.exemption_output import ExemptionOutput
 from ingenico.connect.sdk.domain.payment.definitions.sdk_data_output import SdkDataOutput
 from ingenico.connect.sdk.domain.payment.definitions.three_d_secure_data import ThreeDSecureData
 
@@ -20,6 +21,7 @@ class ThreeDSecureResults(DataObject):
     __cavv = None
     __directory_server_transaction_id = None
     __eci = None
+    __exemption_output = None
     __scheme_risk_score = None
     __sdk_data = None
     __three_d_secure_data = None
@@ -104,6 +106,19 @@ class ThreeDSecureResults(DataObject):
     @eci.setter
     def eci(self, value):
         self.__eci = value
+
+    @property
+    def exemption_output(self):
+        """
+        | Object containing exemption output
+        
+        Type: :class:`ingenico.connect.sdk.domain.payment.definitions.exemption_output.ExemptionOutput`
+        """
+        return self.__exemption_output
+
+    @exemption_output.setter
+    def exemption_output(self, value):
+        self.__exemption_output = value
 
     @property
     def scheme_risk_score(self):
@@ -199,6 +214,8 @@ class ThreeDSecureResults(DataObject):
             dictionary['directoryServerTransactionId'] = self.directory_server_transaction_id
         if self.eci is not None:
             dictionary['eci'] = self.eci
+        if self.exemption_output is not None:
+            dictionary['exemptionOutput'] = self.exemption_output.to_dictionary()
         if self.scheme_risk_score is not None:
             dictionary['schemeRiskScore'] = self.scheme_risk_score
         if self.sdk_data is not None:
@@ -230,6 +247,11 @@ class ThreeDSecureResults(DataObject):
             self.directory_server_transaction_id = dictionary['directoryServerTransactionId']
         if 'eci' in dictionary:
             self.eci = dictionary['eci']
+        if 'exemptionOutput' in dictionary:
+            if not isinstance(dictionary['exemptionOutput'], dict):
+                raise TypeError('value \'{}\' is not a dictionary'.format(dictionary['exemptionOutput']))
+            value = ExemptionOutput()
+            self.exemption_output = value.from_dictionary(dictionary['exemptionOutput'])
         if 'schemeRiskScore' in dictionary:
             self.scheme_risk_score = dictionary['schemeRiskScore']
         if 'sdkData' in dictionary:
