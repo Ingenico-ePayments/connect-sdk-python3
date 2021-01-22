@@ -27,6 +27,8 @@ class DecryptedPaymentData(DataObject):
         | .
         
         Type: str
+        
+        Deprecated; Use decryptedPaymentData.paymentMethod instead
         """
         return self.__auth_method
 
