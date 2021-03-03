@@ -17,7 +17,7 @@ class CompletePaymentExample(object):
             card = CardWithoutCvv()
             card.card_number = "67030000000000003"
             card.cardholder_name = "Wile E. Coyote"
-            card.expiry_date = "1220"
+            card.expiry_date = "1299"
 
             card_payment_method_specific_input = CompletePaymentCardPaymentMethodSpecificInput()
             card_payment_method_specific_input.card = card

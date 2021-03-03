@@ -16,6 +16,7 @@ class NonSepaDirectDebitPaymentMethodSpecificInput(AbstractPaymentMethodSpecific
     __payment_product705_specific_input = None
     __payment_product730_specific_input = None
     __recurring_payment_sequence_indicator = None
+    __requires_approval = None
     __token = None
     __tokenize = None
 
@@ -104,6 +105,20 @@ class NonSepaDirectDebitPaymentMethodSpecificInput(AbstractPaymentMethodSpecific
         self.__recurring_payment_sequence_indicator = value
 
     @property
+    def requires_approval(self):
+        """
+        * true - The payment requires approval before the funds will be captured using the Approve payment or Capture payment API.
+        * false - The payment does not require approval, and the funds will be captured automatically.
+        
+        Type: bool
+        """
+        return self.__requires_approval
+
+    @requires_approval.setter
+    def requires_approval(self, value):
+        self.__requires_approval = value
+
+    @property
     def token(self):
         """
         | ID of the stored token that contains the bank account details to be debited
@@ -146,6 +161,8 @@ class NonSepaDirectDebitPaymentMethodSpecificInput(AbstractPaymentMethodSpecific
             dictionary['paymentProduct730SpecificInput'] = self.payment_product730_specific_input.to_dictionary()
         if self.recurring_payment_sequence_indicator is not None:
             dictionary['recurringPaymentSequenceIndicator'] = self.recurring_payment_sequence_indicator
+        if self.requires_approval is not None:
+            dictionary['requiresApproval'] = self.requires_approval
         if self.token is not None:
             dictionary['token'] = self.token
         if self.tokenize is not None:
@@ -172,6 +189,8 @@ class NonSepaDirectDebitPaymentMethodSpecificInput(AbstractPaymentMethodSpecific
             self.payment_product730_specific_input = value.from_dictionary(dictionary['paymentProduct730SpecificInput'])
         if 'recurringPaymentSequenceIndicator' in dictionary:
             self.recurring_payment_sequence_indicator = dictionary['recurringPaymentSequenceIndicator']
+        if 'requiresApproval' in dictionary:
+            self.requires_approval = dictionary['requiresApproval']
         if 'token' in dictionary:
             self.token = dictionary['token']
         if 'tokenize' in dictionary:

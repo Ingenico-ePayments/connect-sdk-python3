@@ -15,7 +15,7 @@ class CardRecurrenceDetails(DataObject):
     @property
     def end_date(self):
         """
-        | Date in YYYYMMDD after which there will be no further charges.
+        | Date in YYYYMMDD after which there will be no further charges. If no value is provided we will set a default value of five years after we processed the first recurring transaction.
         
         Type: str
         """
@@ -28,7 +28,7 @@ class CardRecurrenceDetails(DataObject):
     @property
     def min_frequency(self):
         """
-        | Minimum number of days between authorizations.
+        | Minimum number of days between authorizations. If no value is provided we will set a default value of 30 days.
         
         Type: int
         """
