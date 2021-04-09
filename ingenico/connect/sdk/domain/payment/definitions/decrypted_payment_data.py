@@ -91,12 +91,10 @@ class DecryptedPaymentData(DataObject):
     @property
     def eci(self):
         """
-        | Electronic Commerce Indicator.
+        | The eci is Electronic Commerce Indicator.
         
         * For Apple Pay, maps to the paymentData.eciIndicator property in the encrypted payment data.
-        * For Google Pay, maps to the paymentMethodDetails.eciIndicator property in the encryted payment data.
-        
-        | Not allowed for Google Pay if the authMethod in the response of Google is PAN_ONLY.
+        * For Google Pay, maps to the paymentMethodDetails.eciIndicator property in the encrypted payment data.
         
         Type: int
         """

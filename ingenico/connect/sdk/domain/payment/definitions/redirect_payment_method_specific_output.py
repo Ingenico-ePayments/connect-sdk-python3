@@ -3,6 +3,7 @@
 # This class was auto-generated from the API references found at
 # https://epayments-api.developer-ingenico.com/s2sapi/v1/
 #
+from ingenico.connect.sdk.domain.definitions.bank_account_bban import BankAccountBban
 from ingenico.connect.sdk.domain.definitions.bank_account_iban import BankAccountIban
 from ingenico.connect.sdk.domain.definitions.fraud_results import FraudResults
 from ingenico.connect.sdk.domain.payment.definitions.abstract_payment_method_specific_output import AbstractPaymentMethodSpecificOutput
@@ -14,13 +15,28 @@ from ingenico.connect.sdk.domain.payment.definitions.payment_product840_specific
 
 class RedirectPaymentMethodSpecificOutput(AbstractPaymentMethodSpecificOutput):
 
+    __bank_account_bban = None
     __bank_account_iban = None
+    __bic = None
     __fraud_results = None
     __payment_product3201_specific_output = None
     __payment_product806_specific_output = None
     __payment_product836_specific_output = None
     __payment_product840_specific_output = None
     __token = None
+
+    @property
+    def bank_account_bban(self):
+        """
+        | Object that holds the Basic Bank Account Number (BBAN) data
+        
+        Type: :class:`ingenico.connect.sdk.domain.definitions.bank_account_bban.BankAccountBban`
+        """
+        return self.__bank_account_bban
+
+    @bank_account_bban.setter
+    def bank_account_bban(self, value):
+        self.__bank_account_bban = value
 
     @property
     def bank_account_iban(self):
@@ -34,6 +50,19 @@ class RedirectPaymentMethodSpecificOutput(AbstractPaymentMethodSpecificOutput):
     @bank_account_iban.setter
     def bank_account_iban(self, value):
         self.__bank_account_iban = value
+
+    @property
+    def bic(self):
+        """
+        | The BIC is the Business Identifier Code, also known as SWIFT or Bank Identifier code. It is a code with an internationally agreed format to Identify a specific bank or even branch. The BIC contains 8 or 11 positions: the first 4 contain the bank code, followed by the country code and location code.
+        
+        Type: str
+        """
+        return self.__bic
+
+    @bic.setter
+    def bic(self, value):
+        self.__bic = value
 
     @property
     def fraud_results(self):
@@ -115,8 +144,12 @@ class RedirectPaymentMethodSpecificOutput(AbstractPaymentMethodSpecificOutput):
 
     def to_dictionary(self):
         dictionary = super(RedirectPaymentMethodSpecificOutput, self).to_dictionary()
+        if self.bank_account_bban is not None:
+            dictionary['bankAccountBban'] = self.bank_account_bban.to_dictionary()
         if self.bank_account_iban is not None:
             dictionary['bankAccountIban'] = self.bank_account_iban.to_dictionary()
+        if self.bic is not None:
+            dictionary['bic'] = self.bic
         if self.fraud_results is not None:
             dictionary['fraudResults'] = self.fraud_results.to_dictionary()
         if self.payment_product3201_specific_output is not None:
@@ -133,11 +166,18 @@ class RedirectPaymentMethodSpecificOutput(AbstractPaymentMethodSpecificOutput):
 
     def from_dictionary(self, dictionary):
         super(RedirectPaymentMethodSpecificOutput, self).from_dictionary(dictionary)
+        if 'bankAccountBban' in dictionary:
+            if not isinstance(dictionary['bankAccountBban'], dict):
+                raise TypeError('value \'{}\' is not a dictionary'.format(dictionary['bankAccountBban']))
+            value = BankAccountBban()
+            self.bank_account_bban = value.from_dictionary(dictionary['bankAccountBban'])
         if 'bankAccountIban' in dictionary:
             if not isinstance(dictionary['bankAccountIban'], dict):
                 raise TypeError('value \'{}\' is not a dictionary'.format(dictionary['bankAccountIban']))
             value = BankAccountIban()
             self.bank_account_iban = value.from_dictionary(dictionary['bankAccountIban'])
+        if 'bic' in dictionary:
+            self.bic = dictionary['bic']
         if 'fraudResults' in dictionary:
             if not isinstance(dictionary['fraudResults'], dict):
                 raise TypeError('value \'{}\' is not a dictionary'.format(dictionary['fraudResults']))

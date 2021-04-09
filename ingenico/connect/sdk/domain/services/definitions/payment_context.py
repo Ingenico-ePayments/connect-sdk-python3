@@ -14,6 +14,7 @@ class PaymentContext(DataObject):
 
     __amount_of_money = None
     __country_code = None
+    __is_installments = None
     __is_recurring = None
 
     @property
@@ -43,6 +44,19 @@ class PaymentContext(DataObject):
         self.__country_code = value
 
     @property
+    def is_installments(self):
+        """
+        | True if the payment is to be paid in multiple installments (numberOfInstallments &gt; 1 for the payment). When true only payment products that support installments will be allowed in context.
+        
+        Type: bool
+        """
+        return self.__is_installments
+
+    @is_installments.setter
+    def is_installments(self, value):
+        self.__is_installments = value
+
+    @property
     def is_recurring(self):
         """
         | True if the payment is recurring
@@ -61,6 +75,8 @@ class PaymentContext(DataObject):
             dictionary['amountOfMoney'] = self.amount_of_money.to_dictionary()
         if self.country_code is not None:
             dictionary['countryCode'] = self.country_code
+        if self.is_installments is not None:
+            dictionary['isInstallments'] = self.is_installments
         if self.is_recurring is not None:
             dictionary['isRecurring'] = self.is_recurring
         return dictionary
@@ -74,6 +90,8 @@ class PaymentContext(DataObject):
             self.amount_of_money = value.from_dictionary(dictionary['amountOfMoney'])
         if 'countryCode' in dictionary:
             self.country_code = dictionary['countryCode']
+        if 'isInstallments' in dictionary:
+            self.is_installments = dictionary['isInstallments']
         if 'isRecurring' in dictionary:
             self.is_recurring = dictionary['isRecurring']
         return self
