@@ -2,7 +2,7 @@
 
 ## Introduction
 
-The Python SDK helps you to communicate with the [Ingenico Connect](https://epayments.developer-ingenico.com/) Server API. It's primary features are:
+The Python SDK helps you to communicate with the [Ingenico Connect](https://epayments.developer-ingenico.com/) Server API. Its primary features are:
 
 * convenient Python library for the API calls and responses
     * marshalls Python request objects to HTTP requests
