@@ -58,14 +58,11 @@ class WebhooksHelper:
         signature = self.__get_header_value(request_headers, "X-GCS-Signature")
         key_id = self.__get_header_value(request_headers, "X-GCS-KeyId")
         secret_key = self.__secret_key_store.get_secret_key(key_id)
-        unencoded_result = hmac.new(secret_key.encode("utf-8"), body, hashlib.sha256)
-        expected_signature = b64encode(unencoded_result.digest()).decode(
-            "utf-8").rstrip('\n')
-        is_valid = self.are_equal_signatures(signature, expected_signature)
+        unencoded_result = hmac.new(secret_key.encode("utf-8"), body, hashlib.sha256).digest()
+        expected_signature = b64encode(unencoded_result)
+        is_valid = hmac.compare_digest(signature.encode("utf-8"), expected_signature)
         if is_valid is False:
-            raise SignatureValidationException("failed to validate signature: "
-                                               + signature + "'Expected: " + expected_signature + str(
-                                                   len(signature)) + str(len(expected_signature)))
+            raise SignatureValidationException("failed to validate signature: " + signature)
 
     @staticmethod
     def are_equal_signatures(signature, expected_signature):

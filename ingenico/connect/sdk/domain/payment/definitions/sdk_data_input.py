@@ -24,6 +24,8 @@ class SdkDataInput(DataObject):
         | Device information gathered by the 3DS SDK on a customer device. This is JSON name/value pairs that as a whole is Base64url encoded.
         
         Type: str
+        
+        Deprecated; No replacement
         """
         return self.__device_info
 

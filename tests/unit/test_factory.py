@@ -22,7 +22,7 @@ class FactoryTest(unittest.TestCase):
     def test_create_configuration(self):
         """Tests that the factory is correctly able to create a communicator configuration"""
         configuration = Factory.create_configuration(PROPERTIES_URI, API_KEY_ID, SECRET_API_KEY)
-        self.assertEqual(urlparse("https://api-sandbox.globalcollect.com"), configuration.api_endpoint)
+        self.assertEqual(urlparse("https://eu.sandbox.api-ingenico.com"), configuration.api_endpoint)
         self.assertEqual(AuthorizationType.get_authorization("v1HMAC"), configuration.authorization_type)
         self.assertEqual(-1, configuration.connect_timeout)
         self.assertEqual(-1, configuration.socket_timeout)

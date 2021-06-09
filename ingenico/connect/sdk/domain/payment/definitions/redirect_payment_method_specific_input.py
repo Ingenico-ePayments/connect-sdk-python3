@@ -4,6 +4,7 @@
 # https://epayments-api.developer-ingenico.com/s2sapi/v1/
 #
 from ingenico.connect.sdk.domain.payment.definitions.abstract_redirect_payment_method_specific_input import AbstractRedirectPaymentMethodSpecificInput
+from ingenico.connect.sdk.domain.payment.definitions.redirect_payment_product4101_specific_input import RedirectPaymentProduct4101SpecificInput
 from ingenico.connect.sdk.domain.payment.definitions.redirect_payment_product809_specific_input import RedirectPaymentProduct809SpecificInput
 from ingenico.connect.sdk.domain.payment.definitions.redirect_payment_product816_specific_input import RedirectPaymentProduct816SpecificInput
 from ingenico.connect.sdk.domain.payment.definitions.redirect_payment_product840_specific_input import RedirectPaymentProduct840SpecificInput
@@ -17,6 +18,7 @@ from ingenico.connect.sdk.domain.payment.definitions.redirection_data import Red
 class RedirectPaymentMethodSpecificInput(AbstractRedirectPaymentMethodSpecificInput):
 
     __is_recurring = None
+    __payment_product4101_specific_input = None
     __payment_product809_specific_input = None
     __payment_product816_specific_input = None
     __payment_product840_specific_input = None
@@ -40,6 +42,19 @@ class RedirectPaymentMethodSpecificInput(AbstractRedirectPaymentMethodSpecificIn
     @is_recurring.setter
     def is_recurring(self, value):
         self.__is_recurring = value
+
+    @property
+    def payment_product4101_specific_input(self):
+        """
+        | Object containing specific input required for UPI payments.
+        
+        Type: :class:`ingenico.connect.sdk.domain.payment.definitions.redirect_payment_product4101_specific_input.RedirectPaymentProduct4101SpecificInput`
+        """
+        return self.__payment_product4101_specific_input
+
+    @payment_product4101_specific_input.setter
+    def payment_product4101_specific_input(self, value):
+        self.__payment_product4101_specific_input = value
 
     @property
     def payment_product809_specific_input(self):
@@ -166,6 +181,8 @@ class RedirectPaymentMethodSpecificInput(AbstractRedirectPaymentMethodSpecificIn
         dictionary = super(RedirectPaymentMethodSpecificInput, self).to_dictionary()
         if self.is_recurring is not None:
             dictionary['isRecurring'] = self.is_recurring
+        if self.payment_product4101_specific_input is not None:
+            dictionary['paymentProduct4101SpecificInput'] = self.payment_product4101_specific_input.to_dictionary()
         if self.payment_product809_specific_input is not None:
             dictionary['paymentProduct809SpecificInput'] = self.payment_product809_specific_input.to_dictionary()
         if self.payment_product816_specific_input is not None:
@@ -190,6 +207,11 @@ class RedirectPaymentMethodSpecificInput(AbstractRedirectPaymentMethodSpecificIn
         super(RedirectPaymentMethodSpecificInput, self).from_dictionary(dictionary)
         if 'isRecurring' in dictionary:
             self.is_recurring = dictionary['isRecurring']
+        if 'paymentProduct4101SpecificInput' in dictionary:
+            if not isinstance(dictionary['paymentProduct4101SpecificInput'], dict):
+                raise TypeError('value \'{}\' is not a dictionary'.format(dictionary['paymentProduct4101SpecificInput']))
+            value = RedirectPaymentProduct4101SpecificInput()
+            self.payment_product4101_specific_input = value.from_dictionary(dictionary['paymentProduct4101SpecificInput'])
         if 'paymentProduct809SpecificInput' in dictionary:
             if not isinstance(dictionary['paymentProduct809SpecificInput'], dict):
                 raise TypeError('value \'{}\' is not a dictionary'.format(dictionary['paymentProduct809SpecificInput']))

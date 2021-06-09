@@ -13,7 +13,7 @@ class CommunicatorConfigurationTest(unittest.TestCase):
         self.config = configparser.ConfigParser()
 
         self.config.add_section("ConnectSDK")
-        self.config.set('ConnectSDK', "connect.api.endpoint.host", "api-sandbox.globalcollect.com")
+        self.config.set('ConnectSDK', "connect.api.endpoint.host", "eu.sandbox.api-ingenico.com")
         self.config.set('ConnectSDK', 'connect.api.authorizationType', 'v1HMAC')
         self.config.set('ConnectSDK', 'connect.api.connectTimeout', '20')
         self.config.set('ConnectSDK', 'connect.api.socketTimeout', '10')
@@ -24,7 +24,7 @@ class CommunicatorConfigurationTest(unittest.TestCase):
     def assertDefaults(self, communicator_config):
         """Tests commonly used settings for testing url, authorization type, timeouts and max_connections"""
         #                                                           this argument should not be needed    VV
-        self.assertEqual("https://api-sandbox.globalcollect.com", communicator_config.api_endpoint.geturl())
+        self.assertEqual("https://eu.sandbox.api-ingenico.com", communicator_config.api_endpoint.geturl())
         self.assertEqual(AuthorizationType.get_authorization("v1HMAC"), communicator_config.authorization_type)
         self.assertEqual(20, communicator_config.connect_timeout)
         self.assertEqual(10, communicator_config.socket_timeout)
@@ -88,7 +88,7 @@ class CommunicatorConfigurationTest(unittest.TestCase):
         self.config.set("ConnectSDK", "connect.api.maxConnections", "100")
 
         communicator_config = CommunicatorConfiguration(self.config)
-        self.assertEqual("https://api-sandbox.globalcollect.com", communicator_config.api_endpoint.geturl())
+        self.assertEqual("https://eu.sandbox.api-ingenico.com", communicator_config.api_endpoint.geturl())
         self.assertEqual(AuthorizationType.get_authorization("v1HMAC"), communicator_config.authorization_type)
         self.assertEqual(20, communicator_config.connect_timeout)
         self.assertEqual(10, communicator_config.socket_timeout)
@@ -103,7 +103,7 @@ class CommunicatorConfigurationTest(unittest.TestCase):
 
         communicator_config = CommunicatorConfiguration(self.config)
 
-        self.assertEqual("http://api-sandbox.globalcollect.com", communicator_config.api_endpoint.geturl())
+        self.assertEqual("http://eu.sandbox.api-ingenico.com", communicator_config.api_endpoint.geturl())
 
     def test_construct_from_properties_with_host_and_port(self):
         """Tests that constructing a communicator configuration from a host and port correctly processes this info"""
@@ -112,7 +112,7 @@ class CommunicatorConfigurationTest(unittest.TestCase):
 
         communicator_config = CommunicatorConfiguration(self.config)
 
-        self.assertEqual("https://api-sandbox.globalcollect.com:8443", communicator_config.api_endpoint.geturl())
+        self.assertEqual("https://eu.sandbox.api-ingenico.com:8443", communicator_config.api_endpoint.geturl())
 
     def test_construct_from_properties_with_host_scheme_port(self):
         """Tests that constructing a communicator configuration from host, scheme and port correctly processes this info
@@ -122,7 +122,7 @@ class CommunicatorConfigurationTest(unittest.TestCase):
 
         communicator_config = CommunicatorConfiguration(self.config)
 
-        self.assertEqual("http://api-sandbox.globalcollect.com:8080", communicator_config.api_endpoint.geturl())
+        self.assertEqual("http://eu.sandbox.api-ingenico.com:8080", communicator_config.api_endpoint.geturl())
 
     def test_construct_from_properties_with_metadata(self):
         """Tests that constructing a communicator configuration

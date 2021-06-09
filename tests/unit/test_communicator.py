@@ -16,15 +16,15 @@ class CommunicatorTest(unittest.TestCase):
 
     def test_to_uri_without_request_parameters(self):
         """Tests if the communicator can correctly construct an url using a known base url and a relative url"""
-        patcher = patch('ingenico.connect.sdk.session.Session', api_endpoint=urlparse("https://api-sandbox.globalcollect.com"))
+        patcher = patch('ingenico.connect.sdk.session.Session', api_endpoint=urlparse("https://eu.sandbox.api-ingenico.com"))
         session = patcher.start()
         communicator = Communicator(session, DefaultMarshaller.INSTANCE())
 
         uri1 = communicator._to_absolute_uri("v1/merchant/20000/convertamount", [])
         uri2 = communicator._to_absolute_uri("/v1/merchant/20000/convertamount", [])
 
-        self.assertEqual("https://api-sandbox.globalcollect.com/v1/merchant/20000/convertamount", uri1.geturl())
-        self.assertEqual("https://api-sandbox.globalcollect.com/v1/merchant/20000/convertamount", uri2.geturl())
+        self.assertEqual("https://eu.sandbox.api-ingenico.com/v1/merchant/20000/convertamount", uri1.geturl())
+        self.assertEqual("https://eu.sandbox.api-ingenico.com/v1/merchant/20000/convertamount", uri2.geturl())
 
     def test_to_uri_with_request_parameters(self):
         """Tests if the communicator can correctly construct an url
@@ -32,16 +32,16 @@ class CommunicatorTest(unittest.TestCase):
         """
         requestparams = [RequestParam("amount", "123"), RequestParam("source", "USD"),
                          RequestParam("target", "EUR"), RequestParam("dummy", "é&%=")]
-        patcher = patch('ingenico.connect.sdk.session.Session', api_endpoint=urlparse("https://api-sandbox.globalcollect.com"))
+        patcher = patch('ingenico.connect.sdk.session.Session', api_endpoint=urlparse("https://eu.sandbox.api-ingenico.com"))
         session = patcher.start()
         communicator = Communicator(session, DefaultMarshaller.INSTANCE())
 
         uri1 = communicator._to_absolute_uri("v1/merchant/20000/convertamount", requestparams)
         uri2 = communicator._to_absolute_uri("/v1/merchant/20000/convertamount", requestparams)
 
-        self.assertEqual("https://api-sandbox.globalcollect.com/v1/merchant/20000/convertamount"
+        self.assertEqual("https://eu.sandbox.api-ingenico.com/v1/merchant/20000/convertamount"
                          "?amount=123&source=USD&target=EUR&dummy=%C3%A9%26%25%3D", uri1.geturl())
-        self.assertEqual("https://api-sandbox.globalcollect.com/v1/merchant/20000/convertamount"
+        self.assertEqual("https://eu.sandbox.api-ingenico.com/v1/merchant/20000/convertamount"
                          "?amount=123&source=USD&target=EUR&dummy=%C3%A9%26%25%3D", uri2.geturl())
 
 
