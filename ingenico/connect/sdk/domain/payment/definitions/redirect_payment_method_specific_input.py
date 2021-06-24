@@ -46,7 +46,7 @@ class RedirectPaymentMethodSpecificInput(AbstractRedirectPaymentMethodSpecificIn
     @property
     def payment_product4101_specific_input(self):
         """
-        | Object containing specific input required for UPI payments.
+        | Object containing specific input required for UPI (Payment product ID 4101)
         
         Type: :class:`ingenico.connect.sdk.domain.payment.definitions.redirect_payment_product4101_specific_input.RedirectPaymentProduct4101SpecificInput`
         """

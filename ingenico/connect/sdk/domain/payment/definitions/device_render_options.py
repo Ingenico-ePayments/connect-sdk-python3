@@ -13,6 +13,7 @@ class DeviceRenderOptions(DataObject):
 
     __sdk_interface = None
     __sdk_ui_type = None
+    __sdk_ui_types = None
 
     @property
     def sdk_interface(self):
@@ -47,6 +48,8 @@ class DeviceRenderOptions(DataObject):
         * html-other = HTML Other (only valid when cardPaymentMethodSpecificInput.threeDSecure.sdkData.deviceRenderOptions.sdkInterface is set to html)
         
         Type: str
+        
+        Deprecated; Use deviceRenderOptions.sdkUiTypes instead
         """
         return self.__sdk_ui_type
 
@@ -54,12 +57,38 @@ class DeviceRenderOptions(DataObject):
     def sdk_ui_type(self, value):
         self.__sdk_ui_type = value
 
+    @property
+    def sdk_ui_types(self):
+        """
+        | Lists all UI types that the device supports for displaying specific challenge user interfaces within the SDK.
+        
+        
+        
+        * text = Text interface
+        * single-select = Select a single option
+        * multi-select = Select multiple options
+        * oob = Out of ounds
+        * html-other = HTML Other (only valid when cardPaymentMethodSpecificInput.threeDSecure.sdkData.deviceRenderOptions.sdkInterface is set to html)
+        
+        Type: list[str]
+        """
+        return self.__sdk_ui_types
+
+    @sdk_ui_types.setter
+    def sdk_ui_types(self, value):
+        self.__sdk_ui_types = value
+
     def to_dictionary(self):
         dictionary = super(DeviceRenderOptions, self).to_dictionary()
         if self.sdk_interface is not None:
             dictionary['sdkInterface'] = self.sdk_interface
         if self.sdk_ui_type is not None:
             dictionary['sdkUiType'] = self.sdk_ui_type
+        if self.sdk_ui_types is not None:
+            dictionary['sdkUiTypes'] = []
+            for element in self.sdk_ui_types:
+                if element is not None:
+                    dictionary['sdkUiTypes'].append(element)
         return dictionary
 
     def from_dictionary(self, dictionary):
@@ -68,4 +97,10 @@ class DeviceRenderOptions(DataObject):
             self.sdk_interface = dictionary['sdkInterface']
         if 'sdkUiType' in dictionary:
             self.sdk_ui_type = dictionary['sdkUiType']
+        if 'sdkUiTypes' in dictionary:
+            if not isinstance(dictionary['sdkUiTypes'], list):
+                raise TypeError('value \'{}\' is not a list'.format(dictionary['sdkUiTypes']))
+            self.sdk_ui_types = []
+            for element in dictionary['sdkUiTypes']:
+                self.sdk_ui_types.append(element)
         return self
