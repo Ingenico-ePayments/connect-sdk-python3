@@ -13,7 +13,7 @@ class TestConnection(DataObject):
     @property
     def result(self):
         """
-        | OK result on the connection to GC
+        | OK result on the connection to the payment engine.
         
         Type: str
         """

@@ -50,6 +50,8 @@ class BankTransferPayoutMethodSpecificInput(AbstractPayoutMethodSpecificInput):
         | Object containing the details of the customer.
         
         Type: :class:`ingenico.connect.sdk.domain.payout.definitions.payout_customer.PayoutCustomer`
+        
+        Deprecated; Moved to PayoutDetails
         """
         return self.__customer
 

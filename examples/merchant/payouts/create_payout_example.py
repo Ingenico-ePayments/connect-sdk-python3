@@ -16,6 +16,7 @@ from ingenico.connect.sdk.domain.payment.definitions.personal_name import Person
 from ingenico.connect.sdk.domain.payout.create_payout_request import CreatePayoutRequest
 from ingenico.connect.sdk.domain.payout.definitions.bank_transfer_payout_method_specific_input import BankTransferPayoutMethodSpecificInput
 from ingenico.connect.sdk.domain.payout.definitions.payout_customer import PayoutCustomer
+from ingenico.connect.sdk.domain.payout.definitions.payout_details import PayoutDetails
 from ingenico.connect.sdk.domain.payout.definitions.payout_references import PayoutReferences
 
 
@@ -23,13 +24,19 @@ class CreatePayoutExample(object):
 
     def example(self):
         with self.__get_client() as client:
-            amount_of_money = AmountOfMoney()
-            amount_of_money.amount = 2345
-            amount_of_money.currency_code = "EUR"
-
             bank_account_iban = BankAccountIban()
             bank_account_iban.account_holder_name = "Wile E. Coyote"
             bank_account_iban.iban = "IT60X0542811101000000123456"
+
+            bank_transfer_payout_method_specific_input = BankTransferPayoutMethodSpecificInput()
+            bank_transfer_payout_method_specific_input.bank_account_iban = bank_account_iban
+            bank_transfer_payout_method_specific_input.payout_date = "20150102"
+            bank_transfer_payout_method_specific_input.payout_text = "Payout Acme"
+            bank_transfer_payout_method_specific_input.swift_code = "swift"
+
+            amount_of_money = AmountOfMoney()
+            amount_of_money.amount = 2345
+            amount_of_money.currency_code = "EUR"
 
             address = Address()
             address.city = "Burbank"
@@ -57,20 +64,17 @@ class CreatePayoutExample(object):
             customer.contact_details = contact_details
             customer.name = name
 
-            bank_transfer_payout_method_specific_input = BankTransferPayoutMethodSpecificInput()
-            bank_transfer_payout_method_specific_input.bank_account_iban = bank_account_iban
-            bank_transfer_payout_method_specific_input.customer = customer
-            bank_transfer_payout_method_specific_input.payout_date = "20150102"
-            bank_transfer_payout_method_specific_input.payout_text = "Payout Acme"
-            bank_transfer_payout_method_specific_input.swift_code = "swift"
-
             references = PayoutReferences()
             references.merchant_reference = "AcmeOrder001"
 
+            payout_details = PayoutDetails()
+            payout_details.amount_of_money = amount_of_money
+            payout_details.customer = customer
+            payout_details.references = references
+
             body = CreatePayoutRequest()
-            body.amount_of_money = amount_of_money
             body.bank_transfer_payout_method_specific_input = bank_transfer_payout_method_specific_input
-            body.references = references
+            body.payout_details = payout_details
 
             try:
                 response = client.merchant("merchantId").payouts().create(body)

@@ -106,6 +106,7 @@ class Customer(CustomerBase):
         * Brazil - Company (CNPJ) with a length of 14 digits
         * Denmark - Consumer (CPR-nummer or personnummer) with a length of 10 digits
         * Finland - Consumer (Finnish: henkilötunnus (abbreviated as HETU), Swedish: personbeteckning) with a length of 11 characters
+        * India - Consumer (PAN) with a length of 10 characters
         * Norway - Consumer (fødselsnummer) with a length of 11 digits
         * Sweden - Consumer (personnummer) with a length of 10 or 12 digits
         

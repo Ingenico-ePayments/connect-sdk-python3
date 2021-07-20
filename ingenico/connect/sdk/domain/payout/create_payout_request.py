@@ -10,6 +10,7 @@ from ingenico.connect.sdk.domain.definitions.bank_account_iban import BankAccoun
 from ingenico.connect.sdk.domain.payout.definitions.bank_transfer_payout_method_specific_input import BankTransferPayoutMethodSpecificInput
 from ingenico.connect.sdk.domain.payout.definitions.card_payout_method_specific_input import CardPayoutMethodSpecificInput
 from ingenico.connect.sdk.domain.payout.definitions.payout_customer import PayoutCustomer
+from ingenico.connect.sdk.domain.payout.definitions.payout_details import PayoutDetails
 from ingenico.connect.sdk.domain.payout.definitions.payout_references import PayoutReferences
 
 
@@ -22,6 +23,7 @@ class CreatePayoutRequest(DataObject):
     __card_payout_method_specific_input = None
     __customer = None
     __payout_date = None
+    __payout_details = None
     __payout_text = None
     __references = None
     __swift_code = None
@@ -32,6 +34,8 @@ class CreatePayoutRequest(DataObject):
         | Object containing amount and ISO currency code attributes
         
         Type: :class:`ingenico.connect.sdk.domain.definitions.amount_of_money.AmountOfMoney`
+        
+        Deprecated; Moved to PayoutDetails
         """
         return self.__amount_of_money
 
@@ -102,7 +106,7 @@ class CreatePayoutRequest(DataObject):
         
         Type: :class:`ingenico.connect.sdk.domain.payout.definitions.payout_customer.PayoutCustomer`
         
-        Deprecated; Moved to BankTransferPayoutMethodSpecificInput
+        Deprecated; Moved to PayoutDetails
         """
         return self.__customer
 
@@ -127,6 +131,19 @@ class CreatePayoutRequest(DataObject):
         self.__payout_date = value
 
     @property
+    def payout_details(self):
+        """
+        | Object containing the details for Create Payout Request
+        
+        Type: :class:`ingenico.connect.sdk.domain.payout.definitions.payout_details.PayoutDetails`
+        """
+        return self.__payout_details
+
+    @payout_details.setter
+    def payout_details(self, value):
+        self.__payout_details = value
+
+    @property
     def payout_text(self):
         """
         | Text to be printed on the bank account statement of the beneficiary. The maximum allowed length might differ per country. The data will be automatically truncated to the maximum allowed length.
@@ -147,6 +164,8 @@ class CreatePayoutRequest(DataObject):
         | Object that holds all reference properties that are linked to this transaction
         
         Type: :class:`ingenico.connect.sdk.domain.payout.definitions.payout_references.PayoutReferences`
+        
+        Deprecated; Moved to PayoutDetails
         """
         return self.__references
 
@@ -185,6 +204,8 @@ class CreatePayoutRequest(DataObject):
             dictionary['customer'] = self.customer.to_dictionary()
         if self.payout_date is not None:
             dictionary['payoutDate'] = self.payout_date
+        if self.payout_details is not None:
+            dictionary['payoutDetails'] = self.payout_details.to_dictionary()
         if self.payout_text is not None:
             dictionary['payoutText'] = self.payout_text
         if self.references is not None:
@@ -227,6 +248,11 @@ class CreatePayoutRequest(DataObject):
             self.customer = value.from_dictionary(dictionary['customer'])
         if 'payoutDate' in dictionary:
             self.payout_date = dictionary['payoutDate']
+        if 'payoutDetails' in dictionary:
+            if not isinstance(dictionary['payoutDetails'], dict):
+                raise TypeError('value \'{}\' is not a dictionary'.format(dictionary['payoutDetails']))
+            value = PayoutDetails()
+            self.payout_details = value.from_dictionary(dictionary['payoutDetails'])
         if 'payoutText' in dictionary:
             self.payout_text = dictionary['payoutText']
         if 'references' in dictionary:

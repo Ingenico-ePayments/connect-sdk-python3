@@ -5,12 +5,14 @@
 #
 from ingenico.connect.sdk.domain.definitions.card import Card
 from ingenico.connect.sdk.domain.payout.definitions.abstract_payout_method_specific_input import AbstractPayoutMethodSpecificInput
+from ingenico.connect.sdk.domain.payout.definitions.payout_recipient import PayoutRecipient
 
 
 class CardPayoutMethodSpecificInput(AbstractPayoutMethodSpecificInput):
 
     __card = None
     __payment_product_id = None
+    __recipient = None
     __token = None
 
     @property
@@ -41,6 +43,19 @@ class CardPayoutMethodSpecificInput(AbstractPayoutMethodSpecificInput):
         self.__payment_product_id = value
 
     @property
+    def recipient(self):
+        """
+        | Object containing the details of the recipient of the payout
+        
+        Type: :class:`ingenico.connect.sdk.domain.payout.definitions.payout_recipient.PayoutRecipient`
+        """
+        return self.__recipient
+
+    @recipient.setter
+    def recipient(self, value):
+        self.__recipient = value
+
+    @property
     def token(self):
         """
         | ID of the token that holds previously stored card data. Note that this is only supported for transactions on the Ogone payment engine.
@@ -59,6 +74,8 @@ class CardPayoutMethodSpecificInput(AbstractPayoutMethodSpecificInput):
             dictionary['card'] = self.card.to_dictionary()
         if self.payment_product_id is not None:
             dictionary['paymentProductId'] = self.payment_product_id
+        if self.recipient is not None:
+            dictionary['recipient'] = self.recipient.to_dictionary()
         if self.token is not None:
             dictionary['token'] = self.token
         return dictionary
@@ -72,6 +89,11 @@ class CardPayoutMethodSpecificInput(AbstractPayoutMethodSpecificInput):
             self.card = value.from_dictionary(dictionary['card'])
         if 'paymentProductId' in dictionary:
             self.payment_product_id = dictionary['paymentProductId']
+        if 'recipient' in dictionary:
+            if not isinstance(dictionary['recipient'], dict):
+                raise TypeError('value \'{}\' is not a dictionary'.format(dictionary['recipient']))
+            value = PayoutRecipient()
+            self.recipient = value.from_dictionary(dictionary['recipient'])
         if 'token' in dictionary:
             self.token = dictionary['token']
         return self
