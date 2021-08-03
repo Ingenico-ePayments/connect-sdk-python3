@@ -11,10 +11,22 @@ class RedirectPaymentProduct4101SpecificInput(DataObject):
     | Please find below specific input fields for payment product 4101 (UPI)
     """
 
+    __display_name = None
     __integration_type = None
-    __merchant_name = None
-    __transaction_note = None
-    __vpa = None
+    __virtual_payment_address = None
+
+    @property
+    def display_name(self):
+        """
+        | The merchant name as shown to the customer in some payment applications.
+        
+        Type: str
+        """
+        return self.__display_name
+
+    @display_name.setter
+    def display_name(self, value):
+        self.__display_name = value
 
     @property
     def integration_type(self):
@@ -30,64 +42,34 @@ class RedirectPaymentProduct4101SpecificInput(DataObject):
         self.__integration_type = value
 
     @property
-    def merchant_name(self):
-        """
-        | The merchant name as shown to the customer in some payment applications.
-        
-        Type: str
-        """
-        return self.__merchant_name
-
-    @merchant_name.setter
-    def merchant_name(self, value):
-        self.__merchant_name = value
-
-    @property
-    def transaction_note(self):
-        """
-        | Some additional transaction information as shown to the customer in some payment applications.
-        
-        Type: str
-        """
-        return self.__transaction_note
-
-    @transaction_note.setter
-    def transaction_note(self, value):
-        self.__transaction_note = value
-
-    @property
-    def vpa(self):
+    def virtual_payment_address(self):
         """
         | The Virtual Payment Address (VPA) of the customer.
         
         Type: str
         """
-        return self.__vpa
+        return self.__virtual_payment_address
 
-    @vpa.setter
-    def vpa(self, value):
-        self.__vpa = value
+    @virtual_payment_address.setter
+    def virtual_payment_address(self, value):
+        self.__virtual_payment_address = value
 
     def to_dictionary(self):
         dictionary = super(RedirectPaymentProduct4101SpecificInput, self).to_dictionary()
+        if self.display_name is not None:
+            dictionary['displayName'] = self.display_name
         if self.integration_type is not None:
             dictionary['integrationType'] = self.integration_type
-        if self.merchant_name is not None:
-            dictionary['merchantName'] = self.merchant_name
-        if self.transaction_note is not None:
-            dictionary['transactionNote'] = self.transaction_note
-        if self.vpa is not None:
-            dictionary['vpa'] = self.vpa
+        if self.virtual_payment_address is not None:
+            dictionary['virtualPaymentAddress'] = self.virtual_payment_address
         return dictionary
 
     def from_dictionary(self, dictionary):
         super(RedirectPaymentProduct4101SpecificInput, self).from_dictionary(dictionary)
+        if 'displayName' in dictionary:
+            self.display_name = dictionary['displayName']
         if 'integrationType' in dictionary:
             self.integration_type = dictionary['integrationType']
-        if 'merchantName' in dictionary:
-            self.merchant_name = dictionary['merchantName']
-        if 'transactionNote' in dictionary:
-            self.transaction_note = dictionary['transactionNote']
-        if 'vpa' in dictionary:
-            self.vpa = dictionary['vpa']
+        if 'virtualPaymentAddress' in dictionary:
+            self.virtual_payment_address = dictionary['virtualPaymentAddress']
         return self
