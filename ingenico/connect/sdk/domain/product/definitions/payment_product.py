@@ -245,7 +245,7 @@ class PaymentProduct(DataObject):
     @property
     def max_amount(self):
         """
-        | Maximum amount in EUR cents (using 2 decimals, so 1 EUR becomes 100 cents) for transactions done with this payment product
+        | Maximum amount in cents (using 2 decimals, so 1 EUR becomes 100 cents) for transactions done with this payment product
         
         Type: int
         """
@@ -258,7 +258,7 @@ class PaymentProduct(DataObject):
     @property
     def min_amount(self):
         """
-        | Minimum amount in EUR cents (using 2 decimals, so 1 EUR becomes 100 cents) for transactions done with this payment product
+        | Minimum amount in cents (using 2 decimals, so 1 EUR becomes 100 cents) for transactions done with this payment product
         
         Type: int
         """

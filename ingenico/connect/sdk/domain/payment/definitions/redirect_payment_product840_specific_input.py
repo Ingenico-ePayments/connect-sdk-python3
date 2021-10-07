@@ -32,13 +32,13 @@ class RedirectPaymentProduct840SpecificInput(AbstractRedirectPaymentProduct840Sp
     @property
     def is_shortcut(self):
         """
-        | Deprecated: If your PayPal payments are processed by Ingenico's Ogone Payment Platform, please use the property addressSelectionAtPayPal instead.
-        | Indicates whether to use PayPal Express Checkout for payments processed by Ingenico's GlobalCollect Payment Platform. 
+        | Deprecated: If your PayPal payments are processed by Worldline's Ogone Payment Platform, please use the property addressSelectionAtPayPal instead.
+        | Indicates whether to use PayPal Express Checkout for payments processed by Worldline's GlobalCollect Payment Platform. 
         
         * true = PayPal Express Checkout 
         * false = Regular PayPal payment 
         
-        | For payments processed by Ingenico's Ogone Payment Platform, please see the addressSelectionAtPayPal property for more information.
+        | For payments processed by Worldline's Ogone Payment Platform, please see the addressSelectionAtPayPal property for more information.
         
         Type: bool
         """

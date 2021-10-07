@@ -19,6 +19,7 @@ class AbstractThreeDSecure(DataObject):
     __prior_three_d_secure_data = None
     __sdk_data = None
     __skip_authentication = None
+    __transaction_risk_level = None
 
     @property
     def authentication_amount(self):
@@ -108,6 +109,17 @@ class AbstractThreeDSecure(DataObject):
     def skip_authentication(self, value):
         self.__skip_authentication = value
 
+    @property
+    def transaction_risk_level(self):
+        """
+        Type: str
+        """
+        return self.__transaction_risk_level
+
+    @transaction_risk_level.setter
+    def transaction_risk_level(self, value):
+        self.__transaction_risk_level = value
+
     def to_dictionary(self):
         dictionary = super(AbstractThreeDSecure, self).to_dictionary()
         if self.authentication_amount is not None:
@@ -126,6 +138,8 @@ class AbstractThreeDSecure(DataObject):
             dictionary['sdkData'] = self.sdk_data.to_dictionary()
         if self.skip_authentication is not None:
             dictionary['skipAuthentication'] = self.skip_authentication
+        if self.transaction_risk_level is not None:
+            dictionary['transactionRiskLevel'] = self.transaction_risk_level
         return dictionary
 
     def from_dictionary(self, dictionary):
@@ -155,4 +169,6 @@ class AbstractThreeDSecure(DataObject):
             self.sdk_data = value.from_dictionary(dictionary['sdkData'])
         if 'skipAuthentication' in dictionary:
             self.skip_authentication = dictionary['skipAuthentication']
+        if 'transactionRiskLevel' in dictionary:
+            self.transaction_risk_level = dictionary['transactionRiskLevel']
         return self

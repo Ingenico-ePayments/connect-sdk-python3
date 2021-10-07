@@ -28,7 +28,7 @@ class DisputeCreationDetail(DataObject):
     @property
     def dispute_originator(self):
         """
-        | The originator of this dispute, which is either Ingenico ePayments or you as our client.
+        | The originator of this dispute, which is either Worldline or you as our client.
         
         Type: str
         """

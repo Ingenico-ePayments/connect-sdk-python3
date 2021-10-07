@@ -116,7 +116,7 @@ class DisputeOutput(DataObject):
     @property
     def request_message(self):
         """
-        | The message sent from you to Ingenico ePayments.
+        | The message sent from you to Worldline.
         
         Type: str
         """

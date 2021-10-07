@@ -11,13 +11,33 @@ class CustomerAccountAuthentication(DataObject):
     | Object containing data on the authentication used by the customer to access their account
     """
 
+    __data = None
     __method = None
     __utc_timestamp = None
 
     @property
+    def data(self):
+        """
+        | Data that documents and supports a specific authentication process submitted using the order.customer.account.authentication.method property. The data submitted using this property will be used by the issuer to validate the used authentication method.
+        | For example, if the order.customer.account.authentication.method is:
+        
+        * federated-id, then this element can carry information about the provider of the federated ID and related information.
+        * fido-authentication, then this element can carry the FIDO attestation data (including the signature).
+        * fido-authentication-with-signed-assurance-data, then this element can carry FIDO Attestation data with the FIDO assurance data signed.
+        * src-assurance-data, then this element can carry the SRC assurance data
+        
+        Type: str
+        """
+        return self.__data
+
+    @data.setter
+    def data(self, value):
+        self.__data = value
+
+    @property
     def method(self):
         """
-        | Authentication used by the customer on your website
+        | Authentication used by the customer on your website or app
         | Possible values :
         
         * guest = no login occurred, customer is 'logged in' as guest
@@ -26,6 +46,8 @@ class CustomerAccountAuthentication(DataObject):
         * issuer-credentials = the customer logged in using credentials from the card issuer (of the card used in this transaction)
         * third-party-authentication = the customer logged in using third-party authentication
         * fido-authentication = the customer logged in using a FIDO authenticator
+        * fido-authentication-with-signed-assurance-data = the customer logged in using a FIDO authenticator which also provides signed assurance data
+        * src-assurance-data = the customer authenticated themselves during a Secure Remote Commerce session
         
         Type: str
         """
@@ -50,6 +72,8 @@ class CustomerAccountAuthentication(DataObject):
 
     def to_dictionary(self):
         dictionary = super(CustomerAccountAuthentication, self).to_dictionary()
+        if self.data is not None:
+            dictionary['data'] = self.data
         if self.method is not None:
             dictionary['method'] = self.method
         if self.utc_timestamp is not None:
@@ -58,6 +82,8 @@ class CustomerAccountAuthentication(DataObject):
 
     def from_dictionary(self, dictionary):
         super(CustomerAccountAuthentication, self).from_dictionary(dictionary)
+        if 'data' in dictionary:
+            self.data = dictionary['data']
         if 'method' in dictionary:
             self.method = dictionary['method']
         if 'utcTimestamp' in dictionary:
