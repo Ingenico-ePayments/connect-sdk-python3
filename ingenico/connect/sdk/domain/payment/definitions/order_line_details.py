@@ -15,6 +15,7 @@ class OrderLineDetails(DataObject):
     __product_code = None
     __product_name = None
     __product_price = None
+    __product_sku = None
     __product_type = None
     __quantity = None
     __tax_amount = None
@@ -113,6 +114,19 @@ class OrderLineDetails(DataObject):
         self.__product_price = value
 
     @property
+    def product_sku(self):
+        """
+        | Product SKU number
+        
+        Type: str
+        """
+        return self.__product_sku
+
+    @product_sku.setter
+    def product_sku(self, value):
+        self.__product_sku = value
+
+    @property
     def product_type(self):
         """
         | Code used to classify items that are purchased
@@ -182,6 +196,8 @@ class OrderLineDetails(DataObject):
             dictionary['productName'] = self.product_name
         if self.product_price is not None:
             dictionary['productPrice'] = self.product_price
+        if self.product_sku is not None:
+            dictionary['productSku'] = self.product_sku
         if self.product_type is not None:
             dictionary['productType'] = self.product_type
         if self.quantity is not None:
@@ -208,6 +224,8 @@ class OrderLineDetails(DataObject):
             self.product_name = dictionary['productName']
         if 'productPrice' in dictionary:
             self.product_price = dictionary['productPrice']
+        if 'productSku' in dictionary:
+            self.product_sku = dictionary['productSku']
         if 'productType' in dictionary:
             self.product_type = dictionary['productType']
         if 'quantity' in dictionary:
