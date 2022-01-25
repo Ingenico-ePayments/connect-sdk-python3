@@ -12,6 +12,7 @@ from ingenico.connect.sdk.domain.payment.definitions.redirect_payment_method_spe
 from ingenico.connect.sdk.domain.payment.definitions.redirect_payment_product809_specific_input import \
     RedirectPaymentProduct809SpecificInput
 from ingenico.connect.sdk.call_context import CallContext
+from ingenico.connect.sdk.declined_payment_exception import DeclinedPaymentException
 
 
 class IdempotenceTest(unittest.TestCase):
@@ -43,16 +44,28 @@ class IdempotenceTest(unittest.TestCase):
         context = CallContext(idempotence_key)
 
         with init_utils.create_client() as client:
-            response = client.merchant(MERCHANT_ID).payments().create(body, context)
+            def do_create_payment():
+                # For this test it doesn't matter if the response is successful or declined,
+                # as long as idempotence is handled correctly
+                try:
+                    return client.merchant(MERCHANT_ID).payments().create(body, context)
+                except DeclinedPaymentException as e:
+                    return e.create_payment_result
 
-            payment_id = response.payment.id
+            result = do_create_payment()
+
+            payment_id = result.payment.id
+            status = result.payment.status
+
             self.assertEqual(idempotence_key, context.idempotence_key)
             self.assertIsNone(context.idempotence_request_timestamp)
 
-            response_2 = client.merchant(MERCHANT_ID).payments().create(body, context)
+            result_2 = do_create_payment()
 
-            payment_id_2 = response_2.payment.id
+            payment_id_2 = result_2.payment.id
+            status_2 = result_2.payment.status
             self.assertEqual(payment_id, payment_id_2)
+            self.assertEqual(status, status_2)
             self.assertEqual(idempotence_key, context.idempotence_key)
             self.assertIsNotNone(context.idempotence_request_timestamp)
 
