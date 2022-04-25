@@ -2578,13 +2578,6 @@ API Reference
     :special-members:
     :exclude-members: __dict__,__weakref__,__module__,__get__
 
-.. automodule:: ingenico.connect.sdk.domain.services.settlement_details
-    :members:
-    :show-inheritance:
-    :undoc-members:
-    :special-members:
-    :exclude-members: __dict__,__weakref__,__module__,__get__
-
 .. automodule:: ingenico.connect.sdk.domain.services.test_connection
     :members:
     :show-inheritance:

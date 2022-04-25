@@ -89,8 +89,9 @@ class Address(DataObject):
         | ISO 3166-2 alpha-3 state code
         | Notes:
         
-        * The maximum length for 3-D Secure version 2 is AN3.
-        * The maximum length for paymentProductId 1503 (Boleto) is AN2.
+        * The maximum length for 3-D Secure version 2 is AN3 for payments that are processed by the GlobalCollect platform
+        * The maximum length for paymentProductId 1503 (Boleto) is AN2 for payments that are processed by the GlobalCollect platform
+        * The maximum length is 3 for payments that are processed by the WL Online Payment Acceptance platform
         
         Type: str
         """
