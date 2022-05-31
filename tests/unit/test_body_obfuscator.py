@@ -1,31 +1,46 @@
 import os
 import unittest
 
-from ingenico.connect.sdk.log.logging_util import LoggingUtil
+from ingenico.connect.sdk.log.body_obfuscator import BodyObfuscator
 from tests import file_utils
 
 
-class LoggingUtilTest(unittest.TestCase):
-    """Tests if the log util is capable of obfuscating headers and bodies of requests"""
+class BodyObfuscatorTest(unittest.TestCase):
+    """Tests if the body obfuscator is capable of obfuscating bodies of requests"""
 
     def test_obfuscate_body_none_as_body(self):
         """Test that the obfuscate_body function can deal with a body = none and produce a result of none"""
         body = None
 
-        obfuscated_body = LoggingUtil.obfuscate_body(body)
+        obfuscated_body = BodyObfuscator.default_body_obfuscator().obfuscate_body(body)
         self.assertIsNone(obfuscated_body)
 
     def test_obfuscate_body_empty(self):
         """Tests if the logging util is capable of obfuscating an empty body"""
         body = ""
 
-        obfuscated_body = LoggingUtil.obfuscate_body(body)
+        obfuscated_body = BodyObfuscator.default_body_obfuscator().obfuscate_body(body)
         self.assertEqual("", obfuscated_body)
 
     def test_obfuscate_body_card(self):
         """Tests that the obfuscate_body correctly obfuscates a json containing payment card card data"""
         self.obfuscate_body_match("bodyWithCardOriginal.json",
                                   "bodyWithCardObfuscated.json")
+
+    def test_obfuscate_body_card_custom_rule(self):
+        """Tests that the obfuscate_body correctly obfuscates a json containing payment card card data with a custom rule"""
+        def obfuscate_custom(value):
+            start = 6
+            end = len(value) - 4
+            value_between = '*' * (end - start)
+            return value[:start] + value_between + value[end:]
+
+        body_obfuscator = BodyObfuscator(additional_rules={
+            "card": obfuscate_custom
+        })
+        self.obfuscate_body_match("bodyWithCardOriginal.json",
+                                  "bodyWithCardObfuscated.json",
+                                  body_obfuscator=body_obfuscator)
 
     def test_obfuscate_body_iban(self):
         """Tests that the obfuscate_body correctly obfuscates a json containing an iban number"""
@@ -46,7 +61,7 @@ class LoggingUtilTest(unittest.TestCase):
         self.obfuscate_body_match("bodyWithObjectOriginal.json",
                                   "bodyWithObjectObfuscated.json")
 
-    def obfuscate_body_match(self, original_resource, obfuscated_resource):
+    def obfuscate_body_match(self, original_resource, obfuscated_resource, body_obfuscator=BodyObfuscator.default_body_obfuscator()):
         """Tests that the LoggingUtil obfuscates the json in original_resource to the json in obfuscated_resource
 
         original_resource is the path to a json file that contains one or more data entries to be obfuscated
@@ -55,7 +70,7 @@ class LoggingUtilTest(unittest.TestCase):
         body = _read_resource(original_resource)
         expected = _read_resource(obfuscated_resource)
 
-        obfuscated_body = LoggingUtil.obfuscate_body(body)
+        obfuscated_body = body_obfuscator.obfuscate_body(body)
 
         self.assertEqual(expected, obfuscated_body)
 
@@ -65,47 +80,6 @@ class LoggingUtilTest(unittest.TestCase):
         resource is the path to a json file that contains no data that should be obfuscated
         """
         self.obfuscate_body_match(resource, resource)
-
-    def test_obfuscate_header(self):
-        """Tests that any default headers get obfuscated, while others do not"""
-        self.obfuscate_header_match("Authorization",
-                                    "Basic QWxhZGRpbjpPcGVuU2VzYW1l",
-                                    "********")
-        self.obfuscate_header_match("authorization",
-                                    "Basic QWxhZGRpbjpPcGVuU2VzYW1l",
-                                    "********")
-        self.obfuscate_header_match("AUTHORIZATION",
-                                    "Basic QWxhZGRpbjpPcGVuU2VzYW1l",
-                                    "********")
-
-        self.obfuscate_header_match("X-GCS-Authentication-Token", "foobar",
-                                    "********")
-        self.obfuscate_header_match("x-gcs-authentication-token", "foobar",
-                                    "********")
-        self.obfuscate_header_match("X-GCS-AUTHENTICATION-TOKEN", "foobar",
-                                    "********")
-
-        self.obfuscate_header_match("X-GCS-Callerpassword", "foobar",
-                                    "********")
-        self.obfuscate_header_match("x-gcs-callerpassword", "foobar",
-                                    "********")
-        self.obfuscate_header_match("X-GCS-CALLERPASSWORD", "foobar",
-                                    "********")
-
-        self.obfuscate_header_no_match("Content-Type", "application/json")
-        self.obfuscate_header_no_match("content-type", "application/json")
-        self.obfuscate_header_no_match("CONTENT-TYPE", "application/json")
-
-    def obfuscate_header_match(self, name, original_value,
-                               expected_obfuscated_value):
-        """Tests that the obfuscator obfuscates the original_value to produce the expected_obfuscated_value"""
-        obfuscated_value = LoggingUtil.obfuscate_header(name, original_value)
-        self.assertEqual(expected_obfuscated_value, obfuscated_value)
-
-    def obfuscate_header_no_match(self, name, original_value):
-        """Tests that the obfuscator leaves the parameter header intact and does not obfuscate anything"""
-        obfuscated_value = LoggingUtil.obfuscate_header(name, original_value)
-        self.assertEqual(original_value, obfuscated_value)
 
 
 # reads a file names file_name stored under resources/log

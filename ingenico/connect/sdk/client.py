@@ -5,10 +5,11 @@
 from base64 import b64encode
 from ingenico.connect.sdk.api_resource import ApiResource
 from ingenico.connect.sdk.log.logging_capable import LoggingCapable
+from ingenico.connect.sdk.log.obfuscation_capable import ObfuscationCapable
 from ingenico.connect.sdk.merchant.merchant_client import MerchantClient
 
 
-class Client(ApiResource, LoggingCapable):
+class Client(ApiResource, LoggingCapable, ObfuscationCapable):
     """
     Ingenico ePayments platform client.
     
@@ -61,6 +62,14 @@ class Client(ApiResource, LoggingCapable):
         Utility method that delegates the call to this client's communicator.
         """
         self._communicator.close_expired_connections()
+
+    def set_body_obfuscator(self, body_obfuscator):
+        # delegate to the communicator
+        self._communicator.set_body_obfuscator(body_obfuscator)
+
+    def set_header_obfuscator(self, header_obfuscator):
+        # delegate to the communicator
+        self._communicator.set_header_obfuscator(header_obfuscator)
 
     def enable_logging(self, communicator_logger):
         # delegate to the communicator

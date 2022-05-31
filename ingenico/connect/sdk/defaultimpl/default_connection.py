@@ -10,6 +10,9 @@ from requests_toolbelt import MultipartEncoder
 
 from ingenico.connect.sdk.communication_exception import CommunicationException
 from ingenico.connect.sdk.endpoint_configuration import EndpointConfiguration
+from ingenico.connect.sdk.log.body_obfuscator import BodyObfuscator
+from ingenico.connect.sdk.log.header_obfuscator import HeaderObfuscator
+from ingenico.connect.sdk.log.obfuscation_capable import ObfuscationCapable
 from ingenico.connect.sdk.log.request_log_message import RequestLogMessage
 from ingenico.connect.sdk.log.response_log_message import ResponseLogMessage
 from ingenico.connect.sdk.pooled_connection import PooledConnection
@@ -19,7 +22,7 @@ from ingenico.connect.sdk.response_header import get_header_value
 CHARSET = "UTF-8"
 
 
-class DefaultConnection(PooledConnection):
+class DefaultConnection(PooledConnection, ObfuscationCapable):
     """
     Provides an HTTP request interface, thread-safe
 
@@ -52,14 +55,15 @@ class DefaultConnection(PooledConnection):
         self.__requests_session.mount("https://", HTTPAdapter(
             pool_maxsize=max_connections, pool_connections=1))
         # request timeouts are in seconds
-        self.__connect_timeout = connect_timeout if connect_timeout >= 0 \
-                                 else None
-        self.__socket_timeout = socket_timeout if socket_timeout >= 0 \
-                                else None
+        self.__connect_timeout = connect_timeout if connect_timeout >= 0 else None
+        self.__socket_timeout = socket_timeout if socket_timeout >= 0 else None
         if proxy_configuration:
             proxy = {"http": str(proxy_configuration),
                      "https": str(proxy_configuration)}
             self.__requests_session.proxies = proxy
+
+        self.__body_obfuscator = BodyObfuscator.default_body_obfuscator()
+        self.__header_obfuscator = HeaderObfuscator.default_header_obfuscator()
 
     @property
     def connect_timeout(self):
@@ -170,7 +174,7 @@ class DefaultConnection(PooledConnection):
                                                              stream=True)
             try:
                 iterable = requests_response.iter_content(chunk_size=1024)
-                yield (requests_response.status_code, requests_response.headers)
+                yield requests_response.status_code, requests_response.headers
                 for chunk in iterable:
                     yield chunk
             finally:
@@ -204,8 +208,9 @@ class DefaultConnection(PooledConnection):
         else:
             local_path = url.path
         try:
-            message = RequestLogMessage(request_id=request.id, method=method,
-                                        uri=local_path)
+            message = RequestLogMessage(request_id=request.id, method=method, uri=local_path,
+                                        body_obfuscator=self.__body_obfuscator,
+                                        header_obfuscator=self.__header_obfuscator)
             for name in request.headers:
                 message.add_header(name, request.headers[name])
             body = request.body
@@ -232,7 +237,9 @@ class DefaultConnection(PooledConnection):
         try:
             message = ResponseLogMessage(request_id=_id,
                                          status_code=status_code,
-                                         duration=duration)
+                                         duration=duration,
+                                         body_obfuscator=self.__body_obfuscator,
+                                         header_obfuscator=self.__header_obfuscator)
             for name in response.headers:
                 message.add_header(name, response.headers[name])
             if self.__is_binary(response.headers):
@@ -265,6 +272,12 @@ class DefaultConnection(PooledConnection):
             return False
         content_type = content_type.lower()
         return not (content_type.startswith("text/") or "json" in content_type or "xml" in content_type)
+
+    def set_body_obfuscator(self, body_obfuscator):
+        self.__body_obfuscator = body_obfuscator
+
+    def set_header_obfuscator(self, header_obfuscator):
+        self.__header_obfuscator = header_obfuscator
 
     def enable_logging(self, communicator_logger):
         self.logger = communicator_logger

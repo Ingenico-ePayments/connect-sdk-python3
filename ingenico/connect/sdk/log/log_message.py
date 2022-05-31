@@ -1,4 +1,5 @@
-from .logging_util import LoggingUtil
+from .body_obfuscator import BodyObfuscator
+from .header_obfuscator import HeaderObfuscator
 
 
 class LogMessage(object):
@@ -10,13 +11,23 @@ class LogMessage(object):
     __body = None
     __content_type = None
     __header_list = None
+    __body_obfuscator = None
+    __header_obfuscator = None
 
-    def __init__(self, request_id):
+    def __init__(self, request_id,
+                 body_obfuscator=BodyObfuscator.default_body_obfuscator(),
+                 header_obfuscator=HeaderObfuscator.default_header_obfuscator()):
         if not request_id:
             raise ValueError("request_id is required")
+        if not body_obfuscator:
+            raise ValueError("body_obfuscator is required")
+        if not header_obfuscator:
+            raise ValueError("header_obfuscator is required")
         self.__request_id = request_id
         self.__headers = ""
         self.__header_list = []
+        self.__body_obfuscator = body_obfuscator
+        self.__header_obfuscator = header_obfuscator
 
     @property
     def request_id(self):
@@ -42,21 +53,19 @@ class LogMessage(object):
             # if isinstance(value, bytes):
             #     value = base64.b64decode(value)  # decode byte-type headers for recording
             value = str(value)
-            obfuscated_value = LoggingUtil.obfuscate_header(name, value)
+            obfuscated_value = self.__header_obfuscator.obfuscate_header(name, value)
             self.__headers += obfuscated_value
             self.__header_list.append((name, "\"" + obfuscated_value + "\""))
         else:
             self.__header_list.append((name, "\"\""))
         self.__headers += "\""
 
-    def set_body(self, body, content_type, charset=False):
+    def set_body(self, body, content_type, charset=None):
         self.__content_type = content_type
         if self.__is_binary(content_type):
             self.__body = "<binary content>"
-        elif charset is False:
-            self.__body = LoggingUtil.obfuscate_body(body)
-        else:  # possible dead code
-            self.__body = LoggingUtil.obfuscate_body(body, charset)
+        else:
+            self.__body = self.__body_obfuscator.obfuscate_body(body, charset)
 
     def set_binary_body(self, content_type):
         if not self.__is_binary(content_type):

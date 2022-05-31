@@ -1,5 +1,6 @@
-from ingenico.connect.sdk.log.log_message import \
-    LogMessage
+from .body_obfuscator import BodyObfuscator
+from .header_obfuscator import HeaderObfuscator
+from .log_message import LogMessage
 
 
 class ResponseLogMessage(LogMessage):
@@ -7,8 +8,10 @@ class ResponseLogMessage(LogMessage):
     A utility class to build request log messages.
     """
 
-    def __init__(self, request_id, status_code, duration=-1):
-        super(ResponseLogMessage, self).__init__(request_id)
+    def __init__(self, request_id, status_code, duration=-1,
+                 body_obfuscator=BodyObfuscator.default_body_obfuscator(),
+                 header_obfuscator=HeaderObfuscator.default_header_obfuscator()):
+        super(ResponseLogMessage, self).__init__(request_id, body_obfuscator, header_obfuscator)
         self.__status_code = status_code
         if duration is False:
             self.__duration = -1

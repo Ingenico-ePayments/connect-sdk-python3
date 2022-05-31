@@ -4,6 +4,7 @@ from urllib.parse import urlparse
 
 from .communication_exception import CommunicationException
 from ingenico.connect.sdk.log.logging_capable import LoggingCapable
+from ingenico.connect.sdk.log.obfuscation_capable import ObfuscationCapable
 from .not_found_exception import NotFoundException
 from .pooled_connection import PooledConnection
 from .multipart_form_data_object import MultipartFormDataObject
@@ -13,7 +14,7 @@ from .response_exception import ResponseException
 from .response_header import get_header_value
 
 
-class Communicator(LoggingCapable):
+class Communicator(LoggingCapable, ObfuscationCapable):
     """
     Used to communicate with the Ingenico ePayments platform web services.
 
@@ -438,6 +439,18 @@ class Communicator(LoggingCapable):
         connection = self.__session.connection
         if isinstance(connection, PooledConnection):
             connection.close_expired_connections()
+
+    def set_body_obfuscator(self, body_obfuscator):
+        connection = self.__session.connection
+        if isinstance(connection, ObfuscationCapable):
+            # delegate to the connection
+            connection.set_body_obfuscator(body_obfuscator)
+
+    def set_header_obfuscator(self, header_obfuscator):
+        connection = self.__session.connection
+        if isinstance(connection, ObfuscationCapable):
+            # delegate to the connection
+            connection.set_header_obfuscator(header_obfuscator)
 
     def enable_logging(self, communicator_logger):
         # delegate to the connection
