@@ -4,7 +4,7 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <title>ingenico.connect.sdk.merchant.services.services_client &#8212; connect-sdk-python3 3.30.0 documentation</title>
+    <title>ingenico.connect.sdk.merchant.services.services_client &#8212; connect-sdk-python3 3.31.0 documentation</title>
     <link rel="stylesheet" href="../../../../../../_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="../../../../../../_static/pygments.css" type="text/css" />
     <script id="documentation_options" data-url_root="../../../../../../" src="../../../../../../_static/documentation_options.js"></script>
@@ -42,7 +42,6 @@
 <span class="kn">from</span> <span class="nn">ingenico.connect.sdk.domain.services.convert_amount</span> <span class="kn">import</span> <span class="n">ConvertAmount</span>
 <span class="kn">from</span> <span class="nn">ingenico.connect.sdk.domain.services.get_iin_details_response</span> <span class="kn">import</span> <span class="n">GetIINDetailsResponse</span>
 <span class="kn">from</span> <span class="nn">ingenico.connect.sdk.domain.services.get_privacy_policy_response</span> <span class="kn">import</span> <span class="n">GetPrivacyPolicyResponse</span>
-<span class="kn">from</span> <span class="nn">ingenico.connect.sdk.domain.services.settlement_details</span> <span class="kn">import</span> <span class="n">SettlementDetails</span>
 <span class="kn">from</span> <span class="nn">ingenico.connect.sdk.domain.services.test_connection</span> <span class="kn">import</span> <span class="n">TestConnection</span>
 
 
@@ -212,41 +211,6 @@
                     <span class="bp">self</span><span class="o">.</span><span class="n">_client_headers</span><span class="p">,</span>
                     <span class="kc">None</span><span class="p">,</span>
                     <span class="n">TestConnection</span><span class="p">,</span>
-                    <span class="n">context</span><span class="p">)</span>
-
-        <span class="k">except</span> <span class="n">ResponseException</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
-            <span class="n">error_type</span> <span class="o">=</span> <span class="n">ErrorResponse</span>
-            <span class="n">error_object</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_communicator</span><span class="o">.</span><span class="n">marshaller</span><span class="o">.</span><span class="n">unmarshal</span><span class="p">(</span><span class="n">e</span><span class="o">.</span><span class="n">body</span><span class="p">,</span> <span class="n">error_type</span><span class="p">)</span>
-            <span class="k">raise</span> <span class="bp">self</span><span class="o">.</span><span class="n">_create_exception</span><span class="p">(</span><span class="n">e</span><span class="o">.</span><span class="n">status_code</span><span class="p">,</span> <span class="n">e</span><span class="o">.</span><span class="n">body</span><span class="p">,</span> <span class="n">error_object</span><span class="p">,</span> <span class="n">context</span><span class="p">)</span></div>
-
-<div class="viewcode-block" id="ServicesClient.settlementdetails"><a class="viewcode-back" href="../../../../../../index.html#ingenico.connect.sdk.merchant.services.services_client.ServicesClient.settlementdetails">[docs]</a>    <span class="k">def</span> <span class="nf">settlementdetails</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">payment_id</span><span class="p">,</span> <span class="n">context</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        Resource /{merchantId}/services/settlementdetails/{paymentId} - Get Settlement details</span>
-<span class="sd">        </span>
-<span class="sd">        See also https://epayments-api.developer-ingenico.com/s2sapi/v1/en_US/python/services/settlementdetails.html</span>
-
-<span class="sd">        :param payment_id:  str</span>
-<span class="sd">        :param context:     :class:`ingenico.connect.sdk.call_context.CallContext`</span>
-<span class="sd">        :return: :class:`ingenico.connect.sdk.domain.services.settlement_details.SettlementDetails`</span>
-<span class="sd">        :raise: ValidationException if the request was not correct and couldn&#39;t be processed (HTTP status code 400)</span>
-<span class="sd">        :raise: AuthorizationException if the request was not allowed (HTTP status code 403)</span>
-<span class="sd">        :raise: ReferenceException if an object was attempted to be referenced that doesn&#39;t exist or has been removed,</span>
-<span class="sd">                   or there was a conflict (HTTP status code 404, 409 or 410)</span>
-<span class="sd">        :raise: GlobalCollectException if something went wrong at the Ingenico ePayments platform,</span>
-<span class="sd">                   the Ingenico ePayments platform was unable to process a message from a downstream partner/acquirer,</span>
-<span class="sd">                   or the service that you&#39;re trying to reach is temporary unavailable (HTTP status code 500, 502 or 503)</span>
-<span class="sd">        :raise: ApiException if the Ingenico ePayments platform returned any other error</span>
-<span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">path_context</span> <span class="o">=</span> <span class="p">{</span>
-            <span class="s2">&quot;paymentId&quot;</span><span class="p">:</span> <span class="n">payment_id</span><span class="p">,</span>
-        <span class="p">}</span>
-        <span class="n">uri</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_instantiate_uri</span><span class="p">(</span><span class="s2">&quot;/v1/</span><span class="si">{merchantId}</span><span class="s2">/services/settlementdetails/</span><span class="si">{paymentId}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">path_context</span><span class="p">)</span>
-        <span class="k">try</span><span class="p">:</span>
-            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_communicator</span><span class="o">.</span><span class="n">get</span><span class="p">(</span>
-                    <span class="n">uri</span><span class="p">,</span>
-                    <span class="bp">self</span><span class="o">.</span><span class="n">_client_headers</span><span class="p">,</span>
-                    <span class="kc">None</span><span class="p">,</span>
-                    <span class="n">SettlementDetails</span><span class="p">,</span>
                     <span class="n">context</span><span class="p">)</span>
 
         <span class="k">except</span> <span class="n">ResponseException</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>

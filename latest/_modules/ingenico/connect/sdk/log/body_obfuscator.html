@@ -1,0 +1,195 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>ingenico.connect.sdk.log.body_obfuscator &#8212; connect-sdk-python3 3.31.0 documentation</title>
+    <link rel="stylesheet" href="../../../../../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../../_static/pygments.css" type="text/css" />
+    <script id="documentation_options" data-url_root="../../../../../" src="../../../../../_static/documentation_options.js"></script>
+    <script src="../../../../../_static/jquery.js"></script>
+    <script src="../../../../../_static/underscore.js"></script>
+    <script src="../../../../../_static/doctools.js"></script>
+    <script src="../../../../../_static/language_data.js"></script>
+    <link rel="index" title="Index" href="../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../search.html" />
+   
+  <link rel="stylesheet" href="../../../../../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <h1>Source code for ingenico.connect.sdk.log.body_obfuscator</h1><div class="highlight"><pre>
+<span></span><span class="kn">import</span> <span class="nn">codecs</span>
+<span class="kn">import</span> <span class="nn">re</span>
+
+<span class="kn">from</span> <span class="nn">.obfuscation_rule</span> <span class="kn">import</span> <span class="n">obfuscate_all</span><span class="p">,</span> <span class="n">obfuscate_with_fixed_length</span><span class="p">,</span> <span class="n">obfuscate_all_but_first</span><span class="p">,</span> <span class="n">obfuscate_all_but_last</span>
+
+
+<div class="viewcode-block" id="BodyObfuscator"><a class="viewcode-back" href="../../../../../index.html#ingenico.connect.sdk.log.body_obfuscator.BodyObfuscator">[docs]</a><span class="k">class</span> <span class="nc">BodyObfuscator</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    A class that can be used to obfuscate properties in JSON bodies.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">__obfuscation_rules</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="n">__parameter_names</span> <span class="o">=</span> <span class="kc">None</span>
+
+<div class="viewcode-block" id="BodyObfuscator.__init__"><a class="viewcode-back" href="../../../../../index.html#ingenico.connect.sdk.log.body_obfuscator.BodyObfuscator.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">additional_rules</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Creates a new  body obfuscator.</span>
+<span class="sd">        This will contain some pre-defined obfuscation rules, as well as any provided custom rules</span>
+
+<span class="sd">        :param additional_rules: An optional mapping from property names to obfuscation rules,</span>
+<span class="sd">         where an obfuscation rule is a function that obfuscates a single string,</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">__obfuscation_rules</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s2">&quot;cardNumber&quot;</span><span class="p">:</span> <span class="n">obfuscate_all_but_last</span><span class="p">(</span><span class="mi">4</span><span class="p">),</span>
+            <span class="s2">&quot;expiryDate&quot;</span><span class="p">:</span> <span class="n">obfuscate_all_but_last</span><span class="p">(</span><span class="mi">2</span><span class="p">),</span>
+            <span class="s2">&quot;cvv&quot;</span><span class="p">:</span> <span class="n">obfuscate_all</span><span class="p">(),</span>
+            <span class="s2">&quot;iban&quot;</span><span class="p">:</span> <span class="n">obfuscate_all_but_last</span><span class="p">(</span><span class="mi">4</span><span class="p">),</span>
+            <span class="s2">&quot;accountNumber&quot;</span><span class="p">:</span> <span class="n">obfuscate_all_but_last</span><span class="p">(</span><span class="mi">4</span><span class="p">),</span>
+            <span class="s2">&quot;reformattedAccountNumber&quot;</span><span class="p">:</span> <span class="n">obfuscate_all_but_last</span><span class="p">(</span><span class="mi">4</span><span class="p">),</span>
+            <span class="s2">&quot;bin&quot;</span><span class="p">:</span> <span class="n">obfuscate_all_but_first</span><span class="p">(</span><span class="mi">6</span><span class="p">),</span>
+            <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="n">obfuscate_all</span><span class="p">(),</span>
+            <span class="s2">&quot;keyId&quot;</span><span class="p">:</span> <span class="n">obfuscate_with_fixed_length</span><span class="p">(</span><span class="mi">8</span><span class="p">),</span>
+            <span class="s2">&quot;secretKey&quot;</span><span class="p">:</span> <span class="n">obfuscate_with_fixed_length</span><span class="p">(</span><span class="mi">8</span><span class="p">),</span>
+            <span class="s2">&quot;publicKey&quot;</span><span class="p">:</span> <span class="n">obfuscate_with_fixed_length</span><span class="p">(</span><span class="mi">8</span><span class="p">),</span>
+            <span class="s2">&quot;userAuthenticationToken&quot;</span><span class="p">:</span> <span class="n">obfuscate_with_fixed_length</span><span class="p">(</span><span class="mi">8</span><span class="p">),</span>
+            <span class="s2">&quot;encryptedPayload&quot;</span><span class="p">:</span> <span class="n">obfuscate_with_fixed_length</span><span class="p">(</span><span class="mi">8</span><span class="p">),</span>
+            <span class="s2">&quot;decryptedPayload&quot;</span><span class="p">:</span> <span class="n">obfuscate_with_fixed_length</span><span class="p">(</span><span class="mi">8</span><span class="p">),</span>
+            <span class="s2">&quot;encryptedCustomerInput&quot;</span><span class="p">:</span> <span class="n">obfuscate_with_fixed_length</span><span class="p">(</span><span class="mi">8</span><span class="p">),</span>
+        <span class="p">}</span>
+        <span class="k">if</span> <span class="n">additional_rules</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">rule</span> <span class="ow">in</span> <span class="n">additional_rules</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">__obfuscation_rules</span><span class="p">[</span><span class="n">name</span><span class="p">]</span> <span class="o">=</span> <span class="n">rule</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">__parameter_names</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__obfuscation_rules</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span></div>
+
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">__build_property_pattern</span><span class="p">(</span><span class="n">property_names</span><span class="p">):</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">property_names</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="s2">&quot;$^&quot;</span><span class="p">)</span>
+        <span class="n">s</span> <span class="o">=</span> <span class="s2">&quot;([</span><span class="se">\&quot;</span><span class="s2">&#39;])(&quot;</span>
+        <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">property_names</span><span class="p">:</span>
+            <span class="n">s</span> <span class="o">+=</span> <span class="s1">&#39;|&#39;</span> <span class="o">+</span> <span class="n">re</span><span class="o">.</span><span class="n">escape</span><span class="p">(</span><span class="n">p</span><span class="p">)</span>
+        <span class="n">s</span> <span class="o">+=</span> <span class="s2">&quot;)</span><span class="se">\\</span><span class="s2">1</span><span class="se">\\</span><span class="s2">s*:</span><span class="se">\\</span><span class="s2">s*(?:([</span><span class="se">\&quot;</span><span class="s2">&#39;])(.*?)(?&lt;!</span><span class="se">\\\\</span><span class="s2">)</span><span class="se">\\</span><span class="s2">3|([^</span><span class="se">\&quot;</span><span class="s2">&#39;</span><span class="se">\\</span><span class="s2">s</span><span class="se">\\</span><span class="s2">[</span><span class="se">\\</span><span class="s2">{]((?!,)</span><span class="se">\\</span><span class="s2">S)*))&quot;</span>
+        <span class="k">return</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">re</span><span class="o">.</span><span class="n">DOTALL</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">__obfuscate_value</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">property_name</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+        <span class="n">obfuscation_rule</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__obfuscation_rules</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">property_name</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">obfuscation_rule</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">obfuscation_rule</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">value</span>
+
+<div class="viewcode-block" id="BodyObfuscator.obfuscate_body"><a class="viewcode-back" href="../../../../../index.html#ingenico.connect.sdk.log.body_obfuscator.BodyObfuscator.obfuscate_body">[docs]</a>    <span class="k">def</span> <span class="nf">obfuscate_body</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">body</span><span class="p">,</span> <span class="n">charset</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Obfuscates the body from the given stream as necessary.</span>
+<span class="sd">        :param body: The body to obfuscate, as string or bytes.</span>
+<span class="sd">        :param charset: The charset to use to read the body bytes.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">charset</span><span class="p">:</span>
+            <span class="n">body</span> <span class="o">=</span> <span class="n">codecs</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="n">body</span><span class="p">,</span> <span class="n">charset</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">body</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">None</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">body</span><span class="p">:</span>
+            <span class="k">return</span> <span class="s2">&quot;&quot;</span>
+        <span class="n">index</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="n">s_obfuscate</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+        <span class="n">pattern</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__build_property_pattern</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__parameter_names</span><span class="p">)</span>
+        <span class="n">matcher</span> <span class="o">=</span> <span class="n">pattern</span><span class="o">.</span><span class="n">finditer</span><span class="p">(</span><span class="n">body</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">matcher</span><span class="p">:</span>
+            <span class="n">property_name</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+            <span class="n">value</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
+            <span class="n">value_start</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">start</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
+            <span class="n">value_end</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">end</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">value</span><span class="p">:</span>
+                <span class="n">value</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+                <span class="n">value_start</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">start</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+                <span class="n">value_end</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">end</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+            <span class="n">obfuscated_value</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__obfuscate_value</span><span class="p">(</span><span class="n">property_name</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
+            <span class="n">s_obfuscate</span> <span class="o">+=</span> <span class="n">body</span><span class="p">[</span><span class="n">index</span><span class="p">:</span><span class="n">value_start</span><span class="p">]</span> <span class="o">+</span> <span class="n">obfuscated_value</span>
+            <span class="n">index</span> <span class="o">=</span> <span class="n">value_end</span>
+        <span class="k">return</span> <span class="n">s_obfuscate</span> <span class="o">+</span> <span class="n">body</span><span class="p">[</span><span class="n">index</span><span class="p">:]</span></div>
+
+<div class="viewcode-block" id="BodyObfuscator.default_body_obfuscator"><a class="viewcode-back" href="../../../../../index.html#ingenico.connect.sdk.log.body_obfuscator.BodyObfuscator.default_body_obfuscator">[docs]</a>    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">default_body_obfuscator</span><span class="p">():</span>
+        <span class="k">return</span> <span class="n">_DEFAULT_BODY_OBFUSCATOR</span></div></div>
+
+
+<span class="n">_DEFAULT_BODY_OBFUSCATOR</span> <span class="o">=</span> <span class="n">BodyObfuscator</span><span class="p">()</span>
+</pre></div>
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../../../../../index.html">connect-sdk-python3</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../../../../../index.html">Documentation overview</a><ul>
+  <li><a href="../../../../index.html">Module code</a><ul>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../../../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;Copyright (c) 2016 Global Collect Services B.V..
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 3.0.2</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+    </div>
+
+    
+
+    
+  </body>
+</html>

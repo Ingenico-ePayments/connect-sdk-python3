@@ -4,7 +4,7 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <title>ingenico.connect.sdk.communicator &#8212; connect-sdk-python3 3.30.0 documentation</title>
+    <title>ingenico.connect.sdk.communicator &#8212; connect-sdk-python3 3.31.0 documentation</title>
     <link rel="stylesheet" href="../../../../_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
     <script id="documentation_options" data-url_root="../../../../" src="../../../../_static/documentation_options.js"></script>
@@ -37,6 +37,7 @@
 
 <span class="kn">from</span> <span class="nn">.communication_exception</span> <span class="kn">import</span> <span class="n">CommunicationException</span>
 <span class="kn">from</span> <span class="nn">ingenico.connect.sdk.log.logging_capable</span> <span class="kn">import</span> <span class="n">LoggingCapable</span>
+<span class="kn">from</span> <span class="nn">ingenico.connect.sdk.log.obfuscation_capable</span> <span class="kn">import</span> <span class="n">ObfuscationCapable</span>
 <span class="kn">from</span> <span class="nn">.not_found_exception</span> <span class="kn">import</span> <span class="n">NotFoundException</span>
 <span class="kn">from</span> <span class="nn">.pooled_connection</span> <span class="kn">import</span> <span class="n">PooledConnection</span>
 <span class="kn">from</span> <span class="nn">.multipart_form_data_object</span> <span class="kn">import</span> <span class="n">MultipartFormDataObject</span>
@@ -46,7 +47,7 @@
 <span class="kn">from</span> <span class="nn">.response_header</span> <span class="kn">import</span> <span class="n">get_header_value</span>
 
 
-<div class="viewcode-block" id="Communicator"><a class="viewcode-back" href="../../../../index.html#ingenico.connect.sdk.communicator.Communicator">[docs]</a><span class="k">class</span> <span class="nc">Communicator</span><span class="p">(</span><span class="n">LoggingCapable</span><span class="p">):</span>
+<div class="viewcode-block" id="Communicator"><a class="viewcode-back" href="../../../../index.html#ingenico.connect.sdk.communicator.Communicator">[docs]</a><span class="k">class</span> <span class="nc">Communicator</span><span class="p">(</span><span class="n">LoggingCapable</span><span class="p">,</span> <span class="n">ObfuscationCapable</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Used to communicate with the Ingenico ePayments platform web services.</span>
 
@@ -471,6 +472,18 @@
         <span class="n">connection</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__session</span><span class="o">.</span><span class="n">connection</span>
         <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">connection</span><span class="p">,</span> <span class="n">PooledConnection</span><span class="p">):</span>
             <span class="n">connection</span><span class="o">.</span><span class="n">close_expired_connections</span><span class="p">()</span></div>
+
+<div class="viewcode-block" id="Communicator.set_body_obfuscator"><a class="viewcode-back" href="../../../../index.html#ingenico.connect.sdk.communicator.Communicator.set_body_obfuscator">[docs]</a>    <span class="k">def</span> <span class="nf">set_body_obfuscator</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">body_obfuscator</span><span class="p">):</span>
+        <span class="n">connection</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__session</span><span class="o">.</span><span class="n">connection</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">connection</span><span class="p">,</span> <span class="n">ObfuscationCapable</span><span class="p">):</span>
+            <span class="c1"># delegate to the connection</span>
+            <span class="n">connection</span><span class="o">.</span><span class="n">set_body_obfuscator</span><span class="p">(</span><span class="n">body_obfuscator</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="Communicator.set_header_obfuscator"><a class="viewcode-back" href="../../../../index.html#ingenico.connect.sdk.communicator.Communicator.set_header_obfuscator">[docs]</a>    <span class="k">def</span> <span class="nf">set_header_obfuscator</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">header_obfuscator</span><span class="p">):</span>
+        <span class="n">connection</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__session</span><span class="o">.</span><span class="n">connection</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">connection</span><span class="p">,</span> <span class="n">ObfuscationCapable</span><span class="p">):</span>
+            <span class="c1"># delegate to the connection</span>
+            <span class="n">connection</span><span class="o">.</span><span class="n">set_header_obfuscator</span><span class="p">(</span><span class="n">header_obfuscator</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="Communicator.enable_logging"><a class="viewcode-back" href="../../../../index.html#ingenico.connect.sdk.communicator.Communicator.enable_logging">[docs]</a>    <span class="k">def</span> <span class="nf">enable_logging</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">communicator_logger</span><span class="p">):</span>
         <span class="c1"># delegate to the connection</span>
