@@ -37,6 +37,7 @@ class PaymentProduct(DataObject):
     __payment_product320_specific_data = None
     __payment_product863_specific_data = None
     __payment_product_group = None
+    __supports_mandates = None
     __uses_redirection_to3rd_party = None
 
     @property
@@ -361,6 +362,19 @@ class PaymentProduct(DataObject):
         self.__payment_product_group = value
 
     @property
+    def supports_mandates(self):
+        """
+        | Indicates whether the payment product supports mandates.
+        
+        Type: bool
+        """
+        return self.__supports_mandates
+
+    @supports_mandates.setter
+    def supports_mandates(self, value):
+        self.__supports_mandates = value
+
+    @property
     def uses_redirection_to3rd_party(self):
         """
         | Indicates whether the payment product requires redirection to a third party to complete the payment. You can use this to filter out products that require a redirect if you don't want to support that.
@@ -428,6 +442,8 @@ class PaymentProduct(DataObject):
             dictionary['paymentProduct863SpecificData'] = self.payment_product863_specific_data.to_dictionary()
         if self.payment_product_group is not None:
             dictionary['paymentProductGroup'] = self.payment_product_group
+        if self.supports_mandates is not None:
+            dictionary['supportsMandates'] = self.supports_mandates
         if self.uses_redirection_to3rd_party is not None:
             dictionary['usesRedirectionTo3rdParty'] = self.uses_redirection_to3rd_party
         return dictionary
@@ -503,6 +519,8 @@ class PaymentProduct(DataObject):
             self.payment_product863_specific_data = value.from_dictionary(dictionary['paymentProduct863SpecificData'])
         if 'paymentProductGroup' in dictionary:
             self.payment_product_group = dictionary['paymentProductGroup']
+        if 'supportsMandates' in dictionary:
+            self.supports_mandates = dictionary['supportsMandates']
         if 'usesRedirectionTo3rdParty' in dictionary:
             self.uses_redirection_to3rd_party = dictionary['usesRedirectionTo3rdParty']
         return self

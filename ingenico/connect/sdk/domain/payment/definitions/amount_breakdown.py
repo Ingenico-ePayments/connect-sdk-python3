@@ -37,7 +37,7 @@ class AmountBreakdown(DataObject):
         * SHIPPING - Shipping cost on the entire transaction, with the last 2 digits implied as decimal places.
         * TAX - Total tax paid on the entire transaction, with the last 2 digits implied as decimal places.
         * VAT - Total amount of VAT paid on the transaction, with the last 2 digits implied as decimal places.
-        * BASE_AMOUNT - Order amount excluding all taxes, discount & shipping costs, with the last 2 digits implied as decimal places.Note: BASE_AMOUNT is only supported by the Ogone Payment Platform.
+        * BASE_AMOUNT - Order amount excluding all taxes, discount & shipping costs, with the last 2 digits implied as decimal places.Note: BASE_AMOUNT is only supported by the GlobalCollect and Ogone Payment Platforms.
         
         Type: str
         """

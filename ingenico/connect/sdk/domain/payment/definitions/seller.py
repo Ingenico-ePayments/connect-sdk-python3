@@ -12,11 +12,13 @@ class Seller(DataObject):
     __address = None
     __channel_code = None
     __description = None
+    __external_reference_id = None
     __geocode = None
     __id = None
     __invoice_number = None
     __mcc = None
     __name = None
+    __phone_number = None
     __type = None
 
     @property
@@ -57,6 +59,19 @@ class Seller(DataObject):
     @description.setter
     def description(self, value):
         self.__description = value
+
+    @property
+    def external_reference_id(self):
+        """
+        | Seller ID assigned by the Merchant Aggregator
+        
+        Type: str
+        """
+        return self.__external_reference_id
+
+    @external_reference_id.setter
+    def external_reference_id(self, value):
+        self.__external_reference_id = value
 
     @property
     def geocode(self):
@@ -124,6 +139,19 @@ class Seller(DataObject):
         self.__name = value
 
     @property
+    def phone_number(self):
+        """
+        | Main Phone Number
+        
+        Type: str
+        """
+        return self.__phone_number
+
+    @phone_number.setter
+    def phone_number(self, value):
+        self.__phone_number = value
+
+    @property
     def type(self):
         """
         | Seller type. Possible values:
@@ -160,6 +188,8 @@ class Seller(DataObject):
             dictionary['channelCode'] = self.channel_code
         if self.description is not None:
             dictionary['description'] = self.description
+        if self.external_reference_id is not None:
+            dictionary['externalReferenceId'] = self.external_reference_id
         if self.geocode is not None:
             dictionary['geocode'] = self.geocode
         if self.id is not None:
@@ -170,6 +200,8 @@ class Seller(DataObject):
             dictionary['mcc'] = self.mcc
         if self.name is not None:
             dictionary['name'] = self.name
+        if self.phone_number is not None:
+            dictionary['phoneNumber'] = self.phone_number
         if self.type is not None:
             dictionary['type'] = self.type
         return dictionary
@@ -185,6 +217,8 @@ class Seller(DataObject):
             self.channel_code = dictionary['channelCode']
         if 'description' in dictionary:
             self.description = dictionary['description']
+        if 'externalReferenceId' in dictionary:
+            self.external_reference_id = dictionary['externalReferenceId']
         if 'geocode' in dictionary:
             self.geocode = dictionary['geocode']
         if 'id' in dictionary:
@@ -195,6 +229,8 @@ class Seller(DataObject):
             self.mcc = dictionary['mcc']
         if 'name' in dictionary:
             self.name = dictionary['name']
+        if 'phoneNumber' in dictionary:
+            self.phone_number = dictionary['phoneNumber']
         if 'type' in dictionary:
             self.type = dictionary['type']
         return self
