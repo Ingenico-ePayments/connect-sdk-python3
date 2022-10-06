@@ -95,7 +95,7 @@ class CardFraudResults(FraudResults):
     @property
     def microsoft_fraud_protection(self):
         """
-        | Results of Microsoft Fraud Protection risk assessment. Microsoft collects transaction data points and uses Adaptive AI that continuously learns to protect you against payment fraud.
+        | This object contains the results of Microsoft Fraud Protection risk assessment. Microsoft collects transaction data points and uses Adaptive AI that continuously learns to protect you against payment fraud, and the device fingerprinting details from the Microsoft Device Fingerprinting service.
         
         Type: :class:`ingenico.connect.sdk.domain.definitions.microsoft_fraud_results.MicrosoftFraudResults`
         """

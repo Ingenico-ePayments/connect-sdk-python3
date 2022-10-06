@@ -29,7 +29,7 @@ Note that the source code of the unit tests and integration tests and the exampl
 
 Python 3.5 or higher is required. In addition, the following packages are required:
 
-* [requests](https://requests.readthedocs.io/) 2.20.0 or higher
+* [requests](https://requests.readthedocs.io/) 2.25.0 or higher
 * [requests-toolbelt](https://toolbelt.readthedocs.io/) 0.8.0 or higher
 
 These packages will be installed automatically if the SDK is installed manually or using pip following the below instructions.
@@ -67,7 +67,7 @@ First, some environment variables need to be set:
 
 In addition, to run the proxy integration tests, the proxy URI, username and password should be set in the `tests/resources/configuration.proxy.ini` file.
 
-In order to run the unit and integration tests, the [mock](https://pypi.python.org/pypi/mock) backport and [mockito](https://pypi.python.org/pypi/mockito) are required. This can be installed using the following command:
+In order to run the unit and integration tests, the [mock](https://pypi.python.org/pypi/mock) backport and [mockito](https://pypi.python.org/pypi/mockito) are required. These can be installed using the following command:
 
     pip install mock mockito
 

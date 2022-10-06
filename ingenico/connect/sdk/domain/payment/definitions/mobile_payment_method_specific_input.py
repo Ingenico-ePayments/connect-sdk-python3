@@ -71,7 +71,7 @@ class MobilePaymentMethodSpecificInput(AbstractPaymentMethodSpecificInput):
         
         | Typically you'd use encryptedCustomerInput in the root of the create payment request to provide the encrypted payment data instead.
         
-        * For Apple Pay, the encrypted payment data can be found in property data of the PKPayment <https://developer.apple.com/documentation/passkit/pkpayment>.token.paymentData property.
+        * For Apple Pay, the encrypted payment data is the PKPayment <https://developer.apple.com/documentation/passkit/pkpayment>.token.paymentData object passed as a string (with all quotation marks escaped).
         * For Google Pay, the encrypted payment data can be found in property paymentMethodData.tokenizationData.token of the PaymentData <https://developers.google.com/android/reference/com/google/android/gms/wallet/PaymentData>.toJson() result.
         
         Type: str

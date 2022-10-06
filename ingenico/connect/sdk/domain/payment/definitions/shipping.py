@@ -129,10 +129,14 @@ class Shipping(DataObject):
         """
         | Indicates the merchandise delivery timeframe. Possible values:
         
-        * electronic = For electronic delivery (services or digital goods
+        * electronic = For electronic delivery (services or digital goods)
         * same-day = For same day deliveries
         * overnight = For overnight deliveries
-        * 2-day-or-more = For two day or more delivery time
+        * 2-day-or-more = For two day or more delivery time for payments that are processed by the GlobalCollect platform
+        * 2-day-or-more = For two day or more delivery time for payments that are processed by the Ogone platform
+        * priority = For prioritized deliveries for payments that are processed by the WL Online Payment Acceptance platform
+        * ground = For deliveries via ground for payments that are processed by the WL Online Payment Acceptance platform
+        * to-store = For deliveries to a store for payments that are processed by the WL Online Payment Acceptance platform
         
         Type: str
         """

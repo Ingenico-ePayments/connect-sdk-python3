@@ -159,7 +159,7 @@ class CreatePaymentRequest(DataObject):
         
         | Mobile payments produce the required payment data in encrypted form.
         
-        * For Apple Pay, the encrypted payment data can be found in property data of the PKPayment <https://developer.apple.com/documentation/passkit/pkpayment>.token.paymentData property.
+        * For Apple Pay, the encrypted payment data is the PKPayment <https://developer.apple.com/documentation/passkit/pkpayment>.token.paymentData object passed as a string (with all quotation marks escaped).
         * For Google Pay, the encrypted payment data can be found in property paymentMethodData.tokenizationData.token of the PaymentData <https://developers.google.com/android/reference/com/google/android/gms/wallet/PaymentData>.toJson() result.
         
         Type: :class:`ingenico.connect.sdk.domain.payment.definitions.mobile_payment_method_specific_input.MobilePaymentMethodSpecificInput`

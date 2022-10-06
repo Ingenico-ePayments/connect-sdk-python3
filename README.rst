@@ -43,7 +43,7 @@ Requirements
 Python 3.5 or higher is required. In addition, the following packages
 are required:
 
--  `requests <https://requests.readthedocs.io/>`__ 2.20.0 or higher
+-  `requests <https://requests.readthedocs.io/>`__ 2.25.0 or higher
 -  `requests-toolbelt <https://toolbelt.readthedocs.io/>`__ 0.8.0 or
    higher
 
@@ -65,6 +65,7 @@ Alternatively, you can install the SDK from a source distribution file:
    ``connect-sdk-python3-x.y.z.zip`` file from the
    `releases <https://github.com/Ingenico-ePayments/connect-sdk-python3/releases>`__
    page, where ``x.y.z`` is the version number.
+
 #. Execute the following command in the folder where the SDK was
    downloaded to:
 
@@ -104,7 +105,7 @@ and password should be set in the
 
 In order to run the unit and integration tests, the
 `mock <https://pypi.python.org/pypi/mock>`__ backport and
-`mockito <https://pypi.python.org/pypi/mockito>`__ are required. This
+`mockito <https://pypi.python.org/pypi/mockito>`__ are required. These
 can be installed using the following command:
 
 ::
