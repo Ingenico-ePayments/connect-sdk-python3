@@ -20,7 +20,7 @@ class Address(DataObject):
     @property
     def additional_info(self):
         """
-        | Additional address information
+        | Additional address information. The additionalInfo is truncated after 10 characters for payments, refunds or payouts that are processed by the WL Online Payment Acceptance platform
         
         Type: str
         """
@@ -60,7 +60,7 @@ class Address(DataObject):
     @property
     def house_number(self):
         """
-        | House number
+        | House number. The houseNumber is truncated after 10 characters for payments, refunds or payouts that are processed by the WL Online Payment Acceptance platform
         
         Type: str
         """

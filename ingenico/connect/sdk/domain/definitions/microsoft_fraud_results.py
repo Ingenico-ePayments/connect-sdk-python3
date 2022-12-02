@@ -8,11 +8,26 @@ from ingenico.connect.sdk.data_object import DataObject
 
 class MicrosoftFraudResults(DataObject):
 
+    __clause_name = None
     __device_country_code = None
     __device_id = None
     __fraud_score = None
+    __policy_applied = None
     __true_ip_address = None
     __user_device_type = None
+
+    @property
+    def clause_name(self):
+        """
+        | Name of the clause within the applied policy that was triggered during the evaluation of this transaction.
+        
+        Type: str
+        """
+        return self.__clause_name
+
+    @clause_name.setter
+    def clause_name(self, value):
+        self.__clause_name = value
 
     @property
     def device_country_code(self):
@@ -54,6 +69,19 @@ class MicrosoftFraudResults(DataObject):
         self.__fraud_score = value
 
     @property
+    def policy_applied(self):
+        """
+        | Name of the policy that was applied on during the evaluation of this transaction.
+        
+        Type: str
+        """
+        return self.__policy_applied
+
+    @policy_applied.setter
+    def policy_applied(self, value):
+        self.__policy_applied = value
+
+    @property
     def true_ip_address(self):
         """
         | The true IP address as determined by Microsoft Device Fingerprinting.
@@ -81,12 +109,16 @@ class MicrosoftFraudResults(DataObject):
 
     def to_dictionary(self):
         dictionary = super(MicrosoftFraudResults, self).to_dictionary()
+        if self.clause_name is not None:
+            dictionary['clauseName'] = self.clause_name
         if self.device_country_code is not None:
             dictionary['deviceCountryCode'] = self.device_country_code
         if self.device_id is not None:
             dictionary['deviceId'] = self.device_id
         if self.fraud_score is not None:
             dictionary['fraudScore'] = self.fraud_score
+        if self.policy_applied is not None:
+            dictionary['policyApplied'] = self.policy_applied
         if self.true_ip_address is not None:
             dictionary['trueIpAddress'] = self.true_ip_address
         if self.user_device_type is not None:
@@ -95,12 +127,16 @@ class MicrosoftFraudResults(DataObject):
 
     def from_dictionary(self, dictionary):
         super(MicrosoftFraudResults, self).from_dictionary(dictionary)
+        if 'clauseName' in dictionary:
+            self.clause_name = dictionary['clauseName']
         if 'deviceCountryCode' in dictionary:
             self.device_country_code = dictionary['deviceCountryCode']
         if 'deviceId' in dictionary:
             self.device_id = dictionary['deviceId']
         if 'fraudScore' in dictionary:
             self.fraud_score = dictionary['fraudScore']
+        if 'policyApplied' in dictionary:
+            self.policy_applied = dictionary['policyApplied']
         if 'trueIpAddress' in dictionary:
             self.true_ip_address = dictionary['trueIpAddress']
         if 'userDeviceType' in dictionary:

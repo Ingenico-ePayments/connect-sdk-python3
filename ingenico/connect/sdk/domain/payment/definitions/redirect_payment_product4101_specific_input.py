@@ -31,7 +31,7 @@ class RedirectPaymentProduct4101SpecificInput(DataObject):
     @property
     def integration_type(self):
         """
-        | The value of this property must be either or 'vpa', or 'mobile'.
+        | The value of this property must be 'vpa', 'desktopQRCode', or 'urlIntent'.
         
         Type: str
         """

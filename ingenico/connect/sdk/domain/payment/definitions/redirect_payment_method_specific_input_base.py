@@ -4,12 +4,27 @@
 # https://epayments-api.developer-ingenico.com/s2sapi/v1/
 #
 from ingenico.connect.sdk.domain.payment.definitions.abstract_redirect_payment_method_specific_input import AbstractRedirectPaymentMethodSpecificInput
+from ingenico.connect.sdk.domain.payment.definitions.redirect_payment_product4101_specific_input_base import RedirectPaymentProduct4101SpecificInputBase
 from ingenico.connect.sdk.domain.payment.definitions.redirect_payment_product840_specific_input_base import RedirectPaymentProduct840SpecificInputBase
 
 
 class RedirectPaymentMethodSpecificInputBase(AbstractRedirectPaymentMethodSpecificInput):
 
+    __payment_product4101_specific_input = None
     __payment_product840_specific_input = None
+
+    @property
+    def payment_product4101_specific_input(self):
+        """
+        | Object containing specific input required for payment product 4101 (UPI)
+        
+        Type: :class:`ingenico.connect.sdk.domain.payment.definitions.redirect_payment_product4101_specific_input_base.RedirectPaymentProduct4101SpecificInputBase`
+        """
+        return self.__payment_product4101_specific_input
+
+    @payment_product4101_specific_input.setter
+    def payment_product4101_specific_input(self, value):
+        self.__payment_product4101_specific_input = value
 
     @property
     def payment_product840_specific_input(self):
@@ -26,12 +41,19 @@ class RedirectPaymentMethodSpecificInputBase(AbstractRedirectPaymentMethodSpecif
 
     def to_dictionary(self):
         dictionary = super(RedirectPaymentMethodSpecificInputBase, self).to_dictionary()
+        if self.payment_product4101_specific_input is not None:
+            dictionary['paymentProduct4101SpecificInput'] = self.payment_product4101_specific_input.to_dictionary()
         if self.payment_product840_specific_input is not None:
             dictionary['paymentProduct840SpecificInput'] = self.payment_product840_specific_input.to_dictionary()
         return dictionary
 
     def from_dictionary(self, dictionary):
         super(RedirectPaymentMethodSpecificInputBase, self).from_dictionary(dictionary)
+        if 'paymentProduct4101SpecificInput' in dictionary:
+            if not isinstance(dictionary['paymentProduct4101SpecificInput'], dict):
+                raise TypeError('value \'{}\' is not a dictionary'.format(dictionary['paymentProduct4101SpecificInput']))
+            value = RedirectPaymentProduct4101SpecificInputBase()
+            self.payment_product4101_specific_input = value.from_dictionary(dictionary['paymentProduct4101SpecificInput'])
         if 'paymentProduct840SpecificInput' in dictionary:
             if not isinstance(dictionary['paymentProduct840SpecificInput'], dict):
                 raise TypeError('value \'{}\' is not a dictionary'.format(dictionary['paymentProduct840SpecificInput']))
