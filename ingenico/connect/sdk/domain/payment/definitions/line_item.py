@@ -34,7 +34,7 @@ class LineItem(DataObject):
     @property
     def invoice_data(self):
         """
-        | Object containing the line items of the invoice or shopping cart
+        | Object containing the line items of the invoice or shopping cart. The '+' character is not allowed in this property for transactions that are processed by TechProcess Payment Platform.
         
         Type: :class:`ingenico.connect.sdk.domain.payment.definitions.line_item_invoice_data.LineItemInvoiceData`
         """

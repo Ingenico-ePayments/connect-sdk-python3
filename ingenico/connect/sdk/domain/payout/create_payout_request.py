@@ -11,6 +11,7 @@ from ingenico.connect.sdk.domain.payout.definitions.bank_transfer_payout_method_
 from ingenico.connect.sdk.domain.payout.definitions.card_payout_method_specific_input import CardPayoutMethodSpecificInput
 from ingenico.connect.sdk.domain.payout.definitions.payout_customer import PayoutCustomer
 from ingenico.connect.sdk.domain.payout.definitions.payout_details import PayoutDetails
+from ingenico.connect.sdk.domain.payout.definitions.payout_merchant import PayoutMerchant
 from ingenico.connect.sdk.domain.payout.definitions.payout_references import PayoutReferences
 
 
@@ -22,6 +23,7 @@ class CreatePayoutRequest(DataObject):
     __bank_transfer_payout_method_specific_input = None
     __card_payout_method_specific_input = None
     __customer = None
+    __merchant = None
     __payout_date = None
     __payout_details = None
     __payout_text = None
@@ -115,6 +117,19 @@ class CreatePayoutRequest(DataObject):
         self.__customer = value
 
     @property
+    def merchant(self):
+        """
+        | Object containing information on you, the merchant
+        
+        Type: :class:`ingenico.connect.sdk.domain.payout.definitions.payout_merchant.PayoutMerchant`
+        """
+        return self.__merchant
+
+    @merchant.setter
+    def merchant(self, value):
+        self.__merchant = value
+
+    @property
     def payout_date(self):
         """
         | Date of the payout sent to the bank by us
@@ -202,6 +217,8 @@ class CreatePayoutRequest(DataObject):
             dictionary['cardPayoutMethodSpecificInput'] = self.card_payout_method_specific_input.to_dictionary()
         if self.customer is not None:
             dictionary['customer'] = self.customer.to_dictionary()
+        if self.merchant is not None:
+            dictionary['merchant'] = self.merchant.to_dictionary()
         if self.payout_date is not None:
             dictionary['payoutDate'] = self.payout_date
         if self.payout_details is not None:
@@ -246,6 +263,11 @@ class CreatePayoutRequest(DataObject):
                 raise TypeError('value \'{}\' is not a dictionary'.format(dictionary['customer']))
             value = PayoutCustomer()
             self.customer = value.from_dictionary(dictionary['customer'])
+        if 'merchant' in dictionary:
+            if not isinstance(dictionary['merchant'], dict):
+                raise TypeError('value \'{}\' is not a dictionary'.format(dictionary['merchant']))
+            value = PayoutMerchant()
+            self.merchant = value.from_dictionary(dictionary['merchant'])
         if 'payoutDate' in dictionary:
             self.payout_date = dictionary['payoutDate']
         if 'payoutDetails' in dictionary:

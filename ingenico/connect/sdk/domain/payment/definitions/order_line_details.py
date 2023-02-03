@@ -90,7 +90,7 @@ class OrderLineDetails(DataObject):
     @property
     def product_name(self):
         """
-        | The name of the product.
+        | The name of the product. The '+' character is not allowed in this property for transactions that are processed by TechProcess Payment Platform.
         
         Type: str
         """

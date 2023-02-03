@@ -75,7 +75,7 @@ class FraudFields(DataObject):
     @property
     def customer_ip_address(self):
         """
-        | The IP Address of the customer that is making the payment
+        | The IP Address of the customer that is making the payment. The '+' character is not allowed in this property for transactions that are processed by TechProcess Payment Platform.
         
         Type: str
         """
@@ -247,7 +247,7 @@ class FraudFields(DataObject):
     @property
     def order_timezone(self):
         """
-        | Timezone in which the order was placed
+        | Timezone in which the order was placed. The '+' character is not allowed in this property for transactions that are processed by TechProcess Payment Platform.
         
         Type: str
         """

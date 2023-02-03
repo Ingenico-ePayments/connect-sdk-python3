@@ -44,7 +44,7 @@ class RedirectPaymentProduct4101SpecificInput(DataObject):
     @property
     def virtual_payment_address(self):
         """
-        | The Virtual Payment Address (VPA) of the customer.
+        | The Virtual Payment Address (VPA) of the customer. The '+' character is not allowed in this property for transactions that are processed by TechProcess Payment Platform.
         
         Type: str
         """

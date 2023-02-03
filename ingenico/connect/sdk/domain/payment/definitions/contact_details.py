@@ -42,7 +42,7 @@ class ContactDetails(ContactDetailsBase):
     @property
     def phone_number(self):
         """
-        | Phone number of the customer
+        | Phone number of the customer. The '+' character is not allowed in this property for transactions that are processed by TechProcess Payment Platform.
         
         Type: str
         """

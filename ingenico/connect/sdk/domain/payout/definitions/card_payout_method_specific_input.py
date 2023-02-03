@@ -58,7 +58,8 @@ class CardPayoutMethodSpecificInput(AbstractPayoutMethodSpecificInput):
     @property
     def token(self):
         """
-        | ID of the token that holds previously stored card data. Note that this is only supported for transactions on the Ogone payment engine.
+        | ID of the token that holds previously stored card data.
+        |  If both the token and card are provided, then the card takes precedence over the token.
         
         Type: str
         """

@@ -56,7 +56,7 @@ class Merchant(DataObject):
     @property
     def website_url(self):
         """
-        | The website from which the purchase was made
+        | The website from which the purchase was made. The '+' character is not allowed in this property for transactions that are processed by TechProcess Payment Platform.
         
         Type: str
         """
