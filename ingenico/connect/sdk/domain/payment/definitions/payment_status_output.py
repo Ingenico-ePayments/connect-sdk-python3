@@ -10,6 +10,7 @@ class PaymentStatusOutput(OrderStatusOutput):
 
     __is_authorized = None
     __is_refundable = None
+    __is_retriable = None
     __three_d_secure_status = None
 
     @property
@@ -45,6 +46,22 @@ class PaymentStatusOutput(OrderStatusOutput):
         self.__is_refundable = value
 
     @property
+    def is_retriable(self):
+        """
+        | Flag indicating whether a rejected payment may be retried by the merchant without incurring a fee 
+        
+        * true
+        * false
+        
+        Type: bool
+        """
+        return self.__is_retriable
+
+    @is_retriable.setter
+    def is_retriable(self, value):
+        self.__is_retriable = value
+
+    @property
     def three_d_secure_status(self):
         """
         | The 3D Secure status, with the following possible values:
@@ -72,6 +89,8 @@ class PaymentStatusOutput(OrderStatusOutput):
             dictionary['isAuthorized'] = self.is_authorized
         if self.is_refundable is not None:
             dictionary['isRefundable'] = self.is_refundable
+        if self.is_retriable is not None:
+            dictionary['isRetriable'] = self.is_retriable
         if self.three_d_secure_status is not None:
             dictionary['threeDSecureStatus'] = self.three_d_secure_status
         return dictionary
@@ -82,6 +101,8 @@ class PaymentStatusOutput(OrderStatusOutput):
             self.is_authorized = dictionary['isAuthorized']
         if 'isRefundable' in dictionary:
             self.is_refundable = dictionary['isRefundable']
+        if 'isRetriable' in dictionary:
+            self.is_retriable = dictionary['isRetriable']
         if 'threeDSecureStatus' in dictionary:
             self.three_d_secure_status = dictionary['threeDSecureStatus']
         return self
