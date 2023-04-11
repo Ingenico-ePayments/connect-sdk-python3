@@ -16,6 +16,7 @@ class Seller(DataObject):
     __geocode = None
     __id = None
     __invoice_number = None
+    __is_foreign_retailer = None
     __mcc = None
     __name = None
     __phone_number = None
@@ -113,6 +114,22 @@ class Seller(DataObject):
         self.__invoice_number = value
 
     @property
+    def is_foreign_retailer(self):
+        """
+        | Indicates if the retailer is considered foreign or domestic when compared to the location of the marketplace. Possible values:
+        
+        * true - The retailer is considered foreign because they are located in a different country than the marketplace. For marketplaces located in the European Economic Area (EEA) and UK (and Gibraltar), this includes transactions where the marketplace is within the EEA and UK (and Gibraltar), but the retailer is located outside of the EEA and UK (and Gibraltar)
+        * false - The retailer is considered domestic because they are located in the same country as the marketplace. For marketplaces located in the European Economic Area (EEA) and UK (and Gibraltar), this includes transactions where the retailer is also located within the EEA and UK (and Gibraltar).
+        
+        Type: bool
+        """
+        return self.__is_foreign_retailer
+
+    @is_foreign_retailer.setter
+    def is_foreign_retailer(self, value):
+        self.__is_foreign_retailer = value
+
+    @property
     def mcc(self):
         """
         | Merchant category code
@@ -196,6 +213,8 @@ class Seller(DataObject):
             dictionary['id'] = self.id
         if self.invoice_number is not None:
             dictionary['invoiceNumber'] = self.invoice_number
+        if self.is_foreign_retailer is not None:
+            dictionary['isForeignRetailer'] = self.is_foreign_retailer
         if self.mcc is not None:
             dictionary['mcc'] = self.mcc
         if self.name is not None:
@@ -225,6 +244,8 @@ class Seller(DataObject):
             self.id = dictionary['id']
         if 'invoiceNumber' in dictionary:
             self.invoice_number = dictionary['invoiceNumber']
+        if 'isForeignRetailer' in dictionary:
+            self.is_foreign_retailer = dictionary['isForeignRetailer']
         if 'mcc' in dictionary:
             self.mcc = dictionary['mcc']
         if 'name' in dictionary:
