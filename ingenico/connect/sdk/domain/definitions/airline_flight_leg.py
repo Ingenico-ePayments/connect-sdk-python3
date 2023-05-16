@@ -204,7 +204,7 @@ class AirlineFlightLeg(DataObject):
     @property
     def flight_number(self):
         """
-        | The flight number assigned by the airline carrier with no leading spaces
+        | The flight number assigned by the airline carrier with no leading spaces 
         | Should be a numeric string
         
         Type: str

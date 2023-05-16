@@ -1,4 +1,5 @@
 import json
+import os
 import unittest
 import tests.integration.init_utils as init_utils
 from ingenico.connect.sdk.factory import Factory
@@ -8,13 +9,16 @@ from ingenico.connect.sdk.multipart_form_data_request import MultipartFormDataRe
 from ingenico.connect.sdk.uploadable_file import UploadableFile
 
 
+HTTPBIN_URL = os.getenv("httpbin.url") or 'http://httpbin.org'
+
+
 class MultipartFormDataTest(unittest.TestCase):
     """Test multipart/form-data uploads"""
 
     def test_multipart_form_data_upload_post_multipart_form_data_object_with_response(self):
         """Test a multipart/form-data POST upload with a response"""
         configuration = init_utils.create_communicator_configuration()
-        configuration.api_endpoint = 'http://httpbin.org'
+        configuration.api_endpoint = HTTPBIN_URL
 
         multipart = MultipartFormDataObject()
         multipart.add_file('file', UploadableFile('file.txt', 'file-content', 'text/plain'))
@@ -29,7 +33,7 @@ class MultipartFormDataTest(unittest.TestCase):
     def test_multipart_form_data_upload_post_multipart_form_data_request_with_response(self):
         """Test a multipart/form-data POST upload with a response"""
         configuration = init_utils.create_communicator_configuration()
-        configuration.api_endpoint = 'http://httpbin.org'
+        configuration.api_endpoint = HTTPBIN_URL
 
         multipart = MultipartFormDataObject()
         multipart.add_file('file', UploadableFile('file.txt', 'file-content', 'text/plain'))
@@ -44,7 +48,7 @@ class MultipartFormDataTest(unittest.TestCase):
     def test_multipart_form_data_upload_post_multipart_form_data_object_with_binary_response(self):
         """Test a multipart/form-data POST upload with a binary response"""
         configuration = init_utils.create_communicator_configuration()
-        configuration.api_endpoint = 'http://httpbin.org'
+        configuration.api_endpoint = HTTPBIN_URL
 
         multipart = MultipartFormDataObject()
         multipart.add_file('file', UploadableFile('file.txt', 'file-content', 'text/plain'))
@@ -63,7 +67,7 @@ class MultipartFormDataTest(unittest.TestCase):
     def test_multipart_form_data_upload_post_multipart_form_data_request_with_binary_response(self):
         """Test a multipart/form-data POST upload with a binary response"""
         configuration = init_utils.create_communicator_configuration()
-        configuration.api_endpoint = 'http://httpbin.org'
+        configuration.api_endpoint = HTTPBIN_URL
 
         multipart = MultipartFormDataObject()
         multipart.add_file('file', UploadableFile('file.txt', 'file-content', 'text/plain'))
@@ -82,7 +86,7 @@ class MultipartFormDataTest(unittest.TestCase):
     def test_multipart_form_data_upload_put_multipart_form_data_object_with_response(self):
         """Test a multipart/form-data PUT upload with a response"""
         configuration = init_utils.create_communicator_configuration()
-        configuration.api_endpoint = 'http://httpbin.org'
+        configuration.api_endpoint = HTTPBIN_URL
 
         multipart = MultipartFormDataObject()
         multipart.add_file('file', UploadableFile('file.txt', 'file-content', 'text/plain'))
@@ -97,7 +101,7 @@ class MultipartFormDataTest(unittest.TestCase):
     def test_multipart_form_data_upload_put_multipart_form_data_request_with_response(self):
         """Test a multipart/form-data PUT upload with a response"""
         configuration = init_utils.create_communicator_configuration()
-        configuration.api_endpoint = 'http://httpbin.org'
+        configuration.api_endpoint = HTTPBIN_URL
 
         multipart = MultipartFormDataObject()
         multipart.add_file('file', UploadableFile('file.txt', 'file-content', 'text/plain'))
@@ -112,7 +116,7 @@ class MultipartFormDataTest(unittest.TestCase):
     def test_multipart_form_data_upload_put_multipart_form_data_object_with_binary_response(self):
         """Test a multipart/form-data PUT upload with a binary response"""
         configuration = init_utils.create_communicator_configuration()
-        configuration.api_endpoint = 'http://httpbin.org'
+        configuration.api_endpoint = HTTPBIN_URL
 
         multipart = MultipartFormDataObject()
         multipart.add_file('file', UploadableFile('file.txt', 'file-content', 'text/plain'))
@@ -131,7 +135,7 @@ class MultipartFormDataTest(unittest.TestCase):
     def test_multipart_form_data_upload_put_multipart_form_data_request_with_binary_response(self):
         """Test a multipart/form-data PUT upload with a binary response"""
         configuration = init_utils.create_communicator_configuration()
-        configuration.api_endpoint = 'http://httpbin.org'
+        configuration.api_endpoint = HTTPBIN_URL
 
         multipart = MultipartFormDataObject()
         multipart.add_file('file', UploadableFile('file.txt', 'file-content', 'text/plain'))

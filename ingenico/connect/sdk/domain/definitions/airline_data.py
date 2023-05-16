@@ -22,6 +22,7 @@ class AirlineData(DataObject):
     __issue_date = None
     __merchant_customer_id = None
     __name = None
+    __number_in_party = None
     __passenger_name = None
     __passengers = None
     __place_of_issue = None
@@ -200,6 +201,19 @@ class AirlineData(DataObject):
         self.__name = value
 
     @property
+    def number_in_party(self):
+        """
+        | Total number of passengers in the party. If the the property numberInParty is not present, then the number of passengers will be used on the WL Online Payment Acceptance Platform.
+        
+        Type: int
+        """
+        return self.__number_in_party
+
+    @number_in_party.setter
+    def number_in_party(self, value):
+        self.__number_in_party = value
+
+    @property
     def passenger_name(self):
         """
         | Name of passenger
@@ -300,7 +314,8 @@ class AirlineData(DataObject):
     @property
     def ticket_number(self):
         """
-        | The ticket or document number contains:
+        | The ticket or document number. On the Ogone Payment Platform  and the GlobalCollect Payment Platform it contains:
+        
         
         * Airline code: 3-digit airline code number
         * Form code: A maximum of 3 digits indicating the type of document, the source of issue and the number of coupons it contains
@@ -357,7 +372,7 @@ class AirlineData(DataObject):
     @property
     def travel_agency_name(self):
         """
-        | Name of the travel agency issuing the ticket. For direct airline integration, leave this property blank
+        | Name of the travel agency issuing the ticket. For direct airline integration, leave this property blank on the Ogone Payment Platform.
         
         Type: str
         """
@@ -396,6 +411,8 @@ class AirlineData(DataObject):
             dictionary['merchantCustomerId'] = self.merchant_customer_id
         if self.name is not None:
             dictionary['name'] = self.name
+        if self.number_in_party is not None:
+            dictionary['numberInParty'] = self.number_in_party
         if self.passenger_name is not None:
             dictionary['passengerName'] = self.passenger_name
         if self.passengers is not None:
@@ -456,6 +473,8 @@ class AirlineData(DataObject):
             self.merchant_customer_id = dictionary['merchantCustomerId']
         if 'name' in dictionary:
             self.name = dictionary['name']
+        if 'numberInParty' in dictionary:
+            self.number_in_party = dictionary['numberInParty']
         if 'passengerName' in dictionary:
             self.passenger_name = dictionary['passengerName']
         if 'passengers' in dictionary:
