@@ -22,7 +22,7 @@ class Installments(DataObject):
     def amount_of_money_per_installment(self):
         """
         | The amount that will be paid per installment. The total amount of amountOfMoneyPerInstallment x numberOfInstallments can not be higher than the total amount of this transaction, although we will not validate that.
-        | For the payment product IDs 8590 (BC Card), 8591 (KEB Hana Card), 8592 (Hyundai Card), 8593 (KB Kookmin Card), 8594 (Lotte Card), 8595 (NH Card), 8596 (Samsung Card) or 8597 (Shinhan Card), this property is not used as the value is decided by the issuer.
+        | For the payment product IDs BC Card (paymentProductId 8590), Hana Card (paymentProductId 8591), Hyundai Card (paymentProductId 8592), KB Card (paymentProductId 8593), Lotte Card (paymentProductId 8594), NH Card (paymentProductId 8595), Samsung Card (paymentProductId 8596) and Shinhan Card (paymentProductId 8597), this property is not used as the value is decided by the issuer.
         
         Type: :class:`ingenico.connect.sdk.domain.definitions.amount_of_money.AmountOfMoney`
         """
@@ -43,7 +43,7 @@ class Installments(DataObject):
         * quarterly
         
         
-        | For the payment product IDs 8590 (BC Card), 8591 (KEB Hana Card), 8592 (Hyundai Card), 8593 (KB Kookmin Card), 8594 (Lotte Card), 8595 (NH Card), 8596 (Samsung Card) or 8597 (Shinhan Card), only the value monthly is valid.
+        | For the payment product IDs BC Card (paymentProductId 8590), Hana Card (paymentProductId 8591), Hyundai Card (paymentProductId 8592), KB Card (paymentProductId 8593), Lotte Card (paymentProductId 8594), NH Card (paymentProductId 8595), Samsung Card (paymentProductId 8596) and Shinhan Card (paymentProductId 8597), only the value monthly is valid.
         
         Type: str
         """
@@ -75,7 +75,7 @@ class Installments(DataObject):
     def interest_rate(self):
         """
         | The interest rate paid for installments expressed in percentage. So for example 5.75 means 5.75%
-        | For the payment product IDs 8590 (BC Card), 8591 (KEB Hana Card), 8592 (Hyundai Card), 8593 (KB Kookmin Card), 8594 (Lotte Card), 8595 (NH Card), 8596 (Samsung Card) or 8597 (Shinhan Card), this property is not used as the value is decided by the issuer.
+        | For the payment product IDs BC Card (paymentProductId 8590), Hana Card (paymentProductId 8591), Hyundai Card (paymentProductId 8592), KB Card (paymentProductId 8593), Lotte Card (paymentProductId 8594), NH Card (paymentProductId 8595), Samsung Card (paymentProductId 8596) and Shinhan Card (paymentProductId 8597), this property is not used as the value is decided by the issuer.
         
         Type: str
         """
@@ -89,7 +89,7 @@ class Installments(DataObject):
     def number_of_installments(self):
         """
         | The number of installments in which this transaction will be paid, which can be used for card payments at supported acquirers, or with specific payment products. Only used with some acquirers. In case you send in the details of this object, only the payment products (or  combination of card products and acquirers) that support installments will be shown on the MyCheckout hosted payment pages. If this property is not provided the customer will not see details on the installment plan in a HostedCheckout.
-        | For the payment product IDs 8590 (BC Card), 8591 (KEB Hana Card), 8592 (Hyundai Card), 8593 (KB Kookmin Card), 8594 (Lotte Card), 8595 (NH Card), 8596 (Samsung Card) or 8597 (Shinhan Card), there is a maximum of 12 installments.
+        | For the payment product IDs BC Card (paymentProductId 8590), Hana Card (paymentProductId 8591), Hyundai Card (paymentProductId 8592), KB Card (paymentProductId 8593), Lotte Card (paymentProductId 8594), NH Card (paymentProductId 8595), Samsung Card (paymentProductId 8596) and Shinhan Card (paymentProductId 8597), there is a maximum of 12 installments.
         
         Type: int
         """

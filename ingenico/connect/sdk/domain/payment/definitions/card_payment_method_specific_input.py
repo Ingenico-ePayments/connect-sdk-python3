@@ -23,7 +23,7 @@ class CardPaymentMethodSpecificInput(AbstractCardPaymentMethodSpecificInput):
     @property
     def card(self):
         """
-        | Object containing card details
+        | Object containing card details. The card details will be ignored in case the property networkTokenData is present.
         
         Type: :class:`ingenico.connect.sdk.domain.definitions.card.Card`
         """

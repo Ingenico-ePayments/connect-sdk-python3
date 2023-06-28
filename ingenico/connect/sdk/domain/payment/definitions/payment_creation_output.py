@@ -8,9 +8,23 @@ from ingenico.connect.sdk.domain.payment.definitions.payment_creation_references
 
 class PaymentCreationOutput(PaymentCreationReferences):
 
+    __is_checked_remember_me = None
     __is_new_token = None
     __token = None
     __tokenization_succeeded = None
+
+    @property
+    def is_checked_remember_me(self):
+        """
+        | Indicates whether the customer ticked the "Remember my details for future purchases" checkbox on the MyCheckout hosted payment pages
+        
+        Type: bool
+        """
+        return self.__is_checked_remember_me
+
+    @is_checked_remember_me.setter
+    def is_checked_remember_me(self, value):
+        self.__is_checked_remember_me = value
 
     @property
     def is_new_token(self):
@@ -56,6 +70,8 @@ class PaymentCreationOutput(PaymentCreationReferences):
 
     def to_dictionary(self):
         dictionary = super(PaymentCreationOutput, self).to_dictionary()
+        if self.is_checked_remember_me is not None:
+            dictionary['isCheckedRememberMe'] = self.is_checked_remember_me
         if self.is_new_token is not None:
             dictionary['isNewToken'] = self.is_new_token
         if self.token is not None:
@@ -66,6 +82,8 @@ class PaymentCreationOutput(PaymentCreationReferences):
 
     def from_dictionary(self, dictionary):
         super(PaymentCreationOutput, self).from_dictionary(dictionary)
+        if 'isCheckedRememberMe' in dictionary:
+            self.is_checked_remember_me = dictionary['isCheckedRememberMe']
         if 'isNewToken' in dictionary:
             self.is_new_token = dictionary['isNewToken']
         if 'token' in dictionary:

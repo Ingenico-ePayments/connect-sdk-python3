@@ -15,6 +15,7 @@ class CreatedPaymentOutput(DataObject):
     """
 
     __displayed_data = None
+    __is_checked_remember_me = None
     __payment = None
     __payment_creation_references = None
     __payment_status_category = None
@@ -33,6 +34,19 @@ class CreatedPaymentOutput(DataObject):
     @displayed_data.setter
     def displayed_data(self, value):
         self.__displayed_data = value
+
+    @property
+    def is_checked_remember_me(self):
+        """
+        | Indicates whether the customer ticked the "Remember my details for future purchases" checkbox on the MyCheckout hosted payment pages
+        
+        Type: bool
+        """
+        return self.__is_checked_remember_me
+
+    @is_checked_remember_me.setter
+    def is_checked_remember_me(self, value):
+        self.__is_checked_remember_me = value
 
     @property
     def payment(self):
@@ -143,6 +157,8 @@ class CreatedPaymentOutput(DataObject):
         dictionary = super(CreatedPaymentOutput, self).to_dictionary()
         if self.displayed_data is not None:
             dictionary['displayedData'] = self.displayed_data.to_dictionary()
+        if self.is_checked_remember_me is not None:
+            dictionary['isCheckedRememberMe'] = self.is_checked_remember_me
         if self.payment is not None:
             dictionary['payment'] = self.payment.to_dictionary()
         if self.payment_creation_references is not None:
@@ -162,6 +178,8 @@ class CreatedPaymentOutput(DataObject):
                 raise TypeError('value \'{}\' is not a dictionary'.format(dictionary['displayedData']))
             value = DisplayedData()
             self.displayed_data = value.from_dictionary(dictionary['displayedData'])
+        if 'isCheckedRememberMe' in dictionary:
+            self.is_checked_remember_me = dictionary['isCheckedRememberMe']
         if 'payment' in dictionary:
             if not isinstance(dictionary['payment'], dict):
                 raise TypeError('value \'{}\' is not a dictionary'.format(dictionary['payment']))

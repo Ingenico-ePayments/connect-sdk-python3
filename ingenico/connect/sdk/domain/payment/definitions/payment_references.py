@@ -12,6 +12,7 @@ class PaymentReferences(DataObject):
     __merchant_reference = None
     __payment_reference = None
     __provider_id = None
+    __provider_merchant_id = None
     __provider_reference = None
     __reference_orig_payment = None
 
@@ -68,6 +69,19 @@ class PaymentReferences(DataObject):
         self.__provider_id = value
 
     @property
+    def provider_merchant_id(self):
+        """
+        | Provides an additional means of reconciliation, this is the MerchantId used at the provider
+        
+        Type: str
+        """
+        return self.__provider_merchant_id
+
+    @provider_merchant_id.setter
+    def provider_merchant_id(self, value):
+        self.__provider_merchant_id = value
+
+    @property
     def provider_reference(self):
         """
         | Provides an additional means of reconciliation for Gateway merchants
@@ -103,6 +117,8 @@ class PaymentReferences(DataObject):
             dictionary['paymentReference'] = self.payment_reference
         if self.provider_id is not None:
             dictionary['providerId'] = self.provider_id
+        if self.provider_merchant_id is not None:
+            dictionary['providerMerchantId'] = self.provider_merchant_id
         if self.provider_reference is not None:
             dictionary['providerReference'] = self.provider_reference
         if self.reference_orig_payment is not None:
@@ -119,6 +135,8 @@ class PaymentReferences(DataObject):
             self.payment_reference = dictionary['paymentReference']
         if 'providerId' in dictionary:
             self.provider_id = dictionary['providerId']
+        if 'providerMerchantId' in dictionary:
+            self.provider_merchant_id = dictionary['providerMerchantId']
         if 'providerReference' in dictionary:
             self.provider_reference = dictionary['providerReference']
         if 'referenceOrigPayment' in dictionary:

@@ -8,10 +8,24 @@ from ingenico.connect.sdk.data_object import DataObject
 
 class SchemeTokenData(DataObject):
 
+    __cardholder_name = None
     __cryptogram = None
     __eci = None
     __network_token = None
     __token_expiry_date = None
+
+    @property
+    def cardholder_name(self):
+        """
+        | The cardholder's name on the card
+        
+        Type: str
+        """
+        return self.__cardholder_name
+
+    @cardholder_name.setter
+    def cardholder_name(self, value):
+        self.__cardholder_name = value
 
     @property
     def cryptogram(self):
@@ -67,6 +81,8 @@ class SchemeTokenData(DataObject):
 
     def to_dictionary(self):
         dictionary = super(SchemeTokenData, self).to_dictionary()
+        if self.cardholder_name is not None:
+            dictionary['cardholderName'] = self.cardholder_name
         if self.cryptogram is not None:
             dictionary['cryptogram'] = self.cryptogram
         if self.eci is not None:
@@ -79,6 +95,8 @@ class SchemeTokenData(DataObject):
 
     def from_dictionary(self, dictionary):
         super(SchemeTokenData, self).from_dictionary(dictionary)
+        if 'cardholderName' in dictionary:
+            self.cardholder_name = dictionary['cardholderName']
         if 'cryptogram' in dictionary:
             self.cryptogram = dictionary['cryptogram']
         if 'eci' in dictionary:

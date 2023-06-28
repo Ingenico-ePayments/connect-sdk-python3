@@ -21,7 +21,7 @@ def test_collector():
 
 setup(
     name="connect-sdk-python3",
-    version="3.39.0",
+    version="3.40.0",
     author="Ingenico ePayments",
     author_email="github@epay.ingenico.com",
     description="SDK to communicate with the Ingenico ePayments platform using the Ingenico Connect Server API",
@@ -41,6 +41,7 @@ setup(
     # data_files=[("index.rst", "README.md", "setup.py, MANIFEST.in")],  # list miscellaneous files to include
     # The pypi homepage is based on the long description, standard interpretation is reStructuredText
     long_description=read('README.rst'),
+    long_description_content_type='text/x-rst',
     classifiers=[
         "Development Status :: 5 - Production/Stable",
         "Operating System :: POSIX :: Linux",
