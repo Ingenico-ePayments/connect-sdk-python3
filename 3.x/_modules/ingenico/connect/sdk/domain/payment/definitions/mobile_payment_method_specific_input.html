@@ -1,17 +1,15 @@
-
 <!DOCTYPE html>
 
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>ingenico.connect.sdk.domain.payment.definitions.mobile_payment_method_specific_input &#8212; connect-sdk-python3 3.39.0 documentation</title>
-    <link rel="stylesheet" href="../../../../../../../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../../../../../../../_static/alabaster.css" type="text/css" />
-    <script id="documentation_options" data-url_root="../../../../../../../" src="../../../../../../../_static/documentation_options.js"></script>
-    <script src="../../../../../../../_static/jquery.js"></script>
-    <script src="../../../../../../../_static/underscore.js"></script>
+    <title>ingenico.connect.sdk.domain.payment.definitions.mobile_payment_method_specific_input &#8212; connect-sdk-python3 3.40.0 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../../../../../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../../../../_static/alabaster.css" />
+    <script data-url_root="../../../../../../../" id="documentation_options" src="../../../../../../../_static/documentation_options.js"></script>
     <script src="../../../../../../../_static/doctools.js"></script>
+    <script src="../../../../../../../_static/sphinx_highlight.js"></script>
     <link rel="index" title="Index" href="../../../../../../../genindex.html" />
     <link rel="search" title="Search" href="../../../../../../../search.html" />
    
@@ -53,7 +51,7 @@
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">authorization_mode</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        | Determines the type of the authorization that will be used. Allowed values:</span>
 <span class="sd">        </span>
 <span class="sd">        * FINAL_AUTHORIZATION - The payment creation results in an authorization that is ready for capture. Final authorizations can&#39;t be reversed and need to be captured for the full amount within 7 days.</span>
@@ -72,7 +70,7 @@
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">customer_reference</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        | Reference of the customer for the payment (purchase order #, etc.). Only used with some acquirers.</span>
 <span class="sd">        </span>
 <span class="sd">        Type: str</span>
@@ -85,7 +83,7 @@
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">decrypted_payment_data</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        | The payment data if you do the decryption of the encrypted payment data yourself.</span>
 <span class="sd">        </span>
 <span class="sd">        Type: :class:`ingenico.connect.sdk.domain.payment.definitions.decrypted_payment_data.DecryptedPaymentData`</span>
@@ -98,7 +96,7 @@
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">encrypted_payment_data</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        | The payment data if we will do the decryption of the encrypted payment data.</span>
 <span class="sd">        </span>
 <span class="sd">        </span>
@@ -117,7 +115,7 @@
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">payment_product320_specific_input</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        | Object containing information specific to Google Pay</span>
 <span class="sd">        </span>
 <span class="sd">        Type: :class:`ingenico.connect.sdk.domain.payment.definitions.mobile_payment_product320_specific_input.MobilePaymentProduct320SpecificInput`</span>
@@ -130,7 +128,7 @@
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">requires_approval</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        * true = the payment requires approval before the funds will be captured using the Capture payment &lt;https://epayments-api.developer-ingenico.com/s2sapi/v1/en_US/python/payments/approve.html&gt; API</span>
 <span class="sd">        * false = the payment does not require approval, and the funds will be captured automatically</span>
 <span class="sd">        </span>
@@ -144,7 +142,7 @@
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">skip_fraud_service</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        * true = Fraud scoring will be skipped for this transaction</span>
 <span class="sd">        * false = Fraud scoring will not be skipped for this transaction</span>
 <span class="sd">        </span>
@@ -231,12 +229,12 @@
   <h3 id="searchlabel">Quick search</h3>
     <div class="searchformwrapper">
     <form class="search" action="../../../../../../../search.html" method="get">
-      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
       <input type="submit" value="Go" />
     </form>
     </div>
 </div>
-<script>$('#searchbox').show(0);</script>
+<script>document.getElementById('searchbox').style.display = "block"</script>
 
 
 
@@ -253,8 +251,8 @@
       &copy;Copyright (c) 2016 Global Collect Services B.V..
       
       |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 3.5.4</a>
-      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 7.0.1</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.13</a>
       
     </div>
 

@@ -1,17 +1,15 @@
-
 <!DOCTYPE html>
 
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>ingenico.connect.sdk.domain.payment.definitions.order_line_details &#8212; connect-sdk-python3 3.39.0 documentation</title>
-    <link rel="stylesheet" href="../../../../../../../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../../../../../../../_static/alabaster.css" type="text/css" />
-    <script id="documentation_options" data-url_root="../../../../../../../" src="../../../../../../../_static/documentation_options.js"></script>
-    <script src="../../../../../../../_static/jquery.js"></script>
-    <script src="../../../../../../../_static/underscore.js"></script>
+    <title>ingenico.connect.sdk.domain.payment.definitions.order_line_details &#8212; connect-sdk-python3 3.40.0 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../../../../../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../../../../_static/alabaster.css" />
+    <script data-url_root="../../../../../../../" id="documentation_options" src="../../../../../../../_static/documentation_options.js"></script>
     <script src="../../../../../../../_static/doctools.js"></script>
+    <script src="../../../../../../../_static/sphinx_highlight.js"></script>
     <link rel="index" title="Index" href="../../../../../../../genindex.html" />
     <link rel="search" title="Search" href="../../../../../../../search.html" />
    
@@ -56,7 +54,7 @@
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">discount_amount</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        | Discount on the line item, with the last two digits implied as decimal places</span>
 <span class="sd">        </span>
 <span class="sd">        Type: int</span>
@@ -69,7 +67,7 @@
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">google_product_category_id</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        | The Google product category ID for the item.</span>
 <span class="sd">        </span>
 <span class="sd">        Type: int</span>
@@ -82,7 +80,7 @@
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">line_amount_total</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        | Total amount for the line item</span>
 <span class="sd">        </span>
 <span class="sd">        Type: int</span>
@@ -95,7 +93,7 @@
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">product_category</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        | The category of the product (i.e. home appliance). This property can be used for fraud screening on the Ogone Platform.</span>
 <span class="sd">        </span>
 <span class="sd">        Type: str</span>
@@ -108,7 +106,7 @@
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">product_code</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        | Product or UPC Code, left justified</span>
 <span class="sd">        | Note: Must not be all spaces or all zeros</span>
 <span class="sd">        </span>
@@ -122,7 +120,7 @@
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">product_name</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        | The name of the product. The &#39;+&#39; character is not allowed in this property for transactions that are processed by TechProcess Payment Platform.</span>
 <span class="sd">        </span>
 <span class="sd">        Type: str</span>
@@ -135,7 +133,7 @@
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">product_price</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        | The price of one unit of the product, the value should be zero or greater</span>
 <span class="sd">        </span>
 <span class="sd">        Type: int</span>
@@ -148,7 +146,7 @@
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">product_sku</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        | Product SKU number</span>
 <span class="sd">        </span>
 <span class="sd">        Type: str</span>
@@ -161,7 +159,7 @@
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">product_type</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        | Code used to classify items that are purchased</span>
 <span class="sd">        | Note: Must not be all spaces or all zeros</span>
 <span class="sd">        </span>
@@ -175,7 +173,7 @@
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">quantity</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        | Quantity of the units being purchased, should be greater than zero</span>
 <span class="sd">        | Note: Must not be all spaces or all zeros</span>
 <span class="sd">        </span>
@@ -189,7 +187,7 @@
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">tax_amount</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        | Tax on the line item, with the last two digits implied as decimal places</span>
 <span class="sd">        </span>
 <span class="sd">        Type: int</span>
@@ -202,7 +200,7 @@
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">unit</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        | Indicates the line item unit of measure; for example: each, kit, pair, gallon, month, etc.</span>
 <span class="sd">        </span>
 <span class="sd">        Type: str</span>
@@ -300,12 +298,12 @@
   <h3 id="searchlabel">Quick search</h3>
     <div class="searchformwrapper">
     <form class="search" action="../../../../../../../search.html" method="get">
-      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
       <input type="submit" value="Go" />
     </form>
     </div>
 </div>
-<script>$('#searchbox').show(0);</script>
+<script>document.getElementById('searchbox').style.display = "block"</script>
 
 
 
@@ -322,8 +320,8 @@
       &copy;Copyright (c) 2016 Global Collect Services B.V..
       
       |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 3.5.4</a>
-      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 7.0.1</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.13</a>
       
     </div>
 

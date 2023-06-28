@@ -1,17 +1,15 @@
-
 <!DOCTYPE html>
 
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>ingenico.connect.sdk.domain.product.definitions.payment_product_field_validators &#8212; connect-sdk-python3 3.39.0 documentation</title>
-    <link rel="stylesheet" href="../../../../../../../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../../../../../../../_static/alabaster.css" type="text/css" />
-    <script id="documentation_options" data-url_root="../../../../../../../" src="../../../../../../../_static/documentation_options.js"></script>
-    <script src="../../../../../../../_static/jquery.js"></script>
-    <script src="../../../../../../../_static/underscore.js"></script>
+    <title>ingenico.connect.sdk.domain.product.definitions.payment_product_field_validators &#8212; connect-sdk-python3 3.40.0 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../../../../../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../../../../_static/alabaster.css" />
+    <script data-url_root="../../../../../../../" id="documentation_options" src="../../../../../../../_static/documentation_options.js"></script>
     <script src="../../../../../../../_static/doctools.js"></script>
+    <script src="../../../../../../../_static/sphinx_highlight.js"></script>
     <link rel="index" title="Index" href="../../../../../../../genindex.html" />
     <link rel="search" title="Search" href="../../../../../../../search.html" />
    
@@ -61,7 +59,7 @@
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">boleto_bancario_requiredness</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        | Indicates the requiredness of the field based on the fiscalnumber for Boleto Bancario</span>
 <span class="sd">        </span>
 <span class="sd">        Type: :class:`ingenico.connect.sdk.domain.product.definitions.boleto_bancario_requiredness_validator.BoletoBancarioRequirednessValidator`</span>
@@ -74,7 +72,7 @@
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">email_address</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        | Indicates that the content should be validated against the rules for an email address</span>
 <span class="sd">        </span>
 <span class="sd">        Type: :class:`ingenico.connect.sdk.domain.product.definitions.empty_validator.EmptyValidator`</span>
@@ -87,7 +85,7 @@
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">expiration_date</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        | Indicates that the content should be validated against the rules for an expiration date (it should be in the future)</span>
 <span class="sd">        </span>
 <span class="sd">        Type: :class:`ingenico.connect.sdk.domain.product.definitions.empty_validator.EmptyValidator`</span>
@@ -100,7 +98,7 @@
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">fixed_list</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        | Indicates that content should be one of the, in this object, listed items</span>
 <span class="sd">        </span>
 <span class="sd">        Type: :class:`ingenico.connect.sdk.domain.product.definitions.fixed_list_validator.FixedListValidator`</span>
@@ -113,7 +111,7 @@
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">iban</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        | Indicates that the content of this (iban) field needs to validated against format checks and modulo check (as described in ISO 7064)</span>
 <span class="sd">        </span>
 <span class="sd">        Type: :class:`ingenico.connect.sdk.domain.product.definitions.empty_validator.EmptyValidator`</span>
@@ -126,7 +124,7 @@
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">length</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        | Indicates that the content needs to be validated against length criteria defined in this object</span>
 <span class="sd">        </span>
 <span class="sd">        Type: :class:`ingenico.connect.sdk.domain.product.definitions.length_validator.LengthValidator`</span>
@@ -139,7 +137,7 @@
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">luhn</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        | Indicates that the content needs to be validated using a LUHN check</span>
 <span class="sd">        </span>
 <span class="sd">        Type: :class:`ingenico.connect.sdk.domain.product.definitions.empty_validator.EmptyValidator`</span>
@@ -152,7 +150,7 @@
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">range</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        | Indicates that the content needs to be validated against a, in this object, defined range</span>
 <span class="sd">        </span>
 <span class="sd">        Type: :class:`ingenico.connect.sdk.domain.product.definitions.range_validator.RangeValidator`</span>
@@ -165,7 +163,7 @@
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">regular_expression</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        | A string representing the regular expression to check</span>
 <span class="sd">        </span>
 <span class="sd">        Type: :class:`ingenico.connect.sdk.domain.product.definitions.regular_expression_validator.RegularExpressionValidator`</span>
@@ -178,7 +176,7 @@
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">resident_id_number</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        | Indicates that the content needs to be validated as per the Chinese resident identity number format</span>
 <span class="sd">        </span>
 <span class="sd">        Type: :class:`ingenico.connect.sdk.domain.product.definitions.empty_validator.EmptyValidator`</span>
@@ -191,7 +189,7 @@
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">terms_and_conditions</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        | Indicates that the content should be validated as such that the customer has accepted the field as if they were terms and conditions of a service</span>
 <span class="sd">        </span>
 <span class="sd">        Type: :class:`ingenico.connect.sdk.domain.product.definitions.empty_validator.EmptyValidator`</span>
@@ -318,12 +316,12 @@
   <h3 id="searchlabel">Quick search</h3>
     <div class="searchformwrapper">
     <form class="search" action="../../../../../../../search.html" method="get">
-      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
       <input type="submit" value="Go" />
     </form>
     </div>
 </div>
-<script>$('#searchbox').show(0);</script>
+<script>document.getElementById('searchbox').style.display = "block"</script>
 
 
 
@@ -340,8 +338,8 @@
       &copy;Copyright (c) 2016 Global Collect Services B.V..
       
       |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 3.5.4</a>
-      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 7.0.1</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.13</a>
       
     </div>
 

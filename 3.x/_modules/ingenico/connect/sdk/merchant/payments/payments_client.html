@@ -1,17 +1,15 @@
-
 <!DOCTYPE html>
 
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>ingenico.connect.sdk.merchant.payments.payments_client &#8212; connect-sdk-python3 3.39.0 documentation</title>
-    <link rel="stylesheet" href="../../../../../../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../../../../../../_static/alabaster.css" type="text/css" />
-    <script id="documentation_options" data-url_root="../../../../../../" src="../../../../../../_static/documentation_options.js"></script>
-    <script src="../../../../../../_static/jquery.js"></script>
-    <script src="../../../../../../_static/underscore.js"></script>
+    <title>ingenico.connect.sdk.merchant.payments.payments_client &#8212; connect-sdk-python3 3.40.0 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../../../../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../../../_static/alabaster.css" />
+    <script data-url_root="../../../../../../" id="documentation_options" src="../../../../../../_static/documentation_options.js"></script>
     <script src="../../../../../../_static/doctools.js"></script>
+    <script src="../../../../../../_static/sphinx_highlight.js"></script>
     <link rel="index" title="Index" href="../../../../../../genindex.html" />
     <link rel="search" title="Search" href="../../../../../../search.html" />
    
@@ -59,19 +57,19 @@
 
 
 <div class="viewcode-block" id="PaymentsClient"><a class="viewcode-back" href="../../../../../../index.html#ingenico.connect.sdk.merchant.payments.payments_client.PaymentsClient">[docs]</a><span class="k">class</span> <span class="nc">PaymentsClient</span><span class="p">(</span><span class="n">ApiResource</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Payments client. Thread-safe.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
 <div class="viewcode-block" id="PaymentsClient.__init__"><a class="viewcode-back" href="../../../../../../index.html#ingenico.connect.sdk.merchant.payments.payments_client.PaymentsClient.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">parent</span><span class="p">,</span> <span class="n">path_context</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        :param parent:       :class:`ingenico.connect.sdk.api_resource.ApiResource`</span>
 <span class="sd">        :param path_context: dict[str, str]</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="nb">super</span><span class="p">(</span><span class="n">PaymentsClient</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">parent</span><span class="p">,</span> <span class="n">path_context</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="PaymentsClient.create"><a class="viewcode-back" href="../../../../../../index.html#ingenico.connect.sdk.merchant.payments.payments_client.PaymentsClient.create">[docs]</a>    <span class="k">def</span> <span class="nf">create</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">body</span><span class="p">,</span> <span class="n">context</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Resource /{merchantId}/payments - Create payment</span>
 <span class="sd">        </span>
 <span class="sd">        See also https://epayments-api.developer-ingenico.com/s2sapi/v1/en_US/python/payments/create.html</span>
@@ -105,7 +103,7 @@
             <span class="k">raise</span> <span class="bp">self</span><span class="o">.</span><span class="n">_create_exception</span><span class="p">(</span><span class="n">e</span><span class="o">.</span><span class="n">status_code</span><span class="p">,</span> <span class="n">e</span><span class="o">.</span><span class="n">body</span><span class="p">,</span> <span class="n">error_object</span><span class="p">,</span> <span class="n">context</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="PaymentsClient.find"><a class="viewcode-back" href="../../../../../../index.html#ingenico.connect.sdk.merchant.payments.payments_client.PaymentsClient.find">[docs]</a>    <span class="k">def</span> <span class="nf">find</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">query</span><span class="p">,</span> <span class="n">context</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Resource /{merchantId}/payments - Find payments</span>
 <span class="sd">        </span>
 <span class="sd">        See also https://epayments-api.developer-ingenico.com/s2sapi/v1/en_US/python/payments/find.html</span>
@@ -137,7 +135,7 @@
             <span class="k">raise</span> <span class="bp">self</span><span class="o">.</span><span class="n">_create_exception</span><span class="p">(</span><span class="n">e</span><span class="o">.</span><span class="n">status_code</span><span class="p">,</span> <span class="n">e</span><span class="o">.</span><span class="n">body</span><span class="p">,</span> <span class="n">error_object</span><span class="p">,</span> <span class="n">context</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="PaymentsClient.get"><a class="viewcode-back" href="../../../../../../index.html#ingenico.connect.sdk.merchant.payments.payments_client.PaymentsClient.get">[docs]</a>    <span class="k">def</span> <span class="nf">get</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">payment_id</span><span class="p">,</span> <span class="n">context</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Resource /{merchantId}/payments/{paymentId} - Get payment</span>
 <span class="sd">        </span>
 <span class="sd">        See also https://epayments-api.developer-ingenico.com/s2sapi/v1/en_US/python/payments/get.html</span>
@@ -172,7 +170,7 @@
             <span class="k">raise</span> <span class="bp">self</span><span class="o">.</span><span class="n">_create_exception</span><span class="p">(</span><span class="n">e</span><span class="o">.</span><span class="n">status_code</span><span class="p">,</span> <span class="n">e</span><span class="o">.</span><span class="n">body</span><span class="p">,</span> <span class="n">error_object</span><span class="p">,</span> <span class="n">context</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="PaymentsClient.complete"><a class="viewcode-back" href="../../../../../../index.html#ingenico.connect.sdk.merchant.payments.payments_client.PaymentsClient.complete">[docs]</a>    <span class="k">def</span> <span class="nf">complete</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">payment_id</span><span class="p">,</span> <span class="n">body</span><span class="p">,</span> <span class="n">context</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Resource /{merchantId}/payments/{paymentId}/complete - Complete payment</span>
 <span class="sd">        </span>
 <span class="sd">        See also https://epayments-api.developer-ingenico.com/s2sapi/v1/en_US/python/payments/complete.html</span>
@@ -209,7 +207,7 @@
             <span class="k">raise</span> <span class="bp">self</span><span class="o">.</span><span class="n">_create_exception</span><span class="p">(</span><span class="n">e</span><span class="o">.</span><span class="n">status_code</span><span class="p">,</span> <span class="n">e</span><span class="o">.</span><span class="n">body</span><span class="p">,</span> <span class="n">error_object</span><span class="p">,</span> <span class="n">context</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="PaymentsClient.third_party_status"><a class="viewcode-back" href="../../../../../../index.html#ingenico.connect.sdk.merchant.payments.payments_client.PaymentsClient.third_party_status">[docs]</a>    <span class="k">def</span> <span class="nf">third_party_status</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">payment_id</span><span class="p">,</span> <span class="n">context</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Resource /{merchantId}/payments/{paymentId}/thirdpartystatus - Third party status poll</span>
 <span class="sd">        </span>
 <span class="sd">        See also https://epayments-api.developer-ingenico.com/s2sapi/v1/en_US/python/payments/thirdPartyStatus.html</span>
@@ -244,7 +242,7 @@
             <span class="k">raise</span> <span class="bp">self</span><span class="o">.</span><span class="n">_create_exception</span><span class="p">(</span><span class="n">e</span><span class="o">.</span><span class="n">status_code</span><span class="p">,</span> <span class="n">e</span><span class="o">.</span><span class="n">body</span><span class="p">,</span> <span class="n">error_object</span><span class="p">,</span> <span class="n">context</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="PaymentsClient.tokenize"><a class="viewcode-back" href="../../../../../../index.html#ingenico.connect.sdk.merchant.payments.payments_client.PaymentsClient.tokenize">[docs]</a>    <span class="k">def</span> <span class="nf">tokenize</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">payment_id</span><span class="p">,</span> <span class="n">body</span><span class="p">,</span> <span class="n">context</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Resource /{merchantId}/payments/{paymentId}/tokenize - Create a token from payment</span>
 <span class="sd">        </span>
 <span class="sd">        See also https://epayments-api.developer-ingenico.com/s2sapi/v1/en_US/python/payments/tokenize.html</span>
@@ -281,7 +279,7 @@
             <span class="k">raise</span> <span class="bp">self</span><span class="o">.</span><span class="n">_create_exception</span><span class="p">(</span><span class="n">e</span><span class="o">.</span><span class="n">status_code</span><span class="p">,</span> <span class="n">e</span><span class="o">.</span><span class="n">body</span><span class="p">,</span> <span class="n">error_object</span><span class="p">,</span> <span class="n">context</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="PaymentsClient.processchallenged"><a class="viewcode-back" href="../../../../../../index.html#ingenico.connect.sdk.merchant.payments.payments_client.PaymentsClient.processchallenged">[docs]</a>    <span class="k">def</span> <span class="nf">processchallenged</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">payment_id</span><span class="p">,</span> <span class="n">context</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Resource /{merchantId}/payments/{paymentId}/processchallenged - Approves challenged payment</span>
 <span class="sd">        </span>
 <span class="sd">        See also https://epayments-api.developer-ingenico.com/s2sapi/v1/en_US/python/payments/processchallenged.html</span>
@@ -317,7 +315,7 @@
             <span class="k">raise</span> <span class="bp">self</span><span class="o">.</span><span class="n">_create_exception</span><span class="p">(</span><span class="n">e</span><span class="o">.</span><span class="n">status_code</span><span class="p">,</span> <span class="n">e</span><span class="o">.</span><span class="n">body</span><span class="p">,</span> <span class="n">error_object</span><span class="p">,</span> <span class="n">context</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="PaymentsClient.approve"><a class="viewcode-back" href="../../../../../../index.html#ingenico.connect.sdk.merchant.payments.payments_client.PaymentsClient.approve">[docs]</a>    <span class="k">def</span> <span class="nf">approve</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">payment_id</span><span class="p">,</span> <span class="n">body</span><span class="p">,</span> <span class="n">context</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Resource /{merchantId}/payments/{paymentId}/approve - Approve payment</span>
 <span class="sd">        </span>
 <span class="sd">        See also https://epayments-api.developer-ingenico.com/s2sapi/v1/en_US/python/payments/approve.html</span>
@@ -354,7 +352,7 @@
             <span class="k">raise</span> <span class="bp">self</span><span class="o">.</span><span class="n">_create_exception</span><span class="p">(</span><span class="n">e</span><span class="o">.</span><span class="n">status_code</span><span class="p">,</span> <span class="n">e</span><span class="o">.</span><span class="n">body</span><span class="p">,</span> <span class="n">error_object</span><span class="p">,</span> <span class="n">context</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="PaymentsClient.capture"><a class="viewcode-back" href="../../../../../../index.html#ingenico.connect.sdk.merchant.payments.payments_client.PaymentsClient.capture">[docs]</a>    <span class="k">def</span> <span class="nf">capture</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">payment_id</span><span class="p">,</span> <span class="n">body</span><span class="p">,</span> <span class="n">context</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Resource /{merchantId}/payments/{paymentId}/capture - Capture payment</span>
 <span class="sd">        </span>
 <span class="sd">        See also https://epayments-api.developer-ingenico.com/s2sapi/v1/en_US/python/payments/capture.html</span>
@@ -391,7 +389,7 @@
             <span class="k">raise</span> <span class="bp">self</span><span class="o">.</span><span class="n">_create_exception</span><span class="p">(</span><span class="n">e</span><span class="o">.</span><span class="n">status_code</span><span class="p">,</span> <span class="n">e</span><span class="o">.</span><span class="n">body</span><span class="p">,</span> <span class="n">error_object</span><span class="p">,</span> <span class="n">context</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="PaymentsClient.cancelapproval"><a class="viewcode-back" href="../../../../../../index.html#ingenico.connect.sdk.merchant.payments.payments_client.PaymentsClient.cancelapproval">[docs]</a>    <span class="k">def</span> <span class="nf">cancelapproval</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">payment_id</span><span class="p">,</span> <span class="n">context</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Resource /{merchantId}/payments/{paymentId}/cancelapproval - Undo capture payment</span>
 <span class="sd">        </span>
 <span class="sd">        See also https://epayments-api.developer-ingenico.com/s2sapi/v1/en_US/python/payments/cancelapproval.html</span>
@@ -427,7 +425,7 @@
             <span class="k">raise</span> <span class="bp">self</span><span class="o">.</span><span class="n">_create_exception</span><span class="p">(</span><span class="n">e</span><span class="o">.</span><span class="n">status_code</span><span class="p">,</span> <span class="n">e</span><span class="o">.</span><span class="n">body</span><span class="p">,</span> <span class="n">error_object</span><span class="p">,</span> <span class="n">context</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="PaymentsClient.captures"><a class="viewcode-back" href="../../../../../../index.html#ingenico.connect.sdk.merchant.payments.payments_client.PaymentsClient.captures">[docs]</a>    <span class="k">def</span> <span class="nf">captures</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">payment_id</span><span class="p">,</span> <span class="n">context</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Resource /{merchantId}/payments/{paymentId}/captures - Get captures of payment</span>
 <span class="sd">        </span>
 <span class="sd">        See also https://epayments-api.developer-ingenico.com/s2sapi/v1/en_US/python/payments/captures.html</span>
@@ -462,7 +460,7 @@
             <span class="k">raise</span> <span class="bp">self</span><span class="o">.</span><span class="n">_create_exception</span><span class="p">(</span><span class="n">e</span><span class="o">.</span><span class="n">status_code</span><span class="p">,</span> <span class="n">e</span><span class="o">.</span><span class="n">body</span><span class="p">,</span> <span class="n">error_object</span><span class="p">,</span> <span class="n">context</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="PaymentsClient.refund"><a class="viewcode-back" href="../../../../../../index.html#ingenico.connect.sdk.merchant.payments.payments_client.PaymentsClient.refund">[docs]</a>    <span class="k">def</span> <span class="nf">refund</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">payment_id</span><span class="p">,</span> <span class="n">body</span><span class="p">,</span> <span class="n">context</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Resource /{merchantId}/payments/{paymentId}/refund - Create refund</span>
 <span class="sd">        </span>
 <span class="sd">        See also https://epayments-api.developer-ingenico.com/s2sapi/v1/en_US/python/payments/refund.html</span>
@@ -500,7 +498,7 @@
             <span class="k">raise</span> <span class="bp">self</span><span class="o">.</span><span class="n">_create_exception</span><span class="p">(</span><span class="n">e</span><span class="o">.</span><span class="n">status_code</span><span class="p">,</span> <span class="n">e</span><span class="o">.</span><span class="n">body</span><span class="p">,</span> <span class="n">error_object</span><span class="p">,</span> <span class="n">context</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="PaymentsClient.refunds"><a class="viewcode-back" href="../../../../../../index.html#ingenico.connect.sdk.merchant.payments.payments_client.PaymentsClient.refunds">[docs]</a>    <span class="k">def</span> <span class="nf">refunds</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">payment_id</span><span class="p">,</span> <span class="n">context</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Resource /{merchantId}/payments/{paymentId}/refunds - Get refunds of payment</span>
 <span class="sd">        </span>
 <span class="sd">        See also https://epayments-api.developer-ingenico.com/s2sapi/v1/en_US/python/payments/refunds.html</span>
@@ -535,7 +533,7 @@
             <span class="k">raise</span> <span class="bp">self</span><span class="o">.</span><span class="n">_create_exception</span><span class="p">(</span><span class="n">e</span><span class="o">.</span><span class="n">status_code</span><span class="p">,</span> <span class="n">e</span><span class="o">.</span><span class="n">body</span><span class="p">,</span> <span class="n">error_object</span><span class="p">,</span> <span class="n">context</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="PaymentsClient.cancel"><a class="viewcode-back" href="../../../../../../index.html#ingenico.connect.sdk.merchant.payments.payments_client.PaymentsClient.cancel">[docs]</a>    <span class="k">def</span> <span class="nf">cancel</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">payment_id</span><span class="p">,</span> <span class="n">context</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Resource /{merchantId}/payments/{paymentId}/cancel - Cancel payment</span>
 <span class="sd">        </span>
 <span class="sd">        See also https://epayments-api.developer-ingenico.com/s2sapi/v1/en_US/python/payments/cancel.html</span>
@@ -571,7 +569,7 @@
             <span class="k">raise</span> <span class="bp">self</span><span class="o">.</span><span class="n">_create_exception</span><span class="p">(</span><span class="n">e</span><span class="o">.</span><span class="n">status_code</span><span class="p">,</span> <span class="n">e</span><span class="o">.</span><span class="n">body</span><span class="p">,</span> <span class="n">error_object</span><span class="p">,</span> <span class="n">context</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="PaymentsClient.dispute"><a class="viewcode-back" href="../../../../../../index.html#ingenico.connect.sdk.merchant.payments.payments_client.PaymentsClient.dispute">[docs]</a>    <span class="k">def</span> <span class="nf">dispute</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">payment_id</span><span class="p">,</span> <span class="n">body</span><span class="p">,</span> <span class="n">context</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Resource /{merchantId}/payments/{paymentId}/dispute - Create dispute</span>
 <span class="sd">        </span>
 <span class="sd">        See also https://epayments-api.developer-ingenico.com/s2sapi/v1/en_US/python/payments/dispute.html</span>
@@ -608,7 +606,7 @@
             <span class="k">raise</span> <span class="bp">self</span><span class="o">.</span><span class="n">_create_exception</span><span class="p">(</span><span class="n">e</span><span class="o">.</span><span class="n">status_code</span><span class="p">,</span> <span class="n">e</span><span class="o">.</span><span class="n">body</span><span class="p">,</span> <span class="n">error_object</span><span class="p">,</span> <span class="n">context</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="PaymentsClient.disputes"><a class="viewcode-back" href="../../../../../../index.html#ingenico.connect.sdk.merchant.payments.payments_client.PaymentsClient.disputes">[docs]</a>    <span class="k">def</span> <span class="nf">disputes</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">payment_id</span><span class="p">,</span> <span class="n">context</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Resource /{merchantId}/payments/{paymentId}/disputes - Get disputes</span>
 <span class="sd">        </span>
 <span class="sd">        See also https://epayments-api.developer-ingenico.com/s2sapi/v1/en_US/python/payments/disputes.html</span>
@@ -643,7 +641,7 @@
             <span class="k">raise</span> <span class="bp">self</span><span class="o">.</span><span class="n">_create_exception</span><span class="p">(</span><span class="n">e</span><span class="o">.</span><span class="n">status_code</span><span class="p">,</span> <span class="n">e</span><span class="o">.</span><span class="n">body</span><span class="p">,</span> <span class="n">error_object</span><span class="p">,</span> <span class="n">context</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="PaymentsClient.devicefingerprint"><a class="viewcode-back" href="../../../../../../index.html#ingenico.connect.sdk.merchant.payments.payments_client.PaymentsClient.devicefingerprint">[docs]</a>    <span class="k">def</span> <span class="nf">devicefingerprint</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">payment_id</span><span class="p">,</span> <span class="n">context</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Resource /{merchantId}/payments/{paymentId}/devicefingerprint - Get Device Fingerprint details</span>
 <span class="sd">        </span>
 <span class="sd">        See also https://epayments-api.developer-ingenico.com/s2sapi/v1/en_US/python/payments/devicefingerprint.html</span>
@@ -708,12 +706,12 @@
   <h3 id="searchlabel">Quick search</h3>
     <div class="searchformwrapper">
     <form class="search" action="../../../../../../search.html" method="get">
-      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
       <input type="submit" value="Go" />
     </form>
     </div>
 </div>
-<script>$('#searchbox').show(0);</script>
+<script>document.getElementById('searchbox').style.display = "block"</script>
 
 
 
@@ -730,8 +728,8 @@
       &copy;Copyright (c) 2016 Global Collect Services B.V..
       
       |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 3.5.4</a>
-      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 7.0.1</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.13</a>
       
     </div>
 

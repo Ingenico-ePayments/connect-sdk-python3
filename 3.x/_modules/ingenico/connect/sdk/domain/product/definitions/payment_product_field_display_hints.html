@@ -1,17 +1,15 @@
-
 <!DOCTYPE html>
 
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>ingenico.connect.sdk.domain.product.definitions.payment_product_field_display_hints &#8212; connect-sdk-python3 3.39.0 documentation</title>
-    <link rel="stylesheet" href="../../../../../../../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../../../../../../../_static/alabaster.css" type="text/css" />
-    <script id="documentation_options" data-url_root="../../../../../../../" src="../../../../../../../_static/documentation_options.js"></script>
-    <script src="../../../../../../../_static/jquery.js"></script>
-    <script src="../../../../../../../_static/underscore.js"></script>
+    <title>ingenico.connect.sdk.domain.product.definitions.payment_product_field_display_hints &#8212; connect-sdk-python3 3.40.0 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../../../../../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../../../../_static/alabaster.css" />
+    <script data-url_root="../../../../../../../" id="documentation_options" src="../../../../../../../_static/documentation_options.js"></script>
     <script src="../../../../../../../_static/doctools.js"></script>
+    <script src="../../../../../../../_static/sphinx_highlight.js"></script>
     <link rel="index" title="Index" href="../../../../../../../genindex.html" />
     <link rel="search" title="Search" href="../../../../../../../search.html" />
    
@@ -56,7 +54,7 @@
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">always_show</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        * true - Indicates that this field is advised to be captured to increase the success rates even though it isn&#39;t marked as required. Please note that making the field required could hurt the success rates negatively. This boolean only indicates our advise to always show this field to the customer.</span>
 <span class="sd">        * false - Indicates that this field is not to be shown unless it is a required field.</span>
 <span class="sd">        </span>
@@ -70,7 +68,7 @@
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">display_order</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        | The order in which the fields should be shown (ascending)</span>
 <span class="sd">        </span>
 <span class="sd">        Type: int</span>
@@ -83,7 +81,7 @@
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">form_element</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        | Object detailing the type of form element that should be used to present the field</span>
 <span class="sd">        </span>
 <span class="sd">        Type: :class:`ingenico.connect.sdk.domain.product.definitions.payment_product_field_form_element.PaymentProductFieldFormElement`</span>
@@ -96,7 +94,7 @@
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">label</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        | Label/Name of the field to be used in the user interface</span>
 <span class="sd">        </span>
 <span class="sd">        Type: str</span>
@@ -109,7 +107,7 @@
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">link</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        | Link that should be used to replace the &#39;{link}&#39; variable in the label.</span>
 <span class="sd">        </span>
 <span class="sd">        Type: str</span>
@@ -122,7 +120,7 @@
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">mask</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        | A mask that can be used in the input field. You can use it to inject additional characters to provide a better user experience and to restrict the accepted character set (illegal characters to be ignored during typing).</span>
 <span class="sd">        | * is used for wildcards (and also chars)</span>
 <span class="sd">        | 9 is used for numbers</span>
@@ -138,7 +136,7 @@
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">obfuscate</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        * true - The data in this field should be obfuscated as it is entered, just like a password field</span>
 <span class="sd">        * false - The data in this field does not need to be obfuscated</span>
 <span class="sd">        </span>
@@ -152,7 +150,7 @@
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">placeholder_label</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        | A placeholder value for the form element</span>
 <span class="sd">        </span>
 <span class="sd">        Type: str</span>
@@ -165,7 +163,7 @@
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">preferred_input_type</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        | The type of keyboard that can best be used to fill out the value of this field. Possible values are:</span>
 <span class="sd">        </span>
 <span class="sd">        * PhoneNumberKeyboard - Keyboard that is normally used to enter phone numbers</span>
@@ -183,7 +181,7 @@
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">tooltip</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        | Object that contains an optional tooltip to assist the customer</span>
 <span class="sd">        </span>
 <span class="sd">        Type: :class:`ingenico.connect.sdk.domain.product.definitions.payment_product_field_tooltip.PaymentProductFieldTooltip`</span>
@@ -279,12 +277,12 @@
   <h3 id="searchlabel">Quick search</h3>
     <div class="searchformwrapper">
     <form class="search" action="../../../../../../../search.html" method="get">
-      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
       <input type="submit" value="Go" />
     </form>
     </div>
 </div>
-<script>$('#searchbox').show(0);</script>
+<script>document.getElementById('searchbox').style.display = "block"</script>
 
 
 
@@ -301,8 +299,8 @@
       &copy;Copyright (c) 2016 Global Collect Services B.V..
       
       |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 3.5.4</a>
-      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 7.0.1</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.13</a>
       
     </div>
 

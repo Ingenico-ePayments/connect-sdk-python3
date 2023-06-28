@@ -1,17 +1,15 @@
-
 <!DOCTYPE html>
 
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>ingenico.connect.sdk.domain.product.definitions.payment_product &#8212; connect-sdk-python3 3.39.0 documentation</title>
-    <link rel="stylesheet" href="../../../../../../../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../../../../../../../_static/alabaster.css" type="text/css" />
-    <script id="documentation_options" data-url_root="../../../../../../../" src="../../../../../../../_static/documentation_options.js"></script>
-    <script src="../../../../../../../_static/jquery.js"></script>
-    <script src="../../../../../../../_static/underscore.js"></script>
+    <title>ingenico.connect.sdk.domain.product.definitions.payment_product &#8212; connect-sdk-python3 3.40.0 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../../../../../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../../../../_static/alabaster.css" />
+    <script data-url_root="../../../../../../../" id="documentation_options" src="../../../../../../../_static/documentation_options.js"></script>
     <script src="../../../../../../../_static/doctools.js"></script>
+    <script src="../../../../../../../_static/sphinx_highlight.js"></script>
     <link rel="index" title="Index" href="../../../../../../../genindex.html" />
     <link rel="search" title="Search" href="../../../../../../../search.html" />
    
@@ -75,7 +73,7 @@
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">accounts_on_file</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        | List of tokens for that payment product</span>
 <span class="sd">        </span>
 <span class="sd">        Type: list[:class:`ingenico.connect.sdk.domain.product.definitions.account_on_file.AccountOnFile`]</span>
@@ -88,7 +86,7 @@
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">acquirer_country</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        | ISO 3166-1 alpha-2 country code which indicates the most likely country code of the acquirer that will process the transaction. For Google Pay (paymentProductId 320) transactions this acquirerCountry is should be provided in the https://developers.google.com/pay/api/web/guides/resources/sca &lt;https://developers.google.com/pay/api/web/reference/request-objects#TransactionInfo&gt;</span>
 <span class="sd">        </span>
 <span class="sd">        Type: str</span>
@@ -101,7 +99,7 @@
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">allows_installments</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        | Indicates if the product supports installments</span>
 <span class="sd">        </span>
 <span class="sd">        * true - This payment supports installments</span>
@@ -117,7 +115,7 @@
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">allows_recurring</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        | Indicates if the product supports recurring payments</span>
 <span class="sd">        </span>
 <span class="sd">        * true - This payment product supports recurring payments</span>
@@ -133,7 +131,7 @@
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">allows_tokenization</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        | Indicates if the payment details can be tokenized for future re-use</span>
 <span class="sd">        </span>
 <span class="sd">        * true - Payment details from payments done with this payment product can be tokenized for future re-use</span>
@@ -149,7 +147,7 @@
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">authentication_indicator</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        | Indicates if the payment product supports 3D Security (mandatory, optional or not needed).</span>
 <span class="sd">        </span>
 <span class="sd">        Type: :class:`ingenico.connect.sdk.domain.product.definitions.authentication_indicator.AuthenticationIndicator`</span>
@@ -162,7 +160,7 @@
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">auto_tokenized</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        | Indicates if the payment details can be automatically tokenized for future re-use</span>
 <span class="sd">        </span>
 <span class="sd">        * true - Payment details from payments done with this payment product can be automatically tokenized for future re-use</span>
@@ -178,7 +176,7 @@
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">can_be_iframed</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        | This property is only relevant for payment products that use third party redirects. This property indicates if the third party disallows their payment pages to be embedded in an iframe using the X-Frame-Options header.</span>
 <span class="sd">        </span>
 <span class="sd">        * true - the third party allows their payment pages to be embedded in an iframe.</span>
@@ -194,7 +192,7 @@
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">device_fingerprint_enabled</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        | Indicates if device fingerprint is enabled for the product</span>
 <span class="sd">        </span>
 <span class="sd">        * true</span>
@@ -210,7 +208,7 @@
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">display_hints</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        | Object containing display hints like the order in which the product should be shown, the name of the product and the logo</span>
 <span class="sd">        </span>
 <span class="sd">        Type: :class:`ingenico.connect.sdk.domain.product.definitions.payment_product_display_hints.PaymentProductDisplayHints`</span>
@@ -223,7 +221,7 @@
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">fields</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        | Object containing all the fields and their details that are associated with this payment product. If you are not interested in the data in the fields you should have us filter them out (using filter=fields in the query-string)</span>
 <span class="sd">        </span>
 <span class="sd">        Type: list[:class:`ingenico.connect.sdk.domain.product.definitions.payment_product_field.PaymentProductField`]</span>
@@ -236,7 +234,7 @@
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">fields_warning</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        | If one or more of the payment product fields could not be constructed, no payment product fields will be returned and a message will be present in this property stating why.</span>
 <span class="sd">        </span>
 <span class="sd">        Type: str</span>
@@ -249,7 +247,7 @@
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">id</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        | The ID of the payment product in our system</span>
 <span class="sd">        </span>
 <span class="sd">        Type: int</span>
@@ -262,7 +260,7 @@
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">is_java_script_required</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        | This property indicates if the payment product requires JavaScript to be enabled on the customer&#39;s browser. This is usually only true if the payment product depends on a third party JavaScript integration.</span>
 <span class="sd">        </span>
 <span class="sd">        * true - the payment product requires JavaScript to be enabled.</span>
@@ -278,7 +276,7 @@
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">max_amount</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        | Maximum amount in cents (using 2 decimals, so 1 EUR becomes 100 cents) for transactions done with this payment product</span>
 <span class="sd">        </span>
 <span class="sd">        Type: int</span>
@@ -291,7 +289,7 @@
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">min_amount</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        | Minimum amount in cents (using 2 decimals, so 1 EUR becomes 100 cents) for transactions done with this payment product</span>
 <span class="sd">        </span>
 <span class="sd">        Type: int</span>
@@ -304,7 +302,7 @@
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">mobile_integration_level</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        | This provides insight into the level of support for payments using a device with a smaller screen size. You can for instance use this to rank payment products differently on devices with a smaller screen. Possible values are:</span>
 <span class="sd">        </span>
 <span class="sd">        * NO_SUPPORT - The payment product does not work at all on a mobile device</span>
@@ -321,7 +319,7 @@
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">payment_method</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        | Indicates which payment method will be used for this payment product. Payment method is one of:</span>
 <span class="sd">        </span>
 <span class="sd">        * bankTransfer</span>
@@ -342,7 +340,7 @@
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">payment_product302_specific_data</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        | Apple Pay (payment product 302) specific details.</span>
 <span class="sd">        </span>
 <span class="sd">        Type: :class:`ingenico.connect.sdk.domain.product.definitions.payment_product302_specific_data.PaymentProduct302SpecificData`</span>
@@ -355,7 +353,7 @@
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">payment_product320_specific_data</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        | Google Pay (payment product 320) specific details.</span>
 <span class="sd">        </span>
 <span class="sd">        Type: :class:`ingenico.connect.sdk.domain.product.definitions.payment_product320_specific_data.PaymentProduct320SpecificData`</span>
@@ -368,7 +366,7 @@
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">payment_product863_specific_data</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        | WeChat Pay (payment product 863) specific details.</span>
 <span class="sd">        </span>
 <span class="sd">        Type: :class:`ingenico.connect.sdk.domain.product.definitions.payment_product863_specific_data.PaymentProduct863SpecificData`</span>
@@ -381,7 +379,7 @@
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">payment_product_group</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        | The payment product group that has this payment product, if there is any. Not populated otherwise. Currently only one payment product group is supported:</span>
 <span class="sd">        </span>
 <span class="sd">        * cards</span>
@@ -396,7 +394,7 @@
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">supports_mandates</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        | Indicates whether the payment product supports mandates.</span>
 <span class="sd">        </span>
 <span class="sd">        Type: bool</span>
@@ -409,7 +407,7 @@
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">uses_redirection_to3rd_party</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        | Indicates whether the payment product requires redirection to a third party to complete the payment. You can use this to filter out products that require a redirect if you don&#39;t want to support that.</span>
 <span class="sd">        </span>
 <span class="sd">        * true - Redirection is required</span>
@@ -589,12 +587,12 @@
   <h3 id="searchlabel">Quick search</h3>
     <div class="searchformwrapper">
     <form class="search" action="../../../../../../../search.html" method="get">
-      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
       <input type="submit" value="Go" />
     </form>
     </div>
 </div>
-<script>$('#searchbox').show(0);</script>
+<script>document.getElementById('searchbox').style.display = "block"</script>
 
 
 
@@ -611,8 +609,8 @@
       &copy;Copyright (c) 2016 Global Collect Services B.V..
       
       |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 3.5.4</a>
-      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 7.0.1</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.13</a>
       
     </div>
 

@@ -1,17 +1,15 @@
-
 <!DOCTYPE html>
 
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>ingenico.connect.sdk.merchant.merchant_client &#8212; connect-sdk-python3 3.39.0 documentation</title>
-    <link rel="stylesheet" href="../../../../../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../../../../../_static/alabaster.css" type="text/css" />
-    <script id="documentation_options" data-url_root="../../../../../" src="../../../../../_static/documentation_options.js"></script>
-    <script src="../../../../../_static/jquery.js"></script>
-    <script src="../../../../../_static/underscore.js"></script>
+    <title>ingenico.connect.sdk.merchant.merchant_client &#8212; connect-sdk-python3 3.40.0 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/alabaster.css" />
+    <script data-url_root="../../../../../" id="documentation_options" src="../../../../../_static/documentation_options.js"></script>
     <script src="../../../../../_static/doctools.js"></script>
+    <script src="../../../../../_static/sphinx_highlight.js"></script>
     <link rel="index" title="Index" href="../../../../../genindex.html" />
     <link rel="search" title="Search" href="../../../../../search.html" />
    
@@ -54,19 +52,19 @@
 
 
 <div class="viewcode-block" id="MerchantClient"><a class="viewcode-back" href="../../../../../index.html#ingenico.connect.sdk.merchant.merchant_client.MerchantClient">[docs]</a><span class="k">class</span> <span class="nc">MerchantClient</span><span class="p">(</span><span class="n">ApiResource</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Merchant client. Thread-safe.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
 <div class="viewcode-block" id="MerchantClient.__init__"><a class="viewcode-back" href="../../../../../index.html#ingenico.connect.sdk.merchant.merchant_client.MerchantClient.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">parent</span><span class="p">,</span> <span class="n">path_context</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        :param parent:       :class:`ingenico.connect.sdk.api_resource.ApiResource`</span>
 <span class="sd">        :param path_context: dict[str, str]</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="nb">super</span><span class="p">(</span><span class="n">MerchantClient</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">parent</span><span class="p">,</span> <span class="n">path_context</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="MerchantClient.hostedcheckouts"><a class="viewcode-back" href="../../../../../index.html#ingenico.connect.sdk.merchant.merchant_client.MerchantClient.hostedcheckouts">[docs]</a>    <span class="k">def</span> <span class="nf">hostedcheckouts</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Resource /{merchantId}/hostedcheckouts</span>
 
 <span class="sd">        :return: :class:`ingenico.connect.sdk.merchant.hostedcheckouts.hostedcheckouts_client.HostedcheckoutsClient`</span>
@@ -74,7 +72,7 @@
         <span class="k">return</span> <span class="n">HostedcheckoutsClient</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="MerchantClient.hostedmandatemanagements"><a class="viewcode-back" href="../../../../../index.html#ingenico.connect.sdk.merchant.merchant_client.MerchantClient.hostedmandatemanagements">[docs]</a>    <span class="k">def</span> <span class="nf">hostedmandatemanagements</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Resource /{merchantId}/hostedmandatemanagements</span>
 
 <span class="sd">        :return: :class:`ingenico.connect.sdk.merchant.hostedmandatemanagements.hostedmandatemanagements_client.HostedmandatemanagementsClient`</span>
@@ -82,7 +80,7 @@
         <span class="k">return</span> <span class="n">HostedmandatemanagementsClient</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="MerchantClient.payments"><a class="viewcode-back" href="../../../../../index.html#ingenico.connect.sdk.merchant.merchant_client.MerchantClient.payments">[docs]</a>    <span class="k">def</span> <span class="nf">payments</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Resource /{merchantId}/payments</span>
 
 <span class="sd">        :return: :class:`ingenico.connect.sdk.merchant.payments.payments_client.PaymentsClient`</span>
@@ -90,7 +88,7 @@
         <span class="k">return</span> <span class="n">PaymentsClient</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="MerchantClient.captures"><a class="viewcode-back" href="../../../../../index.html#ingenico.connect.sdk.merchant.merchant_client.MerchantClient.captures">[docs]</a>    <span class="k">def</span> <span class="nf">captures</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Resource /{merchantId}/captures</span>
 
 <span class="sd">        :return: :class:`ingenico.connect.sdk.merchant.captures.captures_client.CapturesClient`</span>
@@ -98,7 +96,7 @@
         <span class="k">return</span> <span class="n">CapturesClient</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="MerchantClient.refunds"><a class="viewcode-back" href="../../../../../index.html#ingenico.connect.sdk.merchant.merchant_client.MerchantClient.refunds">[docs]</a>    <span class="k">def</span> <span class="nf">refunds</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Resource /{merchantId}/refunds</span>
 
 <span class="sd">        :return: :class:`ingenico.connect.sdk.merchant.refunds.refunds_client.RefundsClient`</span>
@@ -106,7 +104,7 @@
         <span class="k">return</span> <span class="n">RefundsClient</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="MerchantClient.disputes"><a class="viewcode-back" href="../../../../../index.html#ingenico.connect.sdk.merchant.merchant_client.MerchantClient.disputes">[docs]</a>    <span class="k">def</span> <span class="nf">disputes</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Resource /{merchantId}/disputes</span>
 
 <span class="sd">        :return: :class:`ingenico.connect.sdk.merchant.disputes.disputes_client.DisputesClient`</span>
@@ -114,7 +112,7 @@
         <span class="k">return</span> <span class="n">DisputesClient</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="MerchantClient.payouts"><a class="viewcode-back" href="../../../../../index.html#ingenico.connect.sdk.merchant.merchant_client.MerchantClient.payouts">[docs]</a>    <span class="k">def</span> <span class="nf">payouts</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Resource /{merchantId}/payouts</span>
 
 <span class="sd">        :return: :class:`ingenico.connect.sdk.merchant.payouts.payouts_client.PayoutsClient`</span>
@@ -122,7 +120,7 @@
         <span class="k">return</span> <span class="n">PayoutsClient</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="MerchantClient.productgroups"><a class="viewcode-back" href="../../../../../index.html#ingenico.connect.sdk.merchant.merchant_client.MerchantClient.productgroups">[docs]</a>    <span class="k">def</span> <span class="nf">productgroups</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Resource /{merchantId}/productgroups</span>
 
 <span class="sd">        :return: :class:`ingenico.connect.sdk.merchant.productgroups.productgroups_client.ProductgroupsClient`</span>
@@ -130,7 +128,7 @@
         <span class="k">return</span> <span class="n">ProductgroupsClient</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="MerchantClient.products"><a class="viewcode-back" href="../../../../../index.html#ingenico.connect.sdk.merchant.merchant_client.MerchantClient.products">[docs]</a>    <span class="k">def</span> <span class="nf">products</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Resource /{merchantId}/products</span>
 
 <span class="sd">        :return: :class:`ingenico.connect.sdk.merchant.products.products_client.ProductsClient`</span>
@@ -138,7 +136,7 @@
         <span class="k">return</span> <span class="n">ProductsClient</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="MerchantClient.riskassessments"><a class="viewcode-back" href="../../../../../index.html#ingenico.connect.sdk.merchant.merchant_client.MerchantClient.riskassessments">[docs]</a>    <span class="k">def</span> <span class="nf">riskassessments</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Resource /{merchantId}/riskassessments</span>
 
 <span class="sd">        :return: :class:`ingenico.connect.sdk.merchant.riskassessments.riskassessments_client.RiskassessmentsClient`</span>
@@ -146,7 +144,7 @@
         <span class="k">return</span> <span class="n">RiskassessmentsClient</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="MerchantClient.services"><a class="viewcode-back" href="../../../../../index.html#ingenico.connect.sdk.merchant.merchant_client.MerchantClient.services">[docs]</a>    <span class="k">def</span> <span class="nf">services</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Resource /{merchantId}/services</span>
 
 <span class="sd">        :return: :class:`ingenico.connect.sdk.merchant.services.services_client.ServicesClient`</span>
@@ -154,7 +152,7 @@
         <span class="k">return</span> <span class="n">ServicesClient</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="MerchantClient.tokens"><a class="viewcode-back" href="../../../../../index.html#ingenico.connect.sdk.merchant.merchant_client.MerchantClient.tokens">[docs]</a>    <span class="k">def</span> <span class="nf">tokens</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Resource /{merchantId}/tokens</span>
 
 <span class="sd">        :return: :class:`ingenico.connect.sdk.merchant.tokens.tokens_client.TokensClient`</span>
@@ -162,7 +160,7 @@
         <span class="k">return</span> <span class="n">TokensClient</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="MerchantClient.mandates"><a class="viewcode-back" href="../../../../../index.html#ingenico.connect.sdk.merchant.merchant_client.MerchantClient.mandates">[docs]</a>    <span class="k">def</span> <span class="nf">mandates</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Resource /{merchantId}/mandates</span>
 
 <span class="sd">        :return: :class:`ingenico.connect.sdk.merchant.mandates.mandates_client.MandatesClient`</span>
@@ -170,7 +168,7 @@
         <span class="k">return</span> <span class="n">MandatesClient</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="MerchantClient.sessions"><a class="viewcode-back" href="../../../../../index.html#ingenico.connect.sdk.merchant.merchant_client.MerchantClient.sessions">[docs]</a>    <span class="k">def</span> <span class="nf">sessions</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Resource /{merchantId}/sessions</span>
 
 <span class="sd">        :return: :class:`ingenico.connect.sdk.merchant.sessions.sessions_client.SessionsClient`</span>
@@ -178,7 +176,7 @@
         <span class="k">return</span> <span class="n">SessionsClient</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="MerchantClient.files"><a class="viewcode-back" href="../../../../../index.html#ingenico.connect.sdk.merchant.merchant_client.MerchantClient.files">[docs]</a>    <span class="k">def</span> <span class="nf">files</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Resource /{merchantId}/files</span>
 
 <span class="sd">        :return: :class:`ingenico.connect.sdk.merchant.files.files_client.FilesClient`</span>
@@ -216,12 +214,12 @@
   <h3 id="searchlabel">Quick search</h3>
     <div class="searchformwrapper">
     <form class="search" action="../../../../../search.html" method="get">
-      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
       <input type="submit" value="Go" />
     </form>
     </div>
 </div>
-<script>$('#searchbox').show(0);</script>
+<script>document.getElementById('searchbox').style.display = "block"</script>
 
 
 
@@ -238,8 +236,8 @@
       &copy;Copyright (c) 2016 Global Collect Services B.V..
       
       |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 3.5.4</a>
-      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 7.0.1</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.13</a>
       
     </div>
 

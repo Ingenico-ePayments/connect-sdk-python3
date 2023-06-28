@@ -1,17 +1,15 @@
-
 <!DOCTYPE html>
 
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>ingenico.connect.sdk.domain.payment.definitions.merchant_action &#8212; connect-sdk-python3 3.39.0 documentation</title>
-    <link rel="stylesheet" href="../../../../../../../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../../../../../../../_static/alabaster.css" type="text/css" />
-    <script id="documentation_options" data-url_root="../../../../../../../" src="../../../../../../../_static/documentation_options.js"></script>
-    <script src="../../../../../../../_static/jquery.js"></script>
-    <script src="../../../../../../../_static/underscore.js"></script>
+    <title>ingenico.connect.sdk.domain.payment.definitions.merchant_action &#8212; connect-sdk-python3 3.40.0 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../../../../../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../../../../_static/alabaster.css" />
+    <script data-url_root="../../../../../../../" id="documentation_options" src="../../../../../../../_static/documentation_options.js"></script>
     <script src="../../../../../../../_static/doctools.js"></script>
+    <script src="../../../../../../../_static/sphinx_highlight.js"></script>
     <link rel="index" title="Index" href="../../../../../../../genindex.html" />
     <link rel="search" title="Search" href="../../../../../../../search.html" />
    
@@ -56,7 +54,7 @@
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">action_type</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        | Action merchants needs to take in the online payment process. Possible values are:</span>
 <span class="sd">        </span>
 <span class="sd">        * REDIRECT - The customer needs to be redirected using the details found in redirectData</span>
@@ -82,7 +80,7 @@
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">form_fields</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        | Populated only when the actionType of the merchantAction is SHOW_FORM. In this case, this property contains the list of fields to render, in the format that is also used in the response of Get payment product &lt;https://epayments-api.developer-ingenico.com/s2sapi/v1/en_US/python/products/get.html&gt;.</span>
 <span class="sd">        </span>
 <span class="sd">        Type: list[:class:`ingenico.connect.sdk.domain.product.definitions.payment_product_field.PaymentProductField`]</span>
@@ -95,7 +93,7 @@
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">mobile_three_d_secure_challenge_parameters</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        | Populated only when the actionType of the merchantAction is MOBILE_THREEDS_CHALLENGE. In this case, this object contains the list of properties to provide to the EMVco certified Mobile SDK as a challengeParameters object.</span>
 <span class="sd">        </span>
 <span class="sd">        Type: :class:`ingenico.connect.sdk.domain.payment.definitions.mobile_three_d_secure_challenge_parameters.MobileThreeDSecureChallengeParameters`</span>
@@ -108,7 +106,7 @@
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">redirect_data</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        | Object containing all data needed to redirect the customer</span>
 <span class="sd">        </span>
 <span class="sd">        Type: :class:`ingenico.connect.sdk.domain.payment.definitions.redirect_data.RedirectData`</span>
@@ -121,7 +119,7 @@
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">rendering_data</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        | This property contains the blob with data for the instructions rendering service.</span>
 <span class="sd">        </span>
 <span class="sd">        | This service will be available at the following endpoint:http(s)://{{merchant specific subdomain}}.{{base MyCheckout hosted payment pages domain}}/instructions/{{merchantId}}/{{clientSessionId}}</span>
@@ -147,7 +145,7 @@
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">show_data</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        | This is returned for the SHOW_INSTRUCTION, the SHOW_TRANSACTION_RESULTS and the SHOW_FORM actionType.</span>
 <span class="sd">        | When returned for SHOW_TRANSACTION_RESULTS or SHOW_FORM, this contains an array of key value pairs of data that needs to be shown to the customer.</span>
 <span class="sd">        | Note: The returned value for the key BARCODE is a base64 encoded gif image. By prepending &#39;data:image/gif;base64,&#39; this value can be used as the source of an HTML inline image.</span>
@@ -170,7 +168,7 @@
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">third_party_data</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        | This is returned for the CALL_THIRD_PARTY actionType.</span>
 <span class="sd">        | The payment product specific field of the payment product used for the payment will be populated with the third party data that should be used when calling the third party.</span>
 <span class="sd">        </span>
@@ -274,12 +272,12 @@
   <h3 id="searchlabel">Quick search</h3>
     <div class="searchformwrapper">
     <form class="search" action="../../../../../../../search.html" method="get">
-      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
       <input type="submit" value="Go" />
     </form>
     </div>
 </div>
-<script>$('#searchbox').show(0);</script>
+<script>document.getElementById('searchbox').style.display = "block"</script>
 
 
 
@@ -296,8 +294,8 @@
       &copy;Copyright (c) 2016 Global Collect Services B.V..
       
       |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 3.5.4</a>
-      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 7.0.1</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.13</a>
       
     </div>
 

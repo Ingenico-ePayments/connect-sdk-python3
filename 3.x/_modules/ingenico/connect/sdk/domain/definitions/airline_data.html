@@ -1,17 +1,15 @@
-
 <!DOCTYPE html>
 
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>ingenico.connect.sdk.domain.definitions.airline_data &#8212; connect-sdk-python3 3.39.0 documentation</title>
-    <link rel="stylesheet" href="../../../../../../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../../../../../../_static/alabaster.css" type="text/css" />
-    <script id="documentation_options" data-url_root="../../../../../../" src="../../../../../../_static/documentation_options.js"></script>
-    <script src="../../../../../../_static/jquery.js"></script>
-    <script src="../../../../../../_static/underscore.js"></script>
+    <title>ingenico.connect.sdk.domain.definitions.airline_data &#8212; connect-sdk-python3 3.40.0 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../../../../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../../../_static/alabaster.css" />
+    <script data-url_root="../../../../../../" id="documentation_options" src="../../../../../../_static/documentation_options.js"></script>
     <script src="../../../../../../_static/doctools.js"></script>
+    <script src="../../../../../../_static/sphinx_highlight.js"></script>
     <link rel="index" title="Index" href="../../../../../../genindex.html" />
     <link rel="search" title="Search" href="../../../../../../search.html" />
    
@@ -71,7 +69,7 @@
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">agent_numeric_code</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        | Numeric code identifying the agent</span>
 <span class="sd">        </span>
 <span class="sd">        Type: str</span>
@@ -84,7 +82,7 @@
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">code</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        | Airline numeric code</span>
 <span class="sd">        </span>
 <span class="sd">        Type: str</span>
@@ -97,7 +95,7 @@
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">flight_date</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        | Date of the Flight</span>
 <span class="sd">        | Format: YYYYMMDD</span>
 <span class="sd">        </span>
@@ -111,7 +109,7 @@
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">flight_legs</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        | Object that holds the data on the individual legs of the ticket</span>
 <span class="sd">        </span>
 <span class="sd">        Type: list[:class:`ingenico.connect.sdk.domain.definitions.airline_flight_leg.AirlineFlightLeg`]</span>
@@ -124,7 +122,7 @@
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">invoice_number</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        | Airline tracing number</span>
 <span class="sd">        </span>
 <span class="sd">        Type: str</span>
@@ -137,7 +135,7 @@
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">is_e_ticket</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        * true = The ticket is an E-Ticket</span>
 <span class="sd">        * false = the ticket is not an E-Ticket</span>
 <span class="sd">        </span>
@@ -151,7 +149,7 @@
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">is_registered_customer</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        * true = a registered known customer</span>
 <span class="sd">        * false = unknown customer</span>
 <span class="sd">        </span>
@@ -167,7 +165,7 @@
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">is_restricted_ticket</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        * true - Restricted, the ticket is non-refundable</span>
 <span class="sd">        * false - No restrictions, the ticket is (partially) refundable</span>
 <span class="sd">        </span>
@@ -181,7 +179,7 @@
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">is_third_party</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        * true - The payer is the ticket holder</span>
 <span class="sd">        * false - The payer is not the ticket holder</span>
 <span class="sd">        </span>
@@ -195,7 +193,7 @@
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">issue_date</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        | This is the date of issue recorded in the airline systemIn a case of multiple issuances of the same ticket to a cardholder, you should use the last ticket date.</span>
 <span class="sd">        | Format: YYYYMMDD</span>
 <span class="sd">        </span>
@@ -209,7 +207,7 @@
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">merchant_customer_id</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        | Your ID of the customer in the context of the airline data</span>
 <span class="sd">        </span>
 <span class="sd">        Type: str</span>
@@ -222,7 +220,7 @@
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">name</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        | Name of the airline</span>
 <span class="sd">        </span>
 <span class="sd">        Type: str</span>
@@ -235,7 +233,7 @@
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">number_in_party</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        | Total number of passengers in the party. If the the property numberInParty is not present, then the number of passengers will be used on the WL Online Payment Acceptance Platform.</span>
 <span class="sd">        </span>
 <span class="sd">        Type: int</span>
@@ -248,7 +246,7 @@
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">passenger_name</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        | Name of passenger</span>
 <span class="sd">        </span>
 <span class="sd">        Type: str</span>
@@ -261,7 +259,7 @@
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">passengers</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        | Object that holds the data on the individual passengers (this object is used for fraud screening on the Ogone Payment Platform)</span>
 <span class="sd">        </span>
 <span class="sd">        Type: list[:class:`ingenico.connect.sdk.domain.definitions.airline_passenger.AirlinePassenger`]</span>
@@ -274,7 +272,7 @@
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">place_of_issue</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        | Place of issue</span>
 <span class="sd">        | For sales in the US the last two characters (pos 14-15) must be the US state code.</span>
 <span class="sd">        </span>
@@ -288,7 +286,7 @@
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">pnr</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        | Passenger name record</span>
 <span class="sd">        </span>
 <span class="sd">        Type: str</span>
@@ -301,7 +299,7 @@
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">point_of_sale</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        | IATA point of sale name</span>
 <span class="sd">        </span>
 <span class="sd">        Type: str</span>
@@ -314,7 +312,7 @@
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">pos_city_code</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        | city code of the point of sale</span>
 <span class="sd">        </span>
 <span class="sd">        Type: str</span>
@@ -327,7 +325,7 @@
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">ticket_delivery_method</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        | Possible values:</span>
 <span class="sd">        </span>
 <span class="sd">        * e-ticket</span>
@@ -346,7 +344,7 @@
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">ticket_number</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        | The ticket or document number. On the Ogone Payment Platform  and the GlobalCollect Payment Platform it contains:</span>
 <span class="sd">        </span>
 <span class="sd">        </span>
@@ -365,7 +363,7 @@
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">total_fare</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        | Total fare for all legs on the ticket, excluding taxes and fees. If multiple tickets are purchased, this is the total fare for all tickets</span>
 <span class="sd">        </span>
 <span class="sd">        Type: int</span>
@@ -378,7 +376,7 @@
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">total_fee</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        | Total fee for all legs on the ticket. If multiple tickets are purchased, this is the total fee for all tickets</span>
 <span class="sd">        </span>
 <span class="sd">        Type: int</span>
@@ -391,7 +389,7 @@
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">total_taxes</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        | Total taxes for all legs on the ticket. If multiple tickets are purchased, this is the total taxes for all tickets</span>
 <span class="sd">        </span>
 <span class="sd">        Type: int</span>
@@ -404,7 +402,7 @@
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">travel_agency_name</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        | Name of the travel agency issuing the ticket. For direct airline integration, leave this property blank on the Ogone Payment Platform.</span>
 <span class="sd">        </span>
 <span class="sd">        Type: str</span>
@@ -570,12 +568,12 @@
   <h3 id="searchlabel">Quick search</h3>
     <div class="searchformwrapper">
     <form class="search" action="../../../../../../search.html" method="get">
-      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
       <input type="submit" value="Go" />
     </form>
     </div>
 </div>
-<script>$('#searchbox').show(0);</script>
+<script>document.getElementById('searchbox').style.display = "block"</script>
 
 
 
@@ -592,8 +590,8 @@
       &copy;Copyright (c) 2016 Global Collect Services B.V..
       
       |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 3.5.4</a>
-      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 7.0.1</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.13</a>
       
     </div>
 
