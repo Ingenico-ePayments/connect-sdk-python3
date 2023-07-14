@@ -13,6 +13,8 @@ class OrderReferences(DataObject):
     __invoice_data = None
     __merchant_order_id = None
     __merchant_reference = None
+    __provider_id = None
+    __provider_merchant_id = None
 
     @property
     def descriptor(self):
@@ -102,6 +104,32 @@ class OrderReferences(DataObject):
     def merchant_reference(self, value):
         self.__merchant_reference = value
 
+    @property
+    def provider_id(self):
+        """
+        | Provides an additional means of reconciliation for Gateway merchants
+        
+        Type: str
+        """
+        return self.__provider_id
+
+    @provider_id.setter
+    def provider_id(self, value):
+        self.__provider_id = value
+
+    @property
+    def provider_merchant_id(self):
+        """
+        | Provides an additional means of reconciliation, this is the MerchantId used at the provider
+        
+        Type: str
+        """
+        return self.__provider_merchant_id
+
+    @provider_merchant_id.setter
+    def provider_merchant_id(self, value):
+        self.__provider_merchant_id = value
+
     def to_dictionary(self):
         dictionary = super(OrderReferences, self).to_dictionary()
         if self.descriptor is not None:
@@ -112,6 +140,10 @@ class OrderReferences(DataObject):
             dictionary['merchantOrderId'] = self.merchant_order_id
         if self.merchant_reference is not None:
             dictionary['merchantReference'] = self.merchant_reference
+        if self.provider_id is not None:
+            dictionary['providerId'] = self.provider_id
+        if self.provider_merchant_id is not None:
+            dictionary['providerMerchantId'] = self.provider_merchant_id
         return dictionary
 
     def from_dictionary(self, dictionary):
@@ -127,4 +159,8 @@ class OrderReferences(DataObject):
             self.merchant_order_id = dictionary['merchantOrderId']
         if 'merchantReference' in dictionary:
             self.merchant_reference = dictionary['merchantReference']
+        if 'providerId' in dictionary:
+            self.provider_id = dictionary['providerId']
+        if 'providerMerchantId' in dictionary:
+            self.provider_merchant_id = dictionary['providerMerchantId']
         return self

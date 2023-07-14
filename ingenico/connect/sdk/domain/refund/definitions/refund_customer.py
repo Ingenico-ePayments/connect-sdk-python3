@@ -58,7 +58,26 @@ class RefundCustomer(DataObject):
     @property
     def fiscal_number(self):
         """
-        | Fiscal registration number of the customer (CPF) with a length of 11 or the tax registration number of the company for a business customer (CNPJ) with a length of 14.
+        | The fiscal registration number of the customer or the tax registration number of the company in case of a business customer. Please find below specifics per country:
+        
+        * Argentina - Consumer (DNI) with a length of 7 or 8 digits
+        * Argentina - Company (CUIT) with a length of 11 digits
+        * Brazil - Consumer (CPF) with a length of 11 digits
+        * Brazil - Company (CNPJ) with a length of 14 digits
+        * Chile - Consumer (RUT) with a length of 9 digits
+        * Colombia - Consumer (NIT) with a length of 8, 9 or 10 digits
+        * Denmark - Consumer (CPR-nummer or personnummer) with a length of 10 digits
+        * Dominican Republic - Consumer (RNC) with a length of 11 digits
+        * Finland - Consumer (Finnish: henkilötunnus (abbreviated as HETU)) with a length of 11 characters
+        * India - Consumer (PAN) with a length of 10 characters
+        * Mexico - Consumer (RFC) with a length of 13 digits
+        * Mexico - Company (RFC) with a length of 12 digits
+        * Norway - Consumer (fødselsnummer) with a length of 11 digits
+        * Peru - Consumer (RUC) with a length of 11 digits
+        * Sweden - Consumer (personnummer) with a length of 10 or 12 digits
+        * Uruguay - Consumer (CI) with a length of 8 digits
+        * Uruguay - Consumer (NIE) with a length of 9 digits
+        * Uruguay - Company (RUT) with a length of 12 digits
         
         Type: str
         """

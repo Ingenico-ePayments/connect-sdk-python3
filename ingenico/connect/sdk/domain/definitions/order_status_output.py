@@ -4,6 +4,7 @@
 # https://epayments-api.developer-ingenico.com/s2sapi/v1/
 #
 from ingenico.connect.sdk.data_object import DataObject
+from ingenico.connect.sdk.domain.definitions.key_value_pair import KeyValuePair
 from ingenico.connect.sdk.domain.errors.definitions.api_error import APIError
 
 
@@ -11,6 +12,8 @@ class OrderStatusOutput(DataObject):
 
     __errors = None
     __is_cancellable = None
+    __is_retriable = None
+    __provider_raw_output = None
     __status_category = None
     __status_code = None
     __status_code_change_date_time = None
@@ -43,6 +46,35 @@ class OrderStatusOutput(DataObject):
     @is_cancellable.setter
     def is_cancellable(self, value):
         self.__is_cancellable = value
+
+    @property
+    def is_retriable(self):
+        """
+        | Flag indicating whether a rejected payment may be retried by the merchant without incurring a fee 
+        
+        * true
+        * false
+        
+        Type: bool
+        """
+        return self.__is_retriable
+
+    @is_retriable.setter
+    def is_retriable(self, value):
+        self.__is_retriable = value
+
+    @property
+    def provider_raw_output(self):
+        """
+        | This is the raw response returned by the acquirer. This property contains unprocessed data directly returned by the acquirer. It's recommended for data analysis only due to its dynamic nature, which may undergo future changes.
+        
+        Type: list[:class:`ingenico.connect.sdk.domain.definitions.key_value_pair.KeyValuePair`]
+        """
+        return self.__provider_raw_output
+
+    @provider_raw_output.setter
+    def provider_raw_output(self, value):
+        self.__provider_raw_output = value
 
     @property
     def status_category(self):
@@ -156,6 +188,13 @@ class OrderStatusOutput(DataObject):
                     dictionary['errors'].append(element.to_dictionary())
         if self.is_cancellable is not None:
             dictionary['isCancellable'] = self.is_cancellable
+        if self.is_retriable is not None:
+            dictionary['isRetriable'] = self.is_retriable
+        if self.provider_raw_output is not None:
+            dictionary['providerRawOutput'] = []
+            for element in self.provider_raw_output:
+                if element is not None:
+                    dictionary['providerRawOutput'].append(element.to_dictionary())
         if self.status_category is not None:
             dictionary['statusCategory'] = self.status_category
         if self.status_code is not None:
@@ -175,6 +214,15 @@ class OrderStatusOutput(DataObject):
                 self.errors.append(value.from_dictionary(element))
         if 'isCancellable' in dictionary:
             self.is_cancellable = dictionary['isCancellable']
+        if 'isRetriable' in dictionary:
+            self.is_retriable = dictionary['isRetriable']
+        if 'providerRawOutput' in dictionary:
+            if not isinstance(dictionary['providerRawOutput'], list):
+                raise TypeError('value \'{}\' is not a list'.format(dictionary['providerRawOutput']))
+            self.provider_raw_output = []
+            for element in dictionary['providerRawOutput']:
+                value = KeyValuePair()
+                self.provider_raw_output.append(value.from_dictionary(element))
         if 'statusCategory' in dictionary:
             self.status_category = dictionary['statusCategory']
         if 'statusCode' in dictionary:
