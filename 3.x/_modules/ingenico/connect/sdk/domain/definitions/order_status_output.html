@@ -4,7 +4,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>ingenico.connect.sdk.domain.definitions.order_status_output &#8212; connect-sdk-python3 3.40.0 documentation</title>
+    <title>ingenico.connect.sdk.domain.definitions.order_status_output &#8212; connect-sdk-python3 3.41.0 documentation</title>
     <link rel="stylesheet" type="text/css" href="../../../../../../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../../../../../../_static/alabaster.css" />
     <script data-url_root="../../../../../../" id="documentation_options" src="../../../../../../_static/documentation_options.js"></script>
@@ -35,6 +35,7 @@
 <span class="c1"># https://epayments-api.developer-ingenico.com/s2sapi/v1/</span>
 <span class="c1">#</span>
 <span class="kn">from</span> <span class="nn">ingenico.connect.sdk.data_object</span> <span class="kn">import</span> <span class="n">DataObject</span>
+<span class="kn">from</span> <span class="nn">ingenico.connect.sdk.domain.definitions.key_value_pair</span> <span class="kn">import</span> <span class="n">KeyValuePair</span>
 <span class="kn">from</span> <span class="nn">ingenico.connect.sdk.domain.errors.definitions.api_error</span> <span class="kn">import</span> <span class="n">APIError</span>
 
 
@@ -42,6 +43,8 @@
 
     <span class="n">__errors</span> <span class="o">=</span> <span class="kc">None</span>
     <span class="n">__is_cancellable</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="n">__is_retriable</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="n">__provider_raw_output</span> <span class="o">=</span> <span class="kc">None</span>
     <span class="n">__status_category</span> <span class="o">=</span> <span class="kc">None</span>
     <span class="n">__status_code</span> <span class="o">=</span> <span class="kc">None</span>
     <span class="n">__status_code_change_date_time</span> <span class="o">=</span> <span class="kc">None</span>
@@ -74,6 +77,35 @@
     <span class="nd">@is_cancellable</span><span class="o">.</span><span class="n">setter</span>
     <span class="k">def</span> <span class="nf">is_cancellable</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">__is_cancellable</span> <span class="o">=</span> <span class="n">value</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">is_retriable</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        | Flag indicating whether a rejected payment may be retried by the merchant without incurring a fee </span>
+<span class="sd">        </span>
+<span class="sd">        * true</span>
+<span class="sd">        * false</span>
+<span class="sd">        </span>
+<span class="sd">        Type: bool</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__is_retriable</span>
+
+    <span class="nd">@is_retriable</span><span class="o">.</span><span class="n">setter</span>
+    <span class="k">def</span> <span class="nf">is_retriable</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">__is_retriable</span> <span class="o">=</span> <span class="n">value</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">provider_raw_output</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        | This is the raw response returned by the acquirer. This property contains unprocessed data directly returned by the acquirer. It&#39;s recommended for data analysis only due to its dynamic nature, which may undergo future changes.</span>
+<span class="sd">        </span>
+<span class="sd">        Type: list[:class:`ingenico.connect.sdk.domain.definitions.key_value_pair.KeyValuePair`]</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__provider_raw_output</span>
+
+    <span class="nd">@provider_raw_output</span><span class="o">.</span><span class="n">setter</span>
+    <span class="k">def</span> <span class="nf">provider_raw_output</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">__provider_raw_output</span> <span class="o">=</span> <span class="n">value</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">status_category</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
@@ -187,6 +219,13 @@
                     <span class="n">dictionary</span><span class="p">[</span><span class="s1">&#39;errors&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">element</span><span class="o">.</span><span class="n">to_dictionary</span><span class="p">())</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">is_cancellable</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
             <span class="n">dictionary</span><span class="p">[</span><span class="s1">&#39;isCancellable&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">is_cancellable</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">is_retriable</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">dictionary</span><span class="p">[</span><span class="s1">&#39;isRetriable&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">is_retriable</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">provider_raw_output</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">dictionary</span><span class="p">[</span><span class="s1">&#39;providerRawOutput&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
+            <span class="k">for</span> <span class="n">element</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">provider_raw_output</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">element</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                    <span class="n">dictionary</span><span class="p">[</span><span class="s1">&#39;providerRawOutput&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">element</span><span class="o">.</span><span class="n">to_dictionary</span><span class="p">())</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">status_category</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
             <span class="n">dictionary</span><span class="p">[</span><span class="s1">&#39;statusCategory&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">status_category</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">status_code</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
@@ -206,6 +245,15 @@
                 <span class="bp">self</span><span class="o">.</span><span class="n">errors</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">value</span><span class="o">.</span><span class="n">from_dictionary</span><span class="p">(</span><span class="n">element</span><span class="p">))</span>
         <span class="k">if</span> <span class="s1">&#39;isCancellable&#39;</span> <span class="ow">in</span> <span class="n">dictionary</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">is_cancellable</span> <span class="o">=</span> <span class="n">dictionary</span><span class="p">[</span><span class="s1">&#39;isCancellable&#39;</span><span class="p">]</span>
+        <span class="k">if</span> <span class="s1">&#39;isRetriable&#39;</span> <span class="ow">in</span> <span class="n">dictionary</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">is_retriable</span> <span class="o">=</span> <span class="n">dictionary</span><span class="p">[</span><span class="s1">&#39;isRetriable&#39;</span><span class="p">]</span>
+        <span class="k">if</span> <span class="s1">&#39;providerRawOutput&#39;</span> <span class="ow">in</span> <span class="n">dictionary</span><span class="p">:</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">dictionary</span><span class="p">[</span><span class="s1">&#39;providerRawOutput&#39;</span><span class="p">],</span> <span class="nb">list</span><span class="p">):</span>
+                <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s1">&#39;value </span><span class="se">\&#39;</span><span class="si">{}</span><span class="se">\&#39;</span><span class="s1"> is not a list&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">dictionary</span><span class="p">[</span><span class="s1">&#39;providerRawOutput&#39;</span><span class="p">]))</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">provider_raw_output</span> <span class="o">=</span> <span class="p">[]</span>
+            <span class="k">for</span> <span class="n">element</span> <span class="ow">in</span> <span class="n">dictionary</span><span class="p">[</span><span class="s1">&#39;providerRawOutput&#39;</span><span class="p">]:</span>
+                <span class="n">value</span> <span class="o">=</span> <span class="n">KeyValuePair</span><span class="p">()</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">provider_raw_output</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">value</span><span class="o">.</span><span class="n">from_dictionary</span><span class="p">(</span><span class="n">element</span><span class="p">))</span>
         <span class="k">if</span> <span class="s1">&#39;statusCategory&#39;</span> <span class="ow">in</span> <span class="n">dictionary</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">status_category</span> <span class="o">=</span> <span class="n">dictionary</span><span class="p">[</span><span class="s1">&#39;statusCategory&#39;</span><span class="p">]</span>
         <span class="k">if</span> <span class="s1">&#39;statusCode&#39;</span> <span class="ow">in</span> <span class="n">dictionary</span><span class="p">:</span>

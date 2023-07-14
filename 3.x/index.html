@@ -5,7 +5,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Ingenico Connect Python SDK &#8212; connect-sdk-python3 3.40.0 documentation</title>
+    <title>Ingenico Connect Python SDK &#8212; connect-sdk-python3 3.41.0 documentation</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="_static/alabaster.css" />
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
@@ -2277,6 +2277,28 @@ representation for an object of the given type</p>
 <dt class="sig sig-object py" id="ingenico.connect.sdk.domain.capture.definitions.capture_status_output.CaptureStatusOutput.from_dictionary">
 <span class="sig-name descname"><span class="pre">from_dictionary</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dictionary</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ingenico/connect/sdk/domain/capture/definitions/capture_status_output.html#CaptureStatusOutput.from_dictionary"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ingenico.connect.sdk.domain.capture.definitions.capture_status_output.CaptureStatusOutput.from_dictionary" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="ingenico.connect.sdk.domain.capture.definitions.capture_status_output.CaptureStatusOutput.is_retriable">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">is_retriable</span></span><a class="headerlink" href="#ingenico.connect.sdk.domain.capture.definitions.capture_status_output.CaptureStatusOutput.is_retriable" title="Permalink to this definition">¶</a></dt>
+<dd><div class="line-block">
+<div class="line">Flag indicating whether a rejected payment may be retried by the merchant without incurring a fee </div>
+</div>
+<ul class="simple">
+<li><p>true</p></li>
+<li><p>false</p></li>
+</ul>
+<p>Type: bool</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="ingenico.connect.sdk.domain.capture.definitions.capture_status_output.CaptureStatusOutput.provider_raw_output">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">provider_raw_output</span></span><a class="headerlink" href="#ingenico.connect.sdk.domain.capture.definitions.capture_status_output.CaptureStatusOutput.provider_raw_output" title="Permalink to this definition">¶</a></dt>
+<dd><div class="line-block">
+<div class="line">This is the raw response returned by the acquirer. This property contains unprocessed data directly returned by the acquirer. It’s recommended for data analysis only due to its dynamic nature, which may undergo future changes.</div>
+</div>
+<p>Type: list[<a class="reference internal" href="#ingenico.connect.sdk.domain.definitions.key_value_pair.KeyValuePair" title="ingenico.connect.sdk.domain.definitions.key_value_pair.KeyValuePair"><code class="xref py py-class docutils literal notranslate"><span class="pre">ingenico.connect.sdk.domain.definitions.key_value_pair.KeyValuePair</span></code></a>]</p>
+</dd></dl>
 
 <dl class="py property">
 <dt class="sig sig-object py" id="ingenico.connect.sdk.domain.capture.definitions.capture_status_output.CaptureStatusOutput.status_code">
@@ -4606,6 +4628,28 @@ representation for an object of the given type</p>
 <li><p>false</p></li>
 </ul>
 <p>Type: bool</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="ingenico.connect.sdk.domain.definitions.order_status_output.OrderStatusOutput.is_retriable">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">is_retriable</span></span><a class="headerlink" href="#ingenico.connect.sdk.domain.definitions.order_status_output.OrderStatusOutput.is_retriable" title="Permalink to this definition">¶</a></dt>
+<dd><div class="line-block">
+<div class="line">Flag indicating whether a rejected payment may be retried by the merchant without incurring a fee </div>
+</div>
+<ul class="simple">
+<li><p>true</p></li>
+<li><p>false</p></li>
+</ul>
+<p>Type: bool</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="ingenico.connect.sdk.domain.definitions.order_status_output.OrderStatusOutput.provider_raw_output">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">provider_raw_output</span></span><a class="headerlink" href="#ingenico.connect.sdk.domain.definitions.order_status_output.OrderStatusOutput.provider_raw_output" title="Permalink to this definition">¶</a></dt>
+<dd><div class="line-block">
+<div class="line">This is the raw response returned by the acquirer. This property contains unprocessed data directly returned by the acquirer. It’s recommended for data analysis only due to its dynamic nature, which may undergo future changes.</div>
+</div>
+<p>Type: list[<a class="reference internal" href="#ingenico.connect.sdk.domain.definitions.key_value_pair.KeyValuePair" title="ingenico.connect.sdk.domain.definitions.key_value_pair.KeyValuePair"><code class="xref py py-class docutils literal notranslate"><span class="pre">ingenico.connect.sdk.domain.definitions.key_value_pair.KeyValuePair</span></code></a>]</p>
 </dd></dl>
 
 <dl class="py property">
@@ -10051,16 +10095,27 @@ representation for an object of the given type</p>
 <dt class="sig sig-object py" id="ingenico.connect.sdk.domain.payment.definitions.customer.Customer.fiscal_number">
 <em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">fiscal_number</span></span><a class="headerlink" href="#ingenico.connect.sdk.domain.payment.definitions.customer.Customer.fiscal_number" title="Permalink to this definition">¶</a></dt>
 <dd><div class="line-block">
-<div class="line">Fiscal registration number of the customer or the tax registration number of the company for a business customer. Please find below specifics per country:</div>
+<div class="line">The fiscal registration number of the customer or the tax registration number of the company in case of a business customer. Please find below specifics per country:</div>
 </div>
 <ul class="simple">
+<li><p>Argentina - Consumer (DNI) with a length of 7 or 8 digits</p></li>
+<li><p>Argentina - Company (CUIT) with a length of 11 digits</p></li>
 <li><p>Brazil - Consumer (CPF) with a length of 11 digits</p></li>
 <li><p>Brazil - Company (CNPJ) with a length of 14 digits</p></li>
+<li><p>Chile - Consumer (RUT) with a length of 9 digits</p></li>
+<li><p>Colombia - Consumer (NIT) with a length of 8, 9 or 10 digits</p></li>
 <li><p>Denmark - Consumer (CPR-nummer or personnummer) with a length of 10 digits</p></li>
-<li><p>Finland - Consumer (Finnish: henkilötunnus (abbreviated as HETU), Swedish: personbeteckning) with a length of 11 characters</p></li>
+<li><p>Dominican Republic - Consumer (RNC) with a length of 11 digits</p></li>
+<li><p>Finland - Consumer (Finnish: henkilötunnus (abbreviated as HETU)) with a length of 11 characters</p></li>
 <li><p>India - Consumer (PAN) with a length of 10 characters</p></li>
+<li><p>Mexico - Consumer (RFC) with a length of 13 digits</p></li>
+<li><p>Mexico - Company (RFC) with a length of 12 digits</p></li>
 <li><p>Norway - Consumer (fødselsnummer) with a length of 11 digits</p></li>
+<li><p>Peru - Consumer (RUC) with a length of 11 digits</p></li>
 <li><p>Sweden - Consumer (personnummer) with a length of 10 or 12 digits</p></li>
+<li><p>Uruguay - Consumer (CI) with a length of 8 digits</p></li>
+<li><p>Uruguay - Consumer (NIE) with a length of 9 digits</p></li>
+<li><p>Uruguay - Company (RUT) with a length of 12 digits</p></li>
 </ul>
 <p>Type: str</p>
 </dd></dl>
@@ -12963,6 +13018,24 @@ representation for an object of the given type</p>
 <p>Type: str</p>
 </dd></dl>
 
+<dl class="py property">
+<dt class="sig sig-object py" id="ingenico.connect.sdk.domain.payment.definitions.order_references.OrderReferences.provider_id">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">provider_id</span></span><a class="headerlink" href="#ingenico.connect.sdk.domain.payment.definitions.order_references.OrderReferences.provider_id" title="Permalink to this definition">¶</a></dt>
+<dd><div class="line-block">
+<div class="line">Provides an additional means of reconciliation for Gateway merchants</div>
+</div>
+<p>Type: str</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="ingenico.connect.sdk.domain.payment.definitions.order_references.OrderReferences.provider_merchant_id">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">provider_merchant_id</span></span><a class="headerlink" href="#ingenico.connect.sdk.domain.payment.definitions.order_references.OrderReferences.provider_merchant_id" title="Permalink to this definition">¶</a></dt>
+<dd><div class="line-block">
+<div class="line">Provides an additional means of reconciliation, this is the MerchantId used at the provider</div>
+</div>
+<p>Type: str</p>
+</dd></dl>
+
 <dl class="py method">
 <dt class="sig sig-object py" id="ingenico.connect.sdk.domain.payment.definitions.order_references.OrderReferences.to_dictionary">
 <span class="sig-name descname"><span class="pre">to_dictionary</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/ingenico/connect/sdk/domain/payment/definitions/order_references.html#OrderReferences.to_dictionary"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ingenico.connect.sdk.domain.payment.definitions.order_references.OrderReferences.to_dictionary" title="Permalink to this definition">¶</a></dt>
@@ -13962,28 +14035,6 @@ representation for an object of the given type</p>
 </dd></dl>
 
 <dl class="py property">
-<dt class="sig sig-object py" id="ingenico.connect.sdk.domain.payment.definitions.payment_status_output.PaymentStatusOutput.is_retriable">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">is_retriable</span></span><a class="headerlink" href="#ingenico.connect.sdk.domain.payment.definitions.payment_status_output.PaymentStatusOutput.is_retriable" title="Permalink to this definition">¶</a></dt>
-<dd><div class="line-block">
-<div class="line">Flag indicating whether a rejected payment may be retried by the merchant without incurring a fee </div>
-</div>
-<ul class="simple">
-<li><p>true</p></li>
-<li><p>false</p></li>
-</ul>
-<p>Type: bool</p>
-</dd></dl>
-
-<dl class="py property">
-<dt class="sig sig-object py" id="ingenico.connect.sdk.domain.payment.definitions.payment_status_output.PaymentStatusOutput.provider_raw_output">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">provider_raw_output</span></span><a class="headerlink" href="#ingenico.connect.sdk.domain.payment.definitions.payment_status_output.PaymentStatusOutput.provider_raw_output" title="Permalink to this definition">¶</a></dt>
-<dd><div class="line-block">
-<div class="line">This is the raw response returned by the acquirer. This property contains unprocessed data directly returned by the acquirer. It’s recommended for data analysis only due to its dynamic nature, which may undergo future changes.</div>
-</div>
-<p>Type: list[<a class="reference internal" href="#ingenico.connect.sdk.domain.definitions.key_value_pair.KeyValuePair" title="ingenico.connect.sdk.domain.definitions.key_value_pair.KeyValuePair"><code class="xref py py-class docutils literal notranslate"><span class="pre">ingenico.connect.sdk.domain.definitions.key_value_pair.KeyValuePair</span></code></a>]</p>
-</dd></dl>
-
-<dl class="py property">
 <dt class="sig sig-object py" id="ingenico.connect.sdk.domain.payment.definitions.payment_status_output.PaymentStatusOutput.three_d_secure_status">
 <em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">three_d_secure_status</span></span><a class="headerlink" href="#ingenico.connect.sdk.domain.payment.definitions.payment_status_output.PaymentStatusOutput.three_d_secure_status" title="Permalink to this definition">¶</a></dt>
 <dd><div class="line-block">
@@ -14905,6 +14956,15 @@ representation for an object of the given type</p>
 <dt class="sig sig-object py" id="ingenico.connect.sdk.domain.payment.definitions.refund_card_method_specific_output.RefundCardMethodSpecificOutput.__annotations__">
 <span class="sig-name descname"><span class="pre">__annotations__</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">{}</span></em><a class="headerlink" href="#ingenico.connect.sdk.domain.payment.definitions.refund_card_method_specific_output.RefundCardMethodSpecificOutput.__annotations__" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="ingenico.connect.sdk.domain.payment.definitions.refund_card_method_specific_output.RefundCardMethodSpecificOutput.authorisation_code">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">authorisation_code</span></span><a class="headerlink" href="#ingenico.connect.sdk.domain.payment.definitions.refund_card_method_specific_output.RefundCardMethodSpecificOutput.authorisation_code" title="Permalink to this definition">¶</a></dt>
+<dd><div class="line-block">
+<div class="line">Card Authorization code as returned by the acquirer</div>
+</div>
+<p>Type: str</p>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="ingenico.connect.sdk.domain.payment.definitions.refund_card_method_specific_output.RefundCardMethodSpecificOutput.from_dictionary">
@@ -19684,8 +19744,28 @@ representation for an object of the given type</p>
 <dt class="sig sig-object py" id="ingenico.connect.sdk.domain.refund.definitions.refund_customer.RefundCustomer.fiscal_number">
 <em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">fiscal_number</span></span><a class="headerlink" href="#ingenico.connect.sdk.domain.refund.definitions.refund_customer.RefundCustomer.fiscal_number" title="Permalink to this definition">¶</a></dt>
 <dd><div class="line-block">
-<div class="line">Fiscal registration number of the customer (CPF) with a length of 11 or the tax registration number of the company for a business customer (CNPJ) with a length of 14.</div>
+<div class="line">The fiscal registration number of the customer or the tax registration number of the company in case of a business customer. Please find below specifics per country:</div>
 </div>
+<ul class="simple">
+<li><p>Argentina - Consumer (DNI) with a length of 7 or 8 digits</p></li>
+<li><p>Argentina - Company (CUIT) with a length of 11 digits</p></li>
+<li><p>Brazil - Consumer (CPF) with a length of 11 digits</p></li>
+<li><p>Brazil - Company (CNPJ) with a length of 14 digits</p></li>
+<li><p>Chile - Consumer (RUT) with a length of 9 digits</p></li>
+<li><p>Colombia - Consumer (NIT) with a length of 8, 9 or 10 digits</p></li>
+<li><p>Denmark - Consumer (CPR-nummer or personnummer) with a length of 10 digits</p></li>
+<li><p>Dominican Republic - Consumer (RNC) with a length of 11 digits</p></li>
+<li><p>Finland - Consumer (Finnish: henkilötunnus (abbreviated as HETU)) with a length of 11 characters</p></li>
+<li><p>India - Consumer (PAN) with a length of 10 characters</p></li>
+<li><p>Mexico - Consumer (RFC) with a length of 13 digits</p></li>
+<li><p>Mexico - Company (RFC) with a length of 12 digits</p></li>
+<li><p>Norway - Consumer (fødselsnummer) with a length of 11 digits</p></li>
+<li><p>Peru - Consumer (RUC) with a length of 11 digits</p></li>
+<li><p>Sweden - Consumer (personnummer) with a length of 10 or 12 digits</p></li>
+<li><p>Uruguay - Consumer (CI) with a length of 8 digits</p></li>
+<li><p>Uruguay - Consumer (NIE) with a length of 9 digits</p></li>
+<li><p>Uruguay - Company (RUT) with a length of 12 digits</p></li>
+</ul>
 <p>Type: str</p>
 </dd></dl>
 

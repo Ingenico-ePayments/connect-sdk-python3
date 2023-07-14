@@ -4,7 +4,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>ingenico.connect.sdk.domain.payment.definitions.customer &#8212; connect-sdk-python3 3.40.0 documentation</title>
+    <title>ingenico.connect.sdk.domain.payment.definitions.customer &#8212; connect-sdk-python3 3.41.0 documentation</title>
     <link rel="stylesheet" type="text/css" href="../../../../../../../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../../../../../../../_static/alabaster.css" />
     <script data-url_root="../../../../../../../" id="documentation_options" src="../../../../../../../_static/documentation_options.js"></script>
@@ -131,15 +131,26 @@
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">fiscal_number</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        | Fiscal registration number of the customer or the tax registration number of the company for a business customer. Please find below specifics per country:</span>
+<span class="sd">        | The fiscal registration number of the customer or the tax registration number of the company in case of a business customer. Please find below specifics per country:</span>
 <span class="sd">        </span>
+<span class="sd">        * Argentina - Consumer (DNI) with a length of 7 or 8 digits</span>
+<span class="sd">        * Argentina - Company (CUIT) with a length of 11 digits</span>
 <span class="sd">        * Brazil - Consumer (CPF) with a length of 11 digits</span>
 <span class="sd">        * Brazil - Company (CNPJ) with a length of 14 digits</span>
+<span class="sd">        * Chile - Consumer (RUT) with a length of 9 digits</span>
+<span class="sd">        * Colombia - Consumer (NIT) with a length of 8, 9 or 10 digits</span>
 <span class="sd">        * Denmark - Consumer (CPR-nummer or personnummer) with a length of 10 digits</span>
-<span class="sd">        * Finland - Consumer (Finnish: henkilötunnus (abbreviated as HETU), Swedish: personbeteckning) with a length of 11 characters</span>
+<span class="sd">        * Dominican Republic - Consumer (RNC) with a length of 11 digits</span>
+<span class="sd">        * Finland - Consumer (Finnish: henkilötunnus (abbreviated as HETU)) with a length of 11 characters</span>
 <span class="sd">        * India - Consumer (PAN) with a length of 10 characters</span>
+<span class="sd">        * Mexico - Consumer (RFC) with a length of 13 digits</span>
+<span class="sd">        * Mexico - Company (RFC) with a length of 12 digits</span>
 <span class="sd">        * Norway - Consumer (fødselsnummer) with a length of 11 digits</span>
+<span class="sd">        * Peru - Consumer (RUC) with a length of 11 digits</span>
 <span class="sd">        * Sweden - Consumer (personnummer) with a length of 10 or 12 digits</span>
+<span class="sd">        * Uruguay - Consumer (CI) with a length of 8 digits</span>
+<span class="sd">        * Uruguay - Consumer (NIE) with a length of 9 digits</span>
+<span class="sd">        * Uruguay - Company (RUT) with a length of 12 digits</span>
 <span class="sd">        </span>
 <span class="sd">        Type: str</span>
 <span class="sd">        &quot;&quot;&quot;</span>
