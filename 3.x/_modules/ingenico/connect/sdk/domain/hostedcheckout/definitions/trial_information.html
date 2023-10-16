@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="../../../../../../../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ingenico.connect.sdk.domain.hostedcheckout.definitions.trial_information &#8212; connect-sdk-python3 3.43.0 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../../../../../../../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../../../../../../../_static/alabaster.css?v=039e1c02" />
+    <script src="../../../../../../../_static/documentation_options.js?v=33718c35"></script>
+    <script src="../../../../../../../_static/doctools.js?v=888ff710"></script>
+    <script src="../../../../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <link rel="index" title="Index" href="../../../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../../../search.html" />
+   
+  <link rel="stylesheet" href="../../../../../../../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <h1>Source code for ingenico.connect.sdk.domain.hostedcheckout.definitions.trial_information</h1><div class="highlight"><pre>
+<span></span><span class="c1"># -*- coding: utf-8 -*-</span>
+<span class="c1">#</span>
+<span class="c1"># This class was auto-generated from the API references found at</span>
+<span class="c1"># https://epayments-api.developer-ingenico.com/s2sapi/v1/</span>
+<span class="c1">#</span>
+<span class="kn">from</span> <span class="nn">ingenico.connect.sdk.data_object</span> <span class="kn">import</span> <span class="n">DataObject</span>
+<span class="kn">from</span> <span class="nn">ingenico.connect.sdk.domain.definitions.amount_of_money</span> <span class="kn">import</span> <span class="n">AmountOfMoney</span>
+<span class="kn">from</span> <span class="nn">ingenico.connect.sdk.domain.hostedcheckout.definitions.frequency</span> <span class="kn">import</span> <span class="n">Frequency</span>
+<span class="kn">from</span> <span class="nn">ingenico.connect.sdk.domain.hostedcheckout.definitions.trial_period</span> <span class="kn">import</span> <span class="n">TrialPeriod</span>
+
+
+<div class="viewcode-block" id="TrialInformation">
+<a class="viewcode-back" href="../../../../../../../index.html#ingenico.connect.sdk.domain.hostedcheckout.definitions.trial_information.TrialInformation">[docs]</a>
+<span class="k">class</span> <span class="nc">TrialInformation</span><span class="p">(</span><span class="n">DataObject</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    | The object containing data of the trial period: no-cost or discounted time-constrained trial subscription period.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">__amount_of_money_after_trial</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="n">__end_date</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="n">__is_recurring</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="n">__trial_period</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="n">__trial_period_recurring</span> <span class="o">=</span> <span class="kc">None</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">amount_of_money_after_trial</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        | The object containing the amount and ISO currency code attributes of money to be paid after the trial period ends.</span>
+<span class="sd">        </span>
+<span class="sd">        | Note:</span>
+<span class="sd">        </span>
+<span class="sd">        | The property order.amountOfMoney should be populated with the amount to be paid during or for the trial period (no-cost or discounted time-constrained trial subscription period).</span>
+<span class="sd">        </span>
+<span class="sd">        Type: :class:`ingenico.connect.sdk.domain.definitions.amount_of_money.AmountOfMoney`</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__amount_of_money_after_trial</span>
+
+    <span class="nd">@amount_of_money_after_trial</span><span class="o">.</span><span class="n">setter</span>
+    <span class="k">def</span> <span class="nf">amount_of_money_after_trial</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">__amount_of_money_after_trial</span> <span class="o">=</span> <span class="n">value</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">end_date</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        | The date that the trial period ends in YYYYMMDD format.</span>
+<span class="sd">        </span>
+<span class="sd">        Type: str</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__end_date</span>
+
+    <span class="nd">@end_date</span><span class="o">.</span><span class="n">setter</span>
+    <span class="k">def</span> <span class="nf">end_date</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">__end_date</span> <span class="o">=</span> <span class="n">value</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">is_recurring</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        | The property specifying if there will be recurring charges throughout the trial period (when the trial period involves a temporary discounted rate).</span>
+<span class="sd">        | True = there will be recurring charges during the trial period</span>
+<span class="sd">        | False = there will not be recurring charges during the trial period</span>
+<span class="sd">        </span>
+<span class="sd">        Type: bool</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__is_recurring</span>
+
+    <span class="nd">@is_recurring</span><span class="o">.</span><span class="n">setter</span>
+    <span class="k">def</span> <span class="nf">is_recurring</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">__is_recurring</span> <span class="o">=</span> <span class="n">value</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">trial_period</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        | The object containing information on the trial period duration and the interval between payments during that period.</span>
+<span class="sd">        </span>
+<span class="sd">        Type: :class:`ingenico.connect.sdk.domain.hostedcheckout.definitions.trial_period.TrialPeriod`</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__trial_period</span>
+
+    <span class="nd">@trial_period</span><span class="o">.</span><span class="n">setter</span>
+    <span class="k">def</span> <span class="nf">trial_period</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">__trial_period</span> <span class="o">=</span> <span class="n">value</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">trial_period_recurring</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        | The object containing the frequency and interval between recurring payments.</span>
+<span class="sd">        </span>
+<span class="sd">        | Note:</span>
+<span class="sd">        </span>
+<span class="sd">        | This object should only be populated if the frequency of recurring payments between the trial and regular periods is different.</span>
+<span class="sd">        </span>
+<span class="sd">        | If you do not populated this object, then the same interval frequency and interval of recurringPaymentsData.recurringInterval will be used</span>
+<span class="sd">        </span>
+<span class="sd">        Type: :class:`ingenico.connect.sdk.domain.hostedcheckout.definitions.frequency.Frequency`</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__trial_period_recurring</span>
+
+    <span class="nd">@trial_period_recurring</span><span class="o">.</span><span class="n">setter</span>
+    <span class="k">def</span> <span class="nf">trial_period_recurring</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">__trial_period_recurring</span> <span class="o">=</span> <span class="n">value</span>
+
+<div class="viewcode-block" id="TrialInformation.to_dictionary">
+<a class="viewcode-back" href="../../../../../../../index.html#ingenico.connect.sdk.domain.hostedcheckout.definitions.trial_information.TrialInformation.to_dictionary">[docs]</a>
+    <span class="k">def</span> <span class="nf">to_dictionary</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">dictionary</span> <span class="o">=</span> <span class="nb">super</span><span class="p">(</span><span class="n">TrialInformation</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">to_dictionary</span><span class="p">()</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">amount_of_money_after_trial</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">dictionary</span><span class="p">[</span><span class="s1">&#39;amountOfMoneyAfterTrial&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">amount_of_money_after_trial</span><span class="o">.</span><span class="n">to_dictionary</span><span class="p">()</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">end_date</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">dictionary</span><span class="p">[</span><span class="s1">&#39;endDate&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">end_date</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">is_recurring</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">dictionary</span><span class="p">[</span><span class="s1">&#39;isRecurring&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">is_recurring</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">trial_period</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">dictionary</span><span class="p">[</span><span class="s1">&#39;trialPeriod&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">trial_period</span><span class="o">.</span><span class="n">to_dictionary</span><span class="p">()</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">trial_period_recurring</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">dictionary</span><span class="p">[</span><span class="s1">&#39;trialPeriodRecurring&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">trial_period_recurring</span><span class="o">.</span><span class="n">to_dictionary</span><span class="p">()</span>
+        <span class="k">return</span> <span class="n">dictionary</span></div>
+
+
+<div class="viewcode-block" id="TrialInformation.from_dictionary">
+<a class="viewcode-back" href="../../../../../../../index.html#ingenico.connect.sdk.domain.hostedcheckout.definitions.trial_information.TrialInformation.from_dictionary">[docs]</a>
+    <span class="k">def</span> <span class="nf">from_dictionary</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dictionary</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">TrialInformation</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">from_dictionary</span><span class="p">(</span><span class="n">dictionary</span><span class="p">)</span>
+        <span class="k">if</span> <span class="s1">&#39;amountOfMoneyAfterTrial&#39;</span> <span class="ow">in</span> <span class="n">dictionary</span><span class="p">:</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">dictionary</span><span class="p">[</span><span class="s1">&#39;amountOfMoneyAfterTrial&#39;</span><span class="p">],</span> <span class="nb">dict</span><span class="p">):</span>
+                <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s1">&#39;value </span><span class="se">\&#39;</span><span class="si">{}</span><span class="se">\&#39;</span><span class="s1"> is not a dictionary&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">dictionary</span><span class="p">[</span><span class="s1">&#39;amountOfMoneyAfterTrial&#39;</span><span class="p">]))</span>
+            <span class="n">value</span> <span class="o">=</span> <span class="n">AmountOfMoney</span><span class="p">()</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">amount_of_money_after_trial</span> <span class="o">=</span> <span class="n">value</span><span class="o">.</span><span class="n">from_dictionary</span><span class="p">(</span><span class="n">dictionary</span><span class="p">[</span><span class="s1">&#39;amountOfMoneyAfterTrial&#39;</span><span class="p">])</span>
+        <span class="k">if</span> <span class="s1">&#39;endDate&#39;</span> <span class="ow">in</span> <span class="n">dictionary</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">end_date</span> <span class="o">=</span> <span class="n">dictionary</span><span class="p">[</span><span class="s1">&#39;endDate&#39;</span><span class="p">]</span>
+        <span class="k">if</span> <span class="s1">&#39;isRecurring&#39;</span> <span class="ow">in</span> <span class="n">dictionary</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">is_recurring</span> <span class="o">=</span> <span class="n">dictionary</span><span class="p">[</span><span class="s1">&#39;isRecurring&#39;</span><span class="p">]</span>
+        <span class="k">if</span> <span class="s1">&#39;trialPeriod&#39;</span> <span class="ow">in</span> <span class="n">dictionary</span><span class="p">:</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">dictionary</span><span class="p">[</span><span class="s1">&#39;trialPeriod&#39;</span><span class="p">],</span> <span class="nb">dict</span><span class="p">):</span>
+                <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s1">&#39;value </span><span class="se">\&#39;</span><span class="si">{}</span><span class="se">\&#39;</span><span class="s1"> is not a dictionary&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">dictionary</span><span class="p">[</span><span class="s1">&#39;trialPeriod&#39;</span><span class="p">]))</span>
+            <span class="n">value</span> <span class="o">=</span> <span class="n">TrialPeriod</span><span class="p">()</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">trial_period</span> <span class="o">=</span> <span class="n">value</span><span class="o">.</span><span class="n">from_dictionary</span><span class="p">(</span><span class="n">dictionary</span><span class="p">[</span><span class="s1">&#39;trialPeriod&#39;</span><span class="p">])</span>
+        <span class="k">if</span> <span class="s1">&#39;trialPeriodRecurring&#39;</span> <span class="ow">in</span> <span class="n">dictionary</span><span class="p">:</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">dictionary</span><span class="p">[</span><span class="s1">&#39;trialPeriodRecurring&#39;</span><span class="p">],</span> <span class="nb">dict</span><span class="p">):</span>
+                <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s1">&#39;value </span><span class="se">\&#39;</span><span class="si">{}</span><span class="se">\&#39;</span><span class="s1"> is not a dictionary&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">dictionary</span><span class="p">[</span><span class="s1">&#39;trialPeriodRecurring&#39;</span><span class="p">]))</span>
+            <span class="n">value</span> <span class="o">=</span> <span class="n">Frequency</span><span class="p">()</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">trial_period_recurring</span> <span class="o">=</span> <span class="n">value</span><span class="o">.</span><span class="n">from_dictionary</span><span class="p">(</span><span class="n">dictionary</span><span class="p">[</span><span class="s1">&#39;trialPeriodRecurring&#39;</span><span class="p">])</span>
+        <span class="k">return</span> <span class="bp">self</span></div>
+</div>
+
+</pre></div>
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../../../../../../../index.html">connect-sdk-python3</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../../../../../../../index.html">Documentation overview</a><ul>
+  <li><a href="../../../../../../index.html">Module code</a><ul>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../../../../../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;Copyright (c) 2016 Global Collect Services B.V..
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 7.2.6</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.13</a>
+      
+    </div>
+
+    
+
+    
+  </body>
+</html>

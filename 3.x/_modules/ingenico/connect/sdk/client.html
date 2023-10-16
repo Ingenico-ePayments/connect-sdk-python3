@@ -1,15 +1,15 @@
 <!DOCTYPE html>
 
-<html lang="en">
+<html lang="en" data-content_root="../../../../">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>ingenico.connect.sdk.client &#8212; connect-sdk-python3 3.42.0 documentation</title>
+    <title>ingenico.connect.sdk.client &#8212; connect-sdk-python3 3.43.0 documentation</title>
     <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=fa44fd50" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/alabaster.css?v=039e1c02" />
-    <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js?v=3a817518"></script>
+    <script src="../../../../_static/documentation_options.js?v=33718c35"></script>
     <script src="../../../../_static/doctools.js?v=888ff710"></script>
-    <script src="../../../../_static/sphinx_highlight.js?v=4825356b"></script>
+    <script src="../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <link rel="index" title="Index" href="../../../../genindex.html" />
     <link rel="search" title="Search" href="../../../../search.html" />
    
@@ -40,7 +40,9 @@
 <span class="kn">from</span> <span class="nn">ingenico.connect.sdk.merchant.merchant_client</span> <span class="kn">import</span> <span class="n">MerchantClient</span>
 
 
-<div class="viewcode-block" id="Client"><a class="viewcode-back" href="../../../../index.html#ingenico.connect.sdk.client.Client">[docs]</a><span class="k">class</span> <span class="nc">Client</span><span class="p">(</span><span class="n">ApiResource</span><span class="p">,</span> <span class="n">LoggingCapable</span><span class="p">,</span> <span class="n">ObfuscationCapable</span><span class="p">):</span>
+<div class="viewcode-block" id="Client">
+<a class="viewcode-back" href="../../../../index.html#ingenico.connect.sdk.client.Client">[docs]</a>
+<span class="k">class</span> <span class="nc">Client</span><span class="p">(</span><span class="n">ApiResource</span><span class="p">,</span> <span class="n">LoggingCapable</span><span class="p">,</span> <span class="n">ObfuscationCapable</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Ingenico ePayments platform client.</span>
 <span class="sd">    </span>
@@ -50,18 +52,26 @@
 <span class="sd">    Thread-safe.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
-<div class="viewcode-block" id="Client.API_VERSION"><a class="viewcode-back" href="../../../../index.html#ingenico.connect.sdk.client.Client.API_VERSION">[docs]</a>    <span class="nd">@staticmethod</span>
+<div class="viewcode-block" id="Client.API_VERSION">
+<a class="viewcode-back" href="../../../../index.html#ingenico.connect.sdk.client.Client.API_VERSION">[docs]</a>
+    <span class="nd">@staticmethod</span>
     <span class="k">def</span> <span class="nf">API_VERSION</span><span class="p">():</span>
         <span class="k">return</span> <span class="s2">&quot;v1&quot;</span></div>
 
-<div class="viewcode-block" id="Client.__init__"><a class="viewcode-back" href="../../../../index.html#ingenico.connect.sdk.client.Client.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">communicator</span><span class="p">,</span> <span class="n">client_meta_info</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+
+<div class="viewcode-block" id="Client.__init__">
+<a class="viewcode-back" href="../../../../index.html#ingenico.connect.sdk.client.Client.__init__">[docs]</a>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">communicator</span><span class="p">,</span> <span class="n">client_meta_info</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        :param communicator:      :class:`ingenico.connect.sdk.communicator.Communicator`</span>
 <span class="sd">        :param client_meta_info:  str</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="nb">super</span><span class="p">(</span><span class="n">Client</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">communicator</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="n">client_meta_info</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="Client.with_client_meta_info"><a class="viewcode-back" href="../../../../index.html#ingenico.connect.sdk.client.Client.with_client_meta_info">[docs]</a>    <span class="k">def</span> <span class="nf">with_client_meta_info</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">client_meta_info</span><span class="p">):</span>
+
+<div class="viewcode-block" id="Client.with_client_meta_info">
+<a class="viewcode-back" href="../../../../index.html#ingenico.connect.sdk.client.Client.with_client_meta_info">[docs]</a>
+    <span class="k">def</span> <span class="nf">with_client_meta_info</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">client_meta_info</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        :param client_meta_info: JSON string containing the meta data for the client</span>
 <span class="sd">        :return: a new Client which uses the passed meta data for the X-GCS-ClientMetaInfo header.</span>
@@ -80,7 +90,10 @@
             <span class="k">else</span><span class="p">:</span>
                 <span class="k">return</span> <span class="n">Client</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_communicator</span><span class="p">,</span> <span class="n">client_meta_info</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="Client.close_idle_connections"><a class="viewcode-back" href="../../../../index.html#ingenico.connect.sdk.client.Client.close_idle_connections">[docs]</a>    <span class="k">def</span> <span class="nf">close_idle_connections</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">idle_time</span><span class="p">):</span>
+
+<div class="viewcode-block" id="Client.close_idle_connections">
+<a class="viewcode-back" href="../../../../index.html#ingenico.connect.sdk.client.Client.close_idle_connections">[docs]</a>
+    <span class="k">def</span> <span class="nf">close_idle_connections</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">idle_time</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Utility method that delegates the call to this client&#39;s communicator.</span>
 
@@ -88,41 +101,68 @@
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_communicator</span><span class="o">.</span><span class="n">close_idle_connections</span><span class="p">(</span><span class="n">idle_time</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="Client.close_expired_connections"><a class="viewcode-back" href="../../../../index.html#ingenico.connect.sdk.client.Client.close_expired_connections">[docs]</a>    <span class="k">def</span> <span class="nf">close_expired_connections</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+
+<div class="viewcode-block" id="Client.close_expired_connections">
+<a class="viewcode-back" href="../../../../index.html#ingenico.connect.sdk.client.Client.close_expired_connections">[docs]</a>
+    <span class="k">def</span> <span class="nf">close_expired_connections</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Utility method that delegates the call to this client&#39;s communicator.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_communicator</span><span class="o">.</span><span class="n">close_expired_connections</span><span class="p">()</span></div>
 
-<div class="viewcode-block" id="Client.set_body_obfuscator"><a class="viewcode-back" href="../../../../index.html#ingenico.connect.sdk.client.Client.set_body_obfuscator">[docs]</a>    <span class="k">def</span> <span class="nf">set_body_obfuscator</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">body_obfuscator</span><span class="p">):</span>
+
+<div class="viewcode-block" id="Client.set_body_obfuscator">
+<a class="viewcode-back" href="../../../../index.html#ingenico.connect.sdk.client.Client.set_body_obfuscator">[docs]</a>
+    <span class="k">def</span> <span class="nf">set_body_obfuscator</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">body_obfuscator</span><span class="p">):</span>
         <span class="c1"># delegate to the communicator</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_communicator</span><span class="o">.</span><span class="n">set_body_obfuscator</span><span class="p">(</span><span class="n">body_obfuscator</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="Client.set_header_obfuscator"><a class="viewcode-back" href="../../../../index.html#ingenico.connect.sdk.client.Client.set_header_obfuscator">[docs]</a>    <span class="k">def</span> <span class="nf">set_header_obfuscator</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">header_obfuscator</span><span class="p">):</span>
+
+<div class="viewcode-block" id="Client.set_header_obfuscator">
+<a class="viewcode-back" href="../../../../index.html#ingenico.connect.sdk.client.Client.set_header_obfuscator">[docs]</a>
+    <span class="k">def</span> <span class="nf">set_header_obfuscator</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">header_obfuscator</span><span class="p">):</span>
         <span class="c1"># delegate to the communicator</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_communicator</span><span class="o">.</span><span class="n">set_header_obfuscator</span><span class="p">(</span><span class="n">header_obfuscator</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="Client.enable_logging"><a class="viewcode-back" href="../../../../index.html#ingenico.connect.sdk.client.Client.enable_logging">[docs]</a>    <span class="k">def</span> <span class="nf">enable_logging</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">communicator_logger</span><span class="p">):</span>
+
+<div class="viewcode-block" id="Client.enable_logging">
+<a class="viewcode-back" href="../../../../index.html#ingenico.connect.sdk.client.Client.enable_logging">[docs]</a>
+    <span class="k">def</span> <span class="nf">enable_logging</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">communicator_logger</span><span class="p">):</span>
         <span class="c1"># delegate to the communicator</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_communicator</span><span class="o">.</span><span class="n">enable_logging</span><span class="p">(</span><span class="n">communicator_logger</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="Client.disable_logging"><a class="viewcode-back" href="../../../../index.html#ingenico.connect.sdk.client.Client.disable_logging">[docs]</a>    <span class="k">def</span> <span class="nf">disable_logging</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+
+<div class="viewcode-block" id="Client.disable_logging">
+<a class="viewcode-back" href="../../../../index.html#ingenico.connect.sdk.client.Client.disable_logging">[docs]</a>
+    <span class="k">def</span> <span class="nf">disable_logging</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="c1"># delegate to the communicator</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_communicator</span><span class="o">.</span><span class="n">disable_logging</span><span class="p">()</span></div>
 
-<div class="viewcode-block" id="Client.close"><a class="viewcode-back" href="../../../../index.html#ingenico.connect.sdk.client.Client.close">[docs]</a>    <span class="k">def</span> <span class="nf">close</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+
+<div class="viewcode-block" id="Client.close">
+<a class="viewcode-back" href="../../../../index.html#ingenico.connect.sdk.client.Client.close">[docs]</a>
+    <span class="k">def</span> <span class="nf">close</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Releases any system resources associated with this object.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_communicator</span><span class="o">.</span><span class="n">close</span><span class="p">()</span></div>
 
-<div class="viewcode-block" id="Client.__enter__"><a class="viewcode-back" href="../../../../index.html#ingenico.connect.sdk.client.Client.__enter__">[docs]</a>    <span class="k">def</span> <span class="fm">__enter__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+
+<div class="viewcode-block" id="Client.__enter__">
+<a class="viewcode-back" href="../../../../index.html#ingenico.connect.sdk.client.Client.__enter__">[docs]</a>
+    <span class="k">def</span> <span class="fm">__enter__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">return</span> <span class="bp">self</span></div>
 
-<div class="viewcode-block" id="Client.__exit__"><a class="viewcode-back" href="../../../../index.html#ingenico.connect.sdk.client.Client.__exit__">[docs]</a>    <span class="k">def</span> <span class="fm">__exit__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">exc_type</span><span class="p">,</span> <span class="n">exc_val</span><span class="p">,</span> <span class="n">exc_tb</span><span class="p">):</span>
+
+<div class="viewcode-block" id="Client.__exit__">
+<a class="viewcode-back" href="../../../../index.html#ingenico.connect.sdk.client.Client.__exit__">[docs]</a>
+    <span class="k">def</span> <span class="fm">__exit__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">exc_type</span><span class="p">,</span> <span class="n">exc_val</span><span class="p">,</span> <span class="n">exc_tb</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">close</span><span class="p">()</span></div>
 
-<div class="viewcode-block" id="Client.merchant"><a class="viewcode-back" href="../../../../index.html#ingenico.connect.sdk.client.Client.merchant">[docs]</a>    <span class="k">def</span> <span class="nf">merchant</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">merchant_id</span><span class="p">):</span>
+
+<div class="viewcode-block" id="Client.merchant">
+<a class="viewcode-back" href="../../../../index.html#ingenico.connect.sdk.client.Client.merchant">[docs]</a>
+    <span class="k">def</span> <span class="nf">merchant</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">merchant_id</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Resource /{merchantId}</span>
 
@@ -132,7 +172,9 @@
         <span class="n">sub_context</span> <span class="o">=</span> <span class="p">{</span>
             <span class="s2">&quot;merchantId&quot;</span><span class="p">:</span> <span class="n">merchant_id</span><span class="p">,</span>
         <span class="p">}</span>
-        <span class="k">return</span> <span class="n">MerchantClient</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">sub_context</span><span class="p">)</span></div></div>
+        <span class="k">return</span> <span class="n">MerchantClient</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">sub_context</span><span class="p">)</span></div>
+</div>
+
 </pre></div>
 
           </div>
@@ -187,7 +229,7 @@
       &copy;Copyright (c) 2016 Global Collect Services B.V..
       
       |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 7.1.2</a>
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 7.2.6</a>
       &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.13</a>
       
     </div>

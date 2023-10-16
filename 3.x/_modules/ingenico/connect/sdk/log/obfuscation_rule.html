@@ -1,15 +1,15 @@
 <!DOCTYPE html>
 
-<html lang="en">
+<html lang="en" data-content_root="../../../../../">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>ingenico.connect.sdk.log.obfuscation_rule &#8212; connect-sdk-python3 3.42.0 documentation</title>
+    <title>ingenico.connect.sdk.log.obfuscation_rule &#8212; connect-sdk-python3 3.43.0 documentation</title>
     <link rel="stylesheet" type="text/css" href="../../../../../_static/pygments.css?v=fa44fd50" />
     <link rel="stylesheet" type="text/css" href="../../../../../_static/alabaster.css?v=039e1c02" />
-    <script data-url_root="../../../../../" id="documentation_options" src="../../../../../_static/documentation_options.js?v=3a817518"></script>
+    <script src="../../../../../_static/documentation_options.js?v=33718c35"></script>
     <script src="../../../../../_static/doctools.js?v=888ff710"></script>
-    <script src="../../../../../_static/sphinx_highlight.js?v=4825356b"></script>
+    <script src="../../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <link rel="index" title="Index" href="../../../../../genindex.html" />
     <link rel="search" title="Search" href="../../../../../search.html" />
    
@@ -29,21 +29,29 @@
           <div class="body" role="main">
             
   <h1>Source code for ingenico.connect.sdk.log.obfuscation_rule</h1><div class="highlight"><pre>
-<div class="viewcode-block" id="obfuscate_all"><a class="viewcode-back" href="../../../../../index.html#ingenico.connect.sdk.log.obfuscation_rule.obfuscate_all">[docs]</a><span></span><span class="k">def</span> <span class="nf">obfuscate_all</span><span class="p">():</span>
+<div class="viewcode-block" id="obfuscate_all">
+<a class="viewcode-back" href="../../../../../index.html#ingenico.connect.sdk.log.obfuscation_rule.obfuscate_all">[docs]</a>
+<span></span><span class="k">def</span> <span class="nf">obfuscate_all</span><span class="p">():</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Returns an obfuscation rule (function) that will replace all characters with *</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="k">lambda</span> <span class="n">value</span><span class="p">:</span> <span class="s1">&#39;*&#39;</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="n">value</span><span class="p">)</span> <span class="k">if</span> <span class="n">value</span> <span class="k">else</span> <span class="n">value</span></div>
 
 
-<div class="viewcode-block" id="obfuscate_with_fixed_length"><a class="viewcode-back" href="../../../../../index.html#ingenico.connect.sdk.log.obfuscation_rule.obfuscate_with_fixed_length">[docs]</a><span class="k">def</span> <span class="nf">obfuscate_with_fixed_length</span><span class="p">(</span><span class="n">fixed_length</span><span class="p">):</span>
+
+<div class="viewcode-block" id="obfuscate_with_fixed_length">
+<a class="viewcode-back" href="../../../../../index.html#ingenico.connect.sdk.log.obfuscation_rule.obfuscate_with_fixed_length">[docs]</a>
+<span class="k">def</span> <span class="nf">obfuscate_with_fixed_length</span><span class="p">(</span><span class="n">fixed_length</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Returns an obfuscation rule (function) that will replace values with a fixed length string containing only *</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="k">lambda</span> <span class="n">value</span><span class="p">:</span> <span class="s1">&#39;*&#39;</span> <span class="o">*</span> <span class="n">fixed_length</span></div>
 
 
-<div class="viewcode-block" id="obfuscate_all_but_first"><a class="viewcode-back" href="../../../../../index.html#ingenico.connect.sdk.log.obfuscation_rule.obfuscate_all_but_first">[docs]</a><span class="k">def</span> <span class="nf">obfuscate_all_but_first</span><span class="p">(</span><span class="n">count</span><span class="p">):</span>
+
+<div class="viewcode-block" id="obfuscate_all_but_first">
+<a class="viewcode-back" href="../../../../../index.html#ingenico.connect.sdk.log.obfuscation_rule.obfuscate_all_but_first">[docs]</a>
+<span class="k">def</span> <span class="nf">obfuscate_all_but_first</span><span class="p">(</span><span class="n">count</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Returns an obfuscation rule (function) that will keep a fixed number of characters at the start,</span>
 <span class="sd">    then replaces all other characters with *</span>
@@ -59,7 +67,10 @@
     <span class="k">return</span> <span class="n">obfuscate_value</span></div>
 
 
-<div class="viewcode-block" id="obfuscate_all_but_last"><a class="viewcode-back" href="../../../../../index.html#ingenico.connect.sdk.log.obfuscation_rule.obfuscate_all_but_last">[docs]</a><span class="k">def</span> <span class="nf">obfuscate_all_but_last</span><span class="p">(</span><span class="n">count</span><span class="p">):</span>
+
+<div class="viewcode-block" id="obfuscate_all_but_last">
+<a class="viewcode-back" href="../../../../../index.html#ingenico.connect.sdk.log.obfuscation_rule.obfuscate_all_but_last">[docs]</a>
+<span class="k">def</span> <span class="nf">obfuscate_all_but_last</span><span class="p">(</span><span class="n">count</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Returns an obfuscation rule that will keep a fixed number of characters at the end,</span>
 <span class="sd">    then replaces all other characters with *</span>
@@ -73,6 +84,7 @@
         <span class="n">start</span> <span class="o">=</span> <span class="s1">&#39;*&#39;</span> <span class="o">*</span> <span class="p">(</span><span class="n">length</span> <span class="o">-</span> <span class="n">count</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">start</span> <span class="o">+</span> <span class="n">value</span><span class="p">[</span><span class="o">-</span><span class="n">count</span><span class="p">:]</span>
     <span class="k">return</span> <span class="n">obfuscate_value</span></div>
+
 </pre></div>
 
           </div>
@@ -127,7 +139,7 @@
       &copy;Copyright (c) 2016 Global Collect Services B.V..
       
       |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 7.1.2</a>
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 7.2.6</a>
       &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.13</a>
       
     </div>

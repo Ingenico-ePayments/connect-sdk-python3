@@ -1,15 +1,15 @@
 <!DOCTYPE html>
 
-<html lang="en">
+<html lang="en" data-content_root="../../../../">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>ingenico.connect.sdk.marshaller &#8212; connect-sdk-python3 3.42.0 documentation</title>
+    <title>ingenico.connect.sdk.marshaller &#8212; connect-sdk-python3 3.43.0 documentation</title>
     <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=fa44fd50" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/alabaster.css?v=039e1c02" />
-    <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js?v=3a817518"></script>
+    <script src="../../../../_static/documentation_options.js?v=33718c35"></script>
     <script src="../../../../_static/doctools.js?v=888ff710"></script>
-    <script src="../../../../_static/sphinx_highlight.js?v=4825356b"></script>
+    <script src="../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <link rel="index" title="Index" href="../../../../genindex.html" />
     <link rel="search" title="Search" href="../../../../search.html" />
    
@@ -29,13 +29,17 @@
           <div class="body" role="main">
             
   <h1>Source code for ingenico.connect.sdk.marshaller</h1><div class="highlight"><pre>
-<div class="viewcode-block" id="Marshaller"><a class="viewcode-back" href="../../../../index.html#ingenico.connect.sdk.marshaller.Marshaller">[docs]</a><span></span><span class="k">class</span> <span class="nc">Marshaller</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+<div class="viewcode-block" id="Marshaller">
+<a class="viewcode-back" href="../../../../index.html#ingenico.connect.sdk.marshaller.Marshaller">[docs]</a>
+<span></span><span class="k">class</span> <span class="nc">Marshaller</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Used to marshal and unmarshal Ingenico ePayments platform request and response</span>
 <span class="sd">    objects to and from JSON.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
-<div class="viewcode-block" id="Marshaller.marshal"><a class="viewcode-back" href="../../../../index.html#ingenico.connect.sdk.marshaller.Marshaller.marshal">[docs]</a>    <span class="k">def</span> <span class="nf">marshal</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">request_object</span><span class="p">):</span>
+<div class="viewcode-block" id="Marshaller.marshal">
+<a class="viewcode-back" href="../../../../index.html#ingenico.connect.sdk.marshaller.Marshaller.marshal">[docs]</a>
+    <span class="k">def</span> <span class="nf">marshal</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">request_object</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Marshal a request object to a JSON string.</span>
 
@@ -44,7 +48,10 @@
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">raise</span> <span class="ne">NotImplementedError</span></div>
 
-<div class="viewcode-block" id="Marshaller.unmarshal"><a class="viewcode-back" href="../../../../index.html#ingenico.connect.sdk.marshaller.Marshaller.unmarshal">[docs]</a>    <span class="k">def</span> <span class="nf">unmarshal</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">response_json</span><span class="p">,</span> <span class="n">type_class</span><span class="p">):</span>
+
+<div class="viewcode-block" id="Marshaller.unmarshal">
+<a class="viewcode-back" href="../../../../index.html#ingenico.connect.sdk.marshaller.Marshaller.unmarshal">[docs]</a>
+    <span class="k">def</span> <span class="nf">unmarshal</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">response_json</span><span class="p">,</span> <span class="n">type_class</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Unmarshal a JSON string to a response object.</span>
 
@@ -53,7 +60,9 @@
 <span class="sd">        :raise: MarshallerSyntaxException if the JSON is not a valid</span>
 <span class="sd">         representation for an object of the given type</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">raise</span> <span class="ne">NotImplementedError</span></div></div>
+        <span class="k">raise</span> <span class="ne">NotImplementedError</span></div>
+</div>
+
 </pre></div>
 
           </div>
@@ -108,7 +117,7 @@
       &copy;Copyright (c) 2016 Global Collect Services B.V..
       
       |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 7.1.2</a>
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 7.2.6</a>
       &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.13</a>
       
     </div>

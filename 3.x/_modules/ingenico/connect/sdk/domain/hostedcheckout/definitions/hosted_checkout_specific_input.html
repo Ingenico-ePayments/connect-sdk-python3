@@ -1,15 +1,15 @@
 <!DOCTYPE html>
 
-<html lang="en">
+<html lang="en" data-content_root="../../../../../../../">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>ingenico.connect.sdk.domain.hostedcheckout.definitions.hosted_checkout_specific_input &#8212; connect-sdk-python3 3.42.0 documentation</title>
+    <title>ingenico.connect.sdk.domain.hostedcheckout.definitions.hosted_checkout_specific_input &#8212; connect-sdk-python3 3.43.0 documentation</title>
     <link rel="stylesheet" type="text/css" href="../../../../../../../_static/pygments.css?v=fa44fd50" />
     <link rel="stylesheet" type="text/css" href="../../../../../../../_static/alabaster.css?v=039e1c02" />
-    <script data-url_root="../../../../../../../" id="documentation_options" src="../../../../../../../_static/documentation_options.js?v=3a817518"></script>
+    <script src="../../../../../../../_static/documentation_options.js?v=33718c35"></script>
     <script src="../../../../../../../_static/doctools.js?v=888ff710"></script>
-    <script src="../../../../../../../_static/sphinx_highlight.js?v=4825356b"></script>
+    <script src="../../../../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <link rel="index" title="Index" href="../../../../../../../genindex.html" />
     <link rel="search" title="Search" href="../../../../../../../search.html" />
    
@@ -36,13 +36,17 @@
 <span class="c1">#</span>
 <span class="kn">from</span> <span class="nn">ingenico.connect.sdk.data_object</span> <span class="kn">import</span> <span class="n">DataObject</span>
 <span class="kn">from</span> <span class="nn">ingenico.connect.sdk.domain.hostedcheckout.definitions.payment_product_filters_hosted_checkout</span> <span class="kn">import</span> <span class="n">PaymentProductFiltersHostedCheckout</span>
+<span class="kn">from</span> <span class="nn">ingenico.connect.sdk.domain.hostedcheckout.definitions.recurring_payments_data</span> <span class="kn">import</span> <span class="n">RecurringPaymentsData</span>
 
 
-<div class="viewcode-block" id="HostedCheckoutSpecificInput"><a class="viewcode-back" href="../../../../../../../index.html#ingenico.connect.sdk.domain.hostedcheckout.definitions.hosted_checkout_specific_input.HostedCheckoutSpecificInput">[docs]</a><span class="k">class</span> <span class="nc">HostedCheckoutSpecificInput</span><span class="p">(</span><span class="n">DataObject</span><span class="p">):</span>
+<div class="viewcode-block" id="HostedCheckoutSpecificInput">
+<a class="viewcode-back" href="../../../../../../../index.html#ingenico.connect.sdk.domain.hostedcheckout.definitions.hosted_checkout_specific_input.HostedCheckoutSpecificInput">[docs]</a>
+<span class="k">class</span> <span class="nc">HostedCheckoutSpecificInput</span><span class="p">(</span><span class="n">DataObject</span><span class="p">):</span>
 
     <span class="n">__is_recurring</span> <span class="o">=</span> <span class="kc">None</span>
     <span class="n">__locale</span> <span class="o">=</span> <span class="kc">None</span>
     <span class="n">__payment_product_filters</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="n">__recurring_payments_data</span> <span class="o">=</span> <span class="kc">None</span>
     <span class="n">__return_cancel_state</span> <span class="o">=</span> <span class="kc">None</span>
     <span class="n">__return_url</span> <span class="o">=</span> <span class="kc">None</span>
     <span class="n">__show_result_page</span> <span class="o">=</span> <span class="kc">None</span>
@@ -91,6 +95,24 @@
     <span class="nd">@payment_product_filters</span><span class="o">.</span><span class="n">setter</span>
     <span class="k">def</span> <span class="nf">payment_product_filters</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">__payment_product_filters</span> <span class="o">=</span> <span class="n">value</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">recurring_payments_data</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        | The object containing reference data for the text that can be displayed on MyCheckout hosted payment page with subscription information.</span>
+<span class="sd">        </span>
+<span class="sd">        | Note:</span>
+<span class="sd">        </span>
+<span class="sd">        | The data in this object is only meant for displaying recurring payments-related data on your checkout page.</span>
+<span class="sd">        | You still need to submit all the recurring payment-related data in the corresponding payment product-specific input. (example: cardPaymentMethodSpecificInput.recurring and cardPaymentMethodSpecificInput.isRecurring)</span>
+<span class="sd">        </span>
+<span class="sd">        Type: :class:`ingenico.connect.sdk.domain.hostedcheckout.definitions.recurring_payments_data.RecurringPaymentsData`</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__recurring_payments_data</span>
+
+    <span class="nd">@recurring_payments_data</span><span class="o">.</span><span class="n">setter</span>
+    <span class="k">def</span> <span class="nf">recurring_payments_data</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">__recurring_payments_data</span> <span class="o">=</span> <span class="n">value</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">return_cancel_state</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
@@ -177,7 +199,9 @@
     <span class="k">def</span> <span class="nf">variant</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">__variant</span> <span class="o">=</span> <span class="n">value</span>
 
-<div class="viewcode-block" id="HostedCheckoutSpecificInput.to_dictionary"><a class="viewcode-back" href="../../../../../../../index.html#ingenico.connect.sdk.domain.hostedcheckout.definitions.hosted_checkout_specific_input.HostedCheckoutSpecificInput.to_dictionary">[docs]</a>    <span class="k">def</span> <span class="nf">to_dictionary</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="HostedCheckoutSpecificInput.to_dictionary">
+<a class="viewcode-back" href="../../../../../../../index.html#ingenico.connect.sdk.domain.hostedcheckout.definitions.hosted_checkout_specific_input.HostedCheckoutSpecificInput.to_dictionary">[docs]</a>
+    <span class="k">def</span> <span class="nf">to_dictionary</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="n">dictionary</span> <span class="o">=</span> <span class="nb">super</span><span class="p">(</span><span class="n">HostedCheckoutSpecificInput</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">to_dictionary</span><span class="p">()</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">is_recurring</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
             <span class="n">dictionary</span><span class="p">[</span><span class="s1">&#39;isRecurring&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">is_recurring</span>
@@ -185,6 +209,8 @@
             <span class="n">dictionary</span><span class="p">[</span><span class="s1">&#39;locale&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">locale</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">payment_product_filters</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
             <span class="n">dictionary</span><span class="p">[</span><span class="s1">&#39;paymentProductFilters&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">payment_product_filters</span><span class="o">.</span><span class="n">to_dictionary</span><span class="p">()</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">recurring_payments_data</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">dictionary</span><span class="p">[</span><span class="s1">&#39;recurringPaymentsData&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">recurring_payments_data</span><span class="o">.</span><span class="n">to_dictionary</span><span class="p">()</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">return_cancel_state</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
             <span class="n">dictionary</span><span class="p">[</span><span class="s1">&#39;returnCancelState&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">return_cancel_state</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">return_url</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
@@ -199,7 +225,10 @@
             <span class="n">dictionary</span><span class="p">[</span><span class="s1">&#39;variant&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">variant</span>
         <span class="k">return</span> <span class="n">dictionary</span></div>
 
-<div class="viewcode-block" id="HostedCheckoutSpecificInput.from_dictionary"><a class="viewcode-back" href="../../../../../../../index.html#ingenico.connect.sdk.domain.hostedcheckout.definitions.hosted_checkout_specific_input.HostedCheckoutSpecificInput.from_dictionary">[docs]</a>    <span class="k">def</span> <span class="nf">from_dictionary</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dictionary</span><span class="p">):</span>
+
+<div class="viewcode-block" id="HostedCheckoutSpecificInput.from_dictionary">
+<a class="viewcode-back" href="../../../../../../../index.html#ingenico.connect.sdk.domain.hostedcheckout.definitions.hosted_checkout_specific_input.HostedCheckoutSpecificInput.from_dictionary">[docs]</a>
+    <span class="k">def</span> <span class="nf">from_dictionary</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dictionary</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">(</span><span class="n">HostedCheckoutSpecificInput</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">from_dictionary</span><span class="p">(</span><span class="n">dictionary</span><span class="p">)</span>
         <span class="k">if</span> <span class="s1">&#39;isRecurring&#39;</span> <span class="ow">in</span> <span class="n">dictionary</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">is_recurring</span> <span class="o">=</span> <span class="n">dictionary</span><span class="p">[</span><span class="s1">&#39;isRecurring&#39;</span><span class="p">]</span>
@@ -210,6 +239,11 @@
                 <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s1">&#39;value </span><span class="se">\&#39;</span><span class="si">{}</span><span class="se">\&#39;</span><span class="s1"> is not a dictionary&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">dictionary</span><span class="p">[</span><span class="s1">&#39;paymentProductFilters&#39;</span><span class="p">]))</span>
             <span class="n">value</span> <span class="o">=</span> <span class="n">PaymentProductFiltersHostedCheckout</span><span class="p">()</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">payment_product_filters</span> <span class="o">=</span> <span class="n">value</span><span class="o">.</span><span class="n">from_dictionary</span><span class="p">(</span><span class="n">dictionary</span><span class="p">[</span><span class="s1">&#39;paymentProductFilters&#39;</span><span class="p">])</span>
+        <span class="k">if</span> <span class="s1">&#39;recurringPaymentsData&#39;</span> <span class="ow">in</span> <span class="n">dictionary</span><span class="p">:</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">dictionary</span><span class="p">[</span><span class="s1">&#39;recurringPaymentsData&#39;</span><span class="p">],</span> <span class="nb">dict</span><span class="p">):</span>
+                <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s1">&#39;value </span><span class="se">\&#39;</span><span class="si">{}</span><span class="se">\&#39;</span><span class="s1"> is not a dictionary&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">dictionary</span><span class="p">[</span><span class="s1">&#39;recurringPaymentsData&#39;</span><span class="p">]))</span>
+            <span class="n">value</span> <span class="o">=</span> <span class="n">RecurringPaymentsData</span><span class="p">()</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">recurring_payments_data</span> <span class="o">=</span> <span class="n">value</span><span class="o">.</span><span class="n">from_dictionary</span><span class="p">(</span><span class="n">dictionary</span><span class="p">[</span><span class="s1">&#39;recurringPaymentsData&#39;</span><span class="p">])</span>
         <span class="k">if</span> <span class="s1">&#39;returnCancelState&#39;</span> <span class="ow">in</span> <span class="n">dictionary</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">return_cancel_state</span> <span class="o">=</span> <span class="n">dictionary</span><span class="p">[</span><span class="s1">&#39;returnCancelState&#39;</span><span class="p">]</span>
         <span class="k">if</span> <span class="s1">&#39;returnUrl&#39;</span> <span class="ow">in</span> <span class="n">dictionary</span><span class="p">:</span>
@@ -222,7 +256,9 @@
             <span class="bp">self</span><span class="o">.</span><span class="n">validate_shopping_cart</span> <span class="o">=</span> <span class="n">dictionary</span><span class="p">[</span><span class="s1">&#39;validateShoppingCart&#39;</span><span class="p">]</span>
         <span class="k">if</span> <span class="s1">&#39;variant&#39;</span> <span class="ow">in</span> <span class="n">dictionary</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">variant</span> <span class="o">=</span> <span class="n">dictionary</span><span class="p">[</span><span class="s1">&#39;variant&#39;</span><span class="p">]</span>
-        <span class="k">return</span> <span class="bp">self</span></div></div>
+        <span class="k">return</span> <span class="bp">self</span></div>
+</div>
+
 </pre></div>
 
           </div>
@@ -277,7 +313,7 @@
       &copy;Copyright (c) 2016 Global Collect Services B.V..
       
       |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 7.1.2</a>
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 7.2.6</a>
       &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.13</a>
       
     </div>

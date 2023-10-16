@@ -1,15 +1,15 @@
 <!DOCTYPE html>
 
-<html lang="en">
+<html lang="en" data-content_root="../../../../../">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>ingenico.connect.sdk.log.sys_out_communicator_logger &#8212; connect-sdk-python3 3.42.0 documentation</title>
+    <title>ingenico.connect.sdk.log.sys_out_communicator_logger &#8212; connect-sdk-python3 3.43.0 documentation</title>
     <link rel="stylesheet" type="text/css" href="../../../../../_static/pygments.css?v=fa44fd50" />
     <link rel="stylesheet" type="text/css" href="../../../../../_static/alabaster.css?v=039e1c02" />
-    <script data-url_root="../../../../../" id="documentation_options" src="../../../../../_static/documentation_options.js?v=3a817518"></script>
+    <script src="../../../../../_static/documentation_options.js?v=33718c35"></script>
     <script src="../../../../../_static/doctools.js?v=888ff710"></script>
-    <script src="../../../../../_static/sphinx_highlight.js?v=4825356b"></script>
+    <script src="../../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <link rel="index" title="Index" href="../../../../../genindex.html" />
     <link rel="search" title="Search" href="../../../../../search.html" />
    
@@ -38,7 +38,9 @@
     <span class="n">CommunicatorLogger</span>
 
 
-<div class="viewcode-block" id="SysOutCommunicatorLogger"><a class="viewcode-back" href="../../../../../index.html#ingenico.connect.sdk.log.sys_out_communicator_logger.SysOutCommunicatorLogger">[docs]</a><span class="k">class</span> <span class="nc">SysOutCommunicatorLogger</span><span class="p">(</span><span class="n">CommunicatorLogger</span><span class="p">):</span>
+<div class="viewcode-block" id="SysOutCommunicatorLogger">
+<a class="viewcode-back" href="../../../../../index.html#ingenico.connect.sdk.log.sys_out_communicator_logger.SysOutCommunicatorLogger">[docs]</a>
+<span class="k">class</span> <span class="nc">SysOutCommunicatorLogger</span><span class="p">(</span><span class="n">CommunicatorLogger</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    A communicator logger that prints its message to sys.stdout</span>
 <span class="sd">    It includes a timestamp in yyyy-MM-ddTHH:mm:ss format in the system time zone.</span>
@@ -50,22 +52,29 @@
     <span class="n">_global_lock</span> <span class="o">=</span> <span class="n">Lock</span><span class="p">()</span>
     <span class="n">_old_print</span> <span class="o">=</span> <span class="nb">print</span>
 
-<div class="viewcode-block" id="SysOutCommunicatorLogger.INSTANCE"><a class="viewcode-back" href="../../../../../index.html#ingenico.connect.sdk.log.sys_out_communicator_logger.SysOutCommunicatorLogger.INSTANCE">[docs]</a>    <span class="nd">@staticmethod</span>
+<div class="viewcode-block" id="SysOutCommunicatorLogger.INSTANCE">
+<a class="viewcode-back" href="../../../../../index.html#ingenico.connect.sdk.log.sys_out_communicator_logger.SysOutCommunicatorLogger.INSTANCE">[docs]</a>
+    <span class="nd">@staticmethod</span>
     <span class="k">def</span> <span class="nf">INSTANCE</span><span class="p">():</span>
         <span class="k">return</span> <span class="n">_SYS_OUT_COMMUNICATOR_LOGGER_INSTANCE</span></div>
+
 
     <span class="k">def</span> <span class="nf">__print</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">a</span><span class="p">):</span>
         <span class="k">with</span> <span class="bp">self</span><span class="o">.</span><span class="n">_global_lock</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_old_print</span><span class="p">(</span><span class="o">*</span><span class="n">a</span><span class="p">)</span>
 
-<div class="viewcode-block" id="SysOutCommunicatorLogger.log"><a class="viewcode-back" href="../../../../../index.html#ingenico.connect.sdk.log.sys_out_communicator_logger.SysOutCommunicatorLogger.log">[docs]</a>    <span class="k">def</span> <span class="nf">log</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">message</span><span class="p">,</span> <span class="n">thrown</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<div class="viewcode-block" id="SysOutCommunicatorLogger.log">
+<a class="viewcode-back" href="../../../../../index.html#ingenico.connect.sdk.log.sys_out_communicator_logger.SysOutCommunicatorLogger.log">[docs]</a>
+    <span class="k">def</span> <span class="nf">log</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">message</span><span class="p">,</span> <span class="n">thrown</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="c1"># Make sure the same object is used for locking and printing</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">__print</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__get_date_prefix</span><span class="p">()</span> <span class="o">+</span> <span class="n">message</span><span class="p">)</span>
         <span class="k">if</span> <span class="n">thrown</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">__print</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">thrown</span><span class="p">))</span></div>
 
+
     <span class="k">def</span> <span class="nf">__get_date_prefix</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">return</span> <span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s2">&quot;%Y-%m-</span><span class="si">%d</span><span class="s2">T%H:%M:%S &quot;</span><span class="p">)</span></div>
+
 
 
 <span class="n">_SYS_OUT_COMMUNICATOR_LOGGER_INSTANCE</span> <span class="o">=</span> <span class="n">SysOutCommunicatorLogger</span><span class="p">()</span>
@@ -123,7 +132,7 @@
       &copy;Copyright (c) 2016 Global Collect Services B.V..
       
       |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 7.1.2</a>
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 7.2.6</a>
       &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.13</a>
       
     </div>

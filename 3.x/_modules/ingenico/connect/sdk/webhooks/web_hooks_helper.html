@@ -1,15 +1,15 @@
 <!DOCTYPE html>
 
-<html lang="en">
+<html lang="en" data-content_root="../../../../../">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>ingenico.connect.sdk.webhooks.web_hooks_helper &#8212; connect-sdk-python3 3.42.0 documentation</title>
+    <title>ingenico.connect.sdk.webhooks.web_hooks_helper &#8212; connect-sdk-python3 3.43.0 documentation</title>
     <link rel="stylesheet" type="text/css" href="../../../../../_static/pygments.css?v=fa44fd50" />
     <link rel="stylesheet" type="text/css" href="../../../../../_static/alabaster.css?v=039e1c02" />
-    <script data-url_root="../../../../../" id="documentation_options" src="../../../../../_static/documentation_options.js?v=3a817518"></script>
+    <script src="../../../../../_static/documentation_options.js?v=33718c35"></script>
     <script src="../../../../../_static/doctools.js?v=888ff710"></script>
-    <script src="../../../../../_static/sphinx_highlight.js?v=4825356b"></script>
+    <script src="../../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <link rel="index" title="Index" href="../../../../../genindex.html" />
     <link rel="search" title="Search" href="../../../../../search.html" />
    
@@ -39,7 +39,9 @@
 <span class="kn">from</span> <span class="nn">.signature_validation_exception</span> <span class="kn">import</span> <span class="n">SignatureValidationException</span>
 
 
-<div class="viewcode-block" id="WebhooksHelper"><a class="viewcode-back" href="../../../../../index.html#ingenico.connect.sdk.webhooks.web_hooks_helper.WebhooksHelper">[docs]</a><span class="k">class</span> <span class="nc">WebhooksHelper</span><span class="p">:</span>
+<div class="viewcode-block" id="WebhooksHelper">
+<a class="viewcode-back" href="../../../../../index.html#ingenico.connect.sdk.webhooks.web_hooks_helper.WebhooksHelper">[docs]</a>
+<span class="k">class</span> <span class="nc">WebhooksHelper</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Ingenico ePayments platform webhooks helper.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
@@ -54,7 +56,9 @@
 
     <span class="c1"># body as InputStream</span>
 
-<div class="viewcode-block" id="WebhooksHelper.unmarshal"><a class="viewcode-back" href="../../../../../index.html#ingenico.connect.sdk.webhooks.web_hooks_helper.WebhooksHelper.unmarshal">[docs]</a>    <span class="k">def</span> <span class="nf">unmarshal</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">body</span><span class="p">,</span> <span class="n">request_headers</span><span class="p">):</span>
+<div class="viewcode-block" id="WebhooksHelper.unmarshal">
+<a class="viewcode-back" href="../../../../../index.html#ingenico.connect.sdk.webhooks.web_hooks_helper.WebhooksHelper.unmarshal">[docs]</a>
+    <span class="k">def</span> <span class="nf">unmarshal</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">body</span><span class="p">,</span> <span class="n">request_headers</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Unmarshals the given body, while also validating it using the given request headers.</span>
 
@@ -67,6 +71,7 @@
         <span class="n">event</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__marshaller</span><span class="o">.</span><span class="n">unmarshal</span><span class="p">(</span><span class="n">body</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s2">&quot;utf-8&quot;</span><span class="p">),</span> <span class="n">WebhooksEvent</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">__validate_api_version</span><span class="p">(</span><span class="n">event</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">event</span></div>
+
 
     <span class="k">def</span> <span class="nf">_validate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">param</span><span class="p">,</span> <span class="n">request_headers</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
@@ -95,7 +100,9 @@
         <span class="k">if</span> <span class="n">is_valid</span> <span class="ow">is</span> <span class="kc">False</span><span class="p">:</span>
             <span class="k">raise</span> <span class="n">SignatureValidationException</span><span class="p">(</span><span class="s2">&quot;failed to validate signature: &quot;</span> <span class="o">+</span> <span class="n">signature</span><span class="p">)</span>
 
-<div class="viewcode-block" id="WebhooksHelper.are_equal_signatures"><a class="viewcode-back" href="../../../../../index.html#ingenico.connect.sdk.webhooks.web_hooks_helper.WebhooksHelper.are_equal_signatures">[docs]</a>    <span class="nd">@staticmethod</span>
+<div class="viewcode-block" id="WebhooksHelper.are_equal_signatures">
+<a class="viewcode-back" href="../../../../../index.html#ingenico.connect.sdk.webhooks.web_hooks_helper.WebhooksHelper.are_equal_signatures">[docs]</a>
+    <span class="nd">@staticmethod</span>
     <span class="k">def</span> <span class="nf">are_equal_signatures</span><span class="p">(</span><span class="n">signature</span><span class="p">,</span> <span class="n">expected_signature</span><span class="p">):</span>
         <span class="c1"># don&#39;t use a simple equals call, as that may leak timing information</span>
         <span class="c1"># (it fails fast)</span>
@@ -123,6 +130,7 @@
                 <span class="n">result</span> <span class="o">=</span> <span class="n">result</span> <span class="ow">and</span> <span class="kc">False</span>
 
         <span class="k">return</span> <span class="n">result</span></div>
+
 
     <span class="c1"># general utility methods</span>
 
@@ -154,6 +162,7 @@
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">secret_key_store</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__secret_key_store</span></div>
+
 </pre></div>
 
           </div>
@@ -208,7 +217,7 @@
       &copy;Copyright (c) 2016 Global Collect Services B.V..
       
       |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 7.1.2</a>
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 7.2.6</a>
       &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.13</a>
       
     </div>

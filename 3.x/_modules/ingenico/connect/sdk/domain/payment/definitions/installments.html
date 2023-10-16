@@ -1,15 +1,15 @@
 <!DOCTYPE html>
 
-<html lang="en">
+<html lang="en" data-content_root="../../../../../../../">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>ingenico.connect.sdk.domain.payment.definitions.installments &#8212; connect-sdk-python3 3.42.0 documentation</title>
+    <title>ingenico.connect.sdk.domain.payment.definitions.installments &#8212; connect-sdk-python3 3.43.0 documentation</title>
     <link rel="stylesheet" type="text/css" href="../../../../../../../_static/pygments.css?v=fa44fd50" />
     <link rel="stylesheet" type="text/css" href="../../../../../../../_static/alabaster.css?v=039e1c02" />
-    <script data-url_root="../../../../../../../" id="documentation_options" src="../../../../../../../_static/documentation_options.js?v=3a817518"></script>
+    <script src="../../../../../../../_static/documentation_options.js?v=33718c35"></script>
     <script src="../../../../../../../_static/doctools.js?v=888ff710"></script>
-    <script src="../../../../../../../_static/sphinx_highlight.js?v=4825356b"></script>
+    <script src="../../../../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <link rel="index" title="Index" href="../../../../../../../genindex.html" />
     <link rel="search" title="Search" href="../../../../../../../search.html" />
    
@@ -38,12 +38,15 @@
 <span class="kn">from</span> <span class="nn">ingenico.connect.sdk.domain.definitions.amount_of_money</span> <span class="kn">import</span> <span class="n">AmountOfMoney</span>
 
 
-<div class="viewcode-block" id="Installments"><a class="viewcode-back" href="../../../../../../../index.html#ingenico.connect.sdk.domain.payment.definitions.installments.Installments">[docs]</a><span class="k">class</span> <span class="nc">Installments</span><span class="p">(</span><span class="n">DataObject</span><span class="p">):</span>
+<div class="viewcode-block" id="Installments">
+<a class="viewcode-back" href="../../../../../../../index.html#ingenico.connect.sdk.domain.payment.definitions.installments.Installments">[docs]</a>
+<span class="k">class</span> <span class="nc">Installments</span><span class="p">(</span><span class="n">DataObject</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    | Object containing data related to installments which can be used for card payments and only with some acquirers. In case you send in the details of this object, only the combination of card products and acquirers that do support installments will be shown on the MyCheckout hosted payment pages.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="n">__amount_of_money_per_installment</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="n">__amount_of_money_total</span> <span class="o">=</span> <span class="kc">None</span>
     <span class="n">__frequency_of_installments</span> <span class="o">=</span> <span class="kc">None</span>
     <span class="n">__installment_plan_code</span> <span class="o">=</span> <span class="kc">None</span>
     <span class="n">__interest_rate</span> <span class="o">=</span> <span class="kc">None</span>
@@ -62,6 +65,19 @@
     <span class="nd">@amount_of_money_per_installment</span><span class="o">.</span><span class="n">setter</span>
     <span class="k">def</span> <span class="nf">amount_of_money_per_installment</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">__amount_of_money_per_installment</span> <span class="o">=</span> <span class="n">value</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">amount_of_money_total</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        | Object containing the total amount and ISO currency code attributes</span>
+<span class="sd">        </span>
+<span class="sd">        Type: :class:`ingenico.connect.sdk.domain.definitions.amount_of_money.AmountOfMoney`</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__amount_of_money_total</span>
+
+    <span class="nd">@amount_of_money_total</span><span class="o">.</span><span class="n">setter</span>
+    <span class="k">def</span> <span class="nf">amount_of_money_total</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">__amount_of_money_total</span> <span class="o">=</span> <span class="n">value</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">frequency_of_installments</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
@@ -130,10 +146,14 @@
     <span class="k">def</span> <span class="nf">number_of_installments</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">__number_of_installments</span> <span class="o">=</span> <span class="n">value</span>
 
-<div class="viewcode-block" id="Installments.to_dictionary"><a class="viewcode-back" href="../../../../../../../index.html#ingenico.connect.sdk.domain.payment.definitions.installments.Installments.to_dictionary">[docs]</a>    <span class="k">def</span> <span class="nf">to_dictionary</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="Installments.to_dictionary">
+<a class="viewcode-back" href="../../../../../../../index.html#ingenico.connect.sdk.domain.payment.definitions.installments.Installments.to_dictionary">[docs]</a>
+    <span class="k">def</span> <span class="nf">to_dictionary</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="n">dictionary</span> <span class="o">=</span> <span class="nb">super</span><span class="p">(</span><span class="n">Installments</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">to_dictionary</span><span class="p">()</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">amount_of_money_per_installment</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
             <span class="n">dictionary</span><span class="p">[</span><span class="s1">&#39;amountOfMoneyPerInstallment&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">amount_of_money_per_installment</span><span class="o">.</span><span class="n">to_dictionary</span><span class="p">()</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">amount_of_money_total</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">dictionary</span><span class="p">[</span><span class="s1">&#39;amountOfMoneyTotal&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">amount_of_money_total</span><span class="o">.</span><span class="n">to_dictionary</span><span class="p">()</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">frequency_of_installments</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
             <span class="n">dictionary</span><span class="p">[</span><span class="s1">&#39;frequencyOfInstallments&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">frequency_of_installments</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">installment_plan_code</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
@@ -144,13 +164,21 @@
             <span class="n">dictionary</span><span class="p">[</span><span class="s1">&#39;numberOfInstallments&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">number_of_installments</span>
         <span class="k">return</span> <span class="n">dictionary</span></div>
 
-<div class="viewcode-block" id="Installments.from_dictionary"><a class="viewcode-back" href="../../../../../../../index.html#ingenico.connect.sdk.domain.payment.definitions.installments.Installments.from_dictionary">[docs]</a>    <span class="k">def</span> <span class="nf">from_dictionary</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dictionary</span><span class="p">):</span>
+
+<div class="viewcode-block" id="Installments.from_dictionary">
+<a class="viewcode-back" href="../../../../../../../index.html#ingenico.connect.sdk.domain.payment.definitions.installments.Installments.from_dictionary">[docs]</a>
+    <span class="k">def</span> <span class="nf">from_dictionary</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dictionary</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">(</span><span class="n">Installments</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">from_dictionary</span><span class="p">(</span><span class="n">dictionary</span><span class="p">)</span>
         <span class="k">if</span> <span class="s1">&#39;amountOfMoneyPerInstallment&#39;</span> <span class="ow">in</span> <span class="n">dictionary</span><span class="p">:</span>
             <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">dictionary</span><span class="p">[</span><span class="s1">&#39;amountOfMoneyPerInstallment&#39;</span><span class="p">],</span> <span class="nb">dict</span><span class="p">):</span>
                 <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s1">&#39;value </span><span class="se">\&#39;</span><span class="si">{}</span><span class="se">\&#39;</span><span class="s1"> is not a dictionary&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">dictionary</span><span class="p">[</span><span class="s1">&#39;amountOfMoneyPerInstallment&#39;</span><span class="p">]))</span>
             <span class="n">value</span> <span class="o">=</span> <span class="n">AmountOfMoney</span><span class="p">()</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">amount_of_money_per_installment</span> <span class="o">=</span> <span class="n">value</span><span class="o">.</span><span class="n">from_dictionary</span><span class="p">(</span><span class="n">dictionary</span><span class="p">[</span><span class="s1">&#39;amountOfMoneyPerInstallment&#39;</span><span class="p">])</span>
+        <span class="k">if</span> <span class="s1">&#39;amountOfMoneyTotal&#39;</span> <span class="ow">in</span> <span class="n">dictionary</span><span class="p">:</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">dictionary</span><span class="p">[</span><span class="s1">&#39;amountOfMoneyTotal&#39;</span><span class="p">],</span> <span class="nb">dict</span><span class="p">):</span>
+                <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s1">&#39;value </span><span class="se">\&#39;</span><span class="si">{}</span><span class="se">\&#39;</span><span class="s1"> is not a dictionary&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">dictionary</span><span class="p">[</span><span class="s1">&#39;amountOfMoneyTotal&#39;</span><span class="p">]))</span>
+            <span class="n">value</span> <span class="o">=</span> <span class="n">AmountOfMoney</span><span class="p">()</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">amount_of_money_total</span> <span class="o">=</span> <span class="n">value</span><span class="o">.</span><span class="n">from_dictionary</span><span class="p">(</span><span class="n">dictionary</span><span class="p">[</span><span class="s1">&#39;amountOfMoneyTotal&#39;</span><span class="p">])</span>
         <span class="k">if</span> <span class="s1">&#39;frequencyOfInstallments&#39;</span> <span class="ow">in</span> <span class="n">dictionary</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">frequency_of_installments</span> <span class="o">=</span> <span class="n">dictionary</span><span class="p">[</span><span class="s1">&#39;frequencyOfInstallments&#39;</span><span class="p">]</span>
         <span class="k">if</span> <span class="s1">&#39;installmentPlanCode&#39;</span> <span class="ow">in</span> <span class="n">dictionary</span><span class="p">:</span>
@@ -159,7 +187,9 @@
             <span class="bp">self</span><span class="o">.</span><span class="n">interest_rate</span> <span class="o">=</span> <span class="n">dictionary</span><span class="p">[</span><span class="s1">&#39;interestRate&#39;</span><span class="p">]</span>
         <span class="k">if</span> <span class="s1">&#39;numberOfInstallments&#39;</span> <span class="ow">in</span> <span class="n">dictionary</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">number_of_installments</span> <span class="o">=</span> <span class="n">dictionary</span><span class="p">[</span><span class="s1">&#39;numberOfInstallments&#39;</span><span class="p">]</span>
-        <span class="k">return</span> <span class="bp">self</span></div></div>
+        <span class="k">return</span> <span class="bp">self</span></div>
+</div>
+
 </pre></div>
 
           </div>
@@ -214,7 +244,7 @@
       &copy;Copyright (c) 2016 Global Collect Services B.V..
       
       |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 7.1.2</a>
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 7.2.6</a>
       &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.13</a>
       
     </div>

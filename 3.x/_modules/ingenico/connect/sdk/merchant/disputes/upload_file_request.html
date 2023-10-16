@@ -1,15 +1,15 @@
 <!DOCTYPE html>
 
-<html lang="en">
+<html lang="en" data-content_root="../../../../../../">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>ingenico.connect.sdk.merchant.disputes.upload_file_request &#8212; connect-sdk-python3 3.42.0 documentation</title>
+    <title>ingenico.connect.sdk.merchant.disputes.upload_file_request &#8212; connect-sdk-python3 3.43.0 documentation</title>
     <link rel="stylesheet" type="text/css" href="../../../../../../_static/pygments.css?v=fa44fd50" />
     <link rel="stylesheet" type="text/css" href="../../../../../../_static/alabaster.css?v=039e1c02" />
-    <script data-url_root="../../../../../../" id="documentation_options" src="../../../../../../_static/documentation_options.js?v=3a817518"></script>
+    <script src="../../../../../../_static/documentation_options.js?v=33718c35"></script>
     <script src="../../../../../../_static/doctools.js?v=888ff710"></script>
-    <script src="../../../../../../_static/sphinx_highlight.js?v=4825356b"></script>
+    <script src="../../../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <link rel="index" title="Index" href="../../../../../../genindex.html" />
     <link rel="search" title="Search" href="../../../../../../search.html" />
    
@@ -38,7 +38,9 @@
 <span class="kn">from</span> <span class="nn">ingenico.connect.sdk.multipart_form_data_object</span> <span class="kn">import</span> <span class="n">MultipartFormDataObject</span>
 
 
-<div class="viewcode-block" id="UploadFileRequest"><a class="viewcode-back" href="../../../../../../index.html#ingenico.connect.sdk.merchant.disputes.upload_file_request.UploadFileRequest">[docs]</a><span class="k">class</span> <span class="nc">UploadFileRequest</span><span class="p">(</span><span class="n">MultipartFormDataRequest</span><span class="p">):</span>
+<div class="viewcode-block" id="UploadFileRequest">
+<a class="viewcode-back" href="../../../../../../index.html#ingenico.connect.sdk.merchant.disputes.upload_file_request.UploadFileRequest">[docs]</a>
+<span class="k">class</span> <span class="nc">UploadFileRequest</span><span class="p">(</span><span class="n">MultipartFormDataRequest</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Multipart/form-data parameters for Upload File</span>
 <span class="sd">    </span>
@@ -60,14 +62,18 @@
     <span class="k">def</span> <span class="nf">file</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">__file</span> <span class="o">=</span> <span class="n">value</span>
 
-<div class="viewcode-block" id="UploadFileRequest.to_multipart_form_data_object"><a class="viewcode-back" href="../../../../../../index.html#ingenico.connect.sdk.merchant.disputes.upload_file_request.UploadFileRequest.to_multipart_form_data_object">[docs]</a>    <span class="k">def</span> <span class="nf">to_multipart_form_data_object</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="UploadFileRequest.to_multipart_form_data_object">
+<a class="viewcode-back" href="../../../../../../index.html#ingenico.connect.sdk.merchant.disputes.upload_file_request.UploadFileRequest.to_multipart_form_data_object">[docs]</a>
+    <span class="k">def</span> <span class="nf">to_multipart_form_data_object</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        :return: :class:`ingenico.connect.sdk.MultipartFormDataObject`</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">result</span> <span class="o">=</span> <span class="n">MultipartFormDataObject</span><span class="p">()</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">file</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
             <span class="n">result</span><span class="o">.</span><span class="n">add_file</span><span class="p">(</span><span class="s2">&quot;file&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">file</span><span class="p">)</span>
-        <span class="k">return</span> <span class="n">result</span></div></div>
+        <span class="k">return</span> <span class="n">result</span></div>
+</div>
+
 </pre></div>
 
           </div>
@@ -122,7 +128,7 @@
       &copy;Copyright (c) 2016 Global Collect Services B.V..
       
       |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 7.1.2</a>
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 7.2.6</a>
       &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.13</a>
       
     </div>

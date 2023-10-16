@@ -1,15 +1,15 @@
 <!DOCTYPE html>
 
-<html lang="en">
+<html lang="en" data-content_root="../../../../../../">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>ingenico.connect.sdk.merchant.productgroups.find_productgroups_params &#8212; connect-sdk-python3 3.42.0 documentation</title>
+    <title>ingenico.connect.sdk.merchant.productgroups.find_productgroups_params &#8212; connect-sdk-python3 3.43.0 documentation</title>
     <link rel="stylesheet" type="text/css" href="../../../../../../_static/pygments.css?v=fa44fd50" />
     <link rel="stylesheet" type="text/css" href="../../../../../../_static/alabaster.css?v=039e1c02" />
-    <script data-url_root="../../../../../../" id="documentation_options" src="../../../../../../_static/documentation_options.js?v=3a817518"></script>
+    <script src="../../../../../../_static/documentation_options.js?v=33718c35"></script>
     <script src="../../../../../../_static/doctools.js?v=888ff710"></script>
-    <script src="../../../../../../_static/sphinx_highlight.js?v=4825356b"></script>
+    <script src="../../../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <link rel="index" title="Index" href="../../../../../../genindex.html" />
     <link rel="search" title="Search" href="../../../../../../search.html" />
    
@@ -38,7 +38,9 @@
 <span class="kn">from</span> <span class="nn">ingenico.connect.sdk.request_param</span> <span class="kn">import</span> <span class="n">RequestParam</span>
 
 
-<div class="viewcode-block" id="FindProductgroupsParams"><a class="viewcode-back" href="../../../../../../index.html#ingenico.connect.sdk.merchant.productgroups.find_productgroups_params.FindProductgroupsParams">[docs]</a><span class="k">class</span> <span class="nc">FindProductgroupsParams</span><span class="p">(</span><span class="n">ParamRequest</span><span class="p">):</span>
+<div class="viewcode-block" id="FindProductgroupsParams">
+<a class="viewcode-back" href="../../../../../../index.html#ingenico.connect.sdk.merchant.productgroups.find_productgroups_params.FindProductgroupsParams">[docs]</a>
+<span class="k">class</span> <span class="nc">FindProductgroupsParams</span><span class="p">(</span><span class="n">ParamRequest</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Query parameters for Get payment product groups</span>
 <span class="sd">    </span>
@@ -137,7 +139,9 @@
     <span class="k">def</span> <span class="nf">hide</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">__hide</span> <span class="o">=</span> <span class="n">value</span>
 
-<div class="viewcode-block" id="FindProductgroupsParams.add_hide"><a class="viewcode-back" href="../../../../../../index.html#ingenico.connect.sdk.merchant.productgroups.find_productgroups_params.FindProductgroupsParams.add_hide">[docs]</a>    <span class="k">def</span> <span class="nf">add_hide</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+<div class="viewcode-block" id="FindProductgroupsParams.add_hide">
+<a class="viewcode-back" href="../../../../../../index.html#ingenico.connect.sdk.merchant.productgroups.find_productgroups_params.FindProductgroupsParams.add_hide">[docs]</a>
+    <span class="k">def</span> <span class="nf">add_hide</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        :param value: str</span>
 <span class="sd">        &quot;&quot;&quot;</span>
@@ -145,7 +149,10 @@
             <span class="bp">self</span><span class="o">.</span><span class="n">hide</span> <span class="o">=</span> <span class="p">[]</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">hide</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">value</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="FindProductgroupsParams.to_request_parameters"><a class="viewcode-back" href="../../../../../../index.html#ingenico.connect.sdk.merchant.productgroups.find_productgroups_params.FindProductgroupsParams.to_request_parameters">[docs]</a>    <span class="k">def</span> <span class="nf">to_request_parameters</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+
+<div class="viewcode-block" id="FindProductgroupsParams.to_request_parameters">
+<a class="viewcode-back" href="../../../../../../index.html#ingenico.connect.sdk.merchant.productgroups.find_productgroups_params.FindProductgroupsParams.to_request_parameters">[docs]</a>
+    <span class="k">def</span> <span class="nf">to_request_parameters</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        :return: list[RequestParam]</span>
 <span class="sd">        &quot;&quot;&quot;</span>
@@ -164,7 +171,9 @@
             <span class="k">for</span> <span class="n">hide_element</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">hide</span><span class="p">:</span>
                 <span class="k">if</span> <span class="n">hide_element</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
                     <span class="n">result</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">RequestParam</span><span class="p">(</span><span class="s2">&quot;hide&quot;</span><span class="p">,</span> <span class="n">hide_element</span><span class="p">))</span>
-        <span class="k">return</span> <span class="n">result</span></div></div>
+        <span class="k">return</span> <span class="n">result</span></div>
+</div>
+
 </pre></div>
 
           </div>
@@ -219,7 +228,7 @@
       &copy;Copyright (c) 2016 Global Collect Services B.V..
       
       |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 7.1.2</a>
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 7.2.6</a>
       &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.13</a>
       
     </div>

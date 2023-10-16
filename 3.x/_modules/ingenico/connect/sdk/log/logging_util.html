@@ -1,15 +1,15 @@
 <!DOCTYPE html>
 
-<html lang="en">
+<html lang="en" data-content_root="../../../../../">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>ingenico.connect.sdk.log.logging_util &#8212; connect-sdk-python3 3.42.0 documentation</title>
+    <title>ingenico.connect.sdk.log.logging_util &#8212; connect-sdk-python3 3.43.0 documentation</title>
     <link rel="stylesheet" type="text/css" href="../../../../../_static/pygments.css?v=fa44fd50" />
     <link rel="stylesheet" type="text/css" href="../../../../../_static/alabaster.css?v=039e1c02" />
-    <script data-url_root="../../../../../" id="documentation_options" src="../../../../../_static/documentation_options.js?v=3a817518"></script>
+    <script src="../../../../../_static/documentation_options.js?v=33718c35"></script>
     <script src="../../../../../_static/doctools.js?v=888ff710"></script>
-    <script src="../../../../../_static/sphinx_highlight.js?v=4825356b"></script>
+    <script src="../../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <link rel="index" title="Index" href="../../../../../genindex.html" />
     <link rel="search" title="Search" href="../../../../../search.html" />
    
@@ -33,7 +33,9 @@
 <span class="kn">from</span> <span class="nn">.header_obfuscator</span> <span class="kn">import</span> <span class="n">HeaderObfuscator</span>
 
 
-<div class="viewcode-block" id="LoggingUtil"><a class="viewcode-back" href="../../../../../index.html#ingenico.connect.sdk.log.logging_util.LoggingUtil">[docs]</a><span class="k">class</span> <span class="nc">LoggingUtil</span><span class="p">:</span>
+<div class="viewcode-block" id="LoggingUtil">
+<a class="viewcode-back" href="../../../../../index.html#ingenico.connect.sdk.log.logging_util.LoggingUtil">[docs]</a>
+<span class="k">class</span> <span class="nc">LoggingUtil</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    A utility class to support logging.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
@@ -41,7 +43,9 @@
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">pass</span>
 
-<div class="viewcode-block" id="LoggingUtil.obfuscate_body"><a class="viewcode-back" href="../../../../../index.html#ingenico.connect.sdk.log.logging_util.LoggingUtil.obfuscate_body">[docs]</a>    <span class="nd">@staticmethod</span>
+<div class="viewcode-block" id="LoggingUtil.obfuscate_body">
+<a class="viewcode-back" href="../../../../../index.html#ingenico.connect.sdk.log.logging_util.LoggingUtil.obfuscate_body">[docs]</a>
+    <span class="nd">@staticmethod</span>
     <span class="k">def</span> <span class="nf">obfuscate_body</span><span class="p">(</span><span class="n">body</span><span class="p">,</span> <span class="n">charset</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Obfuscates the body from the given stream as necessary.</span>
@@ -53,14 +57,19 @@
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="n">BodyObfuscator</span><span class="o">.</span><span class="n">default_body_obfuscator</span><span class="p">()</span><span class="o">.</span><span class="n">obfuscate_body</span><span class="p">(</span><span class="n">body</span><span class="p">,</span> <span class="n">charset</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="LoggingUtil.obfuscate_header"><a class="viewcode-back" href="../../../../../index.html#ingenico.connect.sdk.log.logging_util.LoggingUtil.obfuscate_header">[docs]</a>    <span class="nd">@staticmethod</span>
+
+<div class="viewcode-block" id="LoggingUtil.obfuscate_header">
+<a class="viewcode-back" href="../../../../../index.html#ingenico.connect.sdk.log.logging_util.LoggingUtil.obfuscate_header">[docs]</a>
+    <span class="nd">@staticmethod</span>
     <span class="k">def</span> <span class="nf">obfuscate_header</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Obfuscates the value for the given header as necessary.</span>
 
 <span class="sd">        Deprecated; Use HeaderObfuscator instead</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="n">HeaderObfuscator</span><span class="o">.</span><span class="n">default_header_obfuscator</span><span class="p">()</span><span class="o">.</span><span class="n">obfuscate_header</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span></div></div>
+        <span class="k">return</span> <span class="n">HeaderObfuscator</span><span class="o">.</span><span class="n">default_header_obfuscator</span><span class="p">()</span><span class="o">.</span><span class="n">obfuscate_header</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span></div>
+</div>
+
 </pre></div>
 
           </div>
@@ -115,7 +124,7 @@
       &copy;Copyright (c) 2016 Global Collect Services B.V..
       
       |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 7.1.2</a>
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 7.2.6</a>
       &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.13</a>
       
     </div>

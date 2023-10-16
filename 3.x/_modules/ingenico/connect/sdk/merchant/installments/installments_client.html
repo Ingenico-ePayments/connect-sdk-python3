@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="../../../../../../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ingenico.connect.sdk.merchant.installments.installments_client &#8212; connect-sdk-python3 3.43.0 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../../../../../../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../../../../../../_static/alabaster.css?v=039e1c02" />
+    <script src="../../../../../../_static/documentation_options.js?v=33718c35"></script>
+    <script src="../../../../../../_static/doctools.js?v=888ff710"></script>
+    <script src="../../../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <link rel="index" title="Index" href="../../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../../search.html" />
+   
+  <link rel="stylesheet" href="../../../../../../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <h1>Source code for ingenico.connect.sdk.merchant.installments.installments_client</h1><div class="highlight"><pre>
+<span></span><span class="c1">#</span>
+<span class="c1"># This class was auto-generated from the API references found at</span>
+<span class="c1"># https://epayments-api.developer-ingenico.com/s2sapi/v1/</span>
+<span class="c1">#</span>
+<span class="kn">from</span> <span class="nn">ingenico.connect.sdk.api_resource</span> <span class="kn">import</span> <span class="n">ApiResource</span>
+<span class="kn">from</span> <span class="nn">ingenico.connect.sdk.response_exception</span> <span class="kn">import</span> <span class="n">ResponseException</span>
+<span class="kn">from</span> <span class="nn">ingenico.connect.sdk.domain.errors.error_response</span> <span class="kn">import</span> <span class="n">ErrorResponse</span>
+<span class="kn">from</span> <span class="nn">ingenico.connect.sdk.domain.installments.installment_options_response</span> <span class="kn">import</span> <span class="n">InstallmentOptionsResponse</span>
+
+
+<div class="viewcode-block" id="InstallmentsClient">
+<a class="viewcode-back" href="../../../../../../index.html#ingenico.connect.sdk.merchant.installments.installments_client.InstallmentsClient">[docs]</a>
+<span class="k">class</span> <span class="nc">InstallmentsClient</span><span class="p">(</span><span class="n">ApiResource</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Installments client. Thread-safe.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+<div class="viewcode-block" id="InstallmentsClient.__init__">
+<a class="viewcode-back" href="../../../../../../index.html#ingenico.connect.sdk.merchant.installments.installments_client.InstallmentsClient.__init__">[docs]</a>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">parent</span><span class="p">,</span> <span class="n">path_context</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        :param parent:       :class:`ingenico.connect.sdk.api_resource.ApiResource`</span>
+<span class="sd">        :param path_context: dict[str, str]</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">InstallmentsClient</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">parent</span><span class="p">,</span> <span class="n">path_context</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="InstallmentsClient.get_installments_info">
+<a class="viewcode-back" href="../../../../../../index.html#ingenico.connect.sdk.merchant.installments.installments_client.InstallmentsClient.get_installments_info">[docs]</a>
+    <span class="k">def</span> <span class="nf">get_installments_info</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">body</span><span class="p">,</span> <span class="n">context</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Resource /{merchantId}/installments/getInstallmentsInfo - Get Installment Info</span>
+<span class="sd">        </span>
+<span class="sd">        See also https://epayments-api.developer-ingenico.com/s2sapi/v1/en_US/python/installments/getInstallmentsInfo.html</span>
+
+<span class="sd">        :param body:     :class:`ingenico.connect.sdk.domain.installments.get_installment_request.GetInstallmentRequest`</span>
+<span class="sd">        :param context:  :class:`ingenico.connect.sdk.call_context.CallContext`</span>
+<span class="sd">        :return: :class:`ingenico.connect.sdk.domain.installments.installment_options_response.InstallmentOptionsResponse`</span>
+<span class="sd">        :raise: ValidationException if the request was not correct and couldn&#39;t be processed (HTTP status code 400)</span>
+<span class="sd">        :raise: AuthorizationException if the request was not allowed (HTTP status code 403)</span>
+<span class="sd">        :raise: ReferenceException if an object was attempted to be referenced that doesn&#39;t exist or has been removed,</span>
+<span class="sd">                   or there was a conflict (HTTP status code 404, 409 or 410)</span>
+<span class="sd">        :raise: GlobalCollectException if something went wrong at the Ingenico ePayments platform,</span>
+<span class="sd">                   the Ingenico ePayments platform was unable to process a message from a downstream partner/acquirer,</span>
+<span class="sd">                   or the service that you&#39;re trying to reach is temporary unavailable (HTTP status code 500, 502 or 503)</span>
+<span class="sd">        :raise: ApiException if the Ingenico ePayments platform returned any other error</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">uri</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_instantiate_uri</span><span class="p">(</span><span class="s2">&quot;/v1/</span><span class="si">{merchantId}</span><span class="s2">/installments/getInstallmentsInfo&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_communicator</span><span class="o">.</span><span class="n">post</span><span class="p">(</span>
+                    <span class="n">uri</span><span class="p">,</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">_client_headers</span><span class="p">,</span>
+                    <span class="kc">None</span><span class="p">,</span>
+                    <span class="n">body</span><span class="p">,</span>
+                    <span class="n">InstallmentOptionsResponse</span><span class="p">,</span>
+                    <span class="n">context</span><span class="p">)</span>
+
+        <span class="k">except</span> <span class="n">ResponseException</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+            <span class="n">error_type</span> <span class="o">=</span> <span class="n">ErrorResponse</span>
+            <span class="n">error_object</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_communicator</span><span class="o">.</span><span class="n">marshaller</span><span class="o">.</span><span class="n">unmarshal</span><span class="p">(</span><span class="n">e</span><span class="o">.</span><span class="n">body</span><span class="p">,</span> <span class="n">error_type</span><span class="p">)</span>
+            <span class="k">raise</span> <span class="bp">self</span><span class="o">.</span><span class="n">_create_exception</span><span class="p">(</span><span class="n">e</span><span class="o">.</span><span class="n">status_code</span><span class="p">,</span> <span class="n">e</span><span class="o">.</span><span class="n">body</span><span class="p">,</span> <span class="n">error_object</span><span class="p">,</span> <span class="n">context</span><span class="p">)</span></div>
+</div>
+
+</pre></div>
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../../../../../../index.html">connect-sdk-python3</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../../../../../../index.html">Documentation overview</a><ul>
+  <li><a href="../../../../../index.html">Module code</a><ul>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../../../../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;Copyright (c) 2016 Global Collect Services B.V..
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 7.2.6</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.13</a>
+      
+    </div>
+
+    
+
+    
+  </body>
+</html>
