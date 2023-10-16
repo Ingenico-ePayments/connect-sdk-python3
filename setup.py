@@ -21,7 +21,7 @@ def test_collector():
 
 setup(
     name="connect-sdk-python3",
-    version="3.42.0",
+    version="3.43.0",
     author="Ingenico ePayments",
     author_email="github@epay.ingenico.com",
     description="SDK to communicate with the Ingenico ePayments platform using the Ingenico Connect Server API",
@@ -34,11 +34,11 @@ setup(
                  "*.tests", "*.tests.*", "tests.*", "tests"],             # and tests
         include="ingenico.*"),  # finds all source packages, recursively
     # list non-code files used by the SDK
-    package_data={".": ["MANIFEST.in", "README.md", "setup.py"]},
+    package_data={".": ["MANIFEST.in", "README.rst", "setup.py"]},
     # data_files=[(".", ["LICENSE.txt"])],
     # installs all files listed in the MANIFEST.in into the installation (currently does not seem to happen either way)
     include_package_data=True,
-    # data_files=[("index.rst", "README.md", "setup.py, MANIFEST.in")],  # list miscellaneous files to include
+    # data_files=[("index.rst", "README.rst", "setup.py, MANIFEST.in")],  # list miscellaneous files to include
     # The pypi homepage is based on the long description, standard interpretation is reStructuredText
     long_description=read('README.rst'),
     long_description_content_type='text/x-rst',

@@ -13,6 +13,7 @@ class Installments(DataObject):
     """
 
     __amount_of_money_per_installment = None
+    __amount_of_money_total = None
     __frequency_of_installments = None
     __installment_plan_code = None
     __interest_rate = None
@@ -31,6 +32,19 @@ class Installments(DataObject):
     @amount_of_money_per_installment.setter
     def amount_of_money_per_installment(self, value):
         self.__amount_of_money_per_installment = value
+
+    @property
+    def amount_of_money_total(self):
+        """
+        | Object containing the total amount and ISO currency code attributes
+        
+        Type: :class:`ingenico.connect.sdk.domain.definitions.amount_of_money.AmountOfMoney`
+        """
+        return self.__amount_of_money_total
+
+    @amount_of_money_total.setter
+    def amount_of_money_total(self, value):
+        self.__amount_of_money_total = value
 
     @property
     def frequency_of_installments(self):
@@ -103,6 +117,8 @@ class Installments(DataObject):
         dictionary = super(Installments, self).to_dictionary()
         if self.amount_of_money_per_installment is not None:
             dictionary['amountOfMoneyPerInstallment'] = self.amount_of_money_per_installment.to_dictionary()
+        if self.amount_of_money_total is not None:
+            dictionary['amountOfMoneyTotal'] = self.amount_of_money_total.to_dictionary()
         if self.frequency_of_installments is not None:
             dictionary['frequencyOfInstallments'] = self.frequency_of_installments
         if self.installment_plan_code is not None:
@@ -120,6 +136,11 @@ class Installments(DataObject):
                 raise TypeError('value \'{}\' is not a dictionary'.format(dictionary['amountOfMoneyPerInstallment']))
             value = AmountOfMoney()
             self.amount_of_money_per_installment = value.from_dictionary(dictionary['amountOfMoneyPerInstallment'])
+        if 'amountOfMoneyTotal' in dictionary:
+            if not isinstance(dictionary['amountOfMoneyTotal'], dict):
+                raise TypeError('value \'{}\' is not a dictionary'.format(dictionary['amountOfMoneyTotal']))
+            value = AmountOfMoney()
+            self.amount_of_money_total = value.from_dictionary(dictionary['amountOfMoneyTotal'])
         if 'frequencyOfInstallments' in dictionary:
             self.frequency_of_installments = dictionary['frequencyOfInstallments']
         if 'installmentPlanCode' in dictionary:

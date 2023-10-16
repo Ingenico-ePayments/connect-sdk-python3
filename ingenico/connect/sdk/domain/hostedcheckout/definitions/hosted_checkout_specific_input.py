@@ -5,6 +5,7 @@
 #
 from ingenico.connect.sdk.data_object import DataObject
 from ingenico.connect.sdk.domain.hostedcheckout.definitions.payment_product_filters_hosted_checkout import PaymentProductFiltersHostedCheckout
+from ingenico.connect.sdk.domain.hostedcheckout.definitions.recurring_payments_data import RecurringPaymentsData
 
 
 class HostedCheckoutSpecificInput(DataObject):
@@ -12,6 +13,7 @@ class HostedCheckoutSpecificInput(DataObject):
     __is_recurring = None
     __locale = None
     __payment_product_filters = None
+    __recurring_payments_data = None
     __return_cancel_state = None
     __return_url = None
     __show_result_page = None
@@ -60,6 +62,24 @@ class HostedCheckoutSpecificInput(DataObject):
     @payment_product_filters.setter
     def payment_product_filters(self, value):
         self.__payment_product_filters = value
+
+    @property
+    def recurring_payments_data(self):
+        """
+        | The object containing reference data for the text that can be displayed on MyCheckout hosted payment page with subscription information.
+        
+        | Note:
+        
+        | The data in this object is only meant for displaying recurring payments-related data on your checkout page.
+        | You still need to submit all the recurring payment-related data in the corresponding payment product-specific input. (example: cardPaymentMethodSpecificInput.recurring and cardPaymentMethodSpecificInput.isRecurring)
+        
+        Type: :class:`ingenico.connect.sdk.domain.hostedcheckout.definitions.recurring_payments_data.RecurringPaymentsData`
+        """
+        return self.__recurring_payments_data
+
+    @recurring_payments_data.setter
+    def recurring_payments_data(self, value):
+        self.__recurring_payments_data = value
 
     @property
     def return_cancel_state(self):
@@ -154,6 +174,8 @@ class HostedCheckoutSpecificInput(DataObject):
             dictionary['locale'] = self.locale
         if self.payment_product_filters is not None:
             dictionary['paymentProductFilters'] = self.payment_product_filters.to_dictionary()
+        if self.recurring_payments_data is not None:
+            dictionary['recurringPaymentsData'] = self.recurring_payments_data.to_dictionary()
         if self.return_cancel_state is not None:
             dictionary['returnCancelState'] = self.return_cancel_state
         if self.return_url is not None:
@@ -179,6 +201,11 @@ class HostedCheckoutSpecificInput(DataObject):
                 raise TypeError('value \'{}\' is not a dictionary'.format(dictionary['paymentProductFilters']))
             value = PaymentProductFiltersHostedCheckout()
             self.payment_product_filters = value.from_dictionary(dictionary['paymentProductFilters'])
+        if 'recurringPaymentsData' in dictionary:
+            if not isinstance(dictionary['recurringPaymentsData'], dict):
+                raise TypeError('value \'{}\' is not a dictionary'.format(dictionary['recurringPaymentsData']))
+            value = RecurringPaymentsData()
+            self.recurring_payments_data = value.from_dictionary(dictionary['recurringPaymentsData'])
         if 'returnCancelState' in dictionary:
             self.return_cancel_state = dictionary['returnCancelState']
         if 'returnUrl' in dictionary:

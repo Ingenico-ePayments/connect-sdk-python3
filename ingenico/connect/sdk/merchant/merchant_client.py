@@ -8,6 +8,7 @@ from ingenico.connect.sdk.merchant.disputes.disputes_client import DisputesClien
 from ingenico.connect.sdk.merchant.files.files_client import FilesClient
 from ingenico.connect.sdk.merchant.hostedcheckouts.hostedcheckouts_client import HostedcheckoutsClient
 from ingenico.connect.sdk.merchant.hostedmandatemanagements.hostedmandatemanagements_client import HostedmandatemanagementsClient
+from ingenico.connect.sdk.merchant.installments.installments_client import InstallmentsClient
 from ingenico.connect.sdk.merchant.mandates.mandates_client import MandatesClient
 from ingenico.connect.sdk.merchant.payments.payments_client import PaymentsClient
 from ingenico.connect.sdk.merchant.payouts.payouts_client import PayoutsClient
@@ -143,6 +144,14 @@ class MerchantClient(ApiResource):
         :return: :class:`ingenico.connect.sdk.merchant.sessions.sessions_client.SessionsClient`
         """
         return SessionsClient(self, None)
+
+    def installments(self):
+        """
+        Resource /{merchantId}/installments
+
+        :return: :class:`ingenico.connect.sdk.merchant.installments.installments_client.InstallmentsClient`
+        """
+        return InstallmentsClient(self, None)
 
     def files(self):
         """
