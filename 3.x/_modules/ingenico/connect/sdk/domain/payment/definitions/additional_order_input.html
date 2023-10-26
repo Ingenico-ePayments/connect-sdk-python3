@@ -4,10 +4,10 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>ingenico.connect.sdk.domain.payment.definitions.additional_order_input &#8212; connect-sdk-python3 3.43.0 documentation</title>
+    <title>ingenico.connect.sdk.domain.payment.definitions.additional_order_input &#8212; connect-sdk-python3 3.44.0 documentation</title>
     <link rel="stylesheet" type="text/css" href="../../../../../../../_static/pygments.css?v=fa44fd50" />
     <link rel="stylesheet" type="text/css" href="../../../../../../../_static/alabaster.css?v=039e1c02" />
-    <script src="../../../../../../../_static/documentation_options.js?v=33718c35"></script>
+    <script src="../../../../../../../_static/documentation_options.js?v=bd2a7dfb"></script>
     <script src="../../../../../../../_static/doctools.js?v=888ff710"></script>
     <script src="../../../../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <link rel="index" title="Index" href="../../../../../../../genindex.html" />
@@ -37,6 +37,7 @@
 <span class="kn">from</span> <span class="nn">ingenico.connect.sdk.data_object</span> <span class="kn">import</span> <span class="n">DataObject</span>
 <span class="kn">from</span> <span class="nn">ingenico.connect.sdk.domain.definitions.airline_data</span> <span class="kn">import</span> <span class="n">AirlineData</span>
 <span class="kn">from</span> <span class="nn">ingenico.connect.sdk.domain.definitions.lodging_data</span> <span class="kn">import</span> <span class="n">LodgingData</span>
+<span class="kn">from</span> <span class="nn">ingenico.connect.sdk.domain.payment.definitions.account_funding_recipient</span> <span class="kn">import</span> <span class="n">AccountFundingRecipient</span>
 <span class="kn">from</span> <span class="nn">ingenico.connect.sdk.domain.payment.definitions.installments</span> <span class="kn">import</span> <span class="n">Installments</span>
 <span class="kn">from</span> <span class="nn">ingenico.connect.sdk.domain.payment.definitions.level3_summary_data</span> <span class="kn">import</span> <span class="n">Level3SummaryData</span>
 <span class="kn">from</span> <span class="nn">ingenico.connect.sdk.domain.payment.definitions.loan_recipient</span> <span class="kn">import</span> <span class="n">LoanRecipient</span>
@@ -47,6 +48,7 @@
 <a class="viewcode-back" href="../../../../../../../index.html#ingenico.connect.sdk.domain.payment.definitions.additional_order_input.AdditionalOrderInput">[docs]</a>
 <span class="k">class</span> <span class="nc">AdditionalOrderInput</span><span class="p">(</span><span class="n">DataObject</span><span class="p">):</span>
 
+    <span class="n">__account_funding_recipient</span> <span class="o">=</span> <span class="kc">None</span>
     <span class="n">__airline_data</span> <span class="o">=</span> <span class="kc">None</span>
     <span class="n">__installments</span> <span class="o">=</span> <span class="kc">None</span>
     <span class="n">__level3_summary_data</span> <span class="o">=</span> <span class="kc">None</span>
@@ -55,6 +57,19 @@
     <span class="n">__number_of_installments</span> <span class="o">=</span> <span class="kc">None</span>
     <span class="n">__order_date</span> <span class="o">=</span> <span class="kc">None</span>
     <span class="n">__type_information</span> <span class="o">=</span> <span class="kc">None</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">account_funding_recipient</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        | Object containing specific data regarding the recipient of an account funding transaction</span>
+<span class="sd">        </span>
+<span class="sd">        Type: :class:`ingenico.connect.sdk.domain.payment.definitions.account_funding_recipient.AccountFundingRecipient`</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__account_funding_recipient</span>
+
+    <span class="nd">@account_funding_recipient</span><span class="o">.</span><span class="n">setter</span>
+    <span class="k">def</span> <span class="nf">account_funding_recipient</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">__account_funding_recipient</span> <span class="o">=</span> <span class="n">value</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">airline_data</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
@@ -103,6 +118,8 @@
 <span class="sd">        | Object containing specific data regarding the recipient of a loan in the UK</span>
 <span class="sd">        </span>
 <span class="sd">        Type: :class:`ingenico.connect.sdk.domain.payment.definitions.loan_recipient.LoanRecipient`</span>
+<span class="sd">        </span>
+<span class="sd">        Deprecated; No replacement</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__loan_recipient</span>
 
@@ -169,6 +186,8 @@
 <a class="viewcode-back" href="../../../../../../../index.html#ingenico.connect.sdk.domain.payment.definitions.additional_order_input.AdditionalOrderInput.to_dictionary">[docs]</a>
     <span class="k">def</span> <span class="nf">to_dictionary</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="n">dictionary</span> <span class="o">=</span> <span class="nb">super</span><span class="p">(</span><span class="n">AdditionalOrderInput</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">to_dictionary</span><span class="p">()</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">account_funding_recipient</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">dictionary</span><span class="p">[</span><span class="s1">&#39;accountFundingRecipient&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">account_funding_recipient</span><span class="o">.</span><span class="n">to_dictionary</span><span class="p">()</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">airline_data</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
             <span class="n">dictionary</span><span class="p">[</span><span class="s1">&#39;airlineData&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">airline_data</span><span class="o">.</span><span class="n">to_dictionary</span><span class="p">()</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">installments</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
@@ -192,6 +211,11 @@
 <a class="viewcode-back" href="../../../../../../../index.html#ingenico.connect.sdk.domain.payment.definitions.additional_order_input.AdditionalOrderInput.from_dictionary">[docs]</a>
     <span class="k">def</span> <span class="nf">from_dictionary</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dictionary</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">(</span><span class="n">AdditionalOrderInput</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">from_dictionary</span><span class="p">(</span><span class="n">dictionary</span><span class="p">)</span>
+        <span class="k">if</span> <span class="s1">&#39;accountFundingRecipient&#39;</span> <span class="ow">in</span> <span class="n">dictionary</span><span class="p">:</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">dictionary</span><span class="p">[</span><span class="s1">&#39;accountFundingRecipient&#39;</span><span class="p">],</span> <span class="nb">dict</span><span class="p">):</span>
+                <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s1">&#39;value </span><span class="se">\&#39;</span><span class="si">{}</span><span class="se">\&#39;</span><span class="s1"> is not a dictionary&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">dictionary</span><span class="p">[</span><span class="s1">&#39;accountFundingRecipient&#39;</span><span class="p">]))</span>
+            <span class="n">value</span> <span class="o">=</span> <span class="n">AccountFundingRecipient</span><span class="p">()</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">account_funding_recipient</span> <span class="o">=</span> <span class="n">value</span><span class="o">.</span><span class="n">from_dictionary</span><span class="p">(</span><span class="n">dictionary</span><span class="p">[</span><span class="s1">&#39;accountFundingRecipient&#39;</span><span class="p">])</span>
         <span class="k">if</span> <span class="s1">&#39;airlineData&#39;</span> <span class="ow">in</span> <span class="n">dictionary</span><span class="p">:</span>
             <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">dictionary</span><span class="p">[</span><span class="s1">&#39;airlineData&#39;</span><span class="p">],</span> <span class="nb">dict</span><span class="p">):</span>
                 <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s1">&#39;value </span><span class="se">\&#39;</span><span class="si">{}</span><span class="se">\&#39;</span><span class="s1"> is not a dictionary&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">dictionary</span><span class="p">[</span><span class="s1">&#39;airlineData&#39;</span><span class="p">]))</span>

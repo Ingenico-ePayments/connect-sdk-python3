@@ -4,10 +4,10 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>ingenico.connect.sdk.domain.payment.definitions.order_type_information &#8212; connect-sdk-python3 3.43.0 documentation</title>
+    <title>ingenico.connect.sdk.domain.payment.definitions.order_type_information &#8212; connect-sdk-python3 3.44.0 documentation</title>
     <link rel="stylesheet" type="text/css" href="../../../../../../../_static/pygments.css?v=fa44fd50" />
     <link rel="stylesheet" type="text/css" href="../../../../../../../_static/alabaster.css?v=039e1c02" />
-    <script src="../../../../../../../_static/documentation_options.js?v=33718c35"></script>
+    <script src="../../../../../../../_static/documentation_options.js?v=bd2a7dfb"></script>
     <script src="../../../../../../../_static/doctools.js?v=888ff710"></script>
     <script src="../../../../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <link rel="index" title="Index" href="../../../../../../../genindex.html" />
@@ -41,9 +41,29 @@
 <a class="viewcode-back" href="../../../../../../../index.html#ingenico.connect.sdk.domain.payment.definitions.order_type_information.OrderTypeInformation">[docs]</a>
 <span class="k">class</span> <span class="nc">OrderTypeInformation</span><span class="p">(</span><span class="n">DataObject</span><span class="p">):</span>
 
+    <span class="n">__funding_type</span> <span class="o">=</span> <span class="kc">None</span>
     <span class="n">__purchase_type</span> <span class="o">=</span> <span class="kc">None</span>
     <span class="n">__transaction_type</span> <span class="o">=</span> <span class="kc">None</span>
     <span class="n">__usage_type</span> <span class="o">=</span> <span class="kc">None</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">funding_type</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        | Identifies the funding type being authenticated. Possible values are:</span>
+<span class="sd">        </span>
+<span class="sd">        * personToPerson = When it is person to person funding (P2P)</span>
+<span class="sd">        * agentCashOut = When fund is being paid out to final recipient in Cash by company&#39;s agent.</span>
+<span class="sd">        * businessToConsumer = When fund is being transferred from business to consumer (B2C)</span>
+<span class="sd">        * businessToBusiness = When fund is being transferred from business to business (B2B)</span>
+<span class="sd">        * prefundingStagedWallet = When funding is being used to load the funds into the wallet account.</span>
+<span class="sd">        </span>
+<span class="sd">        Type: str</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__funding_type</span>
+
+    <span class="nd">@funding_type</span><span class="o">.</span><span class="n">setter</span>
+    <span class="k">def</span> <span class="nf">funding_type</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">__funding_type</span> <span class="o">=</span> <span class="n">value</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">purchase_type</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
@@ -100,6 +120,8 @@
 <a class="viewcode-back" href="../../../../../../../index.html#ingenico.connect.sdk.domain.payment.definitions.order_type_information.OrderTypeInformation.to_dictionary">[docs]</a>
     <span class="k">def</span> <span class="nf">to_dictionary</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="n">dictionary</span> <span class="o">=</span> <span class="nb">super</span><span class="p">(</span><span class="n">OrderTypeInformation</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">to_dictionary</span><span class="p">()</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">funding_type</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">dictionary</span><span class="p">[</span><span class="s1">&#39;fundingType&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">funding_type</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">purchase_type</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
             <span class="n">dictionary</span><span class="p">[</span><span class="s1">&#39;purchaseType&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">purchase_type</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">transaction_type</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
@@ -113,6 +135,8 @@
 <a class="viewcode-back" href="../../../../../../../index.html#ingenico.connect.sdk.domain.payment.definitions.order_type_information.OrderTypeInformation.from_dictionary">[docs]</a>
     <span class="k">def</span> <span class="nf">from_dictionary</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dictionary</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">(</span><span class="n">OrderTypeInformation</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">from_dictionary</span><span class="p">(</span><span class="n">dictionary</span><span class="p">)</span>
+        <span class="k">if</span> <span class="s1">&#39;fundingType&#39;</span> <span class="ow">in</span> <span class="n">dictionary</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">funding_type</span> <span class="o">=</span> <span class="n">dictionary</span><span class="p">[</span><span class="s1">&#39;fundingType&#39;</span><span class="p">]</span>
         <span class="k">if</span> <span class="s1">&#39;purchaseType&#39;</span> <span class="ow">in</span> <span class="n">dictionary</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">purchase_type</span> <span class="o">=</span> <span class="n">dictionary</span><span class="p">[</span><span class="s1">&#39;purchaseType&#39;</span><span class="p">]</span>
         <span class="k">if</span> <span class="s1">&#39;transactionType&#39;</span> <span class="ow">in</span> <span class="n">dictionary</span><span class="p">:</span>
