@@ -4,6 +4,7 @@
 # https://epayments-api.developer-ingenico.com/s2sapi/v1/
 #
 from ingenico.connect.sdk.data_object import DataObject
+from ingenico.connect.sdk.domain.payment.definitions.personal_identification import PersonalIdentification
 from ingenico.connect.sdk.domain.payment.definitions.personal_name import PersonalName
 
 
@@ -11,6 +12,7 @@ class PersonalInformation(DataObject):
 
     __date_of_birth = None
     __gender = None
+    __identification = None
     __name = None
 
     @property
@@ -45,6 +47,19 @@ class PersonalInformation(DataObject):
         self.__gender = value
 
     @property
+    def identification(self):
+        """
+        | Object containing identification documents information
+        
+        Type: :class:`ingenico.connect.sdk.domain.payment.definitions.personal_identification.PersonalIdentification`
+        """
+        return self.__identification
+
+    @identification.setter
+    def identification(self, value):
+        self.__identification = value
+
+    @property
     def name(self):
         """
         | Object containing the name details of the customer
@@ -63,6 +78,8 @@ class PersonalInformation(DataObject):
             dictionary['dateOfBirth'] = self.date_of_birth
         if self.gender is not None:
             dictionary['gender'] = self.gender
+        if self.identification is not None:
+            dictionary['identification'] = self.identification.to_dictionary()
         if self.name is not None:
             dictionary['name'] = self.name.to_dictionary()
         return dictionary
@@ -73,6 +90,11 @@ class PersonalInformation(DataObject):
             self.date_of_birth = dictionary['dateOfBirth']
         if 'gender' in dictionary:
             self.gender = dictionary['gender']
+        if 'identification' in dictionary:
+            if not isinstance(dictionary['identification'], dict):
+                raise TypeError('value \'{}\' is not a dictionary'.format(dictionary['identification']))
+            value = PersonalIdentification()
+            self.identification = value.from_dictionary(dictionary['identification'])
         if 'name' in dictionary:
             if not isinstance(dictionary['name'], dict):
                 raise TypeError('value \'{}\' is not a dictionary'.format(dictionary['name']))

@@ -7,6 +7,9 @@ from ingenico.connect.sdk.data_object import DataObject
 
 
 class LoanRecipient(DataObject):
+    """
+    Deprecated; No replacement
+    """
 
     __account_number = None
     __date_of_birth = None
@@ -20,6 +23,8 @@ class LoanRecipient(DataObject):
         | Should be filled with the last 10 digits of the bank account number of the recipient of the loan.
         
         Type: str
+        
+        Deprecated; No replacement
         """
         return self.__account_number
 
@@ -34,6 +39,8 @@ class LoanRecipient(DataObject):
         | Format: YYYYMMDD
         
         Type: str
+        
+        Deprecated; No replacement
         """
         return self.__date_of_birth
 
@@ -47,6 +54,8 @@ class LoanRecipient(DataObject):
         | Should be filled with the first 6 and last 4 digits of the PAN number of the recipient of the loan.
         
         Type: str
+        
+        Deprecated; No replacement
         """
         return self.__partial_pan
 
@@ -60,6 +69,8 @@ class LoanRecipient(DataObject):
         | Surname of the recipient of the loan.
         
         Type: str
+        
+        Deprecated; No replacement
         """
         return self.__surname
 
@@ -73,6 +84,8 @@ class LoanRecipient(DataObject):
         | Zip code of the recipient of the loan
         
         Type: str
+        
+        Deprecated; No replacement
         """
         return self.__zip
 

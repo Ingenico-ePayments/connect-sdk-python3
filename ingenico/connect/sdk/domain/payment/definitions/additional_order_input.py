@@ -6,6 +6,7 @@
 from ingenico.connect.sdk.data_object import DataObject
 from ingenico.connect.sdk.domain.definitions.airline_data import AirlineData
 from ingenico.connect.sdk.domain.definitions.lodging_data import LodgingData
+from ingenico.connect.sdk.domain.payment.definitions.account_funding_recipient import AccountFundingRecipient
 from ingenico.connect.sdk.domain.payment.definitions.installments import Installments
 from ingenico.connect.sdk.domain.payment.definitions.level3_summary_data import Level3SummaryData
 from ingenico.connect.sdk.domain.payment.definitions.loan_recipient import LoanRecipient
@@ -14,6 +15,7 @@ from ingenico.connect.sdk.domain.payment.definitions.order_type_information impo
 
 class AdditionalOrderInput(DataObject):
 
+    __account_funding_recipient = None
     __airline_data = None
     __installments = None
     __level3_summary_data = None
@@ -22,6 +24,19 @@ class AdditionalOrderInput(DataObject):
     __number_of_installments = None
     __order_date = None
     __type_information = None
+
+    @property
+    def account_funding_recipient(self):
+        """
+        | Object containing specific data regarding the recipient of an account funding transaction
+        
+        Type: :class:`ingenico.connect.sdk.domain.payment.definitions.account_funding_recipient.AccountFundingRecipient`
+        """
+        return self.__account_funding_recipient
+
+    @account_funding_recipient.setter
+    def account_funding_recipient(self, value):
+        self.__account_funding_recipient = value
 
     @property
     def airline_data(self):
@@ -70,6 +85,8 @@ class AdditionalOrderInput(DataObject):
         | Object containing specific data regarding the recipient of a loan in the UK
         
         Type: :class:`ingenico.connect.sdk.domain.payment.definitions.loan_recipient.LoanRecipient`
+        
+        Deprecated; No replacement
         """
         return self.__loan_recipient
 
@@ -134,6 +151,8 @@ class AdditionalOrderInput(DataObject):
 
     def to_dictionary(self):
         dictionary = super(AdditionalOrderInput, self).to_dictionary()
+        if self.account_funding_recipient is not None:
+            dictionary['accountFundingRecipient'] = self.account_funding_recipient.to_dictionary()
         if self.airline_data is not None:
             dictionary['airlineData'] = self.airline_data.to_dictionary()
         if self.installments is not None:
@@ -154,6 +173,11 @@ class AdditionalOrderInput(DataObject):
 
     def from_dictionary(self, dictionary):
         super(AdditionalOrderInput, self).from_dictionary(dictionary)
+        if 'accountFundingRecipient' in dictionary:
+            if not isinstance(dictionary['accountFundingRecipient'], dict):
+                raise TypeError('value \'{}\' is not a dictionary'.format(dictionary['accountFundingRecipient']))
+            value = AccountFundingRecipient()
+            self.account_funding_recipient = value.from_dictionary(dictionary['accountFundingRecipient'])
         if 'airlineData' in dictionary:
             if not isinstance(dictionary['airlineData'], dict):
                 raise TypeError('value \'{}\' is not a dictionary'.format(dictionary['airlineData']))

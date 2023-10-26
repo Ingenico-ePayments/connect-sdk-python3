@@ -23,6 +23,7 @@ class Customer(CustomerBase):
     __contact_details = None
     __device = None
     __fiscal_number = None
+    __is_company = None
     __is_previous_customer = None
     __locale = None
     __personal_information = None
@@ -130,6 +131,22 @@ class Customer(CustomerBase):
         self.__fiscal_number = value
 
     @property
+    def is_company(self):
+        """
+        | Indicates if the payer is a company or an individual
+        
+        * true =  This is a company
+        * false = This is an individual
+        
+        Type: bool
+        """
+        return self.__is_company
+
+    @is_company.setter
+    def is_company(self, value):
+        self.__is_company = value
+
+    @property
     def is_previous_customer(self):
         """
         | Specifies if the customer has a history of online shopping with the merchant
@@ -200,6 +217,8 @@ class Customer(CustomerBase):
             dictionary['device'] = self.device.to_dictionary()
         if self.fiscal_number is not None:
             dictionary['fiscalNumber'] = self.fiscal_number
+        if self.is_company is not None:
+            dictionary['isCompany'] = self.is_company
         if self.is_previous_customer is not None:
             dictionary['isPreviousCustomer'] = self.is_previous_customer
         if self.locale is not None:
@@ -236,6 +255,8 @@ class Customer(CustomerBase):
             self.device = value.from_dictionary(dictionary['device'])
         if 'fiscalNumber' in dictionary:
             self.fiscal_number = dictionary['fiscalNumber']
+        if 'isCompany' in dictionary:
+            self.is_company = dictionary['isCompany']
         if 'isPreviousCustomer' in dictionary:
             self.is_previous_customer = dictionary['isPreviousCustomer']
         if 'locale' in dictionary:

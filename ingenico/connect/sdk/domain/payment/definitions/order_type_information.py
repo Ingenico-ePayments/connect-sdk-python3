@@ -8,9 +8,29 @@ from ingenico.connect.sdk.data_object import DataObject
 
 class OrderTypeInformation(DataObject):
 
+    __funding_type = None
     __purchase_type = None
     __transaction_type = None
     __usage_type = None
+
+    @property
+    def funding_type(self):
+        """
+        | Identifies the funding type being authenticated. Possible values are:
+        
+        * personToPerson = When it is person to person funding (P2P)
+        * agentCashOut = When fund is being paid out to final recipient in Cash by company's agent.
+        * businessToConsumer = When fund is being transferred from business to consumer (B2C)
+        * businessToBusiness = When fund is being transferred from business to business (B2B)
+        * prefundingStagedWallet = When funding is being used to load the funds into the wallet account.
+        
+        Type: str
+        """
+        return self.__funding_type
+
+    @funding_type.setter
+    def funding_type(self, value):
+        self.__funding_type = value
 
     @property
     def purchase_type(self):
@@ -65,6 +85,8 @@ class OrderTypeInformation(DataObject):
 
     def to_dictionary(self):
         dictionary = super(OrderTypeInformation, self).to_dictionary()
+        if self.funding_type is not None:
+            dictionary['fundingType'] = self.funding_type
         if self.purchase_type is not None:
             dictionary['purchaseType'] = self.purchase_type
         if self.transaction_type is not None:
@@ -75,6 +97,8 @@ class OrderTypeInformation(DataObject):
 
     def from_dictionary(self, dictionary):
         super(OrderTypeInformation, self).from_dictionary(dictionary)
+        if 'fundingType' in dictionary:
+            self.funding_type = dictionary['fundingType']
         if 'purchaseType' in dictionary:
             self.purchase_type = dictionary['purchaseType']
         if 'transactionType' in dictionary:
