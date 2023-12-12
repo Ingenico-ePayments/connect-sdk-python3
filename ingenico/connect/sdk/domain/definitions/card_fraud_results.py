@@ -6,7 +6,6 @@
 from ingenico.connect.sdk.domain.definitions.fraud_results import FraudResults
 from ingenico.connect.sdk.domain.definitions.fraud_results_retail_decisions import FraudResultsRetailDecisions
 from ingenico.connect.sdk.domain.definitions.fraugster_results import FraugsterResults
-from ingenico.connect.sdk.domain.definitions.microsoft_fraud_results import MicrosoftFraudResults
 
 
 class CardFraudResults(FraudResults):
@@ -17,7 +16,6 @@ class CardFraudResults(FraudResults):
     __avs_result = None
     __cvv_result = None
     __fraugster = None
-    __microsoft_fraud_protection = None
     __retail_decisions = None
 
     @property
@@ -93,19 +91,6 @@ class CardFraudResults(FraudResults):
         self.__fraugster = value
 
     @property
-    def microsoft_fraud_protection(self):
-        """
-        | This object contains the results of Microsoft Fraud Protection risk assessment. Microsoft collects transaction data points and uses Adaptive AI that continuously learns to protect you against payment fraud, and the device fingerprinting details from the Microsoft Device Fingerprinting service.
-        
-        Type: :class:`ingenico.connect.sdk.domain.definitions.microsoft_fraud_results.MicrosoftFraudResults`
-        """
-        return self.__microsoft_fraud_protection
-
-    @microsoft_fraud_protection.setter
-    def microsoft_fraud_protection(self, value):
-        self.__microsoft_fraud_protection = value
-
-    @property
     def retail_decisions(self):
         """
         | Additional response data returned by RetailDecisions
@@ -126,8 +111,6 @@ class CardFraudResults(FraudResults):
             dictionary['cvvResult'] = self.cvv_result
         if self.fraugster is not None:
             dictionary['fraugster'] = self.fraugster.to_dictionary()
-        if self.microsoft_fraud_protection is not None:
-            dictionary['microsoftFraudProtection'] = self.microsoft_fraud_protection.to_dictionary()
         if self.retail_decisions is not None:
             dictionary['retailDecisions'] = self.retail_decisions.to_dictionary()
         return dictionary
@@ -143,11 +126,6 @@ class CardFraudResults(FraudResults):
                 raise TypeError('value \'{}\' is not a dictionary'.format(dictionary['fraugster']))
             value = FraugsterResults()
             self.fraugster = value.from_dictionary(dictionary['fraugster'])
-        if 'microsoftFraudProtection' in dictionary:
-            if not isinstance(dictionary['microsoftFraudProtection'], dict):
-                raise TypeError('value \'{}\' is not a dictionary'.format(dictionary['microsoftFraudProtection']))
-            value = MicrosoftFraudResults()
-            self.microsoft_fraud_protection = value.from_dictionary(dictionary['microsoftFraudProtection'])
         if 'retailDecisions' in dictionary:
             if not isinstance(dictionary['retailDecisions'], dict):
                 raise TypeError('value \'{}\' is not a dictionary'.format(dictionary['retailDecisions']))

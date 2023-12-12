@@ -5,12 +5,14 @@
 #
 from ingenico.connect.sdk.data_object import DataObject
 from ingenico.connect.sdk.domain.definitions.in_auth import InAuth
+from ingenico.connect.sdk.domain.definitions.microsoft_fraud_results import MicrosoftFraudResults
 
 
 class FraudResults(DataObject):
 
     __fraud_service_result = None
     __in_auth = None
+    __microsoft_fraud_protection = None
 
     @property
     def fraud_service_result(self):
@@ -44,12 +46,27 @@ class FraudResults(DataObject):
     def in_auth(self, value):
         self.__in_auth = value
 
+    @property
+    def microsoft_fraud_protection(self):
+        """
+        | This object contains the results of Microsoft Fraud Protection risk assessment. Microsoft collects transaction data points and uses Adaptive AI that continuously learns to protect you against payment fraud, and the device fingerprinting details from the Microsoft Device Fingerprinting service.
+        
+        Type: :class:`ingenico.connect.sdk.domain.definitions.microsoft_fraud_results.MicrosoftFraudResults`
+        """
+        return self.__microsoft_fraud_protection
+
+    @microsoft_fraud_protection.setter
+    def microsoft_fraud_protection(self, value):
+        self.__microsoft_fraud_protection = value
+
     def to_dictionary(self):
         dictionary = super(FraudResults, self).to_dictionary()
         if self.fraud_service_result is not None:
             dictionary['fraudServiceResult'] = self.fraud_service_result
         if self.in_auth is not None:
             dictionary['inAuth'] = self.in_auth.to_dictionary()
+        if self.microsoft_fraud_protection is not None:
+            dictionary['microsoftFraudProtection'] = self.microsoft_fraud_protection.to_dictionary()
         return dictionary
 
     def from_dictionary(self, dictionary):
@@ -61,4 +78,9 @@ class FraudResults(DataObject):
                 raise TypeError('value \'{}\' is not a dictionary'.format(dictionary['inAuth']))
             value = InAuth()
             self.in_auth = value.from_dictionary(dictionary['inAuth'])
+        if 'microsoftFraudProtection' in dictionary:
+            if not isinstance(dictionary['microsoftFraudProtection'], dict):
+                raise TypeError('value \'{}\' is not a dictionary'.format(dictionary['microsoftFraudProtection']))
+            value = MicrosoftFraudResults()
+            self.microsoft_fraud_protection = value.from_dictionary(dictionary['microsoftFraudProtection'])
         return self

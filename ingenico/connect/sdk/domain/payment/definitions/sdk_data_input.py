@@ -9,7 +9,6 @@ from ingenico.connect.sdk.domain.payment.definitions.device_render_options impor
 
 class SdkDataInput(DataObject):
 
-    __device_info = None
     __device_render_options = None
     __sdk_app_id = None
     __sdk_encrypted_data = None
@@ -17,21 +16,6 @@ class SdkDataInput(DataObject):
     __sdk_max_timeout = None
     __sdk_reference_number = None
     __sdk_transaction_id = None
-
-    @property
-    def device_info(self):
-        """
-        | Device information gathered by the 3DS SDK on a customer device. This is JSON name/value pairs that as a whole is Base64url encoded.
-        
-        Type: str
-        
-        Deprecated; No replacement
-        """
-        return self.__device_info
-
-    @device_info.setter
-    def device_info(self, value):
-        self.__device_info = value
 
     @property
     def device_render_options(self):
@@ -126,8 +110,6 @@ class SdkDataInput(DataObject):
 
     def to_dictionary(self):
         dictionary = super(SdkDataInput, self).to_dictionary()
-        if self.device_info is not None:
-            dictionary['deviceInfo'] = self.device_info
         if self.device_render_options is not None:
             dictionary['deviceRenderOptions'] = self.device_render_options.to_dictionary()
         if self.sdk_app_id is not None:
@@ -146,8 +128,6 @@ class SdkDataInput(DataObject):
 
     def from_dictionary(self, dictionary):
         super(SdkDataInput, self).from_dictionary(dictionary)
-        if 'deviceInfo' in dictionary:
-            self.device_info = dictionary['deviceInfo']
         if 'deviceRenderOptions' in dictionary:
             if not isinstance(dictionary['deviceRenderOptions'], dict):
                 raise TypeError('value \'{}\' is not a dictionary'.format(dictionary['deviceRenderOptions']))

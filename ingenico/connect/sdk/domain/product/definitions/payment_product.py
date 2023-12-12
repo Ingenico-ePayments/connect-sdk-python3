@@ -28,6 +28,7 @@ class PaymentProduct(DataObject):
     __fields = None
     __fields_warning = None
     __id = None
+    __is_authentication_supported = None
     __is_java_script_required = None
     __max_amount = None
     __min_amount = None
@@ -228,6 +229,19 @@ class PaymentProduct(DataObject):
         self.__id = value
 
     @property
+    def is_authentication_supported(self):
+        """
+        | Indicates if the payment product supports 3D-Secure.
+        
+        Type: bool
+        """
+        return self.__is_authentication_supported
+
+    @is_authentication_supported.setter
+    def is_authentication_supported(self, value):
+        self.__is_authentication_supported = value
+
+    @property
     def is_java_script_required(self):
         """
         | This property indicates if the payment product requires JavaScript to be enabled on the customer's browser. This is usually only true if the payment product depends on a third party JavaScript integration.
@@ -424,6 +438,8 @@ class PaymentProduct(DataObject):
             dictionary['fieldsWarning'] = self.fields_warning
         if self.id is not None:
             dictionary['id'] = self.id
+        if self.is_authentication_supported is not None:
+            dictionary['isAuthenticationSupported'] = self.is_authentication_supported
         if self.is_java_script_required is not None:
             dictionary['isJavaScriptRequired'] = self.is_java_script_required
         if self.max_amount is not None:
@@ -492,6 +508,8 @@ class PaymentProduct(DataObject):
             self.fields_warning = dictionary['fieldsWarning']
         if 'id' in dictionary:
             self.id = dictionary['id']
+        if 'isAuthenticationSupported' in dictionary:
+            self.is_authentication_supported = dictionary['isAuthenticationSupported']
         if 'isJavaScriptRequired' in dictionary:
             self.is_java_script_required = dictionary['isJavaScriptRequired']
         if 'maxAmount' in dictionary:

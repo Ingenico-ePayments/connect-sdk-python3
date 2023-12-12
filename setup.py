@@ -21,7 +21,7 @@ def test_collector():
 
 setup(
     name="connect-sdk-python3",
-    version="3.44.0",
+    version="3.45.0",
     author="Ingenico ePayments",
     author_email="github@epay.ingenico.com",
     description="SDK to communicate with the Ingenico ePayments platform using the Ingenico Connect Server API",
@@ -55,6 +55,7 @@ setup(
         "Programming Language :: Python :: 3.9",
         "Programming Language :: Python :: 3.10",
         "Programming Language :: Python :: 3.11",
+        "Programming Language :: Python :: 3.12",
         "Topic :: Office/Business :: Financial",
         "License :: OSI Approved :: MIT License"
     ],
