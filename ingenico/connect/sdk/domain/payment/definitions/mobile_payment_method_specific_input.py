@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 #
 # This class was auto-generated from the API references found at
-# https://epayments-api.developer-ingenico.com/s2sapi/v1/
+# https://epayments-api.developer-ingenico.com/
 #
 from ingenico.connect.sdk.domain.definitions.abstract_payment_method_specific_input import AbstractPaymentMethodSpecificInput
 from ingenico.connect.sdk.domain.payment.definitions.decrypted_payment_data import DecryptedPaymentData

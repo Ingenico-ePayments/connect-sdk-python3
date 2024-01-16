@@ -1,10 +1,7 @@
-
-
 from datetime import datetime
 from threading import Lock
 
-from ingenico.connect.sdk.log.python_communicator_logger import \
-    CommunicatorLogger
+from ingenico.connect.sdk.log.python_communicator_logger import CommunicatorLogger
 
 
 class SysOutCommunicatorLogger(CommunicatorLogger):
@@ -33,7 +30,8 @@ class SysOutCommunicatorLogger(CommunicatorLogger):
         if thrown:
             self.__print(str(thrown))
 
-    def __get_date_prefix(self):
+    @staticmethod
+    def __get_date_prefix():
         return datetime.now().strftime("%Y-%m-%dT%H:%M:%S ")
 
 

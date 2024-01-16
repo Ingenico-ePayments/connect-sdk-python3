@@ -2,8 +2,7 @@ from json import dumps, loads
 
 from ingenico.connect.sdk.data_object import DataObject
 from ingenico.connect.sdk.marshaller import Marshaller
-from ingenico.connect.sdk.marshaller_syntax_exception import \
-    MarshallerSyntaxException
+from ingenico.connect.sdk.marshaller_syntax_exception import MarshallerSyntaxException
 
 
 class DefaultMarshaller(Marshaller):
@@ -18,10 +17,13 @@ class DefaultMarshaller(Marshaller):
     def marshal(self, request_object):
         if isinstance(request_object, DataObject):
             dictionary = request_object.to_dictionary()
-            return dumps(dictionary, default=lambda o: o.to_dictionary(),
+            return dumps(dictionary,
+                         default=lambda o: o.to_dictionary(),
                          indent=4)
         else:
-            return dumps(request_object, default=lambda o: o.__dict__, indent=4)
+            return dumps(request_object,
+                         default=lambda o: o.__dict__,
+                         indent=4)
 
     def unmarshal(self, response_json, type_class):
         if not response_json:

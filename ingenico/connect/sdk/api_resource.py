@@ -1,10 +1,3 @@
-from ingenico.connect.sdk.domain.errors.error_response import \
-    ErrorResponse
-from ingenico.connect.sdk.domain.payment.payment_error_response import \
-    PaymentErrorResponse
-from ingenico.connect.sdk.domain.refund.refund_error_response import \
-    RefundErrorResponse
-
 from .api_exception import ApiException
 from .authorization_exception import AuthorizationException
 from .declined_payment_exception import DeclinedPaymentException
@@ -12,11 +5,13 @@ from .declined_payout_exception import DeclinedPayoutException
 from .declined_refund_exception import DeclinedRefundException
 from .global_collect_exception import GlobalCollectException
 from .idempotence_exception import IdempotenceException
-from ingenico.connect.sdk.domain.payout.payout_error_response import \
-    PayoutErrorResponse
 from .reference_exception import ReferenceException
 from .request_header import RequestHeader
 from .validation_exception import ValidationException
+from ingenico.connect.sdk.domain.errors.error_response import ErrorResponse
+from ingenico.connect.sdk.domain.payment.payment_error_response import PaymentErrorResponse
+from ingenico.connect.sdk.domain.payout.payout_error_response import PayoutErrorResponse
+from ingenico.connect.sdk.domain.refund.refund_error_response import RefundErrorResponse
 
 
 class ApiResource(object):
@@ -52,8 +47,7 @@ class ApiResource(object):
     @property
     def _client_headers(self):
         if self._client_meta_info is not None:
-            client_headers = [
-                RequestHeader("X-GCS-ClientMetaInfo", self._client_meta_info)]
+            client_headers = [RequestHeader("X-GCS-ClientMetaInfo", self._client_meta_info)]
             return client_headers
         else:
             return None
@@ -69,7 +63,8 @@ class ApiResource(object):
             uri = self.__parent.__instantiate_uri(uri)
         return uri
 
-    def __replace_all(self, uri, path_context):
+    @staticmethod
+    def __replace_all(uri, path_context):
         if path_context:
             for key, value in path_context.items():
                 uri = uri.replace("{" + key + "}", value)
@@ -77,35 +72,27 @@ class ApiResource(object):
 
     def _create_exception(self, status_code, body, error_object, context):
         """Return a raisable api-exception based on the error object given"""
-        if isinstance(error_object,
-                      PaymentErrorResponse) and error_object.payment_result is not None:
+        if isinstance(error_object, PaymentErrorResponse) and error_object.payment_result is not None:
             return DeclinedPaymentException(status_code=status_code,
                                             response_body=body,
                                             errors=error_object)
-        elif isinstance(error_object,
-                        PayoutErrorResponse) and error_object.payout_result is not None:
+        elif isinstance(error_object, PayoutErrorResponse) and error_object.payout_result is not None:
             return DeclinedPayoutException(status_code=status_code,
                                            response_body=body,
                                            errors=error_object)
-        elif isinstance(error_object,
-                        RefundErrorResponse) and error_object.refund_result is not None:
+        elif isinstance(error_object, RefundErrorResponse) and error_object.refund_result is not None:
             return DeclinedRefundException(status_code=status_code,
                                            response_body=body,
                                            errors=error_object)
-        if not isinstance(error_object,
-                          (PaymentErrorResponse, PayoutErrorResponse,
-                           RefundErrorResponse, ErrorResponse)):
-            raise ValueError("Unsupported error object encountered: {}".format(error_object.__class__.__name__)) \
-                from error_object  # unsupported error object
+        if not isinstance(error_object, (PaymentErrorResponse, PayoutErrorResponse, RefundErrorResponse, ErrorResponse)):
+            raise ValueError("Unsupported error object encountered: {}".format(error_object.__class__.__name__))
         error_id = error_object.error_id
         errors = error_object.errors
         if _is_idempotence_error(status_code, errors, context):
-            return IdempotenceException(context.idempotence_key,
-                                        context.idempotence_request_timestamp,
+            return IdempotenceException(context.idempotence_key, context.idempotence_request_timestamp,
                                         status_code, body, error_id, errors)
         # get error based on status code, defaulting to ApiException
-        return ERROR_MAP.get(status_code, ApiException)(status_code, body,
-                                                        error_id, errors)
+        return ERROR_MAP.get(status_code, ApiException)(status_code, body, error_id, errors)
 
 
 def _is_idempotence_error(status_code, errors, context):

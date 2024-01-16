@@ -26,40 +26,36 @@ class DefaultConnection(PooledConnection, ObfuscationCapable):
     """
     Provides an HTTP request interface, thread-safe
 
-    :param connect_timeout: timeout in seconds before a pending connection is
-     dropped
-    :param socket_timeout: timeout in seconds before dropping an established
-     connection. This is the time the server is allowed for a response
-    :param max_connections: the maximum number of connections in the connection
-     pool
-    :param proxy_configuration: ProxyConfiguration object that contains data
-     about proxy settings if present.
+    :param connect_timeout: timeout in seconds before a pending connection is dropped
+    :param socket_timeout: timeout in seconds before dropping an established connection.
+     This is the time the server is allowed for a response
+    :param max_connections: the maximum number of connections in the connection pool
+    :param proxy_configuration: ProxyConfiguration object that contains data about proxy settings if present.
      It should be writeable as string and have a scheme attribute.
 
-    Use the methods get, delete, post and put to perform the corresponding HTTP
-    request.
-    Alternatively you can use request with the request method as the first
-    parameter.
+    Use the methods get, delete, post and put to perform the corresponding HTTP request.
+    Alternatively you can use request with the request method as the first parameter.
 
     URI, headers and body should be given on a per-request basis.
     """
 
-    def __init__(self, connect_timeout,
-                 socket_timeout,
+    def __init__(self, connect_timeout, socket_timeout,
                  max_connections=EndpointConfiguration.DEFAULT_MAX_CONNECTIONS,
                  proxy_configuration=None):
         self.logger = None
         self.__requests_session = requests.session()
-        self.__requests_session.mount("http://", HTTPAdapter(
-            pool_maxsize=max_connections, pool_connections=1))
-        self.__requests_session.mount("https://", HTTPAdapter(
-            pool_maxsize=max_connections, pool_connections=1))
+        self.__requests_session.mount("http://", HTTPAdapter(pool_maxsize=max_connections,
+                                                             pool_connections=1))
+        self.__requests_session.mount("https://", HTTPAdapter(pool_maxsize=max_connections,
+                                                              pool_connections=1))
         # request timeouts are in seconds
         self.__connect_timeout = connect_timeout if connect_timeout >= 0 else None
         self.__socket_timeout = socket_timeout if socket_timeout >= 0 else None
         if proxy_configuration:
-            proxy = {"http": str(proxy_configuration),
-                     "https": str(proxy_configuration)}
+            proxy = {
+                "http": str(proxy_configuration),
+                "https": str(proxy_configuration)
+            }
             self.__requests_session.proxies = proxy
 
         self.__body_obfuscator = BodyObfuscator.default_body_obfuscator()
@@ -79,8 +75,7 @@ class DefaultConnection(PooledConnection, ObfuscationCapable):
         """Perform a request to the server given by url
 
         :param url: the url to the server, given as a parsed url
-        :param request_headers: a list containing RequestHeader objects
-         representing the request headers
+        :param request_headers: a sequence containing RequestHeader objects representing the request headers
         """
         return self._request('get', url, request_headers)
 
@@ -88,8 +83,7 @@ class DefaultConnection(PooledConnection, ObfuscationCapable):
         """Perform a request to the server given by url
 
         :param url: the url to the server, given as a parsed url
-        :param request_headers: a list containing RequestHeader objects
-         representing the request headers
+        :param request_headers: a sequence containing RequestHeader objects representing the request headers
         """
         return self._request('delete', url, request_headers)
 
@@ -97,8 +91,7 @@ class DefaultConnection(PooledConnection, ObfuscationCapable):
         """Perform a request to the server given by url
 
         :param url: the url to the server, given as a parsed url
-        :param request_headers: a list containing RequestHeader objects
-         representing the request headers
+        :param request_headers: a sequence containing RequestHeader objects representing the request headers
         :param body: the request body
         """
         if isinstance(body, MultipartFormDataObject):
@@ -109,21 +102,22 @@ class DefaultConnection(PooledConnection, ObfuscationCapable):
         """Perform a request to the server given by url
 
         :param url: the url to the server, given as a parsed url
-        :param request_headers: a list containing RequestHeader objects
-         representing the request headers
+        :param request_headers: a sequence containing RequestHeader objects representing the request headers
         :param body: the request body
         """
         if isinstance(body, MultipartFormDataObject):
             body = self.__to_multipart_encoder(body)
         return self._request('put', url, request_headers, body)
 
-    def __to_multipart_encoder(self, multipart):
+    @staticmethod
+    def __to_multipart_encoder(multipart):
         fields = {}
         for name, value in multipart.values.items():
             fields[name] = value
         for name, uploadable_file in multipart.files.items():
             fields[name] = (uploadable_file.file_name, uploadable_file.content, uploadable_file.content_type)
-        encoder = MultipartEncoder(fields=fields, boundary=multipart.boundary)
+        encoder = MultipartEncoder(fields=fields,
+                                   boundary=multipart.boundary)
         if encoder.content_type != multipart.content_type:
             raise ValueError("MultipartEncoder did not create the expected content type")
         return encoder
@@ -142,29 +136,27 @@ class DefaultConnection(PooledConnection, ObfuscationCapable):
         Perform a request to the server given by url
 
         :param url: the url to the server, given as a parsed url
-        :param headers: a list containing RequestHeader objects representing
-         the request headers
+        :param headers: a sequence containing RequestHeader objects representing the request headers
         :param body: the request body
         """
         headers = {} if not headers else headers
         if not isinstance(url, str):
             url = url.geturl()
 
-        # convert the list of RequestParam objects to a dictionary of key:value
-        # pairs if necessary
+        # convert the sequence of RequestParam objects to a dictionary of key:value pairs if necessary
         if headers and not isinstance(headers, dict):
             headers = {param.name: param.value for param in headers}
 
-        # send request with all parameters not declared in session and with
-        # callback for logging response
-        request = requests.Request(method, url, headers=headers, data=body,
+        # send request with all parameters not declared in session and with callback for logging response
+        request = requests.Request(method, url,
+                                   headers=headers,
+                                   data=body,
                                    hooks={'response': self._cb_log_response})
         prepped_request = self.__requests_session.prepare_request(request)
         # add timestamp to request for later reference
         prepped_request.timestamp = datetime.now()
         _id = str(uuid.uuid4())
-        # store random id in request so it can be matched with its response
-        # in logging
+        # store random id in request so it can be matched with its response in logging
         prepped_request.id = _id
         self._log_request(prepped_request)
         try:
@@ -181,16 +173,13 @@ class DefaultConnection(PooledConnection, ObfuscationCapable):
                 requests_response.close()
 
         except Timeout as timeout:
-            self._log_error(prepped_request.id, timeout,
-                            prepped_request.timestamp)
+            self._log_error(prepped_request.id, timeout, prepped_request.timestamp)
             raise CommunicationException(timeout)
         except RequestException as exception:
-            self._log_error(prepped_request.id, exception,
-                            prepped_request.timestamp)
+            self._log_error(prepped_request.id, exception, prepped_request.timestamp)
             raise CommunicationException(exception)
-        except RuntimeError as exception:
-            self._log_error(prepped_request.id, exception,
-                            prepped_request.timestamp)
+        except Exception as exception:
+            self._log_error(prepped_request.id, exception, prepped_request.timestamp)
             raise
 
     def _log_request(self, request):
@@ -208,7 +197,9 @@ class DefaultConnection(PooledConnection, ObfuscationCapable):
         else:
             local_path = url.path
         try:
-            message = RequestLogMessage(request_id=request.id, method=method, uri=local_path,
+            message = RequestLogMessage(request_id=request.id,
+                                        method=method,
+                                        uri=local_path,
                                         body_obfuscator=self.__body_obfuscator,
                                         header_obfuscator=self.__header_obfuscator)
             for name in request.headers:
@@ -222,8 +213,7 @@ class DefaultConnection(PooledConnection, ObfuscationCapable):
                     message.set_body(body, content)
             logger.log_request(message)
         except Exception as exception:
-            logger.log("An error occurred trying to log request '{}'".format(
-                request.id), exception)
+            logger.log("An error occurred trying to log request '{}'".format(request.id), exception)
 
     def _cb_log_response(self, response, **kwargs):
         """Log parameter response if logging is enabled at the moment of logging"""
@@ -254,19 +244,17 @@ class DefaultConnection(PooledConnection, ObfuscationCapable):
                 message.set_body(body, content)
             logger.log_response(message)
         except Exception as exception:
-            message = "An error occurred trying to log response '{}'".format(_id)
-            logger.log(message, exception)
+            logger.log("An error occurred trying to log response '{}'".format(_id), exception)
 
     def _log_error(self, request_id, error, start_time):
         """Log communication errors when logging is enabled"""
         logger = self.logger
         if logger:
             duration = math.ceil((datetime.now() - start_time).total_seconds() * 1000)
-            logger.log(
-                "Error occurred for outgoing request (requestId='{}', {} s)".format(
-                    request_id, duration), error)
+            logger.log("Error occurred for outgoing request (requestId='{}', {} s)".format(request_id, duration), error)
 
-    def __is_binary(self, headers):
+    @staticmethod
+    def __is_binary(headers):
         content_type = get_header_value(headers, "Content-Type")
         if content_type is None:
             return False

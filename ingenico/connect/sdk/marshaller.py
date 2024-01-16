@@ -1,7 +1,6 @@
 class Marshaller(object):
     """
-    Used to marshal and unmarshal Ingenico ePayments platform request and response
-    objects to and from JSON.
+    Used to marshal and unmarshal Ingenico ePayments platform request and response objects to and from JSON.
     """
 
     def marshal(self, request_object):
@@ -19,7 +18,6 @@ class Marshaller(object):
 
         :param response_json: the json body that should be unmarshalled
         :param type_class: The class to which the response_json should be unmarshalled
-        :raise: MarshallerSyntaxException if the JSON is not a valid
-         representation for an object of the given type
+        :raise: MarshallerSyntaxException if the JSON is not a valid representation for an object of the given type
         """
         raise NotImplementedError

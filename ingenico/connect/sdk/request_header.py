@@ -29,8 +29,7 @@ class RequestHeader:
 
 def get_header_value(headers, header_name):
     """
-    :return: The value of the header with the given name, or None if there
-     was no such header.
+    :return: The value of the header with the given name, or None if there was no such header.
     """
     if isinstance(headers, dict):
         for name, value in headers.items():
@@ -45,8 +44,7 @@ def get_header_value(headers, header_name):
 
 def get_header(headers, header_name):
     """
-    :return: The header with the given name, or None if there was no such
-     header.
+    :return: The header with the given name, or None if there was no such header.
     """
     if isinstance(headers, dict):
         for name, value in headers.items():

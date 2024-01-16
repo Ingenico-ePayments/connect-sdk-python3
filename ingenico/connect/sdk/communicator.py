@@ -18,8 +18,7 @@ class Communicator(LoggingCapable, ObfuscationCapable):
     """
     Used to communicate with the Ingenico ePayments platform web services.
 
-    It contains all the logic to transform a request object to a HTTP request
-    and a HTTP response to a response object.
+    It contains all the logic to transform a request object to an HTTP request and an HTTP response to a response object.
     """
 
     def __init__(self, session, marshaller):
@@ -57,20 +56,14 @@ class Communicator(LoggingCapable, ObfuscationCapable):
         :param request_headers: An optional list of request headers.
         :param request_parameters: An optional set of request parameters.
         :param context: The optional call context to use.
-        :raise: CommunicationException when an exception occurred communicating
-         with the Ingenico ePayments platform
-        :raise: ResponseException when an error response was received from the
-         Ingenico ePayments platform
-        :raise: ApiException when an error response was received from the
-         Ingenico ePayments platform which contained a list of errors
+        :raise: CommunicationException when an exception occurred communicating with the Ingenico ePayments platform
+        :raise: ResponseException when an error response was received from the Ingenico ePayments platform
+        :raise: ApiException when an error response was received from the Ingenico ePayments platform which contained a list of errors
         """
-        (status, headers, chunks) = self._get_with_binary_response(relative_path, request_headers,
-                                                                   request_parameters, context)
-        return self._process_binary_response(status, chunks, headers, relative_path,
-                                             context)
+        (status, headers, chunks) = self._get_with_binary_response(relative_path, request_headers, request_parameters, context)
+        return self._process_binary_response(status, chunks, headers, relative_path, context)
 
-    def get(self, relative_path, request_headers, request_parameters,
-            response_type, context):
+    def get(self, relative_path, request_headers, request_parameters, response_type, context):
         """
         Corresponds to the HTTP GET method.
 
@@ -79,15 +72,11 @@ class Communicator(LoggingCapable, ObfuscationCapable):
         :param request_parameters: An optional set of request parameters.
         :param response_type: The type of response to return.
         :param context: The optional call context to use.
-        :raise: CommunicationException when an exception occurred communicating
-         with the Ingenico ePayments platform
-        :raise: ResponseException when an error response was received from the
-         Ingenico ePayments platform
-        :raise: ApiException when an error response was received from the
-         Ingenico ePayments platform which contained a list of errors
+        :raise: CommunicationException when an exception occurred communicating with the Ingenico ePayments platform
+        :raise: ResponseException when an error response was received from the Ingenico ePayments platform
+        :raise: ApiException when an error response was received from the Ingenico ePayments platform which contained a list of errors
         """
-        (status, headers, chunks) = self._get_with_binary_response(relative_path, request_headers,
-                                                                   request_parameters, context)
+        (status, headers, chunks) = self._get_with_binary_response(relative_path, request_headers, request_parameters, context)
         return self._process_response(status, chunks, headers, relative_path, response_type, context)
 
     def _delete_with_binary_response(self, relative_path, request_headers, request_parameters, context):
@@ -111,20 +100,14 @@ class Communicator(LoggingCapable, ObfuscationCapable):
         :param request_headers: An optional list of request headers.
         :param request_parameters: An optional set of request parameters.
         :param context: The optional call context to use.
-        :raise: CommunicationException when an exception occurred communicating
-         with the Ingenico ePayments platform
-        :raise: ResponseException when an error response was received from the
-         Ingenico ePayments platform
-        :raise: ApiException when an error response was received from the
-         Ingenico ePayments platform which contained a list of errors
+        :raise: CommunicationException when an exception occurred communicating with the Ingenico ePayments platform
+        :raise: ResponseException when an error response was received from the Ingenico ePayments platform
+        :raise: ApiException when an error response was received from the Ingenico ePayments platform which contained a list of errors
         """
-        (status, headers, chunks) = self._delete_with_binary_response(relative_path, request_headers,
-                                                                      request_parameters, context)
-        return self._process_binary_response(status, chunks, headers, relative_path,
-                                             context)
+        (status, headers, chunks) = self._delete_with_binary_response(relative_path, request_headers, request_parameters, context)
+        return self._process_binary_response(status, chunks, headers, relative_path, context)
 
-    def delete(self, relative_path, request_headers, request_parameters,
-               response_type, context):
+    def delete(self, relative_path, request_headers, request_parameters, response_type, context):
         """
         Corresponds to the HTTP DELETE method.
 
@@ -133,15 +116,11 @@ class Communicator(LoggingCapable, ObfuscationCapable):
         :param request_parameters: An optional set of request parameters.
         :param response_type: The type of response to return.
         :param context: The optional call context to use.
-        :raise: CommunicationException when an exception occurred communicating
-         with the Ingenico ePayments platform
-        :raise: ResponseException when an error response was received from the
-         Ingenico ePayments platform
-        :raise: ApiException when an error response was received from the
-         Ingenico ePayments platform which contained a list of errors
+        :raise: CommunicationException when an exception occurred communicating with the Ingenico ePayments platform
+        :raise: ResponseException when an error response was received from the Ingenico ePayments platform
+        :raise: ApiException when an error response was received from the Ingenico ePayments platform which contained a list of errors
         """
-        (status, headers, chunks) = self._delete_with_binary_response(relative_path, request_headers,
-                                                                      request_parameters, context)
+        (status, headers, chunks) = self._delete_with_binary_response(relative_path, request_headers, request_parameters, context)
         return self._process_response(status, chunks, headers, relative_path, response_type, context)
 
     def _post_with_binary_response(self, relative_path, request_headers, request_parameters, request_body, context):
@@ -178,20 +157,14 @@ class Communicator(LoggingCapable, ObfuscationCapable):
         :param request_parameters: An optional set of request parameters.
         :param request_body: The optional request body to send.
         :param context: The optional call context to use.
-        :raise: CommunicationException when an exception occurred communicating
-         with the Ingenico ePayments platform
-        :raise: ResponseException when an error response was received from the
-         Ingenico ePayments platform
-        :raise: ApiException when an error response was received from the
-         Ingenico ePayments platform which contained a list of errors
+        :raise: CommunicationException when an exception occurred communicating with the Ingenico ePayments platform
+        :raise: ResponseException when an error response was received from the Ingenico ePayments platform
+        :raise: ApiException when an error response was received from the Ingenico ePayments platform which contained a list of errors
         """
-        (status, headers, chunks) = self._post_with_binary_response(relative_path, request_headers,
-                                                                    request_parameters, request_body, context)
-        return self._process_binary_response(status, chunks, headers, relative_path,
-                                             context)
+        (status, headers, chunks) = self._post_with_binary_response(relative_path, request_headers, request_parameters, request_body, context)
+        return self._process_binary_response(status, chunks, headers, relative_path, context)
 
-    def post(self, relative_path, request_headers, request_parameters,
-             request_body, response_type, context):
+    def post(self, relative_path, request_headers, request_parameters, request_body, response_type, context):
         """
         Corresponds to the HTTP POST method.
 
@@ -201,20 +174,14 @@ class Communicator(LoggingCapable, ObfuscationCapable):
         :param request_body: The optional request body to send.
         :param response_type: The type of response to return.
         :param context: The optional call context to use.
-        :raise: CommunicationException when an exception occurred communicating
-         with the Ingenico ePayments platform
-        :raise: ResponseException when an error response was received from the
-         Ingenico ePayments platform
-        :raise: ApiException when an error response was received from the
-         Ingenico ePayments platform which contained a list of errors
+        :raise: CommunicationException when an exception occurred communicating with the Ingenico ePayments platform
+        :raise: ResponseException when an error response was received from the Ingenico ePayments platform
+        :raise: ApiException when an error response was received from the Ingenico ePayments platform which contained a list of errors
         """
-        (status, headers, chunks) = self._post_with_binary_response(relative_path, request_headers,
-                                                                    request_parameters, request_body, context)
-
+        (status, headers, chunks) = self._post_with_binary_response(relative_path, request_headers, request_parameters, request_body, context)
         return self._process_response(status, chunks, headers, relative_path, response_type, context)
 
-    def _put_with_binary_response(self, relative_path, request_headers, request_parameters,
-                                  request_body, context):
+    def _put_with_binary_response(self, relative_path, request_headers, request_parameters, request_body, context):
         connection = self.__session.connection
         if request_parameters is None:
             request_parameter_list = None
@@ -239,8 +206,7 @@ class Communicator(LoggingCapable, ObfuscationCapable):
         self._add_generic_headers("PUT", uri, request_headers, context)
         return connection.put(uri, request_headers, body)
 
-    def put_with_binary_response(self, relative_path, request_headers, request_parameters,
-                                 request_body, context):
+    def put_with_binary_response(self, relative_path, request_headers, request_parameters, request_body, context):
         """
         Corresponds to the HTTP PUT method.
 
@@ -249,20 +215,14 @@ class Communicator(LoggingCapable, ObfuscationCapable):
         :param request_parameters: An optional set of request parameters.
         :param request_body: The optional request body to send.
         :param context: The optional call context to use.
-        :raise: CommunicationException when an exception occurred communicating
-         with the Ingenico ePayments platform
-        :raise: ResponseException when an error response was received from the
-         Ingenico ePayments platform
-        :raise: ApiException when an error response was received from the
-         Ingenico ePayments platform which contained a list of errors
+        :raise: CommunicationException when an exception occurred communicating with the Ingenico ePayments platform
+        :raise: ResponseException when an error response was received from the Ingenico ePayments platform
+        :raise: ApiException when an error response was received from the Ingenico ePayments platform which contained a list of errors
         """
-        (status, headers, chunks) = self._put_with_binary_response(relative_path, request_headers, request_parameters,
-                                                                   request_body, context)
-        return self._process_binary_response(status, chunks, headers, relative_path,
-                                             context)
+        (status, headers, chunks) = self._put_with_binary_response(relative_path, request_headers, request_parameters, request_body, context)
+        return self._process_binary_response(status, chunks, headers, relative_path, context)
 
-    def put(self, relative_path, request_headers, request_parameters,
-            request_body, response_type, context):
+    def put(self, relative_path, request_headers, request_parameters, request_body, response_type, context):
         """
         Corresponds to the HTTP PUT method.
 
@@ -272,22 +232,17 @@ class Communicator(LoggingCapable, ObfuscationCapable):
         :param request_body: The optional request body to send.
         :param response_type: The type of response to return.
         :param context: The optional call context to use.
-        :raise: CommunicationException when an exception occurred communicating
-         with the Ingenico ePayments platform
-        :raise: ResponseException when an error response was received from the
-         Ingenico ePayments platform
-        :raise: ApiException when an error response was received from the
-         Ingenico ePayments platform which contained a list of errors
+        :raise: CommunicationException when an exception occurred communicating with the Ingenico ePayments platform
+        :raise: ResponseException when an error response was received from the Ingenico ePayments platform
+        :raise: ApiException when an error response was received from the Ingenico ePayments platform which contained a list of errors
         """
-        (status, headers, chunks) = self._put_with_binary_response(relative_path, request_headers, request_parameters,
-                                                                   request_body, context)
+        (status, headers, chunks) = self._put_with_binary_response(relative_path, request_headers, request_parameters, request_body, context)
         return self._process_response(status, chunks, headers, relative_path, response_type, context)
 
     @property
     def marshaller(self):
         """
-        :return: The Marshaller object associated with this communicator. Never
-         None.
+        :return: The Marshaller object associated with this communicator. Never None.
         """
         return self.__marshaller
 
@@ -295,24 +250,19 @@ class Communicator(LoggingCapable, ObfuscationCapable):
         api_endpoint = self.__session.api_endpoint
         if api_endpoint.path:
             raise ValueError("api_endpoint should not contain a path")
-        if api_endpoint.username is not None or api_endpoint.query or \
-                api_endpoint.fragment:
-            raise ValueError(
-                "api_endpoint should not contain user info, query or fragment")
+        if api_endpoint.username is not None or api_endpoint.query or api_endpoint.fragment:
+            raise ValueError("api_endpoint should not contain user info, query or fragment")
         if relative_path.startswith("/"):
             absolute_path = relative_path
         else:
             absolute_path = "/" + relative_path
         uri = api_endpoint.geturl() + absolute_path
-        flag = False
+        separator = "?"
         if request_parameters is not None:
             for nvp in request_parameters:
-                if not flag:
-                    uri += "?"
-                    flag = True
-                else:
-                    uri += "&"
+                uri += separator
                 uri += quote(nvp.name) + "=" + quote(nvp.value)
+                separator = "&"
         # no need to revalidate that uri has a valid scheme and netloc
         return urlparse(uri)
 
@@ -324,23 +274,16 @@ class Communicator(LoggingCapable, ObfuscationCapable):
         end of your overridden method.
         """
         # add server meta info header
-        request_headers.extend(
-            self.__session.meta_data_provider.meta_data_headers)
+        request_headers.extend(self.__session.meta_data_provider.meta_data_headers)
         # add date header
-        request_headers.append(
-            RequestHeader("Date", self._get_header_date_string()))
+        request_headers.append(RequestHeader("Date", self._get_header_date_string()))
         if context is not None and context.idempotence_key is not None:
             # add context specific headers
-            request_headers.append(
-                RequestHeader("X-GCS-Idempotence-Key",
-                              context.idempotence_key))
+            request_headers.append(RequestHeader("X-GCS-Idempotence-Key", context.idempotence_key))
         # add signature
         authenticator = self.__session.authenticator
-        authentication_signature = \
-            authenticator.create_simple_authentication_signature(
-                http_method, uri, request_headers)
-        request_headers.append(RequestHeader("Authorization",
-                                             authentication_signature))
+        authentication_signature = authenticator.create_simple_authentication_signature(http_method, uri, request_headers)
+        request_headers.append(RequestHeader("Authorization", authentication_signature))
 
     def _get_header_date_string(self):
         """
@@ -350,7 +293,8 @@ class Communicator(LoggingCapable, ObfuscationCapable):
             "%a, %d %b %Y %H:%M:%S GMT")
         return date_format_utc
 
-    def __collect_chunks(self, chunks):
+    @staticmethod
+    def __collect_chunks(chunks):
         collected_body = b""
         for chunk in chunks:
             collected_body += chunk
@@ -373,13 +317,10 @@ class Communicator(LoggingCapable, ObfuscationCapable):
         """
         Updates the given call context based on the contents of the given response.
         """
-        idempotence_request_timestamp_value = get_header_value(headers,
-                                                               "X-GCS-Idempotence-Request-Timestamp")
+        idempotence_request_timestamp_value = get_header_value(headers, "X-GCS-Idempotence-Request-Timestamp")
         if idempotence_request_timestamp_value is not None:
-            idempotence_request_timestamp = int(
-                idempotence_request_timestamp_value)
-            context.idempotence_request_timestamp = \
-                idempotence_request_timestamp
+            idempotence_request_timestamp = int(idempotence_request_timestamp_value)
+            context.idempotence_request_timestamp = idempotence_request_timestamp
         else:
             context.idempotence_request_timestamp = None
 
@@ -404,19 +345,18 @@ class Communicator(LoggingCapable, ObfuscationCapable):
         if body is not None and not self.__is_json(headers):
             cause = ResponseException(status, body, headers)
             if status == 404:
-                raise NotFoundException(cause,
-                                        "The requested resource was not found; invalid path: "
-                                        + request_path)
+                raise NotFoundException(cause, "The requested resource was not found; invalid path: " + request_path)
             else:
                 raise CommunicationException(cause)
         else:
             raise ResponseException(status, body, headers)
 
-    def __is_json(self, headers):
+    @staticmethod
+    def __is_json(headers):
         content_type = get_header_value(headers, "Content-Type")
-        return (content_type is None) or (
-            "application/json".lower() == content_type) or (
-                content_type.lower().startswith("application/json"))
+        return (content_type is None) or \
+               ("application/json".lower() == content_type) or \
+               (content_type.lower().startswith("application/json"))
 
     def close_idle_connections(self, idle_time):
         """
@@ -443,13 +383,11 @@ class Communicator(LoggingCapable, ObfuscationCapable):
     def set_body_obfuscator(self, body_obfuscator):
         connection = self.__session.connection
         if isinstance(connection, ObfuscationCapable):
-            # delegate to the connection
             connection.set_body_obfuscator(body_obfuscator)
 
     def set_header_obfuscator(self, header_obfuscator):
         connection = self.__session.connection
         if isinstance(connection, ObfuscationCapable):
-            # delegate to the connection
             connection.set_header_obfuscator(header_obfuscator)
 
     def enable_logging(self, communicator_logger):

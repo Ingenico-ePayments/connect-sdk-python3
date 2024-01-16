@@ -9,5 +9,4 @@ class GlobalCollectException(ApiException):
 
     def __init__(self, status_code, response_body, error_id, errors,
                  message="the Ingenico ePayments platform returned an error response"):
-        super(GlobalCollectException, self).__init__(status_code, response_body,
-                                                     error_id, errors, message)
+        super(GlobalCollectException, self).__init__(status_code, response_body, error_id, errors, message)

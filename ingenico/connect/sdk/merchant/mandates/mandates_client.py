@@ -1,6 +1,6 @@
 #
 # This class was auto-generated from the API references found at
-# https://epayments-api.developer-ingenico.com/s2sapi/v1/
+# https://epayments-api.developer-ingenico.com/
 #
 from ingenico.connect.sdk.api_resource import ApiResource
 from ingenico.connect.sdk.response_exception import ResponseException

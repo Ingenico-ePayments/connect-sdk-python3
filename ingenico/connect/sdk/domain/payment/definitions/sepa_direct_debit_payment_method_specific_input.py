@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 #
 # This class was auto-generated from the API references found at
-# https://epayments-api.developer-ingenico.com/s2sapi/v1/
+# https://epayments-api.developer-ingenico.com/
 #
 from ingenico.connect.sdk.domain.payment.definitions.abstract_sepa_direct_debit_payment_method_specific_input import AbstractSepaDirectDebitPaymentMethodSpecificInput
 from ingenico.connect.sdk.domain.payment.definitions.sepa_direct_debit_payment_product771_specific_input import SepaDirectDebitPaymentProduct771SpecificInput

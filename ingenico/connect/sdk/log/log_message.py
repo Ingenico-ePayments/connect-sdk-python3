@@ -50,9 +50,6 @@ class LogMessage(object):
             self.__headers += ", "
         self.__headers += name + "=\""
         if value is not None and value.lower() != 'none':
-            # if isinstance(value, bytes):
-            #     value = base64.b64decode(value)  # decode byte-type headers for recording
-            value = str(value)
             obfuscated_value = self.__header_obfuscator.obfuscate_header(name, value)
             self.__headers += obfuscated_value
             self.__header_list.append((name, "\"" + obfuscated_value + "\""))
@@ -73,7 +70,8 @@ class LogMessage(object):
         self.__content_type = content_type
         self.__body = "<binary content>"
 
-    def __is_binary(self, content_type):
+    @staticmethod
+    def __is_binary(content_type):
         if content_type is None:
             return False
         content_type = content_type.lower()

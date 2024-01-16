@@ -10,4 +10,4 @@ class AuthorizationType:
         if name in AuthorizationType.AUTHORIZATION_TYPES:
             return name
         else:
-            raise RuntimeError("Authorization '{}' not found".format(name))
+            raise ValueError("Authorization '{}' not found".format(name))

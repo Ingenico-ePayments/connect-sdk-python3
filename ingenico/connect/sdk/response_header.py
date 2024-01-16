@@ -3,8 +3,7 @@ import re
 
 def get_header_value(headers, header_name):
     """
-    :return: The value of the header with the given name, or None if there
-     was no such header.
+    :return: The value of the header with the given name, or None if there was no such header.
     """
     if headers is None:
         return None
@@ -16,8 +15,7 @@ def get_header_value(headers, header_name):
 
 def get_header(headers, header_name):
     """
-    :return: The header with the given name as a tuple with the name and
-     value, or None if there was no such header.
+    :return: The header with the given name as a tuple with the name and value, or None if there was no such header.
     """
     if headers is None:
         return None
@@ -29,14 +27,12 @@ def get_header(headers, header_name):
 
 def get_disposition_filename(headers):
     """
-    :return: The value of the filename parameter of the Content-Disposition
-     header, or None if there was no such header or parameter.
+    :return: The value of the filename parameter of the Content-Disposition header, or None if there was no such header or parameter.
     """
     header_value = get_header_value(headers, "Content-Disposition")
     if header_value is None:
         return None
-    pattern = re.compile(
-        "(?:^|;)\\s*filename\\s*=\\s*(.*?)\\s*(?:;|$)", re.IGNORECASE)
+    pattern = re.compile("(?:^|;)\\s*filename\\s*=\\s*(.*?)\\s*(?:;|$)", re.IGNORECASE)
     match = pattern.search(header_value)
     if match is not None:
         filename = match.group(1)

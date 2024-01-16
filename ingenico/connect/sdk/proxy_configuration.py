@@ -42,8 +42,11 @@ class ProxyConfiguration:
                 port = 443
             else:
                 raise ValueError("unsupported scheme: " + scheme)
-        return ProxyConfiguration(scheme=scheme, host=host, port=port,
-                                  username=username, password=password)
+        return ProxyConfiguration(scheme=scheme,
+                                  host=host,
+                                  port=port,
+                                  username=username,
+                                  password=password)
 
     @property
     def scheme(self):
@@ -95,6 +98,4 @@ class ProxyConfiguration:
         if self.username is None or self.password is None:
             return r"{0}://{1}:{2}".format(self.scheme, self.host, self.port)
         else:
-            return r"{0}://{3}:{4}@{1}:{2}".format(self.scheme, self.host,
-                                                   self.port, self.username,
-                                                   self.password)
+            return r"{0}://{3}:{4}@{1}:{2}".format(self.scheme, self.host, self.port, self.username, self.password)

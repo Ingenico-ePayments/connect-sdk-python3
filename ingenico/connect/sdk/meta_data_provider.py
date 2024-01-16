@@ -2,11 +2,10 @@ import platform
 from base64 import b64encode
 import re
 
-from ingenico.connect.sdk.data_object import DataObject
-from ingenico.connect.sdk.defaultimpl.default_marshaller import \
-    DefaultMarshaller
-from ingenico.connect.sdk.domain.metadata.shopping_cart_extension import ShoppingCartExtension
 from .request_header import RequestHeader
+from ingenico.connect.sdk.data_object import DataObject
+from ingenico.connect.sdk.defaultimpl.default_marshaller import DefaultMarshaller
+from ingenico.connect.sdk.domain.metadata.shopping_cart_extension import ShoppingCartExtension
 
 
 class IterProperty(object):
@@ -21,7 +20,7 @@ class MetaDataProvider:
     """
     Provides meta info about the server.
     """
-    __SDK_VERSION = "3.45.0"
+    __SDK_VERSION = "3.46.0"
     __SERVER_META_INFO_HEADER = "X-GCS-ServerMetaInfo"
     __prohibited_headers = [__SERVER_META_INFO_HEADER, "X-GCS-Idempotence-Key",
                             "Date", "Content-Type", "Authorization"]
@@ -67,13 +66,11 @@ class MetaDataProvider:
 
     def __init__(self, integrator, shopping_cart_extension=None,
                  additional_request_headers=()):
-        MetaDataProvider.__validate_additional_request_headers(
-            additional_request_headers)
+        MetaDataProvider.__validate_additional_request_headers(additional_request_headers)
 
         def subber(name_or_value):
             return re.sub(r'\r?\n(?:(?![\r\n])\s)*', " ", name_or_value).strip()
-        additional_request_headers = [RequestHeader(subber(header.name), subber(header.value))
-                                      for header in additional_request_headers]
+        additional_request_headers = [RequestHeader(subber(header.name), subber(header.value)) for header in additional_request_headers]
 
         server_meta_info = self.ServerMetaInfo()
         server_meta_info.platform_identifier = self._platform_identifier
@@ -82,11 +79,8 @@ class MetaDataProvider:
         server_meta_info.integrator = integrator
         server_meta_info.shopping_cart_extension = shopping_cart_extension
 
-        server_meta_info_string = DefaultMarshaller.INSTANCE().marshal(
-            server_meta_info)
-        server_meta_info_header = RequestHeader(
-            self.__SERVER_META_INFO_HEADER, b64encode(
-                server_meta_info_string.encode('utf-8')))
+        server_meta_info_string = DefaultMarshaller.INSTANCE().marshal(server_meta_info)
+        server_meta_info_header = RequestHeader(self.__SERVER_META_INFO_HEADER, b64encode(server_meta_info_string.encode('utf-8')))
         if not additional_request_headers:
             self.__meta_data_headers = tuple([server_meta_info_header])
         else:
@@ -98,15 +92,13 @@ class MetaDataProvider:
     def __validate_additional_request_headers(additional_request_headers):
         if additional_request_headers is not None:
             for additional_request_header in additional_request_headers:
-                MetaDataProvider.__validate_additional_request_header(
-                    additional_request_header)
+                MetaDataProvider.__validate_additional_request_header(additional_request_header)
 
     @staticmethod
     def __validate_additional_request_header(additional_request_header):
         try:
             if additional_request_header.name in MetaDataProvider.__PROHIBITED_HEADERS:
-                raise ValueError("request header not allowed: ",
-                                 str(additional_request_header))
+                raise ValueError("request header not allowed: " + str(additional_request_header))
         except AttributeError:
             raise AttributeError("Each request header should have an attribute 'name' and an attribute 'value'")
 

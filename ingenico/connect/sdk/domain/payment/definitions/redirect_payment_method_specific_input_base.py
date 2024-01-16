@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 #
 # This class was auto-generated from the API references found at
-# https://epayments-api.developer-ingenico.com/s2sapi/v1/
+# https://epayments-api.developer-ingenico.com/
 #
 from ingenico.connect.sdk.domain.payment.definitions.abstract_redirect_payment_method_specific_input import AbstractRedirectPaymentMethodSpecificInput
 from ingenico.connect.sdk.domain.payment.definitions.redirect_payment_product4101_specific_input_base import RedirectPaymentProduct4101SpecificInputBase

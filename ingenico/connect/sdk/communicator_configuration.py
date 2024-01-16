@@ -1,6 +1,5 @@
 from .endpoint_configuration import EndpointConfiguration
-from ingenico.connect.sdk.defaultimpl.authorization_type import \
-    AuthorizationType
+from ingenico.connect.sdk.defaultimpl.authorization_type import AuthorizationType
 
 
 # pylint: disable=too-many-instance-attributes
@@ -23,13 +22,10 @@ class CommunicatorConfiguration(EndpointConfiguration):
                  max_connections=False, proxy_configuration=False,
                  integrator=False, shopping_cart_extension=False):
         if properties:
-            super(CommunicatorConfiguration, self).__init__(properties,
-                                                            "connect.api")
+            super(CommunicatorConfiguration, self).__init__(properties, "connect.api")
             if properties.sections() and properties.options("ConnectSDK"):
-                authorization = properties.get("ConnectSDK",
-                                               "connect.api.authorizationType")
-                self.__authorization_type = AuthorizationType.get_authorization(
-                    authorization)
+                authorization = properties.get("ConnectSDK", "connect.api.authorizationType")
+                self.__authorization_type = AuthorizationType.get_authorization(authorization)
         if api_endpoint:
             self.api_endpoint = api_endpoint
         if api_key_id:

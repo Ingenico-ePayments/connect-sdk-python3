@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 #
 # This class was auto-generated from the API references found at
-# https://epayments-api.developer-ingenico.com/s2sapi/v1/
+# https://epayments-api.developer-ingenico.com/
 #
 from ingenico.connect.sdk.domain.payment.definitions.bank_transfer_payment_method_specific_output import BankTransferPaymentMethodSpecificOutput
 from ingenico.connect.sdk.domain.payment.definitions.card_payment_method_specific_output import CardPaymentMethodSpecificOutput

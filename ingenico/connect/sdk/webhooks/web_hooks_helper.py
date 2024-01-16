@@ -1,11 +1,7 @@
-import hmac
-from base64 import b64encode
-import hashlib
-
 from .api_version_mismatch_exception import ApiVersionMismatchException
+from .signature_validator import SignatureValidator
 from ingenico.connect.sdk.client import Client
 from ingenico.connect.sdk.domain.webhooks.web_hooks_event import WebhooksEvent
-from .signature_validation_exception import SignatureValidationException
 
 
 class WebhooksHelper:
@@ -16,12 +12,8 @@ class WebhooksHelper:
     def __init__(self, marshaller, secret_key_store):
         if marshaller is None:
             raise ValueError("marshaller is requried")
-        if secret_key_store is None:
-            raise ValueError("secret_key_store is required")
         self.__marshaller = marshaller
-        self.__secret_key_store = secret_key_store
-
-    # body as InputStream
+        self.__signature_validator = SignatureValidator(secret_key_store)
 
     def unmarshal(self, body, request_headers):
         """
@@ -37,37 +29,20 @@ class WebhooksHelper:
         self.__validate_api_version(event)
         return event
 
-    def _validate(self, param, request_headers):
+    def _validate(self, body, request_headers):
         """
         Validates the given body using the given request headers.
 
-        :raise: SignatureValidationException: If the body could not be validated
-         successfully.
+        :raise: SignatureValidationException: If the body could not be validated successfully.
         """
-        # if isinstance(param, str):
-        #     self._validate(param.encode('UTF-8'), request_headers)
-        # else:
-        # try:
-        self.__validate_body(param, request_headers)
-        # except Exception as e:
-        #     raise SignatureValidationException(e)
-
-    # validation utility methods
-
-    def __validate_body(self, body, request_headers):
-        signature = self.__get_header_value(request_headers, "X-GCS-Signature")
-        key_id = self.__get_header_value(request_headers, "X-GCS-KeyId")
-        secret_key = self.__secret_key_store.get_secret_key(key_id)
-        unencoded_result = hmac.new(secret_key.encode("utf-8"), body, hashlib.sha256).digest()
-        expected_signature = b64encode(unencoded_result)
-        is_valid = hmac.compare_digest(signature.encode("utf-8"), expected_signature)
-        if is_valid is False:
-            raise SignatureValidationException("failed to validate signature: " + signature)
+        self.__signature_validator.validate(body, request_headers)
 
     @staticmethod
     def are_equal_signatures(signature, expected_signature):
-        # don't use a simple equals call, as that may leak timing information
-        # (it fails fast)
+        """
+        Deprecated; use hmac.compare_digest instead
+        """
+        # don't use a simple equals call, as that may leak timing information (it fails fast)
         length = len(signature)
         expected_length = len(expected_signature)
 
@@ -93,27 +68,10 @@ class WebhooksHelper:
 
         return result
 
-    # general utility methods
-
-    def __validate_api_version(self, event):
+    @staticmethod
+    def __validate_api_version(event):
         if not Client.API_VERSION() == event.api_version:
-            raise ApiVersionMismatchException(event.api_version,
-                                              Client.API_VERSION())
-
-    def __get_header_value(self, request_headers, header_name):
-        value = None
-        for header in request_headers:
-            if header_name.lower() == header.name.lower():
-                if value is None:
-                    value = header.value
-                else:
-                    raise SignatureValidationException(
-                        "encountered multiple occurrences of header '"
-                        + header_name + "'")
-        if value is None:
-            raise SignatureValidationException(
-                "could not find header '" + header_name + "'")
-        return value
+            raise ApiVersionMismatchException(event.api_version, Client.API_VERSION())
 
     # Used for unit tests
     @property
@@ -122,4 +80,4 @@ class WebhooksHelper:
 
     @property
     def secret_key_store(self):
-        return self.__secret_key_store
+        return self.__signature_validator.secret_key_store

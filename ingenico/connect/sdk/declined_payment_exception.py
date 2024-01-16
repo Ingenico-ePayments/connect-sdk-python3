@@ -8,21 +8,15 @@ class DeclinedPaymentException(DeclinedTransactionException):
 
     def __init__(self, status_code, response_body, errors):
         if errors is not None:
-            super(DeclinedPaymentException, self).__init__(status_code,
-                                                           response_body,
-                                                           errors.error_id,
-                                                           errors.errors,
-                                                           DeclinedPaymentException.__create_message(
-                                                               errors))
+            super(DeclinedPaymentException, self).__init__(status_code, response_body, errors.error_id, errors.errors,
+                                                           DeclinedPaymentException.__create_message(errors))
         else:
-            super(DeclinedPaymentException, self).__init__(status_code,
-                                                           response_body,
-                                                           None, None,
-                                                           DeclinedPaymentException.__create_message())
+            super(DeclinedPaymentException, self).__init__(status_code, response_body, None, None,
+                                                           DeclinedPaymentException.__create_message(errors))
         self.__errors = errors
 
     @staticmethod
-    def __create_message(errors=None):
+    def __create_message(errors):
         if errors is not None and errors.payment_result is not None:
             payment = errors.payment_result.payment
         else:

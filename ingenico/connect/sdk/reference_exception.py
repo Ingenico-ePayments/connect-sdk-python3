@@ -8,7 +8,5 @@ class ReferenceException(ApiException):
     """
 
     def __init__(self, status_code, response_body, error_id, errors,
-                 message="the Ingenico ePayments platform returned a "
-                         "reference error response"):
-        super(ReferenceException, self).__init__(status_code, response_body,
-                                                 error_id, errors, message)
+                 message="the Ingenico ePayments platform returned a reference error response"):
+        super(ReferenceException, self).__init__(status_code, response_body, error_id, errors, message)

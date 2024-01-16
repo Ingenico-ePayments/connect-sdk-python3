@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 #
 # This class was auto-generated from the API references found at
-# https://epayments-api.developer-ingenico.com/s2sapi/v1/
+# https://epayments-api.developer-ingenico.com/
 #
 from ingenico.connect.sdk.multipart_form_data_request import MultipartFormDataRequest
 from ingenico.connect.sdk.multipart_form_data_object import MultipartFormDataObject

@@ -7,10 +7,8 @@ from ingenico.connect.sdk.domain.definitions.amount_of_money import AmountOfMone
 from ingenico.connect.sdk.domain.payment.create_payment_request import CreatePaymentRequest
 from ingenico.connect.sdk.domain.payment.definitions.customer import Customer
 from ingenico.connect.sdk.domain.payment.definitions.order import Order
-from ingenico.connect.sdk.domain.payment.definitions.redirect_payment_method_specific_input import \
-    RedirectPaymentMethodSpecificInput
-from ingenico.connect.sdk.domain.payment.definitions.redirect_payment_product809_specific_input import \
-    RedirectPaymentProduct809SpecificInput
+from ingenico.connect.sdk.domain.payment.definitions.redirect_payment_method_specific_input import RedirectPaymentMethodSpecificInput
+from ingenico.connect.sdk.domain.payment.definitions.redirect_payment_product809_specific_input import RedirectPaymentProduct809SpecificInput
 from ingenico.connect.sdk.call_context import CallContext
 from ingenico.connect.sdk.declined_payment_exception import DeclinedPaymentException
 

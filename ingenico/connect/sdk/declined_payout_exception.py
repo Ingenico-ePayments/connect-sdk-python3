@@ -8,18 +8,11 @@ class DeclinedPayoutException(DeclinedTransactionException):
 
     def __init__(self, status_code, response_body, errors):
         if errors is not None:
-            super(DeclinedPayoutException, self).__init__(status_code,
-                                                          response_body,
-                                                          errors.error_id,
-                                                          errors.errors,
-                                                          DeclinedPayoutException.__create_message(
-                                                              errors))
+            super(DeclinedPayoutException, self).__init__(status_code, response_body, errors.error_id, errors.errors,
+                                                          DeclinedPayoutException.__create_message(errors))
         else:
-            super(DeclinedPayoutException, self).__init__(status_code,
-                                                          response_body,
-                                                          None, None,
-                                                          DeclinedPayoutException.__create_message(
-                                                              errors))
+            super(DeclinedPayoutException, self).__init__(status_code, response_body, None, None,
+                                                          DeclinedPayoutException.__create_message(errors))
         self.__errors = errors
 
     @staticmethod

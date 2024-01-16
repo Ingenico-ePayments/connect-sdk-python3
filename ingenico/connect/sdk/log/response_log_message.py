@@ -26,21 +26,15 @@ class ResponseLogMessage(LogMessage):
 
     def get_message(self):
         if self.__duration < 0:
-            return "Incoming response (requestId='" + \
-                   self.request_id + "'):\n" + \
-                   "  status_code:  " + str(
-                       self.__status_code) + "\n  headers:      " + \
-                   self.headers + "\n  content-type: " + \
-                   self.empty_if_none(
-                       self.content_type) + "\n  body:         " + \
-                   self.empty_if_none(self.body)
+            return "Incoming response (requestId='" + self.request_id + "'):\n" + \
+                   "  status_code:  " + str(self.__status_code) + "\n" + \
+                   "  headers:      " + self.headers + "\n" + \
+                   "  content-type: " + self.empty_if_none(self.content_type) + "\n" + \
+                   "  body:         " + self.empty_if_none(self.body)
 
         else:
-            return "Incoming response (requestId='" + \
-                   self.request_id + "', " + str(self.__duration) + " ms):\n" + \
-                   "  status_code:  " + \
-                   str(self.__status_code) + "\n  headers:      " + \
-                   self.headers + "\n  content-type: " + \
-                   self.empty_if_none(
-                       self.content_type) + "\n  body:         " + \
-                   self.empty_if_none(self.body)
+            return "Incoming response (requestId='" + self.request_id + "', " + str(self.__duration) + " ms):\n" + \
+                   "  status_code:  " + str(self.__status_code) + "\n" + \
+                   "  headers:      " + self.headers + "\n" + \
+                   "  content-type: " + self.empty_if_none(self.content_type) + "\n" + \
+                   "  body:         " + self.empty_if_none(self.body)

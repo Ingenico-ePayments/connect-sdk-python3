@@ -12,8 +12,7 @@ from ingenico.connect.sdk.domain.definitions.address import Address
 from ingenico.connect.sdk.domain.definitions.amount_of_money import AmountOfMoney
 from ingenico.connect.sdk.domain.definitions.card import Card
 from ingenico.connect.sdk.domain.payment.create_payment_request import CreatePaymentRequest
-from ingenico.connect.sdk.domain.payment.definitions.card_payment_method_specific_input import \
-    CardPaymentMethodSpecificInput
+from ingenico.connect.sdk.domain.payment.definitions.card_payment_method_specific_input import CardPaymentMethodSpecificInput
 from ingenico.connect.sdk.domain.payment.definitions.customer import Customer
 from ingenico.connect.sdk.domain.payment.definitions.order import Order
 from ingenico.connect.sdk.global_collect_exception import GlobalCollectException

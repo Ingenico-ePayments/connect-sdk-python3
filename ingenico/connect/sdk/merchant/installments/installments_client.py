@@ -1,6 +1,6 @@
 #
 # This class was auto-generated from the API references found at
-# https://epayments-api.developer-ingenico.com/s2sapi/v1/
+# https://epayments-api.developer-ingenico.com/
 #
 from ingenico.connect.sdk.api_resource import ApiResource
 from ingenico.connect.sdk.response_exception import ResponseException
@@ -22,7 +22,7 @@ class InstallmentsClient(ApiResource):
 
     def get_installments_info(self, body, context=None):
         """
-        Resource /{merchantId}/installments/getInstallmentsInfo - Get Installment Info
+        Resource /{merchantId}/installments/getInstallmentsInfo - Get installment information
         
         See also https://epayments-api.developer-ingenico.com/s2sapi/v1/en_US/python/installments/getInstallmentsInfo.html
 

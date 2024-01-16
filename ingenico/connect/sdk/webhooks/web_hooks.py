@@ -1,6 +1,5 @@
-from ingenico.connect.sdk.defaultimpl.default_marshaller import \
-    DefaultMarshaller
 from .web_hooks_helper_builder import WebhooksHelperBuilder
+from ingenico.connect.sdk.defaultimpl.default_marshaller import DefaultMarshaller
 
 
 class Webhooks:
@@ -13,9 +12,9 @@ class Webhooks:
         """
         Creates a WebhooksHelperBuilder that will use the given SecretKeyStore.
         """
-        return WebhooksHelperBuilder().with_marshaller(
-            DefaultMarshaller.INSTANCE()).with_secret_key_store(
-                secret_key_store)
+        return WebhooksHelperBuilder() \
+            .with_marshaller(DefaultMarshaller.INSTANCE()) \
+            .with_secret_key_store(secret_key_store)
 
     @staticmethod
     def create_helper(secret_key_store):

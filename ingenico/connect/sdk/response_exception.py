@@ -8,8 +8,7 @@ class ResponseException(RuntimeError):
     """
 
     def __init__(self, status, body, headers):
-        super(ResponseException, self).__init__(
-            "the Ingenico ePayments platform returned an error response")
+        super(ResponseException, self).__init__("the Ingenico ePayments platform returned an error response")
         self.__status_code = status
         self.__headers = headers if headers is not None else {}
         self.__body = body
@@ -17,38 +16,33 @@ class ResponseException(RuntimeError):
     @property
     def status_code(self):
         """
-        :return: The HTTP status code that was returned by the Ingenico ePayments
-         platform.
+        :return: The HTTP status code that was returned by the Ingenico ePayments platform.
         """
         return self.__status_code
 
     @property
     def body(self):
         """
-        :return: The raw response body that was returned by the Ingenico ePayments
-         platform.
+        :return: The raw response body that was returned by the Ingenico ePayments platform.
         """
         return self.__body
 
     @property
     def headers(self):
         """
-        :return: The headers that were returned by the Ingenico ePayments platform.
-         Never None.
+        :return: The headers that were returned by the Ingenico ePayments platform. Never None.
         """
         return self.__headers
 
     def get_header(self, header_name):
         """
-        :return: The header with the given name, or None if there was no such
-         header.
+        :return: The header with the given name, or None if there was no such header.
         """
         return get_header(self.__headers, header_name)
 
     def get_header_value(self, header_name):
         """
-        :return: The value header with the given name, or None if there was no
-         such header.
+        :return: The value header with the given name, or None if there was no such header.
         """
         return get_header_value(self.__headers, header_name)
 

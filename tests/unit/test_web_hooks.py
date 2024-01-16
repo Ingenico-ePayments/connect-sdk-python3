@@ -1,9 +1,7 @@
 import unittest
 
-from ingenico.connect.sdk.defaultimpl.default_marshaller import \
-    DefaultMarshaller
-from ingenico.connect.sdk.webhooks.in_memory_secret_key_store import \
-    InMemorySecretKeyStore
+from ingenico.connect.sdk.defaultimpl.default_marshaller import DefaultMarshaller
+from ingenico.connect.sdk.webhooks.in_memory_secret_key_store import InMemorySecretKeyStore
 from ingenico.connect.sdk.webhooks.web_hooks import Webhooks
 
 

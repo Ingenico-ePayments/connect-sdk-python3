@@ -1,5 +1,4 @@
-from ingenico.connect.sdk.log.communicator_logger import \
-    CommunicatorLogger
+from .communicator_logger import CommunicatorLogger
 
 
 class PythonCommunicatorLogger(CommunicatorLogger):

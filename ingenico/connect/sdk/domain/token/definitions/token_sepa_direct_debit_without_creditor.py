@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 #
 # This class was auto-generated from the API references found at
-# https://epayments-api.developer-ingenico.com/s2sapi/v1/
+# https://epayments-api.developer-ingenico.com/
 #
 from ingenico.connect.sdk.domain.token.definitions.abstract_token import AbstractToken
 from ingenico.connect.sdk.domain.token.definitions.customer_token_with_contact_details import CustomerTokenWithContactDetails

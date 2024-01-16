@@ -4,6 +4,5 @@ class DataObject(object):
 
     def from_dictionary(self, dictionary):
         if not isinstance(dictionary, dict):
-            raise TypeError(
-                'value \'{}\' is not a dictionary'.format(dictionary))
+            raise TypeError('value \'{}\' is not a dictionary'.format(dictionary))
         return self

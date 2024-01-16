@@ -2,8 +2,7 @@ import unittest
 
 from ingenico.connect.sdk.domain.definitions.amount_of_money import AmountOfMoney
 from ingenico.connect.sdk.domain.definitions.bank_account_bban import BankAccountBban
-from ingenico.connect.sdk.domain.riskassessments.definitions.customer_risk_assessment import \
-    CustomerRiskAssessment
+from ingenico.connect.sdk.domain.riskassessments.definitions.customer_risk_assessment import CustomerRiskAssessment
 from ingenico.connect.sdk.domain.riskassessments.definitions.order_risk_assessment import OrderRiskAssessment
 from ingenico.connect.sdk.domain.riskassessments.risk_assessment_bank_account import RiskAssessmentBankAccount
 from tests.integration import init_utils

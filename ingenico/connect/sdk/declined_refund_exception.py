@@ -8,18 +8,11 @@ class DeclinedRefundException(DeclinedTransactionException):
 
     def __init__(self, status_code, response_body, errors):
         if errors is not None:
-            super(DeclinedRefundException, self).__init__(status_code,
-                                                          response_body,
-                                                          errors.error_id,
-                                                          errors.errors,
-                                                          DeclinedRefundException.__create_message(
-                                                              errors))
+            super(DeclinedRefundException, self).__init__(status_code, response_body, errors.error_id, errors.errors,
+                                                          DeclinedRefundException.__create_message(errors))
         else:
-            super(DeclinedRefundException, self).__init__(status_code,
-                                                          response_body,
-                                                          None, None,
-                                                          DeclinedRefundException.__create_message(
-                                                              errors))
+            super(DeclinedRefundException, self).__init__(status_code, response_body, None, None,
+                                                          DeclinedRefundException.__create_message(errors))
         self.__errors = errors
 
     @staticmethod

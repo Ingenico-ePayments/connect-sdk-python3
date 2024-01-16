@@ -39,17 +39,14 @@ class DefaultAuthenticator(Authenticator):
         self.__api_id_key = api_id_key
         self.__secret_api_key = secret_api_key
 
-    def create_simple_authentication_signature(self, http_method, resource_uri,
-                                               http_headers):
+    def create_simple_authentication_signature(self, http_method, resource_uri, http_headers):
         """Returns a v1HMAC authentication signature header"""
         if http_method is None or not http_method.strip():
             raise ValueError("http_method is required")
         if resource_uri is None:
             raise ValueError("resource_uri is required")
-        data_to_sign = self.to_data_to_sign(http_method, resource_uri,
-                                            http_headers)
-        return "GCS " + self.__authorization_type + ":" + self.__api_id_key + \
-               ":" + self.create_authentication_signature(data_to_sign)
+        data_to_sign = self.to_data_to_sign(http_method, resource_uri, http_headers)
+        return "GCS " + self.__authorization_type + ":" + self.__api_id_key + ":" + self.create_authentication_signature(data_to_sign)
 
     def to_data_to_sign(self, http_method, resource_uri, http_headers):
         content_type = None
@@ -66,8 +63,7 @@ class DefaultAuthenticator(Authenticator):
                 else:
                     name = self.__to_canonicalize_header_name(http_header.name)
                     if name.startswith("x-gcs"):
-                        value = self.to_canonicalize_header_value(
-                            http_header.value)
+                        value = self.to_canonicalize_header_value(http_header.value)
                         xgcs_http_header = RequestHeader(name, value)
                         xgcs_http_headers.append(xgcs_http_header)
         xgcs_http_headers.sort(key=attrgetter('name'))
@@ -83,10 +79,10 @@ class DefaultAuthenticator(Authenticator):
         string += canonicalized_resource + "\n"
         return str(string)
 
-    def __to_canonicalized_resource(self, resource_uri):
+    @staticmethod
+    def __to_canonicalized_resource(resource_uri):
         """
-        Returns the encoded URI path without the HTTP method and including all
-        decoded query parameters.
+        Returns the encoded URI path without the HTTP method and including all decoded query parameters.
         """
         string = ""
         string += resource_uri.path
@@ -94,20 +90,19 @@ class DefaultAuthenticator(Authenticator):
             string += "?" + resource_uri.query
         return str(string)
 
-    def __to_canonicalize_header_name(self, original_name):
+    @staticmethod
+    def __to_canonicalize_header_name(original_name):
         if original_name is None:
             return None
         else:
             return original_name.lower()
 
     def to_canonicalize_header_value(self, original_value):
-        # For now V1HMAC is the only supported AuthorizationType so always use
-        # the same logic.
+        # For now V1HMAC is the only supported AuthorizationType so always use the same logic.
         if original_value is None:
             return ""
         return sub(r"\r?\n(?:(?![\r\n])\s)*", " ", original_value).strip()
 
     def create_authentication_signature(self, data_to_sign):
-        sig = hmac.new(self.__secret_api_key.encode("utf-8"), data_to_sign.encode("utf-8"),
-                       hashlib.sha256)
+        sig = hmac.new(self.__secret_api_key.encode("utf-8"), data_to_sign.encode("utf-8"), hashlib.sha256)
         return b64encode(sig.digest()).decode("utf-8").rstrip('\n')

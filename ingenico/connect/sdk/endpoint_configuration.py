@@ -1,10 +1,8 @@
 from configparser import NoOptionError
 from urllib.parse import urlparse
 
-from ingenico.connect.sdk.domain.metadata.shopping_cart_extension import \
-    ShoppingCartExtension
-
 from .proxy_configuration import ProxyConfiguration
+from ingenico.connect.sdk.domain.metadata.shopping_cart_extension import ShoppingCartExtension
 
 
 class EndpointConfiguration(object):
@@ -17,49 +15,36 @@ class EndpointConfiguration(object):
     def __init__(self, properties=None, prefix=None):
         if properties and properties.sections() and properties.options("ConnectSDK"):
             self.__endpoint = self.__get_endpoint(properties, prefix)
-            self.__connect_timeout = int(
-                properties.get("ConnectSDK",
-                               prefix + ".connectTimeout"))
-            self.__socket_timeout = int(
-                properties.get("ConnectSDK",
-                               prefix + ".socketTimeout"))
-            self.__max_connections = \
-                self.__get_property(properties, prefix + ".maxConnections",
-                                    self.DEFAULT_MAX_CONNECTIONS)
+            self.__connect_timeout = int(properties.get("ConnectSDK", prefix + ".connectTimeout"))
+            self.__socket_timeout = int(properties.get("ConnectSDK", prefix + ".socketTimeout"))
+            self.__max_connections = self.__get_property(properties, prefix + ".maxConnections", self.DEFAULT_MAX_CONNECTIONS)
             try:
-                proxy_uri = properties.get("ConnectSDK",
-                                           prefix + ".proxy.uri")
+                proxy_uri = properties.get("ConnectSDK", prefix + ".proxy.uri")
             except NoOptionError:
                 proxy_uri = None
             try:
-                proxy_user = properties.get("ConnectSDK",
-                                            prefix + ".proxy.username")
+                proxy_user = properties.get("ConnectSDK", prefix + ".proxy.username")
             except NoOptionError:
                 proxy_user = None
             try:
-                proxy_pass = properties.get("ConnectSDK",
-                                            prefix + ".proxy.password")
+                proxy_pass = properties.get("ConnectSDK", prefix + ".proxy.password")
             except NoOptionError:
                 proxy_pass = None
             if proxy_uri is not None:
-                self.__proxy_configuration = ProxyConfiguration.from_uri(
-                    proxy_uri,
-                    proxy_user,
-                    proxy_pass)
+                self.__proxy_configuration = ProxyConfiguration.from_uri(proxy_uri, proxy_user, proxy_pass)
             else:
                 self.__proxy_configuration = None
             try:
-                self.__integrator = properties.get("ConnectSDK",
-                                                   prefix + ".integrator")
+                self.__integrator = properties.get("ConnectSDK", prefix + ".integrator")
             except NoOptionError:
                 self.__integrator = None
             try:
-                self.__shopping_cart_extension = \
-                    self.__get_shopping_cart_extension(properties, prefix)
+                self.__shopping_cart_extension = self.__get_shopping_cart_extension(properties, prefix)
             except NoOptionError:
                 self.__shopping_cart_extension = None
 
-    def __get_property(self, properties, key, default_value):
+    @staticmethod
+    def __get_property(properties, key, default_value):
         try:
             property_value = properties.get("ConnectSDK", key)
         except NoOptionError:
@@ -72,13 +57,11 @@ class EndpointConfiguration(object):
     def __get_endpoint(self, properties, prefix):
         host = properties.get("ConnectSDK", prefix + ".endpoint.host")
         try:
-            scheme = properties.get("ConnectSDK",
-                                    prefix + ".endpoint.scheme")
+            scheme = properties.get("ConnectSDK", prefix + ".endpoint.scheme")
         except NoOptionError:
             scheme = None
         try:
-            port = properties.get("ConnectSDK",
-                                  prefix + ".endpoint.port")
+            port = properties.get("ConnectSDK", prefix + ".endpoint.port")
         except NoOptionError:
             port = None
         if scheme:
@@ -91,7 +74,8 @@ class EndpointConfiguration(object):
         else:
             return self.__create_uri("https", host, -1)
 
-    def __create_uri(self, scheme, host, port):
+    @staticmethod
+    def __create_uri(scheme, host, port):
         if port != -1:
             uri = scheme + "://" + host + ":" + str(port)
         else:
@@ -101,25 +85,22 @@ class EndpointConfiguration(object):
             raise ValueError("Unable to construct endpoint URI")
         return url
 
-    def __get_shopping_cart_extension(self, properties, prefix):
+    @staticmethod
+    def __get_shopping_cart_extension(properties, prefix):
         try:
-            creator = properties.get("ConnectSDK",
-                                     prefix + ".shoppingCartExtension.creator")
+            creator = properties.get("ConnectSDK", prefix + ".shoppingCartExtension.creator")
         except NoOptionError:
             creator = None
         try:
-            name = properties.get("ConnectSDK",
-                                  prefix + ".shoppingCartExtension.name")
+            name = properties.get("ConnectSDK", prefix + ".shoppingCartExtension.name")
         except NoOptionError:
             name = None
         try:
-            version = properties.get("ConnectSDK",
-                                     prefix + ".shoppingCartExtension.version")
+            version = properties.get("ConnectSDK", prefix + ".shoppingCartExtension.version")
         except NoOptionError:
             version = None
         try:
-            extension_id = properties.get("ConnectSDK",
-                                          prefix + ".shoppingCartExtension.extensionId")
+            extension_id = properties.get("ConnectSDK", prefix + ".shoppingCartExtension.extensionId")
         except NoOptionError:
             extension_id = None
         if creator is None and name is None and version is None and extension_id is None:
@@ -136,11 +117,9 @@ class EndpointConfiguration(object):
             endpoint = urlparse(str(endpoint))
         if endpoint is not None and endpoint.path:
             raise ValueError("apiEndpoint should not contain a path")
-        if endpoint is not None and (
-                endpoint.username is not None or
-                endpoint.query or endpoint.fragment):
-            raise ValueError(
-                "apiEndpoint should not contain user info, query or fragment")
+        if endpoint is not None and \
+                (endpoint.username is not None or endpoint.query or endpoint.fragment):
+            raise ValueError("apiEndpoint should not contain user info, query or fragment")
         self.__endpoint = endpoint
 
     @property

@@ -1,18 +1,15 @@
 class CallContext:
     """
-    A call context can be used to send extra information with a request, and to
-    receive extra information from a response.
+    A call context can be used to send extra information with a request, and to receive extra information from a response.
     
-    Please note that this class is not thread-safe. Each request should get its
-    own call context instance.
+    Please note that this class is not thread-safe. Each request should get its own call context instance.
     """
     __idempotence_key = None
     __idempotence_request_timestamp = None
 
     def __init__(self, idempotence_key=None):
         """
-        Sets the idempotence key to use for the next request for which this call
-        context is used.
+        Sets the idempotence key to use for the next request for which this call context is used.
         """
         self.__idempotence_key = idempotence_key
 

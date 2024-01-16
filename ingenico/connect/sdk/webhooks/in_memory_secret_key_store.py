@@ -19,8 +19,7 @@ class InMemorySecretKeyStore(SecretKeyStore):
         try:
             secret_key = self.__store[key_id]
         except KeyError:
-            raise SecretKeyNotAvailableException(
-                "could not find secret key for key id " + key_id, key_id)
+            raise SecretKeyNotAvailableException("could not find secret key for key id " + key_id, key_id)
         return secret_key
 
     def store_secret_key(self, key_id, secret_key):

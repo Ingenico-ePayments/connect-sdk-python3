@@ -12,7 +12,7 @@ class Connection(LoggingCapable):
         Send a GET request to the Ingenico ePayments platform and return the response.
 
         :param url: The URI to call, including any necessary query parameters.
-        :param request_headers: An optional list of request headers.
+        :param request_headers: An optional sequence of request headers.
         :return: The response from the Ingenico ePayments platform as a tuple with
          the status code, headers and a generator of body chunks
         :raise: CommunicationException when an exception occurred communicating
@@ -25,7 +25,7 @@ class Connection(LoggingCapable):
         Send a DELETE request to the Ingenico ePayments platform and return the response.
 
         :param url: The URI to call, including any necessary query parameters.
-        :param request_headers: An optional list of request headers.
+        :param request_headers: An optional sequence of request headers.
         :return: The response from the Ingenico ePayments platform as a tuple with
          the status code, headers and a generator of body chunks
         :raise: CommunicationException when an exception occurred communicating
@@ -38,7 +38,7 @@ class Connection(LoggingCapable):
         Send a POST request to the Ingenico ePayments platform and return the response.
 
         :param url: The URI to call, including any necessary query parameters.
-        :param request_headers: An optional list of request headers.
+        :param request_headers: An optional sequence of request headers.
         :param body: The optional body to send.
         :return: The response from the Ingenico ePayments platform as a tuple with
          the status code, headers and a generator of body chunks
@@ -52,7 +52,7 @@ class Connection(LoggingCapable):
         Send a PUT request to the Ingenico ePayments platform and return the response.
 
         :param url: The URI to call, including any necessary query parameters.
-        :param request_headers: An optional list of request headers.
+        :param request_headers: An optional sequence of request headers.
         :param body: The optional body to send.
         :return: The response from the Ingenico ePayments platform as a tuple with
          the status code, headers and a generator of body chunks
@@ -60,3 +60,9 @@ class Connection(LoggingCapable):
          with the Ingenico ePayments platform
         """
         raise NotImplementedError
+
+    def close(self):
+        """
+        Releases any system resources associated with this object.
+        """
+        pass

@@ -1,12 +1,10 @@
 class ApiException(RuntimeError):
     """
-    Represents an error response from the Ingenico ePayments platform which contains
-    an ID and a list of errors.
+    Represents an error response from the Ingenico ePayments platform which contains an ID and a list of errors.
     """
 
     def __init__(self, status_code, response_body, error_id, errors,
-                 message="the Ingenico ePayments platform returned an error"
-                         " response"):
+                 message="the Ingenico ePayments platform returned an error response"):
         super(ApiException, self).__init__(message)
         self.__status_code = status_code
         self.__response_body = response_body
@@ -19,32 +17,28 @@ class ApiException(RuntimeError):
     @property
     def status_code(self):
         """
-        :return: The HTTP status code that was returned by the Ingenico ePayments
-         platform.
+        :return: The HTTP status code that was returned by the Ingenico ePayments platform.
         """
         return self.__status_code
 
     @property
     def response_body(self):
         """
-        :return: The raw response body that was returned by the Ingenico ePayments
-         platform.
+        :return: The raw response body that was returned by the Ingenico ePayments platform.
         """
         return self.__response_body
 
     @property
     def error_id(self):
         """
-        :return: The error ID received from the Ingenico ePayments platform if
-         available.
+        :return: The error ID received from the Ingenico ePayments platform if available.
         """
         return self.__error_id
 
     @property
     def errors(self):
         """
-        :return: The error list received from the Ingenico ePayments platform if
-         available. Never None.
+        :return: The error list received from the Ingenico ePayments platform if available. Never None.
         """
         return self.__errors
 

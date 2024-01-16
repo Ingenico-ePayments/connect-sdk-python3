@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 #
 # This class was auto-generated from the API references found at
-# https://epayments-api.developer-ingenico.com/s2sapi/v1/
+# https://epayments-api.developer-ingenico.com/
 #
 from ingenico.connect.sdk.domain.definitions.abstract_payment_method_specific_input import AbstractPaymentMethodSpecificInput
 from ingenico.connect.sdk.domain.payment.definitions.card_recurrence_details import CardRecurrenceDetails
@@ -9,6 +9,7 @@ from ingenico.connect.sdk.domain.payment.definitions.card_recurrence_details imp
 
 class AbstractCardPaymentMethodSpecificInput(AbstractPaymentMethodSpecificInput):
 
+    __acquirer_promotion_code = None
     __authorization_mode = None
     __customer_reference = None
     __initial_scheme_transaction_id = None
@@ -23,6 +24,17 @@ class AbstractCardPaymentMethodSpecificInput(AbstractPaymentMethodSpecificInput)
     __unscheduled_card_on_file_indicator = None
     __unscheduled_card_on_file_requestor = None
     __unscheduled_card_on_file_sequence_indicator = None
+
+    @property
+    def acquirer_promotion_code(self):
+        """
+        Type: str
+        """
+        return self.__acquirer_promotion_code
+
+    @acquirer_promotion_code.setter
+    def acquirer_promotion_code(self, value):
+        self.__acquirer_promotion_code = value
 
     @property
     def authorization_mode(self):
@@ -186,6 +198,8 @@ class AbstractCardPaymentMethodSpecificInput(AbstractPaymentMethodSpecificInput)
 
     def to_dictionary(self):
         dictionary = super(AbstractCardPaymentMethodSpecificInput, self).to_dictionary()
+        if self.acquirer_promotion_code is not None:
+            dictionary['acquirerPromotionCode'] = self.acquirer_promotion_code
         if self.authorization_mode is not None:
             dictionary['authorizationMode'] = self.authorization_mode
         if self.customer_reference is not None:
@@ -218,6 +232,8 @@ class AbstractCardPaymentMethodSpecificInput(AbstractPaymentMethodSpecificInput)
 
     def from_dictionary(self, dictionary):
         super(AbstractCardPaymentMethodSpecificInput, self).from_dictionary(dictionary)
+        if 'acquirerPromotionCode' in dictionary:
+            self.acquirer_promotion_code = dictionary['acquirerPromotionCode']
         if 'authorizationMode' in dictionary:
             self.authorization_mode = dictionary['authorizationMode']
         if 'customerReference' in dictionary:
