@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="../../../../../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ingenico.connect.sdk.webhooks.signature_validator &#8212; connect-sdk-python3 3.46.0 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/alabaster.css?v=12dfc556" />
+    <script src="../../../../../_static/documentation_options.js?v=5e80e949"></script>
+    <script src="../../../../../_static/doctools.js?v=888ff710"></script>
+    <script src="../../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <link rel="index" title="Index" href="../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../search.html" />
+   
+  <link rel="stylesheet" href="../../../../../_static/custom.css" type="text/css" />
+  
+
+  
+  
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <h1>Source code for ingenico.connect.sdk.webhooks.signature_validator</h1><div class="highlight"><pre>
+<span></span><span class="kn">import</span> <span class="nn">hmac</span>
+<span class="kn">import</span> <span class="nn">hashlib</span>
+<span class="kn">from</span> <span class="nn">base64</span> <span class="kn">import</span> <span class="n">b64encode</span>
+
+<span class="kn">from</span> <span class="nn">.signature_validation_exception</span> <span class="kn">import</span> <span class="n">SignatureValidationException</span>
+
+
+<div class="viewcode-block" id="SignatureValidator">
+<a class="viewcode-back" href="../../../../../index.html#ingenico.connect.sdk.webhooks.signature_validator.SignatureValidator">[docs]</a>
+<span class="k">class</span> <span class="nc">SignatureValidator</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Validator for webhooks signatures.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">secret_key_store</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">secret_key_store</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;secret_key_store is required&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">__secret_key_store</span> <span class="o">=</span> <span class="n">secret_key_store</span>
+
+<div class="viewcode-block" id="SignatureValidator.validate">
+<a class="viewcode-back" href="../../../../../index.html#ingenico.connect.sdk.webhooks.signature_validator.SignatureValidator.validate">[docs]</a>
+    <span class="k">def</span> <span class="nf">validate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">body</span><span class="p">,</span> <span class="n">request_headers</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Validates the given body using the given request headers.</span>
+
+<span class="sd">        :raise: SignatureValidationException: If the body could not be validated successfully.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">__validate_body</span><span class="p">(</span><span class="n">body</span><span class="p">,</span> <span class="n">request_headers</span><span class="p">)</span></div>
+
+
+    <span class="k">def</span> <span class="nf">__validate_body</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">body</span><span class="p">,</span> <span class="n">request_headers</span><span class="p">):</span>
+        <span class="n">signature</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__get_header_value</span><span class="p">(</span><span class="n">request_headers</span><span class="p">,</span> <span class="s2">&quot;X-GCS-Signature&quot;</span><span class="p">)</span>
+        <span class="n">key_id</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__get_header_value</span><span class="p">(</span><span class="n">request_headers</span><span class="p">,</span> <span class="s2">&quot;X-GCS-KeyId&quot;</span><span class="p">)</span>
+        <span class="n">secret_key</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__secret_key_store</span><span class="o">.</span><span class="n">get_secret_key</span><span class="p">(</span><span class="n">key_id</span><span class="p">)</span>
+        <span class="n">unencoded_result</span> <span class="o">=</span> <span class="n">hmac</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">secret_key</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s2">&quot;utf-8&quot;</span><span class="p">),</span> <span class="n">body</span><span class="p">,</span> <span class="n">hashlib</span><span class="o">.</span><span class="n">sha256</span><span class="p">)</span><span class="o">.</span><span class="n">digest</span><span class="p">()</span>
+        <span class="n">expected_signature</span> <span class="o">=</span> <span class="n">b64encode</span><span class="p">(</span><span class="n">unencoded_result</span><span class="p">)</span>
+        <span class="n">is_valid</span> <span class="o">=</span> <span class="n">hmac</span><span class="o">.</span><span class="n">compare_digest</span><span class="p">(</span><span class="n">signature</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s2">&quot;utf-8&quot;</span><span class="p">),</span> <span class="n">expected_signature</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">is_valid</span> <span class="ow">is</span> <span class="kc">False</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="n">SignatureValidationException</span><span class="p">(</span><span class="s2">&quot;failed to validate signature: &quot;</span> <span class="o">+</span> <span class="n">signature</span><span class="p">)</span>
+
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">__get_header_value</span><span class="p">(</span><span class="n">request_headers</span><span class="p">,</span> <span class="n">header_name</span><span class="p">):</span>
+        <span class="n">value</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="k">for</span> <span class="n">header</span> <span class="ow">in</span> <span class="n">request_headers</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">header_name</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="o">==</span> <span class="n">header</span><span class="o">.</span><span class="n">name</span><span class="o">.</span><span class="n">lower</span><span class="p">():</span>
+                <span class="k">if</span> <span class="n">value</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+                    <span class="n">value</span> <span class="o">=</span> <span class="n">header</span><span class="o">.</span><span class="n">value</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="k">raise</span> <span class="n">SignatureValidationException</span><span class="p">(</span><span class="s2">&quot;encountered multiple occurrences of header &#39;&quot;</span> <span class="o">+</span> <span class="n">header_name</span> <span class="o">+</span> <span class="s2">&quot;&#39;&quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">value</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="n">SignatureValidationException</span><span class="p">(</span><span class="s2">&quot;could not find header &#39;&quot;</span> <span class="o">+</span> <span class="n">header_name</span> <span class="o">+</span> <span class="s2">&quot;&#39;&quot;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">value</span>
+
+    <span class="c1"># Used for unit tests</span>
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">secret_key_store</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__secret_key_store</span></div>
+
+</pre></div>
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../../../../../index.html">connect-sdk-python3</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../../../../../index.html">Documentation overview</a><ul>
+  <li><a href="../../../../index.html">Module code</a><ul>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../../../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &#169;Copyright (c) 2016 Global Collect Services B.V..
+      
+      |
+      Powered by <a href="https://www.sphinx-doc.org/">Sphinx 7.2.6</a>
+      &amp; <a href="https://alabaster.readthedocs.io">Alabaster 0.7.16</a>
+      
+    </div>
+
+    
+
+    
+  </body>
+</html>
