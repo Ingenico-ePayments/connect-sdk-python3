@@ -23,6 +23,9 @@ class OrderTypeInformation(DataObject):
         * businessToConsumer = When fund is being transferred from business to consumer (B2C)
         * businessToBusiness = When fund is being transferred from business to business (B2B)
         * prefundingStagedWallet = When funding is being used to load the funds into the wallet account.
+        * storedValueDigitalWallet = When funding is being used to load the funds into a stored value digital wallet.
+        * fundingGiftCardForPersonalUse = When funding a gift card for personal use.
+        * fundingGiftCardForSomeoneElse = When funding a gift card for someone else.
         
         Type: str
         """

@@ -43,6 +43,7 @@ class AccountFundingRecipient(DataObject):
         * routingNumber = Routing Transit Number is a code used by financial institutions to identify other financial institutions.
         * iban = International Bank Account Number, is a standard international numbering system for identifying bank accounts.
         * bicNumber = Bank Identification Code is a number that is used to identify a specific bank.
+        * giftCard = Gift card is a type of prepaid card that contains a specific amount of money that can be used at participating stores and marketplaces.
         
         Type: str
         """

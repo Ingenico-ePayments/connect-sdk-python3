@@ -19,6 +19,7 @@ class FindProductsParams(ParamRequest):
     __locale = None
     __amount = None
     __is_recurring = None
+    __is_installments = None
     __hide = None
 
     @property
@@ -92,6 +93,24 @@ class FindProductsParams(ParamRequest):
         self.__is_recurring = value
 
     @property
+    def is_installments(self):
+        """
+        | This allows you to filter payment products based on their support for installments or not
+        
+        * true
+        * false
+        
+        | If this is omitted all payment products are returned.
+        
+        Type: bool
+        """
+        return self.__is_installments
+
+    @is_installments.setter
+    def is_installments(self, value):
+        self.__is_installments = value
+
+    @property
     def hide(self):
         """
         | Allows you to hide elements from the response, reducing the amount of data that needs to be returned to your client. Possible options are:
@@ -134,6 +153,8 @@ class FindProductsParams(ParamRequest):
             result.append(RequestParam("amount", str(self.amount)))
         if self.is_recurring is not None:
             result.append(RequestParam("isRecurring", str(self.is_recurring)))
+        if self.is_installments is not None:
+            result.append(RequestParam("isInstallments", str(self.is_installments)))
         if self.hide is not None:
             for hide_element in self.hide:
                 if hide_element is not None:

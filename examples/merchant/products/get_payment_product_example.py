@@ -18,6 +18,7 @@ class GetPaymentProductExample(object):
             query.locale = "en_US"
             query.amount = 1000
             query.is_recurring = True
+            query.is_installments = True
             query.force_basic_flow = False
             query.add_hide("fields")
 

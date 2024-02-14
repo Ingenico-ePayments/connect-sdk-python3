@@ -18,6 +18,7 @@ class GetPaymentProductGroupsExample(object):
             query.locale = "en_US"
             query.amount = 1000
             query.is_recurring = True
+            query.is_installments = True
             query.add_hide("fields")
 
             response = client.merchant("merchantId").productgroups().find(query)
