@@ -5,10 +5,10 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Ingenico Connect Python SDK &#8212; connect-sdk-python3 3.46.0 documentation</title>
+    <title>Ingenico Connect Python SDK &#8212; connect-sdk-python3 3.47.0 documentation</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
     <link rel="stylesheet" type="text/css" href="_static/alabaster.css?v=12dfc556" />
-    <script src="_static/documentation_options.js?v=5e80e949"></script>
+    <script src="_static/documentation_options.js?v=2f55a310"></script>
     <script src="_static/doctools.js?v=888ff710"></script>
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <link rel="index" title="Index" href="genindex.html" />
@@ -9045,6 +9045,7 @@ Alternatively you can use request with the request method as the first parameter
 <li><p>routingNumber = Routing Transit Number is a code used by financial institutions to identify other financial institutions.</p></li>
 <li><p>iban = International Bank Account Number, is a standard international numbering system for identifying bank accounts.</p></li>
 <li><p>bicNumber = Bank Identification Code is a number that is used to identify a specific bank.</p></li>
+<li><p>giftCard = Gift card is a type of prepaid card that contains a specific amount of money that can be used at participating stores and marketplaces.</p></li>
 </ul>
 <p>Type: str</p>
 </dd></dl>
@@ -13620,6 +13621,9 @@ Alternatively you can use request with the request method as the first parameter
 <li><p>businessToConsumer = When fund is being transferred from business to consumer (B2C)</p></li>
 <li><p>businessToBusiness = When fund is being transferred from business to business (B2B)</p></li>
 <li><p>prefundingStagedWallet = When funding is being used to load the funds into the wallet account.</p></li>
+<li><p>storedValueDigitalWallet = When funding is being used to load the funds into a stored value digital wallet.</p></li>
+<li><p>fundingGiftCardForPersonalUse = When funding a gift card for personal use.</p></li>
+<li><p>fundingGiftCardForSomeoneElse = When funding a gift card for someone else.</p></li>
 </ul>
 <p>Type: str</p>
 </dd></dl>
@@ -25776,6 +25780,22 @@ or the service that you’re trying to reach is temporary unavailable (HTTP stat
 </dd></dl>
 
 <dl class="py property">
+<dt class="sig sig-object py" id="ingenico.connect.sdk.merchant.productgroups.find_productgroups_params.FindProductgroupsParams.is_installments">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">is_installments</span></span><a class="headerlink" href="#ingenico.connect.sdk.merchant.productgroups.find_productgroups_params.FindProductgroupsParams.is_installments" title="Link to this definition">¶</a></dt>
+<dd><div class="line-block">
+<div class="line">This allows you to filter payment products based on their support for installments or not</div>
+</div>
+<ul class="simple">
+<li><p>true</p></li>
+<li><p>false</p></li>
+</ul>
+<div class="line-block">
+<div class="line">If this is omitted all payment products are returned.</div>
+</div>
+<p>Type: bool</p>
+</dd></dl>
+
+<dl class="py property">
 <dt class="sig sig-object py" id="ingenico.connect.sdk.merchant.productgroups.find_productgroups_params.FindProductgroupsParams.is_recurring">
 <em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">is_recurring</span></span><a class="headerlink" href="#ingenico.connect.sdk.merchant.productgroups.find_productgroups_params.FindProductgroupsParams.is_recurring" title="Link to this definition">¶</a></dt>
 <dd><div class="line-block">
@@ -25869,6 +25889,22 @@ or the service that you’re trying to reach is temporary unavailable (HTTP stat
 <li><p>translations - Don’t return any label texts associated with the payment products</p></li>
 </ul>
 <p>Type: list[str]</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="ingenico.connect.sdk.merchant.productgroups.get_productgroup_params.GetProductgroupParams.is_installments">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">is_installments</span></span><a class="headerlink" href="#ingenico.connect.sdk.merchant.productgroups.get_productgroup_params.GetProductgroupParams.is_installments" title="Link to this definition">¶</a></dt>
+<dd><div class="line-block">
+<div class="line">This allows you to filter payment products based on their support for installments or not</div>
+</div>
+<ul class="simple">
+<li><p>true</p></li>
+<li><p>false</p></li>
+</ul>
+<div class="line-block">
+<div class="line">If this is omitted all payment products are returned.</div>
+</div>
+<p>Type: bool</p>
 </dd></dl>
 
 <dl class="py property">
@@ -26147,6 +26183,22 @@ or the service that you’re trying to reach is temporary unavailable (HTTP stat
 </dd></dl>
 
 <dl class="py property">
+<dt class="sig sig-object py" id="ingenico.connect.sdk.merchant.products.find_products_params.FindProductsParams.is_installments">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">is_installments</span></span><a class="headerlink" href="#ingenico.connect.sdk.merchant.products.find_products_params.FindProductsParams.is_installments" title="Link to this definition">¶</a></dt>
+<dd><div class="line-block">
+<div class="line">This allows you to filter payment products based on their support for installments or not</div>
+</div>
+<ul class="simple">
+<li><p>true</p></li>
+<li><p>false</p></li>
+</ul>
+<div class="line-block">
+<div class="line">If this is omitted all payment products are returned.</div>
+</div>
+<p>Type: bool</p>
+</dd></dl>
+
+<dl class="py property">
 <dt class="sig sig-object py" id="ingenico.connect.sdk.merchant.products.find_products_params.FindProductsParams.is_recurring">
 <em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">is_recurring</span></span><a class="headerlink" href="#ingenico.connect.sdk.merchant.products.find_products_params.FindProductsParams.is_recurring" title="Link to this definition">¶</a></dt>
 <dd><div class="line-block">
@@ -26252,6 +26304,22 @@ or the service that you’re trying to reach is temporary unavailable (HTTP stat
 <li><p>translations - Don’t return any label texts associated with the payment products</p></li>
 </ul>
 <p>Type: list[str]</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="ingenico.connect.sdk.merchant.products.get_product_params.GetProductParams.is_installments">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">is_installments</span></span><a class="headerlink" href="#ingenico.connect.sdk.merchant.products.get_product_params.GetProductParams.is_installments" title="Link to this definition">¶</a></dt>
+<dd><div class="line-block">
+<div class="line">This allows you to filter payment products based on their support for installments or not</div>
+</div>
+<ul class="simple">
+<li><p>true</p></li>
+<li><p>false</p></li>
+</ul>
+<div class="line-block">
+<div class="line">If this is omitted all payment products are returned.</div>
+</div>
+<p>Type: bool</p>
 </dd></dl>
 
 <dl class="py property">
