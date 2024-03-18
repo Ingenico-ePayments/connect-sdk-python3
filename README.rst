@@ -1,6 +1,8 @@
 Ingenico Connect Python SDK
 ===========================
 
+**This SDK has been rebranded to Worldline. As part of the rebranding the SDK has moved to** https://github.com/Worldline-Global-Collect/connect-sdk-python3.
+
 Introduction
 ------------
 
